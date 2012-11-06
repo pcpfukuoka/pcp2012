@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+
+
+		/*index.phpの左フレームの設定*/
+#left{
+	overflow-y: hidden;
+
+}

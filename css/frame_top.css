@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+<!-- topの比率 -->
+#direction{
+	cols:30%,70%;
+	frameborder:no;
+	border:no;
+}
