@@ -1,0 +1,10 @@
+Order Deny,Allow
+<Files ~ "^.(htpasswd|htaccess|dat)$">
+deny from all
+</Files>
+<Files ~ "\.(ics|csv)$">
+allow from all
+</Files>
+<Files ~ "\.dat$">
+deny from all
+</Files>
