@@ -5,12 +5,6 @@
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
-
-	/*****************************************************************************/
-	//								注意！！！！！！								 //
-	//動作確認のため、SQL文のWHERE句の $user_seq を 『　１　』 に変えているので、最後に変えること！！！！ //
-	//あと、SESSIONをコメントにしているので、それも変えること！！									 //
-	/*****************************************************************************/
 	
 	$sql = "SELECT print_delivery_seq, delivery_date, title, printurl, m_group.group_name AS group_name
 			FROM print_delivery 

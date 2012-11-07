@@ -16,7 +16,6 @@
     	
     	$sql = "INSERT INTO Print_delivery (title, delivery_user_seq, target_group_seq, print_send_flg, print_flg)
     			VALUES ('$title', '$user_seq', '$send_seq', '1', '0')";
-    		
     	mysql_query($sql);
     	
     	//INSERTしたSEQを取得
@@ -26,9 +25,9 @@
     	$pdseq = $row['print_delivery_seq'];
     	
     	//UPDATEでリンクを保存
-    	$sql = "UDPATE Print_delivery SET printurl = 'print_delivery_seq_$pdseq.pdf';";
-    	
-    	
+    	$sql = "UPDATE Print_delivery SET printurl = 'print_delivery_seq_$pdseq.pdf'
+    			WHERE print_delivery_seq = $pdseq;";
+    	mysql_query($sql);
     	move_uploaded_file($data['tmp_name'], 'print_delivery_seq_$pdseq.pdf');
     	 
     	//データベースを閉じる

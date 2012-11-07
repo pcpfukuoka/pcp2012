@@ -3,7 +3,9 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 	 
-	$sql = "SELECT * FROM m_user";
+	$sql = "SELECT * 
+			FROM m_group
+			WHERE delete_flg = 0";
 	$result = mysql_query($sql);
 	$count = mysql_num_rows($result);
 	
@@ -35,7 +37,7 @@
 	   				{
 	   					$row = mysql_fetch_array($result);
   				?>
-    					<option value="<?=$row['user_seq']?>"><?= $row['user_name'] ?></option>
+    					<option value="<?=$row['group_seq']?>"><?= $row['group_name'] ?></option>
   				<?php
     				}
   				?>
