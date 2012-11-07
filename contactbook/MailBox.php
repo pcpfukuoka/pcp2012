@@ -74,9 +74,7 @@
 					FROM print_delivery 
 					Left JOIN m_user ON print_delivery.delivery_user_seq = m_user.user_seq
 					WHERE print_delivery.delivery_user_seq = $user_seq
-					AND print_flg = 1
 					ORDER BY delivery_date DESC;";
-			
 			$result = mysql_query($sql);
 			$cnt = mysql_num_rows($result);
 			
