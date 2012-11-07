@@ -30,7 +30,7 @@
 		<div align="center">
 			<font size = "7">下書き</font><br><br>
 		</div>
-
+		
 		<hr color="blue">
 		<br><br><br>
 
@@ -51,7 +51,7 @@
 							<td><?= $row['group_name'] ?></td>
 							<td>
 							
-								<a href="p_view.php?id=<?= $row['delivery_user_seq'] ?>"><?= $row['title'] ?></a>
+								<a href="p_view.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
 							</td>
 							
 						</tr>
