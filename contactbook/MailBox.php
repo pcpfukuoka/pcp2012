@@ -70,15 +70,17 @@
 			require_once("../lib/dbconect.php");
 			$dbcon = DbConnect();
 		
-			$sql = "SELECT print_delivery_seq, delivery_date, printurl, title, m_user.user_name AS send_user_name 
+			$sql = "SELECT print_delivery_seq, delivery_user_seq, delivery_date, printurl, title, m_user.user_name AS send_user_name 
 					FROM print_delivery 
-					Left JOIN m_user ON print_delivery.delivery_user_seq = m_user.user_seq;";
+					Left JOIN m_user ON print_delivery.delivery_user_seq = m_user.user_seq
+					WHERE print_delivery.delivery_user_seq = $user_seq
+					ORDER BY delivery_date DESC;";
 			$result = mysql_query($sql);
-			$count = mysql_num_rows($result);
+			$cnt = mysql_num_rows($result);
 			
 			//データベースを閉じる
 			Dbdissconnect($dbcon);
-
+			
 		?>
 		
 		<!-- プリントの受信一覧テーブル作成 -->
@@ -95,7 +97,7 @@
 				</tr>
 			
 				<?php
-				for ($i = 0; $i < $count; $i++){
+				for ($i = 0; $i < $cnt; $i++){
 					$row = mysql_fetch_array($result);
 				?>
 					<tr>
