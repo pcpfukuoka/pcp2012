@@ -69,11 +69,12 @@
 			//データベースの呼出
 			require_once("../lib/dbconect.php");
 			$dbcon = DbConnect();
-		
-			$sql = "SELECT print_delivery_seq, delivery_user_seq, delivery_date, printurl, title, m_user.user_name AS send_user_name 
+			
+			$sql = "SELECT print_delivery_seq, target_group_seq, delivery_user_seq, delivery_date, printurl, title, m_user.user_name AS send_user_name 
 					FROM print_delivery 
-					Left JOIN m_user ON print_delivery.delivery_user_seq = m_user.user_seq
-					WHERE print_delivery.delivery_user_seq = $user_seq
+					LEFT JOIN m_user ON print_delivery.delivery_user_seq = m_user.user_seq
+					LEFT JOIN group_details ON print_delivery.target_group_seq = group_details.group_seq
+					WHERE group_details.user_seq = $user_seq
 					ORDER BY delivery_date DESC;";
 			$result = mysql_query($sql);
 			$cnt = mysql_num_rows($result);
