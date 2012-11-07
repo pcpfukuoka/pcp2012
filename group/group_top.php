@@ -50,12 +50,12 @@
 		<?php
 			for($i = 0; $i < $cnt; $i++)
 			{
-				$group_cnt = mysql_fetch_array($result);
+				$group_row = mysql_fetch_array($result);
 		?>
 
 		<ul>
 			<li>
-				<input type="text" value=<?= $group_cnt['group_name'] ?> onclick="jump('group_details.php?id=<?= $group_cnt['group_seq'] ?>&name=<?= $group_cnt['group_name'] ?>','right')" id="group_select">
+				<input type="text" value=<?= $group_row['group_name'] ?> onclick="jump('group_details.php?id=<?= $group_row['group_seq'] ?>','right')" id="group_select">
 			</li>
 		</ul>
 
