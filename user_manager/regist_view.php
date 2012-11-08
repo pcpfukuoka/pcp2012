@@ -1,6 +1,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 	</head>
 	<body>		
 		<?php 
@@ -36,7 +38,7 @@
 		</select><br>
 		
 		学籍番号※学生のみ<input type="text" name="stuent_id"><br>
-		<input type="submit" value ="登録">
+		<input class="button4"type="submit" value ="登録">
 		</form>		
 	</body>
 </html>

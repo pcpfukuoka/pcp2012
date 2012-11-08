@@ -23,6 +23,8 @@
 	<head>
 	　　<title> 確認画面</title>
 	  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	  <meta http-equiv="Content-Style-Type" content="text/css">
+	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
 	</head>
 	
 	<body>
@@ -49,7 +51,7 @@
 		    <input type="hidden" value="<?= $row['title'] ?>" name="title">
 		    <input type="hidden" value="<?= $row['contents'] ?>" name="contents">
 		    <input type="hidden" value="<?= $id ?>" name="link_id">
-		    <input type="submit" value="返信">    
+		    <input  class="button4" type="submit" value="返信">    
 	    </form>
     </body>  
 </html>

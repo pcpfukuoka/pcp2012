@@ -2,6 +2,8 @@
 <head>
 <title>ページ新規追加確認画面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="stylesheet" type="text/css" href="../css/button.css" />
 </head>
 <body>
 <form action="page_dec.php" method="POST">
@@ -42,8 +44,8 @@
     <td align = "center"><font color = "Red">"NEW"</font>&nbsp;&nbsp;<?= $page_name ?></td>
     </tr></table><br>
     <input type="hidden" name="page_name" value="<?= $page_name ?>">
-    <input type="submit" value="確定">&nbsp;&nbsp;
-	<input type="button" value="戻る" onClick="history.back()">
+    <input class="button4" type="submit" value="確定">&nbsp;&nbsp;
+	<input class="button4" type="button" value="戻る" onClick="history.back()">
     </form>
 </body>
 </html>

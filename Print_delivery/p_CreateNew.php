@@ -16,6 +16,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<title>新規作成</title>
 	</head>
 	
@@ -48,7 +50,7 @@
 	 		<input size="30" type="text" name="title"><br>
 	 		<font size="3">プリント</font>
 			<input size="30" type="file" name="pdf"><br><br>
-	  		<input type="submit" value="保存" name="Preservation">
+	  		<input class="button4" type="submit" value="保存" name="Preservation">
 		</form>
 	</body>
 </html>

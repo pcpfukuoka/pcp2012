@@ -23,6 +23,8 @@
 	<head>
 	　　<title> 送信</title>
 	  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	  <meta http-equiv="Content-Style-Type" content="text/css">
+	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
 	</head>
 	
 	<body>
@@ -43,8 +45,8 @@
 	      <input type="hidden" value="<?= $contact_book_row['contact_book_seq'] ?>" name="contact_book_seq">
 	      <input type="hidden" value="<?= $contact_book_row['reception_user_seq'] ?>" name="reception_user_seq">
 	      <input type="hidden" value="<?= $contact_book_row['link_contact_book_seq'] ?>" name="link_id">
-	      <input type="submit" value="送信" name = "send_update">
-		  <input type="submit" value="保存" name="Preservation"><br>
+	      <input class="button4" type="submit" value="送信" name = "send_update">
+		  <input class="button4" type="submit" value="保存" name="Preservation"><br>
 		  	
 	    </form>     
     </body>

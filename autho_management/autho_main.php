@@ -24,6 +24,8 @@ Dbdissconnect($link);
 		<title>権限管理メイン</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<script src="../javascript/frame_jump.js"></script>
+		<meta http-equiv="Content-Style-Type" content="text/css">
+	    <link rel="stylesheet" type="text/css" href="../css/button.css" />
 	</head>
 
 	<body>
@@ -34,8 +36,8 @@ Dbdissconnect($link);
  * $autho_group : DBから取得した権限seqとグループ名を入れる連想配列
  *********************************************************/
 ?>
-			<input type="button" onclick="jump('autho_add.php','right')"value = "権限グループ追加">
-			<input type="button" onclick="jump('page_add.php','right')"value = "ページの編集"><br><br>
+			<input class="button1 type="button" onclick="jump('autho_add.php','right')"value = "権限グループ追加">
+			<input class="button1 type="button" onclick="jump('page_add.php','right')"value = "ページの編集"><br><br>
 			<?php
 			for($i = 0; $i < $count_autho; $i++)
 			{
@@ -45,13 +47,13 @@ Dbdissconnect($link);
 				<?= $autho_group['autho_name'] ?>
 			<table>
 				<tr>
-					<td><input type="button" onclick="jump('autho_list.php?id=<?= $autho_group['autho_seq'] ?>' , 'right')" value="一覧"></td>
-					<td><input type="button" onclick="jump('autho_edit.php?id=<?= $autho_group['autho_seq'] ?>','right')" value = "編集"></td>
+					<td><input class="button1 type="button" onclick="jump('autho_list.php?id=<?= $autho_group['autho_seq'] ?>' , 'right')" value="一覧"></td>
+					<td><input class="button1" type="button" onclick="jump('autho_edit.php?id=<?= $autho_group['autho_seq'] ?>','right')" value = "編集"></td>
 					
 				</tr>
 				<tr>
-					<td><input type="button" onclick="jump('autho_reg.php?id=<?= $autho_group['autho_seq'] ?>','right')" value = "登録"></td>
-					<td><input type="button" onclick="jump('autho_del_con.php?id=<?= $autho_group['autho_seq'] ?>','right')"value = "削除"></td>
+					<td><input class="button1" type="button" onclick="jump('autho_reg.php?id=<?= $autho_group['autho_seq'] ?>','right')" value = "登録"></td>
+					<td><input class="button1" type="button" onclick="jump('autho_del_con.php?id=<?= $autho_group['autho_seq'] ?>','right')"value = "削除"></td>
 					
 				</tr>
 			</table>
