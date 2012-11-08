@@ -105,7 +105,8 @@
 						<td><?= $row['delivery_date'] ?></td>
 						<td><?= $row['send_user_name'] ?></td>
 						<td>
-							<a href="<?= printurl ?>"><?= $row['title'] ?></a>
+							<!-- <a href="<?= printurl ?>"><?= $row['title'] ?></a> -->
+							<a href="pdf_relay.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
 						</td>
 					</tr>
 				<?php 
