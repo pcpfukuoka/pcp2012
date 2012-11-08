@@ -3,50 +3,30 @@
 	$dbcon = DbConnect();
 	//これでDBを呼び出す関数が使えるようになる
 
-	$d_group = $_GET['group_name'];
-	$sql = "SELECT * FROM m_group WHERE group_seq = $d_group;";
-	$result = mysql_query($sql);
-	$delete_group = mysql_fetch_array($result);
 
+	$d_group = $_GET['id'];
+	//マスタのdelete_flgを更新
+	$sql = "UPDATE m_group SET delete_flg = 1 WHERE group_seq = $d_group;";
+	mysql_query($sql);
+	//group_detailsのデータを削除
+	$sql = "DELETE FROM group_details WHERE group_seq = '$d_group';";
+	mysql_query($sql);
+	
 	Dbdissconnect($dbcon);
 ?>
-<script language="javascript"><!--
-	function delete_link() 
-	{
-		window.opener.location.href = "group_delete_comp.php?dt=<?php echo $delete_group['group_seq']; ?>";
-		window.close();
-	}
---></script>
-
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>グループ削除</title>
+		<title>削除完了</title>
 	</head>
 	
 	<body>
 		<div align = "center">
-			<font size = "7">確認画面</font>
-		
+			<p>
+				<font size = "7">削除完了</font>
+			</p>
 			<hr color = "blue">
-			
-			グループ「<?= $delete_group['group_name'] ?>」を削除します。
-			<br>
-			<br>
-			本当によろしいでしょうか？
-			<form>
-				<table>
-					<tr>
-						<td>
-							<input type = "submit" value = "はい" name = "yes" onClick="delete_link()">
-						</td>
-					
-						<td>
-							<input type = "submit" value = "いいえ" name = "no" onclick="window.close();">
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>	
+			グループを削除しました。
+		</div>
 	</body>
 </html>

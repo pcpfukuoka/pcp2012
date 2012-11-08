@@ -17,7 +17,7 @@
 	</head>
 	
 	<body>
-		<form action = "group_details.php" method = "POST">
+		<form action = "group_g_add_db.php" method = "POST">
 		
 			<div align = "center">
 			

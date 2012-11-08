@@ -69,16 +69,19 @@
 			//データベースの呼出
 			require_once("../lib/dbconect.php");
 			$dbcon = DbConnect();
-		
-			$sql = "SELECT print_delivery_seq, delivery_date, printurl, title, m_user.user_name AS send_user_name 
+			
+			$sql = "SELECT print_delivery_seq, target_group_seq, delivery_user_seq, delivery_date, printurl, title, m_user.user_name AS send_user_name 
 					FROM print_delivery 
-					Left JOIN m_user ON print_delivery.delivery_user_seq = m_user.user_seq;";
+					LEFT JOIN m_user ON print_delivery.delivery_user_seq = m_user.user_seq
+					LEFT JOIN group_details ON print_delivery.target_group_seq = group_details.group_seq
+					WHERE group_details.user_seq = $user_seq
+					ORDER BY delivery_date DESC;";
 			$result = mysql_query($sql);
-			$count = mysql_num_rows($result);
+			$cnt = mysql_num_rows($result);
 			
 			//データベースを閉じる
 			Dbdissconnect($dbcon);
-
+			
 		?>
 		
 		<!-- プリントの受信一覧テーブル作成 -->
@@ -95,14 +98,15 @@
 				</tr>
 			
 				<?php
-				for ($i = 0; $i < $count; $i++){
+				for ($i = 0; $i < $cnt; $i++){
 					$row = mysql_fetch_array($result);
 				?>
 					<tr>
 						<td><?= $row['delivery_date'] ?></td>
 						<td><?= $row['send_user_name'] ?></td>
 						<td>
-							<a href="<?= printurl ?>"><?= $row['title'] ?></a>
+							<!-- <a href="<?= printurl ?>"><?= $row['title'] ?></a> -->
+							<a href="pdf_relay.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
 						</td>
 					</tr>
 				<?php 
