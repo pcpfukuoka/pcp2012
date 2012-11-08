@@ -6,7 +6,7 @@
 	
 	<body>
 		<div align = "center">
-			<font size = "6">権限管理追加画面</font><hr><br><br><br>
+			<font size = "6">成績管理メイン画面</font><hr><br><br><br>
 		</div>
 		
 		<input type = "button" onclick="jump('res_Att.php','right')" value = "欠席">
