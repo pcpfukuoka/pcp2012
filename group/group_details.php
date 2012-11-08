@@ -109,7 +109,10 @@
 			location.href = "group_u_reset.php?id=<?= $group_seq; ?>";
 		}
 	}
-	
+	function user_add()
+	{
+		window.open('group_u_add.php?id=<?= $group_seq; ?>', 'ユーザ追加', 'width=500,height=400,top=100,left=500');;
+	}
 	</script>
 		<script>
 		$(function() {
