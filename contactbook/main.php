@@ -72,6 +72,7 @@
 								
 				//データベースを閉じる
 				Dbdissconnect($dbcon);
+				
 			?>
 
 			<input type="text"  style="border:0" name="newcreate" value="新規作成" onclick="newcreate()">
