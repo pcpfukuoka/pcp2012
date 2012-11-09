@@ -1,4 +1,39 @@
 <?php
+/*****************************************
+ * テストの登録画面
+ ****************************************/
+
+//DBの接続
+require_once("../lib/dbconect.php");
+//$link = DbConnect();
+$link = mysql_connect("tamokuteki41", "root", "");
+mysql_select_db("pcp2012");
+
+//先生の名前とseqを持ってきて、数を数える
+$sql = "SELECT m_user.user_name, m_user.user_seq 
+		FROM m_user, m_teacher 
+		WHERE m_user.user_seq = m_teacher.user_seq;";
+
+$result_teach = mysql_query($sql);
+$count_teach = mysql_num_rows($result_teach);
+
+//教科名とseqを持ってきて、数を数える
+$sql = "SELECT subject_seq, subject_name 
+		FROM m_subject;";
+
+$result_subj = mysql_query($sql);
+$count_subj = mysql_num_rows($result_subj);
+
+$sql = "SELECT m_test.date, m_subject.subject_name, m_test.contents, m_user.user_name, m_test.standard_test_flg 
+		FROM m_test, m_subject, m_teacher, m_user
+		WHERE m_test.subject_seq = m_subject.subject_seq 
+		AND m_test.teacher_seq = m_teacher.teacher_seq 
+		AND m_teacher.user_seq = m_user.user_seq;";
+
+$result_test = mysql_query($sql);
+$count_test = mysql_num_rows($result_test);
+
+Dbdissconnect($link);
 ?>
 <html>
 	<head>
@@ -10,7 +45,82 @@
 		<div align = "center">
 			<font size = "6">テスト登録画面</font><hr><br><br><br>
 		</div>
+		<form action = "res_test_point.php" method = "POST">
 		
-		
+		<!-- テーブルの作成 -->
+					<table border = "1" >
+				<tr>
+					<th>日付</th>
+					<th>教科</th>
+					<th>テスト範囲</th>
+					<th>先生</th>
+					<th>定期テストチェック</th>
+					<th>登録</th>
+				</tr>
+				<tr>
+				<!-- 日付の入力 -->
+					<td><input type = "text" name = "day" value = "<?= date("Y/m/d") ?>" ></td>
+					
+				<!-- 教科の選択 -->
+					<td><select name = "subject">
+						<option value = "-1" selected>選択</option>
+						<?php
+						for ($i = 0; $i < $count_subj; $i++)
+						{
+							$subj = mysql_fetch_array($result_subj);
+						?>
+							<option value = "<?= $subj['subject_seq'] ?>"><?= $subj['subject_name'] ?></option>
+						<?php
+						} 
+						?>
+					</select></td>
+					
+				<!-- テスト範囲・内容入力 -->
+					<td><textarea rows="2" cols="30" name = "contents"></textarea></td>
+					<!-- 先生の選択 -->
+					<td><select name = "teacher">
+						<option value = "-1" selected>選択</option>
+						<?php
+						for ($i = 0; $i < $count_teach; $i++)
+						{
+						$teach = mysql_fetch_array($result_teach);
+						?>
+							<option value = "<?= $teach['user_seq'] ?>"><?= $teach['user_name'] ?></option>
+						<?php
+						} 
+						?>
+						</select></td>
+						<!-- 定期テストのチェック -->
+					<td align = "center"><input type = "checkbox" name = "stand_flg" value = "1"></td>
+					<!-- 登録ボタン -->
+					<td><input type = "submit" value = "登録"></td>
+				</tr>
+				<?php
+				//以前のテストの表示
+				
+				for ($i = 0; $i < $count_test; $i++)
+				{
+					$test = mysql_fetch_array($result_test);
+				?>
+				<tr>
+					<td><?= $test['m_test.date'] ?></td>
+					<td><?= $test['m_subject.subject_name'] ?></td>
+					<td><?= $test['m_test.contents'] ?></td>
+					<td><?= $test['m_user.user_name'] ?></td>
+					<td><?php
+					if ($test['m_m_test.standard_test_flg'] == 1)
+					{
+						echo "○";
+					}
+					else
+					{
+						echo "×";
+					} ?></td>
+				</tr>
+				<?php
+				} 
+				?>
+			</table>
+		</form>
 	</body>
 </html>
