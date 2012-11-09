@@ -64,22 +64,20 @@
 				$cnt_send = mysql_num_rows($result);
 				
 				//フラグの情報をデータベースから取得し、その件数を数える　（プリント配信の新着受信）
-				$sql = "SELECT print_check_seq, print_delivery_seq, user_seq, print_check_flg 
-						FROM print_check
-						LEFT JOIN m_user ON print_delivery.delivery_user_seq = m_user.user_seq
-						WHERE print_check.user_seq = $user_seq
-						AND print_check.print_delivery_seq = print_delivery.print_delivery_seq
-						AND print_flg = 1;";
+				$sql = "SELECT * FROM  print_check 
+						WHERE user_seq = '$user_seq' 
+						AND print_check_flg = 1;";
 				$result = mysql_query($sql);
 				$cnt_print_flg = mysql_num_rows($result);
 								
 				//データベースを閉じる
 				Dbdissconnect($dbcon);
+				
 			?>
 
 			<input type="text"  style="border:0" name="newcreate" value="新規作成" onclick="newcreate()">
 			<br><br>
-			<input type="text" style="border:0" name="receve" value="受信箱（<?= $cnt_new?> ）" onclick="receved()">
+			<input type="text" style="border:0" name="receve" value="受信箱（<?= $cnt_new + $cnt_print_flg ?> ）" onclick="receved()">
 			<br><br>
 			<input type="text" style="border:0" name="transmit" value="送信箱 " onclick="transmition()">
 			<br><br>
