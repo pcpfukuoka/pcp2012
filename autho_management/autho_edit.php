@@ -39,6 +39,8 @@ Dbdissconnect($link);
 	<head>
 		<title></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+	  <meta http-equiv="Content-Style-Type" content="text/css">
+	  <link rel="stylesheet" type="text/css" href="../css/button.css" />		
 	</head>
 	<body>
 		<div align = "center">
@@ -101,7 +103,7 @@ Dbdissconnect($link);
 				}
 				?>
 			</table>
-			<input type = "submit" value = "登録"><br>
+			<input class="button4" type = "submit" value = "登録"><br>
 			<a href="autho_main.php">トップへ戻る</a>
 		</form>
 	</body>

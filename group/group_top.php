@@ -24,6 +24,8 @@
 	<head>
 		<script type="text/javascript" src="../javascript/frame_jump.js"></script>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<title>グループ一覧	</title>
 
 	</head>
@@ -36,11 +38,11 @@
 		<hr color = "blue">
 
 		<!-- グループ追加画面へ -->
-		<input type = "submit" value = "グループの追加" name = "g_add" onclick="jump('group_g_add.php','right')" id="group_add">
+		<input class="button3" type = "submit" value = "グループの追加" name = "g_add" onclick="jump('group_g_add.php','right')" id="group_add">
 			
 		<form action = "group_top.php" method = "POST">
 			<input type = "text" name = "serch_name">
-			<input type = "submit" value = "検索" name = "g_serch">
+			<input class="button4" type = "submit" value = "検索" name = "g_serch">
 		</form>
 		
 		<font size = "2">グループ一覧</font>

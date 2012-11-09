@@ -18,6 +18,8 @@ if(isset($_GET['id']))
 	<head>
 		<title>グループ追加</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 	</head>
@@ -29,7 +31,7 @@ if(isset($_GET['id']))
 			<input type="radio" name="q1" value="name" checked>名前
 			<input type="radio" name="q1" value="id">ID
 			<input type="text" name="query">
-			<input type="submit" value="検索">
+			<input class="button4"  type="submit" value="検索">
 		</form>
 		<div id="list_user">
 		<h1>検索リスト</h1>

@@ -17,7 +17,8 @@
 	<script src="../jquery.li-scroller.1.0.js"></script>
 	<!-- <link rel="STYLESHEET"  href="../li-scroller.css" type="text/css">-->
 	<link rel="STYLESHEET"  href="../frame_top_css.css" type="text/css">
-
+	<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+	<link rel="stylesheet" type="text/css" href="../css/button.css" />
 
 
 
@@ -48,19 +49,19 @@
 
 	<div align="center" class="button">
 		<!-- クリックしてＵＲＬ変更の関数呼び出し（引数：ＵＲＬ、表示位置） -->
-		<input type="button" onclick="jump_top()"value="ＴＯＰ">
-		<input type="button" onclick="jump()" value="スケジュール">
-		<input type="button" onclick="jump('../contactbook/main.php' , 'left')" value="連絡帳">
-		<input type="button" onclick="jump_class()" value="授業">
-		<input type="button" onclick="jump('../autho_management/jump.php' , 'left')" value="成績確認">
+		<input class="button1" type="button" onclick="jump_top()"value="ＴＯＰ">
+		<input class="button1" type="button" onclick="jump()" value="スケジュール">
+		<input class="button1" type="button" onclick="jump('../contactbook/main.php' , 'left')" value="連絡帳">
+		<input class="button1" type="button" onclick="jump_class()" value="授業">
+		<input class="button1" type="button" onclick="jump('../autho_management/jump.php' , 'left')" value="成績確認">
 
 		<!--  下記より先生のみ -->
-		<input type="button" onclick="jump('../autho_management/autho_main.php','left')" value="権限管理">
-		<input type="button" onclick="jump('../group/group_top.php', 'left')" value="グループ管理">
-		<input type="button" onclick="jump('../user_manager/index.php', 'left')" value="ユーザー管理">
-		<input type="button" onclick="jump()" value="成績管理">
-		<input type="button" onclick="jump('../print_delivery/p_main.php','left')" value="プリント配信">
-		<input type="button" onclick="jump()" value="アンケート">
+		<input class="button1" type="button" onclick="jump('../autho_management/autho_main.php','left')" value="権限管理">
+		<input class="button1" type="button" onclick="jump('../group/group_top.php', 'left')" value="グループ管理">
+		<input class="button1" type="button" onclick="jump('../user_manager/index.php', 'left')" value="ユーザー管理">
+		<input class="button1" type="button" onclick="jump()" value="成績管理">
+		<input class="button1" type="button" onclick="jump('../print_delivery/p_main.php','left')" value="プリント配信">
+		<input class="button1" type="button" onclick="jump()" value="アンケート">
 
 	</div>
 </body>

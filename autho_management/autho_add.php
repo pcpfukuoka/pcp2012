@@ -2,6 +2,8 @@
  <head>
   <title>権限追加</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <link rel="stylesheet" type="text/css" href="../css/button.css" />
  </head>
   <body>
   <form action="autho_add_con.php" method="POST">
@@ -64,8 +66,8 @@
     	
     ?>
     </table>
-    <input type="submit" value="登録確認">&nbsp;&nbsp;
-    <input type="reset" value="クリア">    
+    		<input class="button4" type="submit" value="登録確認">
+    		<input class="button4" type="reset" value="クリア"> 
     </form> 
     <a href="autho_main.php">トップへ戻る</a>
   </body>

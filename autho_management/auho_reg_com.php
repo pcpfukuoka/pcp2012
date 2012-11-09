@@ -26,6 +26,8 @@ $autho_seq = $_SESSION['autho_sel'];
 	<head>
 		<title>権限アカウント確認一覧</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>	
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />	
 	</head>
 	
 	<body>
@@ -53,6 +55,6 @@ $autho_seq = $_SESSION['autho_sel'];
 					?>
 		</table><br>
 		<a href="autho_main.php">トップへ戻る</a>
-		<input type="button" value="戻る" onClick="history.back()">
+		<input class="button4" type="button" value="戻る" onClick="history.back()">
 	</body>
 </html>

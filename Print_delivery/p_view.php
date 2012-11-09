@@ -23,6 +23,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<title>確認画面</title>
 	</head>
 	
@@ -50,7 +52,7 @@
 		    <input type="hidden" value="<?= $row['target_group_seq'] ?>" name="group_seq">
 		    <input type="hidden" value="<?= $row['title'] ?>" name="title">
 		    <br>
-		    <input type="submit" value="送信" name="send"> 
+		    <input class="button4" type="submit" value="送信" name="send"> 
 		</form>	          
 	</body>
 </html>

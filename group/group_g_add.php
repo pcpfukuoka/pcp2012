@@ -13,6 +13,8 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<title>グループ追加</title>
 	</head>
 	
@@ -54,7 +56,7 @@
 					</tr>
 				</table>
 				
-				<input type = "submit" value = "登録" name = "g_entry">
+				<input class="button4" type = "submit" value = "登録" name = "g_entry">
 			</div>
 		</form>
 	</body>
