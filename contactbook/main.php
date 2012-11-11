@@ -1,4 +1,5 @@
 <?php
+	//SESSIONでユーザIDの取得
 	session_start();
 	$user_seq = $_SESSION['login_info[user]'];
 ?>
@@ -75,6 +76,7 @@
 				
 			?>
 
+			<!-- それぞれのリンク先に移動 -->
 			<input type="text"  style="border:0" name="newcreate" value="新規作成" onclick="newcreate()">
 			<br><br>
 			<input type="text" style="border:0" name="receve" value="受信箱（<?= $cnt_new + $cnt_print_flg ?> ）" onclick="receved()">

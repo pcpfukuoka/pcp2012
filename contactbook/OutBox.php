@@ -1,4 +1,5 @@
 <?php
+	//SESSIONでユーザーIDを取得
 	session_start();
 	$user_seq = $_SESSION['login_info[user]'];
 
@@ -6,6 +7,7 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
+	//連絡帳のデータベースからデータの取り出し
 	$sql = "SELECT contact_book_seq, send_date,  m_user.user_name AS reception_user_name, title 
 			FROM contact_book 
 			Left JOIN m_user ON contact_book.reception_user_seq = m_user.user_seq
@@ -55,6 +57,7 @@
 					<td><?= $row['send_date'] ?></td>
 					<td><?= $row['reception_user_name'] ?></td>
 					<td>
+						<!-- GETでシークを渡す -->
 						<a href="sendview.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
 					</td>
 				</tr>

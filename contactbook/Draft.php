@@ -6,6 +6,7 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 	
+	//contact_bookから項目の取り出し
 	$sql = "SELECT contact_book_seq, link_contact_book_seq, send_date, m_user.user_name AS reception_user_name, title 
 			FROM contact_book 
 			Left JOIN m_user ON contact_book.reception_user_seq = m_user.user_seq
@@ -34,6 +35,7 @@
 		<br>
 		<hr color="blue">
 		
+		<!-- テーブルの作成 -->
 		<div align="center">
 			<table border="1">
 				<tr bgcolor="yellow">
@@ -46,9 +48,10 @@
 					$row = mysql_fetch_array($result);
 				?>
 					<tr>
-						<td></td>
+						<td><?= $row['send_date'] ?></td>
 						<td><?= $row['reception_user_name'] ?></td>
 						<td>
+							<!-- GETでcontact_book_seqを送る -->
 							<a href="Send.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
 						</td>
 					</tr>

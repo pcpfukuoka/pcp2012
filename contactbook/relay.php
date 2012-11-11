@@ -1,4 +1,5 @@
 <?php
+	//SESSIONでユーザIDの取得
 	session_start();
 	$user_seq = $_SESSION['login_info[user]'];
 
@@ -52,8 +53,8 @@
     	}
     	$link_id = $_POST['link_id'];
     	
-    	$sql = "INSERT INTO contact_book (title, contents, send_user_seq, reception_user_seq, link_contact_book_seq, send_flg)
-    	VALUES ('$title', '$contents', '$user_seq', '$send_seq', '$link_id', '1')";
+    	$sql = "INSERT INTO contact_book (title, contents, send_user_seq, reception_user_seq, link_contact_book_seq, send_flg, delete_flg, send_date)
+    	VALUES ('$title', '$contents', '$user_seq', '$send_seq', '$link_id', '1', '0', now())";
     	mysql_query($sql);
     	 
     	//データベースを閉じる
