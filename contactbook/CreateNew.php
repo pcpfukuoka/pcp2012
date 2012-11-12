@@ -3,6 +3,7 @@
          require_once("../lib/dbconect.php");
          $dbcon = DbConnect();
          
+         //ユーザーの件数の取り出し
 	     $sql = "SELECT * FROM m_user";
 	     $result = mysql_query($sql);
 	     $kensu = mysql_num_rows($result);
@@ -47,6 +48,7 @@
 		      <font size="3">本文</font><br>
 		      <textarea rows="40" cols="50" name="contents"></textarea><br>
 		      
+		      //隠し文字
 		      <input type="hidden" value="0" name="link_id">
 		      <input class="button4" type="submit" value="送信" name = "send">
 			  <input class="button4" type="submit" value="保存" name="Preservation"><br>

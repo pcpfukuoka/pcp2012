@@ -43,7 +43,7 @@
 			<?= $row['send_user_name'] ?><br>
 			<font size="3">件名　：</font>
 			<?= $row['title'] ?><br><br>
-		          
+		    
 		    <font size="3">本文</font><br>
 		    <?= $row['contents']?><br><br><br>
 		    <input type="hidden" value="<?= $row['send_user_name'] ?>" name="sendto">
@@ -51,7 +51,7 @@
 		    <input type="hidden" value="<?= $row['title'] ?>" name="title">
 		    <input type="hidden" value="<?= $row['contents'] ?>" name="contents">
 		    <input type="hidden" value="<?= $id ?>" name="link_id">
-		    <input  class="button4" type="submit" value="返信">    
+		    <input class="button4" type="submit" value="返信">
 	    </form>
     </body>  
 </html>
