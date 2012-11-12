@@ -4,23 +4,45 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 </head>
 <body>
- <div align = "center">
- <font size = "6">教科追加<br>
-	</font>
-	</div>
- <?php 
- require_once("../lib/dbconect.php");
-   $link = DbConnect();
+ <?php
+ 
+	$tea_name = $_POST['tea_name'];
+	$q1 = $_POST['q1'];
+	require_once("../lib/dbconect.php");
+	$link = DbConnect();
    
-   if(isset($_POST['tea_subj']))
+   if($q1 == 1)
    {
+   	$subj_radio = $_POST['subj_radio'];
+   	$tea_name = $_POST['tea_name'];
    	?>
    	<div align = "center">
    	<font size = "6">先生教科画面</font>
    	</div><br><br>
    	<?php
-   	//$sql = "SELECT teacher_seq FROM m_teacher WHERE delete_flg = 0";
-   	$sql = "SELECT teacher_seq subject_seq user_seq FROM m_teacher";
+   	if($subj_radio == "subj_name")
+   	{
+   		$subj_name = $_POST['subj_name'];
+   	}
+   	else
+   	{
+	   	$sql = "SELECT * FROM m_subject WHERE delete_flg = 0";
+	   	$result = mysql_query($sql);
+	   	$count = mysql_num_rows($result);
+	   	
+	   	for($i = 0; $i < $count; $i++)
+   		{
+	   	$row = mysql_fetch_array($result);
+	   	$subj_ID = "subj_".$row['subject_seq'];
+	   	
+	   	if($subj_radio == $subj_ID)
+		   	{
+		   		$subj_name = $row['subject_name'];
+		   	}
+	   	}
+   	}
+   	
+   	$sql = "SELECT teacher_seq, subject_seq, user_seq FROM m_teacher WHERE delete_flg = 0";
    	$result = mysql_query($sql);
    	$count = mysql_num_rows($result);
    	 
@@ -52,14 +74,14 @@
    						<tr>
    						<!-- ページ名の表示とチェックボックスの作成 -->
    							<td align = "center"><?= $user_name['user_name'] ?></td>
-   							<td align = "center"><?= $subject_name ?></td>
+   							<td align = "center"><?= $subject_name['subject_name'] ?></td>
    						</tr>
    					<?php
    					}
    					?>
    					<tr>
-   					<td align = "center"><input size ="15" type="text" name="tea_name"></td>
-   					<td align = "center">選択してください</td>
+   					<td align = "center"><?= $tea_name ?></td>
+   					<td align = "center"><?= $subj_name ?></td>
    					</tr>
    				</table><br>
    				<?php 
@@ -67,23 +89,50 @@
    				?>
    				<input type = "submit" value = "確認">&nbsp;&nbsp;
    				<input class="button4" type="button" value="戻る" onClick="history.back()">
-   	   	
+   	   	<?php 
    }
-   elseif(isset($_POST['tea']))
+   elseif($q1 == 2)
    {
-   }
-   elseif(isset($_POST['subj']))
-   {
-   }
-   else
-   {
+   	$subj_name = $_POST['subj_name'];
+   	$sql = "SELECT subject_name FROM m_subject WHERE delete_flg = 0";
+   	$result = mysql_query($sql);
+   	
+   	$count = mysql_num_rows($result);
    	?>
-   	エラー
-   	<input class="button4" type="button" value="戻る" onClick="history.back()">
-   	<?php
+   	   
+   	   <div align = "center">
+   		<font size = "6">教科追加</font></div><br>
+   	   	
+   	<table border="1" width="70%"><!-- 教科のテーブル  -->
+   	<tr>
+   	<th width="70%">教科一覧</th>
+   			</tr>
+   			<?php
+   			for($i = 0; $i < $count; $i++)
+   			{
+   			$row = mysql_fetch_array($result);
+   			?>
+   	    <tr>
+   	    <td align = "center"><?= $row['subject_name'] ?></td>
+   	    </tr>
+   	    <?php 
+   		}
+   	    ?>
+   	    <tr>
+   	    <td align = "center"><font color = "Red">"NEW"</font>&nbsp;&nbsp;<?= $subj_name ?></td>
+   	    </tr></table><br>
+   	       				<?php 
+   				Dbdissconnect($link);
+   				?>
+   				<form action="tea_subj_dec.php" method="POST">
+   				<input type="hidden" name="subj_name" value="<?= $subj_name ?>">
+   				<input type="hidden" name="q1" value="<?= $q1 ?>">
+   				<input type = "submit" value = "確認">&nbsp;&nbsp;
+   				<input class="button4" type="button" value="戻る" onClick="history.back()">
+   				</form>
+   	    <?php 
    }
    ?>
-	
 </body>
 </html>
 	
