@@ -5,30 +5,43 @@
 
 //DBの接続
 require_once("../lib/dbconect.php");
-//$link = DbConnect();
-$link = mysql_connect("tamokuteki41", "root", "");
-mysql_select_db("pcp2012");
+$link = DbConnect();
+//$link = mysql_connect("tamokuteki41", "root", "");
+//mysql_select_db("pcp2012");
 
 //先生の名前とseqを持ってきて、数を数える
 $sql = "SELECT m_user.user_name, m_user.user_seq 
 		FROM m_user, m_teacher 
-		WHERE m_user.user_seq = m_teacher.user_seq;";
+		WHERE m_user.user_seq = m_teacher.user_seq
+		AND m_teacher.delete_flg = 0;";
 
 $result_teach = mysql_query($sql);
 $count_teach = mysql_num_rows($result_teach);
 
 //教科名とseqを持ってきて、数を数える
 $sql = "SELECT subject_seq, subject_name 
-		FROM m_subject;";
+		FROM m_subject
+		WHERE delete_flg = 0;";
 
 $result_subj = mysql_query($sql);
 $count_subj = mysql_num_rows($result_subj);
 
-$sql = "SELECT m_test.date, m_subject.subject_name, m_test.contents, m_user.user_name, m_test.standard_test_flg 
+//グループ名とseqを持ってきて、数を数える
+$sql = "SELECT group_seq, group_name 
+		FROM m_group
+		WHERE delete_flg = 0;";
+
+$result_group = mysql_query($sql);
+$count_group = mysql_num_rows($result_group);
+
+//テストのデータの一覧表示させるためのSQL文
+$sql = "SELECT m_test.test_seq, m_test.date, m_subject.subject_name, m_test.contents, m_user.user_name, m_test.standard_test_flg 
 		FROM m_test, m_subject, m_teacher, m_user
 		WHERE m_test.subject_seq = m_subject.subject_seq 
 		AND m_test.teacher_seq = m_teacher.teacher_seq 
-		AND m_teacher.user_seq = m_user.user_seq;";
+		AND m_teacher.user_seq = m_user.user_seq 
+		AND m_test.delete_flg = 0 
+		ORDER BY m_test.test_seq DESC;";
 
 $result_test = mysql_query($sql);
 $count_test = mysql_num_rows($result_test);
@@ -45,15 +58,16 @@ Dbdissconnect($link);
 		<div align = "center">
 			<font size = "6">テスト登録画面</font><hr><br><br><br>
 		</div>
-		<form action = "res_test_point.php" method = "POST">
+		<form action = "res_test_con.php" method = "POST">
 		
 		<!-- テーブルの作成 -->
-					<table border = "1" >
+			<table border = "1" >
 				<tr>
 					<th>日付</th>
 					<th>教科</th>
 					<th>テスト範囲</th>
 					<th>先生</th>
+					<th>グループ</th>
 					<th>定期テストチェック</th>
 					<th>登録</th>
 				</tr>
@@ -77,6 +91,7 @@ Dbdissconnect($link);
 					
 				<!-- テスト範囲・内容入力 -->
 					<td><textarea rows="2" cols="30" name = "contents"></textarea></td>
+					
 					<!-- 先生の選択 -->
 					<td><select name = "teacher">
 						<option value = "-1" selected>選択</option>
@@ -90,8 +105,24 @@ Dbdissconnect($link);
 						} 
 						?>
 						</select></td>
+						
+						<!-- グループの選択 -->
+					<td><select name = "group">
+						<option value = "-1" selected>選択</option>
+						<?php
+						for ($i = 0; $i < $count_group; $i++)
+						{
+						$group = mysql_fetch_array($result_group);
+						?>
+							<option value = "<?= $group['group_seq'] ?>"><?= $group['group_name'] ?></option>
+						<?php
+						} 
+						?>
+						</select></td>
+						
 						<!-- 定期テストのチェック -->
 					<td align = "center"><input type = "checkbox" name = "stand_flg" value = "1"></td>
+					
 					<!-- 登録ボタン -->
 					<td><input type = "submit" value = "登録"></td>
 				</tr>
@@ -103,12 +134,12 @@ Dbdissconnect($link);
 					$test = mysql_fetch_array($result_test);
 				?>
 				<tr>
-					<td><?= $test['m_test.date'] ?></td>
-					<td><?= $test['m_subject.subject_name'] ?></td>
-					<td><?= $test['m_test.contents'] ?></td>
-					<td><?= $test['m_user.user_name'] ?></td>
+					<td><?= $test['date'] ?></td>
+					<td><?= $test['subject_name'] ?></td>
+					<td><?= $test['contents'] ?></td>
+					<td><?= $test['user_name'] ?></td>
 					<td><?php
-					if ($test['m_m_test.standard_test_flg'] == 1)
+					if ($test['standard_test_flg'] == 1)
 					{
 						echo "○";
 					}
@@ -122,5 +153,6 @@ Dbdissconnect($link);
 				?>
 			</table>
 		</form>
+		<a href="res_main.php">トップへ戻る</a>
 	</body>
 </html>
