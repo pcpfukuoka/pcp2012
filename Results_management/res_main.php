@@ -13,7 +13,6 @@
 		</div>
 		
 		<input type = "button" onclick="jump('res_Att.php','right')" value = "欠席">
-		<input type = "button" onclick="jump('res_mini_test.php','right')" value = "ミニテスト">
 		<input type = "button" onclick="jump('res_test.php','right')" value = "定期テスト">
 		<input type = "button" onclick="jump('res_Att.php','right')" value = "成績">
 	</body>
