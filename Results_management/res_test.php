@@ -26,11 +26,6 @@ $sql = "SELECT subject_seq, subject_name
 $result_subj = mysql_query($sql);
 $count_subj = mysql_num_rows($result_subj);
 
-//グループ名とseqを持ってきて、数を数える
-$sql = "SELECT group_seq, group_name 
-		FROM m_group
-		WHERE delete_flg = 0;";
-
 $result_group = mysql_query($sql);
 $count_group = mysql_num_rows($result_group);
 
@@ -67,8 +62,7 @@ Dbdissconnect($link);
 					<th>教科</th>
 					<th>テスト範囲</th>
 					<th>先生</th>
-					<th>グループ</th>
-					<th>定期テストチェック</th>
+					<th>定期テスト</th>
 					<th>登録</th>
 				</tr>
 				<tr>
@@ -101,20 +95,6 @@ Dbdissconnect($link);
 						$teach = mysql_fetch_array($result_teach);
 						?>
 							<option value = "<?= $teach['user_seq'] ?>"><?= $teach['user_name'] ?></option>
-						<?php
-						} 
-						?>
-						</select></td>
-						
-						<!-- グループの選択 -->
-					<td><select name = "group">
-						<option value = "-1" selected>選択</option>
-						<?php
-						for ($i = 0; $i < $count_group; $i++)
-						{
-						$group = mysql_fetch_array($result_group);
-						?>
-							<option value = "<?= $group['group_seq'] ?>"><?= $group['group_name'] ?></option>
 						<?php
 						} 
 						?>
