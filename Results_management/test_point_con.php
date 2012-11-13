@@ -14,11 +14,12 @@ $link = DbConnect();
 //mysql_select_db("pcp2012");
 
 //ユーザ名の取得
-$sql = "SELECT m_user.user_name 
+$sql = "SELECT m_user.user_seq, m_user.user_name 
 		FROM m_user, group_details 
 		WHERE m_user.user_seq = group_details.user_seq 
-		AND group_details.group_seq = '$group'
-		GROUP BY m_user.user_name;";
+		AND group_details.group_seq = '$group' 
+		GROUP BY m_user.user_seq 
+		ORDER BY m_user.user_seq;";
 $result_user = mysql_query($sql);
 $count_user = mysql_num_rows($result_user);
 
