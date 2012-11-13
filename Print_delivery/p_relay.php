@@ -14,8 +14,8 @@
     	$title = $_POST['title'];
     	$send_seq = $_POST['to'];
     	
-    	$sql = "INSERT INTO Print_delivery (title, delivery_user_seq, target_group_seq, print_send_flg, print_flg)
-    			VALUES ('$title', '$user_seq', '$send_seq', '1', '0')";
+    	$sql = "INSERT INTO Print_delivery (title, delivery_user_seq, target_group_seq, print_send_flg, print_flg, delivery_date)
+    			VALUES ('$title', '$user_seq', '$send_seq', '1', '0', now())";
     	mysql_query($sql);
     	
     	//INSERTしたSEQを取得
