@@ -72,6 +72,7 @@
 					$row = mysql_fetch_array($result);
 					
 					$user_sea = "user_".$row['user_seq'];
+					echo $user_sea;
 					if($_POST['user_radio'] == $user_sea)
 					{
 					?>
