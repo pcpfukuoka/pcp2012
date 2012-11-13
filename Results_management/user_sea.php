@@ -47,7 +47,7 @@
 					    <tr>
 					    <td align = "center"><?= $row['user_name'] ?></td>
 					    <td align = "center"><?= $row['user_seq'] ?></td>
-					    <td align = "center"><input type="radio" name="user_radio" value="user_<?= $row['subject_seq'] ?>" ></td>
+					    <td align = "center"><input type="radio" name="user_radio" value="user_<?= $row['user_seq'] ?>" ></td>
 					    
 					    <?php 
 					    }

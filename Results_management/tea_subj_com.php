@@ -6,7 +6,6 @@
 <body>
  <?php
  
-	$tea_name = $_POST['tea_name'];
 	$q1 = $_POST['q1'];
 	require_once("../lib/dbconect.php");
 	$link = DbConnect();
@@ -14,7 +13,6 @@
    if($q1 == 1)
    {
    	$subj_radio = $_POST['subj_radio'];
-   	$tea_name = $_POST['tea_name'];
    	?>
    	<div align = "center">
    	<font size = "6">先生教科画面</font>
@@ -41,7 +39,12 @@
 		   	}
 	   	}
    	}
-   	
+   	//$user_ID = $_POST['user_seq'];
+   	//$sql = "SELECT user_seq, user_seq FROM m_user WHERE delete_flg = 0 AND user_seq = $user_ID";
+   	//echo $sql;
+   	//$result = mysql_query($sql);
+   	//$tea_name = mysql_fetch_array($result);
+   	$tea_name = $_POST['user_name'];
    	$sql = "SELECT teacher_seq, subject_seq, user_seq FROM m_teacher WHERE delete_flg = 0";
    	$result = mysql_query($sql);
    	$count = mysql_num_rows($result);
