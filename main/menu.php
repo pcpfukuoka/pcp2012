@@ -49,20 +49,25 @@
 
 	<div align="center" class="button">
 		<!-- クリックしてＵＲＬ変更の関数呼び出し（引数：ＵＲＬ、表示位置） -->
-		<input class="button1" type="button" onclick="jump_top()"value="ＴＯＰ">
-		<input class="button1" type="button" onclick="jump()" value="スケジュール">
-		<input class="button1" type="button" onclick="jump('../contactbook/main.php' , 'left')" value="連絡帳">
-		<input class="button1" type="button" onclick="jump_class()" value="授業">
-		<input class="button1" type="button" onclick="jump('../autho_management/jump.php' , 'left')" value="成績確認">
+		<table>
+			<tr>
+				<td><input class="button1" type="button" onclick="jump_top()"value="ＴＯＰ"></td>
+				<td><input class="button1" type="button" onclick="jump()" value="スケジュール"></td>
+				<td><input class="button1" type="button" onclick="jump('../contactbook/main.php' , 'left')" value="連絡帳"></td>
+				<td><input class="button1" type="button" onclick="jump_class()" value="授業"></td>
+				<td><input class="button1" type="button" onclick="jump('../autho_management/jump.php' , 'left')" value="成績確認"></td>
+			</tr>
 
 		<!--  下記より先生のみ -->
-		<input class="button1" type="button" onclick="jump('../autho_management/autho_main.php','left')" value="権限管理">
-		<input class="button1" type="button" onclick="jump('../group/group_top.php', 'left')" value="グループ管理">
-		<input class="button1" type="button" onclick="jump('../user_manager/index.php', 'left')" value="ユーザー管理">
-		<input class="button1" type="button" onclick="jump()" value="成績管理">
-		<input class="button1" type="button" onclick="jump('../print_delivery/p_main.php','left')" value="プリント配信">
-		<input class="button1" type="button" onclick="jump()" value="アンケート">
-
+			<tr>
+				<td><input class="button1" type="button" onclick="jump('../autho_management/autho_main.php','left')" value="権限管理"></td>
+				<td><input class="button1" type="button" onclick="jump('../group/group_top.php', 'left')" value="グループ管理"></td>
+				<td><input class="button1" type="button" onclick="jump('../user_manager/index.php', 'left')" value="ユーザー管理"></td>
+				<td><input class="button1" type="button" onclick="jump()" value="成績管理"></td>
+				<td><input class="button1" type="button" onclick="jump('../print_delivery/p_main.php','left')" value="プリント配信"></td>
+				<td><input class="button1" type="button" onclick="jump()" value="アンケート"></td>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>
