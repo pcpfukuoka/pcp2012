@@ -22,6 +22,8 @@ Dbdissconnect($link);
 	<head>
 		<title></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 	</head>
 	
 	<body>
@@ -86,8 +88,8 @@ Dbdissconnect($link);
 				}
 				?>	
 			</table><br>
-			<input type = "submit" value = "登録">
-			<input type="button" value="戻る" onClick="history.back()">
+			<input class="button4" type = "submit" value = "登録">
+			<input class="button4" type="button" value="戻る" onClick="history.back()">
 		</form>
 	</body>
 </html>
