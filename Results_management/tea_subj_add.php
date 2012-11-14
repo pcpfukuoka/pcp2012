@@ -20,7 +20,8 @@
 		<font size = "6">先生追加画面</font>
 	</div><br><br>
 	<?php 
-   $sql = "SELECT teacher_seq, subject_seq, user_seq FROM m_teacher WHERE delete_flg = 0";
+   //$sql = "SELECT teacher_seq, subject_seq, user_seq FROM m_teacher WHERE delete_flg = 0";
+	$sql = "SELECT teacher_seq, subject_seq, user_seq FROM m_teacher";
    $result = mysql_query($sql);
     $count = mysql_num_rows($result);
 	    
@@ -77,6 +78,7 @@
 					?>
 				<?= $row['user_name'] ?></td>
 				<?php
+				
 					} 
 				}
 				}
@@ -127,6 +129,9 @@
     <td align = "center"><input size ="15" type="text" name="subj_name"></td>
     <td align = "center"><input type="radio" name="subj_radio" value="subj_name" checked></td>
     </tr></table><br>
+    <input type="hidden" name="user_seq" value="<?= $row['user_seq'] ?>">
+    <input type="hidden" name="user_name" value="<?= $row['user_name'] ?>">
+    $row['user_name']
 			
 			<?php 
 			Dbdissconnect($link);

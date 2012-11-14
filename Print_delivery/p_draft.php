@@ -47,7 +47,7 @@
 						$row = mysql_fetch_array($result);
 					?>
 						<tr>
-							<td></td>
+							<td><?= $row['delivery_date'] ?></td>
 							<td><?= $row['group_name'] ?></td>
 							<td>
 							
