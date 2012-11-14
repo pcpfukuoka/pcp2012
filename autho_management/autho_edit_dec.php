@@ -68,7 +68,8 @@ Dbdissconnect($link);
 	</head>
 	
 	<body>
-		データベースへ登録しました。
+		<font size="5">データベースへ登録しました。</font>
+		<br><br>
 		<a href="autho_main.php">トップへ戻る</a>
 	</body>
 </html>

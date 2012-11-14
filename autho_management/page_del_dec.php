@@ -38,7 +38,8 @@ Dbdissconnect($link);
 			<font size = "6">ページ削除確定画面</font><hr>
 		</div><br><br>
 		
-		ページを削除しました。
+		<font size="5">ページを削除しました。</font>
+		<br><br>
 		<a href="autho_main.php">トップへ戻る</a>
 	</body>
 </html>

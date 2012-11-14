@@ -31,7 +31,8 @@ Dbdissconnect($link);
 			<font size = "6">権限削除確定画面</font><hr>
 		</div><br><br>
 		
-		権限グループを削除しました。
+		<font size="5">権限グループを削除しました。</font>
+		<br><br>
 		<a href="autho_main.php">トップへ戻る</a>
 	</body>
 </html>

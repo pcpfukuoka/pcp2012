@@ -26,7 +26,7 @@
 
    <table border="1" width="50%">
     <tr>
-     <th width="50%">ページ一覧</th>
+     <th width="50%" bgcolor="Yellow">ページ一覧</th>
      </tr>
      <?php 
     for($i = 0; $i < $count; $i++)
@@ -44,8 +44,12 @@
     <td align = "center"><font color = "Red">"NEW"</font>&nbsp;&nbsp;<?= $page_name ?></td>
     </tr></table><br>
     <input type="hidden" name="page_name" value="<?= $page_name ?>">
-    <input class="button4" type="submit" value="確定">&nbsp;&nbsp;
-	<input class="button4" type="button" value="戻る" onClick="history.back()">
+    <table>
+    	<tr>
+    		<td><input class="button4" type="submit" value="確定"></td>
+			<td><input class="button4" type="button" value="戻る" onClick="history.back()"></td>
+		</tr>
+	</table>
     </form>
 </body>
 </html>
