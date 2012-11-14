@@ -137,7 +137,7 @@ if(isset($_GET['id']))
 		});
 		</script>
 		<form action="group_u_add_comp.php" method="GET">
-		<input type="submit" value="登録完了">
+		<input class="button4" type="submit" value="登録完了">
 		</form>
 	</body>
 </html>
