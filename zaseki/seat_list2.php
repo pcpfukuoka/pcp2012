@@ -4,15 +4,7 @@
 	</head>
 	<body>
 
-<?php
-	$row = $_POST['row'];
-	$col = $_POST['col'];
 
-	echo "行".$row;
-	echo "列".$col;
-
-	echo "人数".$count
-?>
 	<table border = 1  cellspacing="10">
 
 <?php
@@ -31,35 +23,49 @@
 	mysql_query("SET NAMES UTF8");
 
 	//クエリを送信する
-	$sql = "SELECT * FROM seat_list";
+	$sql = "SELECT * FROM seat";
 	$result = mysql_query($sql,$link)or die("クエリの送信に失敗しました。");
+?>
 
-	//結果セットの行数を取得する
-	$count = mysql_num_rows($result);
+<?php
+	$class = 1;
+	$sql = "select max(row) as mx from seat where class ='$class'";
+	$res = mysql_query($sql);
+	$ret = mysql_fetch_assoc($res);
+	$row_max = $ret['mx'];
 
-	echo $count;
 
-	$row;
-	$col;
+	$sql = "select max(col) as mx from seat where class ='$class'";
+	$res = mysql_query($sql);
+	$ret = mysql_fetch_assoc($res);
+	$col_max = $ret['mx'];
 
-	for($i = 0; $i < $row;	$i++)
-	{
-		echo "<tr>"	;
 
-		for($j = 0;	$j < $col;	$j++)
+
+		for($row = 1; $row <= $row_max; $row++)
 		{
-			$gyo = mysql_fetch_array($result);
+			echo "<tr>";
 
-			$seat_no = $gyo['seat_no'];
-			$student_name = $gyo['student_name'];
+			for($col = 1; $col <= $col_max; $col++)
+			{
+				$sql = "select * from seat where  class ='$class' and row='$row'and col='$col'";
+				$res = mysql_query($sql);
+				$ret = mysql_fetch_array($res);
+				$name = $ret['name'];
+						if($name == "")
+						{
+							echo "<td class='sample'width='100'></td>";
+						}
+						else
+						{
+							echo "<td class='sample'width='100'> $name</td>";
+						}
 
-			echo "<td>$student_name</td>";
+						echo "</td>";
+			}
+			echo "</tr>";
 		}
-
-		echo "</tr>";
-	}
-
-	//mysqlへの接続を閉じる
+			//mysqlへの接続を閉じる
 	mysql_close($link)or die("mysql切断に失敗しました。");
 ?>
 	</table>

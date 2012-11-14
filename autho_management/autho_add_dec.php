@@ -14,7 +14,7 @@
 			 *　どちらとも権限のページ分使い回し
 			 *********************************************************/ 
 			?>
-	データベースへの登録を承認いたしました。
+	<font size="5">データベースへの登録を承認いたしました。</font>
 	<?php 
 	require_once("../lib/dbconect.php");
 	$link = DbConnect();
@@ -57,6 +57,7 @@
 	
 	Dbdissconnect($link);
 	?>
+	<br><br>
 	<a href="autho_main.php">トップへ戻る</a>
 	</body>
 </html>

@@ -57,7 +57,6 @@ Dbdissconnect($link);
 				}
 				?>
 			</table>
-			
 			<input type = "hidden" name = "group" value = "<?= $group ?>">
 			<input type = "hidden" name = "test_seq" value = "<?= $test_seq ?>">
 			<input type = "submit" value = "確定">

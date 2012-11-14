@@ -25,22 +25,23 @@ $autho_seq = $_SESSION['autho_sel'];
 <html>
 	<head>
 		<title>権限アカウント確認一覧</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>	
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<meta http-equiv="Content-Style-Type" content="text/css">
-		<link rel="stylesheet" type="text/css" href="../css/button.css" />	
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
-	
+
 	<body>
 		<div align = "center">
-			<font size = "6">権限アカウント一覧画面</font><hr>
+			<font class="Cubicfont">権限アカウント一覧画面</font><hr>
 		</div><br><br>
-		
+
 <!-- 		テープルの作成 -->
 		<table border = "1" width = "50%">
 			<tr>
 				<td width = "50%" align = "center">アカウント名</td>
 			</tr>
-			
+
 			<?php
 			for($i = 0; $i < $count_page; $i++)
 			{
@@ -49,8 +50,8 @@ $autho_seq = $_SESSION['autho_sel'];
 			?>
 				<tr>
 					<td align = "center"><?= $page['user_name'] ?></td>		<!--  ページ名の表示	-->
-				
-					<?php 
+
+					<?php
 			}
 					?>
 		</table><br>
