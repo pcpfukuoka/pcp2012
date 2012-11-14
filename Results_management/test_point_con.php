@@ -9,9 +9,9 @@ $group = $_POST['group'];
 
 //DBに接続
 require_once("../lib/dbconect.php");
-$link = DbConnect();
-//$link = mysql_connect("tamokuteki41", "root", "");
-//mysql_select_db("pcp2012");
+//$link = DbConnect();
+$link = mysql_connect("tamokuteki41", "root", "");
+mysql_select_db("pcp2012");
 
 //ユーザ名の取得
 $sql = "SELECT m_user.user_seq, m_user.user_name 

@@ -8,13 +8,14 @@ $day = $_POST['day'];
 $subject = $_POST['subject'];
 $contents = $_POST['contents'];
 $teacher = $_POST['teacher'];
+$group = $_POST['group'];
 $stand_flg = $_POST['stand_flg'];
 
 //DBの接続
 require_once("../lib/dbconect.php");
-$link = DbConnect();
-//$link = mysql_connect("tamokuteki41", "root", "");
-//mysql_select_db("pcp2012");
+//$link = DbConnect();
+$link = mysql_connect("tamokuteki41", "root", "");
+mysql_select_db("pcp2012");
 
 $sql = "SELECT subject_name 
 		FROM m_subject 
@@ -28,6 +29,11 @@ $sql = "SELECT user_name
 $result = mysql_query($sql);
 $name_teach = mysql_fetch_array($result);
 
+$sql = "SELECT group_name
+		FROM m_group
+		WHERE group_seq = '$group';";
+$result = mysql_query($sql);
+$name_group = mysql_fetch_array($result);
 
 Dbdissconnect($link);
 ?>
@@ -39,7 +45,7 @@ Dbdissconnect($link);
 	
 	<body>
 	<!-- 点数入力画面に飛ぶ -->
-		<form action = "res_test_dec.php" method = "POST">
+		<form action = "res_test_point.php" method = "POST">
 		
 		<!-- ポストで受け取った値を表示する -->
 			<table border = "1">
@@ -48,7 +54,8 @@ Dbdissconnect($link);
 					<th>教科</th>
 					<th>テスト範囲</th>
 					<th>先生</th>
-					<th>定期テストチェック</th>
+					<th>グループ</th>
+					<th>定期テスト</th>
 				</tr>
 				
 				<tr>
@@ -56,6 +63,7 @@ Dbdissconnect($link);
 					<td><?= $name_subj['subject_name'] ?></td>
 					<td><?= $contents ?></td>
 					<td><?= $name_teach['user_name'] ?></td>
+					<td><?= $name_group['group_name'] ?></td>
 					<td><?php
 						if ($stand_flg == 1)
 						{
@@ -72,7 +80,9 @@ Dbdissconnect($link);
 			<input type = "hidden" name = "subject" value = "<?= $subject ?>">
 			<input type = "hidden" name = "contents" value = "<?= $contents ?>">
 			<input type = "hidden" name = "teacher" value = "<?= $teacher ?>">
+			<input type = "hidden" name = "group" value = "<?= $group ?>">
 			<input type = "hidden" name = "stand_flg" value = "<?= $stand_flg ?>">
+			<input type = "hidden" name = "edit_flg" value = 0>
 			
 			<input type = "submit" value = "確定">
 			<input type="button" value="戻る" onClick="history.back()">

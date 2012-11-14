@@ -5,9 +5,9 @@
 
 //DBの接続
 require_once("../lib/dbconect.php");
-$link = DbConnect();
-//$link = mysql_connect("tamokuteki41", "root", "");
-//mysql_select_db("pcp2012");
+//$link = DbConnect();
+$link = mysql_connect("tamokuteki41", "root", "");
+mysql_select_db("pcp2012");
 
 //先生の名前とseqを持ってきて、数を数える
 $sql = "SELECT m_user.user_name, m_user.user_seq 
@@ -26,14 +26,21 @@ $sql = "SELECT subject_seq, subject_name
 $result_subj = mysql_query($sql);
 $count_subj = mysql_num_rows($result_subj);
 
+//グループ名とseqを持ってきて、数を数える
+$sql = "SELECT group_seq, group_name 
+		FROM m_group
+		WHERE delete_flg = 0;";
+
 $result_group = mysql_query($sql);
 $count_group = mysql_num_rows($result_group);
 
 //テストのデータの一覧表示させるためのSQL文
-$sql = "SELECT m_test.test_seq, m_test.date, m_subject.subject_name, m_test.contents, m_user.user_name, m_test.standard_test_flg 
-		FROM m_test, m_subject, m_teacher, m_user
+$sql = "SELECT m_test.test_seq, m_test.date, m_subject.subject_name, m_test.contents, 
+		m_user.user_name, m_test.group_seq, m_group.group_name, m_test.standard_test_flg 
+		FROM m_test, m_subject, m_teacher, m_user, m_group 
 		WHERE m_test.subject_seq = m_subject.subject_seq 
 		AND m_test.teacher_seq = m_teacher.teacher_seq 
+		AND m_test.group_seq = m_group.group_seq 
 		AND m_teacher.user_seq = m_user.user_seq 
 		AND m_test.delete_flg = 0 
 		ORDER BY m_test.test_seq DESC;";
@@ -62,8 +69,9 @@ Dbdissconnect($link);
 					<th>教科</th>
 					<th>テスト範囲</th>
 					<th>先生</th>
+					<th>グループ</th>
 					<th>定期テスト</th>
-					<th>登録</th>
+					<th>登録(テスト・点数)</th>
 				</tr>
 				<tr>
 				<!-- 日付の入力 -->
@@ -100,15 +108,32 @@ Dbdissconnect($link);
 						?>
 						</select></td>
 						
+						<!-- グループの選択 -->
+					<td><select name = "group">
+						<option value = "-1" selected>選択</option>
+						<?php
+						for ($i = 0; $i < $count_group; $i++)
+						{
+						$group = mysql_fetch_array($result_group);
+						?>
+							<option value = "<?= $group['group_seq'] ?>"><?= $group['group_name'] ?></option>
+						<?php
+						} 
+						?>
+						</select></td>
+						
 						<!-- 定期テストのチェック -->
 					<td align = "center"><input type = "checkbox" name = "stand_flg" value = "1"></td>
 					
 					<!-- 登録ボタン -->
-					<td><input type = "submit" value = "登録"></td>
+					<td align = "center"><input type = "submit" value = "登録"></td>
 				</tr>
-				<?php
-				//以前のテストの表示
+				</form>
 				
+				<form action = "res_test_point.php" method = "POST">
+				<?php
+				
+				//以前のテストの表示
 				for ($i = 0; $i < $count_test; $i++)
 				{
 					$test = mysql_fetch_array($result_test);
@@ -118,7 +143,8 @@ Dbdissconnect($link);
 					<td><?= $test['subject_name'] ?></td>
 					<td><?= $test['contents'] ?></td>
 					<td><?= $test['user_name'] ?></td>
-					<td><?php
+					<td><?= $test['group_name'] ?></td>
+					<td align = "center"><?php
 					if ($test['standard_test_flg'] == 1)
 					{
 						echo "○";
@@ -127,6 +153,11 @@ Dbdissconnect($link);
 					{
 						echo "×";
 					} ?></td>
+					
+					<input type = "hidden" name = "test_seq" value = <?= $test['test_seq'] ?>>
+					<input type = "hidden" name = "group" value = <?= $test['group_seq'] ?>>
+					<input type = "hidden" name = "edit_flg" value = 1>
+					<td align = "center"><input type = "submit" value = "点数入力"></td>
 				</tr>
 				<?php
 				} 
