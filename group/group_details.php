@@ -48,7 +48,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-		 
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />		 
 	</head>
 
 	<body>
@@ -78,11 +79,15 @@
 						}
 					?>
 				</table>
-			<div>				
-				<input type = "submit" value = "ユーザを追加" name = "u_add" onclick="user_add()">
-				<input type = "submit" value = "グループを削除" name = "g_delete" onclick="group_delete()">
-				<input type = "submit" value = "ユーザ削除完了" name = "u_delete" onclick="user_delete()">
-				<input type = "submit" value = "ユーザ削除中止" name = "u_reset" onclick="user_reset()">
+			<div>
+			<table>
+				<tr>				
+					<td><input type = "submit" value = "ユーザを追加" name = "u_add" onclick="user_add()"></td>
+					<td><input type = "submit" value = "グループを削除" name = "g_delete" onclick="group_delete()"></td>
+					<td><input type = "submit" value = "ユーザ削除完了" name = "u_delete" onclick="user_delete()"></td>
+					<td><input type = "submit" value = "ユーザ削除中止" name = "u_reset" onclick="user_reset()"></td>
+				</tr>
+			</table>
 				</div>
 		</div>
 	</body>
