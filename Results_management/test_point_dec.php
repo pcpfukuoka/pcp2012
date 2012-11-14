@@ -16,7 +16,8 @@ $sql = "SELECT m_user.user_seq
 		FROM m_user, group_details 
 		WHERE m_user.user_seq = group_details.user_seq 
 		AND group_details.group_seq = '$group'
-		GROUP BY m_user.user_seq;";
+		GROUP BY m_user.user_seq 
+		ORDER BY m_user.user_seq;";
 
 $result = mysql_query($sql);
 $count_user = mysql_num_rows($result);
