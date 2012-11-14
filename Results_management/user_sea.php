@@ -17,7 +17,9 @@
 					<form action="tea_subj_add.php" method="POST">
 					<?php
 					   require_once("../lib/dbconect.php");
-					$link = DbConnect();
+					//$link = DbConnect();
+					$link = mysql_connect("tamokuteki41", "root", "");
+					mysql_select_db("pcp2012");
 					if($_POST['q1'] == "name")
 					{
 						$user = $_POST['query'];

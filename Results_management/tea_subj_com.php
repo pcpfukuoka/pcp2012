@@ -4,11 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 </head>
 <body>
+<form action="tea_subj_dec.php" method="POST">
  <?php
  
 	$q1 = $_POST['q1'];
 	require_once("../lib/dbconect.php");
-	$link = DbConnect();
+	//$link = DbConnect();
+	$link = mysql_connect("tamokuteki41", "root", "");
+	mysql_select_db("pcp2012");
    
    if($q1 == 1)
    {
@@ -36,14 +39,12 @@
 	   	if($subj_radio == $subj_ID)
 		   	{
 		   		$subj_name = $row['subject_name'];
+		   		?>
+		   		<input type="hidden" name="subj_radio" value="<?= $subj_radio ?>">
+		   		<?php 
 		   	}
 	   	}
    	}
-   	//$user_ID = $_POST['user_seq'];
-   	//$sql = "SELECT user_seq, user_seq FROM m_user WHERE delete_flg = 0 AND user_seq = $user_ID";
-   	//echo $sql;
-   	//$result = mysql_query($sql);
-   	//$tea_name = mysql_fetch_array($result);
    	$tea_name = $_POST['user_name'];
    	$sql = "SELECT teacher_seq, subject_seq, user_seq FROM m_teacher WHERE delete_flg = 0";
    	$result = mysql_query($sql);
@@ -88,11 +89,10 @@
    					</tr>
    				</table><br>
    				<?php 
-   				Dbdissconnect($link);
-   				?>
-   				<input type = "submit" value = "確認">&nbsp;&nbsp;
-   				<input class="button4" type="button" value="戻る" onClick="history.back()">
-   	   	<?php 
+   				$user_seq = $_POST['user_seq']
+   ?>
+   <input type="hidden" name="user_seq" value="<?= $user_seq ?>">
+   <?php 
    }
    elseif($q1 == 2)
    {
@@ -125,17 +125,16 @@
    	    <td align = "center"><font color = "Red">"NEW"</font>&nbsp;&nbsp;<?= $subj_name ?></td>
    	    </tr></table><br>
    	       				<?php 
+   }
    				Dbdissconnect($link);
-   				?>
-   				<form action="tea_subj_dec.php" method="POST">
+  				?>
+   				
+   				<input type="hidden" name="subj_radio" value="<?= $subj_radio ?>">
    				<input type="hidden" name="subj_name" value="<?= $subj_name ?>">
    				<input type="hidden" name="q1" value="<?= $q1 ?>">
    				<input type = "submit" value = "確認">&nbsp;&nbsp;
    				<input class="button4" type="button" value="戻る" onClick="history.back()">
    				</form>
-   	    <?php 
-   }
-   ?>
 </body>
 </html>
 	
