@@ -6,7 +6,6 @@
 	text-align:center;
 	font-size:12px;
 	font-weight:bold; 
-	width:80px;
 	padding:4px;
 	background-color:#87CEFA;
 	text-decoration:none;  
@@ -16,7 +15,7 @@
 	color:#000000;  
 	display:block;  
 	border-radius:5px;
-	width:80px;
+	width:100px;
 }
 
 /*オンマウスのとき*/	  
@@ -26,7 +25,7 @@
 	border: inset 3px #6495ED;  /* 枠の色 */
 	margin: 0px;
 	padding: 4px;
-	width:80px;
+	width:100px;
 
 	 
 }
@@ -43,7 +42,6 @@
 	text-align:center;
 	font-size:12px;
 	font-weight:bold; 
-	width:80px;
 	padding:4px;
 	background-color:#FFC0CB;
 	text-decoration:none;  
@@ -54,7 +52,7 @@
 	border-style:outset;  
 	color:#000000;  
 	display:block;  
-	width:80px; 
+	width:100px; 
 	border-radius:5px; 
 	
 }
@@ -66,7 +64,7 @@
 	border: inset 3px #FF0461;  /* 枠の色 */
 	margin: 0px;
 	padding: 4px;
-	width:80px;  
+	width:100px;  
 }
 
 .button2:active {
@@ -83,7 +81,6 @@
 	text-align:center;
 	font-size:12px;
 	font-weight:bold; 
-	width:80px;
 	padding:4px;
 	background-color:#FFA500;
 	text-decoration:none;  
@@ -93,7 +90,7 @@
 	color:#000000;  
 	display:block;  
 	border-radius:5px;
-	width:80px;
+	width:100px;
 	  
 }
 
@@ -106,7 +103,7 @@
 	border: inset 3px #ff6600;  /* 枠の色 */
 	margin: 0px;
 	padding: 4px;
-	width:80px;
+	width:100px;
 	
 }
 
@@ -116,7 +113,7 @@
 
 .button3:visited {  
 	color:#000000;
-	width:100%;
+	width:100px;
 }
 
 /* ログインボタン */
@@ -125,7 +122,6 @@
 	text-align:center;
 	font-size:12px;
 	font-weight:bold; 
-	width:80px;
 	padding:4px;
 	background-color:#999999;
 	text-decoration:none;  
@@ -134,7 +130,7 @@
 	border-style:outset;  
 	color:#000000;  
 	display:block;  
-	width:10%;
+	width:100px;
 	border-radius:5px;
 }
 
@@ -144,7 +140,7 @@
 	border: inset 3px #9999cc;  /* 枠の色 */
 	margin: 0px;
 	padding: 4px;
-	width:10%;
+	width:100px;
 }
 .button4:active {
 	color: #000000; 
