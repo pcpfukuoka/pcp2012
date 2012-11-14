@@ -7,7 +7,9 @@
 <form action="tea_subj_com.php" method="POST">
  <?php
    require_once("../lib/dbconect.php");
-   $link = DbConnect();
+   //$link = DbConnect();
+   $link = mysql_connect("tamokuteki41", "root", "");
+   mysql_select_db("pcp2012");
     
     /**********************************
      * 
@@ -20,8 +22,7 @@
 		<font size = "6">先生追加画面</font>
 	</div><br><br>
 	<?php 
-   //$sql = "SELECT teacher_seq, subject_seq, user_seq FROM m_teacher WHERE delete_flg = 0";
-	$sql = "SELECT teacher_seq, subject_seq, user_seq FROM m_teacher";
+   $sql = "SELECT teacher_seq, subject_seq, user_seq FROM m_teacher WHERE delete_flg = 0";
    $result = mysql_query($sql);
     $count = mysql_num_rows($result);
 	    
@@ -76,7 +77,10 @@
 					if($_POST['user_radio'] == $user_sea)
 					{
 					?>
-				<?= $row['user_name'] ?></td>
+				<?= $row['user_name'] ?>
+				    <input type="hidden" name="user_seq" value="<?= $row['user_seq'] ?>">
+				    <input type="hidden" name="user_name" value="<?= $row['user_name'] ?>">
+				</td>
 				<?php
 				
 					} 
@@ -129,9 +133,6 @@
     <td align = "center"><input size ="15" type="text" name="subj_name"></td>
     <td align = "center"><input type="radio" name="subj_radio" value="subj_name" checked></td>
     </tr></table><br>
-    <input type="hidden" name="user_seq" value="<?= $row['user_seq'] ?>">
-    <input type="hidden" name="user_name" value="<?= $row['user_name'] ?>">
-    $row['user_name']
 			
 			<?php 
 			Dbdissconnect($link);
