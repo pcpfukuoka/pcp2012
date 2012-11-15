@@ -13,7 +13,9 @@ mysql_select_db("pcp2012");
 $sql = "SELECT m_user.user_name, m_user.user_seq 
 		FROM m_user, m_teacher 
 		WHERE m_user.user_seq = m_teacher.user_seq
-		AND m_teacher.delete_flg = 0;";
+		AND m_teacher.delete_flg = 0 
+		GROUP BY m_user.user_name, m_user.user_seq 
+		ORDER BY m_user.user_seq;";
 
 $result_teach = mysql_query($sql);
 $count_teach = mysql_num_rows($result_teach);
@@ -28,8 +30,9 @@ $count_subj = mysql_num_rows($result_subj);
 
 //グループ名とseqを持ってきて、数を数える
 $sql = "SELECT group_seq, group_name 
-		FROM m_group
-		WHERE delete_flg = 0;";
+		FROM m_group 
+		WHERE delete_flg = 0 
+		AND class_flg = 1;";
 
 $result_group = mysql_query($sql);
 $count_group = mysql_num_rows($result_group);
@@ -138,6 +141,7 @@ Dbdissconnect($link);
 				{
 					$test = mysql_fetch_array($result_test);
 				?>
+				<input type = "hidden" name = "test_seq" value = "<?= $test['test_seq'] ?>">
 				<tr>
 					<td><?= $test['date'] ?></td>
 					<td><?= $test['subject_name'] ?></td>
@@ -154,10 +158,7 @@ Dbdissconnect($link);
 						echo "×";
 					} ?></td>
 					
-					<input type = "hidden" name = "test_seq" value = <?= $test['test_seq'] ?>>
-					<input type = "hidden" name = "group" value = <?= $test['group_seq'] ?>>
-					<input type = "hidden" name = "edit_flg" value = 1>
-					<td align = "center"><input type = "submit" value = "点数入力"></td>
+					<td align = "center"><input type = "submit" value = "点数入力"><?= $test['test_seq'] ?></td>
 				</tr>
 				<?php
 				} 

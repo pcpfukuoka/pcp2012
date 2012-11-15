@@ -7,7 +7,7 @@
 $day = $_POST['day'];
 $subject = $_POST['subject'];
 $contents = $_POST['contents'];
-$teacher = $_POST['teacher'];
+$user = $_POST['teacher'];
 $group = $_POST['group'];
 $stand_flg = $_POST['stand_flg'];
 
@@ -25,7 +25,7 @@ $name_subj = mysql_fetch_array($result);
 
 $sql = "SELECT user_name 
 		FROM m_user 
-		WHERE user_seq = '$teacher';";
+		WHERE user_seq = '$user';";
 $result = mysql_query($sql);
 $name_teach = mysql_fetch_array($result);
 
@@ -45,7 +45,7 @@ Dbdissconnect($link);
 	
 	<body>
 	<!-- 点数入力画面に飛ぶ -->
-		<form action = "res_test_point.php" method = "POST">
+		<form action = "res_test_dec.php" method = "POST">
 		
 		<!-- ポストで受け取った値を表示する -->
 			<table border = "1">
@@ -79,10 +79,10 @@ Dbdissconnect($link);
 			<input type = "hidden" name = "day" value = "<?= $day ?>">
 			<input type = "hidden" name = "subject" value = "<?= $subject ?>">
 			<input type = "hidden" name = "contents" value = "<?= $contents ?>">
-			<input type = "hidden" name = "teacher" value = "<?= $teacher ?>">
+			<input type = "hidden" name = "teacher" value = "<?= $user ?>">
 			<input type = "hidden" name = "group" value = "<?= $group ?>">
 			<input type = "hidden" name = "stand_flg" value = "<?= $stand_flg ?>">
-			<input type = "hidden" name = "edit_flg" value = 0>
+			
 			
 			<input type = "submit" value = "確定">
 			<input type="button" value="戻る" onClick="history.back()">
