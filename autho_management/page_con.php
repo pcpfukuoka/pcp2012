@@ -4,8 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" type="text/css" href="../css/button.css" />
+<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 </head>
 <body>
+<img class="bg" src="../../images/blue-big.jpg" alt="" />
+<div id="container">
 <form action="page_dec.php" method="POST">
  <?php
    require_once("../lib/dbconect.php");
@@ -22,7 +26,7 @@
    ?>
    
    <div align = "center">
-	<font size = "6">権限ページ新規追加確認画面</font><hr><br><br><br></div>
+	<font class="Cubicfont">権限ページ新規追加確認画面</font><hr><br><br><br></div>
 
    <table border="1" width="50%">
     <tr>
@@ -51,5 +55,6 @@
 		</tr>
 	</table>
     </form>
+    </div>
 </body>
 </html>

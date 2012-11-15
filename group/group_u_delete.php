@@ -4,30 +4,34 @@
 
 	//一覧表示用のデータを取得
 	$id = $_GET['id'];
-	$sql = "SELECT 
-			m_group.group_name, 
-			m_user.user_name, 
-			m_user.user_id, 
-			group_details.group_details_seq, 
+	$sql = "SELECT
+			m_group.group_name,
+			m_user.user_name,
+			m_user.user_id,
+			group_details.group_details_seq,
 			group_details.group_seq,
-			m_student.student_id 
+			m_student.student_id
 			FROM group_details
 			LEFT JOIN m_group ON group_details.group_seq = m_group.group_seq AND m_group.delete_flg = 0
 			LEFT JOIN m_user ON group_details.user_seq = m_user.user_seq AND m_user.delete_flg = 0
 			LEFT JOIN m_student ON m_user.user_seq = m_student.user_seq
- 			WHERE group_details.group_seq = '$id' 
+ 			WHERE group_details.group_seq = '$id'
 			AND group_details.delete_flg = 1;";
 	$result = mysql_query($sql);
 	$cnt = mysql_num_rows($result);
-	
+
 	//前ページでチェックが入ったユーザのデータを削除
 	$sql = "DELETE FROM group_details WHERE group_seq = '$id' AND delete_flg = 1";
 	mysql_query($sql);
 ?>
 <html>
 	<head>
+	<meta http-equiv="Content-Style-Type" content="text/css">
+	<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	</head>
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 			<div align = "center">
 			<font size = "7"><?= $group_name ?></font>
 			<hr color = "blue">
@@ -37,7 +41,7 @@
 						<td>ＩＤ</td>
 						<td>学籍番号</td>
 					</tr>
-					
+
 					<?php
 						for($i = 0; $i < $cnt; $i++)
 						{
@@ -53,6 +57,7 @@
 					?>
 				</table>
 		</div>
-		以上のデータを削除しました。
+		<font size="5">以上のデータを削除しました。</font>
+		</div>
 	</body>
 </html>

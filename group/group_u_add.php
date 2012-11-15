@@ -22,10 +22,14 @@ if(isset($_GET['id']))
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+		 <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		 <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<div align = "center">
-			<font size = "6">グループユーザ追加</font><hr>
+			<font class="Cubicfont">グループユーザ追加</font><hr>
 		</div><br><br>
 		<form action="group_u_add.php" method="POST">
 			<input type="radio" name="q1" value="name" checked>名前
@@ -39,7 +43,7 @@ if(isset($_GET['id']))
 		$sql = "";
 		if(isset($_POST['query']))
 		{
-			
+
 			if(isset($_POST['q1']) && $_POST['q1'] == "name")
 			{
 				//チェックボックスを確認
@@ -52,17 +56,17 @@ if(isset($_GET['id']))
 				$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND user_seq LIKE '$user_id%';";
 			}
 		}
-		else 
+		else
 		{
 			//検索用データ取得
 			$sql = "SELECT * FROM m_user WHERE delete_flg = 0;";
 		}
-		
+
 		$result = mysql_query($sql);
 		$cnt = mysql_num_rows($result);
-		
+
 		Dbdissconnect($link);
-		
+
 		for($i = 0; $i < $cnt; $i++)
 		{
 			$row = mysql_fetch_array($result);
@@ -135,9 +139,11 @@ if(isset($_GET['id']))
 		    });
 
 		});
-		</script>
+			</script>
 		<form action="group_u_add_comp.php" method="GET">
 		<input class="button4" type="submit" value="登録完了">
+		
 		</form>
+		</div>
 	</body>
 </html>
