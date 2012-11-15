@@ -5,10 +5,10 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 	//これでDBを呼び出す関数が使えるようになる
-	
+
 	//グループSEQをGETで取得した場合
 	if(isset($_GET['id']))
-	{	
+	{
 		//IDを格納
 		$group_seq = $_GET['id'];
 		//グループの基本情報を取得
@@ -17,13 +17,13 @@
 		$group_info_row = mysql_fetch_array($group_info_result);
 		$group_name = $group_info_row['group_name'];
 		//グループの詳細情報を取得
-		$sql = "SELECT 
-				m_group.group_name, 
-				m_user.user_name, 
-				m_user.user_id, 
-				group_details.group_details_seq, 
+		$sql = "SELECT
+				m_group.group_name,
+				m_user.user_name,
+				m_user.user_id,
+				group_details.group_details_seq,
 				group_details.group_seq,
-				m_student.student_id 
+				m_student.student_id
 				FROM group_details
 				LEFT JOIN m_group ON group_details.group_seq = m_group.group_seq AND m_group.delete_flg = 0
 				LEFT JOIN m_user ON group_details.user_seq = m_user.user_seq AND m_user.delete_flg = 0
@@ -34,10 +34,10 @@
 	}
 	else
 	{
-		header("Location:./dummy.html");	
+		header("Location:./dummy.html");
 	}
-	
-	
+
+
 	Dbdissconnect($dbcon);
 
 ?>
@@ -49,12 +49,13 @@
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 		<meta http-equiv="Content-Style-Type" content="text/css">
-		<link rel="stylesheet" type="text/css" href="../css/button.css" />		 
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	</head>
 
 	<body>
 		<div align = "center">
-			<font size = "7"><?= $group_name ?></font>
+			<font size = "6"><?= $group_name ?></font>
 			<hr color = "blue">
 				<table border = "1" bordercolor = "black">
 					<tr bgcolor = "yellow">
@@ -63,7 +64,7 @@
 						<td>ＩＤ</td>
 						<td>学籍番号</td>
 					</tr>
-					
+
 					<?php
 						for($i = 0; $i < $cnt; $i++)
 						{
@@ -81,7 +82,7 @@
 				</table>
 			<div>
 			<table>
-				<tr>				
+				<tr>
 					<td><input type = "submit" value = "ユーザを追加" name = "u_add" onclick="user_add()"></td>
 					<td><input type = "submit" value = "グループを削除" name = "g_delete" onclick="group_delete()"></td>
 					<td><input type = "submit" value = "ユーザ削除完了" name = "u_delete" onclick="user_delete()"></td>
@@ -91,7 +92,7 @@
 				</div>
 		</div>
 	</body>
-	
+
 	<script type="text/javascript">
 	function group_delete()
 	{
@@ -141,7 +142,7 @@
 			        //選択した要素のIDを指定して削除
 			        if(flg == "true")
 			        {
-			        	$('#user_'+id).fadeOut(800);    
+			        	$('#user_'+id).fadeOut(800);
 			        }
 			        else
 			        {

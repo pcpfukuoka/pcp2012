@@ -11,7 +11,7 @@
 	//group_detailsのデータを削除
 	$sql = "DELETE FROM group_details WHERE group_seq = '$d_group';";
 	mysql_query($sql);
-	
+
 	Dbdissconnect($dbcon);
 ?>
 <html>
@@ -19,9 +19,10 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<title>削除完了</title>
 	</head>
-	
+
 	<body>
 		<div align = "center">
 			<p>
