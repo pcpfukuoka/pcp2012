@@ -24,9 +24,7 @@
 	//文字コード設定
 	mysql_query("SET NAMES UTF8");
 
-	//クエリを送信する
-	$sql = "SELECT * FROM seat";
-	$result = mysql_query($sql,$link)or die("クエリの送信に失敗しました。");
+
 ?>
 
 <?php
@@ -49,16 +47,23 @@
 
 			for($col = 1; $col <= $col_max; $col++)
 			{
-				$sql = "select * from seat where  class ='$class' and row='$row'and col='$col'";
+				$sql = "select * from seat where class ='$class' and row='$row'and col='$col'";
+
 				$res = mysql_query($sql);
 				$ret = mysql_fetch_array($res);
-				$name = $ret['name'];
-						if($name == "")
+				$attendance_no = $ret['attendance_no'];
+
+
+						if($attendance_no == "0")
 						{
 							echo "<td class='sample'width='100'></td>";
 						}
 						else
 						{
+							$sql = "select * from student where  class ='$class' and attendance_no='$attendance_no'";
+							$res = mysql_query($sql);
+							$ret = mysql_fetch_array($res);
+							$name = $ret['name'];
 							echo "<td class='sample'width='100'> $name</td>";
 						}
 

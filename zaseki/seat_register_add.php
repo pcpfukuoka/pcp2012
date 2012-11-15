@@ -25,10 +25,10 @@
 	{
 		for($col = 1; $col <= $col_max; $col++)
 		{
-			$student = $_POST['student'.$row][$col];
+			$attendance_no = $_POST['attendance_no'.$row][$col];
 
 
-			$sql = "insert into seat values('$class','$row','$col','$student','')";
+			$sql = "insert into seat values('$class','$row','$col','$attendance_no')";
 			echo $sql;
 			mysql_query($sql,$link)or die("クエリの送信に失敗しました。");
 		}
