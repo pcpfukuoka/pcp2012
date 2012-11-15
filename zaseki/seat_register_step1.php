@@ -3,7 +3,7 @@
 		<title>zaseki</title>
 	</head>
 	<body>
-		<form action="seat_s_register_add.php" method="POST">
+		<form action="seat_register_step2.php" method="POST">
 		<table>
 				<td>
 				クラス
