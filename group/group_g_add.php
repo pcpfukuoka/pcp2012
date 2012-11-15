@@ -15,20 +15,23 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<title>グループ追加</title>
 	</head>
-	
+
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<form action = "group_g_add_db.php" method = "POST">
-		
+
 			<div align = "center">
-			
-				<font size = "7">グループ追加</font>
-				
+
+				<font size = "6">グループ追加</font>
+
 				<hr color = "blue">
 				<br>
 				<br>
-				
+
 				<table border = "1" bordercolor = "black">
 					<tr  bgcolor = "yellow" align = "center">
 						<td>グループ名</td>
@@ -42,7 +45,7 @@
 
 						<td>
 							<select name = "autho_select">
-								<?php 
+								<?php
 									for($i = 0; $i < $cnt; $i++)
 									{
 										$autho_row = mysql_fetch_array($result);
@@ -55,11 +58,12 @@
 						</td>
 					</tr>
 				</table>
-				
+
 				<input class="button4" type = "submit" value = "登録" name = "g_entry">
 			</div>
 		</form>
+		</div>
 	</body>
-	
+
 </html>
-	
+
