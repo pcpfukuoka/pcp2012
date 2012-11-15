@@ -27,7 +27,7 @@
 	</div><br><br>
    <table border="1" width="50%">
     <tr>
-     <th width="50%">ページ一覧</th>
+     <th width="50%" bgcolor="Yellow">ページ一覧</th>
      </tr>
      <?php 
     for($i = 0; $i < $count; $i++)
@@ -41,9 +41,16 @@
 	}
     ?>
     </tr></table><br>
-    ページ名<input size ="15" type="text" name="page_name"><!-- グループ名入力 -->
-    <input class="button4" type="submit" value="登録確認">&nbsp;&nbsp;
-    <input class="button4" type="reset" value="クリア"><br>
+    ページ名<input size ="15" type="text" name="page_name"><br><!-- グループ名入力 -->
+    
+    <br>
+    <table>
+    	<tr>
+    		<td><input class="button4" type="submit" value="登録確認"></td>
+    		<td><input class="button4" type="reset" value="クリア"></td>
+    	</tr>
+    </table>
+    <br>
     <a href="autho_main.php">トップへ戻る</a>
     </form>
     <br><hr>
@@ -56,6 +63,7 @@
      * page_del_con.phpに飛ばす。
      **********************************/ 
     ?>
+    <br>
     <div align = "center">
 		<font size = "6">ページ削除</font>
 	</div><br><br>
@@ -64,8 +72,8 @@
 	    <!-- テーブルの作成 -->
 	    	<table border="1" width="70%">
 	    		<tr>
-	     			<th width="50%">ページ名</th>
-	     			<th width = "20%">削除チェック</th>
+	     			<th width="50%" bgcolor="Yellow">ページ名</th>
+	     			<th width = "20%" bgcolor="Yellow">削除チェック</th>
 	     		</tr>
 	     		
 	     		<?php 
@@ -84,8 +92,13 @@
 				?>
 			</table><br>
 			
-			<input class="button4" type = "submit" value = "確認">&nbsp;&nbsp;
-			<input class="button4" type = "reset" value="クリア"><br><br>
+			<table>
+				<tr>
+					<td><input class="button4" type = "submit" value = "確認"></td>
+					<td><input class="button4" type = "reset" value="クリア"></td>
+				</tr>
+			</table>
+			<br>
 			<a href="autho_main.php">トップへ戻る</a>
 	    </form>
 </body>

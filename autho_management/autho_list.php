@@ -44,22 +44,24 @@ $autho_seq = $_SESSION['autho_sel'];
 	<head>
 		<title>権限管理一覧</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
 
 	<body>
 		<div align = "center">
-			<font size = "6">権限管理一覧画面</font><hr>
+			<font class="Cubicfont">権限管理一覧画面</font><hr>
 		</div><br><br>
 
 <!-- 		テープルの作成 -->
 		<table border = "1" width = "100%">
 			<tr>
-				<td width = "25%" align = "center">ページ名</td>
-				<td width = "15%" align = "center">read</td>
-				<td width = "15%" align = "center">write</td>
-				<td width = "15%" align = "center">delete</td>
-				<td width = "15%" align = "center">update</td>
-				<td width = "15%" align = "center">delivery</td>
+				<td width = "25%" align = "center" bgcolor="Yellow">ページ名</td>
+				<td width = "15%" align = "center" bgcolor="Yellow">read</td>
+				<td width = "15%" align = "center" bgcolor="Yellow">write</td>
+				<td width = "15%" align = "center" bgcolor="Yellow">delete</td>
+				<td width = "15%" align = "center" bgcolor="Yellow">update</td>
+				<td width = "15%" align = "center" bgcolor="Yellow">delivery</td>
 			</tr>
 
 			<?php

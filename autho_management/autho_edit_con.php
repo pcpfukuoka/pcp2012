@@ -24,13 +24,14 @@ Dbdissconnect($link);
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<meta http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
 	
 	<body>
 	<!-- 編集確定画面に飛ぶ -->
 		<form action = "autho_edit_dec.php" method = "POST">
 			<div align = "center">
-				<font size = "6">編集確認画面</font>
+				<font class="Cubicfont">編集確認画面</font>
 			</div><hr><br><br><br>
 			
 			<!-- 権限グループの名前を表示 -->
@@ -40,12 +41,12 @@ Dbdissconnect($link);
 			<!-- テーブルの作成 -->
 			<table border = "1" width = "100%">
 				<tr>
-					<td width = "25%" align = "center">ページ名</td>
-					<td width = "15%" align = "center">read</td>
-					<td width = "15%" align = "center">write</td>
-					<td width = "15%" align = "center">delete</td>
-					<td width = "15%" align = "center">update</td>
-					<td width = "15%" align = "center">delivery</td>
+					<td width = "25%" align = "center" bgcolor="Yellow">ページ名</td>
+					<td width = "15%" align = "center" bgcolor="Yellow">read</td>
+					<td width = "15%" align = "center" bgcolor="Yellow">write</td>
+					<td width = "15%" align = "center" bgcolor="Yellow">delete</td>
+					<td width = "15%" align = "center" bgcolor="Yellow">update</td>
+					<td width = "15%" align = "center" bgcolor="Yellow">delivery</td>
 				</tr>
 				
 				<?php
@@ -88,8 +89,13 @@ Dbdissconnect($link);
 				}
 				?>	
 			</table><br>
-			<input class="button4" type = "submit" value = "登録">
-			<input class="button4" type="button" value="戻る" onClick="history.back()">
+			<table>
+				<tr>
+					<td><input class="button4" type = "submit" value = "登録"></td>
+					<td><input class="button4" type="button" value="戻る" onClick="history.back()"></td>
+				</tr>
+			</table>
+			
 		</form>
 	</body>
 </html>

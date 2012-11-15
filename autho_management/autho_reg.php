@@ -30,12 +30,13 @@ $autho_seq = $_SESSION['autho_sel'];
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<meta http-equiv="Content-Style-Type" content="text/css">
 	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
+	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 	</head>
 	<body>
 		<div align = "center">
-			<font size = "6">権限管理一覧画面</font><hr>
+			<font class="Cubicfont">権限管理一覧画面</font><hr>
 		</div><br><br>
 		<form action="autho_reg.php" method="POST">
 			<input type="radio" name="q1" value="name" checked>名前

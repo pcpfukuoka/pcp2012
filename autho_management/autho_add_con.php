@@ -4,6 +4,7 @@
 	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 	  <meta http-equiv="Content-Style-Type" content="text/css">
 	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
+	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
 	<body>
 	<form action="autho_add_dec.php" method="POST">
@@ -17,8 +18,8 @@
 	$group_name = $_POST['group_name'];
    ?>
 		<div align = "center">
-			<font size = "6">権限管理追加確認画面</font><hr><br><br><br></div>
-			<?php 
+			<font class="Cubicfont">権限管理追加確認画面</font><hr><br><br><br></div>
+			<?php
 						/********************************************************
 			 * 権限の新規追加確認画面
 			 * 権限新規追加画面から持ってきたデータをfor文で取得　かつ作成
@@ -27,39 +28,39 @@
 			 *　$Read_data == 権限新規追加確定画面に送信するための入れ物
 			 *　１　＝＝　チェックされてる（許可されてる○）　０　＝＝　チェックされてない（許可されてない×）
 			 *　どちらとも権限のページ分使い回し
-			 *********************************************************/ 
+			 *********************************************************/
 			?>
 	名前<?= $group_name ?>
 	<table border="1" width="100%">
     <tr>
-     <th width="50%">ページ名</th>
-     <th width="10%">Read</th>
-     <th width="10%">Delete</th>
-     <th width="10%">Write</th>
-     <th width="10%">Update</th>
-     <th width="10%">delivery</th>
+     <th width="50%" bgcolor="Yellow">ページ名</th>
+     <th width="10%" bgcolor="Yellow">Read</th>
+     <th width="10%" bgcolor="Yellow">Delete</th>
+     <th width="10%" bgcolor="Yellow">Write</th>
+     <th width="10%" bgcolor="Yellow">Update</th>
+     <th width="10%" bgcolor="Yellow">delivery</th>
     </tr>
     <?php
     for($i = 0; $i < $count; $i++)
     {
     	$row = mysql_fetch_array($result);
-    	
-	    $Read_key = "Read_".$row['page_seq'];		// 
+
+	    $Read_key = "Read_".$row['page_seq'];		//
 		if(isset($_POST[$Read_key]))
 		{
-			$Read = "○";		// 
+			$Read = "○";		//
 			$Read_data = 1;
 			?>
 			<input type="hidden" name="Read_<?= $row['page_seq']?>" value="<?= $Read_data ?>">
-			<?php 
+			<?php
 		}
-		else 
+		else
 		{
 			$Read = "×";
 			$Read_data = 0;
 			?>
 			<input type="hidden" name="Read_<?= $row['page_seq']?>" value="<?= $Read_data ?>">
-			<?php 
+			<?php
 
 		}
 	    $Delete_key = "Delete_".$row['page_seq'];
@@ -69,7 +70,7 @@
 			$Delete_data = 1;
 			?>
 			<input type="hidden" name="Delete_<?= $row['page_seq']?>" value="<?= $Delete_data?>">
-			<?php 
+			<?php
 		}
 		else
 		{
@@ -77,8 +78,8 @@
 			$Delete_data = 0;
 			?>
 			<input type="hidden" name="Delete_<?= $row['page_seq']?>" value="<?= $Delete_data ?>">
-			<?php 
-			
+			<?php
+
 		}
 		$Write_key = "Write_".$row['page_seq'];
 		if(isset($_POST[$Write_key]))
@@ -87,7 +88,7 @@
 			$Write_data = 1;
 			?>
 			<input type="hidden" name="Write_<?= $row['page_seq']?>" value="<?= $Write_data ?>">
-			<?php 
+			<?php
 		}
 		else
 		{
@@ -104,7 +105,7 @@
 			$Update_data = 1;
 			?>
 			<input type="hidden" name="Update_<?= $row['page_seq']?>" value="<?= $Update_data?>">
-			<?php 
+			<?php
 		}
 		else
 		{
@@ -113,7 +114,7 @@
 			?>
 			<input type="hidden" name="Update_<?= $row['page_seq']?>" value="<?= $Update_data?>">
 			<?php
-			
+
 		}
 		$delivery_key = "delivery_".$row['page_seq'];
 		if(isset($_POST[$delivery_key]))
@@ -122,7 +123,7 @@
 			$delivery_data = 1;
 			?>
 			<input type="hidden" name="delivery_<?= $row['page_seq']?>" value="<?= $delivery_data?>">
-			<?php 
+			<?php
 		}
 		else
 		{
@@ -130,10 +131,10 @@
 			$delivery_data = 0;
 			?>
 			<input type="hidden" name="delivery_<?= $row['page_seq']?>" value="<?= $delivery_data?>">
-			<?php 
+			<?php
 		}
 		?>
-    
+
 	    <tr>
 	    <td align = "center"><?= $row['page_name'] ?></td>
 	    <td align="center"><?= $Read ?></td>
@@ -141,17 +142,21 @@
 	    <td align="center"><?= $Write ?></td>
 	    <td align="center"><?= $Update ?></td>
 	    <td align="center"><?= $delivery ?></td>
-	    </tr>	    
+	    </tr>
 	<?php
     }
     ?>
-    
+
     </table>
     <input type="hidden" name="group_name" value="<?= $group_name ?>">
-   
-   <h1><font size="3">よろしかったら”確定”やり直す場合”戻る”ボタンを押してください</font></h1><br>
-    <input class="button4" type="submit" value="確定">
-    <input class="button4" type="button" value="戻る" onClick="history.back()">
+
+   <h1><font size="3">よろしかったら”<font color="red">確定</font>”やり直す場合”<font color="red">戻る</font>”ボタンを押してください</font></h1><br>
+    <table>
+    	<tr>
+    		<td><input class="button4" type="submit" value="確定"></td>
+    		<td><input class="button4" type="button" value="戻る" onClick="history.back()"></td>
+    	</tr>
+    </table>
     </form>
 	</body>
 </html>
