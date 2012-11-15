@@ -29,10 +29,13 @@ Dbdissconnect($link);
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<meta http-equiv="Content-Style-Type" content="text/css">
 	  	<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />	  	
 		<title>権限削除確認</title>
 	</head>
 
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<form action = "autho_del_dec.php">
 			<table border = "1">
 				<tr>
@@ -47,5 +50,6 @@ Dbdissconnect($link);
 			<input class="button4" type = "submit" value = "確定"><br>
 			<a href="autho_main.php">トップへ戻る</a>
 		</form>
+		</div>
 	</body>
 </html>

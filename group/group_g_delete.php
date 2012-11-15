@@ -20,16 +20,20 @@
 		<meta http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<title>削除完了</title>
 	</head>
 
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<div align = "center">
 			<p>
-				<font size = "7">削除完了</font>
+				<font class="Cubicfont">削除完了</font>
 			</p>
 			<hr color = "blue">
-			グループを削除しました。
+			<font size="5">グループを削除しました。</font>
+		</div>
 		</div>
 	</body>
 </html>

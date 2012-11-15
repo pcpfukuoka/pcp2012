@@ -33,16 +33,52 @@
 		?>
 
 		<form method ="post" action="change.php">
-		ユーザID:<input type="text" name="user_id" value="<?= $user_row['user_id'] ?>"><br>
-		パスワード：<input type="text" name="pass" value="<?= $user_row['pass'] ?>"><br>
-		ユーザ名：<input type="text" name="user_name" value="<?= $user_row['user_name'] ?>"><br>
-		ふりがな：<input type="text" name="user_kana" value="<?= $user_row['user_kana'] ?>"><br>
-		住所：<input type="text" name="user_address" value="<?= $user_row['user_address'] ?>"><br>
-		電話番号<input type="text" name="user_tel" value="<?= $user_row['user_tel'] ?>"><br>
-		メールアドレス：<input type="text" name="user_email" value="<?= $user_row['user_email'] ?>"><br>
-		権限：
-		<select name = "autho_seq" size = "1">
-			<option value = "-1">選択</option>
+		<table>
+			<tr>
+				<td align="center">ユーザID:</td>
+				<td align="center"><input type="text" name="user_id" value="<?= $user_row['user_id'] ?>"></td>
+			</tr>
+			
+			<tr>
+				<td align="center">パスワード：</td>
+				<td align="center"><input type="text" name="pass" value="<?= $user_row['pass'] ?>"></td>
+			</tr>
+			
+			<tr>
+				<td align="center">ユーザ名</td>
+				<td align="center"><input type="text" name="user_name" value="<?= $user_row['user_name'] ?>"></td>
+			</tr>
+			
+			<tr>
+				<td align="center">ふりがな：</td>
+				<td align="center"><input type="text" name="user_kana" value="<?= $user_row['user_kana'] ?>"></td>
+			</tr>
+			
+			<tr>
+				<td align="center">住所：</td>
+				<td align="center"><input type="text" name="user_address" value="<?= $user_row['user_address'] ?>"></td>
+			</tr>
+			
+			<tr>
+				<td align="center">電話番号:</td>
+				<td align="center"><input type="text" name="user_tel" value="<?= $user_row['user_tel'] ?>"></td>
+			</tr>
+			
+			<tr>
+				<td align="center">メールアドレス：</td>
+				<td align="center"><input type="text" name="user_email" value="<?= $user_row['user_email'] ?>"></td>
+			</tr>
+			
+			<tr>
+				<td align="center">権限：</td>
+				<td align="center"><select name = "autho_seq" size = "1">
+			<option value = "-1">選択</option></td>
+			</tr>
+
+		
+		
+
+		
 			<?php
 			for($i = 0; $i < $cnt; $i++)
 			{
@@ -64,7 +100,13 @@
 			?>
 		</select><br>
 
-		学籍番号※学生のみ<input type="text" name="stuent_id" value="<?= $user_row['student_id'] ?>"><br>
+		<tr>
+			<td>学籍番号※学生のみ</td>
+			<td><input type="text" name="stuent_id" value="<?= $user_row['student_id'] ?>"></td>
+		</tr>
+	</table>
+		
+		<br>
 		<input type="hidden" value="<?= $user_row['user_seq'] ?>" name="user_seq">
 		<input class="button4" type="submit" value ="登録">
 		</form>

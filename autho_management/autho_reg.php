@@ -29,12 +29,15 @@ $autho_seq = $_SESSION['autho_sel'];
 		<title>権限アカウント追加</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<meta http-equiv="Content-Style-Type" content="text/css">
-	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
-	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+	 	<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 	</head>
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<div align = "center">
 			<font class="Cubicfont">権限管理一覧画面</font><hr>
 		</div><br><br>
@@ -151,5 +154,6 @@ $autho_seq = $_SESSION['autho_sel'];
 		
 <font color = "Red">中止する場合は選択リストの中身を必ず空にしてから変更完了をクリックしてください</font>
 <a href="autho_main.php">変更完了</a>
+	</div>
 	</body>
 </html>

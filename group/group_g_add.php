@@ -16,6 +16,7 @@
 		<meta http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<title>グループ追加</title>
 	</head>
 
@@ -26,7 +27,7 @@
 
 			<div align = "center">
 
-				<font size = "6">グループ追加</font>
+				<font class="Cubicfont">グループ追加</font>
 
 				<hr color = "blue">
 				<br>
@@ -58,7 +59,7 @@
 						</td>
 					</tr>
 				</table>
-
+				<br>
 				<input class="button4" type = "submit" value = "登録" name = "g_entry">
 			</div>
 		</form>
