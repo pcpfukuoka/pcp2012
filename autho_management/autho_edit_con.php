@@ -25,9 +25,12 @@ Dbdissconnect($link);
 		<meta http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	</head>
 	
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 	<!-- 編集確定画面に飛ぶ -->
 		<form action = "autho_edit_dec.php" method = "POST">
 			<div align = "center">
@@ -97,5 +100,6 @@ Dbdissconnect($link);
 			</table>
 			
 		</form>
+		</div>
 	</body>
 </html>

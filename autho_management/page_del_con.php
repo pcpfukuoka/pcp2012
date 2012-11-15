@@ -16,11 +16,14 @@ $count = 0;
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta http-equiv="Content-Style-Type" content="text/css">
-	    <link rel="stylesheet" type="text/css" href="../css/button.css" />		
+	    <link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />		
 		<title>ページ削除確認</title>
 	</head>
 	
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<form action = "page_del_dec.php" method = "POST">
 		<!-- テーブルの作成 -->
 			<table border = "1">
@@ -57,5 +60,6 @@ $count = 0;
 			<input class="button4" type = "submit" value = "確定"><br>
 			<a href="autho_main.php">トップへ戻る</a>
 		</form>
+		</div>
 	</body>
 </html>

@@ -42,8 +42,12 @@ Dbdissconnect($link);
 	  <meta http-equiv="Content-Style-Type" content="text/css">
 	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
 	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	</head>
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
+	
 		<div align = "center">
 			<font class="Cubicfont">権限管理編集画面</font>
 		</div><hr><br><br><br>
@@ -108,5 +112,6 @@ Dbdissconnect($link);
 			<input class="button4" type = "submit" value = "登録"><br>
 			<a href="autho_main.php">トップへ戻る</a>
 		</form>
+		</div>
 	</body>
 </html>
