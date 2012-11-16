@@ -26,13 +26,13 @@
 			
 			<?php
 			for($i = 0; $i < $count; $i++)
-				{
+			{
 				$row = mysql_fetch_array($result);
 				$tea_ID = "teacher_".$row['teacher_seq'];
 				
 				
 				if(isset($_POST[$tea_ID]))
-					{
+				{
 					
 					$subject_seq = $row['subject_seq'];
 					$user_seq = $row['user_seq'];
@@ -50,11 +50,13 @@
 					?>
 					<tr>
 						<td align = "center"><?= $user_name['user_name'] ?></td>
-						<td align = "center"><?= $subject_name['subject_name'] ?></td>
+						<td align = "center"><?= $subject_name['subject_name'] ?>
+						<input type="hidden" name="teacher_<?= $row['teacher_seq'] ?>" value="<?= $row['teacher_seq'] ?>">
+						</td>
 					</tr>
 					<?php 
-					}
 				}
+			}
 				?>
 				</table><br>
 				
@@ -63,28 +65,32 @@
 				<th width="50%">教科名</th>
 			</tr>
 			
-			<?php 
+		<?php 
 			$sql = "SELECT subject_name, subject_seq FROM m_subject WHERE delete_flg = 0";
 			$result = mysql_query($sql);
 			$count = mysql_fetch_array($result);
 			
 			for($i = 0; $i < $count; $i++)
-				{
+			{
 				$row = mysql_fetch_array($result);
 				$sub_ID = "subject_".$row['subject_seq'];
 				
-				
 				if(isset($_POST[$sub_ID]))
-					{
-					?>
-						<tr>
-						<td align = "center"><?= $row['subject_name'] ?></td>
-						</tr>
-					<?php 
-					}
+				{
+		?>
+					<tr>
+						<td align = "center"><?= $row['subject_name'] ?>
+						<input type="hidden" name="subject_<?= $row['subject_seq'] ?>" value="<?= $row['subject_seq'] ?>">
+						</td>
+					</tr>
+		<?php 
 				}
-			?>
+			}
+		?>
 		</table><br>
+		<?php 
+		Dbdissconnect($link);
+		?>
 		</form>
 	</body>
 </html>
