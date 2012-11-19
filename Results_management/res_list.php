@@ -3,13 +3,18 @@
  * テスト成績一覧選択画面
  **********************************************/
 
+$subject_seq = $_POST['subject_seq'];
+$group_seq = $_POST['group_seq'];
+$stand_flg = $_POST['stand_flg'];
+
 //DBの接続
 require_once("../lib/dbconect.php");
 //$link = DbConnect();
 $link = mysql_connect("tamokuteki41", "root", "");
 mysql_select_db("pcp2012");
 
-//テストのデータの一覧表示させるためのSQL文
+//テストのデータの一覧表示させるためのSQL文作成
+
 $sql = "SELECT m_test.test_seq, m_test.date, m_subject.subject_name, m_test.contents,
 		m_user.user_name, m_test.group_seq, m_group.group_name, m_test.standard_test_flg
 		FROM m_test, m_subject, m_teacher, m_user, m_group
@@ -18,10 +23,31 @@ $sql = "SELECT m_test.test_seq, m_test.date, m_subject.subject_name, m_test.cont
 		AND m_test.group_seq = m_group.group_seq
 		AND m_teacher.user_seq = m_user.user_seq
 		AND m_test.delete_flg = 0
-		ORDER BY m_test.test_seq DESC;";
+		AND m_test.group_seq = '$group_seq'";
+
+//教科が選択されて、テストチェックはされていない場合
+if ($subject_seq != -1 && $stand_flg == -1)
+{
+	$sql = $sql . " AND m_test.subject_seq = '$subject_seq'";
+}
+//教科が選択されてなく、テストチェックがされている場合
+elseif ($subject_seq == -1 && $stand_flg != -1)
+{
+	$sql = $sql . " AND m_test.standard_test_flg = '$stand_flg'";
+}
+//教科が選択されていて、テストチェックもされている場合
+elseif ($subject_seq != -1 && $stand_flg != -1)
+{
+	$sql = $sql . " AND m_test.subject_seq = '$subject_seq' 
+			AND m_test.standard_test_flg = '$stand_flg'";
+}
+
+$sql = $sql . " ORDER BY m_test.test_seq DESC;";
 
 $result_test = mysql_query($sql);
 $count_test = mysql_num_rows($result_test);
+
+Dbdissconnect($link);
 ?>
 <html>
 	<head>
@@ -85,6 +111,7 @@ $count_test = mysql_num_rows($result_test);
 				} 
 				?>
 			</table>
+			<input type="button" value="戻る" onClick="history.back()">
 		</form>
 		<a href="res_main.php">トップへ戻る</a>
 	</body>
