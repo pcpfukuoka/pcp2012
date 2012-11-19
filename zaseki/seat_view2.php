@@ -31,14 +31,14 @@
 	$class = $_POST['class'];
 	$sql = "select max(row) as mx from seat where attendance_class_seq='$class'";
 	$res = mysql_query($sql);
-	$ret = mysql_fetch_assoc($res);
-	$row_max = $ret['mx'];
+	$gyo = mysql_fetch_assoc($res);
+	$row_max = $gyo['mx'];
 
 
 	$sql = "select max(col) as mx from seat where attendance_class_seq ='$class'";
 	$res = mysql_query($sql);
-	$ret = mysql_fetch_assoc($res);
-	$col_max = $ret['mx'];
+	$gyo = mysql_fetch_assoc($res);
+	$col_max = $gyo['mx'];
 
 
 		for($row = 1; $row <= $row_max; $row++)
