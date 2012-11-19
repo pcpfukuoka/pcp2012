@@ -26,9 +26,12 @@
 ?>
 <html>
 	<head>
+	<meta http-equiv="Content-Style-Type" content="text/css">
 	<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	</head>
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 			<div align = "center">
 			<font size = "7"><?= $group_name ?></font>
 			<hr color = "blue">
@@ -54,6 +57,7 @@
 					?>
 				</table>
 		</div>
-		以上のデータを削除しました。
+		<font size="5">以上のデータを削除しました。</font>
+		</div>
 	</body>
 </html>

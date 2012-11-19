@@ -1,7 +1,7 @@
 <?php
 	$class = $_POST['class'];
-	$row = $_POST['row'];
-	$col = $_POST['col'];
+	$row_max = $_POST['row_max'];
+	$col_max = $_POST['col_max'];
 ?>
 
 <?php
@@ -19,12 +19,20 @@
 	//文字コード設定
 	mysql_query("SET NAMES UTF8");
 
-	//クエリを送信する
-	for($i = 1; $i <= $row; $i++)
+
+		//クエリを送信する
+	for($row = 1; $row <= $row_max; $row++)
 	{
-		for($j = 1; $j <= $col; $j++)
+		for($col = 1; $col <= $col_max; $col++)
 		{
-			$sql = "insert into seat values('$class','$i','$j','')";
+			$attendance_no = $_POST['attendance_no'.$row][$col];
+
+
+			$sql = "insert into seat values('$class','$row','$col','$attendance_no')";
+			echo $sql;
+			mysql_query($sql,$link)or die("クエリの送信に失敗しました。");
 		}
 	}
-	mysql_query($sql,$link)or die("クエリの送信に失敗しました。");
+
+
+?>

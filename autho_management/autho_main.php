@@ -27,10 +27,14 @@ Dbdissconnect($link);
 		<meta http-equiv="Content-Style-Type" content="text/css">
 	    <link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	</head>
 
 	<body>
-			<font class="Cubicfont">権限管理メイン画面</font><hr><br><br>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
+		<br>
+			<font class="Cubicfont1">権限管理メイン画面</font><hr><br><br>
 
 <?php
 /********************************************************
@@ -69,6 +73,7 @@ Dbdissconnect($link);
 			<?php
 				}
     			?>
+    		</div>
 	</body>
 	<script>
 

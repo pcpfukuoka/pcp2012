@@ -23,10 +23,13 @@ if(isset($_GET['id']))
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 		 <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		 <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<div align = "center">
-			<font size = "6">グループユーザ追加</font><hr>
+			<font class="Cubicfont">グループユーザ追加</font><hr>
 		</div><br><br>
 		<form action="group_u_add.php" method="POST">
 			<input type="radio" name="q1" value="name" checked>名前
@@ -136,9 +139,11 @@ if(isset($_GET['id']))
 		    });
 
 		});
-		</script>
+			</script>
 		<form action="group_u_add_comp.php" method="GET">
 		<input class="button4" type="submit" value="登録完了">
+		
 		</form>
+		</div>
 	</body>
 </html>
