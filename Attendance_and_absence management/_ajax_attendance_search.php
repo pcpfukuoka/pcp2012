@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 $user_seq = $_POST['id'];
 require_once("../lib/dbconect.php");
