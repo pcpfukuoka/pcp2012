@@ -10,7 +10,7 @@
 			<font size = "6">成績管理メイン画面</font><hr><br><br><br>
 		</div>
 		
-		<a href="res_list.php">点数一覧</a>
+		<a href="list_search.php">点数一覧</a>
 		<a href="res_test.php">テスト・点数登録</a><br><br>
 		<a href="res_main.php">出席管理</a>
 		<a href="tea_subj_add.php">教師・教科追加</a><br><br>
