@@ -14,8 +14,13 @@ $link = mysql_connect("tamokuteki41", "root", "");
 mysql_select_db("pcp2012");
 
 $test_seq = $_POST['test_seq'];
-echo $test_seq;
-echo aaaaaaaa;
+
+if (isset($_POST['submit']))
+{
+	$button = key($_POST['submit']);
+	$test_seq = $_POST['subname'][$button];
+}
+
 //test_seqに対応したgroup_seqの取得
 $sql = "SELECT group_seq 
 		FROM m_test 
@@ -23,7 +28,6 @@ $sql = "SELECT group_seq
 $result_group = mysql_query($sql);
 $group = mysql_fetch_array($result_group);
 $group_seq = $group['group_seq'];
-echo $group_seq;
 
 //ユーザ名とseqの取得
 $sql = "SELECT m_user.user_seq, m_user.user_name
