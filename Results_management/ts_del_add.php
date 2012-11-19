@@ -2,9 +2,9 @@
 	<head>
 		<title>削除画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
+		<meta http-equiv="Content-Style-Type" content="text/css"></meta>
 	</head>
 	<body>
-		<form action="ts_del_com.php" method="POST">
 		<?php
 		require_once("../lib/dbconect.php");
 		//$link = DbConnect();
@@ -15,13 +15,25 @@
 			<div align = "center">
 				<font size = "6">先生削除画面</font>
 			</div><br><br>
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 		<?php 
+		
 		$sql = "SELECT teacher_seq, subject_seq, user_seq FROM m_teacher WHERE delete_flg = 0";
 		$result = mysql_query($sql);
 		$count = mysql_num_rows($result);
 		
 		?>
 		
+				<form action="ts_del_add.php" method="POST">
+			<input type="radio" name="q1" value="name" checked>名前
+			<input type="radio" name="q1" value="id">ID
+			<input type="text" name="query">
+			<input class="button4" type="submit" value="検索">
+		</form>
+		
+		
+		<form action="ts_del_com.php" method="POST">
 		<!-- テーブルの作成 -->
 		<table border="1" width="100%"><!-- テーブル作成 -->
 			<tr>
@@ -81,12 +93,21 @@
 				for($i = 0; $i < $count; $i++)//教科分データ取り出し
 				{
 					$row = mysql_fetch_array($result);
-					?>
-					<tr>
-					<td align = "center"><?= $row['subject_name'] ?></td>
-					<td align = "center"><input type="checkbox" name = "subject_<?= $row['subject_seq'] ?>"></td>
-					</tr>
+					$subj_ID = $row['subject_seq'];
+					
+/*					$subj_sql = "SELECT  subject_seq FROM m_teacher WHERE delete_flg = 0 AND subject_seq = $subj_ID";
+					$subj_res = mysql_query($subj_sql);
+					$subj_row = mysql_fetch_array($subj_res);
+					if(!isset($subj_row))
+					{
+	*/				
+						?>
+						<tr>
+						<td align = "center"><?= $row['subject_name'] ?></td>
+						<td align = "center"><input type="checkbox" name = "subject_<?= $row['subject_seq'] ?>"></td>
+						</tr>
 					<?php 
+//					}
 				}
 				?>
 				</table><br>
@@ -96,6 +117,7 @@
 			?>
 			<input type = "submit" value = "確認">&nbsp;&nbsp;
 			<input type = "reset" value="クリア"><br><br>
+			</script>
 			</form>
 	</body>
 </html>
