@@ -135,20 +135,21 @@ Dbdissconnect($link);
 				
 				<form action = "res_test_point.php" method = "POST">
 				<?php
-				
 				//以前のテストの表示
 				for ($i = 0; $i < $count_test; $i++)
 				{
 					$test = mysql_fetch_array($result_test);
 				?>
-				<input type = "hidden" name = "test_seq" value = "<?= $test['test_seq'] ?>">
+				
 				<tr>
 					<td><?= $test['date'] ?></td>
 					<td><?= $test['subject_name'] ?></td>
 					<td><?= $test['contents'] ?></td>
 					<td><?= $test['user_name'] ?></td>
 					<td><?= $test['group_name'] ?></td>
-					<td align = "center"><?php
+					<td align = "center">
+					<?php
+					//定期テストチェック
 					if ($test['standard_test_flg'] == 1)
 					{
 						echo "○";
@@ -156,9 +157,15 @@ Dbdissconnect($link);
 					else
 					{
 						echo "×";
-					} ?></td>
+					}
+					?>
+					</td>
 					
-					<td align = "center"><input type = "submit" value = "点数入力"><?= $test['test_seq'] ?></td>
+					<!-- test_seqを持っていく -->
+					<td align = "center">
+						<input type = "hidden" name = "subname['<?= $i ?>']" value = "<?= $test['test_seq'] ?>">
+						<input type = "submit" name = "submit['<?= $i ?>']" value = "点数修正">
+					</td>
 				</tr>
 				<?php
 				} 

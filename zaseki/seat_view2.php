@@ -1,10 +1,9 @@
 <html>
 	<head>
 		<title>座席表</title>
+		<meta charset=UTF-8">
 	</head>
 	<body>
-
-	<form action="">
 
 
 	<table border = 1  cellspacing="10">
@@ -13,7 +12,7 @@
 	$url = "105-pc";
 	$user = "root";
 	$pass = "";
-	$db = "sample";
+	$db = "pcp2012";
 
 	//mysqlに接続する
 	$link = mysql_connect($url,$user,$pass) or die("MySQLへの接続に失敗しました。");
@@ -28,17 +27,18 @@
 ?>
 
 <?php
-	$class = 1;
-	$sql = "select max(row) as mx from seat where class ='$class'";
+
+	$class = $_POST['class'];
+	$sql = "select max(row) as mx from seat where attendance_class_seq='$class'";
 	$res = mysql_query($sql);
-	$ret = mysql_fetch_assoc($res);
-	$row_max = $ret['mx'];
+	$gyo = mysql_fetch_assoc($res);
+	$row_max = $gyo['mx'];
 
 
-	$sql = "select max(col) as mx from seat where class ='$class'";
+	$sql = "select max(col) as mx from seat where attendance_class_seq ='$class'";
 	$res = mysql_query($sql);
-	$ret = mysql_fetch_assoc($res);
-	$col_max = $ret['mx'];
+	$gyo = mysql_fetch_assoc($res);
+	$col_max = $gyo['mx'];
 
 
 		for($row = 1; $row <= $row_max; $row++)
@@ -47,24 +47,24 @@
 
 			for($col = 1; $col <= $col_max; $col++)
 			{
-				$sql = "select * from seat where class ='$class' and row='$row'and col='$col'";
+				$sql = "select user_seq from seat where attendance_class_seq ='$class' and row='$row'and col='$col'";
 
 				$res = mysql_query($sql);
-				$ret = mysql_fetch_array($res);
-				$attendance_no = $ret['attendance_no'];
+				$gyo = mysql_fetch_assoc($res);
+				$user_seq = $gyo['user_seq'];
 
 
-						if($attendance_no == "0")
+						if($user_seq == "")
 						{
 							echo "<td class='sample'width='100'></td>";
 						}
 						else
 						{
-							$sql = "select * from student where  class ='$class' and attendance_no='$attendance_no'";
+							$sql = "select user_name from m_user where  user_seq='$user_seq'";
 							$res = mysql_query($sql);
-							$ret = mysql_fetch_array($res);
-							$name = $ret['name'];
-							echo "<td class='sample'width='100'> $name</td>";
+							$gyo = mysql_fetch_array($res);
+							$user_name = $gyo['user_name'];
+							echo "<td class='sample'width='100'> $user_name</td>";
 						}
 
 						echo "</td>";

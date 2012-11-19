@@ -67,7 +67,7 @@ Dbdissconnect($link);
 		<form action = "res_test_point.php" method = "POST">
 			<input type = "hidden" name = "test_seq" value = "<?= $test_seq ?>">
 			
-			<input type = "submit" value = "点数を登録します。">
+			<input type = "submit" name = "test" value = "点数を登録します。">
 			<a href="res_main.php">トップへ戻る</a>
 		</form>
 	</body>
