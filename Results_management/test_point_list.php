@@ -146,7 +146,12 @@ $count_point = mysql_num_rows($result_point);
 		}
 		?>
 		</table><br>
-		<a href = "res_list.php">一覧に戻る</a>
+		<form action = "res_test_point.php" method = "POST">
+			<input type = "hidden" name = "test_seq" value = "<?= $test_seq ?>">
+			<input type="button" value="戻る" onClick="history.back()">
+			<input type = "submit" value = "点数修正へ">
+		</form>
+		<a href = "list_search.php">絞り込みに戻る</a>
 		<a href = "res_main.php">トップへ戻る</a>
 	</body>
 </html>

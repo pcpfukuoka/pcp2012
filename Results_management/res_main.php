@@ -2,8 +2,6 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<script src="../javascript/frame_jump.js"></script>
-		<meta http-equiv="Content-Style-Type" content="text/css">
-	    <link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<title>成績管理メイン</title>
 	</head>
 	
@@ -12,8 +10,10 @@
 			<font size = "6">成績管理メイン画面</font><hr><br><br><br>
 		</div>
 		
-		<input type = "button" onclick="jump('res_Att.php','right')" value = "欠席">
-		<input type = "button" onclick="jump('res_test.php','right')" value = "定期テスト">
-		<input type = "button" onclick="jump('res_Att.php','right')" value = "成績">
+		<a href="list_search.php">点数一覧</a>
+		<a href="res_test.php">テスト・点数登録</a><br><br>
+		<a href="res_main.php">出席管理</a>
+		<a href="tea_subj_add.php">教師・教科追加</a><br><br>
+		<a href="ts_del_add.php">教師・教科削除</a>
 	</body>
 </html>
