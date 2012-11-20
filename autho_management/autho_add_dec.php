@@ -1,9 +1,14 @@
 <html>
 	<head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta http-equiv="Content-Style-Type" content="text/css">
+	<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	<title>権限確定</title>
 	</head>
 	<body>
+	
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 	<?php 
 						/********************************************************
 			 * 権限の新規追加確定画面
@@ -59,5 +64,6 @@
 	?>
 	<br><br>
 	<a href="autho_main.php">トップへ戻る</a>
+	</div>
 	</body>
 </html>

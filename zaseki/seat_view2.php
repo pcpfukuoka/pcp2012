@@ -1,10 +1,9 @@
 <html>
 	<head>
 		<title>座席表</title>
+		<meta charset=UTF-8">
 	</head>
 	<body>
-
-	<form action="">
 
 
 	<table border = 1  cellspacing="10">
@@ -13,7 +12,7 @@
 	$url = "105-pc";
 	$user = "root";
 	$pass = "";
-	$db = "sample";
+	$db = "pcp2012";
 
 	//mysqlに接続する
 	$link = mysql_connect($url,$user,$pass) or die("MySQLへの接続に失敗しました。");
@@ -24,23 +23,22 @@
 	//文字コード設定
 	mysql_query("SET NAMES UTF8");
 
-	//クエリを送信する
-	$sql = "SELECT * FROM seat";
-	$result = mysql_query($sql,$link)or die("クエリの送信に失敗しました。");
+
 ?>
 
 <?php
-	$class = 1;
-	$sql = "select max(row) as mx from seat where class ='$class'";
+
+	$class = $_POST['class'];
+	$sql = "select max(row) as mx from seat where attendance_class_seq='$class'";
 	$res = mysql_query($sql);
-	$ret = mysql_fetch_assoc($res);
-	$row_max = $ret['mx'];
+	$gyo = mysql_fetch_assoc($res);
+	$row_max = $gyo['mx'];
 
 
-	$sql = "select max(col) as mx from seat where class ='$class'";
+	$sql = "select max(col) as mx from seat where attendance_class_seq ='$class'";
 	$res = mysql_query($sql);
-	$ret = mysql_fetch_assoc($res);
-	$col_max = $ret['mx'];
+	$gyo = mysql_fetch_assoc($res);
+	$col_max = $gyo['mx'];
 
 
 		for($row = 1; $row <= $row_max; $row++)
@@ -49,17 +47,24 @@
 
 			for($col = 1; $col <= $col_max; $col++)
 			{
-				$sql = "select * from seat where  class ='$class' and row='$row'and col='$col'";
+				$sql = "select user_seq from seat where attendance_class_seq ='$class' and row='$row'and col='$col'";
+
 				$res = mysql_query($sql);
-				$ret = mysql_fetch_array($res);
-				$name = $ret['name'];
-						if($name == "")
+				$gyo = mysql_fetch_assoc($res);
+				$user_seq = $gyo['user_seq'];
+
+
+						if($user_seq == "")
 						{
 							echo "<td class='sample'width='100'></td>";
 						}
 						else
 						{
-							echo "<td class='sample'width='100'> $name</td>";
+							$sql = "select user_name from m_user where  user_seq='$user_seq'";
+							$res = mysql_query($sql);
+							$gyo = mysql_fetch_array($res);
+							$user_name = $gyo['user_name'];
+							echo "<td class='sample'width='100'> $user_name</td>";
 						}
 
 						echo "</td>";

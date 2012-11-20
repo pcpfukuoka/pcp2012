@@ -5,8 +5,11 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" type="text/css" href="../css/button.css" />
   <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+  <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
  </head>
   <body>
+  		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
   <form action="autho_add_con.php" method="POST">
    <?php
    require_once("../lib/dbconect.php");
@@ -56,7 +59,7 @@
 	?>
     <tr>
     <td align = "center"><?= $row['page_name'] ?></td>
-    <td><input type="checkbox" name = "Read_<?= $row['page_seq'] ?>"></td>
+    <td><input  type="checkbox" name = "Read_<?= $row['page_seq'] ?>"></td>
     <td><input type="checkbox" name = "Delete_<?= $row['page_seq'] ?>"></td>
     <td><input type="checkbox" name = "Write_<?= $row['page_seq'] ?>"></td>
     <td><input type="checkbox" name = "Update_<?= $row['page_seq'] ?>"></td>
@@ -77,5 +80,6 @@
     
     </form>
     <a href="autho_main.php">トップへ戻る</a>
+    </div>
   </body>
 </html>

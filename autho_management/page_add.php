@@ -4,8 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" type="text/css" href="../css/button.css" />
+<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 </head>
 <body>
+<img class="bg" src="../../images/blue-big.jpg" alt="" />
+<div id="container">
 <form action="page_con.php" method="POST">
  <?php
    require_once("../lib/dbconect.php");
@@ -21,9 +25,9 @@
    ?>
    
    <div align = "center">
-	<font size = "6">ページ管理画面<hr><br>
+	<font class="Cubicfont">ページ管理画面</font><br><br><br>
 
-	ページ追加</font>
+	<font class="Cubicfont1">ページ追加</font>
 	</div><br><br>
    <table border="1" width="50%">
     <tr>
@@ -65,7 +69,7 @@
     ?>
     <br>
     <div align = "center">
-		<font size = "6">ページ削除</font>
+		<font class="Cubicfont1">ページ削除</font>
 	</div><br><br>
 	    <form action = "page_del_con.php" method = "POST">
 	    
@@ -101,5 +105,6 @@
 			<br>
 			<a href="autho_main.php">トップへ戻る</a>
 	    </form>
+	    </div>
 </body>
 </html>

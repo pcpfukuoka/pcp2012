@@ -13,7 +13,9 @@ mysql_select_db("pcp2012");
 $sql = "SELECT m_user.user_name, m_user.user_seq 
 		FROM m_user, m_teacher 
 		WHERE m_user.user_seq = m_teacher.user_seq
-		AND m_teacher.delete_flg = 0;";
+		AND m_teacher.delete_flg = 0 
+		GROUP BY m_user.user_name, m_user.user_seq 
+		ORDER BY m_user.user_seq;";
 
 $result_teach = mysql_query($sql);
 $count_teach = mysql_num_rows($result_teach);
@@ -28,8 +30,9 @@ $count_subj = mysql_num_rows($result_subj);
 
 //グループ名とseqを持ってきて、数を数える
 $sql = "SELECT group_seq, group_name 
-		FROM m_group
-		WHERE delete_flg = 0;";
+		FROM m_group 
+		WHERE delete_flg = 0 
+		AND class_flg = 1;";
 
 $result_group = mysql_query($sql);
 $count_group = mysql_num_rows($result_group);
@@ -132,19 +135,21 @@ Dbdissconnect($link);
 				
 				<form action = "res_test_point.php" method = "POST">
 				<?php
-				
 				//以前のテストの表示
 				for ($i = 0; $i < $count_test; $i++)
 				{
 					$test = mysql_fetch_array($result_test);
 				?>
+				
 				<tr>
 					<td><?= $test['date'] ?></td>
 					<td><?= $test['subject_name'] ?></td>
 					<td><?= $test['contents'] ?></td>
 					<td><?= $test['user_name'] ?></td>
 					<td><?= $test['group_name'] ?></td>
-					<td align = "center"><?php
+					<td align = "center">
+					<?php
+					//定期テストチェック
 					if ($test['standard_test_flg'] == 1)
 					{
 						echo "○";
@@ -152,12 +157,15 @@ Dbdissconnect($link);
 					else
 					{
 						echo "×";
-					} ?></td>
+					}
+					?>
+					</td>
 					
-					<input type = "hidden" name = "test_seq" value = <?= $test['test_seq'] ?>>
-					<input type = "hidden" name = "group" value = <?= $test['group_seq'] ?>>
-					<input type = "hidden" name = "edit_flg" value = 1>
-					<td align = "center"><input type = "submit" value = "点数入力"></td>
+					<!-- test_seqを持っていく -->
+					<td align = "center">
+						<input type = "hidden" name = "subname['<?= $i ?>']" value = "<?= $test['test_seq'] ?>">
+						<input type = "submit" name = "submit['<?= $i ?>']" value = "点数修正">
+					</td>
 				</tr>
 				<?php
 				} 

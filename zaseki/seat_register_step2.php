@@ -17,7 +17,7 @@
 			echo "<td>";
 			//echo "<input name=student[row][]type=text>";
 ?>
-			<input name="student<?= $row?>[<?= $col?>]"type=text>
+			<input name="attendance_no<?= $row?>[<?= $col?>]"type=text>
 <?php
 			echo "</td>";
 

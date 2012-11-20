@@ -27,7 +27,7 @@
 
 <body>
 	<div align="right">
-		<font size="2" >ようこそ<u><!--<?= $_SESSION['login_info[user_name]'] ?>--></u>さん</font>
+		<font size="5" >ようこそ<u><!--<?= $_SESSION['login_info[user_name]'] ?>--></u>さん</font>
 	</div>
 
 

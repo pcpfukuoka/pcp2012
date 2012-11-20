@@ -5,8 +5,12 @@
 	  <meta http-equiv="Content-Style-Type" content="text/css">
 	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
 	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+	  <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	</head>
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
+	
 	<form action="autho_add_dec.php" method="POST">
       <?php
    require_once("../lib/dbconect.php");
@@ -158,5 +162,6 @@
     	</tr>
     </table>
     </form>
+    </div>
 	</body>
 </html>
