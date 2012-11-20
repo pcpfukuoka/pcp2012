@@ -26,7 +26,7 @@
 
 
 		<div align = "center">
-			<font class="Cubicfont">権限管理追加画面</font><hr><br><br><br></div>
+			<font class="Cubicfont">権限管理追加画面</font><hr color="blue"><br><br><br></div>
 			<?php
 			/********************************************************
 			 * 権限の新規追加画面

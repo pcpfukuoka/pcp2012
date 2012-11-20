@@ -26,7 +26,7 @@
    ?>
    
    <div align = "center">
-	<font class="Cubicfont">権限ページ新規追加確認画面</font><hr><br><br><br></div>
+	<font class="Cubicfont">権限ページ新規追加確認画面</font><hr color="blue"><br><br><br></div>
 
    <table border="1" width="50%">
     <tr>

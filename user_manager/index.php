@@ -13,11 +13,16 @@
 	<body>
 		<img class="bg" src="../../images/blue-big.jpg" alt="" />
 		<div id="container">
-			<h1 class="Cubicfont">ユーザ管理</h1>
-			<hr color="blue"></hr>
-			<input class="button1" type="button" onclick="jump('list.php')" value="ユーザ一覧">
-			<br>
-			<input class="button1" type="button" onclick="jump('regist_view.php')" value="新規登録">
+		<div align="center">
+			<font class="Cubicfont2">ユーザ管理</font>
 		</div>
+			<hr color="blue"></hr>
+			<br><br><br>
+			<p align="center">
+				<input class="button2" type="button" onclick="jump('list.php')" value="ユーザ一覧">
+				<br><br>
+				<input class="button2" type="button" onclick="jump('regist_view.php')" value="新規登録">
+			</p>
+	</div>
 	</body>
 </html>

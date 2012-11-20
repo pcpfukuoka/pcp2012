@@ -27,7 +27,7 @@
 		<img class="bg" src="../../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
-			<font class="Cubicfont">プリント配信</font>
+			<font class="Cubicfont2">プリント配信</font>
 		</div>
 
 		<hr color="blue">

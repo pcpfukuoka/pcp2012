@@ -54,8 +54,12 @@
 
 		      <!-- 隠し文字 -->
 		      <input type="hidden" value="0" name="link_id">
-		      <input class="button4" type="submit" value="送信" name = "send">
-			  <input class="button4" type="submit" value="保存" name="Preservation"><br>
+		      <table>
+		      	<tr>
+		      		<td><input class="button4" type="submit" value="送信" name = "send"></td>
+		      		<td><input class="button4" type="submit" value="保存" name="Preservation"></td>
+			  	</tr>
+			  </table>
 	    </form>
 	    </div>
     </body>

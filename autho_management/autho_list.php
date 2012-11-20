@@ -53,7 +53,7 @@ $autho_seq = $_SESSION['autho_sel'];
 		<img class="bg" src="../../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align = "center">
-			<font class="Cubicfont">権限管理一覧画面</font><hr>
+			<font class="Cubicfont">権限管理一覧画面</font><hr color="blue">
 		</div><br><br>
 
 <!-- 		テープルの作成 -->

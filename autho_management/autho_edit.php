@@ -50,7 +50,7 @@ Dbdissconnect($link);
 	
 		<div align = "center">
 			<font class="Cubicfont">権限管理編集画面</font>
-		</div><hr><br><br><br>
+		</div><hr color="blue"><br><br><br>
 		
 		<!-- 確認画面に飛ぶ -->
 		<form action = "autho_edit_con.php" method = "POST">

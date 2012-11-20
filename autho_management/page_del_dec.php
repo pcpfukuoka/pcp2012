@@ -40,7 +40,7 @@ Dbdissconnect($link);
 		<img class="bg" src="../../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align = "center">
-			<font class="Cubicfont">ページ削除確定画面</font><hr>
+			<font class="Cubicfont">ページ削除確定画面</font><hr color="blue">
 		</div><br><br>
 		
 		<font size="5">ページを削除しました。</font>

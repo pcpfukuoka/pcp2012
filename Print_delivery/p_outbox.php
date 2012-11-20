@@ -18,7 +18,6 @@
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
 ?>
-
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -29,9 +28,9 @@
 
 	<body>
 		<img class="bg" src="../../images/blue-big.jpg" alt="" />
-		<div id="container">
+		 <div id="container">
 		<div align="center">
-			<font class="Cubicfont">プリント送信ボックス</font><br><br>
+			<font class="Cubicfont">プリント送信ボックス</font>
 		</div>
 
 		<hr color="blue">

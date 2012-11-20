@@ -34,7 +34,7 @@
 		<img class="bg" src="../../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
-			<br><font class="Cubicfont">連絡帳</font><br>
+			<font class="Cubicfont2">連絡帳</font>
 		</div>
 
 		<hr color="blue">

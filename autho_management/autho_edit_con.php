@@ -35,7 +35,7 @@ Dbdissconnect($link);
 		<form action = "autho_edit_dec.php" method = "POST">
 			<div align = "center">
 				<font class="Cubicfont">編集確認画面</font>
-			</div><hr><br><br><br>
+			</div><hr color="blue"><br><br><br>
 			
 			<!-- 権限グループの名前を表示 -->
 			名前：<?= $_POST['edit_name'] ?>

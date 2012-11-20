@@ -22,7 +22,7 @@
 	$group_name = $_POST['group_name'];
    ?>
 		<div align = "center">
-			<font class="Cubicfont">権限管理追加確認画面</font><hr><br><br><br></div>
+			<font class="Cubicfont">権限管理追加確認画面</font><hr color="blue"><br><br><br></div>
 			<?php
 						/********************************************************
 			 * 権限の新規追加確認画面

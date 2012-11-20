@@ -33,9 +33,13 @@ Dbdissconnect($link);
 	<body>
 		<img class="bg" src="../../images/blue-big.jpg" alt="" />
 		<div id="container">
-		<br>
-			<font class="Cubicfont1">権限管理メイン画面</font><hr><br><br>
+		<div align="center">
 
+			<font class="Cubicfont1">権限管理メイン画面</font>
+		</div>
+			<hr color="blue"><br><br>
+
+		
 <?php
 /********************************************************
  * $autho_group : DBから取得した権限seqとグループ名を入れる連想配列
