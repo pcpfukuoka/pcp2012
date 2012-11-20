@@ -3,6 +3,7 @@
 		<title>change</title>
 	</head>
 	<body>
+	<table>
 	<?php
 	$url = "105-pc";
 	$user = "root";
@@ -26,31 +27,13 @@
 <?php
 
 		$class = 1;
-		$sql = "select * from seat where  class ='$class'";
-		$res = mysql_query($sql);
-		$ret = mysql_fetch_array($res);
-		$attendance_no = $ret['attendance_no'];
-
-		echo $attendance_no;
+		$sql = " SELECT * FROM seat ORDER BY rand()";
+		
 
 
-		$sql = "select * from seat where  class ='$class'";
-		$res = mysql_query($sql);
-		$ret = mysql_fetch_array($res);
-		$name = $ret['name'];
-
-		//shuffle
-		//$numbers = range(1, 100);
-		//shuffle($numbers);
-		//foreach ($numbers as $number)
-
-		//if($number == $seat_no)
-		//{
-			//echo "$name";
-		//}
 
 
 ?>
-
+	</table>
 	</body>
 </html>
