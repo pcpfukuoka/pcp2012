@@ -35,7 +35,7 @@ Dbdissconnect($link);
 		<div id="container">
 		<div align="center">
 
-			<font class="Cubicfont1">権限管理メイン画面</font>
+			<font class="Cubicfont">権限管理</font>
 		</div>
 			<hr color="blue"><br><br>
 

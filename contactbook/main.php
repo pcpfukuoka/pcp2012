@@ -34,7 +34,7 @@
 		<img class="bg" src="../../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
-			<font class="Cubicfont2">連絡帳</font>
+			<font class="Cubicfont">連絡帳</font>
 		</div>
 
 		<hr color="blue">
@@ -82,9 +82,10 @@
 			?>
 
 			<!-- それぞれのリンク先に移動 -->
-			<input class="button2" type="button"  style="border:0" name="newcreate" value="新規作成" onclick="newcreate()">
+
+			<input class="button2" type="button"  style="border:0" name="newcreate" value="新規作成" onclick="newcreate()"></td>
 			<br><br>
-			<input class="button2" type="button" style="border:0" name="receve" value="受信箱（<?= $cnt_new + $cnt_print_flg ?> ）" onclick="receved()">
+			<input class="button2" type="button" style="border:0" name="receve" value="受信箱（<?= $cnt_new + $cnt_print_flg ?> ）" onclick="receved()"></td>
 			<br><br>
 			<input class="button2" type="button" style="border:0" name="transmit" value="送信箱 " onclick="transmition()">
 			<br><br>

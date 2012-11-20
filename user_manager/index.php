@@ -14,7 +14,7 @@
 		<img class="bg" src="../../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
-			<font class="Cubicfont2">ユーザ管理</font>
+			<font class="Cubicfont">ユーザ管理</font>
 		</div>
 			<hr color="blue"></hr>
 			<br><br><br>

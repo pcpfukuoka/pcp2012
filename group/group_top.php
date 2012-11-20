@@ -36,7 +36,7 @@
 		<img class="bg" src="../../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
-		<font class="Cubicfont2" >グループ一覧</font>
+		<font class="Cubicfont" >グループ</font>
 		</div>
 		<hr color="blue">
 		<br><br><br>
