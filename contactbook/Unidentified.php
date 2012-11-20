@@ -1,59 +1,62 @@
 <html>
 	<head>
-	@<title> –¢Šm”F</title>
+	<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+	ï¿½@<title> ï¿½ï¿½ï¿½mï¿½F</title>
 	</head>
-	
+
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 	  <div align="center">
-	    <font size = "7">–¢Šm”F</font><br>
+	    <font size = "7">ï¿½ï¿½ï¿½mï¿½F</font><br>
 	  </div>
-	  
-	  <a href=""><font size ="4">©–ß‚é</font></a>
+
+	  <a href=""><font size ="4">ï¿½ï¿½ï¿½ß‚ï¿½</font></a>
 	  <hr color="green">
 	  <br><br><br>
-	  
-	  
+
+
 	    <?php
          mysql_connect("tamokuteki41","root","");
          mysql_select_db("pcp2012");
 
-         mysql_query("SET NAMES sjis"); //•¶Žš‰»‚¯‘Îô
-	  
+         mysql_query("SET NAMES sjis"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îï¿½
+
 	     $sql = "select date, sender, subject FROM contact_book";
 	     $result = mysql_query($sql);
 
 	     $kensu = mysql_num_rows($result);
         ?>
-	  
-	  
+
+
 	  <p align="center">
-	    
+
 	    <table border="1" >
 	      <tr bgcolor="yellow">
-	       <td><font size="5"></font>“ú•t</td>
+	       <td><font size="5"></font>ï¿½ï¿½t</td>
 	       <td><font size="5"></font>FROM</td>
-	       <td><font size="5"></font>Œ–¼</td>
+	       <td><font size="5"></font>ï¿½ï¿½ï¿½ï¿½</td>
 	      </tr>
-	      
+
 	        <?php
              for($i=0; $i<$kensu; $i++){
                $gyo = mysql_fetch_array($result);
             ?>
-            
+
            <tr>
             <td><?= $gyo[0] ?></td>
             <td><?= $gyo[1] ?></td>
             <td><?= $gyo[2] ?></td>
            </tr>
-           
+
              <?php
               }
              ?>
-               
-	    
-	    
-	    
+
+
+
+
 	    </table>
-	  
+	  </div>
 	  </body>
 </html>
