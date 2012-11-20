@@ -14,7 +14,7 @@
 			AND print_delivery_seq = '$id';";
 	$result = mysql_query($sql);
 	$row = mysql_fetch_array($result);
-	
+
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
 
@@ -25,25 +25,28 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<meta http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<title>確認画面</title>
 	</head>
-	
+
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<form action="p_relay.php" method="POST">
-	
+
 			<div align="center">
-				<font size = "7">確認画面</font><br><br>
+				<font size = "6">確認画面</font><br><br>
 			</div>
-			
+
 			<font size = "4"><a href="p_draft.php">←戻る</a></font>
 			<hr color="blue">
 			<br><br><br>
-			
+
 			<font size="3">To　：</font>
 			<?= $row['group_name'] ?><br>
 			<font size="3">件名　：</font>
 			<?= $row['title'] ?><br><br>
-			
+
 			<font size="3">本文</font><br>
 		    <textarea rows="10" cols="80" name="printurl"><?= $row['printurl'] ?></textarea><br>
 		    <input type="hidden" value="<?= $row['print_delivery_seq'] ?>" name="print_delivery_seq">
@@ -52,7 +55,8 @@
 		    <input type="hidden" value="<?= $row['target_group_seq'] ?>" name="group_seq">
 		    <input type="hidden" value="<?= $row['title'] ?>" name="title">
 		    <br>
-		    <input class="button4" type="submit" value="送信" name="send"> 
-		</form>	          
+		    <input class="button4" type="submit" value="送信" name="send">
+		</form>
+		</div>
 	</body>
 </html>

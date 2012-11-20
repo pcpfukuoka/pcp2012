@@ -23,12 +23,16 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<title>受信ボックス</title>
 	</head>
 
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<div align="center">
-			<font size="7">受信ボックス</font>
+			<font class="Cubicfont">受信ボックス</font>
 			<br>
 		</div>
 		<br>
@@ -118,6 +122,7 @@
 				?>
 
 			</table>
+		</div>
 		</div>
 	</body>
 </html>
