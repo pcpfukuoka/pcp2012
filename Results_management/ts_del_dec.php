@@ -5,29 +5,6 @@
 	</head>
 	<body>
 		<?php
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		require_once("../lib/dbconect.php");
 		//$link = DbConnect();
 		$link = mysql_connect("tamokuteki41", "root", "");//練習用サーバ
@@ -52,6 +29,7 @@
 				}
 			}
 		?>
-		データベースへ送信しました。
+		データベースへ送信しました
+		<a href="res_main.php">トップへ戻る</a>
 	</body>
 </html>

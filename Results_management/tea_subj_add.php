@@ -119,12 +119,32 @@
 					$row = mysql_fetch_array($result);
 					$subjc = $row['subject_seq'];
 					
+					if(isset($u_seq))
+					{
 					$sql = "SELECT subject_seq
 					FROM m_teacher
 					WHERE user_seq = '$u_seq'
 					AND delete_flg = 0
 					GROUP BY subject_seq;";
+					}
+					else 
+					{
+						$sql = "SELECT subject_name, subject_seq FROM m_subject WHERE delete_flg = 0";
+							
+						$result_sub = mysql_query($sql);
+						$count = mysql_num_rows($result_sub);
 						
+						for ($i = 0; $i < $count; $i++)
+						{
+							$row = mysql_fetch_array($result_sub);
+						?>
+							<tr>
+								<td align = "center"><?= $row['subject_name'] ?></td>
+								<td align = "center"><input type="radio" name="subj_radio" value="subj_<?= $row['subject_seq'] ?>" ></td>
+							</tr>
+						<?php 
+						}
+					}	
 					$result_user = mysql_query($sql);
 					$count_user = mysql_num_rows($result_user);
 					
