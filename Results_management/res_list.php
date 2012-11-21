@@ -14,6 +14,7 @@ $link = mysql_connect("tamokuteki41", "root", "");
 mysql_select_db("pcp2012");
 
 //テストのデータの一覧表示させるためのSQL文作成
+//グループは必ず何かが選択されている
 
 $sql = "SELECT m_test.test_seq, m_test.date, m_subject.subject_name, m_test.contents,
 		m_user.user_name, m_test.group_seq, m_group.group_name, m_test.standard_test_flg
@@ -42,8 +43,10 @@ elseif ($subject_seq != -1 && $stand_flg != -1)
 			AND m_test.standard_test_flg = '$stand_flg'";
 }
 
+//並び替え
 $sql = $sql . " ORDER BY m_test.test_seq DESC;";
 
+//SQLの実行と数を数える
 $result_test = mysql_query($sql);
 $count_test = mysql_num_rows($result_test);
 
@@ -60,8 +63,10 @@ Dbdissconnect($link);
 			<font size = "6">テスト選択</font><hr><br><br><br>
 		</div>
 		
+		<!-- 点数を表示させるためのphpファイルに飛ぶ -->
 		<form action = "test_point_list.php" method = "POST">
 		
+		<!-- SQLで取り出したテストデータの表示 -->
 			<table border = "1">
 			
 				<tr>
@@ -75,7 +80,6 @@ Dbdissconnect($link);
 				</tr>
 			
 				<?php 
-				//以前のテストの表示
 				for ($i = 0; $i < $count_test; $i++)
 				{
 					$test = mysql_fetch_array($result_test);
@@ -101,7 +105,7 @@ Dbdissconnect($link);
 					?>
 					</td>
 					
-					<!-- test_seqを持っていく -->
+					<!-- 各生徒の点数を表示させるために、test_seqを持っていく -->
 					<td align = "center">
 						<input type = "hidden" name = "subname['<?= $i ?>']" value = "<?= $test['test_seq'] ?>">
 						<input type = "submit" name = "submit['<?= $i ?>']" value = "点数表示">
