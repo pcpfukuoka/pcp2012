@@ -22,13 +22,13 @@ Dbdissconnect($link);
 
 $result_1 = array();
 
-for ($i = 0; $i < $cnt; $i++)
+for ($i = 0; $i < $num; $i++)
 {
 	$row = mysql_fetch_array($result);
-	$result_1[] = array('group_name'=>$num['group_name'],'user_name'=>$num['user_name'],'date'=>$num['date'],
-				  'Attendance_flg'=>$num['Attendance_flg'], 'Absence_flg'=>$num['Absence_flg'],
-				  'Leaving_early_flg'=>$num['Leaving_early_flg'], 'Lateness_flg'=>$num['Lateness_flg'],
-				  'Absence_due_to_mourning_flg'=>$num['Absence_due_to_mourning_flg']);
+	$result_1[] = array('group_name'=>$row['group_name'],'user_name'=>$row['user_name'],'date'=>$row['date'],
+				  'Attendance_flg'=>$row['Attendance_flg'], 'Absence_flg'=>$row['Absence_flg'],
+				  'Leaving_early_flg'=>$row['Leaving_early_flg'], 'Lateness_flg'=>$row['Lateness_flg'],
+				  'Absence_due_to_mourning_flg'=>$row['Absence_due_to_mourning_flg']);
 }
 
 $test = json_encode($result_1);
