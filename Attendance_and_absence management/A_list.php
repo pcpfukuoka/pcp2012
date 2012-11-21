@@ -17,9 +17,18 @@
 	}
 */
 
-	$sql = "SELECT DATE_FORMAT(date,'%Y-%m') AS select_date FROM attendance GROUP BY DATE_FORMAT(date,'%Y-%m') ORDER BY DATE_FORMAT(date,'%Y/%m');";
+	$sql = "SELECT DATE_FORMAT(date,'%Y-%m') AS select_date
+			FROM attendance
+			GROUP BY DATE_FORMAT(date,'%Y-%m')
+			ORDER BY DATE_FORMAT(date,'%Y/%m');";
 	$result = mysql_query($sql);
 	$num = mysql_num_rows($result);
+
+	$sql = "SELECT attendance.group_seq, m_group.group_name AS group_name FROM attendance
+			LEFT JOIN m_group ON attendance.group_seq = m_group.group_seq
+			WHERE m_group.class_flg = 1";
+	$result_2 = mysql_query($sql);
+	$cnt = mysql_num_rows($result_2);
 
 	Dbdissconnect($dbcon);
 ?>
@@ -56,7 +65,7 @@
 			<table>
 				<tr>
 					<td align="center" width="80" bgcolor="yellow"><font size="5">年月</font></td>
-					<td align="center" width="150" bgcolor="yellow"><font size="5">クラス</font></td>
+					<td align="center" width="100" bgcolor="yellow"><font size="5">クラス</font></td>
 					<td align="center" width="40"></td>
 				</tr>
 
@@ -78,11 +87,32 @@
 						</select>
 					</td>
 
-					<td align="center"width="150"><input type = "text" name = "class"></td>
-					<td align="center"width="40"><input id="search"  class="button4" type = "button" value = "検索" name = "serch"></td>
+					<td align="center"width="100">
+						<select>
+						<option value="-1">選択</option>
+						  	<?php
+							   for ($i = 0; $i < $cnt; $i++)
+							   {
+							   		$row = mysql_fetch_array($result_2);
+						  	?>
+							    	<option value="<?=$row['group_seq']?>"><?= $row['group_name'] ?></option>
+						  	<?php
+						    	}
+						  	?>
+						</select>
+					</td>
+					<td align="center"width="40"><input id="search" class="button4" type = "button" value = "検索" name = "serch"></td>
+
+
 				</tr>
 			</table>
 		</div>
+		<br><br><br>
+
+		<table align="center" id="SearchResult" border = "1">
+
+		</table >
+
 	</body>
 	<script>
 		$(function() {
@@ -98,11 +128,60 @@
 		        //戻り値として、user_seq受け取る
 		        function(rs) {
 
-		        	alert(rs.length);
-
+		        	var parsers = JSON.parse(rs);
+		        	reWriteTable(parsers)
 		        });
 		    });
 		});
+
+		// テーブルに検索結果を追加
+		function reWriteTable( response )
+		{
+			// 元にある行を削除
+
+			$("#SearchResult tr").remove();
+
+
+			$("#SearchResult").append(
+				    $('<tr>').append(
+					        $('<th class="name">').text("学籍番号")
+			          ).append(
+					        $('<th class="name">').text("クラス")
+			          ).append(
+					        $('<th class="name">').text("氏名")
+			          ).append(
+					        $('<th class="name">').text("出席")
+			          ).append(
+					        $('<th class="name">').text("欠席")
+			          ).append(
+					        $('<th class="name">').text("早退")
+			          ).append(
+					        $('<th class="name">').text("遅刻")
+			          ).append(
+					        $('<th class="name">').text("忌引")
+			));
+
+			// 取得したデータを行に入れる
+			for (var i=0; i< response.length; i++) {
+
+				//追加して表示する内容を設定
+	        	var e = $(
+	                    '<tr>' +
+	                    '<td>'+response[i]['student_id']+'</td> ' +
+	                    '<td>'+response[i]['group_name']+'</td> ' +
+	                    '<td> <a href="A_details.php?id='+response[i]['user_seq']+'"> '+response[i]['user_name']+'</td> ' +
+	                    '<td>'+response[i]['Attendance_flg']+'</td> ' +
+	                    '<td>'+response[i]['Absence_flg']+'</td> ' +
+	                    '<td>'+response[i]['Leaving_early_flg']+'</td> ' +
+	                    '<td>'+response[i]['Lateness_flg']+'</td> ' +
+	                    '<td>'+response[i]['Absence_due_to_mourning_flg']+'</td> ' +
+	                    '</tr>'
+	                );
+            	//id=select_userにe要素を追加
+                $('#SearchResult').append(e);
+			}
+		}
+
 	</script>
 
 </html>
