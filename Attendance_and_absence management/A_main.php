@@ -3,8 +3,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<script type="text/javascript">
-			function details(){
-				parent.right.location="A_details.php";
+			function search(){
+				parent.right.location="A_search.php";
 			}
 
 			function list(){
@@ -21,12 +21,12 @@
 		</div>
 
 		<hr color="blue">
-		<br><br><br>
+		<br><br>
 
 		<p align="center">
 
 			<!-- それぞれのリンク先に移動 -->
-			<input type="text"  style="border:0" name="details" value="座席名簿" onclick="details()">
+			<input type="text"  style="border:0" name="seating_list" value="座席名簿" onclick="search()">
 			<br><br>
 			<input type="text" style="border:0" name="list" value="一覧" onclick="list()">
 			<br><br>
