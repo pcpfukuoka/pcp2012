@@ -6,6 +6,7 @@
 	</head>
 	<body>
 		<?php
+		
 		require_once("../lib/dbconect.php");
 		//$link = DbConnect();
 		$link = mysql_connect("tamokuteki41", "root", "");//練習用サーバ
@@ -13,6 +14,7 @@
 		
 		?>
 			<div align = "center">
+			
 				<font size = "6">先生削除画面</font>
 			</div><br><br>
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -43,11 +45,16 @@
 				//チェックボックスを確認
 				$user = $_POST['query'];
 				$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND user_name LIKE '%$user%';";
+				$result = mysql_query($sql);
+				$row = mysql_fetch_array($result);
+				$user = $row['user_seq'];
+				$sql = "SELECT * FROM m_teacher WHERE delete_flg = 0 AND user_seq = '$user';";
+				
 			}
 			elseif(isset($_POST['q1']) && $_POST['q1'] == "group")
 			{
 				$user_id = $_POST['query'];
-				$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND user_seq LIKE '$user_id%';";
+				$sql = "SELECT * FROM m_teacher WHERE delete_flg = 0 AND user_seq LIKE '$user_id%';";
 			}
 		}
 		
@@ -103,15 +110,16 @@
 				//選択したli要素からdata-idを取得する(data-idはm_userのuser_seq)
 		        var id = $(this).data('id');
 		        //表示しているユーザ名を取得
-		        var subj = $(this).next().data('id')
+		        var subj = $(this).next().data('id');
 		        //ポストでデータを送信、宛先でDB処理を行う
 		        $.post('ajax_ts_del_add.php', {
-		            id: id
+		            id: id,
+		            subj : subj
 		        },
 		        //戻り値として、user_seq受け取る
 		        function(rs) {
 			        //選択した要素のIDを指定して削除
-		        	$('#list_user_'+id).fadeOut(800);
+		        	//$('#list_user_'+id).fadeOut(800);
 		        });
 		    });
 		});
@@ -156,7 +164,7 @@
 						?>
 						<tr>
 						<td align = "center"><?= $row['subject_name'] ?></td>
-						<td align = "center"><input type="checkbox" name = "subject_<?= $row['subject_seq'] ?>">
+						<td align = "center"><input type="checkbox" name = "<?= $row['subject_seq'] ?>">
 						</td>
 						</tr>
 					<?php 
