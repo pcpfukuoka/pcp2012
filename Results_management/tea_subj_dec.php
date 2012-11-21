@@ -25,7 +25,7 @@
 			if($subj_radio == "subj_name")//教科も新規の場合
 				{
 				$subj_name = $_POST['subj_name'];
-				$sql = "insert into m_subject values(0, '$subj_name', 0)";//教科データ書き込み
+				$sql = "insert into m_subject values(0, '$subj_name', 0, 0)";//教科データ書き込み
 				mysql_query($sql);
 				
 				$sql = "SELECT subject_seq FROM m_subject WHERE delete_flg = 0 AND subject_seq = $user_seq ORDER BY subject_seq DESC";
@@ -53,18 +53,21 @@
 					}
 				}
 			//教師データ書き込み
-			$sql = "insert into m_teacher values(0, '$subj_seq', '$user_seq', 0)";
+			$sql = "insert into m_teacher values(0, '$subj_seq', '$user_seq', 0, 0)";
 			mysql_query($sql);
 			
 			}
 		elseif($q1 == 2)//教科追加のみの場合
 			{
 			$subj_name = $_POST['subj_name'];
-			$sql = "insert into m_subject values(0, '$subj_name', 0)";
+			$sql = "insert into m_subject values(0, '$subj_name', 0, 0)";
 			mysql_query($sql);
 			
 			}
 		Dbdissconnect($link);
 		?>
+		
+		<br><a href="res_main.php">トップへ戻る</a>
+		<a href="tea_subj_add.php">教師・教科追加へ戻る</a>
 	</body>
 </html>
