@@ -84,7 +84,7 @@
 			</table>
 		</div>
 	</body>
-			<script>
+	<script>
 		$(function() {
 
 			//検索結果から権限を追加するための処理
@@ -103,6 +103,6 @@
 		        });
 		    });
 		});
-			</script>
+	</script>
 
 </html>
