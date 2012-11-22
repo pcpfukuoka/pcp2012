@@ -3,16 +3,10 @@
 		<title>seat_list</title>
 	</head>
 <?php
-	$url = "105-pc";
-	$user = "root";
-	$pass = "";
-	$db = "pcp2012";
-
-	//mysqlに接続する
-	$link = mysql_connect($url,$user,$pass) or die("MySQLへの接続に失敗しました。");
-
-	//データベースを選択する
-	$sdb = mysql_select_db($db,$link)or die("データベースの選択に失敗しました。");
+	//データベースの呼出
+	require_once("../lib/dbconect.php");
+	$dbcon = DbConnect();
+	mysql_query("set names utf8");
 
 	//文字コード設定
 	mysql_query("SET NAMES UTF8");

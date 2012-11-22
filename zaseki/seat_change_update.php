@@ -5,19 +5,11 @@
 ?>
 
 <?php
-	$url = "localhost";
-	$user = "root";
-	$pass = "";
-	$db = "sample";
+	//データベースの呼出
+	require_once("../lib/dbconect.php");
+	$dbcon = DbConnect();
+	mysql_query("set names utf8");
 
-	//mysqlに接続する
-	$link = mysql_connect($url,$user,$pass) or die("MySQLへの接続に失敗しました。");
-
-	//データベースを選択する
-	$sdb = mysql_select_db($db,$link)or die("データベースの選択に失敗しました。");
-
-	//文字コード設定
-	mysql_query("SET NAMES UTF8");
 
 
 		//クエリを送信する
@@ -26,11 +18,10 @@
 		for($col = 1; $col <= $col_max; $col++)
 		{
 
-			$attendance_no = $_POST['attendance_no'.$row][$col];
-			echo $attendance_no;
-			$sql = "update seat set attendance_no = '$attendance_no' where class='$class' and row = '$row' and  col = '$col'";
+			$user_seq = $_POST['user_seq'.$row][$col];
+			$sql = "update seat set user_seq = '$user_seq' where attendance_class_seq='$class' and row = '$row' and  col = '$col'";
 			echo $sql;
-			mysql_query($sql,$link)or die("クエリの送信に失敗しました。");
+			mysql_query($sql)or die("クエリの送信に失敗しました。");
 		}
 	}
 

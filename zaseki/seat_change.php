@@ -57,16 +57,10 @@
 
 
 <?php
-	$url = "localhost";
-	$user = "root";
-	$pass = "";
-	$db = "sample";
-
-	//mysqlに接続する
-	$link = mysql_connect($url,$user,$pass) or die("MySQLへの接続に失敗しました。");
-
-	//データベースを選択する
-	$sdb = mysql_select_db($db,$link)or die("データベースの選択に失敗しました。");
+	//データベースの呼出
+	require_once("../lib/dbconect.php");
+	$dbcon = DbConnect();
+	mysql_query("set names utf8");
 
 	//文字コード設定
 	mysql_query("SET NAMES UTF8");
@@ -77,13 +71,13 @@
 	<table border = 1  cellspacing="10">
 <?php
 	$class = 1;
-	$sql = "select max(row) as mx from seat where class ='$class'";
+	$sql = "select max(row) as mx from seat where attendance_class_seq ='$class'";
 	$res = mysql_query($sql);
 	$ret = mysql_fetch_assoc($res);
 	$row_max = $ret['mx'];
 
 
-	$sql = "select max(col) as mx from seat where class ='$class'";
+	$sql = "select max(col) as mx from seat where attendance_class_seq ='$class'";
 	$res = mysql_query($sql);
 	$ret = mysql_fetch_assoc($res);
 	$col_max = $ret['mx'];
@@ -95,25 +89,25 @@
 
 			for($col = 1; $col <= $col_max; $col++)
 			{
-				$sql = "select * from seat where class ='$class' and row='$row'and col='$col'";
+				$sql = "select user_seq from seat where attendance_class_seq ='$class' and row='$row'and col='$col'";
 
 				$res = mysql_query($sql);
 				$ret = mysql_fetch_array($res);
-				$attendance_no = $ret['attendance_no'];
+				$user_seq = $ret['user_seq'];
 
 
-						if($attendance_no == "0")
+						if($user_seq == "0")
 						{
 							echo "<td id='$id'class='change'width='100'></td>";
 						}
 						else
 						{
-							$sql = "select * from student where  class ='$class' and attendance_no='$attendance_no'";
+							$sql = "select user_name from m_user where user_seq='$user_seq'";
 							$res = mysql_query($sql);
 							$ret = mysql_fetch_array($res);
-							$name = $ret['name'];
+							$name = $ret['user_name'];
 							echo "<td id='$id'class='change'width='100'>";?>
-							<input name = attendance_no<?= $row?>[<?= $col?>] type="hidden" value = <?= $attendance_no ?>>
+							<input name = user_seq<?= $row?>[<?= $col?>] type="hidden" value = <?= $user_seq ?>>
 							<?php echo " <p>$name</p></td>";
 						}
 
@@ -122,8 +116,7 @@
 			}
 			echo "</tr>";
 		}
-			//mysqlへの接続を閉じる
-	mysql_close($link)or die("mysql切断に失敗しました。");
+
 
 		echo "<input name=class type=hidden value=$class>";
 		echo "<input name=row_max type=hidden value=$row_max>";
