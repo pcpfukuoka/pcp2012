@@ -24,7 +24,8 @@
 	$result = mysql_query($sql);
 	$num = mysql_num_rows($result);
 
-	$sql = "SELECT attendance.group_seq, m_group.group_name AS group_name FROM attendance
+	$sql = "SELECT attendance.group_seq, m_group.group_name AS group_name
+			FROM attendance
 			LEFT JOIN m_group ON attendance.group_seq = m_group.group_seq
 			WHERE m_group.class_flg = 1";
 	$result_2 = mysql_query($sql);
@@ -44,6 +45,7 @@
 	</head>
 
 	<body>
+
 		<div align="center">
 			<font size="7">一覧</font>
 			<br>
@@ -62,6 +64,7 @@
 			<!-- 日付とクラスを検索すると、画面遷移することなく一覧が表示される -->
 			<!-------------------------------------------------------------------->
 
+
 			<table>
 				<tr>
 					<td align="center" width="80" bgcolor="yellow"><font size="5">年月</font></td>
@@ -72,32 +75,52 @@
 				<tr>
 					<td align="center"width="80">
 						<select>
-						<option value="-1">選択</option>
 							<?php
-							for($i = 0; $i < $num; $i++)
-							{
-								$row = mysql_fetch_array($result);
+								$check_flg1 = 0;
+								for($i = 0; $i < $num; $i++)
+								{
+									$row = mysql_fetch_array($result);
+									if($check_flg1 == 0)
+									{
 							?>
-								<option value="<?= $row['select_date'] ?>"><?= $row['select_date'] ?></option>
-
+							<option value="<?= $row['select_date'] ?>" selected="selected"><?= $row['select_date'] ?></option>
 							<?php
-							}
+										$check_flg1 = 1;
+									}
+									else
+									{
+							?>
+							<option value="<?= $row['select_date'] ?>"><?= $row['select_date'] ?></option>
+							<?php
+									}
+								}
 							?>
 
 						</select>
 					</td>
 
+
 					<td align="center"width="100">
 						<select>
-						<option value="-1">選択</option>
-						  	<?php
-							   for ($i = 0; $i < $cnt; $i++)
-							   {
-							   		$row = mysql_fetch_array($result_2);
+							<?php
+								$check_flg2 = 0;
+								 for ($i = 0; $i < $cnt; $i++)
+								{
+									$row = mysql_fetch_array($result_2);
+									if($check_flg2 == 0)
+									{
 						  	?>
-							    	<option value="<?=$row['group_seq']?>"><?= $row['group_name'] ?></option>
+							<option value="<?=$row['group_seq']?>" selected="selected"><?= $row['group_name'] ?></option>
 						  	<?php
-						    	}
+						  				$check_flg2 = 1;
+						  			}
+						  			else
+						  			{
+						  	?>
+							<option value="<?=$row['group_seq']?>"><?= $row['group_name'] ?></option>
+							<?php
+						  			}
+								}
 						  	?>
 						</select>
 					</td>
@@ -109,9 +132,11 @@
 		</div>
 		<br><br><br>
 
-		<table align="center" id="SearchResult" border = "1">
+		<div align="center">
+			<table  id="SearchResult" border = "1">
 
-		</table >
+			</table>
+		</div>
 
 	</body>
 	<script>
@@ -183,5 +208,4 @@
 		}
 
 	</script>
-
 </html>
