@@ -28,7 +28,7 @@
 				$sql = "insert into m_subject values(0, '$subj_name', 0, 0)";//教科データ書き込み
 				mysql_query($sql);
 				
-				$sql = "SELECT subject_seq FROM m_subject WHERE delete_flg = 0 AND subject_seq = $user_seq ORDER BY subject_seq DESC";
+				$sql = "SELECT subject_seq FROM m_subject WHERE delete_flg = 0 ORDER BY subject_seq DESC";
 				
 				$res_subj = mysql_query($sql);
 				$row = mysql_fetch_array($res_subj);
