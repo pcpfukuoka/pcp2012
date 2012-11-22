@@ -11,7 +11,7 @@
 	</head>
 
 	<body>
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<font size = "5">送信を完了しました！！</font>
 		</div>

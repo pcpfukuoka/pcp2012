@@ -11,7 +11,7 @@
 		<script src="../javascript/frame_jump.js"></script>
 	</head>
 	<body>
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
 			<font class="Cubicfont">ユーザ管理</font>

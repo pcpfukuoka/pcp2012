@@ -69,11 +69,10 @@
 							$user_name = $row['user_name'];
 							$user_seq = $row['user_seq']?>
 
-							<td class='sample'width='150'>
+							<td class="sample" width="150">
 							<?=$user_name?>
-								<input type="button" data-id="<?=$user_seq?>" id="Attendance_<?=$user_seq?>" class="Attendance" value="出席">
-								<input type="button" data-id="<?=$user_seq?>" id="Absence_<?=$user_seq?>" class="Absence" value="欠席">
-								<input type="hidden" value="<?=$class ?>">
+								<input type="button" data-id="<?= $user_seq?>" id="Attendance_<?=$user_seq?>" class="Attendance" value="出席">
+								<input type="button" data-id="<?= $user_seq?>" id="Absence_<?=$user_seq?>" class="Absence" value="欠席">
 							</td>
 					<?php
 						}
@@ -92,30 +91,38 @@
 		$(function() {
 
 			//検索結果から権限を追加するための処理
-			$(document).on('click', '.checkUser', function() {
+			$(document).on('click', '.Attendance', function() {
 				//選択したli要素からdata-idを取得する(data-idはm_userのuser_seq)
-		        var id = $(this).parent().data('id');
-		        //表示しているユーザ名を取得
-		        var user_name = $('#user_name_'+id).html();
+		        var id = $(this).data('id');
 		        //ポストでデータを送信、宛先でDB処理を行う
-		        $.post('_seatlist.php', {
+		        $.post('_seatlist_attendance.php', {
 		            id: id,
-		            gs: <?= $group_seq ?>
+		            class: <?= $class ?>
 		        },
 		        //戻り値として、user_seq受け取る
 		        function(rs) {
-			        //選択した要素のIDを指定して削除
-		        	$('#list_user_'+id).fadeOut(800);
 
-					//追加して表示する内容を設定
-		        	var e = $(
-		                    '<li id="select_user_'+rs+'" data-id="'+rs+'">' +
-		                    '<input type="checkbox" class="delete_user"> ' +
-		                    '<span></span> ' +
-		                    '</li>'
-		                );
-	            	//id=select_userにe要素を追加
-	                $('#select_user').append(e).find('li:last span:eq(0)').text(user_name);
+		        	$('#Attendance_'+id).remove();
+		        	$('#Absence_'+id).remove();
+
+		        });
+		    });
+
+			//検索結果から権限を追加するための処理
+			$(document).on('click', '.Absence', function() {
+				//選択したli要素からdata-idを取得する(data-idはm_userのuser_seq)
+		        var id = $(this).data('id');
+		        //ポストでデータを送信、宛先でDB処理を行う
+		        $.post('_seatlist_absence.php', {
+		            id: id,
+		            class: <?= $class ?>
+		        },
+		        //戻り値として、user_seq受け取る
+		        function(rs) {
+
+		        	$('#Attendance_'+id).remove();
+		        	$('#Absence_'+id).remove();
+
 		        });
 		    });
 
