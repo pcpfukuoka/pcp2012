@@ -152,15 +152,32 @@
 				<?php 
 				for($i = 0; $i < $count; $i++)//教科分データ取り出し
 				{
+					$chk = 0;
 					$row = mysql_fetch_array($result);
 					$subj_ID = $row['subject_seq'];
 					
-/*					$subj_sql = "SELECT  subject_seq FROM m_teacher WHERE delete_flg = 0 AND subject_seq = $subj_ID";
-					$subj_res = mysql_query($subj_sql);
-					$subj_row = mysql_fetch_array($subj_res);
-					if(!isset($subj_row))
+					$sql = "SELECT subject_seq
+					FROM m_teacher
+					WHERE delete_flg = 0
+					GROUP BY subject_seq;";
+						
+					
+					$result_user = mysql_query($sql);
+					$count_user = mysql_num_rows($result_user);
+						
+					for ($j = 0; $j < $count_user; $j++)
 					{
-	*/				
+						$teacher = mysql_fetch_array($result_user);
+					
+						if ($teacher['subject_seq'] == $subj_ID)
+						{
+							$chk = 1;
+							break;
+						}
+					}
+					if ($chk == 0)
+					{
+					
 						?>
 						<tr>
 						<td align = "center"><?= $row['subject_name'] ?></td>
@@ -168,7 +185,7 @@
 						</td>
 						</tr>
 					<?php 
-//					}
+					}
 				}
 				?>
 				</table><br>
@@ -182,3 +199,6 @@
 			<a href="res_main.php">トップへ戻る</a>
 	</body>
 </html>
+<?php
+
+
