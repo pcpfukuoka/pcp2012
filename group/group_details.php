@@ -5,10 +5,10 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 	//これでDBを呼び出す関数が使えるようになる
-	
+
 	//グループSEQをGETで取得した場合
 	if(isset($_GET['id']))
-	{	
+	{
 		//IDを格納
 		$group_seq = $_GET['id'];
 		//グループの基本情報を取得
@@ -17,13 +17,13 @@
 		$group_info_row = mysql_fetch_array($group_info_result);
 		$group_name = $group_info_row['group_name'];
 		//グループの詳細情報を取得
-		$sql = "SELECT 
-				m_group.group_name, 
-				m_user.user_name, 
-				m_user.user_id, 
-				group_details.group_details_seq, 
+		$sql = "SELECT
+				m_group.group_name,
+				m_user.user_name,
+				m_user.user_id,
+				group_details.group_details_seq,
 				group_details.group_seq,
-				m_student.student_id 
+				m_student.student_id
 				FROM group_details
 				LEFT JOIN m_group ON group_details.group_seq = m_group.group_seq AND m_group.delete_flg = 0
 				LEFT JOIN m_user ON group_details.user_seq = m_user.user_seq AND m_user.delete_flg = 0
@@ -34,10 +34,10 @@
 	}
 	else
 	{
-		header("Location:./dummy.html");	
+		header("Location:./dummy.html");
 	}
-	
-	
+
+
 	Dbdissconnect($dbcon);
 
 ?>
@@ -48,45 +48,54 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-		 
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	</head>
 
 	<body>
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<div align = "center">
-			<font size = "7"><?= $group_name ?></font>
+			<font class="Cubicfont1"><?= $group_name ?></font>
 			<hr color = "blue">
-				<table border = "1" bordercolor = "black">
+				<table class="table_01">
 					<tr bgcolor = "yellow">
-						<td>削除</td>
-						<td>名前</td>
-						<td>ＩＤ</td>
-						<td>学籍番号</td>
+						<td><font size="5">削除</font></td>
+						<td><font size="5">名前</font></td>
+						<td><font size="5">ＩＤ</font></td>
+						<td><font size="5">学籍番号</font></td>
 					</tr>
-					
+
 					<?php
 						for($i = 0; $i < $cnt; $i++)
 						{
 							$g_user_row = mysql_fetch_array($result);
 					?>
 						<tr id = "user_<?= $g_user_row['group_details_seq'] ?>">
-							<td><input id="check_user_<?= $g_user_row['group_details_seq'] ?>" class="checkUser" data-id="<?= $g_user_row['group_details_seq'] ?>" type = "checkbox" value = "<?= $g_user_row['user_name'] ?>"></td>
-							<td><?= $g_user_row['user_name'] ?></td>
-							<td><?= $g_user_row['user_id'] ?></td>
-							<td><?= $g_user_row['student_id'] ?></td>
+							<th><input id="check_user_<?= $g_user_row['group_details_seq'] ?>" class="checkUser" data-id="<?= $g_user_row['group_details_seq'] ?>" type = "checkbox" value = "<?= $g_user_row['user_name'] ?>"></th>
+							<th><?= $g_user_row['user_name'] ?></th>
+							<th><?= $g_user_row['user_id'] ?></th>
+							<th><?= $g_user_row['student_id'] ?></th>
 						</tr>
 					<?php
 						}
 					?>
 				</table>
-			<div>				
-				<input type = "submit" value = "ユーザを追加" name = "u_add" onclick="user_add()">
-				<input type = "submit" value = "グループを削除" name = "g_delete" onclick="group_delete()">
-				<input type = "submit" value = "ユーザ削除完了" name = "u_delete" onclick="user_delete()">
-				<input type = "submit" value = "ユーザ削除中止" name = "u_reset" onclick="user_reset()">
+			<div>
+			<table>
+				<tr>
+					<td><input class="button4" type = "submit" value = "ユーザを追加" name = "u_add" onclick="user_add()"></td>
+					<td><input class="button4" type = "submit" value = "グループを削除" name = "g_delete" onclick="group_delete()"></td>
+					<td><input class="button4" type = "submit" value = "ユーザ削除完了" name = "u_delete" onclick="user_delete()"></td>
+					<td><input class="button4" type = "submit" value = "ユーザ削除中止" name = "u_reset" onclick="user_reset()"></td>
+				</tr>
+			</table>
 				</div>
 		</div>
+		</div>
 	</body>
-	
+
 	<script type="text/javascript">
 	function group_delete()
 	{
@@ -136,7 +145,7 @@
 			        //選択した要素のIDを指定して削除
 			        if(flg == "true")
 			        {
-			        	$('#user_'+id).fadeOut(800);    
+			        	$('#user_'+id).fadeOut(800);
 			        }
 			        else
 			        {

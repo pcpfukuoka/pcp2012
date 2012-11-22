@@ -22,28 +22,35 @@ Dbdissconnect($link);
 	<head>
 		<title></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 	<!-- 編集確定画面に飛ぶ -->
 		<form action = "autho_edit_dec.php" method = "POST">
 			<div align = "center">
-				<font size = "6">編集確認画面</font>
-			</div><hr><br><br><br>
+				<font class="Cubicfont">編集確認画面</font>
+			</div><hr color="blue"><br><br><br>
 			
 			<!-- 権限グループの名前を表示 -->
 			名前：<?= $_POST['edit_name'] ?>
 			<input type = "hidden" name = "edit_name" value = "<?= $_POST['edit_name'] ?>">
 			
 			<!-- テーブルの作成 -->
-			<table border = "1" width = "100%">
+			<table  class="table_01">
 				<tr>
-					<td width = "25%" align = "center">ページ名</td>
-					<td width = "15%" align = "center">read</td>
-					<td width = "15%" align = "center">write</td>
-					<td width = "15%" align = "center">delete</td>
-					<td width = "15%" align = "center">update</td>
-					<td width = "15%" align = "center">delivery</td>
+					<td width = "25%" align = "center" ><font size="5">ページ名</font></td>
+					<td width = "15%" align = "center" ><font size="5">read</font></td>
+					<td width = "15%" align = "center" ><font size="5">write</font></td>
+					<td width = "15%" align = "center" "><font size="5">delete</font></td>
+					<td width = "15%" align = "center" ><font size="5">update</font></td>
+					<td width = "15%" align = "center" ><font size="5">delivery</font></td>
 				</tr>
 				
 				<?php
@@ -54,13 +61,13 @@ Dbdissconnect($link);
 					$page = mysql_fetch_array($result);
 				?>
 					<tr>
-						<td align = "center"><?= $page['page_name'] ?></td>		<!--  ページ名の表示	-->
+						<th align = "center"><?= $page['page_name'] ?></th>		<!--  ページ名の表示	-->
 					<?php
 					for($j = 0; $j < 5; $j++)
 						{
 							$autho_edit = "autho_edit".$autho_chk;
 					?>
-						<td>
+						<th>
 						<?php if($_POST[$autho_edit])
 							{
 						?>
@@ -77,7 +84,7 @@ Dbdissconnect($link);
 							}
 							$autho_chk++;
 						?>
-						</td>
+						</th>
 						<?php 
 						}
 						?>
@@ -86,8 +93,14 @@ Dbdissconnect($link);
 				}
 				?>	
 			</table><br>
-			<input type = "submit" value = "登録">
-			<input type="button" value="戻る" onClick="history.back()">
+			<table>
+				<tr>
+					<td><input class="button4" type = "submit" value = "登録"></td>
+					<td><input class="button4" type="button" value="戻る" onClick="history.back()"></td>
+				</tr>
+			</table>
+			
 		</form>
+		</div>
 	</body>
 </html>

@@ -25,22 +25,28 @@ $autho_seq = $_SESSION['autho_sel'];
 <html>
 	<head>
 		<title>権限アカウント確認一覧</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>	
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<meta http-equiv="Content-Style-Type" content="text/css">
-		<link rel="stylesheet" type="text/css" href="../css/button.css" />	
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
-	
+
 	<body>
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+
 		<div align = "center">
-			<font size = "6">権限アカウント一覧画面</font><hr>
+			<font class="Cubicfont">権限アカウント一覧画面</font><hr>
 		</div><br><br>
-		
+
 <!-- 		テープルの作成 -->
-		<table border = "1" width = "50%">
+		<table class="table_01">
 			<tr>
-				<td width = "50%" align = "center">アカウント名</td>
+				<td width = "50%" align = "center"><font size="5">アカウント名</font></td>
 			</tr>
-			
+
 			<?php
 			for($i = 0; $i < $count_page; $i++)
 			{
@@ -48,13 +54,14 @@ $autho_seq = $_SESSION['autho_sel'];
 				$page = mysql_fetch_array($result);
 			?>
 				<tr>
-					<td align = "center"><?= $page['user_name'] ?></td>		<!--  ページ名の表示	-->
-				
-					<?php 
+					<th align = "center"><?= $page['user_name'] ?></th>		<!--  ページ名の表示	-->
+
+					<?php
 			}
 					?>
 		</table><br>
 		<a href="autho_main.php">トップへ戻る</a>
 		<input class="button4" type="button" value="戻る" onClick="history.back()">
+		</div>
 	</body>
 </html>

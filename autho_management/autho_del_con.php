@@ -27,22 +27,30 @@ Dbdissconnect($link);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<meta http-equiv="Content-Style-Type" content="text/css">
+	  	<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />		  	
 		<title>権限削除確認</title>
 	</head>
 
 	<body>
+		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<form action = "autho_del_dec.php">
-			<table border = "1">
+			<table class="table_01">
 				<tr>
-					<th>権限グループ名</th>
+					<td bgcolor="Yellow"><font size="5">権限グループ名</font></td>
 				</tr>
 				<tr>
-					<td><?= $name['autho_name'] ?></td>
+					<th><?= $name['autho_name'] ?></th>
 				</tr>
 			</table>
 			
-			<input type = "submit" value = "確定"><br>
+			<br>
+			<input class="button4" type = "submit" value = "確定"><br>
 			<a href="autho_main.php">トップへ戻る</a>
 		</form>
+		</div>
 	</body>
 </html>

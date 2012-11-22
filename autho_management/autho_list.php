@@ -44,22 +44,28 @@ $autho_seq = $_SESSION['autho_sel'];
 	<head>
 		<title>権限管理一覧</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 
 	<body>
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<div align = "center">
-			<font size = "6">権限管理一覧画面</font><hr>
+			<font class="Cubicfont">権限管理一覧画面</font><hr color="blue">
 		</div><br><br>
 
 <!-- 		テープルの作成 -->
-		<table border = "1" width = "100%">
+		<table width = "100%" class="table_01">
 			<tr>
-				<td width = "25%" align = "center">ページ名</td>
-				<td width = "15%" align = "center">read</td>
-				<td width = "15%" align = "center">write</td>
-				<td width = "15%" align = "center">delete</td>
-				<td width = "15%" align = "center">update</td>
-				<td width = "15%" align = "center">delivery</td>
+				<td width = "25%" align = "center" ><font size="5">ページ名</font></td>
+				<td width = "15%" align = "center" ><font size="5">read</font></td>
+				<td width = "15%" align = "center" ><font size="5">write</font></td>
+				<td width = "15%" align = "center" ><font size="5">delete</font></td>
+				<td width = "15%" align = "center" ><font size="5">update</font></td>
+				<td width = "15%" align = "center" ><font size="5">delivery</font></td>
 			</tr>
 
 			<?php
@@ -69,7 +75,7 @@ $autho_seq = $_SESSION['autho_sel'];
 				$page = mysql_fetch_array($result);
 			?>
 				<tr>
-					<td align = "center"><?= $page['page_name'] ?></td>		<!--  ページ名の表示	-->
+					<th align = "center"><?= $page['page_name'] ?></td>		<!--  ページ名の表示	-->
 
 					<?php
 					require_once("../lib/autho.php");
@@ -79,7 +85,7 @@ $autho_seq = $_SESSION['autho_sel'];
 					for($j = 0; $j < 5; $j++)
 					{
 					?>
-					<td align = "center">
+					<th align = "center">
 					<?php
 					//権限の○×表示
 					if($page_cla[$j])
@@ -91,7 +97,7 @@ $autho_seq = $_SESSION['autho_sel'];
 							echo "×" ;
 						}
 					?>
-					</td>
+					</th>
 					<?php
 					}
 					?>
@@ -101,5 +107,6 @@ $autho_seq = $_SESSION['autho_sel'];
 			?>
 		</table><br>
 		<a href="autho_main.php">トップへ戻る</a>
+		</div>
 	</body>
 </html>

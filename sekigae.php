@@ -4,9 +4,9 @@ $ninzu = 30;
 //�����_���ɔԍ�����
 	$numbers = range(1, $ninzu);
 	shuffle($numbers);
-	for ($i = 0; $i < $ninzu; $i++) 
+	for ($i = 0; $i < $ninzu; $i++)
 	{
-		$ban[$i] = $numbers[$i]; 
+		$ban[$i] = $numbers[$i];
 	}
 
 //$sheetnames = 'Sheet2';
@@ -20,11 +20,11 @@ include 'PHPExcel/IOFactory.php';
 //�e���v���[�g��ǂݍ���ŃC���X�^���X��
 $objReader = PHPExcel_IOFactory::createReader("Excel5");
 $objPHPExcel = $objReader->load("zasekihyo.xls");
-            
+
 //�f�[�^�̃Z�b�g
 
 $row = 4;
-for ($i = 0; $i < $ninzu; $i++) 
+for ($i = 0; $i < $ninzu; $i++)
 		{
         $objPHPExcel->getSheetByName('list')->setCellValueExplicitByColumnAndRow(4, $row, $ban[$i], PHPExcel_Cell_DataType::TYPE_STRING);
 				$row++;

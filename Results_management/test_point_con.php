@@ -3,9 +3,12 @@
  * 点数確認画面
  *******************************/
 
+//セッションの開始
+session_start();
+
 //test_seqとgroup_seqを受け取る
-$test_seq = $_POST['test_seq'];
-$group = $_POST['group'];
+$test_seq = $_SESSION['test_seq'];
+$group_seq = $_SESSION['group_seq'];
 
 //DBに接続
 require_once("../lib/dbconect.php");
@@ -17,7 +20,7 @@ $link = DbConnect();
 $sql = "SELECT m_user.user_seq, m_user.user_name 
 		FROM m_user, group_details 
 		WHERE m_user.user_seq = group_details.user_seq 
-		AND group_details.group_seq = '$group' 
+		AND group_details.group_seq = '$group_seq' 
 		GROUP BY m_user.user_seq 
 		ORDER BY m_user.user_seq;";
 $result_user = mysql_query($sql);
@@ -58,8 +61,6 @@ Dbdissconnect($link);
 				?>
 			</table>
 			
-			<input type = "hidden" name = "group" value = "<?= $group ?>">
-			<input type = "hidden" name = "test_seq" value = "<?= $test_seq ?>">
 			<input type = "submit" value = "確定">
 			<input type="button" value="戻る" onClick="history.back()">
 		</form>

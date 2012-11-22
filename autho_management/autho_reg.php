@@ -29,13 +29,17 @@ $autho_seq = $_SESSION['autho_sel'];
 		<title>権限アカウント追加</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<meta http-equiv="Content-Style-Type" content="text/css">
-	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
+	 	<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 	</head>
 	<body>
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<div align = "center">
-			<font size = "6">権限管理一覧画面</font><hr>
+			<font class="Cubicfont">権限管理一覧画面</font><hr color="blue">
 		</div><br><br>
 		<form action="autho_reg.php" method="POST">
 			<input type="radio" name="q1" value="name" checked>名前
@@ -49,7 +53,7 @@ $autho_seq = $_SESSION['autho_sel'];
 		$sql = "";
 		if(isset($_POST['query']))
 		{
-			
+
 			if(isset($_POST['q1']) && $_POST['q1'] == "name")
 			{
 				//チェックボックスを確認
@@ -62,17 +66,17 @@ $autho_seq = $_SESSION['autho_sel'];
 				$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND user_seq LIKE '$user_id%';";
 			}
 		}
-		else 
+		else
 		{
 			//検索用データ取得
 			$sql = "SELECT * FROM m_user WHERE delete_flg = 0;";
 		}
-		
+
 		$result = mysql_query($sql);
 		$cnt = mysql_num_rows($result);
-		
+
 		Dbdissconnect($link);
-		
+
 		for($i = 0; $i < $cnt; $i++)
 		{
 			$row = mysql_fetch_array($result);
@@ -147,8 +151,9 @@ $autho_seq = $_SESSION['autho_sel'];
 		<form action="auho_reg_com.php" method="GET">
 		<input class="button4" type="submit" value="登録確認">
 		</form>
-		
+
 <font color = "Red">中止する場合は選択リストの中身を必ず空にしてから変更完了をクリックしてください</font>
 <a href="autho_main.php">変更完了</a>
+	</div>
 	</body>
 </html>
