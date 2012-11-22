@@ -9,9 +9,9 @@ $stand_flg = $_POST['stand_flg'];
 
 //DBの接続
 require_once("../lib/dbconect.php");
-//$link = DbConnect();
-$link = mysql_connect("tamokuteki41", "root", "");
-mysql_select_db("pcp2012");
+$link = DbConnect();
+//$link = mysql_connect("tamokuteki41", "root", "");
+//mysql_select_db("pcp2012");
 
 //テストのデータの一覧表示させるためのSQL文作成
 //グループは必ず何かが選択されている

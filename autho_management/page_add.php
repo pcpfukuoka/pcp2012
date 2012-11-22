@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../css/button.css" />
 <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+<link rel="stylesheet" type="text/css" href="../css/table.css" />
 </head>
 <body>
 <img class="bg" src="../../images/blue-big.jpg" alt="" />
@@ -29,9 +30,9 @@
 
 	<font class="Cubicfont1">ページ追加</font>
 	</div><br><br>
-   <table border="1" width="50%">
+   <table width="50%" class="table_01">
     <tr>
-     <th width="50%" bgcolor="Yellow">ページ一覧</th>
+     <td><font size="5">ページ一覧</font></td>
      </tr>
      <?php 
     for($i = 0; $i < $count; $i++)
@@ -39,7 +40,7 @@
     	$row = mysql_fetch_array($result);
 	?>       	
     <tr>
-    <td align = "center"><?= $row['page_name'] ?></td>
+    	<th  align = "center"><?= $row['page_name'] ?></th>
     
     <?php 
 	}
@@ -74,10 +75,10 @@
 	    <form action = "page_del_con.php" method = "POST">
 	    
 	    <!-- テーブルの作成 -->
-	    	<table border="1" width="70%">
+	    	<table width="70%" class="table_01">
 	    		<tr>
-	     			<th width="50%" bgcolor="Yellow">ページ名</th>
-	     			<th width = "20%" bgcolor="Yellow">削除チェック</th>
+	     			<td width="50%" bgcolor="Yellow"><font size="5">ページ名</font></td>
+	     			<td width = "20%" bgcolor="Yellow"><font size="5">削除チェック</font></td>
 	     		</tr>
 	     		
 	     		<?php 
@@ -88,8 +89,8 @@
 					<input type = "hidden" name = "del_chk<?= $i ?>" value = "0">
 					<tr>
 					<!-- ページ名の表示とチェックボックスの作成 -->
-						<td align = "center"><?= $name['page_name'] ?></td>
-						<td align = "center"><input type = "checkbox" name = "del_chk<?= $i ?>" value = "<?= $name['page_seq'] ?>">
+						<th align = "center"><?= $name['page_name'] ?></th>
+						<th align = "center"><input type = "checkbox" name = "del_chk<?= $i ?>" value = "<?= $name['page_seq'] ?>">
 					</tr>
 				<?php
 				}

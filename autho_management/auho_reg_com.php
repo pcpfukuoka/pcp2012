@@ -30,6 +30,7 @@ $autho_seq = $_SESSION['autho_sel'];
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 
 	<body>
@@ -41,9 +42,9 @@ $autho_seq = $_SESSION['autho_sel'];
 		</div><br><br>
 
 <!-- 		テープルの作成 -->
-		<table border = "1" width = "50%">
+		<table class="table_01">
 			<tr>
-				<td width = "50%" align = "center">アカウント名</td>
+				<td width = "50%" align = "center"><font size="5">アカウント名</font></td>
 			</tr>
 
 			<?php
@@ -53,7 +54,7 @@ $autho_seq = $_SESSION['autho_sel'];
 				$page = mysql_fetch_array($result);
 			?>
 				<tr>
-					<td align = "center"><?= $page['user_name'] ?></td>		<!--  ページ名の表示	-->
+					<th align = "center"><?= $page['user_name'] ?></th>		<!--  ページ名の表示	-->
 
 					<?php
 			}

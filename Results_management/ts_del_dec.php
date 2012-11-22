@@ -1,16 +1,17 @@
 <html>
 	<head>
 		<title>削除画面</title>
+		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=res_main.php">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 	</head>
 	<body>
 		<?php
 		require_once("../lib/dbconect.php");
-		//$link = DbConnect();
-		$link = mysql_connect("tamokuteki41", "root", "");//練習用サーバ
-		mysql_select_db("pcp2012");
+		$link = DbConnect();
+		//$link = mysql_connect("tamokuteki41", "root", "");//練習用サーバ
+		//mysql_select_db("pcp2012");
 		
-			$sql = "UPDATE m_teacher SET delete_flg = 1 WHERE delet_sub_flg = 1;";
+			$sql = "UPDATE m_teacher SET delete_flg = 1 WHERE delete_sub_flg = 1;";
 			mysql_query($sql);
 			$sql = "SELECT subject_seq FROM m_subject WHERE delete_flg = 0";
 			$result = mysql_query($sql);
@@ -29,7 +30,6 @@
 				}
 			}
 		?>
-		データベースへ送信しました
-		<a href="res_main.php">トップへ戻る</a>
+		登録しました
 	</body>
 </html>
