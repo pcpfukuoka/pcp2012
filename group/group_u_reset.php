@@ -28,19 +28,20 @@
 	<head>
 	<meta http-equiv="Content-Style-Type" content="text/css">
 	<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	<body>
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 
 			<div align = "center">
 			<font size = "7"><?= $group_name ?></font>
 			<hr color = "blue">
-				<table border = "1" bordercolor = "black">
+				<table class="table_01">
 					<tr bgcolor = "yellow">
-						<td>名前</td>
-						<td>ＩＤ</td>
-						<td>学籍番号</td>
+						<td><font size="5">名前</font></td>
+						<td><font size="5">ＩＤ</font></td>
+						<td><font size="5">学籍番号</font></td>
 					</tr>
 
 					<?php
@@ -49,9 +50,9 @@
 							$g_user_row = mysql_fetch_array($result);
 					?>
 						<tr id = "user_<?= $g_user_row['group_details_seq'] ?>">
-							<td><?= $g_user_row['user_name'] ?></td>
-							<td><?= $g_user_row['user_id'] ?></td>
-							<td><?= $g_user_row['student_id'] ?></td>
+							<th><?= $g_user_row['user_name'] ?></th>
+							<th><?= $g_user_row['user_id'] ?></th>
+							<th><?= $g_user_row['student_id'] ?></th>
 						</tr>
 					<?php
 						}

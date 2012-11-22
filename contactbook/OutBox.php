@@ -27,11 +27,12 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<title>送信ボックス</title>
 	</head>
 
 	<body>
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
 			<font class="Cubicfont">送信ボックス</font><br><br>
@@ -46,7 +47,7 @@
 		</div>
 		<div align="center">
 		<br>
-			<table border="1">
+			<table class="table_01">
 				<tr bgcolor="yellow">
 					<td align="center"width="150"><font size="5">日付</font></td>
 					<td align="center"width="200"><font size="5">TO</font></td>
@@ -58,12 +59,12 @@
 				?>
 
 				<tr>
-					<td><?= $row['send_date'] ?></td>
-					<td><?= $row['reception_user_name'] ?></td>
-					<td>
+					<th><?= $row['send_date'] ?></th>
+					<th><?= $row['reception_user_name'] ?></th>
+					<th>
 						<!-- GETでシークを渡す -->
 						<a href="sendview.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
-					</td>
+					</th>
 				</tr>
 				<?php
 					}

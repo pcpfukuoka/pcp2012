@@ -17,11 +17,12 @@
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<title>グループ追加</title>
 	</head>
 
 	<body>
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<form action = "group_g_add_db.php" method = "POST">
 
@@ -33,18 +34,18 @@
 				<br>
 				<br>
 
-				<table border = "1" bordercolor = "black">
-					<tr  bgcolor = "yellow" align = "center">
-						<td>グループ名</td>
-						<td>権限</td>
+				<table class="table_01">
+					<tr  align = "center">
+						<td><font size="5">グループ名</font></td>
+						<td><font size="5">権限</font></td>
 					</tr>
 
 					<tr>
-						<td>
+						<th>
 							<input type="text" size="50" name = "new_group_name">
-						</td>
+						</th>
 
-						<td>
+						<th>
 							<select name = "autho_select">
 								<?php
 									for($i = 0; $i < $cnt; $i++)
@@ -56,7 +57,7 @@
 									}
 								?>
 							</select>
-						</td>
+						</th>
 					</tr>
 				</table>
 				<br>

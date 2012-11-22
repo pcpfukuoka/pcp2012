@@ -1,0 +1,26 @@
+@CHARSET "windows-31j";
+
+.table_01 {
+/*width:100%;margin:0px 0px 10px 0px;padding:0px;*/
+text-align:center;
+border-collapse:separate;
+border-spacing:0px;
+border-top:1px solid #663300;
+border-left:1px solid #663300;
+empty-cells:show;
+}
+.table_01 td {
+/*width:25%;padding:4px 2px 2px 4px;*/
+text-align:center;
+vertical-align:top;color:#FFFFFF;
+background-color:#DC143C;
+border-top:1px solid #FFE7CE;border-left:1px solid #FFE7CE;
+border-right:1px solid #663300;border-bottom:1px solid #663300;
+}
+.table_01 th {
+
+padding:4px 2px 2px 4px;
+background-color:#FFE7CE;
+border-right:1px solid #663300;
+border-bottom:1px solid #663300;
+}

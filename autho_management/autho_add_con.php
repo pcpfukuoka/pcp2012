@@ -6,11 +6,12 @@
 	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
 	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	  <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+	  <link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	<body>
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
-	
+
 	<form action="autho_add_dec.php" method="POST">
       <?php
    require_once("../lib/dbconect.php");
@@ -35,14 +36,14 @@
 			 *********************************************************/
 			?>
 	名前<?= $group_name ?>
-	<table border="1" width="100%">
+	<table width="100%" class="table_01">
     <tr>
-     <th width="50%" bgcolor="Yellow">ページ名</th>
-     <th width="10%" bgcolor="Yellow">Read</th>
-     <th width="10%" bgcolor="Yellow">Delete</th>
-     <th width="10%" bgcolor="Yellow">Write</th>
-     <th width="10%" bgcolor="Yellow">Update</th>
-     <th width="10%" bgcolor="Yellow">delivery</th>
+     <td width="50%" ><font size="5">ページ名</font></td>
+     <td width="10%" ><font size="5">Read</font></td>
+     <td width="10%" ><font size="5">Delete</font></td>
+     <td width="10%" ><font size="5">Write</font></td>
+     <td width="10%" ><font size="5">Update</font></td>
+     <td width="10%" ><font size="5">delivery</font></td>
     </tr>
     <?php
     for($i = 0; $i < $count; $i++)
@@ -140,12 +141,12 @@
 		?>
 
 	    <tr>
-	    <td align = "center"><?= $row['page_name'] ?></td>
-	    <td align="center"><?= $Read ?></td>
-	    <td align="center"><?= $Delete ?></td>
-	    <td align="center"><?= $Write ?></td>
-	    <td align="center"><?= $Update ?></td>
-	    <td align="center"><?= $delivery ?></td>
+	    <th align = "center"><?= $row['page_name'] ?></th>
+	    <th align="center"><?= $Read ?></th>
+	    <th align="center"><?= $Delete ?></th>
+	    <th align="center"><?= $Write ?></th>
+	    <th align="center"><?= $Update ?></th>
+	    <th align="center"><?= $delivery ?></th>
 	    </tr>
 	<?php
     }

@@ -6,9 +6,10 @@
   <link rel="stylesheet" type="text/css" href="../css/button.css" />
   <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
   <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+  <link rel="stylesheet" type="text/css" href="../css/table.css" />
  </head>
   <body>
-  		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+  		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
   <form action="autho_add_con.php" method="POST">
    <?php
@@ -36,14 +37,14 @@
    			?>
    名前<input size ="15" type="text" name="group_name"><!-- グループ名入力 -->
 
-   <table border="1" width="100%">
+   <table width="100%" class="table_01">
     <tr>
-     <th width="50%" bgcolor="Yellow">ページ名</th>
-     <th width="10%" bgcolor="Yellow">Read</th>
-     <th width="10%" bgcolor="Yellow">Delete</th>
-     <th width="10%" bgcolor="Yellow">Write</th>
-     <th width="10%" bgcolor="Yellow">Update</th>
-     <th width="10%" bgcolor="Yellow">delivery</th>
+     <td width="50%" ><font size="5">ページ名</font></td>
+     <td width="10%" bgcolor="Yellow"><font size="5">Read</font></td>
+     <td width="10%" bgcolor="Yellow"><font size="5">Delete</font></td>
+     <td width="10%" bgcolor="Yellow"><font size="5">Write</font></td>
+     <td width="10%" bgcolor="Yellow"><font size="5">Update</font></td>
+     <td width="10%" bgcolor="Yellow"><font size="5">delivery</font></td>
     </tr>
     <?php
     /********************************************************
@@ -58,12 +59,12 @@
     	$row = mysql_fetch_array($result);
 	?>
     <tr>
-    <td align = "center"><?= $row['page_name'] ?></td>
-    <td><input  type="checkbox" name = "Read_<?= $row['page_seq'] ?>"></td>
-    <td><input type="checkbox" name = "Delete_<?= $row['page_seq'] ?>"></td>
-    <td><input type="checkbox" name = "Write_<?= $row['page_seq'] ?>"></td>
-    <td><input type="checkbox" name = "Update_<?= $row['page_seq'] ?>"></td>
-    <td><input type="checkbox" name = "delivery_<?= $row['page_seq'] ?>"></td>
+    <th align = "center"><?= $row['page_name'] ?></th>
+    <th><input  type="checkbox" name = "Read_<?= $row['page_seq'] ?>"></th>
+    <th><input type="checkbox" name = "Delete_<?= $row['page_seq'] ?>"></th>
+    <th><input type="checkbox" name = "Write_<?= $row['page_seq'] ?>"></th>
+    <th><input type="checkbox" name = "Update_<?= $row['page_seq'] ?>"></th>
+    <th><input type="checkbox" name = "delivery_<?= $row['page_seq'] ?>"></th>
     </tr>
   <?php
     }
@@ -77,7 +78,7 @@
     		<td><input class="button4" type="reset" value="クリア"> </td>
     	</tr>
     </table>
-    
+
     </form>
     <a href="autho_main.php">トップへ戻る</a>
     </div>

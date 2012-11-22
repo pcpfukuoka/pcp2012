@@ -26,6 +26,7 @@ Dbdissconnect($link);
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	
 	<body>
@@ -42,14 +43,14 @@ Dbdissconnect($link);
 			<input type = "hidden" name = "edit_name" value = "<?= $_POST['edit_name'] ?>">
 			
 			<!-- テーブルの作成 -->
-			<table border = "1" width = "100%">
+			<table  class="table_01">
 				<tr>
-					<td width = "25%" align = "center" bgcolor="Yellow">ページ名</td>
-					<td width = "15%" align = "center" bgcolor="Yellow">read</td>
-					<td width = "15%" align = "center" bgcolor="Yellow">write</td>
-					<td width = "15%" align = "center" bgcolor="Yellow">delete</td>
-					<td width = "15%" align = "center" bgcolor="Yellow">update</td>
-					<td width = "15%" align = "center" bgcolor="Yellow">delivery</td>
+					<td width = "25%" align = "center" ><font size="5">ページ名</font></td>
+					<td width = "15%" align = "center" ><font size="5">read</font></td>
+					<td width = "15%" align = "center" ><font size="5">write</font></td>
+					<td width = "15%" align = "center" "><font size="5">delete</font></td>
+					<td width = "15%" align = "center" ><font size="5">update</font></td>
+					<td width = "15%" align = "center" ><font size="5">delivery</font></td>
 				</tr>
 				
 				<?php
@@ -60,13 +61,13 @@ Dbdissconnect($link);
 					$page = mysql_fetch_array($result);
 				?>
 					<tr>
-						<td align = "center"><?= $page['page_name'] ?></td>		<!--  ページ名の表示	-->
+						<th align = "center"><?= $page['page_name'] ?></th>		<!--  ページ名の表示	-->
 					<?php
 					for($j = 0; $j < 5; $j++)
 						{
 							$autho_edit = "autho_edit".$autho_chk;
 					?>
-						<td>
+						<th>
 						<?php if($_POST[$autho_edit])
 							{
 						?>
@@ -83,7 +84,7 @@ Dbdissconnect($link);
 							}
 							$autho_chk++;
 						?>
-						</td>
+						</th>
 						<?php 
 						}
 						?>

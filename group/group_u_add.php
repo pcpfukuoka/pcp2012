@@ -26,7 +26,7 @@ if(isset($_GET['id']))
 		 <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
 	<body>
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align = "center">
 			<font class="Cubicfont">グループユーザ追加</font><hr>
@@ -142,7 +142,7 @@ if(isset($_GET['id']))
 			</script>
 		<form action="group_u_add_comp.php" method="GET">
 		<input class="button4" type="submit" value="登録完了">
-		
+
 		</form>
 		</div>
 	</body>
