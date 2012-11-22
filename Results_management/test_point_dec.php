@@ -46,11 +46,11 @@ Dbdissconnect($link);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=res_main.php">
 		<title>点数確定画面</title>
 	</head>
 	
 	<body>
 		点数を登録しました。
-		<a href="res_main.php">トップへ戻る</a>
 	</body>
 </html>

@@ -2,6 +2,7 @@
 	<head>
 		<title>ページ新規追加画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
+		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=res_main.php">
 	</head>
 	<body>
 		登録しました
@@ -66,6 +67,9 @@
 			}
 		Dbdissconnect($link);
 		?>
+<<<<<<< HEAD
 		
+=======
+>>>>>>> origin/HEAD
 	</body>
 </html>
