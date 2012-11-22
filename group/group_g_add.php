@@ -22,7 +22,7 @@
 	</head>
 
 	<body>
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<form action = "group_g_add_db.php" method = "POST">
 

@@ -19,7 +19,7 @@
 	</head>
 
 <body onLoad="setTimeout('subwin()', 5000)">
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 			<font size = "5">登録が完了しました！！</font>
 			</div>

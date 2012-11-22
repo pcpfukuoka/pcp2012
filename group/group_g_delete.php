@@ -25,7 +25,7 @@
 	</head>
 
 	<body>
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align = "center">
 			<p>
