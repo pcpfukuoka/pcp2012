@@ -12,7 +12,7 @@
 		//$link = mysql_connect("tamokuteki41", "root", "");//練習用サーバ
 		//mysql_select_db("pcp2012");
 		
-		$sql = "SELECT m_user.user_name, m_subject.subject_name FROM m_teacher LEFT JOIN m_subject ON m_teacher.subject_seq = m_subject.subject_seq LEFT JOIN m_user ON m_teacher.user_seq = m_user.user_seq WHERE m_teacher.delet_sub_flg = 1 AND m_teacher.delete_flg = 0";
+		$sql = "SELECT m_user.user_name, m_subject.subject_name FROM m_teacher LEFT JOIN m_subject ON m_teacher.subject_seq = m_subject.subject_seq LEFT JOIN m_user ON m_teacher.user_seq = m_user.user_seq WHERE m_teacher.delete_sub_flg = 1 AND m_teacher.delete_flg = 0";
 		$result = mysql_query($sql);
 		$count = mysql_num_rows($result);
 		

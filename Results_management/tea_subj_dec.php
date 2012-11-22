@@ -4,7 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 	</head>
 	<body>
-		データベースに登録しました
+		登録しました
 		<?php
 		$q1 = $_POST['q1'];//教科か先生か
 		require_once("../lib/dbconect.php");
@@ -66,6 +66,6 @@
 			}
 		Dbdissconnect($link);
 		?>
-		<a href="res_main.php">トップへ戻る</a>
+		
 	</body>
 </html>
