@@ -31,7 +31,7 @@ Dbdissconnect($link);
 	</head>
 
 	<body>
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
 
@@ -39,7 +39,7 @@ Dbdissconnect($link);
 		</div>
 			<hr color="blue"><br><br>
 
-		
+
 <?php
 /********************************************************
  * $autho_group : DBから取得した権限seqとグループ名を入れる連想配列
@@ -49,11 +49,11 @@ Dbdissconnect($link);
 				<tr>
 					<td><input class="longbutton" type="button" onclick="jump('autho_add.php','right')"value = "権限グループ追加"></td>
 				</tr>
-				
+
 				<tr>
 					<td><input class="longbutton" type="button" onclick="jump('page_add.php','right')"value = "ページの編集"></td>
 				</tr>
-			</table>			
+			</table>
 
 			<?php
 			for($i = 0; $i < $count_autho; $i++)
@@ -66,12 +66,12 @@ Dbdissconnect($link);
 				<tr>
 					<td><input class="button2" type="button" onclick="jump('autho_list.php?id=<?= $autho_group['autho_seq'] ?>' , 'right')" value="一覧"></td>
 					<td><input class="button2" type="button" onclick="jump('autho_edit.php?id=<?= $autho_group['autho_seq'] ?>','right')" value = "編集"></td>
-					
+
 				</tr>
 				<tr>
 					<td><input class="button2" type="button" onclick="jump('autho_reg.php?id=<?= $autho_group['autho_seq'] ?>','right')" value = "登録"></td>
 					<td><input class="button2" type="button" onclick="jump('autho_del_con.php?id=<?= $autho_group['autho_seq'] ?>','right')"value = "削除"></td>
-					
+
 				</tr>
 			</table>
 			<?php

@@ -9,9 +9,9 @@
 	  <link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	<body>
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
-	
+
 	<form action="autho_add_dec.php" method="POST">
       <?php
    require_once("../lib/dbconect.php");

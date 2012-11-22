@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href="../css/table.css" />
  </head>
   <body>
-  		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+  		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
   <form action="autho_add_con.php" method="POST">
    <?php
@@ -78,7 +78,7 @@
     		<td><input class="button4" type="reset" value="クリア"> </td>
     	</tr>
     </table>
-    
+
     </form>
     <a href="autho_main.php">トップへ戻る</a>
     </div>

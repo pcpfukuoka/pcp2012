@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../css/table.css" />
 </head>
 <body>
-<img class="bg" src="../../images/blue-big.jpg" alt="" />
+<img class="bg" src="../images/blue-big.jpg" alt="" />
 <div id="container">
 <form action="page_dec.php" method="POST">
  <?php
@@ -17,15 +17,15 @@
    $link = DbConnect();
    $sql = "SELECT page_name, page_seq FROM m_page WHERE delete_flg = 0" ;
     $result = mysql_query($sql);
-    
+
     $count = mysql_num_rows($result);
-    
+
     Dbdissconnect($link);
-    
+
     $page_name = $_POST['page_name'];
-    
+
    ?>
-   
+
    <div align = "center">
 	<font class="Cubicfont">権限ページ新規追加確認画面</font><hr color="blue"><br><br><br></div>
 
@@ -33,16 +33,16 @@
     <tr>
      <td width="50%" >ページ一覧</td>
      </tr>
-     <?php 
+     <?php
     for($i = 0; $i < $count; $i++)
 	{
     	$row = mysql_fetch_array($result);
-	?>       	
+	?>
     <tr>
     <th align = "center"><?= $row['page_name'] ?></th>
     </tr>
-    
-    <?php 
+
+    <?php
 	}
     ?>
     <tr>

@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../css/table.css" />
 </head>
 <body>
-<img class="bg" src="../../images/blue-big.jpg" alt="" />
+<img class="bg" src="../images/blue-big.jpg" alt="" />
 <div id="container">
 <form action="page_con.php" method="POST">
  <?php
@@ -18,13 +18,13 @@
    $sql = "SELECT page_name, page_seq FROM m_page WHERE delete_flg = 0";
    $result = mysql_query($sql);
    $result_del = mysql_query($sql);
-    
+
     $count = mysql_num_rows($result);
-    
+
     Dbdissconnect($link);
-    
+
    ?>
-   
+
    <div align = "center">
 	<font class="Cubicfont">ページ管理画面</font><hr color="blue"><br><br><br>
 
@@ -34,20 +34,20 @@
     <tr>
      <td><font size="5">ページ一覧</font></td>
      </tr>
-     <?php 
+     <?php
     for($i = 0; $i < $count; $i++)
 	{
     	$row = mysql_fetch_array($result);
-	?>       	
+	?>
     <tr>
     	<th  align = "center"><?= $row['page_name'] ?></th>
-    
-    <?php 
+
+    <?php
 	}
     ?>
     </tr></table><br>
     ページ名<input size ="15" type="text" name="page_name"><br><!-- グループ名入力 -->
-    
+
     <br>
     <table>
     	<tr>
@@ -59,29 +59,29 @@
     <a href="autho_main.php">トップへ戻る</a>
     </form>
     <br><hr color="blue">
-    
+
     <?php
     /**********************************
      * ページ削除機能
-     * 
+     *
      * チェックボックスで消したいページを取得し、
      * page_del_con.phpに飛ばす。
-     **********************************/ 
+     **********************************/
     ?>
     <br>
     <div align = "center">
 		<font class="Cubicfont1">ページ削除</font>
 	</div><br><br>
 	    <form action = "page_del_con.php" method = "POST">
-	    
+
 	    <!-- テーブルの作成 -->
 	    	<table width="70%" class="table_01">
 	    		<tr>
 	     			<td width="50%" bgcolor="Yellow"><font size="5">ページ名</font></td>
 	     			<td width = "20%" bgcolor="Yellow"><font size="5">削除チェック</font></td>
 	     		</tr>
-	     		
-	     		<?php 
+
+	     		<?php
 	     		for($i = 0; $i < $count; $i++)
 				{
 					$name = mysql_fetch_array($result_del);
@@ -96,7 +96,7 @@
 				}
 				?>
 			</table><br>
-			
+
 			<table>
 				<tr>
 					<td><input class="button4" type = "submit" value = "確認"></td>
