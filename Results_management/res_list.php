@@ -16,35 +16,35 @@ $link = DbConnect();
 //テストのデータの一覧表示させるためのSQL文作成
 //グループは必ず何かが選択されている
 
-$sql = "SELECT m_test.test_seq, m_test.date, m_subject.subject_name, m_test.contents,
-		m_user.user_name, m_test.group_seq, m_group.group_name, m_test.standard_test_flg
-		FROM m_test, m_subject, m_teacher, m_user, m_group
-		WHERE m_test.subject_seq = m_subject.subject_seq
-		AND m_test.teacher_seq = m_teacher.teacher_seq
-		AND m_test.group_seq = m_group.group_seq
-		AND m_teacher.user_seq = m_user.user_seq
-		AND m_test.delete_flg = 0
+$sql = "SELECT m_test.test_seq, m_test.date, m_subject.subject_name, m_test.contents, 
+		m_user.user_name, m_test.group_seq, m_group.group_name, m_test.standard_test_flg 
+		FROM m_test, m_subject, m_teacher, m_user, m_group 
+		WHERE m_test.subject_seq = m_subject.subject_seq 
+		AND m_test.teacher_seq = m_teacher.teacher_seq 
+		AND m_test.group_seq = m_group.group_seq 
+		AND m_teacher.user_seq = m_user.user_seq 
+		AND m_test.delete_flg = 0 
 		AND m_test.group_seq = '$group_seq'";
 
 //教科が選択されて、テストチェックはされていない場合
 if ($subject_seq != -1 && $stand_flg == -1)
 {
-	$sql = $sql . " AND m_test.subject_seq = '$subject_seq'";
+	$sql = $sql." AND m_test.subject_seq = '$subject_seq'";
 }
 //教科が選択されてなく、テストチェックがされている場合
 elseif ($subject_seq == -1 && $stand_flg != -1)
 {
-	$sql = $sql . " AND m_test.standard_test_flg = '$stand_flg'";
+	$sql = $sql." AND m_test.standard_test_flg = '$stand_flg'";
 }
 //教科が選択されていて、テストチェックもされている場合
 elseif ($subject_seq != -1 && $stand_flg != -1)
 {
-	$sql = $sql . " AND m_test.subject_seq = '$subject_seq' 
-			AND m_test.standard_test_flg = '$stand_flg'";
+	$sql = $sql." AND m_test.subject_seq = '$subject_seq' 
+					AND m_test.standard_test_flg = '$stand_flg'";
 }
 
 //並び替え
-$sql = $sql . " ORDER BY m_test.test_seq DESC;";
+$sql = $sql." ORDER BY m_test.test_seq DESC;";
 
 //SQLの実行と数を数える
 $result_test = mysql_query($sql);
