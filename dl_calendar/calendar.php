@@ -317,7 +317,7 @@ elseif($action == 'update'){
 	if($date == "11")
 	{
 ?>
-		<img class="bg" src="3月2.jpg" alt="" />
+		<img class="bg" src="11月.jpg" alt="" />
 		<div id="container">
 
 <?php
