@@ -2,15 +2,16 @@
 	<head>
 		<title>ページ新規追加画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
+		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=res_main.php">
 	</head>
 	<body>
-		データベースに登録しました
+		登録しました
 		<?php
 		$q1 = $_POST['q1'];//教科か先生か
 		require_once("../lib/dbconect.php");
-		//$link = DbConnect();
-		$link = mysql_connect("tamokuteki41", "root", "");
-		mysql_select_db("pcp2012");
+		$link = DbConnect();
+		//$link = mysql_connect("tamokuteki41", "root", "");
+		//mysql_select_db("pcp2012");
 		
 		
 		$subj_radio = $_POST['subj_radio'];
@@ -28,11 +29,11 @@
 				$sql = "insert into m_subject values(0, '$subj_name', 0, 0)";//教科データ書き込み
 				mysql_query($sql);
 				
-				$sql = "SELECT subject_seq FROM m_subject WHERE delete_flg = 0 AND subject_seq = $user_seq ORDER BY subject_seq DESC";
+				$sql = "SELECT subject_seq FROM m_subject WHERE delete_flg = 0 ORDER BY subject_seq DESC";
 				
 				$res_subj = mysql_query($sql);
 				$row = mysql_fetch_array($res_subj);
-				 
+				
 				$subj_seq = $row['subject_seq'];
 				}
 			else//今ある教科を使う場合
@@ -66,6 +67,9 @@
 			}
 		Dbdissconnect($link);
 		?>
-		<a href="res_main.php">トップへ戻る</a>
+<<<<<<< HEAD
+		
+=======
+>>>>>>> origin/HEAD
 	</body>
 </html>

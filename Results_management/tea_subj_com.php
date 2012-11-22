@@ -10,9 +10,9 @@
 		<?php
 		$q1 = $_POST['q1'];//教科の追加か先生の追加のデータ
 		require_once("../lib/dbconect.php");
-		//$link = DbConnect();
-		$link = mysql_connect("tamokuteki41", "root", "");//練習用サーバ
-		mysql_select_db("pcp2012");
+		$link = DbConnect();
+		//$link = mysql_connect("tamokuteki41", "root", "");//練習用サーバ
+		//mysql_select_db("pcp2012");
 		
 		if($q1 == 1)//先生追加の場合
 		{

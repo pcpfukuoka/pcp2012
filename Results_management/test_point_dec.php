@@ -10,9 +10,9 @@ $group_seq = $_SESSION['group_seq'];
 
 //DBに接続
 require_once("../lib/dbconect.php");
-//$link = DbConnect();
-$link = mysql_connect("tamokuteki41", "root", "");
-mysql_select_db("pcp2012");
+$link = DbConnect();
+//$link = mysql_connect("tamokuteki41", "root", "");
+//mysql_select_db("pcp2012");
 
 $sql = "SELECT m_user.user_seq 
 		FROM m_user, group_details 
@@ -46,11 +46,11 @@ Dbdissconnect($link);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=res_main.php">
 		<title>点数確定画面</title>
 	</head>
 	
 	<body>
 		点数を登録しました。
-		<a href="res_main.php">トップへ戻る</a>
 	</body>
 </html>
