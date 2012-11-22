@@ -9,7 +9,7 @@
 			FROM attendance
 			LEFT JOIN m_user ON attendance.user_seq = m_user.user_seq
 			LEFT JOIN m_group ON attendance.group_seq = m_group.group_seq
-			WHERE attendance.user_seq = 2
+			WHERE attendance.user_seq = 1
 			ORDER BY date";
 
 	//echo $sql;
