@@ -59,12 +59,12 @@
 		<div align = "center">
 			<font class="Cubicfont1"><?= $group_name ?></font>
 			<hr color = "blue">
-				<table border = "1" bordercolor = "black">
+				<table class="table_01">
 					<tr bgcolor = "yellow">
-						<td>削除</td>
-						<td>名前</td>
-						<td>ＩＤ</td>
-						<td>学籍番号</td>
+						<td><font size="5">削除</font></td>
+						<td><font size="5">名前</font></td>
+						<td><font size="5">ＩＤ</font></td>
+						<td><font size="5">学籍番号</font></td>
 					</tr>
 
 					<?php
@@ -73,10 +73,10 @@
 							$g_user_row = mysql_fetch_array($result);
 					?>
 						<tr id = "user_<?= $g_user_row['group_details_seq'] ?>">
-							<td><input id="check_user_<?= $g_user_row['group_details_seq'] ?>" class="checkUser" data-id="<?= $g_user_row['group_details_seq'] ?>" type = "checkbox" value = "<?= $g_user_row['user_name'] ?>"></td>
-							<td><?= $g_user_row['user_name'] ?></td>
-							<td><?= $g_user_row['user_id'] ?></td>
-							<td><?= $g_user_row['student_id'] ?></td>
+							<th><input id="check_user_<?= $g_user_row['group_details_seq'] ?>" class="checkUser" data-id="<?= $g_user_row['group_details_seq'] ?>" type = "checkbox" value = "<?= $g_user_row['user_name'] ?>"></th>
+							<th><?= $g_user_row['user_name'] ?></th>
+							<th><?= $g_user_row['user_id'] ?></th>
+							<th><?= $g_user_row['student_id'] ?></th>
 						</tr>
 					<?php
 						}
@@ -87,8 +87,8 @@
 				<tr>
 					<td><input class="button4" type = "submit" value = "ユーザを追加" name = "u_add" onclick="user_add()"></td>
 					<td><input class="button4" type = "submit" value = "グループを削除" name = "g_delete" onclick="group_delete()"></td>
-					<td><input class="buttom4" type = "submit" value = "ユーザ削除完了" name = "u_delete" onclick="user_delete()"></td>
-					<td><input class="buttom4" type = "submit" value = "ユーザ削除中止" name = "u_reset" onclick="user_reset()"></td>
+					<td><input class="button4" type = "submit" value = "ユーザ削除完了" name = "u_delete" onclick="user_delete()"></td>
+					<td><input class="button4" type = "submit" value = "ユーザ削除中止" name = "u_reset" onclick="user_reset()"></td>
 				</tr>
 			</table>
 				</div>

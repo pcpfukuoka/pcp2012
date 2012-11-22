@@ -43,6 +43,7 @@ Dbdissconnect($link);
 	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
 	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	<body>
 		<img class="bg" src="../../images/blue-big.jpg" alt="" />
@@ -59,14 +60,14 @@ Dbdissconnect($link);
 			名前<input size ="15" type="text" name="edit_name" value = <?= $edit_name['autho_name'] ?>>
 		
 		<!-- 		テープルの作成 -->
-			<table border = "1" width = "100%">
+			<table class="table_01" width = "100%">
 				<tr>
-					<td width = "25%" align = "center" bgcolor="Yellow">ページ名</td>
-					<td width = "15%" align = "center" bgcolor="Yellow">read</td>
-					<td width = "15%" align = "center" bgcolor="Yellow">write</td>
-					<td width = "15%" align = "center" bgcolor="Yellow">delete</td>
-					<td width = "15%" align = "center" bgcolor="Yellow">update</td>
-					<td width = "15%" align = "center" bgcolor="Yellow">delivery</td>
+					<td width = "25%" align = "center" ><font size="5">ページ名</font></td>
+					<td width = "15%" align = "center" ><font size="5">read</font></td>
+					<td width = "15%" align = "center" ><font size="5">write</font></td>
+					<td width = "15%" align = "center" ><font size="5">delete</font></td>
+					<td width = "15%" align = "center" ><font size="5">update</font></td>
+					<td width = "15%" align = "center" ><font size="5">delivery</font></td>
 				</tr>
 				
 				<?php
@@ -76,7 +77,7 @@ Dbdissconnect($link);
 					$page = mysql_fetch_array($result);
 				?>
 					<tr>
-						<td align = "center"><?= $page['page_name'] ?></td>		<!--  ページ名の表示	-->
+						<th align = "center"><?= $page['page_name'] ?></th>		<!--  ページ名の表示	-->
 					
 						<?php 
 						require_once("../lib/autho.php");
@@ -90,14 +91,14 @@ Dbdissconnect($link);
 							{
 						?>
 								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-								<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
+								<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
 							<?php
 							}
 							else
 							{
 							?>
 								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-								<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
+								<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
 							<?php 
 							} 
 							$autho_chk++;
