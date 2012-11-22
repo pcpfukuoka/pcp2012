@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>削除画面</title>
+		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=res_main.php">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 	</head>
 	<body>
