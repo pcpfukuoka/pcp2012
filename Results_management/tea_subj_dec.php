@@ -32,7 +32,7 @@
 				
 				$res_subj = mysql_query($sql);
 				$row = mysql_fetch_array($res_subj);
-				 
+				
 				$subj_seq = $row['subject_seq'];
 				}
 			else//今ある教科を使う場合
