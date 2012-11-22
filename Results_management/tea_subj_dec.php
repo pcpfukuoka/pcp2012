@@ -67,9 +67,5 @@
 			}
 		Dbdissconnect($link);
 		?>
-<<<<<<< HEAD
-		
-=======
->>>>>>> origin/HEAD
 	</body>
 </html>
