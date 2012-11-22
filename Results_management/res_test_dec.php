@@ -14,9 +14,9 @@ $delete_flg = 0;
 
 //DBに接続
 require_once("../lib/dbconect.php");
-//$link = DbConnect();
-$link = mysql_connect("tamokuteki41", "root", "");
-mysql_select_db("pcp2012");
+$link = DbConnect();
+//$link = mysql_connect("tamokuteki41", "root", "");
+//mysql_select_db("pcp2012");
 
 $sql = "INSERT INTO m_test
 VALUES (0, '$subject', '$group_seq', '$contents', '$teacher', '$day', '$stand_flg', '$delete_flg');";

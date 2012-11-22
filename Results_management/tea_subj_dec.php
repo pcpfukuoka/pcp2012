@@ -8,9 +8,9 @@
 		<?php
 		$q1 = $_POST['q1'];//教科か先生か
 		require_once("../lib/dbconect.php");
-		//$link = DbConnect();
-		$link = mysql_connect("tamokuteki41", "root", "");
-		mysql_select_db("pcp2012");
+		$link = DbConnect();
+		//$link = mysql_connect("tamokuteki41", "root", "");
+		//mysql_select_db("pcp2012");
 		
 		
 		$subj_radio = $_POST['subj_radio'];

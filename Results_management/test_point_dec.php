@@ -10,9 +10,9 @@ $group_seq = $_SESSION['group_seq'];
 
 //DBに接続
 require_once("../lib/dbconect.php");
-//$link = DbConnect();
-$link = mysql_connect("tamokuteki41", "root", "");
-mysql_select_db("pcp2012");
+$link = DbConnect();
+//$link = mysql_connect("tamokuteki41", "root", "");
+//mysql_select_db("pcp2012");
 
 $sql = "SELECT m_user.user_seq 
 		FROM m_user, group_details 
