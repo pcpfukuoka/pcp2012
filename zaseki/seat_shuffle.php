@@ -1,3 +1,6 @@
+<!-- 未完成 -->
+
+
 <html>
 	<head>
 		<title>change</title>
@@ -28,7 +31,7 @@
 
 		$class = 1;
 		$sql = " SELECT * FROM seat ORDER BY rand()";
-		
+
 
 
 
