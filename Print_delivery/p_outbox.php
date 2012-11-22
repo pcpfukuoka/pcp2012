@@ -24,6 +24,7 @@
 		 <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<title>送信ボックス</title>
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 
 	<body>
@@ -38,7 +39,7 @@
 
 		<!-- プリントの送信済み一覧テーブル作成 -->
 		<div align="center">
-			<table border="1">
+			<table class="table_01">
 				<tr bgcolor="yellow">
 					<td align="center"width="160"><font size="5">日付</font></td>
 					<td align="center"width="150"><font size="5">TO</font></td>
@@ -50,11 +51,11 @@
 				?>
 
 				<tr>
-					<td><?= $row['delivery_date'] ?></td>
-					<td><?= $row['group_name'] ?></td>
-					<td>
+					<th><?= $row['delivery_date'] ?></th>
+					<th><?= $row['group_name'] ?></th>
+					<th>
 						<a href="p_sendview.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
-					</td>
+					</th>
 				</tr>
 				<?php
 					}

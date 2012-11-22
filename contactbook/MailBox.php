@@ -25,6 +25,7 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<title>受信ボックス</title>
 	</head>
 
@@ -44,7 +45,7 @@
 		</p>
 
 		<div align="center">
-			<table border="1">
+			<table class="table_01">
 				<tr bgcolor="yellow">
 				<td align="center"width="150"><font size="5">日付</font></td>
 				<td align="center"width="200"><font size="5">FROM</font></td>
@@ -55,12 +56,12 @@
 					$row = mysql_fetch_array($result);
 				?>
 					<tr>
-						<td><?= $row['send_date'] ?></td>
-						<td><?= $row['send_user_name'] ?></td>
-						<td>
+						<th><?= $row['send_date'] ?></th>
+						<th><?= $row['send_user_name'] ?></th>
+						<th>
 							<!-- GETでcontact_book_seqを送る -->
 							<a href="view.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
-						</td>
+						</th>
 					</tr>
 				<?php
 				}
@@ -97,7 +98,7 @@
 		</p>
 
 		<div align="center">
-			<table border="1">
+			<table class="table_01">
 				<tr bgcolor="yellow">
 					<td align="center"width="150"><font size="5">日付</font></td>
 					<td align="center"width="200"><font size="5">FROM</font></td>
@@ -109,13 +110,13 @@
 					$row = mysql_fetch_array($result);
 				?>
 					<tr>
-						<td><?= $row['delivery_date'] ?></td>
-						<td><?= $row['send_user_name'] ?></td>
-						<td>
+						<th><?= $row['delivery_date'] ?></th>
+						<th><?= $row['send_user_name'] ?></th>
+						<th>
 							<!-- GETでprint_delivery_seqを送る -->
 							<!-- <a href="<?= printurl ?>"><?= $row['title'] ?></a> -->
 							<a href="pdf_relay.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
-						</td>
+						</th>
 					</tr>
 				<?php
 				}

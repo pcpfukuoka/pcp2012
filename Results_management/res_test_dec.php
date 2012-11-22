@@ -14,9 +14,9 @@ $delete_flg = 0;
 
 //DBに接続
 require_once("../lib/dbconect.php");
-//$link = DbConnect();
-$link = mysql_connect("tamokuteki41", "root", "");
-mysql_select_db("pcp2012");
+$link = DbConnect();
+//$link = mysql_connect("tamokuteki41", "root", "");
+//mysql_select_db("pcp2012");
 
 $sql = "INSERT INTO m_test
 VALUES (0, '$subject', '$group_seq', '$contents', '$teacher', '$day', '$stand_flg', '$delete_flg');";
@@ -58,6 +58,7 @@ Dbdissconnect($link);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=res_main.php">
 		<title>テスト登録確定画面</title>
 	</head>
 	
@@ -68,7 +69,6 @@ Dbdissconnect($link);
 			<input type = "hidden" name = "test_seq" value = "<?= $test_seq ?>">
 			
 			<input type = "submit" name = "test" value = "点数を登録します。">
-			<a href="res_main.php">トップへ戻る</a>
 		</form>
 	</body>
 </html>
