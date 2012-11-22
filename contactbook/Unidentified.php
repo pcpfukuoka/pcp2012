@@ -1,11 +1,11 @@
 <html>
 	<head>
 	<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
-	�@<title> ���m�F</title>
+	<title> ���m�F</title>
 	</head>
 
 	<body>
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 	  <div align="center">
 	    <font size = "7">���m�F</font><br>
