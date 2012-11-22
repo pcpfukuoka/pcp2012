@@ -13,9 +13,9 @@ $stand_flg = $_POST['stand_flg'];
 
 //DBの接続
 require_once("../lib/dbconect.php");
-//$link = DbConnect();
-$link = mysql_connect("tamokuteki41", "root", "");
-mysql_select_db("pcp2012");
+$link = DbConnect();
+//$link = mysql_connect("tamokuteki41", "root", "");
+//mysql_select_db("pcp2012");
 
 $sql = "SELECT subject_name 
 		FROM m_subject 

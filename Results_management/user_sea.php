@@ -17,9 +17,9 @@
 				<form action="tea_subj_add.php" method="POST">
 				<?php
 				   require_once("../lib/dbconect.php");
-				//$link = DbConnect();
-				$link = mysql_connect("tamokuteki41", "root", "");
-				mysql_select_db("pcp2012");
+				$link = DbConnect();
+				//$link = mysql_connect("tamokuteki41", "root", "");
+				//mysql_select_db("pcp2012");
 				if($_POST['q1'] == "name")//名前で検索したかIDで検索したか
 					{
 					$user = $_POST['query'];
