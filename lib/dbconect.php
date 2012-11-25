@@ -1,8 +1,9 @@
 <?php
     function DbConnect()
     {
-		$link = mysql_connect("tamokuteki41","root","");
-    	//$link = mysql_connect("49.212.201.99","pcp","pcp2012");
+    	
+    	$dbconfig = parse_ini_file("config.ini");    	
+		$link = mysql_connect($dbconfig['address'],$dbconfig['user'],$dbconfig['pass']);
 
 		mysql_select_db("pcp2012");
 
