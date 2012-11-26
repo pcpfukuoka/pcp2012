@@ -69,7 +69,7 @@ Dbdissconnect($link);
 						{
 						$group = mysql_fetch_array($result_group);
 						?>
-							<option value = "<?= $group['group_seq'] ?>"><?= $group['group_name'] ?></option>
+							<option value = "<?= $group['group_seq'] ?>"> <?= $group['group_name'] ?></option>
 						<?php
 						} 
 						?>
@@ -83,7 +83,7 @@ Dbdissconnect($link);
 						{
 							$subj = mysql_fetch_array($result_subj);
 						?>
-							<option value = "<?= $subj['subject_seq'] ?>"><?= $subj['subject_name'] ?></option>
+							<option value = "<?= $subj['subject_seq'] ?>"> <?= $subj['subject_name'] ?></option>
 						<?php
 						} 
 						?>
