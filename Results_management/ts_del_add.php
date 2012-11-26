@@ -53,8 +53,16 @@
 			}
 			elseif(isset($_POST['q1']) && $_POST['q1'] == "group")
 			{
-				$user_id = $_POST['query'];
-				$sql = "SELECT * FROM m_teacher WHERE delete_flg = 0 AND user_seq LIKE '$user_id%';";
+				$group = $_POST['query'];
+				$sql =  "SELECT m_user.user_seq
+		 		FROM group_details
+		 		LEFT JOIN m_group ON group_details.group_seq = m_group.group_seq
+		 		LEFT JOIN m_user ON group_details.user_seq = m_user.user_seq
+		 		WHERE group_details.delete_flg = 0 AND m_group.delete_flg = 0 AND m_group.group_name LIKE '$group%'";
+				$result = mysql_query($sql);
+				$row = mysql_fetch_array($result);
+				$user = $row['user_seq'];
+				$sql = "SELECT * FROM m_teacher WHERE delete_flg = 0 AND user_seq = '$user';";
 			}
 		}
 		
