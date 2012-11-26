@@ -67,13 +67,56 @@
 
 					}
 				?>
-					<tr>
-						<td><?= $row['date'] ?></td>
-						<td><?= $row['Attendance_flg'] ?></td>
-						<td><?= $row['Absence_flg'] ?></td>
-						<td><?= $row['Leaving_early_flg'] ?></td>
-						<td><?= $row['Lateness_flg'] ?></td>
-						<td><?= $row['Absence_due_to_mourning_flg'] ?></td>
+					<tr align="center">
+						<td>2012/11/26</td>
+						<?php
+						// 出席データのチェック
+						if ($row['Attendance_flg'] == 1)
+						{
+							// １の場合は最初にチェックを入れる
+							echo '<td><input type="checkbox" name="a" checked></td>';
+						}
+						else
+						{
+							echo '<td><input type="checkbox" name="a"></td>';
+						}
+
+						if ($row['Absence_flg'] == 1)
+						{
+							echo '<td><input type="checkbox" name="b" checked></td>';
+						}
+						else
+						{
+							echo '<td><input type="checkbox" name="b" ></td>';
+						}
+
+						if ($row['Leaving_early_flg'] == 1)
+						{
+							echo '<td><input type="checkbox" name="c" checked></td>';
+						}
+						else
+						{
+							echo '<td><input type="checkbox" name="c" ></td>';
+						}
+
+						if ($row['Lateness_flg'] == 1)
+						{
+							echo '<td><input type="checkbox" name="d" checked></td>';
+						}
+						else
+						{
+							echo '<td><input type="checkbox" name="d" ></td>';
+						}
+
+						if ($row['Absence_due_to_mourning_flg'] == 1)
+						{
+							echo '<td><input type="checkbox" name="e" checked></td>';
+						}
+						else
+						{
+							echo '<td><input type="checkbox" name="e" ></td>';
+						}
+						?>
 					</tr>
 				<?php
 				}

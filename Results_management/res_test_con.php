@@ -24,8 +24,9 @@ $result = mysql_query($sql);
 $name_subj = mysql_fetch_array($result);
 
 $sql = "SELECT user_name 
-		FROM m_user 
-		WHERE user_seq = '$user';";
+		FROM m_user, m_teacher 
+		WHERE m_user.user_seq = m_teacher.user_seq 
+		AND teacher_seq = '$user';";
 $result = mysql_query($sql);
 $name_teach = mysql_fetch_array($result);
 
