@@ -4,8 +4,10 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
-	//$sql = "SELECT * FROM m_user";
-	//$result = mysql_query($sql);
+	$sql = "SELECT group_seq, group_name
+			FROM m_group
+			WHERE class_flg = 1";
+	$result = mysql_query($sql);
 
 	$sql = "SELECT attendance_class_seq, attendance_class_name
 			FROM attendance_class";

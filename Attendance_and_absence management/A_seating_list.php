@@ -4,8 +4,11 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
-	$sql = "SELECT * FROM m_user";
-	$result = mysql_query($sql);
+	//$sql = "SELECT * FROM m_user";
+	//$result = mysql_query($sql);
+
+	//$sql = "SELECT group_seq, group_name FROM m_group WHERE class_flg = 1";
+	//$result = mysql_query($sql);
 
 	$sql = "SELECT attendance_class_seq, attendance_class_name
 			FROM attendance_class";
@@ -59,7 +62,7 @@
 
 						if($user_seq == "")
 						{
-							echo "<td class='sample'width='100'></td>";
+							echo "<td class='sample'width='100'>";
 						}
 						else
 						{
@@ -67,14 +70,15 @@
 							$res = mysql_query($sql);
 							$row = mysql_fetch_array($res);
 							$user_name = $row['user_name'];
-							$user_seq = $row['user_seq']?>
-
-							<td class="sample" width="150">
-							<?=$user_name?>
+							$user_seq = $row['user_seq']
+			?>
+							<td class="sample" width="200" align="center">
+								<?=$user_name?><br>
 								<input type="button" data-id="<?= $user_seq?>" id="Attendance_<?=$user_seq?>" class="Attendance" value="出席">
 								<input type="button" data-id="<?= $user_seq?>" id="Absence_<?=$user_seq?>" class="Absence" value="欠席">
+								<input type="button" data-id="<?= $user_seq?>" id="Lateness_<?=$user_seq?>" class="Lateness" value="遅刻">
 							</td>
-					<?php
+			<?php
 						}
 						echo "</td>";
 					}
@@ -90,6 +94,7 @@
 	<script>
 		$(function() {
 
+			//出席ボタン//
 			//検索結果から権限を追加するための処理
 			$(document).on('click', '.Attendance', function() {
 				//選択したli要素からdata-idを取得する(data-idはm_userのuser_seq)
@@ -104,10 +109,12 @@
 
 		        	$('#Attendance_'+id).remove();
 		        	$('#Absence_'+id).remove();
+		        	$('#Lateness_'+id).remove();
 
 		        });
 		    });
 
+			//欠席ボタン//
 			//検索結果から権限を追加するための処理
 			$(document).on('click', '.Absence', function() {
 				//選択したli要素からdata-idを取得する(data-idはm_userのuser_seq)
@@ -122,6 +129,27 @@
 
 		        	$('#Attendance_'+id).remove();
 		        	$('#Absence_'+id).remove();
+		        	$('#Lateness_'+id).remove();
+
+		        });
+		    });
+
+			//遅刻ボタン//
+			//検索結果から権限を追加するための処理
+			$(document).on('click', '.Lateness', function() {
+				//選択したli要素からdata-idを取得する(data-idはm_userのuser_seq)
+		        var id = $(this).data('id');
+		        //ポストでデータを送信、宛先でDB処理を行う
+		        $.post('_seatlist_lateness.php', {
+		            id: id,
+		            class: <?= $class ?>
+		        },
+		        //戻り値として、user_seq受け取る
+		        function(rs) {
+
+		        	$('#Attendance_'+id).remove();
+		        	$('#Absence_'+id).remove();
+		        	$('#Lateness_'+id).remove();
 
 		        });
 		    });
