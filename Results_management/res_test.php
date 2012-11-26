@@ -10,11 +10,11 @@ $link = DbConnect();
 //mysql_select_db("pcp2012");
 
 //先生の名前とseqを持ってきて、数を数える
-$sql = "SELECT m_user.user_name, m_user.user_seq 
+$sql = "SELECT m_user.user_name, m_teacher.teacher_seq 
 		FROM m_user, m_teacher 
 		WHERE m_user.user_seq = m_teacher.user_seq
 		AND m_teacher.delete_flg = 0 
-		GROUP BY m_user.user_name, m_user.user_seq 
+		GROUP BY m_user.user_name 
 		ORDER BY m_user.user_seq;";
 
 $result_teach = mysql_query($sql);
@@ -56,6 +56,8 @@ Dbdissconnect($link);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 		<title>テスト</title>
 	</head>
 	
@@ -105,7 +107,7 @@ Dbdissconnect($link);
 						{
 						$teach = mysql_fetch_array($result_teach);
 						?>
-							<option value = "<?= $teach['user_seq'] ?>"><?= $teach['user_name'] ?></option>
+							<option value = "<?= $teach['teacher_seq'] ?>"><?= $teach['user_name'] ?></option>
 						<?php
 						} 
 						?>

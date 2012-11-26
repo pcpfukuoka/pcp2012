@@ -66,8 +66,8 @@
 				<td><input class="button1" type="button" onclick="jump('../group/group_top.php', 'left')" value="グループ管理"></td>
 				<td><input class="button1" type="button" onclick="jump('../user_manager/index.php', 'left')" value="ユーザー管理"></td>
 				<td><input class="button1" type="button" onclick="jump('../Results_management/res_main.php','left')" value="成績管理"></td>
-				<td><input class="button1" type="button" onclick="jump('../print_delivery/p_main.php','left')" value="プリント配信"></td>
-				<td><input class="button1" type="button" onclick="jump()" value="アンケート"></td>
+				<td><input class="button1" type="button" onclick="jump('../Print_delivery/p_main.php','left')" value="プリント配信"></td>
+				<td><input class="button1" type="button" onclick="jump('../question/index.php','left')" value="アンケート"></td>
 			</tr>
 		</table>
 	</div>
