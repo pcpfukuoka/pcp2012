@@ -27,70 +27,46 @@
 <html>
 	<head>
 		<script src="../jquery-1.8.2.min.js"></script>
+		<script src="./jquery.detail.click.js"></script>
+		<script src="jquery.detail.click.min.js"></script>
 	</head>
 	<body>
 	<script>
 
-	var id = "";
+	var id = 1;
 	var name1 = "";
 	var name2 = "";
 	var attendance_no1 = 0;
 	var attendance_no2 = 0;
 
     $(function() {
-	    $('.seat').click(function(){
-		if(add_flg == 0 && id == "")
-		{
-				//一回目にクリックしたセルのデータを保存
-				id = $(this).attr("id");
-				name1 = $(this).children("p").text();
-				attendance_no1 = $(this).children().val();
+    	$(document).bind("contextmenu",function(e){
+    		return false;
+    	});
 
-				//一回目にクリックしたセルの色を変える
-				$(this).attr({"bgcolor": "yellow"});
+    	$('#' + id).attr({"bgcolor": "yellow"});
 
-	    }
-		else
-		{
 
-				//二回目にクリックしたセルのデータを保存
-				name2 = $(this).children("p").text();
-				attendance_no2 = $(this).children().val();
+		$('.list').click(function(){
 
-				//データの交換
-				$(this).children("p").text(name1);
-				$('#' + id).children("p").text(name2);
+			$('#' + id).attr({"bgcolor": "white"});
+			$('#' + id).children("p").text($(this).children("p").text());
+			$(this).children("p").text("");
 
-				$(this).children().attr({"value": attendance_no1});
-				$('#' + id).children().attr({"value": attendance_no2});
+			id++;
+			$('#' + id).attr({"bgcolor": "yellow"});
 
-				//セルの色を戻す
-				$('#' + id).attr({"bgcolor": ""});
-
-				id = 0;
-				name1 = "";
-				name2 = "";
-				attendance_no1 = "";
-				attendance_no2 = "";
-
-		}
-
-		if(add_flg == 1)
-		{
-			$(this).children("p").text(name);
-			add_flg = 0;
-			name = "";
-		}
 
 	    });
 
-    $('.list').click(function(){
-    	$(this).attr({"bgcolor": "yellow"});
-		var flg = 0;
-    	name = $(this).children("p").text();
-    	add_flg = 1;
+		$('.list').rightClick(function() {
+			$('#' + id).attr({"bgcolor": "white"});
+			$('#' + id).children("p").text($(this).children("p").text());
+			$(this).children("p").text("");
 
-	    });
+			id++;
+			$('#' + id).attr({"bgcolor": "yellow"});
+		});
     });
     </script>
 
@@ -106,8 +82,8 @@
 		for($col = 1; $col <= $col_max; $col++)
 		{
 ?>
-			<td id="$seat<?=$seat_id ?>" class='seat'width='100'>
-			<p> </p>
+			<td id="<?=$seat_id ?>" class='seat'width='100'>
+			<p>&nbsp</p>
 			<input name = user_seq<?= $row?>[<?= $col?>] type="hidden" value = <?= $user_seq ?>>
 			</td>
 <?php
@@ -140,12 +116,12 @@
 
 
 		echo "<table>";
-		$list_id = 1;
+		$list_id = 101;
 		while($row = mysql_fetch_array($result))
 		{
 			echo "<tr>";
 ?>
-			<td id="list<?=$list_id ?>"class="list"><p><?=$row['user_name'] ?></p></td>
+			<td id="<?=$list_id ?>"class="list"><p><?=$row['user_name'] ?></p></td>
 <?php
 			echo "</tr>";
 			$list_id++;
