@@ -204,7 +204,6 @@
 			<input type = "submit" value = "確認">&nbsp;&nbsp;
 			<input type = "reset" value="クリア"><br><br>
 			</form>
-			<a href="res_main.php">トップへ戻る</a>
 	</body>
 </html>
 <?php

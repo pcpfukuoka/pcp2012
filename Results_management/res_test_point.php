@@ -85,7 +85,6 @@ Dbdissconnect($link);
 			?>
 			
 			<input type = "submit" value = "確認">
-			<a href="res_main.php">トップへ戻る</a>
 		</form>
 	</body>
 </html>
