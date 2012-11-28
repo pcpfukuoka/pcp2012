@@ -38,9 +38,9 @@ $cnt = mysql_num_rows($result);
 				<td><?= $row['user_name'] ?></td>
 				<td><?= $row['awnser_name'] ?></td>
 			</tr>
-		</table>
 		<?php 
 			}
 		?>
-	</body>
+		</table>
+		</body>
 </html>
