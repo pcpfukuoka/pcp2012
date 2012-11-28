@@ -5,9 +5,7 @@ session_start();
 //今はテスト用にその処理は欠かないけど最終的には追加する
 
 $question_seq = $_GET['id'];
-//$question_seq = 2;
-//$user_seq = $_SESSION['user_seq'];
-$user_seq = 1;
+$user_seq = $_SESSION['login_info[user]'];
 
 ?>
 <html>
