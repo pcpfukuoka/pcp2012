@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+//GETで値がなければこのページには遷移させない
+//今はテスト用にその処理は欠かないけど最終的には追加する
+
+$user_seq = $_SESSION['login_info[user]'];
+
+?>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,7 +23,7 @@
 		$dbcon = DbConnect();
 		$day = date("Y-m-d");
 		//表示用ユーザ情報取得
-		$sql = "SELECT * FROM question WHERE question_seq NOT IN ( SELECT question_seq FROM question_awnser WHERE awnser_user_seq = '1' ) AND '" . $day . "' BETWEEN start_date AND end_date";;
+		$sql = "SELECT * FROM question WHERE question_seq NOT IN ( SELECT question_seq FROM question_awnser WHERE awnser_user_seq = '$user_seq' ) AND '" . $day . "' BETWEEN start_date AND end_date";;
 		$result = mysql_query($sql);
 		$cnt = mysql_num_rows($result);
 		
