@@ -207,6 +207,5 @@ Dbdissconnect($link);
 				?>
 			</form>
 		</table>
-		<a href="res_main.php">トップへ戻る</a>
 	</body>
 </html>
