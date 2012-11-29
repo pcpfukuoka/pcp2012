@@ -1,6 +1,6 @@
 <!-- 未完成 -->
 <?php
-	$url = "localhost";
+	$url = "105-pc";
 	$user = "root";
 	$pass = "";
 	$db = "pcp2012";
