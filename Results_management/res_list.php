@@ -117,6 +117,5 @@ Dbdissconnect($link);
 			</table>
 			<input type="button" value="戻る" onClick="history.back()">
 		</form>
-		<a href="res_main.php">トップへ戻る</a>
 	</body>
 </html>

@@ -5,8 +5,7 @@
 	<body>		
 		<table border="1">
 			<tr bgcolor="yellow">
-				<th align="center"width="5%"><font size="5">選択</font></th>
-				<th align="center"width="35%"><font size="5">タイトル</font></th>
+							<th align="center"width="35%"><font size="5">タイトル</font></th>
 				<th align="center"width="35%"><font size="5">対象グループ</font></th>
 				<th align="center"width="35%"><font size="5">期間</font></th>
 				<th align="center"width="30%"><font size="5">回答数</font></th>
@@ -24,8 +23,7 @@
 			$row = mysql_fetch_array($result);
 			?>
 			<tr>
-				<td><input value="<?= $row['question_seq'] ?>" class ="QuestionCheck" type="checkbox"></td>
-				<td><?= $row['question_title'] ?></td>
+				<td><a href="question_details.php?id=<?= $row['question_seq'] ?>" ><?= $row['question_title'] ?></a></td>
 				<td><?= $row['group_name'] ?></td>
 				<td><?= $row['start_date'] ?> ~ <?= $row['end_date'] ?></td>
 				<td></td>
