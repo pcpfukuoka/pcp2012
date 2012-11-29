@@ -27,9 +27,8 @@ else
 	$class_seq = $row['class_seq'];
 	//黒板ページに飛ばす
 	header("Location: 49.212.201.99:3000?id=$class_seq");
-	echo "b";
-	
-?>	
+
+	?>	
 <?php 
 
 }
