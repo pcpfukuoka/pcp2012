@@ -152,6 +152,5 @@ $count_point = mysql_num_rows($result_point);
 			<input type = "submit" value = "点数修正へ">
 		</form>
 		<a href = "list_search.php">絞り込みに戻る</a>
-		<a href = "res_main.php">トップへ戻る</a>
 	</body>
 </html>

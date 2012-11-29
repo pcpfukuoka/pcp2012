@@ -9,9 +9,6 @@ $link = DbConnect();
 //$link = mysql_connect("tamokuteki41", "root", "");
 //mysql_select_db("pcp2012");
 
-
-
-
 //教科名とseqを持ってきて、数を数える
 $sql = "SELECT subject_seq, subject_name 
 		FROM m_subject
@@ -58,6 +55,14 @@ if($_POST['sub'] != -1)
 	
 	$result_teach = mysql_query($sql);
 	$count_teach = mysql_num_rows($result_teach);
+	
+	$sql = "SELECT subject_seq, subject_name
+			FROM m_subject
+			WHERE subject_seq = '$subject' 
+			AND delete_flg = 0;";
+	
+	$result_sub = mysql_query($sql);
+	$sbj = mysql_fetch_array($result_sub);
 }
 
 Dbdissconnect($link);
@@ -91,8 +96,20 @@ Dbdissconnect($link);
 				<!-- 教科の選択 -->
 				<form name = "req" action = "" method = "POST">
 					<td><select name = "sub" onChange = "this.form.submit();">
+					
+					<?php 
+					if ($_POST['sub'] == NULL)
+					{
+					?>
 						<option value = "-1" selected>選択</option>
-						<?php
+					<?php
+					}
+					else 
+					{
+					?>
+						<option value = "<?= $sbj['subject_seq'] ?>"> <?= $sbj['subject_name'] ?></option>
+					<?php 
+					}	
 						for ($i = 0; $i < $count_subj; $i++)
 						{
 							$subj = mysql_fetch_array($result_subj);
@@ -190,6 +207,5 @@ Dbdissconnect($link);
 				?>
 			</form>
 		</table>
-		<a href="res_main.php">トップへ戻る</a>
 	</body>
 </html>
