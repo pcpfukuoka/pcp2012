@@ -49,11 +49,12 @@
 
 		$('.list').click(function(){
 
-			if($(this).children("p").text() != "")
+			if($(this).children("p").text() != "-")
 			{
+				$('#' + id).children('input:eq(1)').val($(this).attr("id"));
 				$('#' + id).attr({"bgcolor": "white"});
 				$('#' + id).children("p").text($(this).children("p").text());
-				$(this).children("p").html('&nbsp;');
+				$(this).children("p").text('-');
 
 
 				id++;
@@ -61,6 +62,16 @@
 			}
 
 
+	    });
+
+		$('.seat').click(function(){
+
+			if($(this).children("p").text() != "")
+			{
+				id = $(this).children('input:eq(1)').val();
+				$('#'+id).children('p').text($(this).children("p").text());
+				$(this).children('p').text("");
+			}
 	    });
     });
     </script>
@@ -80,6 +91,7 @@
 			<td id="<?=$seat_id?>" class='seat'width='100'>
 			<p>&nbsp</p>
 			<input name = user_seq<?= $row?>[<?= $col?>] type="hidden" value = <?= $user_seq ?>>
+			<input type="hidden" value="">
 			</td>
 <?php
 			$seat_id = $seat_id + $row_max;
