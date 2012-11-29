@@ -58,6 +58,8 @@
 				<td><input class="button1" type="button" onclick="jump('../contactbook/main.php' , 'left')" value="連絡帳"></td>
 				<td><input class="button1" type="button" onclick="jump_class()" value="授業"></td>
 				<td><input class="button1" type="button" onclick="jump('../autho_management/jump.php' , 'left')" value="成績確認"></td>
+				<td><input class="button1" type="button" onclick="jump('../Attendance_and_absence management/A_main.php' , 'left')" value="座席管理"></td>
+
 			</tr>
 
 		<!--  下記より先生のみ -->
