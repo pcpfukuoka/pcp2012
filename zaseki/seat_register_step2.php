@@ -6,7 +6,7 @@
 	$col_max = $_POST['col'];
 
 
-	$url = "localhost";
+	$url = "105-pc";
 	$user = "root";
 	$pass = "";
 	$db = "pcp2012";
@@ -49,24 +49,30 @@
 
 		$('.list').click(function(){
 
-			$('#' + id).attr({"bgcolor": "white"});
-			$('#' + id).children("p").text($(this).children("p").text());
-			$(this).children("p").text("");
+			if($(this).children("p").text() != "-")
+			{
+				$('#' + id).children('input:eq(1)').val($(this).attr("id"));
+				$('#' + id).attr({"bgcolor": "white"});
+				$('#' + id).children("p").text($(this).children("p").text());
+				$(this).children("p").text('-');
 
-			id++;
-			$('#' + id).attr({"bgcolor": "yellow"});
+
+				id++;
+				$('#' + id).attr({"bgcolor": "yellow"});
+			}
 
 
 	    });
 
-		$('.list').rightClick(function() {
-			$('#' + id).attr({"bgcolor": "white"});
-			$('#' + id).children("p").text($(this).children("p").text());
-			$(this).children("p").text("");
+		$('.seat').click(function(){
 
-			id++;
-			$('#' + id).attr({"bgcolor": "yellow"});
-		});
+			if($(this).children("p").text() != "")
+			{
+				id = $(this).children('input:eq(1)').val();
+				$('#'+id).children('p').text($(this).children("p").text());
+				$(this).children('p').text("");
+			}
+	    });
     });
     </script>
 
@@ -75,19 +81,20 @@
 		<table border="1">
 <?php
 
-	$seat_id =1;
 	for($row = 1; $row <= $row_max; $row++)
 	{
 		echo "<tr>";
+		$seat_id = $row;
 		for($col = 1; $col <= $col_max; $col++)
 		{
 ?>
-			<td id="<?=$seat_id ?>" class='seat'width='100'>
+			<td id="<?=$seat_id?>" class='seat'width='100'>
 			<p>&nbsp</p>
 			<input name = user_seq<?= $row?>[<?= $col?>] type="hidden" value = <?= $user_seq ?>>
+			<input type="hidden" value="">
 			</td>
 <?php
-			$seat_id++;
+			$seat_id = $seat_id + $row_max;
 		}
 		echo "</tr>";
 	}

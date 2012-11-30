@@ -32,6 +32,7 @@
 	$cnt = mysql_num_rows($result_2);
 
 	Dbdissconnect($dbcon);
+
 ?>
 
 <html>
@@ -74,7 +75,7 @@
 
 				<tr>
 					<td align="center"width="80">
-						<select>
+						<select id="date">
 							<?php
 								$check_flg1 = 0;
 								for($i = 0; $i < $num; $i++)
@@ -101,7 +102,7 @@
 
 
 					<td align="center"width="100">
-						<select>
+						<select id="group">
 							<?php
 								$check_flg2 = 0;
 								 for ($i = 0; $i < $cnt; $i++)
@@ -124,7 +125,7 @@
 						  	?>
 						</select>
 					</td>
-					<td align="center"width="40"><input id="search" class="button4" type = "button" value = "検索" name = "serch"></td>
+					<td align="center"width="40"><input id="search" class="button4" type = "button" value = "検索" name = "search"></td>
 
 
 				</tr>
@@ -142,13 +143,13 @@
 	<script>
 		$(function() {
 
-			//検索結果から権限を追加するための処理
 			$(document).on('click', '#search', function() {
-				//選択したli要素からdata-idを取得する(data-idはm_userのuser_seq)
-		        //ポストでデータを送信、宛先でDB処理を行う
-		        var id = 0;
+
+				var date =  $('#date').val();
+		        var group_seq =  $('#group').val();
 		        $.post('_ajax_attendance_search.php', {
-		            id: id,
+		            date: date,
+		            group_seq : group_seq
 		        },
 		        //戻り値として、user_seq受け取る
 		        function(rs) {

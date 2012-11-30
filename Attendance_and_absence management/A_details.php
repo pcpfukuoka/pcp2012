@@ -3,13 +3,15 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
+	$user_seq = $_GET['id'];
+
 	//ユーザのデータベースから名前を取得
 	$sql = "SELECT attendance_seq, attendance.group_seq, attendance.user_seq, m_user.user_name AS user_name, date,
 			       Attendance_flg, Absence_flg, Leaving_early_flg, Lateness_flg, Absence_due_to_mourning_flg
 			FROM attendance
 			LEFT JOIN m_user ON attendance.user_seq = m_user.user_seq
 			LEFT JOIN m_group ON attendance.group_seq = m_group.group_seq
-			WHERE attendance.user_seq = 1
+			WHERE attendance.user_seq = $user_seq
 			ORDER BY date";
 
 	//echo $sql;
