@@ -1,6 +1,23 @@
 <?php
 	session_start();
 	$user_seq = $_SESSION['login_info[user]'];
+
+	if(!isset($_SESSION["login_flg"]) || $_SESSION['login_flg'] == "false")
+	{
+		//header("Location:login/index.php");
+	}
+
+	//page_seq = 11(プリント配信)
+	require_once("../lib/autho.php");
+	$page_fun = new autho_class();
+	$page_cla = $page_fun -> autho_Pre($_SESSION['login_info[autho]'], 11);
+
+
+	if($page_cla[0]['read_flg'] == 0)
+	{
+		header("Location:../top_left.php");
+	}
+
 ?>
 
 <html>
