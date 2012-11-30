@@ -36,3 +36,15 @@ function jump_class(){
 
 }
 
+
+
+function leftreload()
+{
+	parent.left.location.reload();
+}
+
+
+
+
+
+
