@@ -1,3 +1,9 @@
+<html>
+<head>
+<script src="../javascript/frame_jump.js"></script>
+</head>
+</html>
+
 <?php
 require_once("../lib/dbconect.php");
 $dbcon = DbConnect();
@@ -13,7 +19,8 @@ if((isset($_POST['new_group_name'])) && (isset($_POST['autho_select'])))
 	$result = mysql_query($sql);
 	$row = mysql_fetch_array($result);
 	$group_seq = $row['group_seq'];
-	header("Location:group_details.php?id=$group_seq");
+	print "<script language=javascript>leftreload();</script>";
+	print "<script language=javascript>jump('group_details.php?id=".$group_seq."','right');</script>";
 	
 }
 else
