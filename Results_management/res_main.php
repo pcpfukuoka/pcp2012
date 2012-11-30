@@ -14,6 +14,8 @@
 		<input type="button" value="出席管理"onclick="jump('../Results_management/res_main.php','right')">
 		<input type="button" value="教師・教科追加"onclick="jump('../Results_management/tea_subj_add.php','right')">
 		<input type="button" value="教師・教科削除"onclick="jump('../Results_management/ts_del_add.php','right')">
+		<input type="button" value="成績確認（生徒）"onclick="jump('../Results_management/Per.ver.php','right')">
+		
 <!-- 		<a href="list_search.php">点数一覧</a>
 		<a href="res_test.php">テスト・点数登録</a><br><br>
 		<a href="res_main.php">出席管理</a>
