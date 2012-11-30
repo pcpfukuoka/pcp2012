@@ -2,6 +2,18 @@
 
 	session_start();
 
+	//autho_seq = 7(テスト用)
+	//page_seq = 11(プリント配信)
+	require_once("../lib/autho.php");
+	$page_fun = new autho_class();
+	$page_cla = $page_fun -> autho_Pre($_SESSION['login_info[autho]'], 8);
+
+
+	if($page_cla[0]['read_flg'] == 0)
+	{
+		header("Location:../top_left.php");
+	}
+
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 	//これでDBを呼び出す関数が使えるようになる
@@ -61,10 +73,18 @@
 			<hr color = "blue">
 				<table class="table_01">
 					<tr bgcolor = "yellow">
-						<td><font size="5">削除</font></td>
-						<td><font size="5">名前</font></td>
-						<td><font size="5">ＩＤ</font></td>
-						<td><font size="5">学籍番号</font></td>
+
+						<?php
+							if($page_cla['delete_flg'] == 1)
+							{
+						?>
+								<td><font size="5">削除</font></td>
+						<?php
+							}
+						?>
+								<td><font size="5">名前</font></td>
+								<td><font size="5">ＩＤ</font></td>
+								<td><font size="5">学籍番号</font></td>
 					</tr>
 
 					<?php
@@ -73,7 +93,15 @@
 							$g_user_row = mysql_fetch_array($result);
 					?>
 						<tr id = "user_<?= $g_user_row['group_details_seq'] ?>">
-							<th><input id="check_user_<?= $g_user_row['group_details_seq'] ?>" class="checkUser" data-id="<?= $g_user_row['group_details_seq'] ?>" type = "checkbox" value = "<?= $g_user_row['user_name'] ?>"></th>
+
+						<?php
+							if($page_cla['delete_flg'] == 1)
+							{
+						?>
+								<th><input id="check_user_<?= $g_user_row['group_details_seq'] ?>" class="checkUser" data-id="<?= $g_user_row['group_details_seq'] ?>" type = "checkbox" value = "<?= $g_user_row['user_name'] ?>"></th>
+						<?php
+							}
+						?>
 							<th><?= $g_user_row['user_name'] ?></th>
 							<th><?= $g_user_row['user_id'] ?></th>
 							<th><?= $g_user_row['student_id'] ?></th>
@@ -85,10 +113,23 @@
 			<div>
 			<table>
 				<tr>
-					<td><input class="button4" type = "submit" value = "ユーザを追加" name = "u_add" onclick="user_add()"></td>
-					<td><input class="button4" type = "submit" value = "グループを削除" name = "g_delete" onclick="group_delete()"></td>
-					<td><input class="button4" type = "submit" value = "ユーザ削除完了" name = "u_delete" onclick="user_delete()"></td>
-					<td><input class="button4" type = "submit" value = "ユーザ削除中止" name = "u_reset" onclick="user_reset()"></td>
+					<?php
+						if($page_cla['delete_flg'] == 0)
+						{
+					?>
+							<td><input class="button4" type = "submit" value = "ユーザを追加" name = "u_add" onclick="user_add()"></td>
+					<?php
+						}
+						else
+						{
+					?>
+							<td><input class="button4" type = "submit" value = "ユーザを追加" name = "u_add" onclick="user_add()"></td>
+							<td><input class="button4" type = "submit" value = "グループを削除" name = "g_delete" onclick="group_delete()"></td>
+							<td><input class="button4" type = "submit" value = "ユーザ削除完了" name = "u_delete" onclick="user_delete()"></td>
+							<td><input class="button4" type = "submit" value = "ユーザ削除中止" name = "u_reset" onclick="user_reset()"></td>
+					<?php
+						}
+					?>
 				</tr>
 			</table>
 				</div>
