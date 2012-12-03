@@ -86,7 +86,7 @@
 
     	$sql = "UPDATE contact_book
 				SET title = '$title', contents = '$contents', send_flg = 0, new_flg = 1, delete_flg = 1, send_date = now()
-				WHERE contact_book_seq = '$contact_book_seq'; ";
+				WHERE contact_book_seq = '$contact_book_seq';";
     	mysql_query($sql);
 
     	//データベースを閉じる
@@ -103,7 +103,8 @@
 		$contents = $_POST['contents'];
 		$title = $_POST['title'];
 		$link_id = $_POST['link_id'];
-		if(isset($_POST['to']))
+
+	/*	if(isset($_POST['to']))
 		{
 			$send_seq = $_POST['to'];
 		}
@@ -111,5 +112,16 @@
 		{
 			$send_seq = $_POST['send_seq'];
 		}
+	*/
+		$sql = "UPDATE contact_book
+				SET title = '$title', contents = '$contents', link_contact_book_seq = '$link_id', send_date = now()
+				WHERE contact_book_seq = '$contact_book_seq';";
+		mysql_query($sql);
+
+		//データベースを閉じる
+		Dbdissconnect($dbcon);
+
+		Header('Location: Preservation.html');
+		exit;
     }
 ?>
