@@ -45,6 +45,11 @@ Dbdissconnect($link);
 	</head>
 	
 	<body>
+	
+		<div align = "center">
+			<font size = "6">テスト作成確認</font><hr><br><br><br>
+		</div>
+		
 	<!-- 点数入力画面に飛ぶ -->
 		<form action = "res_test_dec.php" method = "POST">
 		
@@ -85,7 +90,7 @@ Dbdissconnect($link);
 			<input type = "hidden" name = "stand_flg" value = "<?= $stand_flg ?>">
 			
 			
-			<input type = "submit" value = "確定">
+			<input type = "submit" value = "登録">
 			<input type="button" value="戻る" onClick="history.back()">
 		</form>
 	</body>

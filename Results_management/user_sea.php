@@ -1,9 +1,13 @@
 <html>
 	<head>
-		<title>ユーザー検索</title>
+		<title>ユーザー検索画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 	</head>
 	<body>
+		<div align = "center">
+			<font size = "6">ユーザー検索</font><hr><br><br><br>
+		</div>
+	
 		<form action="user_sea.php" method="POST"><!-- 検索処理 -->
 			<input type="radio" name="q1" value="name" checked>名前
 			<input type="radio" name="q1" value="id">ID

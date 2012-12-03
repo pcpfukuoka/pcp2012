@@ -19,7 +19,7 @@
 			$subj_radio = $_POST['subj_radio'];
 		?>
 			<div align = "center">
-				<font size = "6">先生教科画面</font>
+				<font size = "6">先生教科</font>
 			</div><br><br>
 			
 			<?php

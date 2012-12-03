@@ -72,12 +72,12 @@ Dbdissconnect($link);
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-		<title>テスト</title>
+		<title>テスト登録画面</title>
 	</head>
 	
 	<body>
 		<div align = "center">
-			<font size = "6">テスト登録画面</font><hr><br><br><br>
+			<font size = "6">テスト登録</font><hr><br><br><br>
 		</div>
 		
 		<!-- テーブルの作成 -->
