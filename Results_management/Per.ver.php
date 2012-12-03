@@ -46,7 +46,7 @@ Dbdissconnect($link);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
-		<title>テスト絞り込み</title>
+		<title>テスト絞り込み画面</title>
 	</head>
 	
 	<body>

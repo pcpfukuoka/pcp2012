@@ -13,7 +13,7 @@
 		
 		?>
 			<div align = "center">
-				<font size = "6">先生追加画面</font>
+				<font size = "6">先生追加</font>
 			</div><br><br>
 		<?php 
 		$sql = "SELECT teacher_seq, subject_seq, user_seq FROM m_teacher WHERE delete_flg = 0";
