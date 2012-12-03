@@ -20,7 +20,7 @@ Dbdissconnect($link);
 ?>
 <html>
 	<head>
-		<title></title>
+		<title>権限編集確認画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<meta http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
@@ -35,7 +35,7 @@ Dbdissconnect($link);
 	<!-- 編集確定画面に飛ぶ -->
 		<form action = "autho_edit_dec.php" method = "POST">
 			<div align = "center">
-				<font class="Cubicfont">編集確認画面</font>
+				<font class="Cubicfont">権限編集確認</font>
 			</div><hr color="blue"><br><br><br>
 			
 			<!-- 権限グループの名前を表示 -->

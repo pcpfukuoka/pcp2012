@@ -27,7 +27,7 @@
    ?>
 
    <div align = "center">
-	<font class="Cubicfont">権限ページ新規追加確認画面</font><hr color="blue"><br><br><br></div>
+	<font class="Cubicfont">権限ページ新規追加確認</font><hr color="blue"><br><br><br></div>
 
    <table  width="50%" class="table_01">
     <tr>
@@ -51,7 +51,7 @@
     <input type="hidden" name="page_name" value="<?= $page_name ?>">
     <table>
     	<tr>
-    		<td><input class="button4" type="submit" value="確定"></td>
+    		<td><input class="button4" type="submit" value="登録"></td>
 			<td><input class="button4" type="button" value="戻る" onClick="history.back()"></td>
 		</tr>
 	</table>

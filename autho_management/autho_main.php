@@ -40,7 +40,7 @@ Dbdissconnect($link);
 
 <html>
 	<head>
-		<title>権限管理メイン</title>
+		<title>権限管理メイン画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<script src="../javascript/frame_jump.js"></script>
 		<meta http-equiv="Content-Style-Type" content="text/css">
