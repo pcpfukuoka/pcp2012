@@ -39,7 +39,7 @@ $autho_seq = $_SESSION['autho_sel'];
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align = "center">
-			<font class="Cubicfont">権限管理一覧画面</font><hr color="blue">
+			<font class="Cubicfont">権限登録検索画面</font><hr color="blue">
 		</div><br><br>
 		<form action="autho_reg.php" method="POST">
 			<input type="radio" name="q1" value="name" checked>名前
