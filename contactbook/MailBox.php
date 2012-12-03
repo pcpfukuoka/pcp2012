@@ -34,10 +34,10 @@
 		<div id="container">
 		<div align="center">
 			<font class="Cubicfont">受信ボックス</font>
-			<br>
 		</div>
-		<br>
+
 		<hr color="blue">
+		<br>
 
 		<!-- 連絡帳の受信一覧テーブル作成 -->
 		<p align="left">
@@ -47,9 +47,9 @@
 		<div align="center">
 			<table class="table_01">
 				<tr bgcolor="yellow">
-				<td align="center"width="150"><font size="5">日付</font></td>
-				<td align="center"width="200"><font size="5">FROM</font></td>
-				<td align="center"width="400"><font size="5">件名</font></td>
+				<td align="center"width="200"><font size="5">日付</font></td>
+				<td align="center"width="150"><font size="5">FROM</font></td>
+				<td align="center"width="230"><font size="5">件名</font></td>
 
 				<?php
 				for ($i = 0; $i < $count; $i++){
@@ -100,9 +100,9 @@
 		<div align="center">
 			<table class="table_01">
 				<tr bgcolor="yellow">
-					<td align="center"width="150"><font size="5">日付</font></td>
-					<td align="center"width="200"><font size="5">FROM</font></td>
-					<td align="center"width="400"><font size="5">件名</font></td>
+					<td align="center"width="200"><font size="5">日付</font></td>
+					<td align="center"width="150"><font size="5">FROM</font></td>
+					<td align="center"width="230"><font size="5">件名</font></td>
 				</tr>
 
 				<?php
