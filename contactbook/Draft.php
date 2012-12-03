@@ -34,18 +34,18 @@
 		<div id="container">
 		<div align="center">
 			<font class="Cubicfont">下書き</font>
-			<br>
 		</div>
-		<br>
+
 		<hr color="blue">
+		<br><br>
 
 		<!-- テーブルの作成 -->
 		<div align="center">
 			<table border="1">
 				<tr bgcolor="yellow">
-				<td align="center"width="150"><font size="5">日付</font></td>
-				<td align="center"width="200"><font size="5">TO</font></td>
-				<td align="center"width="400"><font size="5">件名</font></td>
+				<td align="center"width="200"><font size="5">日付</font></td>
+				<td align="center"width="150"><font size="5">TO</font></td>
+				<td align="center"width="230"><font size="5">件名</font></td>
 
 				<?php
 				for ($i = 0; $i < $count; $i++){
