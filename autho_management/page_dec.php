@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>ページ新規追加確定画面</title>
+<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../dummy.html">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
@@ -9,9 +10,8 @@
 <img class="bg" src="../images/blue-big.jpg" alt="" />
 <div id="container">
 
-<font size="5">データベースに登録しました。</font>
+<font size="5">登録しました。</font>
 <br><br>
-<a href="autho_main.php">トップへ戻る</a>
  <?php
    require_once("../lib/dbconect.php");
    $link = DbConnect();

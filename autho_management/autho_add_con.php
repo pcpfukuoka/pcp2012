@@ -1,6 +1,6 @@
 <html>
 	<head>
-	  <title>権限追加</title>
+	  <title>権限追加画面</title>
 	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 	  <meta http-equiv="Content-Style-Type" content="text/css">
 	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
@@ -23,7 +23,7 @@
 	$group_name = $_POST['group_name'];
    ?>
 		<div align = "center">
-			<font class="Cubicfont">権限管理追加確認画面</font><hr color="blue"><br><br><br></div>
+			<font class="Cubicfont">権限管理追加確認</font><hr color="blue"><br><br><br></div>
 			<?php
 						/********************************************************
 			 * 権限の新規追加確認画面
@@ -155,10 +155,10 @@
     </table>
     <input type="hidden" name="group_name" value="<?= $group_name ?>">
 
-   <h1><font size="3">よろしかったら”<font color="red">確定</font>”やり直す場合”<font color="red">戻る</font>”ボタンを押してください</font></h1><br>
+   <h1><font size="3">よろしかったら”<font color="red">登録</font>”やり直す場合”<font color="red">戻る</font>”ボタンを押してください</font></h1><br>
     <table>
     	<tr>
-    		<td><input class="button4" type="submit" value="確定"></td>
+    		<td><input class="button4" type="submit" value="登録"></td>
     		<td><input class="button4" type="button" value="戻る" onClick="history.back()"></td>
     	</tr>
     </table>

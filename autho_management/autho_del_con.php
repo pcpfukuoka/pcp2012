@@ -49,7 +49,6 @@ Dbdissconnect($link);
 			
 			<br>
 			<input class="button4" type = "submit" value = "確定"><br>
-			<a href="autho_main.php">トップへ戻る</a>
 		</form>
 		</div>
 	</body>
