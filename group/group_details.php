@@ -69,7 +69,7 @@
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align = "center">
-			<font class="Cubicfont1"><?= $group_name ?></font>
+			<font class="Cubicfont1" size="7"><?= $group_name ?></font>
 			<hr color = "blue">
 				<table class="table_01">
 					<tr bgcolor = "yellow">
