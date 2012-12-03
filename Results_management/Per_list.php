@@ -133,23 +133,27 @@ $count_point = mysql_num_rows($result_point);*/
 						</font> 
 					<?php 
 					}
-					elseif ($point['point'] >= $avg)
+					elseif ($point['point'] >= $avg['AVG(point)'])
 					{
 					?>
-						<font color = "red">
+						<font color = "red" >
+						<div align = "right">
 						<?= $point['point'] ?>
+						</div>
 						</font>
+						
 					<?php 
 					}
 					else 
 					{
 					?>
-						<font color = "blue">
+						<font color = "blue" >
+						<div align = "right">
 						<?= $point['point'] ?>
+						</div>
 						</font>
 					<?php 
 					}?>
-					<?= $point['point'] ?>
 				</td>
 				<td align = "center"><?= $avg['AVG(point)'] ?></td>
 			</tr>
