@@ -40,9 +40,9 @@ $sql = "SELECT m_test.test_seq, m_test.date, m_subject.subject_name, m_test.cont
 $result_test = mysql_query($sql);
 $count_test = mysql_num_rows($result_test);
 
-if($_POST['sub'] != -1)
+if($_GET['sub'] != -1)
 {
-	$subject = $_POST['sub'];
+	$subject = $_GET['sub'];
 	
 	//先生の名前とseqを持ってきて、数を数える
 	$sql = "SELECT m_user.user_name, m_teacher.teacher_seq
@@ -94,11 +94,11 @@ Dbdissconnect($link);
 			
 			<tr>
 				<!-- 教科の選択 -->
-				<form name = "req" action = "" method = "POST">
+				<form name = "req" action = "" method = "GET">
 					<td><select name = "sub" onChange = "this.form.submit();">
 					
 					<?php 
-					if ($_POST['sub'] == NULL)
+					if ($_GET['sub'] == -1)
 					{
 					?>
 						<option value = "-1" selected>選択</option>
