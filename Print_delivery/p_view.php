@@ -46,9 +46,9 @@
 		<br><br>
 
 		<form action="p_relay.php" method="POST">
-			<font size="3">To　：</font>
+			<font size="3">To ：</font>
 			<?= $row['group_name'] ?><br>
-			<font size="3">件名　：</font>
+			<font size="3">件名 ：</font>
 			<?= $row['title'] ?><br><br>
 
 			<font size="3">本文</font><br>
@@ -64,14 +64,13 @@
 		    	{
 
 		    ?>
-
-		    		<input class="button4" type="submit" value="保存" name="Preservation">
-
+		    		<input class="button4" type="submit" value="保存" name="Re-preservation">
 		    <?php
 		    	}
 		    	else
 		    	{
 		    ?>
+		    		<input class="button4" type="submit" value="保存" name="Re_preservation">
 		    		<input class="button4" type="submit" value="送信" name="send">
 
 		    <?php
