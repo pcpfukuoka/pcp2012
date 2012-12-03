@@ -5,7 +5,7 @@
 		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../dummy.html">
 	</head>
 	<body>
-		登録しました
+		登録しました。
 		<?php
 		$q1 = $_POST['q1'];//教科か先生か
 		require_once("../lib/dbconect.php");

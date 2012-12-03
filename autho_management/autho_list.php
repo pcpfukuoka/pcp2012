@@ -42,7 +42,7 @@ $autho_seq = $_SESSION['autho_sel'];
 
 <html>
 	<head>
-		<title>権限管理一覧</title>
+		<title>権限管理一覧画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<meta http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
@@ -54,7 +54,7 @@ $autho_seq = $_SESSION['autho_sel'];
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align = "center">
-			<font class="Cubicfont">権限管理一覧画面</font><hr color="blue">
+			<font class="Cubicfont">権限管理一覧</font><hr color="blue">
 		</div><br><br>
 
 <!-- 		テープルの作成 -->
@@ -106,7 +106,6 @@ $autho_seq = $_SESSION['autho_sel'];
 			}
 			?>
 		</table><br>
-		<a href="autho_main.php">トップへ戻る</a>
 		</div>
 	</body>
 </html>

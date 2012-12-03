@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>削除画面</title>
+		<title>削除確定画面</title>
 		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../dummy.html">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 	</head>
@@ -30,6 +30,6 @@
 				}
 			}
 		?>
-		登録しました
+		削除しました
 	</body>
 </html>

@@ -56,6 +56,11 @@ Dbdissconnect($link);
 	</head>
 	
 	<body>
+	
+	<div align = "center">
+			<font size = "6">点数入力</font><hr><br><br><br>
+		</div>
+		
 	<!-- 点数確認画面に飛ぶ -->
 		<form action = "test_point_con.php" method = "POST">
 

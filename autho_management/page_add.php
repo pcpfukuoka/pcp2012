@@ -26,7 +26,7 @@
    ?>
 
    <div align = "center">
-	<font class="Cubicfont">ページ管理画面</font><hr color="blue"><br><br><br>
+	<font class="Cubicfont">ページ管理</font><hr color="blue"><br><br><br>
 
 	<font class="Cubicfont1">ページ追加</font>
 	</div><br><br>
@@ -56,7 +56,6 @@
     	</tr>
     </table>
     <br>
-    <a href="autho_main.php">トップへ戻る</a>
     </form>
     <br><hr color="blue">
 
@@ -104,7 +103,6 @@
 				</tr>
 			</table>
 			<br>
-			<a href="autho_main.php">トップへ戻る</a>
 	    </form>
 	    </div>
 </body>

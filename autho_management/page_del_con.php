@@ -19,7 +19,7 @@ $count = 0;
 	    <link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />		
-		<title>ページ削除確認</title>
+		<title>ページ削除確認画面</title>
 	</head>
 	
 	<body>
@@ -59,7 +59,6 @@ $count = 0;
 			</table><br>
 
 			<input class="button4" type = "submit" value = "確定"><br>
-			<a href="autho_main.php">トップへ戻る</a>
 		</form>
 		</div>
 	</body>

@@ -1,6 +1,6 @@
 <html>
  <head>
-  <title>権限追加</title>
+  <title>権限追加画面</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" type="text/css" href="../css/button.css" />
@@ -27,7 +27,7 @@
 
 
 		<div align = "center">
-			<font class="Cubicfont">権限管理追加画面</font><hr color="blue"><br><br><br></div>
+			<font class="Cubicfont">権限管理追加</font><hr color="blue"><br><br><br></div>
 			<?php
 			/********************************************************
 			 * 権限の新規追加画面
@@ -74,13 +74,12 @@
     <br>
     <table>
     	<tr>
-    		<td><input class="button4" type="submit" value="登録確認"></td>
+    		<td><input class="button4" type="submit" value="確認"></td>
     		<td><input class="button4" type="reset" value="クリア"> </td>
     	</tr>
     </table>
 
     </form>
-    <a href="autho_main.php">トップへ戻る</a>
     </div>
   </body>
 </html>

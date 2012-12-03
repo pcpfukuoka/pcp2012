@@ -3,7 +3,12 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
+<<<<<<< HEAD
+	// 選ばれた人のIDを取得
+	$id = $_GET['id'];
+=======
 	$user_seq = $_GET['id'];
+>>>>>>> origin/HEAD
 
 	//ユーザのデータベースから名前を取得
 	$sql = "SELECT attendance_seq, attendance.group_seq, attendance.user_seq, m_user.user_name AS user_name, date,
@@ -11,7 +16,11 @@
 			FROM attendance
 			LEFT JOIN m_user ON attendance.user_seq = m_user.user_seq
 			LEFT JOIN m_group ON attendance.group_seq = m_group.group_seq
+<<<<<<< HEAD
+			WHERE attendance.user_seq = '$id'
+=======
 			WHERE attendance.user_seq = $user_seq
+>>>>>>> origin/HEAD
 			ORDER BY date";
 
 	//echo $sql;
@@ -52,6 +61,7 @@
 		<br><br>
 
 		<div align="center">
+		<form action="A_update.php" method="POST">
 			<table border="1">
 				<tr bgcolor="yellow">
 				<td align="center"width="120"><font size="5">日付</font></td>
@@ -62,61 +72,69 @@
 				<td align="center"width="80"><font size="5">忌引き</font></td>
 
 				<?php
-				for ($i = 0; $i < $count; $i++){
+				for ($i = 0; $i < $count; $i++)
+				{
 					if($i != 0)
 					{
 						$row = mysql_fetch_array($result);
-
 					}
 				?>
+
+					<input type ="hidden" name = "seq[]" value = "<?= $row['attendance_seq'] ?>">
+
+
 					<tr align="center">
-						<td>2012/11/26</td>
+						<td><?= $row['date'] ?></td>
 						<?php
 						// 出席データのチェック
 						if ($row['Attendance_flg'] == 1)
 						{
 							// １の場合は最初にチェックを入れる
-							echo '<td><input type="checkbox" name="a" checked></td>';
+							echo "<td><input type='radio' name='date" . $i . "'  value='1' checked></td>";
 						}
 						else
 						{
-							echo '<td><input type="checkbox" name="a"></td>';
+							echo "<td><input type='radio' name='date" . $i . "'></td>";
 						}
 
+						// 欠席データのチェック
 						if ($row['Absence_flg'] == 1)
 						{
-							echo '<td><input type="checkbox" name="b" checked></td>';
+							echo "<td><input type='radio' name='date" . $i . "' checked></td>";
 						}
 						else
 						{
-							echo '<td><input type="checkbox" name="b" ></td>';
+							echo "<td><input type='radio' name='date" . $i . "'></td>";
 						}
 
+						// 早退データのチェック
 						if ($row['Leaving_early_flg'] == 1)
 						{
-							echo '<td><input type="checkbox" name="c" checked></td>';
+							echo "<td><input type='radio' name='date" . $i . "' checked></td>";
 						}
 						else
 						{
-							echo '<td><input type="checkbox" name="c" ></td>';
+							echo "<td><input type='radio' name='date" . $i . "'></td>";
 						}
 
+						// 遅刻データのチェック
 						if ($row['Lateness_flg'] == 1)
 						{
-							echo '<td><input type="checkbox" name="d" checked></td>';
+							echo "<td><input type='radio' name='date" . $i . "' checked></td>";
 						}
 						else
 						{
-							echo '<td><input type="checkbox" name="d" ></td>';
+							echo "<td><input type='radio' name='date" . $i . "'></td>";
 						}
 
+						// 忌引データのチェック
 						if ($row['Absence_due_to_mourning_flg'] == 1)
 						{
-							echo '<td><input type="checkbox" name="e" checked></td>';
+							echo "<td><input type='radio' name='date" . $i . "' checked></td>";
 						}
 						else
 						{
-							echo '<td><input type="checkbox" name="e" ></td>';
+							echo "<td><input type='radio' name='date" . $i . "'></td>";
 						}
 						?>
 					</tr>
@@ -125,7 +143,11 @@
 				?>
 
 			</table>
-			<hr>
+
+			<br>
+			<input type="submit" value="更 新">
+		</form>
+		<hr>
 		</div>
 
 

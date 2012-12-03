@@ -2,6 +2,22 @@
 	//SESSIONでユーザIDの取得
 	session_start();
 	$user_seq = $_SESSION['login_info[user]'];
+
+	if(!isset($_SESSION["login_flg"]) || $_SESSION['login_flg'] == "false")
+	{
+		//header("Location:login/index.php");
+	}
+
+	//page_seq = 3(連絡帳)
+	require_once("../lib/autho.php");
+	$page_fun = new autho_class();
+	$page_cla = $page_fun -> autho_Pre($_SESSION['login_info[autho]'], 3);
+
+
+	if($page_cla[0]['read_flg'] == 0)
+	{
+		header("Location:../top_left.php");
+	}
 ?>
 
 <html>
@@ -83,13 +99,21 @@
 
 			<!-- それぞれのリンク先に移動 -->
 
-			<input class="button2" type="button"  style="border:0" name="newcreate" value="新規作成" onclick="newcreate()"></td>
-			<br><br>
-			<input class="button2" type="button" style="border:0" name="receve" value="受信箱（<?= $cnt_new + $cnt_print_flg ?> ）" onclick="receved()"></td>
-			<br><br>
-			<input class="button2" type="button" style="border:0" name="transmit" value="送信箱 " onclick="transmition()">
-			<br><br>
-			<input class="button2" type="button" style="border:0" name="transmit" value="下書き （<?= $cnt_send?> ）" onclick="draft()">
+			<?php
+				if($page_cla['delivery_flg'] == 1)
+				{
+			?>
+					<input class="button2" type="button"  style="border:0" name="newcreate" value="新規作成" onclick="newcreate()">
+					<br><br>
+			<?php
+				}
+			?>
+
+					<input class="button2" type="button" style="border:0" name="receve" value="受信箱（<?= $cnt_new + $cnt_print_flg ?> ）" onclick="receved()">
+					<br><br>
+					<input class="button2" type="button" style="border:0" name="transmit" value="送信箱 " onclick="transmition()">
+					<br><br>
+					<input class="button2" type="button" style="border:0" name="transmit" value="下書き （<?= $cnt_send?> ）" onclick="draft()">
 		</p>
 		</div>
 	</body>

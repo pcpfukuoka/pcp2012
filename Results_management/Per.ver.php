@@ -1,7 +1,10 @@
 <?php
+//session_start();
+
+//$sesID = $_SESSION['login_info[user]'];
 /******************************
  * テスト検索画面
- *****************************/
+*****************************/
 
 //DBに接続
 require_once("../lib/dbconect.php");
@@ -29,13 +32,13 @@ $result_subj = mysql_query($sql);
 $count_subj = mysql_num_rows($result_subj);
 
 //グループ名とseqを持ってきて、数を数える
-$sql = "SELECT group_seq, group_name
-		FROM m_group
-		WHERE delete_flg = 0
-		AND class_flg = 1;";
+//$sql = "SELECT group_seq, group_name
+//		FROM m_group
+//		WHERE delete_flg = 0
+//		AND class_flg = 1;";
 
-$result_group = mysql_query($sql);
-$count_group = mysql_num_rows($result_group);
+//$result_group = mysql_query($sql);
+//$count_group = mysql_num_rows($result_group);
 
 Dbdissconnect($link);
 ?>
@@ -51,33 +54,21 @@ Dbdissconnect($link);
 			<font size = "6">テスト絞り込み</font><hr><br><br><br>
 		</div>
 		
-		<form action = "res_list.php" method = "POST">
+		<form action = "per_list.php" method = "POST">
 			<!-- テーブルの作成 -->
 			<table border = "1" >
 				<tr>
-					<th>学年・クラス</th>
+				<!-- 	<th>学年・クラス</th>  -->
 					<th>教科</th>
 					<th>テストチェック</th>
 				</tr>
 				
 				<tr>
 				
-					<!-- グループの選択 -->
-					<td><select name = "group_seq">
-						<?php
-						for ($i = 0; $i < $count_group; $i++)
-						{
-						$group = mysql_fetch_array($result_group);
-						?>
-							<option value = "<?= $group['group_seq'] ?>"> <?= $group['group_name'] ?></option>
-						<?php
-						} 
-						?>
-					</select></td>
 					
 				<!-- 教科の選択 -->
 					<td><select name = "subject_seq">
-						<option value = "-1" selected>選択</option>
+						<option value = "-1" selected>すべて</option>
 						<?php
 						for ($i = 0; $i < $count_subj; $i++)
 						{
