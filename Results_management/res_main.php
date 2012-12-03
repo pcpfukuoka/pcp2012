@@ -2,12 +2,12 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<script src="../javascript/frame_jump.js"></script>
-		<title>成績管理メイン</title>
+		<title>成績管理メイン画面</title>
 	</head>
 
 	<body>
 		<div align = "center">
-			<font size = "6">成績管理メイン画面</font><hr><br><br><br>
+			<font size = "6">成績管理メイン</font><hr><br><br><br>
 		</div>
 		<input type="button" value="点数一覧"onclick="jump('../Results_management/list_search.php','right')">
 		<input type="button" value="テスト・点数登録" onclick="jump('../Results_management/res_test.php?sub=-1','right')">

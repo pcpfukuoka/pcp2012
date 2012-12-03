@@ -1,9 +1,14 @@
 <html>
 	<head>
-		<title>削除画面</title>
+		<title>削除確認画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 	</head>
 	<body>
+	
+	<div align = "center">
+			<font size = "6">削除確認</font><hr><br><br><br>
+		</div>
+		
 	<form action="ts_del_dec.php" method="POST">
 		<?php
 		
