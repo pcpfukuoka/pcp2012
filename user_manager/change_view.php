@@ -4,7 +4,9 @@
 		<META http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
-	</head>
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+		</head>
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 			<div id="container">
@@ -36,56 +38,50 @@
 		<table>
 			<tr>
 				<td align="center">ユーザID:</td>
-				<td align="center"><input type="text" name="user_id" value="<?= $user_row['user_id'] ?>"></td>
+				<td align="center"><input type="text" name="user_id" value="<?= $user_row['user_id'] ?>" disabled="true"></td>
 			</tr>
 
 			<tr>
 				<td align="center">パスワード：</td>
-				<td align="center"><input type="text" name="pass" value="<?= $user_row['pass'] ?>"></td>
+				<td align="center"><input type="text" name="pass" value="<?= $user_row['pass'] ?>" disabled="true"></td>
 			</tr>
 
 			<tr>
 				<td align="center">ユーザ名</td>
-				<td align="center"><input type="text" name="user_name" value="<?= $user_row['user_name'] ?>"></td>
+				<td align="center"><input type="text" name="user_name" value="<?= $user_row['user_name'] ?>" disabled="true"></td>
 			</tr>
 
 			<tr>
 				<td align="center">ふりがな：</td>
-				<td align="center"><input type="text" name="user_kana" value="<?= $user_row['user_kana'] ?>"></td>
+				<td align="center"><input type="text" name="user_kana" value="<?= $user_row['user_kana'] ?>" disabled="true"></td>
 			</tr>
 
 			<tr>
 				<td align="center">住所：</td>
-				<td align="center"><input type="text" name="user_address" value="<?= $user_row['user_address'] ?>"></td>
+				<td align="center"><input type="text" name="user_address" value="<?= $user_row['user_address'] ?>" disabled="true"></td>
 			</tr>
 
 			<tr>
 				<td align="center">電話番号:</td>
-				<td align="center"><input type="text" name="user_tel" value="<?= $user_row['user_tel'] ?>"></td>
+				<td align="center"><input type="text" name="user_tel" value="<?= $user_row['user_tel'] ?>" disabled="true"></td>
 			</tr>
 
 			<tr>
 				<td align="center">メールアドレス：</td>
-				<td align="center"><input type="text" name="user_email" value="<?= $user_row['user_email'] ?>"></td>
+				<td align="center"><input type="text" name="user_email" value="<?= $user_row['user_email'] ?>" disabled="true"></td>
 			</tr>
 
 			<tr>
 				<td align="center">権限：</td>
-				<td align="center"><select name = "autho_seq" size = "1">
+				<td align="center"><select name = "autho_seq" size = "1" disabled="true">
 			<option value = "-1">選択</option></td>
 			</tr>
-
-
-
-
-
 			<?php
 			for($i = 0; $i < $cnt; $i++)
 			{
 				$row = mysql_fetch_array($result_autho);
 				if($row['autho_seq'] == $user_row['autho_seq'])
 				{?>
-
 					<option value = "<?=  $row['autho_seq'] ?>" selected><?= $row['autho_name'] ?></option>
 			<?php
 				}
@@ -102,7 +98,7 @@
 
 		<tr>
 			<td>学籍番号※学生のみ</td>
-			<td><input type="text" name="stuent_id" value="<?= $user_row['student_id'] ?>"></td>
+			<td><input type="text" name="stuent_id" value="<?= $user_row['student_id'] ?>" disabled="true"></td>
 		</tr>
 	</table>
 
@@ -110,6 +106,39 @@
 		<input type="hidden" value="<?= $user_row['user_seq'] ?>" name="user_seq">
 		<input class="button4" type="submit" value ="登録">
 		</form>
+		<input type="checkbox" id="edit" >編集する
 		</div>
 	</body>
+	
+	
+				<script>
+		$(function() {
+			//検索結果から権限を追加するための処理
+			$(document).on('click', '#edit', function() {
+
+				//対象のinputタグのNameを配列にかくのう
+				input_names = new Array("user_id", "pass", "user_name", "user_kana", "user_address	", 
+										"user_tel", "user_email", "autho_seq", "stuent_id");
+				
+				if(document.getElementById("edit").checked)
+				{
+					for (i = 0; i < input_names.length; i++) 
+					{
+						$("*[name="+input_names[i]+"]").attr('disabled', false);
+						
+					}			
+				}
+				else
+				{
+					for (i = 0; i < input_names.length; i++) 
+					{
+						$("*[name="+input_names[i]+"]").attr('disabled', true);
+						
+					}			
+												
+				}
+			});
+		});
+			</script>
+	
 </html>

@@ -30,6 +30,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<title>確認画面</title>
 	</head>
 
@@ -37,7 +38,7 @@
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
-		    <font size = "6">プリント送信済み確認</font><br>
+		    <font class="Cubicfont">プリント送信済み確認</font>
 		</div>
 
 		<font size = "4"><a href="p_outbox.php">←戻る</a></font>
