@@ -37,7 +37,6 @@
 			<font size="5">宛  先</font>
 			<select name="to">
 
-
   				<?php
 	   				for ($i = 0; $i < $count; $i++)
 	   				{

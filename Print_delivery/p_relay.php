@@ -14,18 +14,18 @@
     	$title = $_POST['title'];
     	$send_seq = $_POST['to'];
 
-    	$sql = "INSERT INTO Print_delivery (title, delivery_user_seq, target_group_seq, print_send_flg, print_flg, delivery_date)
+    	$sql = "INSERT INTO print_delivery (title, delivery_user_seq, target_group_seq, print_send_flg, print_flg, delivery_date)
     			VALUES ('$title', '$user_seq', '$send_seq', '1', '0', now())";
     	mysql_query($sql);
 
     	//INSERTしたSEQを取得
-    	$sql = "SELECT print_delivery_seq FROM Print_delivery ORDER BY print_delivery_seq DESC;";
+    	$sql = "SELECT print_delivery_seq FROM print_delivery ORDER BY print_delivery_seq DESC;";
     	$result = mysql_query($sql);
     	$row = mysql_fetch_array($result);
     	$pdseq = $row['print_delivery_seq'];
 
     	//UPDATEでリンクを保存
-    	$sql = "UPDATE Print_delivery SET printurl = 'print_delivery_seq_$pdseq.pdf'
+    	$sql = "UPDATE print_delivery SET printurl = 'print_delivery_seq_$pdseq.pdf'
     			WHERE print_delivery_seq = $pdseq;";
     	mysql_query($sql);
     	$file_name = "print_delivery_seq_" . $pdseq . ".pdf";
@@ -47,9 +47,9 @@
     	$group_name = $_POST['group_name'];
     	$group_seq = $_POST['group_seq'];
 
-    	$sql = "UPDATE Print_delivery
+    	$sql = "UPDATE print_delivery
 				SET title = '$title', print_flg = 1, print_send_flg = 0, delivery_date = now()
-				WHERE Print_delivery_seq = '$print_delivery_seq'; ";
+				WHERE print_delivery_seq = '$print_delivery_seq'; ";
     	mysql_query($sql);
 
     	$sql = "SELECT * FROM group_details WHERE group_seq = '$group_seq'";
@@ -75,26 +75,26 @@
     //保存からの保存
     else if(isset($_POST['Re_preservation']))
     {
-		$group_seq = $_POST['group_seq'];
-		$group_name = $_POST['group_name'];
-		$title = $_POST['title'];
-		$delivery_user_seq = $_POST['delivery_user_seq'];
+    	//$printurl = $_POST['printurl'];
+		//$group_seq = $_POST['group_seq'];
+		//$group_name = $_POST['group_name'];
+		//$delivery_user_seq = $_POST['delivery_user_seq'];
 		$print_delivery_seq = $_POST['print_delivery_seq'];
-		$printurl = $_POST['printurl'];
+    	$title = $_POST['title'];
 
-		$sql = "UPDATE Print_delivery
+		$sql = "UPDATE print_delivery
 				SET title = '$title', delivery_date = now()
-				WHERE Print_delivery_seq = '$print_delivery_seq'; ";
+				WHERE print_delivery_seq = '$print_delivery_seq';";
 		mysql_query($sql);
 
 		//INSERTしたSEQを取得
-		$sql = "SELECT print_delivery_seq FROM Print_delivery ORDER BY print_delivery_seq DESC;";
+		$sql = "SELECT print_delivery_seq FROM print_delivery ORDER BY print_delivery_seq DESC;";
 		$result = mysql_query($sql);
 		$row = mysql_fetch_array($result);
 		$pdseq = $row['print_delivery_seq'];
 
 		//UPDATEでリンクを保存
-		$sql = "UPDATE Print_delivery SET printurl = 'print_delivery_seq_$pdseq.pdf'
+		$sql = "UPDATE print_delivery SET printurl = 'print_delivery_seq_$pdseq.pdf'
 				WHERE print_delivery_seq = $pdseq;";
 		mysql_query($sql);
 		$file_name = "print_delivery_seq_" . $pdseq . ".pdf";
