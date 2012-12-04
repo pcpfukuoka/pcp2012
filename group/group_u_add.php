@@ -9,9 +9,6 @@ if(isset($_GET['id']))
 {
 	$group_seq = $_GET['id'];
 }
-
-
-
 ?>
 
 <html>
@@ -48,7 +45,7 @@ if(isset($_GET['id']))
 			{
 				//チェックボックスを確認
 				$user = $_POST['query'];
-				$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND user_name LIKE '%$user%';";
+				$sql = "SELECT * FROM m_user WHERE user_seq NOT IN (SELECT user_seq FROM group_details WHERE group_seq = $group_seq) AND delete_flg = 0 AND user_name LIKE '%$user%';";
 			}
 			elseif(isset($_POST['q1']) && $_POST['q1'] == "id")
 			{
