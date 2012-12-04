@@ -23,7 +23,10 @@ $user_seq = $_SESSION['login_info[user]'];
 		$dbcon = DbConnect();
 		$day = date("Y-m-d");
 		//表示用ユーザ情報取得
-		$sql = "SELECT * FROM question WHERE question_seq NOT IN ( SELECT question_seq FROM question_awnser WHERE awnser_user_seq = '$user_seq' ) AND '" . $day . "' BETWEEN start_date AND end_date";;
+		$sql = "SELECT * FROM question 
+				WHERE question_seq 
+				NOT IN ( SELECT question_seq FROM question_awnser WHERE awnser_user_seq = '$user_seq' ) 
+				AND '" . $day . "' BETWEEN start_date AND end_date";
 		$result = mysql_query($sql);
 		$cnt = mysql_num_rows($result);
 		
