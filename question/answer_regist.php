@@ -1,5 +1,11 @@
 <?php
-session_start();
+session_start();?>
+<html>
+<head>
+<script src="../javascript/frame_jump.js"></script>
+</head>
+</html>
+<?php
 $user_seq = $_SESSION['login_info[user]'];
 //処理する件数を取得その件数分処理を行う。
 $question_seq = $_POST['question_seq'];
@@ -20,7 +26,6 @@ for($i=1;$i<=$details_cnt;$i++)
 	if($_POST[$text_string] != "")
 	{
 		$sql = "INSERT INTO question_awnser_coments VALUES (0,$_POST[$text_string],$user_seq, $details_seq_list[$t],$question_seq);";
-		echo $sql;
 		mysql_query($sql);
 	}
 	
@@ -32,10 +37,11 @@ for($i=1;$i<=$details_cnt;$i++)
 			$t = $i - 1;
 			$sql = "INSERT INTO question_awnser VALUES (0,$user_seq, $awnser_list[$j], $details_seq_list[$t],$question_seq);";
 			mysql_query($sql);
-			echo $sql;
 		}		
 	}
 }
+	print "<script language=javascript>leftreload();</script>";
+	print "<script language=javascript>jump('comp_dis.html','right');</script>";
 Dbdissconnect($link);
 
 ?>
