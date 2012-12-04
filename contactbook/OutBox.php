@@ -35,12 +35,11 @@
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
-			<font class="Cubicfont">送信ボックス</font><br>
+			<font class="Cubicfont">送信ボックス</font><br><br>
 		</div>
 
 		<hr color="blue">
-		<br><br>
-
+		<br>
 		<!-- 連絡帳の受信一覧テーブル作成 -->
 		<div align="left">
 			<font size="5">連絡帳</font>
@@ -49,9 +48,9 @@
 		<br>
 			<table class="table_01">
 				<tr bgcolor="yellow">
-					<td align="center"width="200"><font size="5">日付</font></td>
-					<td align="center"width="150"><font size="5">TO</font></td>
-					<td align="center"width="230"><font size="5">件名</font></td>
+					<td align="center"width="150"><font size="5">日付</font></td>
+					<td align="center"width="200"><font size="5">TO</font></td>
+					<td align="center"width="400"><font size="5">件名</font></td>
 
 				<?php
 				for ($i = 0; $i < $count; $i++){

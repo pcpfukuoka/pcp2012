@@ -26,6 +26,7 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<title>下書き</title>
 	</head>
 
@@ -34,30 +35,30 @@
 		<div id="container">
 		<div align="center">
 			<font class="Cubicfont">下書き</font>
+			<br>
 		</div>
-
+		<br>
 		<hr color="blue">
-		<br><br>
 
 		<!-- テーブルの作成 -->
 		<div align="center">
-			<table border="1">
-				<tr bgcolor="yellow">
-				<td align="center"width="200"><font size="5">日付</font></td>
-				<td align="center"width="150"><font size="5">TO</font></td>
-				<td align="center"width="230"><font size="5">件名</font></td>
+			<table border="1" class="table_01">
+				<tr>
+				<td align="center"width="150"><font size="5">日付</font></td>
+				<td align="center"width="200"><font size="5">TO</font></td>
+				<td align="center"width="400"><font size="5">件名</font></td>
 
 				<?php
 				for ($i = 0; $i < $count; $i++){
 					$row = mysql_fetch_array($result);
 				?>
 					<tr>
-						<td><?= $row['send_date'] ?></td>
-						<td><?= $row['reception_user_name'] ?></td>
-						<td>
+						<th><?= $row['send_date'] ?></th>
+						<th><?= $row['reception_user_name'] ?></th>
+						<th>
 							<!-- GETでcontact_book_seqを送る -->
 							<a href="Send.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
-						</td>
+						</th>
 					</tr>
 				<?php
 				}

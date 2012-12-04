@@ -21,24 +21,23 @@
 
 <html>
 	<head>
-	  <title> 送信</title>
+	　　<title> 送信</title>
 	  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	  <meta http-equiv="Content-Style-Type" content="text/css">
 	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
 	  <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
-	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
 
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
-	    <div align="center">
-	      <font class="Cubicfont">送信</font>
-	    </div>
-		<hr color="blue">
-	    <br><br>
-
 		<form action="relay.php" method="POST" id="input">
+		  <div align="center">
+		    <font size = "7">送信</font><br>
+		  </div>
+		　　<hr color="blue">
+		  <br><br>
+
 		  <font size="3">宛先　： </font>
 		  <?= $contact_book_row['reception_user_name']?><br>
 		  <font size="3">件名　： </font>
@@ -49,9 +48,12 @@
 	      <input type="hidden" value="<?= $contact_book_row['contact_book_seq'] ?>" name="contact_book_seq">
 	      <input type="hidden" value="<?= $contact_book_row['reception_user_seq'] ?>" name="reception_user_seq">
 	      <input type="hidden" value="<?= $contact_book_row['link_contact_book_seq'] ?>" name="link_id">
-	      <input class="button4" type="submit" value="送信" name = "send_update">
-		  <input class="button4" type="submit" value="保存" name="Re_preservation"><br>
-
+			<table>
+		      	<tr>
+		      		<td><input class="button4" type="submit" value="送信" name = "send"></td>
+		      		<td><input class="button4" type="submit" value="保存" name="Preservation"></td>
+			  	</tr>
+			</table>
 	    </form>
 	    </div>
     </body>

@@ -34,8 +34,9 @@
 		<br><br>
 		<br>
 		<form action="p_relay.php" method="post" enctype="multipart/form-data">
-			<font size="5">宛  先</font>
+			<font size="5">宛　 先</font>
 			<select name="to">
+
 
   				<?php
 	   				for ($i = 0; $i < $count; $i++)
@@ -49,7 +50,7 @@
 
   			</select>
 			<br>
-			<font size="5">件  名</font>
+			<font size="5">件　 名</font>
 	 		<input size="30" type="text" name="title"><br>
 	 		<font size="5">プリント</font>
 			<input size="30" type="file" name="pdf"><br><br>

@@ -41,26 +41,25 @@
 		<div align="center">
 			<table class="table_01">
 				<tr bgcolor="yellow">
-					<td align="center"width="200"><font size="5">日付</font></td>
+					<td align="center"width="160"><font size="5">日付</font></td>
 					<td align="center"width="150"><font size="5">TO</font></td>
 					<td align="center"width="230"><font size="5">件名</font></td>
 
-					<?php
-					for ($i = 0; $i < $count; $i++){
-						$row = mysql_fetch_array($result);
-					?>
+				<?php
+				for ($i = 0; $i < $count; $i++){
+					$row = mysql_fetch_array($result);
+				?>
 
-					<tr>
-						<th><?= $row['delivery_date'] ?></th>
-						<th><?= $row['group_name'] ?></th>
-						<th>
-							<a href="p_sendview.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
-						</th>
-					</tr>
-					<?php
-						}
-					?>
+				<tr>
+					<th><?= $row['delivery_date'] ?></th>
+					<th><?= $row['group_name'] ?></th>
+					<th>
+						<a href="p_sendview.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
+					</th>
 				</tr>
+				<?php
+					}
+				?>
 			</table>
 		</div>
 		</div>
