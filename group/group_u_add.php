@@ -9,6 +9,10 @@ if(isset($_GET['id']))
 {
 	$group_seq = $_GET['id'];
 }
+else if(isset($_POST['g_seq']))
+{
+	$group_seq = $_POST['g_seq'];
+}
 ?>
 
 <html>
@@ -32,6 +36,7 @@ if(isset($_GET['id']))
 			<input type="radio" name="q1" value="name" checked>名前
 			<input type="radio" name="q1" value="id">ID
 			<input type="text" name="query">
+			<input type="hidden" name="g_seq" value="<?= $group_seq ?>">
 			<input class="button4"  type="submit" value="検索">
 		</form>
 		<div id="list_user">
@@ -45,18 +50,29 @@ if(isset($_GET['id']))
 			{
 				//チェックボックスを確認
 				$user = $_POST['query'];
-				$sql = "SELECT * FROM m_user WHERE user_seq NOT IN (SELECT user_seq FROM group_details WHERE group_seq = $group_seq) AND delete_flg = 0 AND user_name LIKE '%$user%';";
+				$sql = "SELECT * 
+						FROM m_user 
+						WHERE user_seq NOT IN (SELECT user_seq FROM group_details WHERE group_seq = '$group_seq') 
+						AND m_user.delete_flg = 0
+						AND user_name LIKE '%$user%';";
 			}
 			elseif(isset($_POST['q1']) && $_POST['q1'] == "id")
 			{
 				$user_id = $_POST['query'];
-				$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND user_seq LIKE '$user_id%';";
+				$sql = "SELECT * 
+						FROM m_user 
+						WHERE user_seq NOT IN (SELECT user_seq FROM group_details WHERE group_seq = '$group_seq') 
+						AND m_user.delete_flg = 0
+						AND user_seq LIKE '%$user_id%';";		
 			}
 		}
 		else
 		{
 			//検索用データ取得
-			$sql = "SELECT * FROM m_user WHERE delete_flg = 0;";
+			$sql = "SELECT *
+					FROM m_user 
+					WHERE user_seq NOT IN (SELECT user_seq FROM group_details WHERE group_seq = '$group_seq') 
+					AND m_user.delete_flg = 0;";	
 		}
 
 		$result = mysql_query($sql);
