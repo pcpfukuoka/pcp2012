@@ -29,7 +29,7 @@
 	<img class="bg" src="../images/blue-top.jpg" alt="" />
 		<div id="container">
 	<div align="right">
-		<font size="5" >ようこそ<u><!--<?= $_SESSION['login_info[user_name]'] ?>--></u>さん</font>
+		<font size="5" >ようこそ<a onClick="disp()" id="login_user"><?= $_SESSION['login_info[login_name]'] ?></a>さん</font>
 	</div>
 
 
@@ -44,7 +44,7 @@
 	$(function(){
 		console.log("テロップ");
 		$("ul#ticker01").liScroll();
-	})();
+	});
 	</script>
 
 
@@ -58,7 +58,7 @@
 				<td><input class="button1" type="button" onclick="jump('../contactbook/main.php' , 'left')" value="連絡帳"></td>
 				<td><input class="button1" type="button" onclick="jump_class()" value="授業"></td>
 				<td><input class="button1" type="button" onclick="jump('../autho_management/jump.php' , 'left')" value="成績確認"></td>
-				<td><input class="button1" type="button" onclick="jump('../Attendance_and_absence management/A_main.php' , 'left')" value="座席管理"></td>
+				<td><input class="button1" type="button" onclick="jump('../Attendance_and_absence management/A_main.php' , 'left')" value="出席管理"></td>
 
 			</tr>
 
@@ -75,4 +75,18 @@
 	</div>
 	</div>
 </body>
+<script>
+
+function disp(){
+
+	// 「OK」時の処理開始 ＋ 確認ダイアログの表示
+	
+	if(window.confirm('ログアウトしますか？'))
+	{
+		top.location.href = "../login/logout.php"; // example_confirm.html へジャンプ
+	}
+	
+};
+	</script>
+
 </html>
