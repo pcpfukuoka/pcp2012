@@ -102,8 +102,7 @@
 			$result = mysql_query($sql);
 			$cnt = mysql_num_rows($result);
 
-			//データベースを閉じる
-			Dbdissconnect($dbcon);
+
 
 		?>
 
@@ -129,8 +128,8 @@
 
 					$sql = "SELECT print_check_flg
 							FROM print_check
-							WHERE print_delivery_seq = '$delivery'
-							AND user_seq = '$user_seq';";
+							WHERE print_delivery_seq = $delivery
+							AND user_seq = $user_seq;";
 
 					$result_chk = mysql_query($sql);
 					$chk = mysql_fetch_array($result_chk);
@@ -161,6 +160,8 @@
 					</tr>
 				<?php
 				}
+				//データベースを閉じる
+				Dbdissconnect($dbcon);
 				?>
 
 			</table>
