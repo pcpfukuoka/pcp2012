@@ -1,13 +1,5 @@
 <?php
 	session_start();
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- 画面のひな形 -->
-<html>
-	<head>
-
-
-	<?php
 		if(!isset($_SESSION["login_flg"]) || $_SESSION['login_flg'] == "false")
 		{
 			header("Location:login/index.php");
@@ -15,8 +7,10 @@
 
 
 	?>
-
-
+	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- 画面のひな形 -->
+<html>
+	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="STYLESHEET"  href="css/frame.css" type="text/css">
 		<script type="text/javascript "src="javascript/frame_jump.js"></script>

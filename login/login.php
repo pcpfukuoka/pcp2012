@@ -19,7 +19,7 @@
 		$rows = mysql_fetch_array($result);
 		$_SESSION['login_flg'] = "true";
 		$_SESSION['login_info[user]'] =  $rows['user_seq'];
-		$_SESSION['login_info[login_name]'] =  $rows['user_seq'];
+		$_SESSION['login_info[login_name]'] =  $rows['user_name'];
 		$_SESSION['login_info[autho]'] = $rows['autho_seq'];
 		header("Location: ../index.php");
 	}

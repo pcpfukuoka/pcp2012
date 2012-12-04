@@ -58,7 +58,9 @@
 			<tr>
 				<td align="center">権限：</td>
 				<td align="center"><select name = "autho_seq" size = "1">
-			<option value = "-1">選択</option>
+			<option value = "-1">選択</option></td>
+			</tr>
+
 
 
 			<?php
@@ -70,9 +72,7 @@
 		<?php
 			}
 			?>
-		</select></td>
-			</tr>
-<br>
+		</select><br>
 		<tr>
 			<td>学籍番号※学生のみ</td>
 			<td><input type="text" name="stuent_id"></td>
