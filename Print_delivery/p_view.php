@@ -72,15 +72,19 @@
 			    	if($page_cla['delivery_flg'] == 0)
 			    	{
 			    ?>
-			    		<input class="button4" type="submit" value="保存" name="Re-preservation">
+			    		<input class="button4" type="submit" value="保存" name="Re_preservation">
 			    <?php
 			    	}
 			    	//先生・管理者のみ送信可能
 			    	else
 			    	{
 			    ?>
-			    		<input class="button4" type="submit" value="保存" name="Re_preservation">
-			    		<input class="button4" type="submit" value="送信" name="send">
+					    <table>
+					    	<tr>
+					    		<td><input class="button4" type="submit" value="保存" name="Re_preservation"></td>
+					    		<td><input class="button4" type="submit" value="送信" name="send"></td>
+					    	</tr>
+					    </table>
 			    <?php
 			    	}
 			    ?>

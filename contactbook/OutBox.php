@@ -34,42 +34,43 @@
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
-		<div align="center">
-			<font class="Cubicfont">送信ボックス</font><br><br>
-		</div>
+			<div align="center">
+				<font class="Cubicfont">送信ボックス</font>
+			</div>
 
-		<hr color="blue">
-		<br>
-		<!-- 連絡帳の受信一覧テーブル作成 -->
-		<div align="left">
-			<font size="5">連絡帳</font>
-		</div>
-		<div align="center">
-		<br>
-			<table class="table_01">
-				<tr bgcolor="yellow">
-					<td align="center"width="150"><font size="5">日付</font></td>
-					<td align="center"width="200"><font size="5">TO</font></td>
-					<td align="center"width="400"><font size="5">件名</font></td>
+			<hr color="blue">
+			<br><br>
 
-				<?php
-				for ($i = 0; $i < $count; $i++){
-					$row = mysql_fetch_array($result);
-				?>
+			<!-- 連絡帳の受信一覧テーブル作成 -->
+			<div align="left">
+				<font size="5">連絡帳</font>
+			</div>
+			<div align="center">
+			<br>
+				<table class="table_01">
+					<tr bgcolor="yellow">
+						<td align="center"width="200"><font size="5">日付</font></td>
+						<td align="center"width="150"><font size="5">TO</font></td>
+						<td align="center"width="230"><font size="5">件名</font></td>
 
-				<tr>
-					<th><?= $row['send_date'] ?></th>
-					<th><?= $row['reception_user_name'] ?></th>
-					<th>
-						<!-- GETでシークを渡す -->
-						<a href="sendview.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
-					</th>
-				</tr>
-				<?php
-					}
-				?>
-			</table>
-		</div>
+					<?php
+					for ($i = 0; $i < $count; $i++){
+						$row = mysql_fetch_array($result);
+					?>
+
+					<tr>
+						<th><?= $row['send_date'] ?></th>
+						<th><?= $row['reception_user_name'] ?></th>
+						<th>
+							<!-- GETでシークを渡す -->
+							<a href="sendview.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
+						</th>
+					</tr>
+					<?php
+						}
+					?>
+				</table>
+			</div>
 		</div>
 	</body>
 </html>
