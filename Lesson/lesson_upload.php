@@ -1,22 +1,21 @@
-
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>sample</title>
-</head>
-<body>
-
 <?php
+session_start();
+	$user_seq = $_SESSION['login_info[user]'];
 
-$data = $_FILES['upfile'];
-$date = $_POST['date'];
+	//データベースの呼出
+	require_once("../lib/dbconect.php");
+	$dbcon = DbConnect();
+
+	$data = $_FILES['upfile'];
+	$date = $_POST['date'];
+	$class_seq = $_POST['class_seq'];
+	$subject_seq = $_POST['subject_seq'];
 
 
-$data['tmp_name'];
+	$img_name = $data['tmp_name'];
 
-move_uploaded_file($data['tmp_name'], '../test/');
+
+	$sql = "INSERT INTO board VALUE(0, $data, $class_seq, $subject_seq, );";
+	move_uploaded_file($data['tmp_name'], '../test/ '.$img_name);
 
 ?>
-
-</body>
-</html>
