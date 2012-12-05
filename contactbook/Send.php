@@ -48,9 +48,12 @@
 	      <input type="hidden" value="<?= $contact_book_row['contact_book_seq'] ?>" name="contact_book_seq">
 	      <input type="hidden" value="<?= $contact_book_row['reception_user_seq'] ?>" name="reception_user_seq">
 	      <input type="hidden" value="<?= $contact_book_row['link_contact_book_seq'] ?>" name="link_id">
-	      <input class="button4" type="submit" value="送信" name = "send_update">
-		  <input class="button4" type="submit" value="保存" name="Re_preservation"><br>
-
+			<table>
+		      	<tr>
+		      		<td><input class="button4" type="submit" value="送信" name = "send"></td>
+		      		<td><input class="button4" type="submit" value="保存" name="Preservation"></td>
+			  	</tr>
+			</table>
 	    </form>
 	    </div>
     </body>

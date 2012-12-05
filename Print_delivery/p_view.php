@@ -2,10 +2,6 @@
 	session_start();
 	$user_seq = $_SESSION['login_info[user]'];
 
-	require_once("../lib/autho.php");
-	$page_fun = new autho_class();
-	$page_cla = $page_fun -> autho_Pre($_SESSION['login_info[autho]'], 11);
-
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
@@ -59,24 +55,7 @@
 		    <input type="hidden" value="<?= $row['target_group_seq'] ?>" name="group_seq">
 		    <input type="hidden" value="<?= $row['title'] ?>" name="title">
 		    <br>
-		    <?php
-		    	if($page_cla['delivery_flg'] == 0)
-		    	{
-
-		    ?>
-
-		    		<input class="button4" type="submit" value="保存" name="Preservation">
-
-		    <?php
-		    	}
-		    	else
-		    	{
-		    ?>
-		    		<input class="button4" type="submit" value="送信" name="send">
-
-		    <?php
-		    	}
-		    ?>
+		    <input class="button4" type="submit" value="送信" name="send">
 		</form>
 		</div>
 	</body>

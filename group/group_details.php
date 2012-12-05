@@ -142,26 +142,26 @@
 	{
 		if(window.confirm('本当に削除してよろしいですか？'))
 		{
-			location.href = "group_g_delete.php?id=<?= $group_seq; ?>";
+			location.href = "group_g_delete.php?id=<?= $group_seq ?>";
 		}
 	}
 	function user_delete()
 	{
 		if(window.confirm('本当に削除を完了してよろしいですか？'))
 		{
-			location.href = "group_u_delete.php?id=<?= $group_seq; ?>";
+			location.href = "group_u_delete.php?id=<?= $group_seq ?>";
 		}
 	}
 	function user_reset()
 	{
 		if(window.confirm('削除したデータをもとに戻してよろしいですか？'))
 		{
-			location.href = "group_u_reset.php?id=<?= $group_seq; ?>";
+			location.href = "group_u_reset.php?id=<?= $group_seq ?>";
 		}
 	}
 	function user_add()
 	{
-		window.open('group_u_add.php?id=<?= $group_seq; ?>', 'ユーザ追加', 'width=500,height=400,top=100,left=500');;
+		window.open('group_u_add.php?id=<?= $group_seq ?>', 'ユーザ追加', 'width=500,height=400,top=100,left=500');;
 	}
 	</script>
 		<script>

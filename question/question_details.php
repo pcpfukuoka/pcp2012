@@ -155,10 +155,10 @@ function test (id,label,data,description) {
 						</table>
 					</td>
 					<td>
-					<div id="abc<?= $awnser_row['question_details_seq'] ?>" style="height: 300px; width: 300px;"></div>
+					<div id="question_pie<?= $awnser_row['question_details_seq'] ?>" style="height: 300px; width: 300px;"></div>
 					</td>
 					<td>
-						<a href="awnser_details.php?id=<?= $awnser_row['question_details_seq'] ?>">詳細</a>
+						<a href="" onClick="jumpdetails('awnser_details.php?id=<?= $awnser_row['question_details_seq'] ?>')">詳細２</a>
 					</td>
 					
 				</tr>
@@ -168,10 +168,19 @@ function test (id,label,data,description) {
 		?>
 	</body>
 	<script>
+	function jumpdetails (url)
+	{
+		window.open(url, "回答詳細", "width=350,height=250,scrollbars=yes");
+	}
+	</script>
+	
+	
+	
+	<script>
 	<?php 
 	for($i = 0; $i < $details_cnt; $i++)
 	{
-		echo "test('abc$seq_array[$i]','$label[$i]','$data[$i]','$description[$i]');";
+		echo "test('question_pie$seq_array[$i]','$label[$i]','$data[$i]','$description[$i]');";
 	}
 	?>
 	</script>

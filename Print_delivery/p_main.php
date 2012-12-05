@@ -1,23 +1,6 @@
 <?php
 	session_start();
 	$user_seq = $_SESSION['login_info[user]'];
-
-	if(!isset($_SESSION["login_flg"]) || $_SESSION['login_flg'] == "false")
-	{
-		//header("Location:login/index.php");
-	}
-
-	//page_seq = 11(プリント配信)
-	require_once("../lib/autho.php");
-	$page_fun = new autho_class();
-	$page_cla = $page_fun -> autho_Pre($_SESSION['login_info[autho]'], 11);
-
-
-	if($page_cla[0]['read_flg'] == 0)
-	{
-		header("Location:../top_left.php");
-	}
-
 ?>
 
 <html>
@@ -26,17 +9,8 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		 <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		 <link rel="stylesheet" type="text/css" href="../css/button.css" />
-		<script type="text/javascript">
-			function p_newcreate(){
-				parent.right.location="p_CreateNew.php";
-			}
-			function p_transmition(){
-				parent.right.location="p_outbox.php";
-			}
-			function p_draft(){
-				parent.right.location="p_draft.php";
-			}
-		</script>
+		 <script src="../javascript/frame_jump.js"></script>
+
 		<title>プリント配信</title>
 	</head>
 
@@ -73,11 +47,11 @@
 				Dbdissconnect($dbcon);
 			?>
 
-			<input class="button2" type="button"  style="border:0" name="newcreate" value="新規作成" onclick="p_newcreate()">
+			<input class="button2" type="button" onclick="jump('p_CreateNew.php')" value="新規作成">
 			<br><br>
-			<input class="button2" type="button" style="border:0" name="transmit" value="送信箱 " onclick="p_transmition()">
+			<input class="button2" type="button" onclick="jump('p_outbox.php')" value="送信箱">
 			<br><br>
-			<input class="button2" type="button" style="border:0" name="transmit" value="下書き （<?= $cnt_print_send?> ）" onclick="p_draft()">
+			<input class="button2" type="button" onclick="jump('p_draft.php')" value="下書き">
 		</p>
 		</div>
 	</body>

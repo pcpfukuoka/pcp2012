@@ -35,6 +35,11 @@ Dbdissconnect($link);
 	</head>
 	
 	<body>
+	
+		<div align = "center">
+			<font size = "6">点数確認</font><hr><br><br><br>
+		</div>
+		
 		<form action = "test_point_dec.php" method = "POST">
 		
 			<!-- テーブルの作成 -->

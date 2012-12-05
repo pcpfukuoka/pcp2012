@@ -39,8 +39,7 @@
 		</div>
 
 		<hr color="blue">
-		<br><br><br>
-
+		<br>
 		<!-- 連絡帳の受信一覧テーブル作成 -->
 		<div align="left">
 			<font size="5">連絡帳</font>

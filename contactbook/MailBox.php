@@ -36,7 +36,6 @@
 			<font class="Cubicfont">受信ボックス</font>
 			<br>
 		</div>
-		<br>
 		<hr color="blue">
 
 		<!-- 連絡帳の受信一覧テーブル作成 -->
@@ -108,14 +107,42 @@
 				<?php
 				for ($i = 0; $i < $cnt; $i++){
 					$row = mysql_fetch_array($result);
+
+					$delivery = $row['print_delivery_seq'];
+
+					$sql = "SELECT print_check_flg
+							FROM print_check
+							WHERE print_delivery_seq = '$delivery'
+							AND user_seq = '$user_seq';";
+
+					$result_chk = mysql_query($sql);
+					$chk = mysql_fetch_array($result_chk);
 				?>
 					<tr>
+<<<<<<< HEAD
+=======
+
+					<?php
+
+						if ($chk['print_check_flg'] == 1)
+						{
+					?>
+						<td><img src="../images/mail_icon.jpg"></td>
+					<?php
+						}
+						else
+						{
+							echo "<td></td>";
+						}
+					?>
+
+>>>>>>> origin/HEAD
 						<th><?= $row['delivery_date'] ?></th>
 						<th><?= $row['send_user_name'] ?></th>
 						<th>
 							<!-- GETでprint_delivery_seqを送る -->
 							<!-- <a href="<?= printurl ?>"><?= $row['title'] ?></a> -->
-							<a href="pdf_relay.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
+							<a href="../Print_delivery/pdf_view.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
 						</th>
 					</tr>
 				<?php

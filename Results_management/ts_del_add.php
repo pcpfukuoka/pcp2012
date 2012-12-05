@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>削除画面</title>
+		<title>先生削除画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 		<meta http-equiv="Content-Style-Type" content="text/css"></meta>
 	</head>
@@ -15,7 +15,7 @@
 		?>
 			<div align = "center">
 			
-				<font size = "6">先生削除画面</font>
+				<font size = "6">先生削除</font>
 			</div><br><br>
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
@@ -147,7 +147,7 @@
 			?>
 			
 			<div align = "center">
-			<font size = "6">教科削除画面</font></div><br>
+			<font size = "6">教科削除</font></div><br>
 			<?php 
 			
 			

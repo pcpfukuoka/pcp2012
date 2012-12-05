@@ -43,7 +43,7 @@ Dbdissconnect($link);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
-		<title>テスト絞り込み</title>
+		<title>テスト絞り込み画面</title>
 	</head>
 	
 	<body>
@@ -97,7 +97,6 @@ Dbdissconnect($link);
 				</tr>
 			</table>
 			<input type = "submit" value = "一覧へ">
-			<a href="res_main.php">トップへ戻る</a>
 		</form>
 	</body>
 </html>
