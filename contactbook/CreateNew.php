@@ -14,7 +14,7 @@
 
 <html>
 	<head>
-	　　<title> 新規作成</title>
+	  <title> 新規作成</title>
 	  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	  <meta http-equiv="Content-Style-Type" content="text/css">
 	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
@@ -25,14 +25,14 @@
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
-		<form action="relay.php" method="POST" id="input">
 			  <div align="center">
-			   <font class="Cubicfont">新規作成</font>
+			  	<font class="Cubicfont">新規作成</font>
 			  </div>
 
 			  <hr color="blue">
 			  <br><br>
 
+		<form action="relay.php" method="POST" id="input">
 			  <font size="3">宛先</font>
 			  <select name="to">
 			  <?php

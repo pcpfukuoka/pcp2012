@@ -46,8 +46,8 @@
 		<div align="center">
 			<table class="table_01">
 				<tr bgcolor="yellow">
-				<td align="center"width="150"><font size="5">日付</font></td>
-				<td align="center"width="200"><font size="5">FROM</font></td>
+				<td align="center"width="200"><font size="5">日付</font></td>
+				<td align="center"width="150"><font size="5">FROM</font></td>
 				<td align="center"width="400"><font size="5">件名</font></td>
 
 				<?php
@@ -99,8 +99,8 @@
 		<div align="center">
 			<table class="table_01">
 				<tr bgcolor="yellow">
-					<td align="center"width="150"><font size="5">日付</font></td>
-					<td align="center"width="200"><font size="5">FROM</font></td>
+					<td align="center"width="200"><font size="5">日付</font></td>
+					<td align="center"width="150"><font size="5">FROM</font></td>
 					<td align="center"width="400"><font size="5">件名</font></td>
 				</tr>
 
@@ -119,11 +119,7 @@
 					$chk = mysql_fetch_array($result_chk);
 				?>
 					<tr>
-<<<<<<< HEAD
-=======
-
 					<?php
-
 						if ($chk['print_check_flg'] == 1)
 						{
 					?>
@@ -135,8 +131,6 @@
 							echo "<td></td>";
 						}
 					?>
-
->>>>>>> origin/HEAD
 						<th><?= $row['delivery_date'] ?></th>
 						<th><?= $row['send_user_name'] ?></th>
 						<th>
