@@ -151,7 +151,7 @@
 						<th>
 							<!-- GETでprint_delivery_seqを送る -->
 							<!-- <a href="<?= printurl ?>"><?= $row['title'] ?></a> -->
-							<a href="../Print_delivery/pdf_view.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
+							<a href="../Print_delivery/pdf_view.php?id=<?= $row['print_delivery_seq'] ?>&printurl=<?= $row['printurl'] ?>"><?= $row['title'] ?></a>
 						</th>
 					</tr>
 				<?php
