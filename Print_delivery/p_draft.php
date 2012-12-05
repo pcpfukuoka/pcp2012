@@ -37,13 +37,13 @@
 		</div>
 
 		<hr color="blue">
-		<br><br><br>
+		<br><br>
 
 		<p align="center">
 			<div align="center">
 				<table class="table_01">
 					<tr bgcolor="yellow">
-					<td align="center"width="160"><font size="5">日付</font></td>
+					<td align="center"width="200"><font size="5">日付</font></td>
 					<td align="center"width="150"><font size="5">TO</font></td>
 					<td align="center"width="230"><font size="5">件名</font></td>
 
