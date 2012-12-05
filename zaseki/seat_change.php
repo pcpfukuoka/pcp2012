@@ -14,42 +14,61 @@
 
     $(function() {
 	    $('.change').click(function(){
-		if(id == 0)
-		{
-				//一回目にクリックしたセルのデータを保存
-				id = $(this).attr("id");
-				name1 = $(this).children("p").text();
-				attendance_no1 = $(this).children().val();
+			if(id == 0)
+			{
+					//一回目にクリックしたセルのデータを保存
+					id = $(this).attr("id");
+					name1 = $(this).children("p").text();
+					attendance_no1 = $(this).children().val();
 
-				//一回目にクリックしたセルの色を変える
-				$(this).attr({"bgcolor": "yellow"});
+					//一回目にクリックしたセルの色を変える
+					$(this).attr({"bgcolor": "yellow"});
 
-	    }
-		else
-		{
+		    }
+			else
+			{
 
-				//二回目にクリックしたセルのデータを保存
-				name2 = $(this).children("p").text();
-				attendance_no2 = $(this).children().val();
+					//二回目にクリックしたセルのデータを保存
+					name2 = $(this).children("p").text();
+					attendance_no2 = $(this).children().val();
 
-				//データの交換
-				$(this).children("p").text(name1);
-				$('#' + id).children("p").text(name2);
+					//データの交換
+					$(this).children("p").text(name1);
+					$('#' + id).children("p").text(name2);
 
-				$(this).children().attr({"value": attendance_no1});
-				$('#' + id).children().attr({"value": attendance_no2});
+					$(this).children().attr({"value": attendance_no1});
+					$('#' + id).children().attr({"value": attendance_no2});
 
-				//セルの色を戻す
-				$('#' + id).attr({"bgcolor": ""});
+					//セルの色を戻す
+					$('#' + id).attr({"bgcolor": ""});
 
-				id = 0;
-				name1 = "";
-				name2 = "";
-				attendance_no1 = "";
-				attendance_no2 = "";
+					id = 0;
+					name1 = "";
+					name2 = "";
+					attendance_no1 = "";
+					attendance_no2 = "";
 
-		}
+			}
 	    });
+
+		$('.rand').click(function()
+		{
+			for(var i = 0;i <= 30;i++)
+			{
+				var seat_no = (Math.floor(Math.random()*9+1))
+				var seat_no2 = (Math.floor(Math.random()*9+1))
+				var count = $('#count').val();
+
+				var evc_name = $('#'+seat_no).children("p").text();
+				var evc_value = $('#'+seat_no).children().val();
+
+				$('#'+seat_no).children("p").text($('#'+seat_no2).children("p").text());
+				$('#'+seat_no).children().val( $('#'+seat_no2).children().val());
+
+				$('#'+seat_no2).children("p").text(evc_name);
+				$('#'+seat_no2).children().val(evc_value);
+			}
+		});
     });
     </script>
 
@@ -60,7 +79,6 @@
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
-	mysql_query("set names utf8");
 
 	//文字コード設定
 	mysql_query("SET NAMES UTF8");
@@ -70,7 +88,7 @@
 	<form action="seat_change_update.php" method="POST">
 	<table border = 1  cellspacing="10">
 <?php
-	$class = 1;
+	$class = $_POST['group'];
 	$sql = "select max(row) as mx from seat where attendance_class_seq ='$class'";
 	$res = mysql_query($sql);
 	$ret = mysql_fetch_assoc($res);
@@ -125,10 +143,7 @@
 	</table>
 	<input type="submit" value="更新">
 	</form>
-
-	<p class="test">クリック</p>
-	<p>　取得</p><p class="get">あ </p>
-
+	<input type="submit" value="ランダム" class = "rand">
 
 	</body>
 </html>
