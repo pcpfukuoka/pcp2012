@@ -7,7 +7,7 @@
 	$dbcon = DbConnect();
 
 	//連らう帳のテータベースからデータの取り出し
-	$sql = "SELECT contact_book_seq, send_date, m_user.user_name AS send_user_name, title
+	$sql = "SELECT contact_book_seq, send_date, m_user.user_name AS send_user_name, title, new_flg
 			FROM contact_book
 			Left JOIN m_user ON contact_book.send_user_seq = m_user.user_seq
 			WHERE contact_book.reception_user_seq = $user_seq
@@ -46,21 +46,35 @@
 		<div align="center">
 			<table class="table_01">
 				<tr bgcolor="yellow">
-				<td align="center"width="150"><font size="5">日付</font></td>
-				<td align="center"width="200"><font size="5">FROM</font></td>
-				<td align="center"width="400"><font size="5">件名</font></td>
+				<td align="center" width="30"></td>
+				<td align="center" width="200"><font size="5">日付</font></td>
+				<td align="center" width="150"><font size="5">FROM</font></td>
+				<td align="center" width="230"><font size="5">件名</font></td>
 
 				<?php
 				for ($i = 0; $i < $count; $i++){
 					$row = mysql_fetch_array($result);
 				?>
 					<tr>
-						<th><?= $row['send_date'] ?></th>
-						<th><?= $row['send_user_name'] ?></th>
-						<th>
-							<!-- GETでcontact_book_seqを送る -->
-							<a href="view.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
-						</th>
+
+						<?php
+							if($row['new_flg'] == 1)
+							{
+						?>
+								<td><img src="../images/mail_icon.jpg"></td>
+						<?php
+							}
+							else
+							{
+								echo "<td></td>";
+							}
+						?>
+							<th><?= $row['send_date'] ?></th>
+							<th><?= $row['send_user_name'] ?></th>
+							<th>
+								<!-- GETでcontact_book_seqを送る -->
+								<a href="view.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
+							</th>
 					</tr>
 				<?php
 				}
@@ -86,9 +100,6 @@
 			$result = mysql_query($sql);
 			$cnt = mysql_num_rows($result);
 
-			//データベースを閉じる
-			Dbdissconnect($dbcon);
-
 		?>
 
 		<!-- プリントの受信一覧テーブル作成 -->
@@ -99,9 +110,10 @@
 		<div align="center">
 			<table class="table_01">
 				<tr bgcolor="yellow">
-					<td align="center"width="150"><font size="5">日付</font></td>
-					<td align="center"width="200"><font size="5">FROM</font></td>
-					<td align="center"width="400"><font size="5">件名</font></td>
+					<td align="center" width="30"></td>
+					<td align="center" width="200"><font size="5">日付</font></td>
+					<td align="center" width="150"><font size="5">FROM</font></td>
+					<td align="center" width="230"><font size="5">件名</font></td>
 				</tr>
 
 				<?php
@@ -112,22 +124,20 @@
 
 					$sql = "SELECT print_check_flg
 							FROM print_check
-							WHERE print_delivery_seq = '$delivery'
-							AND user_seq = '$user_seq';";
+							WHERE print_delivery_seq = $delivery
+							AND user_seq = $user_seq;";
 
 					$result_chk = mysql_query($sql);
 					$chk = mysql_fetch_array($result_chk);
 				?>
 					<tr>
-<<<<<<< HEAD
-=======
 
 					<?php
 
 						if ($chk['print_check_flg'] == 1)
 						{
 					?>
-						<td><img src="../images/mail_icon.jpg"></td>
+							<td><img src="../images/mail_icon.jpg"></td>
 					<?php
 						}
 						else
@@ -136,7 +146,6 @@
 						}
 					?>
 
->>>>>>> origin/HEAD
 						<th><?= $row['delivery_date'] ?></th>
 						<th><?= $row['send_user_name'] ?></th>
 						<th>
@@ -147,6 +156,9 @@
 					</tr>
 				<?php
 				}
+
+				//データベースを閉じる
+				Dbdissconnect($dbcon);
 				?>
 
 			</table>
