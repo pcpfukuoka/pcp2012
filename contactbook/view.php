@@ -21,19 +21,19 @@
 
 <html>
 	<head>
-	  <title> 確認画面</title>
+	　　<title> 確認画面</title>
 	  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	  <meta http-equiv="Content-Style-Type" content="text/css">
 	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
 	  <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
-	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
 
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
+		<form action="ReplyBox.php" method="POST">
 			<div align="center">
-			    <font class="Cubicfont">確認画面</font>
+			    <font size = "7">確認画面</font><br>
 			</div>
 			<div>
 				<font size = "4"><a href="MailBox.php">←戻る</a></font>
@@ -42,21 +42,20 @@
 			<hr color="blue">
 			<br><br>
 
-			<form action="ReplyBox.php" method="POST">
-				<font size="3">From　：</font>
-				<?= $row['send_user_name'] ?><br>
-				<font size="3">件名　：</font>
-				<?= $row['title'] ?><br><br>
+			<font size="3">From　：</font>
+			<?= $row['send_user_name'] ?><br>
+			<font size="3">件名　：</font>
+			<?= $row['title'] ?><br><br>
 
-			    <font size="3">本文</font><br>
-			    <?= $row['contents']?><br><br><br>
-			    <input type="hidden" value="<?= $row['send_user_name'] ?>" name="sendto">
-			    <input type="hidden" value="<?= $row['send_user_seq'] ?>" name="send_seq">
-			    <input type="hidden" value="<?= $row['title'] ?>" name="title">
-			    <input type="hidden" value="<?= $row['contents'] ?>" name="contents">
-			    <input type="hidden" value="<?= $id ?>" name="link_id">
-			    <input class="button4" type="submit" value="返信">
-		    </form>
+		    <font size="3">本文</font><br>
+		    <?= $row['contents']?><br><br><br>
+		    <input type="hidden" value="<?= $row['send_user_name'] ?>" name="sendto">
+		    <input type="hidden" value="<?= $row['send_user_seq'] ?>" name="send_seq">
+		    <input type="hidden" value="<?= $row['title'] ?>" name="title">
+		    <input type="hidden" value="<?= $row['contents'] ?>" name="contents">
+		    <input type="hidden" value="<?= $id ?>" name="link_id">
+		    <input class="button4" type="submit" value="返信">
+	    </form>
 	    </div>
     </body>
 </html>

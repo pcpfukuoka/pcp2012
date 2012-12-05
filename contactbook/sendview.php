@@ -20,37 +20,36 @@
 
 <html>
 	<head>
-	  <title> 確認画面</title>
+	　　<title> 確認画面</title>
 	  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	  <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
-	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
 
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
+		<form action="ReplyBox.php" method="POST">
 			<div align="center">
-			    <font class="Cubicfont">確認画面</font>
+			    <font size = "7">確認画面</font><br>
 			</div>
 
 			<font size = "4"><a href="OutBox.php">←戻る</a></font>
 
-			<hr color="blue">
+			<hr color="green">
 			<br><br>
 
-			<form action="ReplyBox.php" method="POST">
-				<font size="3">宛先　：</font>
-				<?= $row['reception_user_name'] ?><br>
-				<font size="3">件名　：</font>
-				<?= $row['title'] ?><br><br>
+			<font size="3">宛先　：</font>
+			<?= $row['reception_user_name'] ?><br>
+			<font size="3">件名　：</font>
+			<?= $row['title'] ?><br><br>
 
-			    <font size="3">本文</font><br>
-			    <?= $row['contents']?><br>
+		    <font size="3">本文</font><br>
+		    <?= $row['contents']?><br>
 
-			    <input type="hidden" value="<?= $row['reception_user_name'] ?>" name="sendto">
-			    <input type="hidden" value="<?= $row['title'] ?>" name="title">
+		    <input type="hidden" value="<?= $row['reception_user_name'] ?>" name="sendto">
+		    <input type="hidden" value="<?= $row['title'] ?>" name="title">
 
-		    </form>
+	    </form>
 	    </div>
     </body>
 </html>
