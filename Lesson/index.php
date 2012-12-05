@@ -36,9 +36,9 @@
 				<br><br>
 
 				<!-- 先生用の画面 -->
-				<input type="button"  value="授業開始">
+				<input type="button" onclick="jump('lesson/lesson.php','right')" value="授業開始">
 				<br><br>
-				<input type="button"  value="授業準備">
+				<input type="button" onclick="jump('lesson/lesson_preparation.php','right')" value="授業準備">
 
 			</p>
 		</div>
