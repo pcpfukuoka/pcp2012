@@ -21,40 +21,42 @@
 
 <html>
 	<head>
-	　　<title> 送信</title>
+	  <title> 送信</title>
 	  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	  <meta http-equiv="Content-Style-Type" content="text/css">
 	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
 	  <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
 
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
-		<form action="relay.php" method="POST" id="input">
 		  <div align="center">
-		    <font size = "7">送信</font><br>
+		    <font class="Cubicfont">送信</font>
 		  </div>
-		　　<hr color="blue">
+
+		  <hr color="blue">
 		  <br><br>
 
-		  <font size="3">宛先　： </font>
-		  <?= $contact_book_row['reception_user_name']?><br>
-		  <font size="3">件名　： </font>
-		  <input size="40" type="text" name="title" value="<?= $contact_book_row['title']?>"><br><br>
-	      <font size="3">本文</font><br>
-	      <textarea rows="40" cols="50" name="contents"><?= $contact_book_row['contents'] ?></textarea><br>
+		  <form action="relay.php" method="POST" id="input">
+			  <font size="3">宛先　： </font>
+			  <?= $contact_book_row['reception_user_name']?><br>
+			  <font size="3">件名　： </font>
+			  <input size="40" type="text" name="title" value="<?= $contact_book_row['title']?>"><br><br>
+		      <font size="3">本文</font><br>
+		      <textarea rows="40" cols="50" name="contents"><?= $contact_book_row['contents'] ?></textarea><br>
 
-	      <input type="hidden" value="<?= $contact_book_row['contact_book_seq'] ?>" name="contact_book_seq">
-	      <input type="hidden" value="<?= $contact_book_row['reception_user_seq'] ?>" name="reception_user_seq">
-	      <input type="hidden" value="<?= $contact_book_row['link_contact_book_seq'] ?>" name="link_id">
-			<table>
-		      	<tr>
-		      		<td><input class="button4" type="submit" value="送信" name = "send"></td>
-		      		<td><input class="button4" type="submit" value="保存" name="Preservation"></td>
-			  	</tr>
-			</table>
-	    </form>
+		      <input type="hidden" value="<?= $contact_book_row['contact_book_seq'] ?>" name="contact_book_seq">
+		      <input type="hidden" value="<?= $contact_book_row['reception_user_seq'] ?>" name="reception_user_seq">
+		      <input type="hidden" value="<?= $contact_book_row['link_contact_book_seq'] ?>" name="link_id">
+			  <table>
+			      <tr>
+			      	 <td><input class="button4" type="submit" value="送信" name = "send_update"></td>
+			      	 <td><input class="button4" type="submit" value="保存" name="Re_preservation"></td>
+				  </tr>
+			  </table>
+	      </form>
 	    </div>
     </body>
 </html>
