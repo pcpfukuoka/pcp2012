@@ -7,6 +7,7 @@
 	$sql = "SELECT subject_seq, subject_name FROM m_subject;";
 
 	$result = mysql_query($sql);
+
 	$count = mysql_num_rows($result);
 
 	//データベースを閉じる
@@ -18,11 +19,10 @@
 	</head>
 	<body>
 		<form action="add.php" method="post" enctype="multipart/form-data">
-			ファイル：<br/>
 			<!-- 授業がある日付・授業するクラス・授業の科目 -->
 			<input type="date" name= "date" size= "30" /><br />
 
-			<select name="subject">
+			<!--  <select name="subject">
 				<?php
 	   				for ($i = 0; $i < $count; $i++)
 	   				{
@@ -33,6 +33,7 @@
     				}
   				?>
 			</select>
+			-->
 			<br />
 			<input type="submit" value="決定" />
 		</form>
