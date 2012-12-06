@@ -37,46 +37,46 @@
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
-			<div align="center">
-			    <font class="Cubicfont">プリント送信済み確認</font>
-			</div>
+		<div align="center">
+		    <font class="Cubicfont">プリント送信済み確認</font>
+		</div>
 
-			<font size = "4"><a href="p_outbox.php">←戻る</a></font>
-			<hr color="blue">
-			<br><br>
+		<font size = "4"><a href="p_outbox.php">←戻る</a></font>
+		<hr color="blue">
+		<br><br>
 
-			<div align="center">
-				<table border="1">
-					<tr bgcolor="yellow">
-						<td align="center"width="200"><font size="5">名前</font></td>
-						<td align="center"width="200"><font size="5">確認</font></td>
+		<div align="center">
+			<table border="1">
+				<tr bgcolor="yellow">
+					<td align="center"width="200"><font size="5">名前</font></td>
+					<td align="center"width="200"><font size="5">確認</font></td>
+				</tr>
+
+				<?php
+				for ($i = 0; $i < $count; $i++){
+					$row = mysql_fetch_array($result_print_check);
+				?>
+
+					<tr>
+						<td><?= $row['user_name'] ?></td>
+						<td>
+							<?php
+								if($row['print_delivery_seq'] == $id && $row['print_check_flg'] == 1)
+								{
+									echo "-------";
+								}
+								else
+								{
+									echo "確認済み";
+								}
+							?>
+						</td>
 					</tr>
-
-					<?php
-					for ($i = 0; $i < $count; $i++){
-						$row = mysql_fetch_array($result_print_check);
-					?>
-
-						<tr>
-							<td><?= $row['user_name'] ?></td>
-							<td>
-								<?php
-									if($row['print_delivery_seq'] == $id && $row['print_check_flg'] == 1)
-									{
-										echo "-------";
-									}
-									else
-									{
-										echo "確認済み";
-									}
-								?>
-							</td>
-						</tr>
-					<?php
-					}
-					?>
-				</table>
-			</div>
+				<?php
+				}
+				?>
+			</table>
+		</div>
 		</div>
 	</body>
 </html>
