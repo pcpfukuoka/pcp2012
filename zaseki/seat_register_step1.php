@@ -1,15 +1,8 @@
 <!-- 未完成 -->
 <?php
-	$url = "105-pc";
-	$user = "root";
-	$pass = "";
-	$db = "pcp2012";
-
-	//mysqlに接続する
-	$link = mysql_connect($url,$user,$pass) or die("MySQLへの接続に失敗しました。");
-
-	//データベースを選択する
-	$sdb = mysql_select_db($db,$link)or die("データベースの選択に失敗しました。");
+	//データベースの呼出
+	require_once("../lib/dbconect.php");
+	$dbcon = DbConnect();
 
 	//文字コード設定
 	mysql_query("SET NAMES UTF8");
@@ -27,17 +20,17 @@
 
 			<tr>
 				<td>
-				クラス
+				グループ
 <?php
-					$sql = "select attendance_class_seq, attendance_class_name from attendance_class";
+					$sql = "select group_name, group_seq from m_group";
 					$res = mysql_query($sql);
 ?>
-					<select name="class" >
+					<select name="group" >
 <?php
 					while($gyo = mysql_fetch_array($res))
 					{
 ?>
-						<option value=<?= $gyo['attendance_class_seq']?>> <?=  $gyo['attendance_class_name']?></option>
+						<option value=<?= $gyo['group_seq']?>> <?=  $gyo['group_name']?></option>
 <?php
 					}
 ?>
@@ -79,7 +72,7 @@
 			</tr>
 
 		</table>
-		<input type="submit" value="変更">
+		<input type="submit" value="座席表作成へ">
 
 		</form>
 	</body>

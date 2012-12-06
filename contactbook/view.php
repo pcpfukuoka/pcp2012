@@ -10,6 +10,7 @@
 			WHERE contact_book_seq = '$id';";
 	$result = mysql_query($sql);
 	$row = mysql_fetch_array($result);
+
 	$sql = "UPDATE contact_book
 			SET new_flg = 0
 			WHERE contact_book_seq = '$id'; ";
@@ -56,7 +57,7 @@
 			    <input type="hidden" value="<?= $row['contents'] ?>" name="contents">
 			    <input type="hidden" value="<?= $id ?>" name="link_id">
 			    <input class="button4" type="submit" value="返信">
-		    </form>
+	    	</form>
 	    </div>
     </body>
 </html>

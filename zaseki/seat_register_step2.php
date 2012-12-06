@@ -1,25 +1,16 @@
 <!-- 未完成 -->
 
 <?php
-	$class = $_POST['class'];
+	$group = $_POST['group'];
 	$row_max = $_POST['row'];
 	$col_max = $_POST['col'];
 
-
-	$url = "105-pc";
-	$user = "root";
-	$pass = "";
-	$db = "pcp2012";
-
-	//mysqlに接続する
-	$link = mysql_connect($url,$user,$pass) or die("MySQLへの接続に失敗しました。");
-
-	//データベースを選択する
-	$sdb = mysql_select_db($db,$link)or die("データベースの選択に失敗しました。");
+	//データベースの呼出
+	require_once("../lib/dbconect.php");
+	$dbcon = DbConnect();
 
 	//文字コード設定
 	mysql_query("SET NAMES UTF8");
-
 
 ?>
 
@@ -110,11 +101,11 @@
 	<?php
 
 
-		$sql = "SELECT  attendance_no.attendance_no,m_user.user_name
-					from attendance_no
-						inner join m_user on attendance_no.user_seq = m_user.user_seq
-					where
-						attendance_no.attendance_class_seq = '$class'";
+		$sql = "SELECT m_user.user_seq,m_user.user_name
+					from group_details,m_user
+						where group_details.group_seq = '$group'
+							and group_details.user_seq = m_user.user_seq";
+
 
 		//echo $sql;
 
@@ -138,7 +129,7 @@
 		echo "<table>";
 
 
-		echo "<input name=class type=hidden value=$class>";
+		echo "<input name=group type=hidden value=$group>";
 		echo "<input name=row_max type=hidden value=$row_max>";
 		echo "<input name=col_max type=hidden value=$col_max>";
 ?>
