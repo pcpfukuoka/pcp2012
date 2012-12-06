@@ -20,7 +20,7 @@ session_start();
 	echo $date;
 
 
-	$sql = "INSERT INTO board VALUE(0,'".$date ."', '15','15','".$page_num ."','0','0','". $img_name . "');";
+	$sql = "INSERT INTO board VALUE(0,'".$date ."', '15','15','".$page_num ."','".$img_name ."','0','0');";
 	echo $sql;
 	$result = mysql_query($sql);
 	$file_name = 'files/ '.$img_name;
