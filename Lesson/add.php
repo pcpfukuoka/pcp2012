@@ -27,8 +27,8 @@
 
 	<!-- このあとを繰り返し？ -->
 		<form action="lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame">
-			<input type="hidden" name="date" value=" <?php $date ?>" />
-			<input type="hidden" name="subject_seq" value="<?php $subject_seq ?>" />
+			<input type="hidden" name="date" value=" <?= $date ?>" />
+
 			<input type= "hidden" name="page_num" value= "1" />
 			ファイル：<br/>
 			<input type="file" name="upfile" size="30" />
