@@ -8,6 +8,10 @@
 	$cnt = mysql_num_rows($result);
 
 	Dbdissconnect($dbcon);
+	if(isset($_GET['name_error']))
+	{
+		$group_name = $_GET['name_error'];
+	}
 ?>
 <html>
 
@@ -34,6 +38,15 @@
 				<br>
 				<br>
 
+				<?php
+					if(isset($_GET['name_error']))
+					{
+				?>
+				<p><font color="red">※その名前のグループは既に存在しています。</font></p>
+				<?php
+					}
+				?>
+				
 				<table class="table_01">
 					<tr  align = "center">
 						<td><font size="5">グループ名</font></td>
@@ -42,7 +55,20 @@
 
 					<tr>
 						<th>
+							<?php
+								if(isset($_GET['name_error']))
+								{
+							?>
+							<input type="text" size="50" name = "new_group_name" value="<?= $group_name ?>">
+							<?php
+								}
+								else
+								{
+							?>
 							<input type="text" size="50" name = "new_group_name">
+							<?php
+								}
+							?>
 						</th>
 
 						<th>
@@ -66,6 +92,4 @@
 		</form>
 		</div>
 	</body>
-
 </html>
-

@@ -41,27 +41,30 @@
     {
     	//送信完了ボタンの時の処理
     	$print_delivery_seq = $_POST['print_delivery_seq'];
-    	$delivery_user_seq = $_POST['delivery_user_seq'];
     	$title = $_POST['title'];
-    	$group_name = $_POST['group_name'];
-    	$group_seq = $_POST['group_seq'];
+    	//$delivery_user_seq = $_POST['delivery_user_seq'];
+    	//$group_name = $_POST['group_name'];
+    	//$group_seq = $_POST['group_seq'];
 
     	$sql = "UPDATE print_delivery
 				SET title = '$title', print_flg = 1, print_send_flg = 0, delivery_date = now()
-				WHERE Print_delivery_seq = '$print_delivery_seq'; ";
+				WHERE print_delivery_seq = '$print_delivery_seq'; ";
     	mysql_query($sql);
 
-    	$sql = "SELECT * FROM group_details WHERE group_seq = '$group_seq'";
-    	$group_result = mysql_query($sql);
-    	$group_cnt = mysql_num_rows($group_result);
+    	$sql = "SELECT group_details.user_seq
+    			FROM group_details
+    			LEFT JOIN print_delivery ON group_details.group_seq = print_delivery.target_group_seq
+    			WHERE print_delivery_seq = $print_delivery_seq";
+    	$user_result = mysql_query($sql);
+    	$user_cnt = mysql_num_rows($user_result);
 
-    	for ($i = 0; $i < $group_cnt; $i++)
+    	for ($i = 0; $i < $user_cnt; $i++)
     	{
-    		$row = mysql_fetch_array($group_result);
-    		$group_user_seq = $row['user_seq'];
+    		$row = mysql_fetch_array($user_result);
+    		$user_seq = $row['user_seq'];
 	    	//print_checkにデータをINSERT
 	    	$sql = "INSERT INTO print_check (print_delivery_seq, user_seq, print_check_flg)
-	    			VALUE ('$print_delivery_seq', '$group_user_seq', '1')";
+	    			VALUE ('$print_delivery_seq', '$user_seq', '1')";
 	    	mysql_query($sql);
     	}
 

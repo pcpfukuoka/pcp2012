@@ -10,6 +10,7 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 	$id = $_GET['id'];
+	$printurl = $_GET['printurl'];
 
 	$sql = "SELECT print_delivery_seq, delivery_user_seq, target_group_seq, delivery_date, m_group.group_name AS group_name, title, printurl
 			FROM print_delivery
