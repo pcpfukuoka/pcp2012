@@ -7,7 +7,10 @@
 	$sql = "SELECT subject_seq, subject_name FROM m_subject;";
 
 	$result = mysql_query($sql);
-	$row = mysql_fetch_array($result);
+	$count = mysql_num_rows($result);
+
+	//データベースを閉じる
+	Dbdissconnect($dbcon);
 ?>
 <html>
 	<head>
@@ -21,11 +24,14 @@
 
 			<select name="subject">
 				<?php
-				foreach($row as $key => $val)
-				{
-					echo '<option value="'. $key. '">'. $val. '</option>'';
-				}
-				?>
+	   				for ($i = 0; $i < $count; $i++)
+	   				{
+	   					$row = mysql_fetch_array($result);
+  				?>
+    				<option value="<?= $row['subject_seq']?>"><?= $row['subject_name'] ?></option>
+  				<?php
+    				}
+  				?>
 			</select>
 			<br />
 			<input type="submit" value="決定" />

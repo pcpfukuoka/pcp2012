@@ -54,7 +54,7 @@ Dbdissconnect($link);
 			<font size = "6">テスト絞り込み</font><hr><br><br><br>
 		</div>
 		
-		<form action = "per_list.php" method = "POST">
+		<form action = "Per_list.php" method = "POST">
 			<!-- テーブルの作成 -->
 			<table border = "1" >
 				<tr>
