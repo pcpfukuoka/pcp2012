@@ -17,6 +17,7 @@ session_start();
 
 
 	$img_name = $data['name'];
+	echo $date;
 
 
 	$sql = "INSERT INTO board VALUE(0,".$date .", '15','15',".$page_num .",'0','0',". $img_name . ");";
