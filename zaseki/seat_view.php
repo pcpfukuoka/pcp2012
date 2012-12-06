@@ -20,13 +20,13 @@
 <?php
 
 	$class = $_POST['group'];
-	$sql = "select max(row) as mx from seat where attendance_class_seq='$class'";
+	$sql = "select max(row) as mx from seat where group_seq='$class'";
 	$res = mysql_query($sql);
 	$gyo = mysql_fetch_assoc($res);
 	$row_max = $gyo['mx'];
 
 
-	$sql = "select max(col) as mx from seat where attendance_class_seq ='$class'";
+	$sql = "select max(col) as mx from seat where group_seq ='$class'";
 	$res = mysql_query($sql);
 	$gyo = mysql_fetch_assoc($res);
 	$col_max = $gyo['mx'];
@@ -38,7 +38,7 @@
 
 			for($col = 1; $col <= $col_max; $col++)
 			{
-				$sql = "select user_seq from seat where attendance_class_seq ='$class' and row='$row'and col='$col'";
+				$sql = "select user_seq from seat where group_seq ='$class' and row='$row'and col='$col'";
 
 				$res = mysql_query($sql);
 				$gyo = mysql_fetch_assoc($res);

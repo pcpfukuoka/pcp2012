@@ -21,7 +21,7 @@
 
 ?>
 	<body>
-		<form action="seat_view2.php" method="POST">
+		<form action="seat_view.php" method="POST">
 <?php
 		$sql = "select m_group.group_name,m_group.group_seq
 					from m_group,group_details
