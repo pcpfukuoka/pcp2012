@@ -16,12 +16,15 @@ session_start();
 
 
 
-	$img_name = $data['tmp_name'];
+	$img_name = $data['name'];
 
 
-	$sql = "INSERT INTO board VALUE(0,". $date. ", '15','15',".$page_num .",'0','0',". $img_name . ");";
+	$sql = "INSERT INTO board VALUE(0,".$date .", '15','15',".$page_num .",'0','0',". $img_name . ");";
+	echo $sql;
 	$result = mysql_query($sql);
-	move_uploaded_file($data['tmp_name'], 'file/ '.$img_name);
+	$file_name = 'files/ '.$img_name;
+	echo $file_name;
+	move_uploaded_file($data['tmp_name'], $file_name);
 
 	echo '終了しました';
 
