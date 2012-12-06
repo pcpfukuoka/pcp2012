@@ -6,11 +6,11 @@
 
 	$date = $_POST['date'];
 	//$class_seq = $_POST['class_seq'];
-	$subject_seq = $_POST['subject'];
+	//$subject_seq = $_POST['subject'];
 
 	//subjectに対応するsubject_nameをデータベースから持ってくる
-	$sql = 'SELECT subject_name FROM m_subject WHEREsubject_seq = '. $subject_seq.';';
-	$result = mysql_query($sql);
+	//$sql = 'SELECT subject_name FROM m_subject WHEREsubject_seq = '. $subject_seq.';';
+	//$result = mysql_query($sql);
 
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
@@ -22,7 +22,7 @@
 
 	<body>
 
-	<font size="5"><?= $date ?>：<?=$result ?></font>
+	<font size="5"><?= $date ?></font>
 
 
 	<!-- このあとを繰り返し？ -->
