@@ -19,7 +19,8 @@ session_start();
 	$img_name = $data['tmp_name'];
 
 
-	$sql = "INSERT INTO board VALUE(0,". $data. ", '15','15',".$page_num .",'0','0',". $img_name . ");";
+	$sql = "INSERT INTO board VALUE(0,". $date. ", '15','15',".$page_num .",'0','0',". $img_name . ");";
+	$result = mysql_query($sql);
 	move_uploaded_file($data['tmp_name'], 'file/ '.$img_name);
 
 	echo '終了しました';
