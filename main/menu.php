@@ -54,7 +54,7 @@
 		<table>
 			<tr>
 				<td><input class="button1" type="button" onclick="jump_top()"value="ＴＯＰ"></td>
-				<td><input class="button1" type="button" onclick="jump('../dl_calendar/calendar_main.html' , 'left')" value="スケジュール"></td>
+				<td><input class="button1" type="button" onclick="jump('../dl_calendar/calendar_main.php' , 'left')" value="スケジュール"></td>
 				<td><input class="button1" type="button" onclick="jump('../contactbook/main.php' , 'left')" value="連絡帳"></td>
 				<td><input class="button1" type="button" onclick="jump('../Lesson/index.php','left')" value="授業"></td>
 				<td><input class="button1" type="button" onclick="jump('../autho_management/jump.php' , 'left')" value="成績確認"></td>
