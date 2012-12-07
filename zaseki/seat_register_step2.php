@@ -40,16 +40,22 @@
 
 	var seat_id = 1;
 	var list_id = 101;
-	var mode = "";
+	var mode = "";	//"add"or"change"
+
+	//退避用変数
 	var id_evc = "";
 	var name_evc = "";
 	var user_seq_evc ="";
+	var evc_flg = 0;	//	”0:退避用変数に値がない”or ”1：退避用変数に値がある”
 
     $(function() {
 
 		$('#add').click(function(){
+
+			//セルの背景色をすべて戻す
 			$('.seat').attr({"bgcolor": "white"});
 
+			//一番最初の空白の背景色を変える
 			for(var seat_id = 1; seat_id <= 100; seat_id++)
 			{
 				if($('#'+seat_id).children('p').text() == "")
@@ -59,16 +65,21 @@
 				}
 			}
 
+			//リストから座席表に追加できるようにする
 			mode ="add";
 	    });
 
 		$('#change').click(function(){
+
+			//セルの背景色をすべて戻す
 			$('.seat').attr({"bgcolor": "white"});
 			mode ="change";
-			seat_id = 0;
+
+			//退避用変数のクリア
 			id_evc = "";
 			name_evc = "";
 			user_seq_evc ="";
+			evc_flg = 0;
 	    });
 
 		$('.list').click(function(){
@@ -77,14 +88,29 @@
 			{
 				if($(this).children("p").text() != "-")
 				{
-					$('#' + seat_id).children('input:eq(1)').val($(this).attr("id"));
-					$('#' + seat_id).attr({"bgcolor": "white"});
+					//セルの背景色を戻す
+					$('.seat').attr({"bgcolor": "white"});
+
+					//選択されているセルにクリックした名前を挿入する
 					$('#' + seat_id).children("p").text($(this).children("p").text());
+
+					//クリックしたリストの位置を記憶しておく
+					$('#' + seat_id).children('input:eq(1)').val($(this).attr("id"));
+
+					//クリックしたリストの名前を消す
 					$(this).children("p").text('-');
 
-					$('.seat').attr({"bgcolor": "white"});
+
+					//次の空白セルへ移動し色を変える
 					seat_id++;
-					$('#' + seat_id).attr({"bgcolor": "red"});
+					for(seat_id; seat_id <= 100; seat_id++)
+					{
+						if($('#'+seat_id).children('p').text() == "")
+						{
+							$('#'+seat_id).attr({"bgcolor": "red"});
+							break;
+						}
+					}
 				}
 			}
 
