@@ -4,91 +4,104 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
+	$group_seq = $_POST['group_seq'];
+
 	//$sql = "SELECT * FROM m_user";
 	//$result = mysql_query($sql);
 
-	//$sql = "SELECT group_seq, group_name FROM m_group WHERE class_flg = 1";
-	//$result = mysql_query($sql);
+//	$sql = "SELECT attendance_class_seq, attendance_class_name
+//			FROM attendance_class";
+//	$res = mysql_query($sql);
 
-	$sql = "SELECT attendance_class_seq, attendance_class_name
-			FROM attendance_class";
+	$sql = "SELECT group_seq, group_name FROM m_group WHERE class_flg = 1";
+	$result = mysql_query($sql);
+
+	$sql = "SELECT max(row) as mx FROM seat WHERE group_seq='$group_seq'";
 	$res = mysql_query($sql);
+	$row = mysql_fetch_array($res);
+	$row_max = $row['mx'];
+
+	$sql = "SELECT max(col) as mx FROM seat WHERE group_seq ='$group_seq'";
+	$res = mysql_query($sql);
+	$row = mysql_fetch_array($res);
+	$col_max = $row['mx'];
 
 ?>
 
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<title>座席表</title>
-		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<script src="../javascript/frame_jump.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 	</head>
 
 	<body>
-		<div align="center">
-			<font size = "7">座席表</font><br><br>
-		</div>
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+			<div align="center">
+				<font class="Cubicfont">座席表</font>
+			</div>
 
-		<hr color="blue">
-		<br><br>
+			<hr color="blue">
+			<br><br>
 
-		<table align = "center" border="1">
+			<table border="5" align="center">
 
-			<?php
-				$class = $_POST['class'];
-				$sql = "SELECT max(row) as mx FROM seat WHERE attendance_class_seq='$class'";
-				$res = mysql_query($sql);
-				$row = mysql_fetch_assoc($res);
-				$row_max = $row['mx'];
+				<?php
 
-				$sql = "SELECT max(col) as mx FROM seat WHERE attendance_class_seq ='$class'";
-				$res = mysql_query($sql);
-				$row = mysql_fetch_assoc($res);
-				$col_max = $row['mx'];
-
-				for($i = 1; $i <= $row_max; $i++)
-				{
-					echo "<tr>";
-
-					for($j = 1; $j <= $col_max; $j++)
+					for($i = 1; $i <= $row_max; $i++)
 					{
-						$sql = "SELECT user_seq FROM seat
-								WHERE attendance_class_seq ='$class'
-								AND row='$i'and col='$j'";
+						echo "<tr>";
 
-						$res = mysql_query($sql);
-						$row = mysql_fetch_assoc($res);
-						$user_seq = $row['user_seq'];
+						for($j = 1; $j <= $col_max; $j++)
+						{
+							$sql = "SELECT user_seq FROM seat
+									WHERE group_seq ='$group_seq'
+									AND row='$i'and col='$j'";
 
-						if($user_seq == "")
-						{
-							echo "<td class='sample'width='100'>";
-						}
-						else
-						{
-							$sql = "SELECT user_name,user_seq FROM m_user WHERE user_seq='$user_seq'";
 							$res = mysql_query($sql);
-							$row = mysql_fetch_array($res);
-							$user_name = $row['user_name'];
-							$user_seq = $row['user_seq']
-			?>
-							<td class="sample" width="200" align="center">
-								<?=$user_name?><br>
-								<input type="button" data-id="<?= $user_seq?>" id="Attendance_<?=$user_seq?>" class="Attendance" value="出席">
-								<input type="button" data-id="<?= $user_seq?>" id="Absence_<?=$user_seq?>" class="Absence" value="欠席">
-								<input type="button" data-id="<?= $user_seq?>" id="Lateness_<?=$user_seq?>" class="Lateness" value="遅刻">
-							</td>
-			<?php
-						}
-						echo "</td>";
-					}
-					echo "</tr>";
-				}
+							$row = mysql_fetch_assoc($res);
+							$user_seq = $row['user_seq'];
 
-				//データベースを閉じる
-				Dbdissconnect($dbcon);
-			?>
-		</table>
+							if($user_seq == "")
+							{
+								echo "<td class='sample'width='100'>";
+							}
+							else
+							{
+								$sql = "SELECT user_name,user_seq FROM m_user WHERE user_seq='$user_seq'";
+								$res = mysql_query($sql);
+								$row = mysql_fetch_array($res);
+								$user_name = $row['user_name'];
+								$user_seq = $row['user_seq']
+				?>
+								<td class="sample" width="200" align="center">
+									<?=$user_name?><br>
+									<table align="center">
+										<tr>
+											<td><input class="button5" type="button" data-id="<?= $user_seq?>" id="Attendance_<?=$user_seq?>" class="Attendance" value="出席"></td>
+											<td><input class="button5" type="button" data-id="<?= $user_seq?>" id="Absence_<?=$user_seq?>" class="Absence" value="欠席"></td>
+											<td><input class="button5" type="button" data-id="<?= $user_seq?>" id="Lateness_<?=$user_seq?>" class="Lateness" value="遅刻"></td>
+										</tr>
+									</table>
+								</td>
+				<?php
+							}
+							echo "</td>";
+						}
+						echo "</tr>";
+					}
+
+					//データベースを閉じる
+					Dbdissconnect($dbcon);
+				?>
+			</table>
+		</div>
 	</body>
 
 	<script>
