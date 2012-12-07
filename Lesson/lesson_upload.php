@@ -33,3 +33,10 @@ session_start();
 	Dbdissconnect($dbcon);
 
 ?>
+<html>
+<head>
+	<script src="../javascript/frame_jump.js"></script>
+</head>
+<body>
+</body>
+</html>
