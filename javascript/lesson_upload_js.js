@@ -1,53 +1,51 @@
-$(function(){
+function form_create(date,page_num,subject_seq){
 
-	//親オブジェクト = document.getElementByID("ID名");
-	parent = parent.document.getElementById('form')
-	//<form action="lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame">
-	//<input type="hidden" name="date" value=" <?= $date ?>" />
+	var par = parent.document.getElementById('form')
 
-		//		<input type= "hidden" name="page_num" value= "1" />
-			//	ファイル：<br/>
-				//<input type="file" name="upfile" size="30" />
-
-
-				//<input type="submit" value="追加" />
-	form = document.createElement("form");
-	form.setAtrribute("action","lesson_upload.php");
-	form.setAtrribute("method","post");
-	form.setAtrribute("enctype","multipart/form-data");
-	form.setAtrribute("target","targetFrame");
+	var  form = document.createElement("FORM");
+	form.setAttribute("action","lesson_upload.php");
+	form.setAttribute("method","post");
+	form.setAttribute("enctype","multipart/form-data");
+	form.setAttribute("target","targetFrame");
 
 
-	input1 = document.createElement("input");
-	input1.setAtrribute("type","hidden");
-	input1.setAtrribute("name","date");
-	input1.setAtrribute("value","<?= $date ?>");
+	var input1 = document.createElement("INPUT");
+	input1.setAttribute("type","hidden");
+	input1.setAttribute("name","date");
+	input1.setAttribute("value",date);
+
+	console.log("日付は：");
+	console.log(date);
+
+	var input2 = document.createElement("INPUT");
+	input2.setAttribute("type","hidden");
+	input2.setAttribute("name","subject_seq");
+	input2.setAttribute("value",subject_seq);
+
+	var input3 = document.createElement("INPUT");
+	input3.setAttribute("type","hidden");
+	input3.setAttribute("name","page_num");
+	input3.setAttribute("value",page_num);
 
 
-	input2 = document.createElement("input");
-	input2.setAtrribute("type","hidden");
-	input2.setAtrribute("name","page_num");
-	input2.setAtrribute("value","");
+	var input4 = document.createElement("INPUT");
+	input4.setAttribute("type","file");
+	input4.setAttribute("name","upfile");
+	input4.setAttribute("size","30");
 
 
-	input3 = document.createElement("input");
-	input3.setAtrribute("type","file");
-	input3.setAtrribute("name","upfile");
-	input3.setAtrribute("size","30");
-
-
-	input4 = document.createElement("input");
-	input4.setAtrribute("type","submit");
-	input4.setAtrribute("value","追加");
+	var input5 = document.createElement("INPUT");
+	input5.setAttribute("type","submit");
+	input5.setAttribute("value","追加");
 
 
 	form.appendChild(input1);
 
 
-
+	form.appendChild(input2);
 	form.appendChild(input3);
 	form.appendChild(input4);
+	form.appendChild(input5);
 
-	parent.appendChild(form);
-
-})
+	par.appendChild(form);
+}

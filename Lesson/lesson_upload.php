@@ -8,7 +8,7 @@ session_start();
 
 	//add.phpから送られてくるデータ
 	$date = $_POST['date'];
-	//$subject_seq = $_POST['subject_seq'];
+	$subject_seq = $_POST['subject_seq'];
 	$data = $_FILES['upfile'];
 	$page_num = $_POST['page_num'];
 
@@ -17,17 +17,10 @@ session_start();
 
 
 	$img_name = $data['name'];
-	echo $date;
-
-
-	$sql = "INSERT INTO board VALUE(0,'".$date ."', '15','15','".$page_num ."','".$img_name ."','0','0');";
-	echo $sql;
+	$sql = "INSERT INTO board VALUE(0,'".$date ."', '15','".$subject_seq ."','".$page_num ."','".$img_name ."','0','0');";
 	$result = mysql_query($sql);
 	$file_name = 'files/ '.$img_name;
-	echo $file_name;
 	move_uploaded_file($data['tmp_name'], $file_name);
-
-	echo '終了しました';
 
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
@@ -35,8 +28,9 @@ session_start();
 ?>
 <html>
 <head>
-	<script src="../javascript/frame_jump.js"></script>
+	<script src="../javascript/lesson_upload_js.js"></script>
 </head>
-<body>
+<body onload="form_create(<?= $date ?>,<?= $page_num + 1?>,<?= $subject_seq ?>)">
+
 </body>
 </html>
