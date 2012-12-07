@@ -20,36 +20,72 @@
 		<script src="../jquery-1.8.2.min.js"></script>
 		<script src="./jquery.detail.click.js"></script>
 		<script src="jquery.detail.click.min.js"></script>
+	<style>
+		.sample001 {
+ 			border-collapse: separate;
+ 			border: 1px solid #cccccc;
+ 			margin: 10px;
+		}
+		.sample001 td {
+ 			border: 1px solid #0066ff;
+		}
+		td.show01 {
+ 			empty-cells: show;
+		}
+
+	</style>
 	</head>
 	<body>
 	<script>
 
-	var id = 1;
-	var name1 = "";
-	var name2 = "";
-	var attendance_no1 = 0;
-	var attendance_no2 = 0;
+	var seat_id = 1;
+	var list_id = 101;
+	var mode = "";
+	var id_evc = "";
+	var name_evc = "";
+	var user_seq_evc ="";
 
     $(function() {
-    	$(document).bind("contextmenu",function(e){
-    		return false;
-    	});
 
-    	$('#' + id).attr({"bgcolor": "yellow"});
+		$('#add').click(function(){
+			$('.seat').attr({"bgcolor": "white"});
 
+			for(var seat_id = 1; seat_id <= 100; seat_id++)
+			{
+				if($('#'+seat_id).children('p').text() == "")
+				{
+					$('#'+seat_id).attr({"bgcolor": "red"});
+					break;
+				}
+			}
+
+			mode ="add";
+	    });
+
+		$('#change').click(function(){
+			$('.seat').attr({"bgcolor": "white"});
+			mode ="change";
+			seat_id = 0;
+			id_evc = "";
+			name_evc = "";
+			user_seq_evc ="";
+	    });
 
 		$('.list').click(function(){
 
-			if($(this).children("p").text() != "-")
+			if(mode == "add")
 			{
-				$('#' + id).children('input:eq(1)').val($(this).attr("id"));
-				$('#' + id).attr({"bgcolor": "white"});
-				$('#' + id).children("p").text($(this).children("p").text());
-				$(this).children("p").text('-');
+				if($(this).children("p").text() != "-")
+				{
+					$('#' + seat_id).children('input:eq(1)').val($(this).attr("id"));
+					$('#' + seat_id).attr({"bgcolor": "white"});
+					$('#' + seat_id).children("p").text($(this).children("p").text());
+					$(this).children("p").text('-');
 
-
-				id++;
-				$('#' + id).attr({"bgcolor": "yellow"});
+					$('.seat').attr({"bgcolor": "white"});
+					seat_id++;
+					$('#' + seat_id).attr({"bgcolor": "red"});
+				}
 			}
 
 
@@ -57,11 +93,53 @@
 
 		$('.seat').click(function(){
 
-			if($(this).children("p").text() != "")
+			if(mode == "add")
 			{
-				id = $(this).children('input:eq(1)').val();
-				$('#'+id).children('p').text($(this).children("p").text());
-				$(this).children('p').text("");
+				if($(this).children("p").text() != "")
+				{
+					list_id = $(this).children('input:eq(1)').val();
+					$('#'+list_id).children('p').text($(this).children("p").text());
+					$(this).children('p').text("");
+				}
+				else
+				{
+					$('.seat').attr({"bgcolor": "white"});
+					seat_id = $(this).attr("id");
+					$(this).attr({"bgcolor": "red"});
+				}
+
+			}
+			else if(mode == "change")
+			{
+				if(id_evc == 0)
+				{
+						//一回目にクリックしたセルのデータを保存
+						id_evc = $(this).attr("id");
+						name_evc = $(this).children("p").text();
+						user_seq_evc = $(this).children().val();
+
+						//一回目にクリックしたセルの色を変える
+						$(this).attr({"bgcolor": "yellow"});
+			    }
+				else
+				{
+
+						$('#' + id_evc).children("p").text($(this).children("p").text());
+						$('#' + id_evc).children().attr({"value": $(this).children().val()});
+
+						$(this).children("p").text(name_evc);
+						$(this).children().attr({"value": user_seq_evc});
+
+
+						//セルの色を戻す
+						$('#' + id_evc).attr({"bgcolor": ""});
+
+						seat_id = 0;
+						id_evc = 0;
+						name_evc = "";
+						user_seq_evc = "";
+						attendance_no2 = ""
+				}
 			}
 	    });
     });
@@ -69,7 +147,7 @@
 
 
 	<form action="seat_register_add.php" method="POST">
-		<table border="1">
+		<table class="sample001">
 <?php
 
 	for($row = 1; $row <= $row_max; $row++)
@@ -79,8 +157,8 @@
 		for($col = 1; $col <= $col_max; $col++)
 		{
 ?>
-			<td id="<?=$seat_id?>" class='seat'width='100'>
-			<p>&nbsp</p>
+			<td id="<?=$seat_id?>" class='seat'width='100' height='50'>
+			<p></p>
 			<input name = user_seq<?= $row?>[<?= $col?>] type="hidden" value = <?= $user_seq ?>>
 			<input type="hidden" value="">
 			</td>
@@ -93,9 +171,11 @@
 
 ?>
 		</table>
-
+		<input id="add" type="button" value="追加">
+		<input id="change" type="button" value="入れ替え">
 		<input type="submit" value="登録">
 	</form>
+
 
 
 	<?php

@@ -5,10 +5,12 @@
 	$page_cla = $page_fun -> autho_Pre($_SESSION['login_info[autho]'], 9);
 
 
+	/*
 	if($page_cla[0]['read_flg'] == 0)
 	{
 		header("Location:../top_left.php");
 	}
+	*/
 ?>
 
 <html>
@@ -28,17 +30,17 @@
 			<hr color="blue"></hr>
 			<br><br><br>
 			<p align="center">
-				<input type="button" onclick="jump('lesson/past_lesson.php','right')" value="過去の授業">
+				<input type="button" onclick="jump('past_lesson.php','right')" value="過去の授業">
 				<br><br>
 
 				<!-- 生徒用の画面 -->
-				<input type="button" onclick="jump('lesson/now_lesson.php','right')" value="現在の授業">
+				<input type="button" onclick="jump('now_lesson.php','right')" value="現在の授業">
 				<br><br>
 
 				<!-- 先生用の画面 -->
-				<input type="button" onclick="jump('lesson/lesson.php','right')" value="授業開始">
+				<input type="button" onclick="jump('lesson.php','right')" value="授業開始">
 				<br><br>
-				<input type="button" onclick="jump('lesson/lesson_preparation.php','right')" value="授業準備">
+				<input type="button" onclick="jump('lesson_preparation.php','right')" value="授業準備">
 
 			</p>
 		</div>

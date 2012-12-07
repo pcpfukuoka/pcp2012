@@ -1,21 +1,35 @@
 <?php
 session_start();
-	$user_seq = $_SESSION['login_info[user]'];
+
 
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
-	$data = $_FILES['upfile'];
+	//add.phpから送られてくるデータ
 	$date = $_POST['date'];
-	$class_seq = $_POST['class_seq'];
-	$subject_seq = $_POST['subject_seq'];
+	//$subject_seq = $_POST['subject_seq'];
+	$data = $_FILES['upfile'];
+	$page_num = $_POST['page_num'];
+
+	//$class_seq = $_POST['class_seq'];
 
 
-	$img_name = $data['tmp_name'];
+
+	$img_name = $data['name'];
+	echo $date;
 
 
-	$sql = "INSERT INTO board VALUE(0, $data, $class_seq, $subject_seq, );";
-	move_uploaded_file($data['tmp_name'], '../test/ '.$img_name);
+	$sql = "INSERT INTO board VALUE(0,'".$date ."', '15','15','".$page_num ."','".$img_name ."','0','0');";
+	echo $sql;
+	$result = mysql_query($sql);
+	$file_name = 'files/ '.$img_name;
+	echo $file_name;
+	move_uploaded_file($data['tmp_name'], $file_name);
+
+	echo '終了しました';
+
+	//データベースを閉じる
+	Dbdissconnect($dbcon);
 
 ?>
