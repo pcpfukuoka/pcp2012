@@ -58,7 +58,8 @@ $count = 0;
 				?>
 			</table><br>
 
-			<input class="button4" type = "submit" value = "確定"><br>
+			<input class="button4" type = "submit" value = "確定">
+			<input type="button" value="戻る" onClick="history.back()"><br>
 		</form>
 		</div>
 	</body>
