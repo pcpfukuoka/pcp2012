@@ -69,11 +69,11 @@
 
 			<input class="button2" type="button" onclick="jump('CreateNew.php')" value="新規作成">
 			<br><br>
-			<input class="button2" type="button" onclick="jump('MailBox.php')" value="受信箱">
+			<input class="button2" type="button" onclick="jump('MailBox.php')" value="受信箱（<?= $cnt_new + $cnt_print_flg ?>）">
 			<br><br>
 			<input class="button2" type="button" onclick="jump('OutBox.php')" value="送信箱">
 			<br><br>
-			<input class="button2" type="button" onclick="jump('Draft.php')" value="下書き">
+			<input class="button2" type="button" onclick="jump('Draft.php')" value="下書き（<?= $cnt_send ?>）">
 		</p>
 		</div>
 	</body>
