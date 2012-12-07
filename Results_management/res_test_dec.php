@@ -66,6 +66,7 @@ Dbdissconnect($link);
 		テストを登録しました。
 		
 		<form action = "res_test_point.php" method = "POST">
+			<input type = "hidden" name = "page_check" value = "0">
 			<input type = "hidden" name = "test_seq" value = "<?= $test_seq ?>">
 			
 			<input type = "submit" name = "test" value = "点数を登録します。">

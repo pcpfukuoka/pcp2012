@@ -41,7 +41,7 @@ $sql = "SELECT m_user.user_seq, m_user.user_name, point
 		FROM test_result, m_user 
 		WHERE test_result.user_seq = m_user.user_seq 
 		AND test_result.test_seq = '$test_seq' 
-		GROUP BY m_user.user_seq, m_user.user_name, point 
+		GROUP BY m_user.user_seq, m_user.user_name
 		ORDER BY m_user.user_seq;";
 $result_point = mysql_query($sql);
 $count_point = mysql_num_rows($result_point);
@@ -148,9 +148,8 @@ $count_point = mysql_num_rows($result_point);
 		</table><br>
 		<form action = "res_test_point.php" method = "POST">
 			<input type = "hidden" name = "test_seq" value = "<?= $test_seq ?>">
-			<input type="button" value="戻る" onClick="history.back()">
 			<input type = "submit" value = "点数修正へ">
+			<input type="button" value="戻る" onClick="history.back()">
 		</form>
-		<a href = "list_search.php">絞り込みに戻る</a>
 	</body>
 </html>

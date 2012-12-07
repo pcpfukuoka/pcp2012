@@ -11,6 +11,8 @@ $user = $_POST['teacher'];
 $group = $_POST['group'];
 $stand_flg = $_POST['stand_flg'];
 
+$contents = nl2br($contents);
+
 //DBの接続
 require_once("../lib/dbconect.php");
 $link = DbConnect();

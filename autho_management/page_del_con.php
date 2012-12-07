@@ -48,7 +48,7 @@ $count = 0;
 						<input type = "hidden" name = "del_data<?= $count ?>" value = "<?= $page_seq ?>">
 						
 							<tr>
-								<th><?= $page['page_name'] ?><th>
+								<th><?= $page['page_name'] ?></th>
 							</tr>
 				<?php
 					$count++;
