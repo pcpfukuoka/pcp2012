@@ -10,6 +10,7 @@
 			WHERE contact_book_seq = '$id';";
 	$result = mysql_query($sql);
 	$row = mysql_fetch_array($result);
+
 	$sql = "UPDATE contact_book
 			SET new_flg = 0
 			WHERE contact_book_seq = '$id'; ";
@@ -49,14 +50,16 @@
 				<?= $row['title'] ?><br><br>
 
 			    <font size="3">本文</font><br>
-			    <?= $row['contents']?><br><br><br>
+			    <textarea readonly="readonly" rows="40" cols="50" name="contents"><?= $row['contents']?></textarea>
+			    <br><br>
+
 			    <input type="hidden" value="<?= $row['send_user_name'] ?>" name="sendto">
 			    <input type="hidden" value="<?= $row['send_user_seq'] ?>" name="send_seq">
 			    <input type="hidden" value="<?= $row['title'] ?>" name="title">
 			    <input type="hidden" value="<?= $row['contents'] ?>" name="contents">
 			    <input type="hidden" value="<?= $id ?>" name="link_id">
 			    <input class="button4" type="submit" value="返信">
-		    </form>
+	    	</form>
 	    </div>
     </body>
 </html>

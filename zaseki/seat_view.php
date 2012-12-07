@@ -1,35 +1,69 @@
 <html>
 	<head>
-		<title>seat_list</title>
+		<title>座席表</title>
+		<meta charset=UTF-8">
 	</head>
+	<body>
+
+
+	<table border = 1  cellspacing="10">
+
 <?php
+
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 	mysql_query("set names utf8");
 
-	//文字コード設定
-	mysql_query("SET NAMES UTF8");
+?>
+
+<?php
+
+	$class = $_POST['group'];
+	$sql = "select max(row) as mx from seat where group_seq='$class'";
+	$res = mysql_query($sql);
+	$gyo = mysql_fetch_assoc($res);
+	$row_max = $gyo['mx'];
 
 
-?>
-	<body>
-		<form action="seat_view2.php" method="POST">
-<?php
-		$sql = "select attendance_class_seq, attendance_class_name from attendance_class";
-		$res = mysql_query($sql);
-?>
-			<select name="class" >
-<?php
-			while($gyo = mysql_fetch_array($res))
+	$sql = "select max(col) as mx from seat where group_seq ='$class'";
+	$res = mysql_query($sql);
+	$gyo = mysql_fetch_assoc($res);
+	$col_max = $gyo['mx'];
+
+
+		for($row = 1; $row <= $row_max; $row++)
+		{
+			echo "<tr>";
+
+			for($col = 1; $col <= $col_max; $col++)
 			{
-?>
-				<option value=<?= $gyo['attendance_class_seq']?>> <?=  $gyo['attendance_class_name']?></option>
-<?php
+				$sql = "select user_seq from seat where group_seq ='$class' and row='$row'and col='$col'";
+
+				$res = mysql_query($sql);
+				$gyo = mysql_fetch_assoc($res);
+				$user_seq = $gyo['user_seq'];
+
+
+						if($user_seq == "")
+						{
+							echo "<td class='sample'width='100'></td>";
+						}
+						else
+						{
+							$sql = "select user_name from m_user where  user_seq='$user_seq'";
+							$res = mysql_query($sql);
+							$gyo = mysql_fetch_array($res);
+							$user_name = $gyo['user_name'];
+							echo "<td class='sample'width='100'> $user_name</td>";
+						}
+
+						echo "</td>";
 			}
+			echo "</tr>";
+		}
+
 ?>
-			</select>
-			<input type = "submit" value = "座席表">
-		</form>
-	</body>
+	</table>
+
 </html>

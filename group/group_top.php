@@ -7,11 +7,11 @@
 	{
 		$group_name = $_POST['serch_name'];
 
-		$sql = "SELECT * FROM m_group WHERE group_name LIKE '%$group_name%' AND delete_flg = 0;";
+		$sql = "SELECT * FROM m_group WHERE group_name LIKE '%$group_name%' AND delete_flg = 0 ORDER BY group_name ASC;";
 	}
 	else
 	{
-		$sql = "SELECT * FROM m_group WHERE delete_flg = 0;";
+		$sql = "SELECT * FROM m_group WHERE delete_flg = 0 ORDER BY group_name ASC;";
 	}
 
 	$result = mysql_query($sql);
