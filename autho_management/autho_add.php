@@ -7,11 +7,13 @@
   <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
   <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
   <link rel="stylesheet" type="text/css" href="../css/table.css" />
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
  </head>
   <body>
   		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
-  <form action="autho_add_con.php" method="POST">
+  <form name = "form1" action="autho_add_con.php" method="POST">
    <?php
    require_once("../lib/dbconect.php");
    $link = DbConnect();
@@ -61,10 +63,80 @@
     <tr>
     <th align = "center"><?= $row['page_name'] ?></th>
     <th><input  type="checkbox" name = "Read_<?= $row['page_seq'] ?>"></th>
-    <th><input type="checkbox" name = "Delete_<?= $row['page_seq'] ?>"></th>
-    <th><input type="checkbox" name = "Write_<?= $row['page_seq'] ?>"></th>
-    <th><input type="checkbox" name = "Update_<?= $row['page_seq'] ?>"></th>
-    <th><input type="checkbox" name = "delivery_<?= $row['page_seq'] ?>"></th>
+      <SCRIPT>
+  echo <<<EOM
+function chk_R<?= $i ?>()
+{
+	
+	
+	if (document.form1.Read_<?= $row['page_seq'] ?>.checked)　//checked チェックが入っていたら
+	{
+		document.form1.Write_<?= $row['page_seq'] ?>.disabled = true; // チェック可能
+	}
+	else
+	{
+		document.form1.Write_<?= $row['page_seq'] ?>.disabled = false; // チェック不可
+	}
+}
+</SCRIPT>
+  EOM;
+    <th><input type="checkbox" name = "Write_<?= $row['page_seq'] ?>" onClick = "chk_R<?= $i ?>();"></th>
+          <SCRIPT>
+  echo <<<EOM
+function chk_W<?= $i ?>()
+{
+	
+	
+	if (document.form1.Write_<?= $row['page_seq'] ?>.checked)　//checked チェックが入っていたら
+	{
+		document.form1.Update_<?= $row['page_seq'] ?>.disabled = true; // チェック可能
+	}
+	else
+	{
+		document.form1.Update_<?= $row['page_seq'] ?>.disabled = false; // チェック不可
+	}
+}
+</SCRIPT>
+  EOM;
+    <th><input type="checkbox" name = "Update_<?= $row['page_seq'] ?>" onClick = "chk_W<?= $i ?>();"></th>
+              <SCRIPT>
+  echo <<<EOM
+function chk_U<?= $i ?>()
+{
+	
+	
+	if (document.form1.Update_<?= $row['page_seq'] ?>.checked)　//checked チェックが入っていたら
+	{
+		document.form1.delivery_<?= $row['page_seq'] ?>.disabled = true; // チェック可能
+	}
+	else
+	{
+		document.form1.delivery_<?= $row['page_seq'] ?>.disabled = false; // チェック不可
+	}
+}
+</SCRIPT>
+  EOM;
+    
+    <th><input type="checkbox" name = "delivery_<?= $row['page_seq'] ?>" onClick = "chk_U<?= $i ?>();"></th>
+                  <SCRIPT>
+  echo <<<EOM
+function chk_D<?= $i ?>()
+{
+	
+	
+	if (document.form1.delivery_<?= $row['page_seq'] ?>.checked)　//checked チェックが入っていたら
+	{
+		document.form1.Delete_<?= $row['page_seq'] ?>.disabled = true; // チェック可能
+	}
+	else
+	{
+		document.form1.Delete_<?= $row['page_seq'] ?>.disabled = false; // チェック不可
+	}
+}
+</SCRIPT>
+  EOM;
+    
+    <th><input type="checkbox" name = "Delete_<?= $row['page_seq'] ?>" onClick = "chk_D<?= $i ?>();"></th>
     </tr>
   <?php
     }

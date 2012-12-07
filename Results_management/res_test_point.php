@@ -39,15 +39,13 @@ $sql = "SELECT m_user.user_seq, m_user.user_name
 $result_user = mysql_query($sql);
 $count_user = mysql_num_rows($result_user);
 
-	//点数の取得	
-	$sql = "SELECT user_seq, point
-			FROM test_result 
-			WHERE test_seq = '$test_seq' 
-			ORDER BY user_seq;";
-	$result_point = mysql_query($sql);
+//点数の取得	
+$sql = "SELECT user_seq, point
+		FROM test_result 
+		WHERE test_seq = '$test_seq' 
+		ORDER BY user_seq;";
+$result_point = mysql_query($sql);
 
-
-Dbdissconnect($link);
 ?>
 <html>
 	<head>
@@ -75,21 +73,41 @@ Dbdissconnect($link);
 				{
 					$user = mysql_fetch_array($result_user);
 					$point = mysql_fetch_array($result_point);
+					
+					$user_seq = $user['user_seq'];
+					
+					if ($user_seq != $point['user_seq'])
+					{
+						$sql = "INSERT INTO test_result 
+								VALUES (0, '$test_seq', '$user_seq', 0);";
+						mysql_query($sql);
 				?>
-				<tr>
-					<td><?= $user['user_name'] ?></td>
-					<td><input size = "3" type = "text" name = "point<?= $i ?>" value = "<?= $point['point'] ?>"></td>
-				</tr>
-				<?php 
+						<tr>
+							<td><?= $user['user_name'] ?></td>
+							<td><input size = "3" type = "text" name = "point<?= $i ?>" value = "0"></td>
+						</tr>
+					<?php
+					}
+					else 
+					{
+					?>
+						<tr>
+							<td><?= $user['user_name'] ?></td>
+							<td><input size = "3" type = "text" name = "point<?= $i ?>" value = "<?= $point['point'] ?>"></td>
+						</tr>
+				<?php
+					}
 				}
 				?>
 			</table>
 			<?php 
+			Dbdissconnect($link);
 			$_SESSION['group_seq'] = $group_seq;
 			$_SESSION['test_seq'] = $test_seq;
 			?>
 			
 			<input type = "submit" value = "確認">
+			<input type="button" value="戻る" onClick="history.back()">
 		</form>
 	</body>
 </html>

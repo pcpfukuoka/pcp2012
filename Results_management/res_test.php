@@ -95,7 +95,7 @@ Dbdissconnect($link);
 			<tr>
 				<!-- 教科の選択 -->
 				<form name = "req" action = "" method = "GET">
-					<td><select name = "sub" onChange = "this.form.submit();">
+					<td bgcolor = "blue"><select name = "sub" onChange = "this.form.submit();">
 					
 					<?php 
 					if ($_GET['sub'] == -1)
@@ -127,13 +127,13 @@ Dbdissconnect($link);
 				<input type = "hidden" name = "subject" value = "<?= $subject ?>">
 				
 				<!-- 日付の入力 -->
-					<td><input type = "text" name = "day" value = "<?= date("Y/m/d") ?>" ></td>
+					<td bgcolor = "blue"><input type = "text" name = "day" value = "<?= date("Y/m/d") ?>" ></td>
 					
 				<!-- テスト範囲・内容入力 -->
-					<td><textarea rows="2" cols="30" name = "contents"></textarea></td>
+					<td bgcolor = "blue"><textarea rows="2" cols="30" name = "contents"></textarea></td>
 					
 					<!-- 先生の選択 -->
-					<td><select name = "teacher">
+					<td bgcolor = "blue"><select name = "teacher">
 						<option value = "-1" selected>選択</option>
 						<?php
 						for ($i = 0; $i < $count_teach; $i++)
@@ -147,7 +147,7 @@ Dbdissconnect($link);
 						</select></td>
 						
 						<!-- グループの選択 -->
-					<td><select name = "group">
+					<td bgcolor = "blue"><select name = "group">
 						<option value = "-1" selected>選択</option>
 						<?php
 						for ($i = 0; $i < $count_group; $i++)
@@ -161,10 +161,10 @@ Dbdissconnect($link);
 						</select></td>
 						
 						<!-- 定期テストのチェック -->
-					<td align = "center"><input type = "checkbox" name = "stand_flg" value = "1"></td>
+					<td align = "center" bgcolor = "blue"><input type = "checkbox" name = "stand_flg" value = "1"></td>
 					
 					<!-- 登録ボタン -->
-					<td align = "center"><input type = "submit" value = "登録"></td>
+					<td align = "center" bgcolor = "blue"><input type = "submit" value = "登録"></td>
 				</form>
 			</tr>
 			
@@ -174,12 +174,14 @@ Dbdissconnect($link);
 				for ($i = 0; $i < $count_test; $i++)
 				{
 					$test = mysql_fetch_array($result_test);
+					
+					$contents = nl2br($test['contents']);
 				?>
 				
 				<tr>
 					<td><?= $test['subject_name'] ?></td>
 					<td><?= $test['date'] ?></td>
-					<td><?= $test['contents'] ?></td>
+					<td><?= $contents ?></td>
 					<td><?= $test['user_name'] ?></td>
 					<td><?= $test['group_name'] ?></td>
 					<td align = "center">
