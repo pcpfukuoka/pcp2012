@@ -67,7 +67,8 @@ Dbdissconnect($link);
 			</table>
 			
 			<input type = "submit" value = "確定">
-			<input type="button" value="戻る" onClick="history.back()">
+			
 		</form>
+		<a href = "list_search.php">絞り込みに戻る</a>
 	</body>
 </html>

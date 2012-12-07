@@ -48,7 +48,7 @@ $count = 0;
 						<input type = "hidden" name = "del_data<?= $count ?>" value = "<?= $page_seq ?>">
 						
 							<tr>
-								<th><?= $page['page_name'] ?><th>
+								<th><?= $page['page_name'] ?></th>
 							</tr>
 				<?php
 					$count++;
@@ -58,7 +58,8 @@ $count = 0;
 				?>
 			</table><br>
 
-			<input class="button4" type = "submit" value = "確定"><br>
+			<input class="button4" type = "submit" value = "確定">
+			<input type="button" value="戻る" onClick="history.back()"><br>
 		</form>
 		</div>
 	</body>

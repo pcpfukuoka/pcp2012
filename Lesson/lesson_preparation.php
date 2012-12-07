@@ -10,11 +10,14 @@
 
 	$count = mysql_num_rows($result);
 
+
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
 ?>
 <html>
 	<head>
+			<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
 
 	</head>
 	<body>
@@ -22,7 +25,7 @@
 			<!-- 授業がある日付・授業するクラス・授業の科目 -->
 			<input type="date" name= "date" size= "30" /><br />
 
-			<!--  <select name="subject">
+			<select name="subject">
 				<?php
 	   				for ($i = 0; $i < $count; $i++)
 	   				{
@@ -33,7 +36,6 @@
     				}
   				?>
 			</select>
-			-->
 			<br />
 			<input type="submit" value="決定" />
 		</form>
