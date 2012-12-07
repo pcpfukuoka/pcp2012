@@ -16,6 +16,10 @@
 
 //セッションの開始
 session_start();
+//$seq_autho : GETで受け取った権限グループseqをSESSIONに入れる
+$_SESSION['autho_sel'] = $_GET['id'];
+$autho_seq = $_SESSION['autho_sel'];
+
 if(!isset($_GET['id']))
 {
 	header("Location:../dummy.html");
@@ -24,6 +28,12 @@ if(!isset($_GET['id']))
 //DBに接続
 require_once("../lib/dbconect.php");
 $link = DbConnect();
+
+//権限名をとってくる
+$sql = "SELECT autho_name FROM m_autho 
+		WHERE autho_seq = '$autho_seq';";
+$result_autho = mysql_query($sql);
+$autho_name = mysql_fetch_array($result_autho);
 
 //ページ名とページseqを取得するSQL文
 $sql = "SELECT page_name, page_seq FROM m_page WHERE delete_flg != 1;";
@@ -34,10 +44,6 @@ $count_page = mysql_num_rows($result);
 
 Dbdissconnect($link);
 
-
-//$seq_autho : GETで受け取った権限グループseqをSESSIONに入れる
-$_SESSION['autho_sel'] = $_GET['id'];
-$autho_seq = $_SESSION['autho_sel'];
 ?>
 
 <html>
@@ -57,6 +63,8 @@ $autho_seq = $_SESSION['autho_sel'];
 			<font class="Cubicfont">権限管理一覧</font><hr color="blue">
 		</div><br><br>
 
+		名前 ： <?= $autho_name['autho_name'] ?>
+		
 <!-- 		テープルの作成 -->
 		<table width = "100%" class="table_01">
 			<tr>
