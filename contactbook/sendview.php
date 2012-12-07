@@ -47,7 +47,8 @@
 				<?= $row['title'] ?><br><br>
 
 			    <font size="3">本文</font><br>
-			    <?= $row['contents']?><br>
+			    <textarea readonly="readonly" rows="40" cols="50" name="contents"><?= $row['contents']?></textarea>
+			    <br><br>
 
 			    <input type="hidden" value="<?= $row['reception_user_name'] ?>" name="sendto">
 			    <input type="hidden" value="<?= $row['title'] ?>" name="title">

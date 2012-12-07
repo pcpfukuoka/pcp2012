@@ -26,16 +26,19 @@
 
 
 	<!-- このあとを繰り返し？ -->
-		<form action="lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame">
-			<input type="hidden" name="date" value=" <?= $date ?>" />
 
-			<input type= "hidden" name="page_num" value= "1" />
-			ファイル：<br/>
-			<input type="file" name="upfile" size="30" />
+		<div id="form">
+			<form action="lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame">
+				<input type="hidden" name="date" value=" <?= $date ?>" />
+
+				<input type= "hidden" name="page_num" value= "1" />
+				ファイル：<br/>
+				<input type="file" name="upfile" size="30" />
 
 
-			<input type="submit" value="追加" />
-		</form>
+				<input type="submit" value="追加" />
+			</form>
+		</div>
 		<iframe name="targetFrame" id="targetFrame"></iframe>
 
 	</body>
