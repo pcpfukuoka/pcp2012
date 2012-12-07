@@ -77,7 +77,7 @@ Dbdissconnect($link);
 					
 				<!-- 教科の選択 -->
 					<td><select name = "subject_seq">
-						<option value = "-1" selected>選択</option>
+						<option value = "-1" selected>すべて</option>
 						<?php
 						for ($i = 0; $i < $count_subj; $i++)
 						{
