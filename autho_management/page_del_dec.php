@@ -29,7 +29,7 @@ Dbdissconnect($link);
 ?>
 <html>
 	<head>
-		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../dummy.html">
+		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=page_add.php">
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<meta http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />

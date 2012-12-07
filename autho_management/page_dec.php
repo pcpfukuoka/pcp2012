@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>ページ新規追加確定画面</title>
-<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../dummy.html">
+<META HTTP-EQUIV="Refresh" CONTENT="5;URL=page_add.php">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />

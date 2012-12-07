@@ -50,7 +50,9 @@
 				<?= $row['title'] ?><br><br>
 
 			    <font size="3">本文</font><br>
-			    <?= $row['contents']?><br><br><br>
+			    <textarea readonly="readonly" rows="40" cols="50" name="contents"><?= $row['contents']?></textarea>
+			    <br><br>
+
 			    <input type="hidden" value="<?= $row['send_user_name'] ?>" name="sendto">
 			    <input type="hidden" value="<?= $row['send_user_seq'] ?>" name="send_seq">
 			    <input type="hidden" value="<?= $row['title'] ?>" name="title">
