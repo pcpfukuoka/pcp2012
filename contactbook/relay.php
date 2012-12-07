@@ -27,6 +27,16 @@
         }
         $link_id = $_POST['link_id'];
 
+        if($title == "")
+        {
+        	$title = "（件名なし）";
+        }
+
+        if($contents == "")
+        {
+        	$contents = "（本文なし）";
+        }
+
     	$sql = "INSERT INTO contact_book (title, contents, send_user_seq, reception_user_seq, link_contact_book_seq, send_date, new_flg, send_flg)
     			VALUES ('$title', '$contents', '$user_seq', '$send_seq', '$link_id', now(), '1', '0')";
     	mysql_query($sql);
@@ -52,6 +62,16 @@
     		$send_seq = $_POST['send_seq'];
     	}
     	$link_id = $_POST['link_id'];
+
+    	if($title == "")
+    	{
+    		$title = "（件名なし）";
+    	}
+
+    	if($contents == "")
+    	{
+    		$contents = "（本文なし）";
+    	}
 
     	$sql = "INSERT INTO contact_book (title, contents, send_user_seq, reception_user_seq, link_contact_book_seq, send_flg, delete_flg, send_date)
     	VALUES ('$title', '$contents', '$user_seq', '$send_seq', '$link_id', '1', '0', now())";
