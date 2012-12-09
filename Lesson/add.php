@@ -31,7 +31,7 @@
 	<!-- このあとを繰り返し？ -->
 
 		<div id="form">
-			<form action="lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame">
+			<form action="lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="1_form">
 				<input type="hidden" name="date" value=" <?= $date ?>" />
 				<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
 				<input type= "hidden" name="page_num" value= "1" />
@@ -39,10 +39,11 @@
 				<input type="file" name="upfile" size="30" />
 
 
-				<input type="submit" value="追加" />
+				<input type="submit"  id="1_submit" value="追加" />
 			</form>
 		</div>
-		<iframe name="targetFrame" id="targetFrame" style="display:none;"></iframe>
+		<iframe name="targetFrame" id="targetFrame" ></iframe>
+		<!--  style="display:none;"-->
 
 	</body>
 </html>
