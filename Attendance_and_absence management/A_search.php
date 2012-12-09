@@ -21,33 +21,46 @@
 	<head>
 		<title>座席表</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<script src="../javascript/frame_jump.js"></script>
 	</head>
 
 	<body>
-		<div align="center">
-			<font size = "7">座席表</font><br><br>
-		</div>
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+			<div align="center">
+				<font class="Cubicfont">座席表</font>
+			</div>
 
-		<hr color="blue">
-		<br><br>
+			<hr color="blue">
+			<br><br>
 
-		<div align = "center">
-			<form action="A_seating_list.php" method="POST">
-				<select name="class" >
-					<?php
-						while($row = mysql_fetch_array($res))
-						{
-					?>
-						<option value=<?= $row['attendance_class_seq']?>> <?=  $row['attendance_class_name']?></option>
+			<div align = "center">
+				<form action="A_seating_list.php" method="POST">
+					<table>
+						<tr>
+							<td width = "100">
+								<select name="group_seq">
+									<?php
+										while($row = mysql_fetch_array($result))
+										{
+									?>
+										<option value=<?= $row['group_seq']?>> <?=  $row['group_name']?></option>
 
-					<?php
-						}
-					?>
+									<?php
+										}
+									?>
 
-				</select>
+								</select>
+							</td>
 
-				<input type = "submit" value = "座席表">
-			</form>
+							<td><input class="button4" type = "submit" value = "座席表"></td>
+						</tr>
+					</table>
+				</form>
+			</div>
 		</div>
 	</body>
 </html>

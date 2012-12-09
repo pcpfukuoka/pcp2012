@@ -38,108 +38,112 @@
 <html>
 
 	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<title>一覧</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<script src="../javascript/frame_jump.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-
 	</head>
 
 	<body>
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
 
-		<div align="center">
-			<font size="7">一覧</font>
-			<br>
-		</div>
-		<br>
-		<hr color="blue"><br>
+		<div id="container">
+			<div align="center">
+				<font class="Cubicfont">一覧</font>
+			</div>
 
-		<!-- 一覧テーブル作成 -->
-		<p align="left">
-			<font size="5"></font>
-		</p>
+			<hr color="blue"><br><br>
 
-		<div align="center">
+			<!-- 一覧テーブル作成 -->
+			<p align="left">
+				<font size="5"></font>
+			</p>
 
-			<!-------------------------------------------------------------------->
-			<!-- 日付とクラスを検索すると、画面遷移することなく一覧が表示される -->
-			<!-------------------------------------------------------------------->
+			<div align="center">
+
+				<!-------------------------------------------------------------------->
+				<!-- 日付とクラスを検索すると、画面遷移することなく一覧が表示される -->
+				<!-------------------------------------------------------------------->
 
 
-			<table>
-				<tr>
-					<td align="center" width="80" bgcolor="yellow"><font size="5">年月</font></td>
-					<td align="center" width="100" bgcolor="yellow"><font size="5">クラス</font></td>
-					<td align="center" width="40"></td>
-				</tr>
+				<table>
+					<tr>
+						<td align="center" width="80" bgcolor="yellow"><font size="5">年月</font></td>
+						<td align="center" width="100" bgcolor="yellow"><font size="5">クラス</font></td>
+						<td align="center" width="40"></td>
+					</tr>
 
-				<tr>
-					<td align="center"width="80">
-						<select id="date">
-							<?php
-								$check_flg1 = 0;
-								for($i = 0; $i < $num; $i++)
-								{
-									$row = mysql_fetch_array($result);
-									if($check_flg1 == 0)
+					<tr>
+						<td align="center"width="80">
+							<select id="date">
+								<?php
+									$check_flg1 = 0;
+									for($i = 0; $i < $num; $i++)
 									{
-							?>
-							<option value="<?= $row['select_date'] ?>" selected="selected"><?= $row['select_date'] ?></option>
-							<?php
-										$check_flg1 = 1;
+										$row = mysql_fetch_array($result);
+										if($check_flg1 == 0)
+										{
+								?>
+								<option value="<?= $row['select_date'] ?>" selected="selected"><?= $row['select_date'] ?></option>
+								<?php
+											$check_flg1 = 1;
+										}
+										else
+										{
+								?>
+								<option value="<?= $row['select_date'] ?>"><?= $row['select_date'] ?></option>
+								<?php
+										}
 									}
-									else
+								?>
+
+							</select>
+						</td>
+
+
+						<td align="center"width="100">
+							<select id="group">
+								<?php
+									$check_flg2 = 0;
+									 for ($i = 0; $i < $cnt; $i++)
 									{
-							?>
-							<option value="<?= $row['select_date'] ?>"><?= $row['select_date'] ?></option>
-							<?php
+										$row = mysql_fetch_array($result_2);
+										if($check_flg2 == 0)
+										{
+							  	?>
+								<option value="<?=$row['group_seq']?>" selected="selected"><?= $row['group_name'] ?></option>
+							  	<?php
+							  				$check_flg2 = 1;
+							  			}
+							  			else
+							  			{
+							  	?>
+								<option value="<?=$row['group_seq']?>"><?= $row['group_name'] ?></option>
+								<?php
+							  			}
 									}
-								}
-							?>
-
-						</select>
-					</td>
-
-
-					<td align="center"width="100">
-						<select id="group">
-							<?php
-								$check_flg2 = 0;
-								 for ($i = 0; $i < $cnt; $i++)
-								{
-									$row = mysql_fetch_array($result_2);
-									if($check_flg2 == 0)
-									{
-						  	?>
-							<option value="<?=$row['group_seq']?>" selected="selected"><?= $row['group_name'] ?></option>
-						  	<?php
-						  				$check_flg2 = 1;
-						  			}
-						  			else
-						  			{
-						  	?>
-							<option value="<?=$row['group_seq']?>"><?= $row['group_name'] ?></option>
-							<?php
-						  			}
-								}
-						  	?>
-						</select>
-					</td>
-					<td align="center"width="40"><input id="search" class="button4" type = "button" value = "検索" name = "search"></td>
+							  	?>
+							</select>
+						</td>
+						<td align="center"width="40"><input id="search" class="button4" type = "button" value = "検索" name = "search"></td>
 
 
-				</tr>
-			</table>
+					</tr>
+				</table>
+			</div>
+			<br><br><br>
+
+			<div align="center">
+				<table  id="SearchResult" border = "1">
+				</table>
+			</div>
 		</div>
-		<br><br><br>
-
-		<div align="center">
-			<table  id="SearchResult" border = "1">
-
-			</table>
-		</div>
-
 	</body>
+
 	<script>
 		$(function() {
 

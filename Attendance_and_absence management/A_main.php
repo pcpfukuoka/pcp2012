@@ -22,37 +22,34 @@
 
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-		<script type="text/javascript">
-			function search(){
-				parent.right.location="A_search.php";
-			}
-
-			function A_list(){
-				parent.right.location="A_list.php";
-			}
-
-		</script>
 		<title>出欠管理</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<script src="../javascript/frame_jump.js"></script>
 	</head>
 
 	<body>
-		<div align="center">
-			<font size = "7">座席管理</font><br><br>
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+			<div align="center">
+				<font class="Cubicfont">出席管理</font>
+			</div>
+
+			<hr color="blue">
+			<br><br>
+
+			<p align="center">
+
+				<!-- それぞれのリンク先に移動 -->
+				<input class="button2" type="button" onclick="jump('A_search.php')" value="座席名簿">
+				<br><br>
+				<input class="button2" type="button" onclick="jump('A_list.php')" value="一覧">
+				<br><br>
+
+			</p>
 		</div>
-
-		<hr color="blue">
-		<br><br>
-
-		<p align="center">
-
-			<!-- それぞれのリンク先に移動 -->
-			<input type="text"  style="border:0" name="seating_list" value="座席名簿" onclick="search()">
-			<br><br>
-			<input type="text" style="border:0" name="A_list" value="一覧" onclick="A_list()">
-			<br><br>
-
-		</p>
 	</body>
 </html>
 
