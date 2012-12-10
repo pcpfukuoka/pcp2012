@@ -49,10 +49,8 @@
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
 
-	echo "更新完了しました";
-	Sleep(1);
-	header("Location:A_list.php");
-
-
+	//echo "更新完了しました";
+	//Sleep(1);
+	Header('Location: A_update_comp.html');
 
 ?>

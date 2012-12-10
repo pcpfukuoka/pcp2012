@@ -161,6 +161,7 @@ Dbdissconnect($link);
 						</select></td>
 						
 						<!-- 定期テストのチェック -->
+					<input type = "hidden" name = "stand_flg" value = "0">
 					<td align = "center" bgcolor = "blue"><input type = "checkbox" name = "stand_flg" value = "1"></td>
 					
 					<!-- 登録ボタン -->

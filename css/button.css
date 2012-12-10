@@ -241,3 +241,23 @@
 	height:30px;
 
 }
+
+/* オンマウスのとき */
+.button5:hover {
+	color: #000000;
+	background-color: #ff6600;  /* 背景色 */
+	border: inset 3px #ff6600;  /* 枠の色 */
+	margin: 0px;
+	padding: 0px;
+	width:50px;
+
+}
+
+.button5:active {
+	color: #000000;
+}
+
+.button5:visited {
+	color:#000000;
+	width:50px;
+}

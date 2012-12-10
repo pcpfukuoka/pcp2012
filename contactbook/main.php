@@ -12,7 +12,11 @@
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<script src="../javascript/frame_jump.js"></script>
 		<title>連絡帳</title>
+
 	</head>
+
+	<!-- ↓↓１秒ごとにページを自動更新する処理↓↓↓ -->
+	<!-- onLoad="setInterval('changeImg()',1000)" -->
 
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
