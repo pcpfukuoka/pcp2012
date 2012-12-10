@@ -24,7 +24,7 @@
 	$result = mysql_query($sql);
 	$num = mysql_num_rows($result);
 
-	$sql = "SELECT attendance.group_seq, m_group.group_name AS group_name
+	$sql = "SELECT DISTINCT attendance.group_seq, m_group.group_name AS group_name
 			FROM attendance
 			LEFT JOIN m_group ON attendance.group_seq = m_group.group_seq
 			WHERE m_group.class_flg = 1";
