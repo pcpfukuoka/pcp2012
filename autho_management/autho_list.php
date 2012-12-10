@@ -71,9 +71,9 @@ Dbdissconnect($link);
 				<td width = "25%" align = "center" ><font size="5">ページ名</font></td>
 				<td width = "15%" align = "center" ><font size="5">read</font></td>
 				<td width = "15%" align = "center" ><font size="5">write</font></td>
-				<td width = "15%" align = "center" ><font size="5">delete</font></td>
 				<td width = "15%" align = "center" ><font size="5">update</font></td>
 				<td width = "15%" align = "center" ><font size="5">delivery</font></td>
+				<td width = "15%" align = "center" ><font size="5">delete</font></td>
 			</tr>
 
 			<?php
@@ -83,20 +83,54 @@ Dbdissconnect($link);
 				$page = mysql_fetch_array($result);
 			?>
 				<tr>
-					<th align = "center"><?= $page['page_name'] ?></td>		<!--  ページ名の表示	-->
+					<th align = "center"><?= $page['page_name'] ?></th>		<!--  ページ名の表示	-->
 
 					<?php
 					require_once("../lib/autho.php");
 					$page_fun = new autho_class();
 					$page_cla = $page_fun -> autho_Pre($autho_seq, $page['page_seq']);
-
-					for($j = 0; $j < 5; $j++)
-					{
 					?>
+					
 					<th align = "center">
 					<?php
-					//権限の○×表示
-					if($page_cla[$j])
+						//権限の○×表示
+						if($page_cla['read_flg'])
+						{
+							echo "○" ;
+						}
+						else
+						{
+							echo "×" ;
+						}
+						
+						if($page_cla['write_flg'])
+						{
+							echo "○" ;
+						}
+						else
+						{
+							echo "×" ;
+						}
+						
+						if($page_cla['update_flg'])
+						{
+							echo "○" ;
+						}
+						else
+						{
+							echo "×" ;
+						}
+						
+						if($page_cla['delivery_flg'])
+						{
+							echo "○" ;
+						}
+						else
+						{
+							echo "×" ;
+						}
+						
+						if($page_cla['delete_flg'])
 						{
 							echo "○" ;
 						}
@@ -106,9 +140,6 @@ Dbdissconnect($link);
 						}
 					?>
 					</th>
-					<?php
-					}
-					?>
 				</tr>
 			<?php
 			}

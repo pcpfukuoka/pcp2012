@@ -39,7 +39,7 @@ Dbdissconnect($link);
 			<font class="Cubicfont">権限管理一覧</font><hr color="blue">
 		</div><br><br>
 		
-		名前 : <?= $autho_user['autho_name'] ?><br>
+		名前 : <?= $autho_user['autho_name'] ?><br><br>
 		
 		<table border = "1">
 			<tr>
