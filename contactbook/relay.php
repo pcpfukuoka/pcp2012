@@ -1,6 +1,19 @@
 <?php
 	//SESSIONでユーザIDの取得
 	session_start();
+?>
+
+	<html>
+		<head>
+			<script src="../javascript/frame_jump.js"></script>
+		</head>
+
+		<body>
+		</body>
+	</html>
+
+
+<?php
 	$user_seq = $_SESSION['login_info[user]'];
 
 	//データベースの呼出
@@ -44,8 +57,8 @@
     	//データベースを閉じる
     	Dbdissconnect($dbcon);
 
-        Header('Location: comp_dis.html');
-        exit;
+    	print "<script language=javascript>leftreload();</script>";
+    	print "<script language=javascript>jump('comp_dis.html','right');</script>";
     }
     //一時保存
     elseif ( isset($_POST['Preservation']) )
@@ -80,8 +93,8 @@
     	//データベースを閉じる
     	Dbdissconnect($dbcon);
 
-		Header('Location: Preservation.html');
-        exit;
+    	print "<script language=javascript>leftreload();</script>";
+    	print "<script language=javascript>jump('Preservation.html','right');</script>";
     }
     //アップデート
     else if(isset($_POST['send_update']))
@@ -112,8 +125,8 @@
     	//データベースを閉じる
     	Dbdissconnect($dbcon);
 
-    	Header('Location: comp_dis.html');
-    	exit;
+    	print "<script language=javascript>leftreload();</script>";
+    	print "<script language=javascript>jump('comp_dis.html','right');</script>";
     }
     //保存からの保存
     else if(isset($_POST['Re_preservation']))
@@ -132,7 +145,7 @@
 		//データベースを閉じる
 		Dbdissconnect($dbcon);
 
-		Header('Location: Preservation.html');
-		exit;
-    }
+    	print "<script language=javascript>leftreload();</script>";
+    	print "<script language=javascript>jump('Preservation.html','right');</script>";
+	}
 ?>
