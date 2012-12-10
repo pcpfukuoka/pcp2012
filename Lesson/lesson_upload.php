@@ -20,7 +20,7 @@ session_start();
 	$img_name = "url(../images/" + $data['name'] + ")";
 	$sql = "INSERT INTO board VALUE(0,'".$date ."', '15','".$subject_seq ."','".$page_num ."','".$img_name ."','0','0');";
 	$result = mysql_query($sql);
-	$file_name = '../../balckboard/public/images/ '.$img_name;
+	$file_name = '../../balckboard/public/images/div/ '.$img_name;
 	move_uploaded_file($data['tmp_name'], $file_name);
 
 	//データベースを閉じる
