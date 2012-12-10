@@ -1,4 +1,6 @@
 <?php
+	session_start();
+
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 	//これでDBを呼び出す関数が使えるようになる
@@ -20,14 +22,16 @@
 	$sql = "SELECT DATE_FORMAT(date,'%Y-%m') AS select_date
 			FROM attendance
 			GROUP BY DATE_FORMAT(date,'%Y-%m')
-			ORDER BY DATE_FORMAT(date,'%Y/%m');";
+			ORDER BY DATE_FORMAT(date,'%Y-%m');";
 	$result = mysql_query($sql);
 	$num = mysql_num_rows($result);
 
 	$sql = "SELECT DISTINCT attendance.group_seq, m_group.group_name AS group_name
 			FROM attendance
 			LEFT JOIN m_group ON attendance.group_seq = m_group.group_seq
-			WHERE m_group.class_flg = 1";
+			WHERE m_group.class_flg = 1
+			ORDER BY attendance.group_seq";
+
 	$result_2 = mysql_query($sql);
 	$cnt = mysql_num_rows($result_2);
 
@@ -43,6 +47,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<script src="../javascript/frame_jump.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
@@ -50,7 +55,6 @@
 
 	<body>
 	<img class="bg" src="../images/blue-big.jpg" alt="" />
-
 		<div id="container">
 			<div align="center">
 				<font class="Cubicfont">一覧</font>
@@ -87,16 +91,20 @@
 										$row = mysql_fetch_array($result);
 										if($check_flg1 == 0)
 										{
+
 								?>
-								<option value="<?= $row['select_date'] ?>" selected="selected"><?= $row['select_date'] ?></option>
+											<option value="<?= $row['select_date'] ?>" selected="selected"><?= $row['select_date'] ?></option>
 								<?php
+											//$_SESSION['date'] = $row['select_date'];
 											$check_flg1 = 1;
 										}
 										else
 										{
+
 								?>
-								<option value="<?= $row['select_date'] ?>"><?= $row['select_date'] ?></option>
+											<option value="<?= $row['select_date'] ?>"><?= $row['select_date'] ?></option>
 								<?php
+											//$_SESSION['date'] = $row['select_date'];
 										}
 									}
 								?>
@@ -138,7 +146,7 @@
 			<br><br><br>
 
 			<div align="center">
-				<table  id="SearchResult" border = "1">
+				<table class="table_01" id="SearchResult" border = "1">
 				</table>
 			</div>
 		</div>
