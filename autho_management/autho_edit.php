@@ -65,9 +65,9 @@ Dbdissconnect($link);
 					<td width = "25%" align = "center" ><font size="5">ページ名</font></td>
 					<td width = "15%" align = "center" ><font size="5">read</font></td>
 					<td width = "15%" align = "center" ><font size="5">write</font></td>
-					<td width = "15%" align = "center" ><font size="5">delete</font></td>
 					<td width = "15%" align = "center" ><font size="5">update</font></td>
 					<td width = "15%" align = "center" ><font size="5">delivery</font></td>
+					<td width = "15%" align = "center" ><font size="5">delete</font></td>
 				</tr>
 				
 				<?php
@@ -85,25 +85,86 @@ Dbdissconnect($link);
 						$page_cla = $page_fun -> autho_Pre($autho_seq, $page['page_seq']);
 						
 						//チェックボックスの表示
-						for($j = 0; $j < 5; $j++)
+						if($page_cla['read_flg'] == 1)
 						{
-							if($page_cla[$j] == 1)
-							{
 						?>
-								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-								<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
-							<?php
-							}
-							else
-							{
-							?>
-								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-								<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
-							<?php 
-							} 
-							$autho_chk++;
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
+						<?php
 						}
-							?>
+						else
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
+						<?php 
+						} 
+						$autho_chk++;
+						
+						if($page_cla['write_flg'] == 1)
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
+						<?php
+						}
+						else
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
+						<?php 
+						} 
+						$autho_chk++;
+						
+						if($page_cla['update_flg'] == 1)
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
+						<?php
+						}
+						else
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
+						<?php 
+						} 
+						$autho_chk++;
+						
+						if($page_cla['delivery_flg'] == 1)
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
+						<?php
+						}
+						else
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
+						<?php 
+						} 
+						$autho_chk++;
+						
+						if($page_cla['delete_flg'] == 1)
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
+						<?php
+						}
+						else
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
+						<?php 
+						} 
+						$autho_chk++;
+						?>
 					</tr>
 				<?php
 				}
