@@ -21,6 +21,7 @@ function form_create(date,page_num,subject_seq){
 	input1.setAttribute("type","hidden");
 	input1.setAttribute("name","date");
 	input1.setAttribute("value",date);
+	alert(date);
 
 	var input2 = document.createElement("INPUT");
 	input2.setAttribute("type","hidden");
