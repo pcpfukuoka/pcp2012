@@ -89,11 +89,11 @@ Dbdissconnect($link);
 					require_once("../lib/autho.php");
 					$page_fun = new autho_class();
 					$page_cla = $page_fun -> autho_Pre($autho_seq, $page['page_seq']);
+
+					//権限の○×表示
 					?>
-					
 					<th align = "center">
-					<?php
-						//権限の○×表示
+					<?php 
 						if($page_cla['read_flg'])
 						{
 							echo "○" ;
@@ -102,7 +102,11 @@ Dbdissconnect($link);
 						{
 							echo "×" ;
 						}
+					?>
+					</th>
 						
+					<th align = "center">
+					<?php 
 						if($page_cla['write_flg'])
 						{
 							echo "○" ;
@@ -111,7 +115,11 @@ Dbdissconnect($link);
 						{
 							echo "×" ;
 						}
-						
+					?>
+					</th>
+					
+					<th align = "center">
+					<?php 
 						if($page_cla['update_flg'])
 						{
 							echo "○" ;
@@ -120,7 +128,11 @@ Dbdissconnect($link);
 						{
 							echo "×" ;
 						}
-						
+					?>
+					</th>
+					
+					<th align = "center">
+					<?php 
 						if($page_cla['delivery_flg'])
 						{
 							echo "○" ;
@@ -129,7 +141,11 @@ Dbdissconnect($link);
 						{
 							echo "×" ;
 						}
-						
+					?>
+					</th>
+					
+					<th align = "center">
+					<?php 
 						if($page_cla['delete_flg'])
 						{
 							echo "○" ;
