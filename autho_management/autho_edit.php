@@ -15,6 +15,7 @@ if(!isset($_GET['id']))
 
 //$seq_autho : GETで受け取った権限グループseqをSESSIONに入れる
 $_SESSION['autho_sel'] = $_GET['id'];
+//$_SESSION['autho_sel'] = 2;
 $autho_seq = $_SESSION['autho_sel'];
 
 require_once("../lib/dbconect.php");
@@ -44,27 +45,6 @@ Dbdissconnect($link);
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
-		
-		<script>
-		function chk(autho)
-		{
-			var autho_chk = "autho_edit" + autho;
-			var chk_next;
-			
-			if (document.edit.autho_chk.checked)　//checked チェックが入っていたら
-			{
-				chk_next = autho + 1;
-				autho_chk = "autho_edit" + chk_next;
-				document.edit.autho_chk.disabled = false; // 入力可能
-			}
-			else
-			{
-				chk_next = autho + 1;
-				autho_chk = "autho_edit" + chk_next;
-				document.edit.autho_chk.disabled = true; // 入力不可
-			}
-		}
-		</script>
 	</head>
 	<body>
 		<img class="bg" src="../../images/blue-big.jpg" alt="" />
@@ -110,14 +90,14 @@ Dbdissconnect($link);
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked onClick = "chk(<?= $autho_chk ?>)";></th>
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
 						<?php
 						}
 						else
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" onClick = "chk(<?= $autho_chk ?>)";></th>
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
 						<?php 
 						} 
 						$autho_chk++;
@@ -126,14 +106,14 @@ Dbdissconnect($link);
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked onClick = "chk(<?= $autho_chk ?>)";></th>
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
 						<?php
 						}
 						else
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" onClick = "chk(<?= $autho_chk ?>)";></th>
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
 						<?php 
 						} 
 						$autho_chk++;
@@ -142,14 +122,14 @@ Dbdissconnect($link);
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked onClick = "chk(<?= $autho_chk ?>)";></th>
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
 						<?php
 						}
 						else
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" onClick = "chk(<?= $autho_chk ?>)";></th>
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
 						<?php 
 						} 
 						$autho_chk++;
@@ -158,14 +138,14 @@ Dbdissconnect($link);
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked onClick = "chk(<?= $autho_chk ?>)";></th>
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
 						<?php
 						}
 						else
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" onClick = "chk(<?= $autho_chk ?>)";></th>
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
 						<?php 
 						} 
 						$autho_chk++;
@@ -174,14 +154,14 @@ Dbdissconnect($link);
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked onClick = "chk(<?= $autho_chk ?>)";></th>
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
 						<?php
 						}
 						else
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" onClick = "chk(<?= $autho_chk ?>)";></th>
+							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
 						<?php 
 						} 
 						$autho_chk++;
