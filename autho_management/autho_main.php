@@ -90,7 +90,11 @@ Dbdissconnect($link);
 				<tr>
 					<td><input class="button2" type="button" onclick="jump('autho_reg.php?id=<?= $autho_group['autho_seq'] ?>','right')" value = "登録"></td>
 					<td><input class="button2" type="button" onclick="jump('autho_del_con.php?id=<?= $autho_group['autho_seq'] ?>','right')"value = "削除"></td>
-					<td><input class="button2" type="button" onclick="jump('autho_user_list.php?id=<?= $autho_group['autho_seq'] ?>','right')"value = "削除"></td>
+					
+				</tr>
+					
+				<tr>
+					<td><input class="button2" type="button" onclick="jump('autho_user_list.php?id=<?= $autho_group['autho_seq'] ?>','right')"value = "ユーザー一覧"></td>
 				</tr>
 			</table>
 			<?php

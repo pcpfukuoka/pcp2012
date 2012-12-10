@@ -20,7 +20,7 @@ $link = DbConnect();
 //ユーザー名と権限名をとってくる
 $sql = "SELECT m_user.user_name, m_autho.autho_name FROM m_user, m_autho 
 		WHERE m_user.autho_seq = m_autho.autho_seq 
-		AND autho_seq = '$autho_seq';";
+		AND m_autho.autho_seq = '$autho_seq';";
 $result_autho = mysql_query($sql);
 $autho_user = mysql_fetch_array($result_autho);
 $cnt_autho = mysql_num_rows($result_autho);
