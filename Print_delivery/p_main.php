@@ -51,7 +51,7 @@
 			<br><br>
 			<input class="button2" type="button" onclick="jump('p_outbox.php')" value="送信箱">
 			<br><br>
-			<input class="button2" type="button" onclick="jump('p_draft.php')" value="下書き">
+			<input class="button2" type="button" onclick="jump('p_draft.php')" value="下書き（<?= $cnt_print_send ?>）">
 		</p>
 		</div>
 	</body>
