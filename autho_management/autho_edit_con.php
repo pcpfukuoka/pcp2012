@@ -45,12 +45,12 @@ Dbdissconnect($link);
 			<!-- テーブルの作成 -->
 			<table  class="table_01">
 				<tr>
-					<td width = "25%" align = "center" ><font size="5">ページ名</font></td>
-					<td width = "15%" align = "center" ><font size="5">read</font></td>
-					<td width = "15%" align = "center" ><font size="5">write</font></td>
-					<td width = "15%" align = "center" "><font size="5">delete</font></td>
-					<td width = "15%" align = "center" ><font size="5">update</font></td>
-					<td width = "15%" align = "center" ><font size="5">delivery</font></td>
+					<td width = "25%" align = "center"><font size="5">ページ名</font></td>
+					<td width = "15%" align = "center"><font size="5">read</font></td>
+					<td width = "15%" align = "center"><font size="5">write</font></td>
+					<td width = "15%" align = "center"><font size="5">update</font></td>
+					<td width = "15%" align = "center"><font size="5">delivery</font></td>
+					<td width = "15%" align = "center"><font size="5">delete</font></td>
 				</tr>
 				
 				<?php
