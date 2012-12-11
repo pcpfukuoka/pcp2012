@@ -25,7 +25,10 @@ session_start();
 	if(move_uploaded_file($data['tmp_name'], $file_name))
 	{
 		echo "成功";
-	};
+	}
+	else {
+		echo "失敗";
+	}
 
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
