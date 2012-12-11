@@ -38,12 +38,12 @@
 	名前<?= $group_name ?>
 	<table width="100%" class="table_01">
     <tr>
-     <td width="50%" ><font size="5">ページ名</font></td>
-     <td width="10%" ><font size="5">Read</font></td>
-     <td width="10%" ><font size="5">Delete</font></td>
-     <td width="10%" ><font size="5">Write</font></td>
-     <td width="10%" ><font size="5">Update</font></td>
-     <td width="10%" ><font size="5">delivery</font></td>
+     <th width="50%" ><font size="5">ページ名</font></th>
+     <th width="10%" ><font size="5">Read</font></th>
+     <th width="10%" ><font size="5">Delete</font></th>
+     <th width="10%" ><font size="5">Write</font></th>
+     <th width="10%" ><font size="5">Update</font></th>
+     <th width="10%" ><font size="5">delivery</font></th>
     </tr>
     <?php
     for($i = 0; $i < $count; $i++)
@@ -141,12 +141,12 @@
 		?>
 
 	    <tr>
-	    <th align = "center"><?= $row['page_name'] ?></th>
-	    <th align="center"><?= $Read ?></th>
-	    <th align="center"><?= $Delete ?></th>
-	    <th align="center"><?= $Write ?></th>
-	    <th align="center"><?= $Update ?></th>
-	    <th align="center"><?= $delivery ?></th>
+	    <td align = "center"><?= $row['page_name'] ?></td>
+	    <td align="center"><?= $Read ?></td>
+	    <td align="center"><?= $Delete ?></td>
+	    <td align="center"><?= $Write ?></td>
+	    <td align="center"><?= $Update ?></td>
+	    <td align="center"><?= $delivery ?></td>
 	    </tr>
 	<?php
     }

@@ -32,7 +32,7 @@
 	</div><br><br>
    <table width="50%" class="table_01">
     <tr>
-     <td><font size="5">ページ一覧</font></td>
+     <th><font size="5">ページ一覧</font></th>
      </tr>
      <?php
     for($i = 0; $i < $count; $i++)
@@ -40,7 +40,7 @@
     	$row = mysql_fetch_array($result);
 	?>
     <tr>
-    	<th  align = "center"><?= $row['page_name'] ?></th>
+    	<td align = "center"><?= $row['page_name'] ?></td>
 
     <?php
 	}
@@ -51,8 +51,8 @@
     <br>
     <table>
     	<tr>
-    		<td><input class="button4" type="submit" value="登録確認"></td>
-    		<td><input class="button4" type="reset" value="クリア"></td>
+    		<th><input class="button4" type="submit" value="登録確認"></th>
+    		<th><input class="button4" type="reset" value="クリア"></th>
     	</tr>
     </table>
     <br>
@@ -76,8 +76,8 @@
 	    <!-- テーブルの作成 -->
 	    	<table width="70%" class="table_01">
 	    		<tr>
-	     			<td width="50%" bgcolor="Yellow"><font size="5">ページ名</font></td>
-	     			<td width = "20%" bgcolor="Yellow"><font size="5">削除チェック</font></td>
+	     			<th width="50%" bgcolor="Yellow"><font size="5">ページ名</font></th>
+	     			<th width = "20%" bgcolor="Yellow"><font size="5">削除チェック</font></th>
 	     		</tr>
 
 	     		<?php
@@ -88,8 +88,8 @@
 					<input type = "hidden" name = "del_chk<?= $i ?>" value = "0">
 					<tr>
 					<!-- ページ名の表示とチェックボックスの作成 -->
-						<th align = "center"><?= $name['page_name'] ?></th>
-						<th align = "center"><input type = "checkbox" name = "del_chk<?= $i ?>" value = "<?= $name['page_seq'] ?>">
+						<td align = "center"><?= $name['page_name'] ?></td>
+						<td align = "center"><input type = "checkbox" name = "del_chk<?= $i ?>" value = "<?= $name['page_seq'] ?>"></td>
 					</tr>
 				<?php
 				}
@@ -98,8 +98,8 @@
 
 			<table>
 				<tr>
-					<td><input class="button4" type = "submit" value = "確認"></td>
-					<td><input class="button4" type = "reset" value="クリア"></td>
+					<th><input class="button4" type = "submit" value = "確認"></th>
+					<th><input class="button4" type = "reset" value="クリア"></th>
 				</tr>
 			</table>
 			<br>

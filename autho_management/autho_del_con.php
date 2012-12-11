@@ -40,10 +40,10 @@ Dbdissconnect($link);
 		<form action = "autho_del_dec.php">
 			<table class="table_01">
 				<tr>
-					<td bgcolor="Yellow"><font size="5">権限グループ名</font></td>
+					<th bgcolor="Yellow"><font size="5">権限グループ名</font></th>
 				</tr>
 				<tr>
-					<th><?= $name['autho_name'] ?></th>
+					<td><?= $name['autho_name'] ?></td>
 				</tr>
 			</table>
 			

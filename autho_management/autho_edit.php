@@ -63,12 +63,12 @@ Dbdissconnect($link);
 		<!-- 		テープルの作成 -->
 			<table class="table_01" width = "100%">
 				<tr>
-					<td width = "25%" align = "center" ><font size="5">ページ名</font></td>
-					<td width = "15%" align = "center" ><font size="5">read</font></td>
-					<td width = "15%" align = "center" ><font size="5">write</font></td>
-					<td width = "15%" align = "center" ><font size="5">update</font></td>
-					<td width = "15%" align = "center" ><font size="5">delivery</font></td>
-					<td width = "15%" align = "center" ><font size="5">delete</font></td>
+					<th width = "25%" align = "center" ><font size="5">ページ名</font></th>
+					<th width = "15%" align = "center" ><font size="5">read</font></th>
+					<th width = "15%" align = "center" ><font size="5">write</font></th>
+					<th width = "15%" align = "center" ><font size="5">update</font></th>
+					<th width = "15%" align = "center" ><font size="5">delivery</font></th>
+					<th width = "15%" align = "center" ><font size="5">delete</font></th>
 				</tr>
 				
 				<?php
@@ -78,7 +78,7 @@ Dbdissconnect($link);
 					$page = mysql_fetch_array($result);
 				?>
 					<tr>
-						<th align = "center"><?= $page['page_name'] ?></th>		<!--  ページ名の表示	-->
+						<td align = "center"><?= $page['page_name'] ?></td>		<!--  ページ名の表示	-->
 					
 						<?php 
 						require_once("../lib/autho.php");
@@ -90,14 +90,14 @@ Dbdissconnect($link);
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
 						<?php
 						}
 						else
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
 						<?php 
 						} 
 						$autho_chk++;
@@ -106,14 +106,14 @@ Dbdissconnect($link);
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
 						<?php
 						}
 						else
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
 						<?php 
 						} 
 						$autho_chk++;
@@ -122,14 +122,14 @@ Dbdissconnect($link);
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
 						<?php
 						}
 						else
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
 						<?php 
 						} 
 						$autho_chk++;
@@ -138,14 +138,14 @@ Dbdissconnect($link);
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
 						<?php
 						}
 						else
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
 						<?php 
 						} 
 						$autho_chk++;
@@ -154,14 +154,14 @@ Dbdissconnect($link);
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
 						<?php
 						}
 						else
 						{
 						?>
 							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
 						<?php 
 						} 
 						$autho_chk++;

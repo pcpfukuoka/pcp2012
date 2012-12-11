@@ -45,12 +45,12 @@ Dbdissconnect($link);
 			<!-- テーブルの作成 -->
 			<table  class="table_01">
 				<tr>
-					<td width = "25%" align = "center"><font size="5">ページ名</font></td>
-					<td width = "15%" align = "center"><font size="5">read</font></td>
-					<td width = "15%" align = "center"><font size="5">write</font></td>
-					<td width = "15%" align = "center"><font size="5">update</font></td>
-					<td width = "15%" align = "center"><font size="5">delivery</font></td>
-					<td width = "15%" align = "center"><font size="5">delete</font></td>
+					<th width = "25%" align = "center"><font size="5">ページ名</font></th>
+					<th width = "15%" align = "center"><font size="5">read</font></th>
+					<th width = "15%" align = "center"><font size="5">write</font></th>
+					<th width = "15%" align = "center"><font size="5">update</font></th>
+					<th width = "15%" align = "center"><font size="5">delivery</font></th>
+					<th width = "15%" align = "center"><font size="5">delete</font></th>
 				</tr>
 				
 				<?php
@@ -61,13 +61,13 @@ Dbdissconnect($link);
 					$page = mysql_fetch_array($result);
 				?>
 					<tr>
-						<th align = "center"><?= $page['page_name'] ?></th>		<!--  ページ名の表示	-->
+						<td align = "center"><?= $page['page_name'] ?></td>		<!--  ページ名の表示	-->
 					<?php
 					for($j = 0; $j < 5; $j++)
 						{
 							$autho_edit = "autho_edit".$autho_chk;
 					?>
-						<th>
+						<td>
 						<?php if($_POST[$autho_edit])
 							{
 						?>
@@ -84,7 +84,7 @@ Dbdissconnect($link);
 							}
 							$autho_chk++;
 						?>
-						</th>
+						</td>
 						<?php 
 						}
 						?>

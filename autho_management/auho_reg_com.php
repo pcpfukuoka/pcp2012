@@ -44,7 +44,7 @@ $autho_seq = $_SESSION['autho_sel'];
 <!-- 		テープルの作成 -->
 		<table class="table_01">
 			<tr>
-				<td width = "50%" align = "center"><font size="5">アカウント名</font></td>
+				<th width = "50%" align = "center"><font size="5">アカウント名</font></th>
 			</tr>
 
 			<?php
@@ -54,8 +54,8 @@ $autho_seq = $_SESSION['autho_sel'];
 				$page = mysql_fetch_array($result);
 			?>
 				<tr>
-					<th align = "center"><?= $page['user_name'] ?></th>		<!--  ページ名の表示	-->
-
+					<td align = "center"><?= $page['user_name'] ?></td>		<!--  ページ名の表示	-->
+				</tr>
 					<?php
 			}
 					?>
