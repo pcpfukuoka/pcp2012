@@ -8,14 +8,14 @@
 //セッションの開始
 session_start();
 
-if(!isset($_GET['id']))
-{
-	header("Location:../dummy.html");
-}
+// if(!isset($_GET['id']))
+// {
+// 	header("Location:../dummy.html");
+// }
 
 //$seq_autho : GETで受け取った権限グループseqをSESSIONに入れる
-$_SESSION['autho_sel'] = $_GET['id'];
-//$_SESSION['autho_sel'] = 2;
+//$_SESSION['autho_sel'] = $_GET['id'];
+$_SESSION['autho_sel'] = 2;
 $autho_seq = $_SESSION['autho_sel'];
 
 require_once("../lib/dbconect.php");

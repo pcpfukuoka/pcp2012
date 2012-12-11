@@ -49,9 +49,9 @@
 			<br>
 				<table class="table_01">
 					<tr bgcolor="yellow">
-						<td align="center"width="200"><font size="5">日付</font></td>
-						<td align="center"width="150"><font size="5">TO</font></td>
-						<td align="center"width="230"><font size="5">件名</font></td>
+						<th align="center"width="200"><font size="5">日付</font></th>
+						<th align="center"width="150"><font size="5">TO</font></th>
+						<th align="center"width="230"><font size="5">件名</font></th>
 
 					<?php
 					for ($i = 0; $i < $count; $i++){
@@ -59,12 +59,12 @@
 					?>
 
 					<tr>
-						<th><?= $row['send_date'] ?></th>
-						<th><?= $row['reception_user_name'] ?></th>
-						<th>
+						<td><?= $row['send_date'] ?></td>
+						<td><?= $row['reception_user_name'] ?></td>
+						<td>
 							<!-- GETでシークを渡す -->
 							<a href="sendview.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
-						</th>
+						</td>
 					</tr>
 					<?php
 						}

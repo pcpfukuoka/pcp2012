@@ -18,11 +18,14 @@ session_start();
 
 
 	$img_name = $data['name'];
-	$db_img = "url(../images/" + $data['name'] + ")";
+	$db_img = "url(../images/div/". $data['name']. ")";
 	$sql = "INSERT INTO board VALUE(0,'".$date ."', '15','".$subject_seq ."','".$page_num ."','".$db_img ."','0','0');";
 	$result = mysql_query($sql);
 	$file_name = '../../balckboard/public/images/div/ '.$img_name;
-	move_uploaded_file($data['tmp_name'], $file_name);
+	if(move_uploaded_file($data['tmp_name'], $file_name))
+	{
+		echo "成功";
+	};
 
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
