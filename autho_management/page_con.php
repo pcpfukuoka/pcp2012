@@ -31,7 +31,7 @@
 
    <table  width="50%" class="table_01">
     <tr>
-     <td width="50%" >ページ一覧</td>
+     <th width="50%" >ページ一覧</th>
      </tr>
      <?php
     for($i = 0; $i < $count; $i++)
@@ -39,14 +39,14 @@
     	$row = mysql_fetch_array($result);
 	?>
     <tr>
-    <th align = "center"><?= $row['page_name'] ?></th>
+    <td align = "center"><?= $row['page_name'] ?></td>
     </tr>
 
     <?php
 	}
     ?>
     <tr>
-    <th align = "center"><font color = "orange">"NEW"</font>&nbsp;&nbsp;<?= $page_name ?></td>
+    <td align = "center"><font color = "orange">"NEW"</font>&nbsp;&nbsp;<?= $page_name ?></td>
     </tr></table><br>
     <input type="hidden" name="page_name" value="<?= $page_name ?>">
     <table>

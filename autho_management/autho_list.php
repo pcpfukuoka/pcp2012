@@ -68,12 +68,12 @@ Dbdissconnect($link);
 <!-- 		テープルの作成 -->
 		<table width = "100%" class="table_01">
 			<tr>
-				<td width = "25%" align = "center" ><font size="5">ページ名</font></td>
-				<td width = "15%" align = "center" ><font size="5">read</font></td>
-				<td width = "15%" align = "center" ><font size="5">write</font></td>
-				<td width = "15%" align = "center" ><font size="5">update</font></td>
-				<td width = "15%" align = "center" ><font size="5">delivery</font></td>
-				<td width = "15%" align = "center" ><font size="5">delete</font></td>
+				<th width = "25%" align = "center" ><font size="5">ページ名</font></th>
+				<th width = "15%" align = "center" ><font size="5">read</font></th>
+				<th width = "15%" align = "center" ><font size="5">write</font></th>
+				<th width = "15%" align = "center" ><font size="5">update</font></th>
+				<th width = "15%" align = "center" ><font size="5">delivery</font></th>
+				<th width = "15%" align = "center" ><font size="5">delete</font></th>
 			</tr>
 
 			<?php
@@ -83,7 +83,7 @@ Dbdissconnect($link);
 				$page = mysql_fetch_array($result);
 			?>
 				<tr>
-					<th align = "center"><?= $page['page_name'] ?></th>		<!--  ページ名の表示	-->
+					<td align = "center"><?= $page['page_name'] ?></td>		<!--  ページ名の表示	-->
 
 					<?php
 					require_once("../lib/autho.php");
@@ -92,7 +92,7 @@ Dbdissconnect($link);
 
 					//権限の○×表示
 					?>
-					<th align = "center">
+					<td align = "center">
 					<?php 
 						if($page_cla['read_flg'])
 						{
@@ -103,9 +103,9 @@ Dbdissconnect($link);
 							echo "×" ;
 						}
 					?>
-					</th>
+					</td>
 						
-					<th align = "center">
+					<td align = "center">
 					<?php 
 						if($page_cla['write_flg'])
 						{
@@ -116,9 +116,9 @@ Dbdissconnect($link);
 							echo "×" ;
 						}
 					?>
-					</th>
+					</td>
 					
-					<th align = "center">
+					<td align = "center">
 					<?php 
 						if($page_cla['update_flg'])
 						{
@@ -129,9 +129,9 @@ Dbdissconnect($link);
 							echo "×" ;
 						}
 					?>
-					</th>
+					</td>
 					
-					<th align = "center">
+					<td align = "center">
 					<?php 
 						if($page_cla['delivery_flg'])
 						{
@@ -142,9 +142,9 @@ Dbdissconnect($link);
 							echo "×" ;
 						}
 					?>
-					</th>
+					</td>
 					
-					<th align = "center">
+					<td align = "center">
 					<?php 
 						if($page_cla['delete_flg'])
 						{
@@ -155,7 +155,7 @@ Dbdissconnect($link);
 							echo "×" ;
 						}
 					?>
-					</th>
+					</td>
 				</tr>
 			<?php
 			}
