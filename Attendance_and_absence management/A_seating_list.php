@@ -50,7 +50,7 @@
 			<hr color="blue">
 			<br><br>
 
-			<table border="5" align="center">
+			<table border="4" align="center">
 
 				<?php
 

@@ -76,13 +76,13 @@
 
 				<table>
 					<tr>
-						<td align="center" width="80" bgcolor="yellow"><font size="5">年月</font></td>
-						<td align="center" width="100" bgcolor="yellow"><font size="5">クラス</font></td>
-						<td align="center" width="40"></td>
+						<th align="center" width="80" bgcolor="#DC143C"><font size="5">年月</font></th>
+						<th align="center" width="100" bgcolor="#DC143C"><font size="5">クラス</font></th>
+						<th align="center" width="40"></th>
 					</tr>
 
 					<tr>
-						<td align="center"width="80">
+						<td align="center" width="80">
 							<select id="date">
 								<?php
 									$check_flg1 = 0;
@@ -113,7 +113,7 @@
 						</td>
 
 
-						<td align="center"width="100">
+						<td align="center" width="100">
 							<select id="group">
 								<?php
 									$check_flg2 = 0;
