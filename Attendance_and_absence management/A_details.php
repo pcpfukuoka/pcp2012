@@ -1,8 +1,11 @@
 <?php
+	session_start();
+
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
+	$A_date = $_SESSION['$A_date'];
 
 	// 選ばれた人のIDを取得
 	$id = $_GET['id'];
@@ -14,9 +17,10 @@
 			LEFT JOIN m_user ON attendance.user_seq = m_user.user_seq
 			LEFT JOIN m_group ON attendance.group_seq = m_group.group_seq
 			WHERE attendance.user_seq = '$id'
+			AND DATE_FORMAT(attendance.date,'%Y-%m') = '$A_date'
 			ORDER BY date";
 
-	//echo $sql;
+	//echo $date;
 
 	$result = mysql_query($sql);
 	$row = mysql_fetch_array($result);
@@ -34,6 +38,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<script src="../javascript/frame_jump.js"></script>
 	</head>
 
@@ -43,6 +48,8 @@
 			<div align="center">
 				<font class="Cubicfont">詳細</font>
 			</div>
+
+			<font size = "4"><a href="A_list.php">←戻る</a></font>
 
 			<hr color="blue"><br><br>
 

@@ -28,6 +28,7 @@
 	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
 	  <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+	  <script src="../javascript/frame_jump.js"></script>
 	</head>
 
 	<body>
@@ -61,6 +62,11 @@
 			    <input class="button4" type="submit" value="返信">
 	    	</form>
 	    </div>
+
+	    <?php
+	    	print "<script language=javascript>leftreload();</script>";
+	    ?>
+
     </body>
 </html>
 

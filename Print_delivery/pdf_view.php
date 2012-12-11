@@ -39,6 +39,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<script src="../javascript/frame_jump.js"></script>
 	</head>
 
 	<body>
@@ -62,6 +63,10 @@
 			</object>
 
 		</div>
+
+		<?php
+			print "<script language=javascript>leftreload();</script>";
+		?>
 	</body>
 </html>
 

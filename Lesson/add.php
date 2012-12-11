@@ -5,15 +5,14 @@
 	$dbcon = DbConnect();
 
 	$date = $_POST['date'];
-	//$class_seq = $_POST['class_seq'];
+	echo $date;
 	$subject_seq = $_POST['subject'];
 
 	//subjectに対応するsubject_nameをデータベースから持ってくる
 	$sql = 'SELECT subject_name FROM m_subject WHEREsubject_seq = '. $subject_seq.';';
 	$result = mysql_query($sql);
 
-	//データベースを閉じる
-	Dbdissconnect($dbcon);
+
 ?>
 
 <html>
@@ -23,23 +22,71 @@
 	</head>
 
 	<body>
-	<?= $subject_seq ?>
+
 
 	<font size="5"><?= $date ?>:<?=$result ?></font>
+	<div id="form">
+
+	<?php
+		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'";';
+		$result2 = mysql_query($sql2);
+		$count2 = mysql_num_rows($result2);
+		$page_max = 1;
+		if($count2 > 0)
+		{
+			for ($i = 0; $i < $count2; $i++)
+			{
+				$row = mysql_fetch_array($result2);
 
 
-	<!-- このあとを繰り返し？ -->
+				$now_page = $i + 1;
+				echo "now_page:";
+				echo $now_page;
+				echo "/";
 
-		<div id="form">
-			<form action="lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="1_form">
+				echo $row['page_num'];
+				echo "/";
+				echo $row['div_url'];
+
+	?>
+				<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $now_page ?>_form">
 				<input type="hidden" name="date" value=" <?= $date ?>" />
 				<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
-				<input type= "hidden" name="page_num" value= "1" />
+				<input type= "hidden" name="page_num" value= "<?= $row['page_num'] ?>" />
+				<input type="file" name="upfile" size="30" />
+
+
+				<input type="submit"  id="<?= $now_page?>_submit" value="変更" />
+				</form>
+
+	<?php
+
+			$page_max = $row['page_num'];
+			}
+			$page_max++;
+		}
+
+
+
+
+		//データベースを閉じる
+		Dbdissconnect($dbcon);
+	?>
+
+
+			<form action="lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $page_max ?>_form">
+				<input type="hidden" name="date" value=" <?php
+
+				 echo $date;
+
+				 ?>" />
+				<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+				<input type= "hidden" name="page_num" value= "<?= $page_max ?>" />
 				ファイル：<br/>
 				<input type="file" name="upfile" size="30" />
 
 
-				<input type="submit"  id="1_submit" value="追加" />
+				<input type="submit"  id="<?= $page_max ?>_submit" value="追加" />
 			</form>
 		</div>
 		<iframe name="targetFrame" id="targetFrame" ></iframe>

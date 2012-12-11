@@ -5,6 +5,8 @@ session_start();
 $date = $_POST['date'];
 $group_seq = $_POST['group_seq'];
 
+$_SESSION['$A_date'] = $date;
+
 require_once("../lib/dbconect.php");
 $link = DbConnect();
 $sql = "SELECT * FROM m_user WHERE delete_flg = 0";

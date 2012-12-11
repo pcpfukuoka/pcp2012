@@ -68,12 +68,12 @@ Dbdissconnect($link);
 <!-- 		テープルの作成 -->
 		<table width = "100%" class="table_01">
 			<tr>
-				<td width = "25%" align = "center" ><font size="5">ページ名</font></td>
-				<td width = "15%" align = "center" ><font size="5">read</font></td>
-				<td width = "15%" align = "center" ><font size="5">write</font></td>
-				<td width = "15%" align = "center" ><font size="5">delete</font></td>
-				<td width = "15%" align = "center" ><font size="5">update</font></td>
-				<td width = "15%" align = "center" ><font size="5">delivery</font></td>
+				<th width = "25%" align = "center" ><font size="5">ページ名</font></th>
+				<th width = "15%" align = "center" ><font size="5">read</font></th>
+				<th width = "15%" align = "center" ><font size="5">write</font></th>
+				<th width = "15%" align = "center" ><font size="5">update</font></th>
+				<th width = "15%" align = "center" ><font size="5">delivery</font></th>
+				<th width = "15%" align = "center" ><font size="5">delete</font></th>
 			</tr>
 
 			<?php
@@ -83,20 +83,18 @@ Dbdissconnect($link);
 				$page = mysql_fetch_array($result);
 			?>
 				<tr>
-					<th align = "center"><?= $page['page_name'] ?></td>		<!--  ページ名の表示	-->
+					<td align = "center"><?= $page['page_name'] ?></td>		<!--  ページ名の表示	-->
 
 					<?php
 					require_once("../lib/autho.php");
 					$page_fun = new autho_class();
 					$page_cla = $page_fun -> autho_Pre($autho_seq, $page['page_seq']);
 
-					for($j = 0; $j < 5; $j++)
-					{
-					?>
-					<th align = "center">
-					<?php
 					//権限の○×表示
-					if($page_cla[$j])
+					?>
+					<td align = "center">
+					<?php 
+						if($page_cla['read_flg'])
 						{
 							echo "○" ;
 						}
@@ -105,10 +103,59 @@ Dbdissconnect($link);
 							echo "×" ;
 						}
 					?>
-					</th>
-					<?php
-					}
+					</td>
+						
+					<td align = "center">
+					<?php 
+						if($page_cla['write_flg'])
+						{
+							echo "○" ;
+						}
+						else
+						{
+							echo "×" ;
+						}
 					?>
+					</td>
+					
+					<td align = "center">
+					<?php 
+						if($page_cla['update_flg'])
+						{
+							echo "○" ;
+						}
+						else
+						{
+							echo "×" ;
+						}
+					?>
+					</td>
+					
+					<td align = "center">
+					<?php 
+						if($page_cla['delivery_flg'])
+						{
+							echo "○" ;
+						}
+						else
+						{
+							echo "×" ;
+						}
+					?>
+					</td>
+					
+					<td align = "center">
+					<?php 
+						if($page_cla['delete_flg'])
+						{
+							echo "○" ;
+						}
+						else
+						{
+							echo "×" ;
+						}
+					?>
+					</td>
 				</tr>
 			<?php
 			}

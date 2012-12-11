@@ -1,7 +1,18 @@
 <?php
 	session_start();
 	$user_seq = $_SESSION['login_info[user]'];
+?>
 
+<html>
+	<head>
+		<script src="../javascript/frame_jump.js"></script>
+	</head>
+
+	<body>
+	</body>
+</html>
+
+<?php
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
@@ -13,6 +24,11 @@
     	$data = $_FILES['pdf'];
     	$title = $_POST['title'];
     	$send_seq = $_POST['to'];
+
+    	if($title == "")
+    	{
+    		$title = "（件名なし）";
+    	}
 
     	$sql = "INSERT INTO print_delivery (title, delivery_user_seq, target_group_seq, print_send_flg, print_flg, delivery_date)
     			VALUES ('$title', '$user_seq', '$send_seq', '1', '0', now())";
@@ -33,8 +49,8 @@
     	//データベースを閉じる
     	Dbdissconnect($dbcon);
 
-		Header('Location: p_preservation.html');
-        exit;
+    	print "<script language=javascript>leftreload();</script>";
+    	print "<script language=javascript>jump('p_preservation.html','right');</script>";
     }
     //送信
     else if(isset($_POST['send']))
@@ -67,12 +83,11 @@
 	    			VALUE ('$print_delivery_seq', '$user_seq', '1')";
 	    	mysql_query($sql);
     	}
-
     	//データベースを閉じる
     	Dbdissconnect($dbcon);
 
-    	Header('Location: p_com_disp.php');
-    	exit;
+    	print "<script language=javascript>leftreload();</script>";
+    	print "<script language=javascript>jump('p_com_disp.php','right');</script>";
     }
     //保存からの保存
     else if(isset($_POST['Re_preservation']))
@@ -101,8 +116,8 @@
     	//データベースを閉じる
     	Dbdissconnect($dbcon);
 
-    	Header('Location: p_preservation.html');
-    	exit;
+    	print "<script language=javascript>leftreload();</script>";
+    	print "<script language=javascript>jump('p_preservation.html','right');</script>";
     }
 ?>
 

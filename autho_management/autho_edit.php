@@ -15,6 +15,7 @@ if(!isset($_GET['id']))
 
 //$seq_autho : GETで受け取った権限グループseqをSESSIONに入れる
 $_SESSION['autho_sel'] = $_GET['id'];
+//$_SESSION['autho_sel'] = 2;
 $autho_seq = $_SESSION['autho_sel'];
 
 require_once("../lib/dbconect.php");
@@ -39,9 +40,9 @@ Dbdissconnect($link);
 	<head>
 		<title>権限管理編集画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
-	  <meta http-equiv="Content-Style-Type" content="text/css">
-	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
-	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
@@ -54,7 +55,7 @@ Dbdissconnect($link);
 		</div><hr color="blue"><br><br><br>
 		
 		<!-- 確認画面に飛ぶ -->
-		<form action = "autho_edit_con.php" method = "POST">
+		<form name = "edit" action = "autho_edit_con.php" method = "POST">
 		
 		<!-- 元の権限グループ名を表示させ、変更できるようにする -->
 			名前<input size ="15" type="text" name="edit_name" value = <?= $edit_name['autho_name'] ?>>
@@ -62,12 +63,12 @@ Dbdissconnect($link);
 		<!-- 		テープルの作成 -->
 			<table class="table_01" width = "100%">
 				<tr>
-					<td width = "25%" align = "center" ><font size="5">ページ名</font></td>
-					<td width = "15%" align = "center" ><font size="5">read</font></td>
-					<td width = "15%" align = "center" ><font size="5">write</font></td>
-					<td width = "15%" align = "center" ><font size="5">delete</font></td>
-					<td width = "15%" align = "center" ><font size="5">update</font></td>
-					<td width = "15%" align = "center" ><font size="5">delivery</font></td>
+					<th width = "25%" align = "center" ><font size="5">ページ名</font></th>
+					<th width = "15%" align = "center" ><font size="5">read</font></th>
+					<th width = "15%" align = "center" ><font size="5">write</font></th>
+					<th width = "15%" align = "center" ><font size="5">update</font></th>
+					<th width = "15%" align = "center" ><font size="5">delivery</font></th>
+					<th width = "15%" align = "center" ><font size="5">delete</font></th>
 				</tr>
 				
 				<?php
@@ -77,7 +78,7 @@ Dbdissconnect($link);
 					$page = mysql_fetch_array($result);
 				?>
 					<tr>
-						<th align = "center"><?= $page['page_name'] ?></th>		<!--  ページ名の表示	-->
+						<td align = "center"><?= $page['page_name'] ?></td>		<!--  ページ名の表示	-->
 					
 						<?php 
 						require_once("../lib/autho.php");
@@ -85,25 +86,86 @@ Dbdissconnect($link);
 						$page_cla = $page_fun -> autho_Pre($autho_seq, $page['page_seq']);
 						
 						//チェックボックスの表示
-						for($j = 0; $j < 5; $j++)
+						if($page_cla['read_flg'] == 1)
 						{
-							if($page_cla[$j] == 1)
-							{
 						?>
-								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-								<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></th>
-							<?php
-							}
-							else
-							{
-							?>
-								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-								<th><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></th>
-							<?php 
-							} 
-							$autho_chk++;
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
+						<?php
 						}
-							?>
+						else
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
+						<?php 
+						} 
+						$autho_chk++;
+						
+						if($page_cla['write_flg'] == 1)
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
+						<?php
+						}
+						else
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
+						<?php 
+						} 
+						$autho_chk++;
+						
+						if($page_cla['update_flg'] == 1)
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
+						<?php
+						}
+						else
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
+						<?php 
+						} 
+						$autho_chk++;
+						
+						if($page_cla['delivery_flg'] == 1)
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
+						<?php
+						}
+						else
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
+						<?php 
+						} 
+						$autho_chk++;
+						
+						if($page_cla['delete_flg'] == 1)
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
+						<?php
+						}
+						else
+						{
+						?>
+							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
+						<?php 
+						} 
+						$autho_chk++;
+						?>
 					</tr>
 				<?php
 				}
