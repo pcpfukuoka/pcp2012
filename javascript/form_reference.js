@@ -1,5 +1,3 @@
-＜script type="text/javascript">
-
 
 //空白除去
 //・半角スペース
@@ -10,7 +8,7 @@ function trim(str) {
 	return str.replace(/^[ 　\t\r\n]+|[ 　\t\r\n]+$/g, "");
 }
 
-
+//作動チェック済み//
 // ret = 返値(真偽)
 // 未入力チェック
 function inputCheck( str )
@@ -30,13 +28,13 @@ function inputCheck( str )
 	}
 }
 
-
+//作動チェック済み//
 // 入力値チェック(数字)
 function valueCheck_jp( str )
 {
 	var ret;
 
-	if ( !val.match( /[0-9]/ ) )
+	if ( str.match(  /[^0-9]+/ ))
 	{
 		ret = false;
 		alert( "入力値が間違っています" );
@@ -57,7 +55,7 @@ function valueCheck_jp( str )
 function lengthCheck( str , len_min , len_max )
 {
 	var ret;
-	if( !len_min <= str.length <= len_max )
+	if( (len_min <= str.length <= len_max) )
 	{
 		ret = false;
 		alert("len_min" + "文字以上" + "len_max" + "文字以上ではありません");
@@ -72,11 +70,11 @@ function lengthCheck( str , len_min , len_max )
 
 
 
-
+//動作チェック済み//
 //パスワードなどに使えます。
 /* 半角英文字チェック */
-function AlphabetCheck() {
-var str = document.iform.EnglishText.value;
+function AlphabetCheck(str) {
+
 if( str.match( /[^A-Za-z¥s.-]+/ ) ) {
 alert("英語名は、半角英文字のみで入力して下さい。");
 return 1;
@@ -84,10 +82,12 @@ return 1;
 return 0;
 }
 
+
+//動作チェック済み//
 //電話番号やパスワードなどに使えます。
 /* 半角数字チェック */
-function NumberCheck() {
-var str = document.iform.AgeText.value;
+function NumberCheck(str) {
+
 if( str.match( /[^0-9]+/ ) ) {
 alert("年齢は、半角数字のみで入力して下さい。");
 return 1;
@@ -95,12 +95,12 @@ return 1;
 return 0;
 }
 
-
+//動作チェック済み//
 /* ふりがなチェック */
-function FuriganaCheck() {
-var str = document.iform.FuriganaText.value;
-if( str.match( /[^ぁ-んァ-ン　¥s]+/ ) ) {
-alert("ふりがなは、「ひらがな」・「カタカナ」のみで入力して下さい。");
+function FuriganaCheck(str) {
+
+if( str.match( /[^ぁ-ん　¥s]+/ ) ) {
+alert("ふりがなは、「ひらがな」 のみで入力して下さい。");
 return 1;
 }
 return 0;
@@ -108,17 +108,6 @@ return 0;
 
 
 
-/* 上の３つまとめてチェック */
-function AllCheck() {
-var check = 0;
-check += FuriganaCheck();
-check += AlphabetCheck();
-check += NumberCheck();
-if( check > 0 ) {
-return false;
-}
-return check;
-}
 
 
 //メールアドレスチェック
@@ -145,7 +134,7 @@ function formCheck(){
         document . getElementById( 'notice-input-text-1' ) . innerHTML = 6 - input_text_1_length + "文字不足しています。";
         document . getElementById( 'notice-input-text-1' ) . style . display = "block";
     }
-    if ( input_text_1_length  > 20 ){ // 入力文字数が超過している場合
+    if ( input_text_1_length  > 10 ){ // 入力文字数が超過している場合
         flag = 1;
         document . getElementById( 'notice-input-text-1' ) . innerHTML = input_text_1_length - 20 + "文字オーバーしています。";
         document . getElementById( 'notice-input-text-1' ) . style . display = "block";
@@ -161,9 +150,9 @@ function formCheck(){
 
 }
 
-
+//動作チェック済み//
 //禁止文字チェック
-var badWords = ["バカ","ハゲ"]; //禁止文字の配列
+var badWords = ["@","-"]; //禁止文字の配列
 var regex = new RegExp(badWords.join("|")); //正規表現オブジェクト
 function test(val) {
 if (val.match(regex) != null) {
@@ -172,7 +161,3 @@ return false;
 }
 return true;
 }
-
-
-
-</script>
