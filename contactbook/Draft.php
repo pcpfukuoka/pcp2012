@@ -44,21 +44,21 @@
 			<div align="center">
 				<table border="1" class="table_01">
 					<tr>
-					<td align="center"width="200"><font size="5">日付</font></td>
-					<td align="center"width="150"><font size="5">TO</font></td>
-					<td align="center"width="400"><font size="5">件名</font></td>
+					<th align="center"width="200"><font size="5">日付</font></th>
+					<th align="center"width="150"><font size="5">TO</font></th>
+					<th align="center"width="230"><font size="5">件名</font></th>
 
 					<?php
 					for ($i = 0; $i < $count; $i++){
 						$row = mysql_fetch_array($result);
 					?>
 						<tr>
-							<th><?= $row['send_date'] ?></th>
-							<th><?= $row['reception_user_name'] ?></th>
-							<th>
+							<td><?= $row['send_date'] ?></td>
+							<td><?= $row['reception_user_name'] ?></td>
+							<td>
 								<!-- GETでcontact_book_seqを送る -->
 								<a href="Send.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
-							</th>
+							</td>
 						</tr>
 					<?php
 					}

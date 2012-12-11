@@ -47,10 +47,10 @@
 		<div align="center">
 			<table class="table_01">
 				<tr bgcolor="yellow">
-				<td align="center" width="30"></td>
-				<td align="center" width="200"><font size="5">日付</font></td>
-				<td align="center" width="150"><font size="5">FROM</font></td>
-				<td align="center" width="230"><font size="5">件名</font></td>
+				<th align="center" width="30"></th>
+				<th align="center" width="200"><font size="5">日付</font></th>
+				<th align="center" width="150"><font size="5">FROM</font></th>
+				<th align="center" width="230"><font size="5">件名</font></th>
 
 				<?php
 				for ($i = 0; $i < $count; $i++){
@@ -70,17 +70,16 @@
 								echo "<td></td>";
 							}
 						?>
-							<th><?= $row['send_date'] ?></th>
-							<th><?= $row['send_user_name'] ?></th>
-							<th>
+							<td><?= $row['send_date'] ?></td>
+							<td><?= $row['send_user_name'] ?></td>
+							<td>
 								<!-- GETでcontact_book_seqを送る -->
 								<a href="view.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
-							</th>
+							</td>
 					</tr>
 				<?php
 				}
 				?>
-
 			</table>
 			<hr>
 		</div>
@@ -111,10 +110,10 @@
 		<div align="center">
 			<table class="table_01">
 				<tr bgcolor="yellow">
-					<td align="center" width="30"></td>
-					<td align="center" width="200"><font size="5">日付</font></td>
-					<td align="center" width="150"><font size="5">FROM</font></td>
-					<td align="center" width="230"><font size="5">件名</font></td>
+					<th align="center" width="30"></th>
+					<th align="center" width="200"><font size="5">日付</font></th>
+					<th align="center" width="150"><font size="5">FROM</font></th>
+					<th align="center" width="230"><font size="5">件名</font></th>
 				</tr>
 
 				<?php
@@ -147,13 +146,13 @@
 						}
 					?>
 
-						<th><?= $row['delivery_date'] ?></th>
-						<th><?= $row['send_user_name'] ?></th>
-						<th>
+						<td><?= $row['delivery_date'] ?></td>
+						<td><?= $row['send_user_name'] ?></td>
+						<td>
 							<!-- GETでprint_delivery_seqを送る -->
 							<!-- <a href="<?= printurl ?>"><?= $row['title'] ?></a> -->
 							<a href="../Print_delivery/pdf_view.php?id=<?= $row['print_delivery_seq'] ?>&printurl=<?= $row['printurl'] ?>"><?= $row['title'] ?></a>
-						</th>
+						</td>
 					</tr>
 				<?php
 				}
