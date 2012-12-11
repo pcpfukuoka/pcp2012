@@ -78,7 +78,9 @@ function lengthCheck( str , len_min , len_max )
 // 半角英数チエック
 function hanCheck($str)
 {
+
     //magic_quotes_gpcがONの時は、エスケープを解除する
+	var ret;
     if (get_magic_quotes_gpc())
     {
         $str = stripslashes($str);
@@ -86,11 +88,13 @@ function hanCheck($str)
 
     if (strlen($str) == mb_strlen($str))
     {
-        return true;
+    	ret = true
+        return ret;
     }
     else
     {
-        return false;
+    	ret = false;
+        return ret;
     }
 }
 
@@ -101,6 +105,7 @@ function hanCheck($str)
 // 禁止文字チエック「< > & " '」
 function NGCharCheck($str)
 {
+	var ret;
     //スペースは対象外
     if (!strlen($str))
     {
@@ -109,11 +114,13 @@ function NGCharCheck($str)
 
     if(ereg("[<>\"\'&]", $str))
     {
-        return false;
+    	ret = false
+        return ret;
     }
     else
     {
-        return true;
+    	ret = true
+        return ret;
     }
 }
 
