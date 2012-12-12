@@ -30,6 +30,7 @@ session_start();
 	else {
 		echo "失敗";
 	}
+	$img_tag_name = '../../balckboard/public/images/div/'.img_name;
 
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
@@ -39,7 +40,7 @@ session_start();
 <head>
 	<script src="../javascript/lesson_upload_js.js"></script>
 </head>
-<body onload="form_create('<?= $date ?>',<?= $page_num + 1?>,<?= $subject_seq ?>)">
+<body onload="form_create('<?= $date ?>',<?= $page_num + 1?>,<?= $subject_seq ?>,<?= img_tag_name ?>)">
 
 </body>
 </html>
