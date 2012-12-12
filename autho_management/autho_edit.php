@@ -45,45 +45,47 @@ Dbdissconnect($link);
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 		
-		<script>
-			$(function()
-			{
+	<script>
+		$(function()
+		{
 
-				//検索結果から権限を追加するための処理
-				$(document).on('click', '.add_btn', function() 
-				{
-					var id_list = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
-		  			var id = $(this).data('id');
-		  			var name = "Value_" + id;
-					var value = document.getElementById(name).value;
-					
-					if(value < 5)
-					{
-						var check_name = id_list[value] + id;
-						document.getElementById(check_name).checked = true;
-						value++;
-						document.getElementById(name).value= value;
-					}
-				});
+			//検索結果から権限を追加するための処理
+			$(document).on('click', '.add_btn', function() 
+			{
+				var id = $(this).data('id');
+				var edit = "autho_edit" + id;
+				var text = "autho_text" + id;
+				var value = 1;//document.getElementById(name).value;
 				
-				$(document).on('click', '.delete_btn', function() 
+				if(value < 5)
 				{
-					var id_list = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
-					var id = $(this).data('id');
-					var name = "Value_" + id;
-					var value = document.getElementById(name).value;
-					value--;
-					
-					if(value >= 0)
-					{
-						var check_name = id_list[value] + id;
-						document.getElementById(check_name).checked = false;
-						document.getElementById(name).value= value;
-					}
-				});
+					document.getElementById(text).value = "○";
+					document.getElementById(edit).value = "1";
+					value++;
+					document.getElementById(name).value= value;
+				}
 			});
-		</script>
+			
+			$(document).on('click', '.delete_btn', function() 
+			{
+				var id = $(this).data('id');
+				var edit = "autho_edit" + id;
+				var text = "autho_text" + id;
+				var value = 1;//document.getElementById(name).value;
+				value--;
+				
+				if(value >= 0)
+				{
+					document.getElementById(text).value = "×";
+					document.getElementById(edit).value = "0";
+					document.getElementById(name).value= value;
+				}
+			});
+		});
+	</script>
 		
 	</head>
 	
@@ -102,14 +104,14 @@ Dbdissconnect($link);
 			名前<input size ="15" type="text" name="edit_name" value = <?= $edit_name['autho_name'] ?>>
 		
 		<!-- 		テープルの作成 -->
-			<table class="table_01" width = "100%">
+			<table class="table_01" width = "80%">
 				<tr>
-					<th width = "25%" align = "center" ><font size = "5">ページ名</font></th>
-					<th width = "13%" align = "center" ><font size = "5">read</font></th>
-					<th width = "13%" align = "center" ><font size = "5">write</font></th>
-					<th width = "13%" align = "center" ><font size = "5">update</font></th>
-					<th width = "13%" align = "center" ><font size = "5">delivery</font></th>
-					<th width = "13%" align = "center" ><font size = "5">delete</font></th>
+					<th width = "20%" align = "center" ><font size = "5">ページ名</font></th>
+					<th width = "10%" align = "center" ><font size = "5">read</font></th>
+					<th width = "10%" align = "center" ><font size = "5">write</font></th>
+					<th width = "10%" align = "center" ><font size = "5">update</font></th>
+					<th width = "10%" align = "center" ><font size = "5">delivery</font></th>
+					<th width = "10%" align = "center" ><font size = "5">delete</font></th>
 					<th width = "5%" align = "center" ><font size = "5">追加</font></th>
 					<th width = "5%" align = "center" ><font size = "5">削除</font></th>
 				</tr>
@@ -136,23 +138,29 @@ Dbdissconnect($link);
 							
 							if($page_cla[$autho] == 1)
 							{
+								$autho_del = $autho_chk;
+								$autho_add = $autho_chk + 1;
 							?>
-								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "1">
-								<td><input style = "width : 50%; font-size : 100%" type = "text" id = "autho_text<?= $autho_chk ?>" value = "     ○" readonly></td>
+								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" id = "autho_edit<?= $autho_chk ?>" value = "1">
+								<td><input style = "width : 50%; font-size : 100%; text-align : center" type = "text" id = "autho_text<?= $autho_chk ?>" value = "○" readonly></td>
 							<?php
 							}
-							else
+							else 
 							{
+								
 							?>
-								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-								<td><input style = "width : 50%; font-size : 100%" type = "text" id = "autho_text<?= $autho_chk ?>" value = "     ×" readonly></td>
+								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" id = "autho_edit<?= $autho_chk ?>" value = "0">
+								<td><input style = "width : 50%; font-size : 100%; text-align : center" type = "text" id = "autho_text<?= $autho_chk ?>" value = "×" readonly></td>
 							<?php 
 							} 
 							$autho_chk++;
 						}
 						?>
-						<td><input type = "button" class = "add_btn" data-id = "<?= $row['page_seq'] ?>" value="追加" id = "id"></td>
-						<td><input type = "button" class = "delete_btn" data-id = "<?= $row['page_seq'] ?>" value="削除" id = "id"></td>
+						<input type = "hidden" id = "autho_del" value = "$autho_del">
+						<input type = "hidden" id = "autho_add" value = "$autho_add">
+						<input type="hidden" id = "Value_<?= $row['page_seq'] ?>" value="0">
+						<td><input type = "button" class = "add_btn" data-id = "<?= $autho_add ?>" value="追加" id = "id"></td>
+						<td><input type = "button" class = "delete_btn" data-id = "<?= $autho_del ?>" value="削除" id = "id"></td>
 					</tr>
 				<?php
 				}

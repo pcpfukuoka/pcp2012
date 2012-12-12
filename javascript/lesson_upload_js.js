@@ -1,8 +1,13 @@
-function form_create(date,page_num,subject_seq){
+function form_create(date,page_num,subject_seq,img_tag_name){
 	/////////////////////////////////////////////////
 	/*					親フレームの操作			*/
 	/////////////////////////////////////////////////
 
+	var img_page_num = page_num -1;
+	var image_tag = img_page_num + "_image";
+	var im = parent.document.getElementById(image_tag);
+	im.src = img_tag_name;
+	alert(im.src);
 	//divタグを取得
 	var sub = page_num + "_submit";
 	var fo = page_num + "_form";
@@ -21,7 +26,7 @@ function form_create(date,page_num,subject_seq){
 	input1.setAttribute("type","hidden");
 	input1.setAttribute("name","date");
 	input1.setAttribute("value",date);
-	alert(date);
+
 
 	var input2 = document.createElement("INPUT");
 	input2.setAttribute("type","hidden");
@@ -62,6 +67,7 @@ function form_create(date,page_num,subject_seq){
 
 	var change_sub = parent.document.getElementById(sub);
 	var change_fo = parent.document.getElementById(fo);
+
 
 	change_fo.action="change_img.php";
 	change_sub.value= "変更";

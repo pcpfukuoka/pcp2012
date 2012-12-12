@@ -48,13 +48,18 @@
 				echo "/";
 				echo $row['div_url'];
 
+				$aaa = substr($row['div_url'],15);
+
+				$bbb = substr($aaa,0,strlen($aaa)-1);
+				$img_tag_name = '../../balckboard/public/images/div/'.$bbb;
+
 	?>
 				<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $now_page ?>_form">
-				<input type="hidden" name="date" value=" <?= $date ?>" />
-				<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
-				<input type= "hidden" name="page_num" value= "<?= $row['page_num'] ?>" />
-				<input type="file" name="upfile" size="30" />
-
+					<input type="hidden" name="date" value=" <?= $date ?>" />
+					<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+					<input type= "hidden" name="page_num" value= "<?= $row['page_num'] ?>" />
+					<input type="file" name="upfile" size="30" />
+					<img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$now_page ?>_image">
 
 				<input type="submit"  id="<?= $now_page?>_submit" value="変更" />
 				</form>
@@ -85,7 +90,7 @@
 				ファイル：<br/>
 				<input type="file" name="upfile" size="30" />
 
-
+				<img border="1" src="../../balckboard/public/images/kokuban.jpg" width="128" height="128" id="<?=$page_max ?>_image">
 				<input type="submit"  id="<?= $page_max ?>_submit" value="追加" />
 			</form>
 		</div>
