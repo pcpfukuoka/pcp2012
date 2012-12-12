@@ -102,14 +102,14 @@ Dbdissconnect($link);
 			名前<input size ="15" type="text" name="edit_name" value = <?= $edit_name['autho_name'] ?>>
 		
 		<!-- 		テープルの作成 -->
-			<table class="table_01" width = "100%">
+			<table class="table_01" width = "80%">
 				<tr>
-					<th width = "25%" align = "center" ><font size = "5">ページ名</font></th>
-					<th width = "13%" align = "center" ><font size = "5">read</font></th>
-					<th width = "13%" align = "center" ><font size = "5">write</font></th>
-					<th width = "13%" align = "center" ><font size = "5">update</font></th>
-					<th width = "13%" align = "center" ><font size = "5">delivery</font></th>
-					<th width = "13%" align = "center" ><font size = "5">delete</font></th>
+					<th width = "20%" align = "center" ><font size = "5">ページ名</font></th>
+					<th width = "10%" align = "center" ><font size = "5">read</font></th>
+					<th width = "10%" align = "center" ><font size = "5">write</font></th>
+					<th width = "10%" align = "center" ><font size = "5">update</font></th>
+					<th width = "10%" align = "center" ><font size = "5">delivery</font></th>
+					<th width = "10%" align = "center" ><font size = "5">delete</font></th>
 					<th width = "5%" align = "center" ><font size = "5">追加</font></th>
 					<th width = "5%" align = "center" ><font size = "5">削除</font></th>
 				</tr>
@@ -137,15 +137,15 @@ Dbdissconnect($link);
 							if($page_cla[$autho] == 1)
 							{
 							?>
-								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "1">
-								<td><input style = "width : 50%; font-size : 100%" type = "text" id = "autho_text<?= $autho_chk ?>" value = "     ○" readonly></td>
+								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" id = "autho_edit<?= $autho_chk ?>" value = "1">
+								<td><input style = "width : 50%; font-size : 100%; text-align : center" type = "text" id = "autho_text<?= $autho_chk ?>" value = "○" readonly></td>
 							<?php
 							}
 							else
 							{
 							?>
-								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-								<td><input style = "width : 50%; font-size : 100%" type = "text" id = "autho_text<?= $autho_chk ?>" value = "     ×" readonly></td>
+								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" id = "autho_edit<?= $autho_chk ?>" value = "0">
+								<td><input style = "width : 50%; font-size : 100%; text-align : center" type = "text" id = "autho_text<?= $autho_chk ?>" value = "×" readonly></td>
 							<?php 
 							} 
 							$autho_chk++;
