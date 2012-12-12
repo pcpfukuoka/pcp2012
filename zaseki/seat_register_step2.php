@@ -224,6 +224,15 @@
 		<input id="add" type="button" value="追加">
 		<input id="change" type="button" value="入れ替え">
 		<input type="submit" value="登録">
+
+
+
+<?php
+		//echo "<input name=group type=hidden value=$group>";
+		echo "<input name=group type=text>";
+		echo "<input name=row_max type=hidden value=$row_max>";
+		echo "<input name=col_max type=hidden value=$col_max>";
+?>
 	</form>
 
 
@@ -256,12 +265,10 @@
 		}
 
 
-		echo "<table>";
+		echo "</table>";
 
 
-		echo "<input name=group type=hidden value=$group>";
-		echo "<input name=row_max type=hidden value=$row_max>";
-		echo "<input name=col_max type=hidden value=$col_max>";
+
 ?>
 
 
