@@ -1,15 +1,11 @@
 <html>
 	<head>
-	<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../dummy.html">
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<meta http-equiv="Content-Style-Type" content="text/css">
-	<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
-	<title>権限確定画面</title>
+		<script src="../javascript/frame_jump.js"></script>
 	</head>
 	<body>
-
-		<img class="bg" src="../images/blue-big.jpg" alt="" />
-		<div id="container">
+	</body>
+</html>
+	
 	<?php
 						/********************************************************
 			 * 権限の新規追加確定画面
@@ -20,7 +16,6 @@
 			 *　どちらとも権限のページ分使い回し
 			 *********************************************************/
 			?>
-	<font size="5">登録しました。</font>
 	<?php
 	require_once("../lib/dbconect.php");
 	$link = DbConnect();
@@ -62,8 +57,12 @@
 	}
 
 	Dbdissconnect($link);
+	
+	
 	?>
-	<br><br>
-	</div>
-	</body>
-</html>
+	<?php 
+	
+	print "<script language=javascript>leftreload();</script>";
+	print "<script language=javascript>jump('autho_cmp.php?id=1','right');</script>";
+
+	?>
