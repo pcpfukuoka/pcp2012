@@ -50,11 +50,11 @@
 
 	?>
 				<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $now_page ?>_form">
-				<input type="hidden" name="date" value=" <?= $date ?>" />
-				<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
-				<input type= "hidden" name="page_num" value= "<?= $row['page_num'] ?>" />
-				<input type="file" name="upfile" size="30" />
-
+					<input type="hidden" name="date" value=" <?= $date ?>" />
+					<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+					<input type= "hidden" name="page_num" value= "<?= $row['page_num'] ?>" />
+					<input type="file" name="upfile" size="30" />
+					<img border="1" src="../../balckboard/public/images/kokuban.jpg" width="128" height="128">
 
 				<input type="submit"  id="<?= $now_page?>_submit" value="変更" />
 				</form>
