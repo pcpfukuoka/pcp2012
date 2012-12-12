@@ -40,7 +40,7 @@ session_start();
 <head>
 	<script src="../javascript/lesson_upload_js.js"></script>
 </head>
-<body onload="form_create('<?= $date ?>',<?= $page_num + 1?>,<?= $subject_seq ?>,<?= img_tag_name ?>)">
+<body onload="form_create('<?= $date ?>',<?= $page_num + 1?>,<?= $subject_seq ?>,<?= $img_tag_name ?>)">
 
 </body>
 </html>
