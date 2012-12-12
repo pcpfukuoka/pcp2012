@@ -6,11 +6,12 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	var img_page_num = page_num -1;
 	var image_tag = img_page_num + "_image";
 	var im = parent.document.getElementById(image_tag);
+	alert(img_tag_name);
 	im.src = img_tag_name;
-	alert(im.src);
 	//divタグを取得
 	var sub = page_num + "_submit";
 	var fo = page_num + "_form";
+	var im = page_num + "_image";
 
 	var par = parent.document.getElementById('form');
 
@@ -21,6 +22,11 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	form.setAttribute("target","targetFrame");
 	form.setAttribute("id",fo);
 
+	var image=document.createElement("img");
+	image.setAttribute("src","../../balckboard/public/images/kokuban.jpg");
+	image.setAttribute("width","128");
+	image.setAttribute("height","128");
+	image.setAttribute("id",im);
 
 	var input1 = document.createElement("INPUT");
 	input1.setAttribute("type","hidden");
@@ -50,12 +56,12 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	input5.setAttribute("value","追加");
 	input5.setAttribute("id",sub);
 
+	//作成した属性の付与
 	form.appendChild(input1);
-
-
 	form.appendChild(input2);
 	form.appendChild(input3);
 	form.appendChild(input4);
+	form.appendChild(image);
 	form.appendChild(input5);
 
 	par.appendChild(form);

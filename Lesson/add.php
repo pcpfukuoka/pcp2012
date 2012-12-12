@@ -48,7 +48,7 @@
 				echo "/";
 				echo $row['div_url'];
 
-				$aaa = substr($row['div_url'],15);
+				$aaa = substr($row['div_url'],18);
 
 				$bbb = substr($aaa,0,strlen($aaa)-1);
 				$img_tag_name = '../../balckboard/public/images/div/'.$bbb;
