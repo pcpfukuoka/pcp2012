@@ -5,9 +5,9 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 
 	var img_page_num = page_num -1;
 	var image_tag = img_page_num + "_image";
+	alert(image_tag);
 	var im = parent.document.getElementById(image_tag);
 	im.src = img_tag_name;
-	alert(im.src);
 	//divタグを取得
 	var sub = page_num + "_submit";
 	var fo = page_num + "_form";
