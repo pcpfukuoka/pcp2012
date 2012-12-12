@@ -61,6 +61,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	form.appendChild(input2);
 	form.appendChild(input3);
 	form.appendChild(input4);
+	form.appendChild(image);
 	form.appendChild(input5);
 
 	par.appendChild(form);
