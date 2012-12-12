@@ -85,7 +85,7 @@
 				ファイル：<br/>
 				<input type="file" name="upfile" size="30" />
 
-
+				<img border="1" src="../../balckboard/public/images/kokuban.jpg" width="128" height="128" />
 				<input type="submit"  id="<?= $page_max ?>_submit" value="追加" />
 			</form>
 		</div>
