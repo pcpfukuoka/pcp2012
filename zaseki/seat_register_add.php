@@ -15,7 +15,7 @@
 	//文字コード設定
 	mysql_query("SET NAMES UTF8");
 
-	$group = 12;
+	$group = 3;
 
 
 		//クエリを送信する
@@ -23,13 +23,13 @@
 	{
 		for($col = 1; $col <= $col_max; $col++)
 		{
-			//$user_seq = $_POST['user_seq'.$row][$col];
-			$user_seq = 100;
+			$user_seq = $_POST['user_seq'.$row][$col];
+			//$user_seq = 100;
+			echo $user_seq;
 
-
-			$sql = "insert into seat values('0','$group','$row','$col','$user_seq')";
+			$sql = "insert into seat values(0,'$group','$row','$col','$user_seq')";
 			echo $sql;
-			mysql_query($sql,$link)or die("クエリの送信に失敗しました。");
+			mysql_query($sql);
 		}
 	}
 
