@@ -40,10 +40,10 @@
     <tr>
      <th width="50%" ><font size="5">ページ名</font></th>
      <th width="10%" ><font size="5">Read</font></th>
-     <th width="10%" ><font size="5">Delete</font></th>
      <th width="10%" ><font size="5">Write</font></th>
      <th width="10%" ><font size="5">Update</font></th>
      <th width="10%" ><font size="5">delivery</font></th>
+     <th width="10%" ><font size="5">Delete</font></th>
     </tr>
     <?php
     for($i = 0; $i < $count; $i++)
@@ -51,7 +51,7 @@
     	$row = mysql_fetch_array($result);
 
 	    $Read_key = "Read_".$row['page_seq'];		//
-		if(isset($_POST[$Read_key]))
+		if($_POST[$Read_key] == 1)
 		{
 			$Read = "○";		//
 			$Read_data = 1;
@@ -68,31 +68,13 @@
 			<?php
 
 		}
-	    $Delete_key = "Delete_".$row['page_seq'];
-		if(isset($_POST[$Delete_key]))
-		{
-			$Delete = "○";
-			$Delete_data = 1;
-			?>
-			<input type="hidden" name="Delete_<?= $row['page_seq']?>" value="<?= $Delete_data?>">
-			<?php
-		}
-		else
-		{
-			$Delete = "×";
-			$Delete_data = 0;
-			?>
-			<input type="hidden" name="Delete_<?= $row['page_seq']?>" value="<?= $Delete_data ?>">
-			<?php
-
-		}
 		$Write_key = "Write_".$row['page_seq'];
-		if(isset($_POST[$Write_key]))
+		if($_POST[$Write_key] == 1)
 		{
 			$Write = "○";
 			$Write_data = 1;
 			?>
-			<input type="hidden" name="Write_<?= $row['page_seq']?>" value="<?= $Write_data ?>">
+			<input type="hidden" name="Write_<?= $row['page_seq']?>" value="<?= $Write_data?>">
 			<?php
 		}
 		else
@@ -102,14 +84,15 @@
 			?>
 			<input type="hidden" name="Write_<?= $row['page_seq']?>" value="<?= $Write_data ?>">
 			<?php
+
 		}
 		$Update_key = "Update_".$row['page_seq'];
-		if(isset($_POST[$Update_key]))
+		if($_POST[$Update_key] == 1)
 		{
 			$Update = "○";
 			$Update_data = 1;
 			?>
-			<input type="hidden" name="Update_<?= $row['page_seq']?>" value="<?= $Update_data?>">
+			<input type="hidden" name="Update_<?= $row['page_seq']?>" value="<?= $Update_data ?>">
 			<?php
 		}
 		else
@@ -117,12 +100,11 @@
 			$Update = "×";
 			$Update_data = 0;
 			?>
-			<input type="hidden" name="Update_<?= $row['page_seq']?>" value="<?= $Update_data?>">
+			<input type="hidden" name="Update_<?= $row['page_seq']?>" value="<?= $Update_data ?>">
 			<?php
-
 		}
 		$delivery_key = "delivery_".$row['page_seq'];
-		if(isset($_POST[$delivery_key]))
+		if($_POST[$delivery_key] == 1)
 		{
 			$delivery = "○";
 			$delivery_data = 1;
@@ -137,16 +119,34 @@
 			?>
 			<input type="hidden" name="delivery_<?= $row['page_seq']?>" value="<?= $delivery_data?>">
 			<?php
+
+		}
+		$Delete_key = "Delete_".$row['page_seq'];
+		if($_POST[$Delete_key] == 1)
+		{
+			$Delete = "○";
+			$Delete_data = 1;
+			?>
+			<input type="hidden" name="Delete_<?= $row['page_seq']?>" value="<?= $Delete_data?>">
+			<?php
+		}
+		else
+		{
+			$Delete = "×";
+			$Delete_data = 0;
+			?>
+			<input type="hidden" name="Delete_<?= $row['page_seq']?>" value="<?= $Delete_data?>">
+			<?php
 		}
 		?>
 
 	    <tr>
 	    <td align = "center"><?= $row['page_name'] ?></td>
 	    <td align="center"><?= $Read ?></td>
-	    <td align="center"><?= $Delete ?></td>
 	    <td align="center"><?= $Write ?></td>
 	    <td align="center"><?= $Update ?></td>
 	    <td align="center"><?= $delivery ?></td>
+	    <td align="center"><?= $Delete ?></td>
 	    </tr>
 	<?php
     }

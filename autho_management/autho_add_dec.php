@@ -56,7 +56,7 @@
 		$pageNo = $row['page_seq'];
 
 		$sql = "insert into m_access_autho
-		values(0, '$autho_seq', '$pageNo', '$Read', '$Delete', '$Write', '$Update', '$delivery')";
+		values(0, '$autho_seq', '$pageNo', '$Read', '$Write', '$Update', '$delivery', '$Delete')";
 
 		mysql_query($sql);
 	}
