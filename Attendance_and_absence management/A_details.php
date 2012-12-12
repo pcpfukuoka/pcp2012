@@ -1,8 +1,11 @@
 <?php
+	session_start();
+
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
+	$A_date = $_SESSION['$A_date'];
 
 	// 選ばれた人のIDを取得
 	$id = $_GET['id'];
@@ -14,9 +17,10 @@
 			LEFT JOIN m_user ON attendance.user_seq = m_user.user_seq
 			LEFT JOIN m_group ON attendance.group_seq = m_group.group_seq
 			WHERE attendance.user_seq = '$id'
+			AND DATE_FORMAT(attendance.date,'%Y-%m') = '$A_date'
 			ORDER BY date";
 
-	//echo $sql;
+	//echo $date;
 
 	$result = mysql_query($sql);
 	$row = mysql_fetch_array($result);
@@ -34,6 +38,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<script src="../javascript/frame_jump.js"></script>
 	</head>
 
@@ -44,12 +49,14 @@
 				<font class="Cubicfont">詳細</font>
 			</div>
 
+			<font size = "4"><a href="A_list.php">←戻る</a></font>
+
 			<hr color="blue"><br><br>
 
 			<div align = "center">
-				<table border = "1">
+				<table class="table_01">
 					<tr bgcolor = "pink">
-						<td align="center"width="150"><font size="5">名前</font></td>
+						<th align="center"width="150"><font size="5">名前</font></th>
 					</tr>
 					<tr>
 						<td align="center"width="150"><font size = "5"><?= $row['user_name']?></font></td>
@@ -60,14 +67,14 @@
 
 			<div align="center">
 				<form action="A_update.php" method="POST">
-					<table border="1">
+					<table class="table_01" border="1">
 						<tr bgcolor="yellow">
-						<td align="center"width="120"><font size="5">日付</font></td>
-						<td align="center"width="80"><font size="5">出席</font></td>
-						<td align="center"width="80"><font size="5">欠席</font></td>
-						<td align="center"width="80"><font size="5">早退</font></td>
-						<td align="center"width="80"><font size="5">遅刻</font></td>
-						<td align="center"width="80"><font size="5">忌引き</font></td>
+						<th align="center"width="120"><font size="5">日付</font></th>
+						<th align="center"width="80"><font size="5">出席</font></th>
+						<th align="center"width="80"><font size="5">欠席</font></th>
+						<th align="center"width="80"><font size="5">早退</font></th>
+						<th align="center"width="80"><font size="5">遅刻</font></th>
+						<th align="center"width="80"><font size="5">忌引き</font></th>
 
 						<?php
 						for ($i = 0; $i < $count; $i++)

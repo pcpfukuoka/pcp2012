@@ -29,7 +29,7 @@ $count = 0;
 		<!-- テーブルの作成 -->
 			<table class="table_01">
 				<tr>
-					<td><font size="5">ページ名</font></td>
+					<th><font size="5">ページ名</font></th>
 				</tr>
 				<?php 
 				for ($i = 0; $i < $page_count; $i++)
@@ -48,7 +48,7 @@ $count = 0;
 						<input type = "hidden" name = "del_data<?= $count ?>" value = "<?= $page_seq ?>">
 						
 							<tr>
-								<th><?= $page['page_name'] ?></th>
+								<td><?= $page['page_name'] ?></td>
 							</tr>
 				<?php
 					$count++;

@@ -1,28 +1,25 @@
-// str = 引数(文字列)
-// ret_str = 返値(文字列)
 
-// 前後スペース削除(全角半角対応)
-function strTtimmng( str )
-{
-	var ret_str = str;
-	ret_str = ret.replace( /^[\s]*/, "" );
-	ret_str = ret.replace( /[\s]*$/, "" );
-	return ret_str;
+//空白除去
+//・半角スペース
+//・全角スペース
+//・タブ
+//・改行（CR, LF）
+function trim(str) {
+	return str.replace(/^[ 　\t\r\n]+|[ 　\t\r\n]+$/g, "");
 }
 
-
+//作動チェック済み//
 // ret = 返値(真偽)
-
 // 未入力チェック
 function inputCheck( str )
 {
 	var ret;
 
-	if ( strTtimmng( str ).length == 0 )
+	if ( trim( str ).length == 0 )
 	{
 		ret = false;
 		alert( "未入力です" );
-		return ret;
+		return false;
 	}
 	else
 	{
@@ -31,13 +28,13 @@ function inputCheck( str )
 	}
 }
 
-
+//作動チェック済み//
 // 入力値チェック(数字)
 function valueCheck_jp( str )
 {
 	var ret;
 
-	if ( !val.match( /[0-9]/ ) )
+	if ( str.match(  /[^0-9]+/ ))
 	{
 		ret = false;
 		alert( "入力値が間違っています" );
@@ -51,14 +48,14 @@ function valueCheck_jp( str )
 }
 
 
+
 // len_min = 引数(指定文字数の最低値)
 // len_max = 引数(指定文字数の最大値)
-
 // 文字数チェック
 function lengthCheck( str , len_min , len_max )
 {
 	var ret;
-	if( !len_min <= str.length <= len_max )
+	if( (len_min <= str.length <= len_max) )
 	{
 		ret = false;
 		alert("len_min" + "文字以上" + "len_max" + "文字以上ではありません");
@@ -69,4 +66,98 @@ function lengthCheck( str , len_min , len_max )
 		ret = true;
 		return ret;
 	}
+}
+
+
+
+//動作チェック済み//
+//パスワードなどに使えます。
+/* 半角英文字チェック */
+function AlphabetCheck(str) {
+
+if( str.match( /[^A-Za-z¥s.-]+/ ) ) {
+alert("英語名は、半角英文字のみで入力して下さい。");
+return 1;
+}
+return 0;
+}
+
+
+//動作チェック済み//
+//電話番号やパスワードなどに使えます。
+/* 半角数字チェック */
+function NumberCheck(str) {
+
+if( str.match( /[^0-9]+/ ) ) {
+alert("年齢は、半角数字のみで入力して下さい。");
+return 1;
+}
+return 0;
+}
+
+//動作チェック済み//
+/* ふりがなチェック */
+function FuriganaCheck(str) {
+
+if( str.match( /[^ぁ-ん　¥s]+/ ) ) {
+alert("ふりがなは、「ひらがな」 のみで入力して下さい。");
+return 1;
+}
+return 0;
+}
+
+
+
+
+
+//メールアドレスチェック
+var emailfilter=/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/
+
+	function checkmail(e){
+	  var returnval=emailfilter.test(e.value)
+	  if (returnval==false){
+	    alert("正しいメールアドレスを入力してください!")
+	    e.select()
+	  }
+	  return returnval
+	}
+
+
+//入力文字をチェック
+function formCheck(){
+    var flag = 0;
+
+    // 入力文字数をチェック
+    var input_text_1_length = document . Form1 . InputText1 . value . length; // 入力文字数を、変数に格納
+    if ( input_text_1_length < 6 ){ // 入力文字数が不足している場合
+        flag = 1;
+        document . getElementById( 'notice-input-text-1' ) . innerHTML = 6 - input_text_1_length + "文字不足しています。";
+        document . getElementById( 'notice-input-text-1' ) . style . display = "block";
+    }
+    if ( input_text_1_length  > 10 ){ // 入力文字数が超過している場合
+        flag = 1;
+        document . getElementById( 'notice-input-text-1' ) . innerHTML = input_text_1_length - 20 + "文字オーバーしています。";
+        document . getElementById( 'notice-input-text-1' ) . style . display = "block";
+    }
+
+    if( flag ){ // 入力文字数が、不足もしくは超過している場合
+        window . alert( '入力内容に不備があります。' ); // アラートを表示
+        return false; // 送信中止
+    }else{ // 入力文字数が、不足もしくは超過していない場合
+        document . getElementById( 'notice-input-text-1' ) . style . display = "none";
+        return true; // 送信実行
+    }
+
+}
+
+//動作チェック済み//
+//禁止文字チェック
+var badWords = ["@","-"]; //禁止文字の配列
+var regex = new RegExp(badWords.join("|")); //正規表現オブジェクト
+function test(val) {
+if (val.match(regex) != null) {
+alert("禁止文字が含まれています");
+return false;
+}
+return true;
 }

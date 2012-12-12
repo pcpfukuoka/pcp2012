@@ -16,11 +16,22 @@ session_start();
 
 
 
+
 	$img_name = $data['name'];
-	$sql = "INSERT INTO board VALUE(0,'".$date ."', '15','".$subject_seq ."','".$page_num ."','".$img_name ."','0','0');";
+	$db_img = "url(../images/div/". $data['name']. ")";
+	$sql = "INSERT INTO board VALUE(0,'".$date ."', '15','".$subject_seq ."','".$page_num ."','".$db_img ."','0','0');";
 	$result = mysql_query($sql);
-	$file_name = 'files/ '.$img_name;
-	move_uploaded_file($data['tmp_name'], $file_name);
+	$file_name = '../../balckboard/public/images/div/'.$img_name;
+	if(move_uploaded_file($data['tmp_name'], $file_name))
+	{
+		echo "成功/";
+
+	}
+	else {
+
+	}
+	$img_tag_name = '../../balckboard/public/images/div/'.$img_name;
+	echo $img_tag_name;
 
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
@@ -30,7 +41,7 @@ session_start();
 <head>
 	<script src="../javascript/lesson_upload_js.js"></script>
 </head>
-<body onload="form_create(<?= $date ?>,<?= $page_num + 1?>,<?= $subject_seq ?>)">
+<body onload="form_create('<?= $date ?>',<?= $page_num + 1?>,'<?= $subject_seq ?>,<?= $img_tag_name ?>')">
 
 </body>
 </html>

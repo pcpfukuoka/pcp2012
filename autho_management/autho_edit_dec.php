@@ -40,17 +40,17 @@ for ($i = 0; $i < $count_page; $i++)
 	$j++;
 	
 	$edit_data = $_POST['edit_data'][$j];
-	$sql = "UPDATE m_access_autho SET delete_flg = '$edit_data' WHERE autho_seq = '$autho_seq' AND page_seq = '$page_seq';";
-	mysql_query($sql);
-	$j++;
-	
-	$edit_data = $_POST['edit_data'][$j];
 	$sql = "UPDATE m_access_autho SET update_flg = '$edit_data' WHERE autho_seq = '$autho_seq' AND page_seq = '$page_seq';";
 	mysql_query($sql);
 	$j++;
 	
 	$edit_data = $_POST['edit_data'][$j];
 	$sql = "UPDATE m_access_autho SET delivery_flg = '$edit_data' WHERE autho_seq = '$autho_seq' AND page_seq = '$page_seq';";
+	mysql_query($sql);
+	$j++;
+	
+	$edit_data = $_POST['edit_data'][$j];
+	$sql = "UPDATE m_access_autho SET delete_flg = '$edit_data' WHERE autho_seq = '$autho_seq' AND page_seq = '$page_seq';";
 	mysql_query($sql);
 	$j++;
 }
