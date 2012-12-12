@@ -30,7 +30,7 @@ session_start();
 	else {
 
 	}
-	$img_tag_name = '../../balckboard/public/images/div/'.img_name;
+	$img_tag_name = '../../balckboard/public/images/div/'.$img_name;
 	echo $img_tag_name;
 
 	//データベースを閉じる
