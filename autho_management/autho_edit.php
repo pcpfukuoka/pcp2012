@@ -45,7 +45,48 @@ Dbdissconnect($link);
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		
+		<script>
+			$(function()
+			{
+
+				//検索結果から権限を追加するための処理
+				$(document).on('click', '.add_btn', function() 
+				{
+					var id_list = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
+		  			var id = $(this).data('id');
+		  			var name = "Value_" + id;
+					var value = document.getElementById(name).value;
+					
+					if(value < 5)
+					{
+						var check_name = id_list[value] + id;
+						document.getElementById(check_name).checked = true;
+						value++;
+						document.getElementById(name).value= value;
+					}
+				});
+				
+				$(document).on('click', '.delete_btn', function() 
+				{
+					var id_list = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
+					var id = $(this).data('id');
+					var name = "Value_" + id;
+					var value = document.getElementById(name).value;
+					value--;
+					
+					if(value >= 0)
+					{
+						var check_name = id_list[value] + id;
+						document.getElementById(check_name).checked = false;
+						document.getElementById(name).value= value;
+					}
+				});
+			});
+		</script>
+		
 	</head>
+	
 	<body>
 		<img class="bg" src="../../images/blue-big.jpg" alt="" />
 		<div id="container">
@@ -63,16 +104,19 @@ Dbdissconnect($link);
 		<!-- 		テープルの作成 -->
 			<table class="table_01" width = "100%">
 				<tr>
-					<th width = "25%" align = "center" ><font size="5">ページ名</font></th>
-					<th width = "15%" align = "center" ><font size="5">read</font></th>
-					<th width = "15%" align = "center" ><font size="5">write</font></th>
-					<th width = "15%" align = "center" ><font size="5">update</font></th>
-					<th width = "15%" align = "center" ><font size="5">delivery</font></th>
-					<th width = "15%" align = "center" ><font size="5">delete</font></th>
+					<th width = "25%" align = "center" ><font size = "5">ページ名</font></th>
+					<th width = "13%" align = "center" ><font size = "5">read</font></th>
+					<th width = "13%" align = "center" ><font size = "5">write</font></th>
+					<th width = "13%" align = "center" ><font size = "5">update</font></th>
+					<th width = "13%" align = "center" ><font size = "5">delivery</font></th>
+					<th width = "13%" align = "center" ><font size = "5">delete</font></th>
+					<th width = "5%" align = "center" ><font size = "5">追加</font></th>
+					<th width = "5%" align = "center" ><font size = "5">削除</font></th>
 				</tr>
 				
 				<?php
 				$autho_chk = 0;
+				$autho_array = Array("read_flg", "write_flg", "update_flg", "delivery_flg", "delete_flg");
 				for ($i = 0; $i < $count_page; $i++)
 				{
 					$page = mysql_fetch_array($result);
@@ -86,86 +130,29 @@ Dbdissconnect($link);
 						$page_cla = $page_fun -> autho_Pre($autho_seq, $page['page_seq']);
 						
 						//チェックボックスの表示
-						if($page_cla['read_flg'] == 1)
+						for ($j = 0; $j < 5; $j++)
 						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
-						<?php
+							$autho = $autho_array[$j];
+							
+							if($page_cla[$autho] == 1)
+							{
+							?>
+								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "1">
+								<td><input style = "width : 50%; font-size : 100%" type = "text" id = "autho_text<?= $autho_chk ?>" value = "     ○" readonly></td>
+							<?php
+							}
+							else
+							{
+							?>
+								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
+								<td><input style = "width : 50%; font-size : 100%" type = "text" id = "autho_text<?= $autho_chk ?>" value = "     ×" readonly></td>
+							<?php 
+							} 
+							$autho_chk++;
 						}
-						else
-						{
 						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
-						<?php 
-						} 
-						$autho_chk++;
-						
-						if($page_cla['write_flg'] == 1)
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
-						<?php
-						}
-						else
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
-						<?php 
-						} 
-						$autho_chk++;
-						
-						if($page_cla['update_flg'] == 1)
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
-						<?php
-						}
-						else
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
-						<?php 
-						} 
-						$autho_chk++;
-						
-						if($page_cla['delivery_flg'] == 1)
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
-						<?php
-						}
-						else
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
-						<?php 
-						} 
-						$autho_chk++;
-						
-						if($page_cla['delete_flg'] == 1)
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
-						<?php
-						}
-						else
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
-						<?php 
-						} 
-						$autho_chk++;
-						?>
+						<td><input type = "button" class = "add_btn" data-id = "<?= $row['page_seq'] ?>" value="追加" id = "id"></td>
+						<td><input type = "button" class = "delete_btn" data-id = "<?= $row['page_seq'] ?>" value="削除" id = "id"></td>
 					</tr>
 				<?php
 				}
