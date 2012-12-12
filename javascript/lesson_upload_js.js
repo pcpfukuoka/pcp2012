@@ -7,6 +7,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	var image_tag = img_page_num + "_image";
 	var im = parent.document.getElementById(image_tag);
 	im.src = img_tag_name;
+	alert(im.src);
 	//divタグを取得
 	var sub = page_num + "_submit";
 	var fo = page_num + "_form";
@@ -25,7 +26,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	input1.setAttribute("type","hidden");
 	input1.setAttribute("name","date");
 	input1.setAttribute("value",date);
-	alert(date);
+
 
 	var input2 = document.createElement("INPUT");
 	input2.setAttribute("type","hidden");

@@ -25,12 +25,13 @@ session_start();
 	if(move_uploaded_file($data['tmp_name'], $file_name))
 	{
 		echo "成功/";
-		echo $data['tmp_name'];
+
 	}
 	else {
-		echo "失敗";
+
 	}
 	$img_tag_name = '../../balckboard/public/images/div/'.img_name;
+	echo $img_tag_name;
 
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
