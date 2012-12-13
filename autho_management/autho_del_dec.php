@@ -1,4 +1,8 @@
-<?php
+<html>
+	<head>
+		<script src="../javascript/frame_jump.js"></script>	</head>
+	<body>
+	<?php
 /************************************
  * 権限グループ削除確定画面
  * 
@@ -19,26 +23,14 @@ mysql_query($sql);
 
 Dbdissconnect($link);
 ?>
-
-<html>
-	<head>
-		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../dummy.html">
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
-		<meta http-equiv="Content-Style-Type" content="text/css">
-		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
-		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
-		<title>権限削除確定画面</title>
-	</head>
+<form action="autho_cmp.php" method="POST">
+<input type="hidden" name="check" value="0">
+</form>
 	
-	<body>
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
-		<div id="container">
-		<div align = "center">
-			<font class="Cubicfont">権限削除確定</font><hr color="blue">
-		</div><br><br>
-		
-		<font size="5">権限グループを削除しました。</font>
-		<br><br>
-		</div>
+	<?php 
+	print "<script language=javascript>leftreload();</script>";
+	print "<script language=javascript>jump('autho_cmp.php','right');</script>";
+	
+	?>
 	</body>
 </html>

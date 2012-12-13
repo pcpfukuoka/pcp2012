@@ -8,14 +8,14 @@
 //セッションの開始
 session_start();
 
-// if(!isset($_GET['id']))
-// {
-// 	header("Location:../dummy.html");
-// }
+if(!isset($_GET['id']))
+{
+	header("Location:../dummy.html");
+}
 
 //$seq_autho : GETで受け取った権限グループseqをSESSIONに入れる
-//$_SESSION['autho_sel'] = $_GET['id'];
-$_SESSION['autho_sel'] = 2;
+$_SESSION['autho_sel'] = $_GET['id'];
+//$_SESSION['autho_sel'] = 2;
 $autho_seq = $_SESSION['autho_sel'];
 
 require_once("../lib/dbconect.php");
@@ -51,36 +51,38 @@ Dbdissconnect($link);
 	<script>
 		$(function()
 		{
-
 			//検索結果から権限を追加するための処理
 			$(document).on('click', '.add_btn', function() 
 			{
+				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_delivery_","Show_Delete_");
+				var id_list  = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
 				var id = $(this).data('id');
-				var edit = "autho_edit" + id;
-				var text = "autho_text" + id;
-				var value = 1;//document.getElementById(name).value;
-				
-				if(value < 5)
+				var name = "Value_" + id;
+				var value = document.getElementById(name).value;
+				if(value <5)
 				{
-					document.getElementById(text).value = "○";
-					document.getElementById(edit).value = "1";
+					var show_name = show_id_list[value] + id;
+					var check_name = id_list[value] + id;
+					document.getElementById(show_name).value = "○";
+					document.getElementById(check_name).value = "1";
 					value++;
 					document.getElementById(name).value= value;
 				}
 			});
-			
 			$(document).on('click', '.delete_btn', function() 
 			{
+				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_delivery_","Show_Delete_");
+				var id_list  = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
 				var id = $(this).data('id');
-				var edit = "autho_edit" + id;
-				var text = "autho_text" + id;
-				var value = 1;//document.getElementById(name).value;
+				var name = "Value_" + id;
+				var value = document.getElementById(name).value;
 				value--;
-				
 				if(value >= 0)
 				{
-					document.getElementById(text).value = "×";
-					document.getElementById(edit).value = "0";
+					var show_name = show_id_list[value] + id;
+					var check_name = id_list[value] + id;
+					document.getElementById(show_name).value = "×";
+					document.getElementById(check_name).value = "0";
 					document.getElementById(name).value= value;
 				}
 			});
@@ -117,10 +119,12 @@ Dbdissconnect($link);
 				</tr>
 				
 				<?php
-				$autho_chk = 0;
-				$autho_array = Array("read_flg", "write_flg", "update_flg", "delivery_flg", "delete_flg");
+				$autho_array = Array("read_flg", "write_flg", "update_flg", "Delivery_flg", "delete_flg");
+				$autho_id = Array("Read_", "Write_", "Update_", "Delivery_", "Delete_");
+				$show_autho = Array("Show_Read_", "Show_Write_", "Show_Update_", "Show_delivery_", "Show_Delete_");
 				for ($i = 0; $i < $count_page; $i++)
 				{
+					$autho_chk = 0;
 					$page = mysql_fetch_array($result);
 				?>
 					<tr>
@@ -135,32 +139,33 @@ Dbdissconnect($link);
 						for ($j = 0; $j < 5; $j++)
 						{
 							$autho = $autho_array[$j];
+							$id = $autho_id[$j];
+							$show = $show_autho[$j];
 							
 							if($page_cla[$autho] == 1)
 							{
-								$autho_del = $autho_chk;
-								$autho_add = $autho_chk + 1;
+								$autho_chk++;
 							?>
-								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" id = "autho_edit<?= $autho_chk ?>" value = "1">
-								<td><input style = "width : 50%; font-size : 100%; text-align : center" type = "text" id = "autho_text<?= $autho_chk ?>" value = "○" readonly></td>
+								<td>
+									<input style = "width:50%; font-size: 100%; text-align: center;" type = "text" value = "×" id = "<?= $show.$page['page_seq'] ?>" readonly >
+									<input type = "hidden" name = "<?= $id.$page['page_seq'] ?>" value = "1" id = "<?= $id.$page['page_seq'] ?>">
+								</td>
 							<?php
 							}
 							else 
 							{
-								
 							?>
-								<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" id = "autho_edit<?= $autho_chk ?>" value = "0">
-								<td><input style = "width : 50%; font-size : 100%; text-align : center" type = "text" id = "autho_text<?= $autho_chk ?>" value = "×" readonly></td>
+								<td>
+									<input style = "width:50%; font-size: 100%; text-align: center;" type = "text" value = "×" id = "<?= $show.$page['page_seq'] ?>" readonly >
+									<input type = "hidden" name = "<?= $id.$page['page_seq'] ?>" value = "0" id = "<?= $id.$page['page_seq'] ?>">
+								</td>
 							<?php 
-							} 
-							$autho_chk++;
+							}
 						}
 						?>
-						<input type = "hidden" id = "autho_del" value = "$autho_del">
-						<input type = "hidden" id = "autho_add" value = "$autho_add">
-						<input type="hidden" id = "Value_<?= $row['page_seq'] ?>" value="0">
-						<td><input type = "button" class = "add_btn" data-id = "<?= $autho_add ?>" value="追加" id = "id"></td>
-						<td><input type = "button" class = "delete_btn" data-id = "<?= $autho_del ?>" value="削除" id = "id"></td>
+						<input type="hidden" id = "Value_<?= $page['page_seq'] ?>" value="<?= $autho_chk ?>">
+						<td><input type = "button" class = "add_btn" value = "追加"  data-id = "<?= $page['page_seq'] ?>" id = "id"></td>
+						<td><input type = "button" class = "delete_btn" data-id = "<?= $page['page_seq'] ?>" value = "削除" id = "id"></td>
 					</tr>
 				<?php
 				}

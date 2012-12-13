@@ -29,12 +29,13 @@ session_start();
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
 
+	echo $page_num;
 	$img_tag_name = '../../balckboard/public/images/div/'.$img_name;
 ?>
 <html>
 	<head>
-		<script src="../javascript/lesson_upload_js.js"></script>
+		<script src="../javascript/change_img_js.js"></script>
 	</head>
-	<body onload="change_img('<?= $img_tag_name?>',<?= $page_num ?>>)">
+	<body onload="change_img('<?= $img_tag_name?>',<?= $page_num ?>)">
 	</body>
 </html>
