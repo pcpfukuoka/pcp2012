@@ -36,6 +36,6 @@ session_start();
 	<head>
 		<script src="../javascript/lesson_upload_js.js"></script>
 	</head>
-	<body onload="change_img('<?= $img_tag_name?>',<?= $page_num ?>')">
+	<body onload="change_img('<?= $img_tag_name?>',<?= $page_num ?>)">
 	</body>
 </html>
