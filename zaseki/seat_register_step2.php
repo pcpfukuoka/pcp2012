@@ -239,7 +239,7 @@
 ?>
 			<td id="<?=$seat_id?>" class='seat'width='100' height='50'>
 			<p></p>
-			<input name = user_seq<?= $row?>[<?= $col?>] type="hidden" value = <?= $user_seq ?>>
+			<input name = user_seq<?= $row?>[<?= $col?>] type="hidden" value = "">
 			<input type="hidden" value="">
 			</td>
 <?php
@@ -259,7 +259,6 @@
 
 <?php
 		echo "<input name=group type=hidden value=$group>";
-		//echo "<input name=group type=text>";
 		echo "<input name=row_max type=hidden value=$row_max>";
 		echo "<input name=col_max type=hidden value=$col_max>";
 ?>

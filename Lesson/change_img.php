@@ -15,9 +15,9 @@ session_start();
 	//$class_seq = $_POST['class_seq'];
 
 
-
 	$img_name = $data['name'];
-	$sql = "UPDATE board SET div_url = '" .$img_name .
+	$db_img = "url(../images/div/". $data['name']. ")";
+	$sql = "UPDATE board SET div_url = '" .$db_img .
 			"'WHERE date = '". $date .
 			"'AND subject_seq = '".$subject_seq.
 			"'AND page_num = '".$page_num ."';";
@@ -29,10 +29,13 @@ session_start();
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
 
+	echo $page_num;
+	$img_tag_name = '../../balckboard/public/images/div/'.$img_name;
 ?>
 <html>
-<head>
-</head>
-<body>
-</body>
+	<head>
+		<script src="../javascript/change_img_js.js"></script>
+	</head>
+	<body onload="change_img('<?= $img_tag_name?>',<?= $page_num ?>)">
+	</body>
 </html>
