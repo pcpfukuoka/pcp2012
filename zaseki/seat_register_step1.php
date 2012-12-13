@@ -38,40 +38,26 @@
 
 				</td>
 			</tr>
-			<tr>
-				<td>
-				横列
+			<table>
+				<tr><td>
+					<table>
+						<tr><th>横列</th></tr>
+						<tr><td><input type = "radio" name = "row" value = "6">6</input></td></tr>
+						<tr><td><input type = "radio" name = "row" value = "7">7</input></td></tr>
+						<tr><td><input type = "radio" name = "row" value = "8">8</input></td></tr>
+						<tr><td><input type = "radio" name = "row" value = "9">9</input></td></tr>
+					</table>
 				</td>
 				<td>
-					<select name = "row">
-					<option value = "1">1</option>
-					<option value = "2">2</option>
-					<option value = "3">3</option>
-					<option value = "4">4</option>
-					<option value = "5">5</option>
-					<option value = "6">6</option>
-					</select>
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-				縦列
-				</td>
-				<td>
-					<select name = "col">
-					<option value = "1">1</option>
-					<option value = "2">2</option>
-					<option value = "3">3</option>
-					<option value = "4">4</option>
-					<option value = "5">5</option>
-					<option value = "6">6</option>
-					</select>
-
-				</td>
-			</tr>
-
-		</table>
+					<table>
+						<tr><th>縦列</th></tr>
+						<tr><td><input type = "radio" name = "col" value = "6">6</input></td></tr>
+						<tr><td><input type = "radio" name = "col" value = "7">7</input></td></tr>
+						<tr><td><input type = "radio" name = "col" value = "8">8</input></td></tr>
+						<tr><td><input type = "radio" name = "col" value = "9">9</input></td></tr>
+					</table>
+				</td></tr>
+			</table>
 		<input type="submit" value="座席表作成へ">
 
 		</form>

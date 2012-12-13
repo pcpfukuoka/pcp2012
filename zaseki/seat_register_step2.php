@@ -21,16 +21,32 @@
 		<script src="./jquery.detail.click.js"></script>
 		<script src="jquery.detail.click.min.js"></script>
 	<style>
-		.sample001 {
+		.seat_table {
  			border-collapse: separate;
  			border: 1px solid #cccccc;
  			margin: 10px;
 		}
-		.sample001 td {
+		.seat_table td {
  			border: 1px solid #0066ff;
 		}
 		td.show01 {
  			empty-cells: show;
+		}
+
+		.list_table {
+ 			border-collapse: separate;
+ 			border: 1px solid #cccccc;
+ 			margin: 10px;
+		}
+		.list_table td {
+ 			border: 1px solid #0066ff;
+		}
+
+		.left_box{
+			float:left;
+		}
+		.right_box{
+			float:left;
 		}
 
 	</style>
@@ -43,12 +59,16 @@
 	var mode = "";	//"add"or"change"
 
 	//退避用変数
-	var id_evc = "";
+	var seat_id_evc = "";
+	var list_id_evc = "";
 	var name_evc = "";
 	var user_seq_evc ="";
 	var evc_flg = 0;	//	”0:退避用変数に値がない”or ”1：退避用変数に値がある”
 
     $(function() {
+
+		//追加ボタンを押せるようにする
+		$('#add').removeAttr("disabled");
 
     	//入れ替えボタンを押せなくする
 		$('#change').attr("disabled", "disabled");
@@ -92,7 +112,8 @@
 			mode ="change";
 
 			//退避用変数のクリア
-			id_evc = "";
+			seat_id_evc = "";
+			list_id_evc = "";
 			name_evc = "";
 			user_seq_evc ="";
 			evc_flg = 0;
@@ -109,6 +130,9 @@
 
 					//選択されているセルにクリックした名前を挿入する
 					$('#' + seat_id).children("p").text($(this).children("p").text());
+
+					//選択されているセルにクリックした名前に対応したuser_seqを挿入する
+					$('#' + seat_id).children('input:eq(0)').val($(this).children('input:eq(0)').val());
 
 					//クリックしたリストの位置を記憶しておく
 					$('#' + seat_id).children('input:eq(1)').val($(this).attr("id"));
@@ -144,6 +168,8 @@
 					list_id = $(this).children('input:eq(1)').val();
 					$('#'+list_id).children('p').text($(this).children("p").text());
 					$(this).children('p').text("");
+					$(this).children('input:eq(0)').val("");
+					$(this).children('input:eq(1)').val("");
 				}
 				else
 				{
@@ -160,9 +186,10 @@
 				if(evc_flg == 0)
 				{
 						//一回目にクリックしたセルのデータを退避させる
-						id_evc = $(this).attr("id");
+						seat_id_evc = $(this).attr("id");
+						list_id_evc = $(this).children('input:eq(1)').val();
 						name_evc = $(this).children("p").text();
-						user_seq_evc = $(this).children().val();
+						user_seq_evc = $(this).children('input:eq(0)').val();
 
 						//一回目にクリックしたセルの色を変える
 						$(this).attr({"bgcolor": "yellow"});
@@ -174,18 +201,21 @@
 				{
 
 						//一回目にクリックしたセルに二回目にクリックしたデータを移す
-						$('#' + id_evc).children("p").text($(this).children("p").text());
-						$('#' + id_evc).children().attr({"value": $(this).children().val()});
+						$('#' + seat_id_evc).children("p").text($(this).children("p").text());
+						$('#' + seat_id_evc).children('input:eq(0)').attr({"value": $(this).children('input:eq(0)').val()});
+						$('#' + seat_id_evc).children('input:eq(1)').attr({"value": $(this).children('input:eq(1)').val()});
 
 						//二回目にクリックしたセルに一回目に退避したデータを移す
 						$(this).children("p").text(name_evc);
-						$(this).children().attr({"value": user_seq_evc});
+						$(this).children('input:eq(0)').attr({"value": user_seq_evc});
+						$(this).children('input:eq(1)').attr({"value": list_id_evc});
 
 
 						//セルの色を戻す
 						$('#' + id_evc).attr({"bgcolor": ""});
 
-						id_evc = 0;
+						seat_id_evc = 0;
+						list_id_evc = 0;
 						name_evc = "";
 						user_seq_evc = "";
 						evc_flg = 0;
@@ -195,9 +225,9 @@
     });
     </script>
 
-
+<div class="left_box">
 	<form action="seat_register_add.php" method="POST">
-		<table class="sample001">
+		<table class="seat_table">
 <?php
 
 	for($row = 1; $row <= $row_max; $row++)
@@ -221,13 +251,22 @@
 
 ?>
 		</table>
-		<input id="add" type="button" value="追加">
-		<input id="change" type="button" value="入れ替え">
+		<input id="add" type="button" value="追加・戻す">
+		<input id="change" type="button" value="移動">
 		<input type="submit" value="登録">
+
+
+
+<?php
+		echo "<input name=group type=hidden value=$group>";
+		//echo "<input name=group type=text>";
+		echo "<input name=row_max type=hidden value=$row_max>";
+		echo "<input name=col_max type=hidden value=$col_max>";
+?>
 	</form>
+</div>
 
-
-
+<div class="right_box">
 	<?php
 
 
@@ -243,27 +282,28 @@
 		$count = mysql_num_rows($result);
 
 
-		echo "<table>";
+		echo "<table class='list_table'>";
 		$list_id = 101;
-		while($row = mysql_fetch_array($result))
+		while($gyo = mysql_fetch_array($result))
 		{
 			echo "<tr>";
 ?>
-			<td id="<?=$list_id ?>"class="list"><p><?=$row['user_name'] ?></p></td>
+			<td id="<?=$list_id ?>"class="list">
+				<p><?=$gyo['user_name'] ?></p>
+				<input type="hidden" value = "<?=$gyo['user_seq'] ?>">
+			</td>
 <?php
 			echo "</tr>";
 			$list_id++;
 		}
 
 
-		echo "<table>";
+		echo "</table>";
 
 
-		echo "<input name=group type=hidden value=$group>";
-		echo "<input name=row_max type=hidden value=$row_max>";
-		echo "<input name=col_max type=hidden value=$col_max>";
+
 ?>
-
+</div>
 
 
 	</body>

@@ -19,7 +19,8 @@
 
 <?php
 
-	$class = $_POST['group'];
+	//$class = $_POST['group'];
+	$class = 3;
 	$sql = "select max(row) as mx from seat where group_seq='$class'";
 	$res = mysql_query($sql);
 	$gyo = mysql_fetch_assoc($res);
