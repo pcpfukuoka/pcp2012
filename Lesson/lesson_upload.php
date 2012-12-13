@@ -24,14 +24,11 @@ session_start();
 	$file_name = '../../balckboard/public/images/div/'.$img_name;
 	if(move_uploaded_file($data['tmp_name'], $file_name))
 	{
-		echo "成功/";
 
 	}
-	else {
 
-	}
 	$img_tag_name = '../../balckboard/public/images/div/'.$img_name;
-	echo $img_tag_name;
+
 
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
