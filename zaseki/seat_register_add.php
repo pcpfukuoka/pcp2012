@@ -4,7 +4,7 @@
 
 <?php
 
-	//$group = $_POST['group'];
+	$group = $_POST['group'];
 	$row_max = $_POST['row_max'];
 	$col_max = $_POST['col_max'];
 
@@ -15,7 +15,6 @@
 	//文字コード設定
 	mysql_query("SET NAMES UTF8");
 
-	$group = 3;
 
 
 		//クエリを送信する
