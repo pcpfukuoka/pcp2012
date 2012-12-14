@@ -36,6 +36,7 @@ $edit_name = mysql_fetch_array($result2);
 Dbdissconnect($link);
 
 ?>
+
 <html>
 	<head>
 		<title>権限管理編集画面</title>
@@ -47,6 +48,7 @@ Dbdissconnect($link);
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+		<script src="../javascript/form_reference.js"></script>
 		
 	<script>
 		$(function()
@@ -103,7 +105,8 @@ Dbdissconnect($link);
 		<form name = "edit" action = "autho_edit_con.php" method = "POST">
 		
 		<!-- 元の権限グループ名を表示させ、変更できるようにする -->
-			名前<input size ="15" type="text" name="edit_name" value = <?= $edit_name['autho_name'] ?>>
+			名前<input size ="15" type="text" name="edit_name" class = "edit_text" value = <?= $edit_name['autho_name'] ?>>
+				<input type = "button" value="確認" class = "check">
 		
 		<!-- 		テープルの作成 -->
 			<table class="table_01" width = "80%">
@@ -172,15 +175,29 @@ Dbdissconnect($link);
 				?>
 			</table>
 			<br>
-			require_once("../javascript/form_reference.js");
 			
-			<script>
-				var name = document.edit.edit_name;
-
-				<input class="button4" type = "submit" value = "確認" onClick = "input_Check(name);">
-			</script>
-			<br>
+			<input class="button4" type = "submit" value = "確認">
 		</form>
 		</div>
 	</body>
 </html>
+<script type="text/javascript">
+
+$(function() {
+	//質問内容追加
+		$(document).on('click', '.check', function() {
+			var str = $(".edit_text").val();
+			//チェックしたい関数(Function)を書く
+			var ret = inputCheck(str)
+
+			if (ret == false)
+			{
+				var name = <?php echo $edit_name['autho_name']; ?>;
+				$(".edit_text").val() = name;
+			}
+
+		});
+
+	});
+
+</script>
