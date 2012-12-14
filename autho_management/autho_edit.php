@@ -89,6 +89,22 @@ Dbdissconnect($link);
 				}
 			});
 		});
+
+		$(function() 
+		{
+			//質問内容追加
+			$(document).on('change', '.edit_text', function() 
+			{
+				var str = $(".edit_text").val();
+				//チェックしたい関数(Function)を書く
+				var ret = inputCheck(str)
+
+				if (ret == false)
+				{
+					
+				}
+			});
+		});
 	</script>
 		
 	</head>
@@ -106,7 +122,6 @@ Dbdissconnect($link);
 		
 		<!-- 元の権限グループ名を表示させ、変更できるようにする -->
 			名前<input size ="15" type="text" name="edit_name" class = "edit_text" value = <?= $edit_name['autho_name'] ?>>
-				<input type = "button" value="確認" class = "check">
 		
 		<!-- 		テープルの作成 -->
 			<table class="table_01" width = "80%">
@@ -181,22 +196,3 @@ Dbdissconnect($link);
 		</div>
 	</body>
 </html>
-<script type="text/javascript">
-
-$(function() {
-	//質問内容追加
-		$(document).on('click', '.check', function() {
-			var str = $(".edit_text").val();
-			//チェックしたい関数(Function)を書く
-			var ret = inputCheck(str)
-
-			if (ret == false)
-			{
-
-			}
-
-		});
-
-	});
-
-</script>
