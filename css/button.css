@@ -23,7 +23,6 @@
 	color: #000000;
 	background-color: #4169E1;  /* 背景色 */
 	border: inset 3px #6495ED;  /* 枠の色 */
-	margin: 0px;
 	padding: 4px;
 	width:150px;
 
@@ -62,7 +61,6 @@
 	color: #000000;
 	background-color: #FF5192;  /* 背景色 */
 	border: inset 3px #FF0461;  /* 枠の色 */
-	margin: 0px;
 	padding: 4px;
 	width:130px;
 }
@@ -100,7 +98,6 @@
 	color: #000000;
 	background-color: #ff6600;  /* 背景色 */
 	border: inset 3px #ff6600;  /* 枠の色 */
-	margin: 0px;
 	padding: 4px;
 	width:100px;
 
@@ -138,7 +135,6 @@
 	color: #000000;
 	background-color: #ff6600;  /* 背景色 */
 	border: inset 3px #ff6600;  /* 枠の色 */
-	margin: 0px;
 	padding: 4px;
 	width:120px;
 
@@ -176,7 +172,6 @@
 	color: #000000;
 	background-color: #999999;  /* 背景色 */
 	border: inset 3px #9999cc;  /* 枠の色 */
-	margin: 0px;
 	padding: 4px;
 	width:100px;
 }
@@ -211,7 +206,6 @@
 	color: #000000;
 	background-color: #999999;  /* 背景色 */
 	border: inset 3px #9999cc;  /* 枠の色 */
-	margin: 0px;
 	padding: 4px;
 	width:70px;
 }
@@ -248,7 +242,6 @@
 	color: #000000;
 	background-color: #ff6600;  /* 背景色 */
 	border: inset 3px #ff6600;  /* 枠の色 */
-	margin: 0px;
 	padding: 0px;
 	width:50px;
 

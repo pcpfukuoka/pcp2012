@@ -27,14 +27,14 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
-		<title>受信ボックス</title>
+		<title>受信箱</title>
 	</head>
 
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
-			<font class="Cubicfont">受信ボックス</font>
+			<font class="Cubicfont">受信箱</font>
 			<br>
 		</div>
 		<hr color="blue">

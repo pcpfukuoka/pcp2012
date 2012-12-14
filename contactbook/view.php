@@ -45,12 +45,12 @@
 			<br><br>
 
 			<form action="ReplyBox.php" method="POST">
-				<font size="3">From　：</font>
+				<font size="5">From：</font>
 				<?= $row['send_user_name'] ?><br>
-				<font size="3">件名　：</font>
+				<font size="5">件名：</font>
 				<?= $row['title'] ?><br><br>
 
-			    <font size="3">本文</font><br>
+			    <font size="5">本文</font><br>
 			    <textarea readonly="readonly" rows="40" cols="50" name="contents"><?= $row['contents']?></textarea>
 			    <br><br>
 

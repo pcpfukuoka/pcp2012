@@ -34,7 +34,7 @@
 			<br><br>
 
 			<form action="relay.php" method="POST" id="input">
-				  <font size="3">宛先</font>
+				  <font size="5">宛先</font>
 				  <select name="to">
 				  <?php
 					   for ($i = 0; $i < $kensu; $i++)
@@ -48,9 +48,9 @@
 
 				  </select>
 				  <br>
-				  <font size="3">件名</font>
+				  <font size="5">件名</font>
 				  <input size="40" type="text" name="title"><br><br>
-			      <font size="3">本文</font><br>
+			      <font size="5">本文</font><br>
 			      <textarea rows="40" cols="50" name="contents"></textarea><br>
 
 			      <!-- 隠し文字 -->

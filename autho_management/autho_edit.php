@@ -109,19 +109,19 @@ Dbdissconnect($link);
 			<table class="table_01" width = "80%">
 				<tr>
 					<th width = "20%" align = "center" ><font size = "5">ページ名</font></th>
-					<th width = "10%" align = "center" ><font size = "5">read</font></th>
-					<th width = "10%" align = "center" ><font size = "5">write</font></th>
-					<th width = "10%" align = "center" ><font size = "5">update</font></th>
-					<th width = "10%" align = "center" ><font size = "5">delivery</font></th>
-					<th width = "10%" align = "center" ><font size = "5">delete</font></th>
+					<th width = "10%" align = "center" ><font size = "5">Read</font></th>
+					<th width = "10%" align = "center" ><font size = "5">Write</font></th>
+					<th width = "10%" align = "center" ><font size = "5">Update</font></th>
+					<th width = "10%" align = "center" ><font size = "5">Delivery</font></th>
+					<th width = "10%" align = "center" ><font size = "5">Delete</font></th>
 					<th width = "5%" align = "center" ><font size = "5">追加</font></th>
 					<th width = "5%" align = "center" ><font size = "5">削除</font></th>
 				</tr>
 				
 				<?php
-				$autho_array = Array("read_flg", "write_flg", "update_flg", "Delivery_flg", "delete_flg");
+				$autho_array = Array("read_flg", "write_flg", "update_flg", "delivery_flg", "delete_flg");
 				$autho_id = Array("Read_", "Write_", "Update_", "Delivery_", "Delete_");
-				$show_autho = Array("Show_Read_", "Show_Write_", "Show_Update_", "Show_delivery_", "Show_Delete_");
+				$show_autho = Array("Show_Read_", "Show_Write_", "Show_Update_", "Show_Delivery_", "Show_Delete_");
 				for ($i = 0; $i < $count_page; $i++)
 				{
 					$autho_chk = 0;
@@ -147,7 +147,7 @@ Dbdissconnect($link);
 								$autho_chk++;
 							?>
 								<td>
-									<input style = "width:50%; font-size: 100%; text-align: center;" type = "text" value = "×" id = "<?= $show.$page['page_seq'] ?>" readonly >
+									<input style = "width:50%; font-size: 100%; text-align: center;" type = "text" value = "○" id = "<?= $show.$page['page_seq'] ?>" readonly >
 									<input type = "hidden" name = "<?= $id.$page['page_seq'] ?>" value = "1" id = "<?= $id.$page['page_seq'] ?>">
 								</td>
 							<?php
@@ -172,7 +172,14 @@ Dbdissconnect($link);
 				?>
 			</table>
 			<br>
-			<input class="button4" type = "submit" value = "確認"><br>
+			require_once("../javascript/form_reference.js");
+			
+			<script>
+				var name = document.edit.edit_name;
+
+				<input class="button4" type = "submit" value = "確認" onClick = "input_Check(name);">
+			</script>
+			<br>
 		</form>
 		</div>
 	</body>

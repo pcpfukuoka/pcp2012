@@ -49,12 +49,12 @@
 			<br><br>
 
 			<form action="p_relay.php" method="POST">
-				<font size="3"> T o：</font>
+				<font size="5">　T o：</font>
 				<?= $row['group_name'] ?><br>
-				<font size="3">件名：</font>
-				<input size="50" type="text" name="title" value="<?= $row['title'] ?>"><br>
+				<font size="5">件名：</font>
+				<input size="50" type="text" name="title" value="<?= $row['title'] ?>"><br><br>
 
-				<font size="3">プリント</font>
+				<font size="5">プリント</font>
 				<div id="delete_<?= $row['print_delivery_seq'] ?>">
 					<?= $row['printurl'] ?>
 					<input type="button" data-id="<?= $row['print_delivery_seq'] ?>" class="p_delete" value="削除">
