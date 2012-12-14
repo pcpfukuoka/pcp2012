@@ -253,7 +253,7 @@
 		</table>
 		<input id="add" type="button" value="追加・戻す">
 		<input id="change" type="button" value="移動">
-		<input type="submit" value="登録">
+		<input type="submit" value="登録" >
 
 
 

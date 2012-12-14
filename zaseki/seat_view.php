@@ -1,12 +1,13 @@
 <html>
 	<head>
+	<link rel="stylesheet" type="text/css" href="../css/kajiwara.css" />
 		<title>座席表</title>
 		<meta charset=UTF-8">
 	</head>
 	<body>
 
 
-	<table border = 1  cellspacing="10">
+	<table class="kajiwara"  cellspacing="10">
 
 <?php
 
