@@ -43,13 +43,18 @@ Dbdissconnect($link);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<title>テスト作成確認画面</title>
 	</head>
 	
 	<body>
-	
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<div align = "center">
-			<font size = "6">テスト作成確認</font><hr><br><br><br>
+			<font class="Cubicfont2">テスト作成確認</font><hr color="blue"><br><br><br>
 		</div>
 		
 	<!-- 点数入力画面に飛ぶ -->
@@ -91,9 +96,19 @@ Dbdissconnect($link);
 			<input type = "hidden" name = "group" value = "<?= $group ?>">
 			<input type = "hidden" name = "stand_flg" value = "<?= $stand_flg ?>">
 			
-			
-			<input type = "submit" value = "登録">
-			<input type="button" value="戻る" onClick="history.back()">
+			<Table>
+				<tr>
+					<th>
+						<input class="button4" type = "submit" value = "登録">
+					</th>
+					<th>
+						<input class="button4"type="button" value="戻る" onClick="history.back()">
+					</th>
+				</tr>
+			</Table>
+
+
 		</form>
+			</div>
 	</body>
 </html>

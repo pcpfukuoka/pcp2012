@@ -58,18 +58,25 @@ Dbdissconnect($link);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<META HTTP-EQUIV="Refresh" CONTENT="10;URL=../dummy.html">
 		<title>テスト登録確定画面</title>
 	</head>
 	
 	<body>
-		テストを登録しました。
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+		<font class="Cubicfont1">テストを登録しました。</font>
 		
 		<form action = "res_test_point.php" method = "POST">
 			<input type = "hidden" name = "page_check" value = "0">
 			<input type = "hidden" name = "test_seq" value = "<?= $test_seq ?>">
 			
-			<input type = "submit" name = "test" value = "点数を登録します。">
+			<input class="longbutton" type = "submit" name = "test" value = "点数を登録します。">
 		</form>
+	</div>
 	</body>
 </html>
