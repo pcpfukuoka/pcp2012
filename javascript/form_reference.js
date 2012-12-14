@@ -47,6 +47,25 @@ function valueCheck_jp( str )
 	}
 }
 
+//作動チェック済み//
+//文字数チェック//
+function check(str)
+{
+	//txt = document.myFORM.myTEXT.value;
+	//alert(n);
+	n = str.length;
+
+	if (n <= 4)
+	{
+		alert("５文字以上にしてください");
+	}
+	else
+	{
+		alert("使用できます");
+	}
+
+}
+
 
 
 // len_min = 引数(指定文字数の最低値)
@@ -107,20 +126,38 @@ return 0;
 }
 
 
+//動作チェック済み//
+//メールアドレスチェックPart.2//
+//<script type="text/javascript">
+/**
+* [関数名] chkRegEmail
+* [機　能] 正規表現によるメールアドレス（E-mail）チェック
+* [引　数]
+* @param str 入力された文字列
+* [返り値]
+* @return true(E-mail形式である場合) | false(E-mail形式でない場合)
+*/
+function chkRegEmail(str){
+  /* E-mail形式の正規表現パターン */
+  /* @が含まれていて、最後が .(ドット)でないなら正しいとする */
+    var Seiki=/[!#-9A-~]+@+[a-z0-9]+.+[^.]$/i;
+  /* 入力された値がパターンにマッチするか調べる */
+  if(str!=""){
+      if(str.match(Seiki)){
+          alert(str.match(Seiki)+"\n\nメールアドレスの形式は正しいです");
+          return true;
+      }else{
+          alert("メールアドレスの形式が不正です");
+          return false;
+      }
+  }else{
+      /* 何も入力されていない場合はアラート表示 */
+      alert("メールアドレスを入力してください");
+      return false;
+  }
+}
 
 
-
-//メールアドレスチェック
-var emailfilter=/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/
-
-	function checkmail(e){
-	  var returnval=emailfilter.test(e.value)
-	  if (returnval==false){
-	    alert("正しいメールアドレスを入力してください!")
-	    e.select()
-	  }
-	  return returnval
-	}
 
 
 //入力文字をチェック
@@ -161,3 +198,8 @@ return false;
 }
 return true;
 }
+
+
+
+
+
