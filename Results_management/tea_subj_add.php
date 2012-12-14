@@ -2,8 +2,14 @@
 	<head>
 		<title>教師・教科新規追加画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	<body>
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<form action="tea_subj_com.php" method="POST">
 		<?php
 		require_once("../lib/dbconect.php");
@@ -13,7 +19,7 @@
 		
 		?>
 			<div align = "center">
-				<font size = "6">先生追加</font>
+				<font class="Cubicfont1" >先生追加</font>
 			</div><br><br>
 		<?php 
 		$sql = "SELECT teacher_seq, subject_seq, user_seq FROM m_teacher WHERE delete_flg = 0";
@@ -25,7 +31,7 @@
 		<input type="radio" name="q1" value="2">教科
 		
 		<!-- テーブルの作成 -->
-		<table border="1" width="70%"><!-- テーブル作成 -->
+		<table border="1" width="70%" class="table_01"><!-- テーブル作成 -->
 			<tr>
 				<th width="50%">教師名</th>
 				<th width="20%">担当教科</th>
@@ -181,8 +187,14 @@
 			<?php 
 			Dbdissconnect($link);
 			?>
-			<input type = "submit" value = "確認">&nbsp;&nbsp;
-			<input type = "reset" value="クリア"><br><br>
+			<table>
+				<tr>
+					<td><input  class="button4" type = "submit" value = "確認"></td>
+					<td><input class="button4" type = "reset" value="クリア"></td>
+				</tr>
+			</table>
+
 		</form>
+			</div>
 	</body>
 </html>

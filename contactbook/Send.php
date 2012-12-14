@@ -40,11 +40,11 @@
 		  <br><br>
 
 		  <form action="relay.php" method="POST" id="input">
-			  <font size="3">宛先　： </font>
+			  <font size="5">宛先： </font>
 			  <?= $contact_book_row['reception_user_name']?><br>
-			  <font size="3">件名　： </font>
+			  <font size="5">件名： </font>
 			  <input size="40" type="text" name="title" value="<?= $contact_book_row['title']?>"><br><br>
-		      <font size="3">本文</font><br>
+		      <font size="5">本文</font><br>
 		      <textarea rows="40" cols="50" name="contents"><?= $contact_book_row['contents'] ?></textarea><br>
 
 		      <input type="hidden" value="<?= $contact_book_row['contact_book_seq'] ?>" name="contact_book_seq">

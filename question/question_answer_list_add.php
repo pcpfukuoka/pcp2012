@@ -4,26 +4,21 @@ $answer_kbn = $_POST['answer_kbn'];
 $question_seq = $_POST['seq'];
 $details_description = $_POST['question_details_description'];
 
-require_once("../lib/dbconect.php");
-$link = DbConnect();
+//セッションに情報を格納
+$details['details_description'] = $details_description;
+$details['answer_kbn'] = $answer_kbn;
+$details['awnser_list'] = $question_name_list;
+print_r($_SESSION['details']);
 
-//detailsに１件追加
-if(isset($_POST['answer_kbn'])
-		&&isset($_POST['seq'])
-		&&isset($_POST['question_details_description'])
-		)
+if(isset($_SESSION['details']))
 {
-	$sql = "INSERT INTO question_details VALUES (0,'$details_description','$answer_kbn','$question_seq')";
-	mysql_query($sql);
+	$set = $_SESSION['details'];
 	
 }
 
-$details_seq = mysql_insert_id($link);
+$set[] = $details;
 
-foreach($question_name_list as $value)
-{
-	$sql = "INSERT INTO question_awnser_list VALUES (0,'$value','$details_seq') ";
-	mysql_query($sql);	
-}
-
-Dbdissconnect($link);
+$_SESSION['details'] = $set;
+ 
+ 
+ 

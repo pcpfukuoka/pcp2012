@@ -28,23 +28,21 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
-		<title>送信ボックス</title>
+		<title>送信箱</title>
 	</head>
 
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 			<div align="center">
-				<font class="Cubicfont">送信ボックス</font>
+				<font class="Cubicfont">送信箱</font>
 			</div>
 
 			<hr color="blue">
 			<br><br>
 
 			<!-- 連絡帳の受信一覧テーブル作成 -->
-			<div align="left">
-				<font size="5">連絡帳</font>
-			</div>
+
 			<div align="center">
 			<br>
 				<table class="table_01">

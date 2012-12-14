@@ -2,10 +2,16 @@
 	<head>
 		<title>ページ新規追加画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
-		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../dummy.html">
+			<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+	<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../dummy.html">
 	</head>
 	<body>
-		登録しました。
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+		<font class="Cubicfont1">登録しました。</font>
 		<?php
 		$q1 = $_POST['q1'];//教科か先生か
 		require_once("../lib/dbconect.php");
@@ -66,6 +72,8 @@
 			
 			}
 		Dbdissconnect($link);
-		?>
+	
+	?>		
+</div>
 	</body>
 </html>
