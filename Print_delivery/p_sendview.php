@@ -31,6 +31,7 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<title>確認画面</title>
 	</head>
 
@@ -46,10 +47,10 @@
 		<br><br>
 
 		<div align="center">
-			<table border="1">
-				<tr bgcolor="yellow">
-					<td align="center"width="200"><font size="5">名前</font></td>
-					<td align="center"width="200"><font size="5">確認</font></td>
+			<table class="table_01">
+				<tr>
+					<th align="center"width="200"><font size="5">名前</font></th>
+					<th align="center"width="200"><font size="5">確認</font></th>
 				</tr>
 
 				<?php
