@@ -1,5 +1,5 @@
 // サーバーへのファイル
 function upload()
 {
-	window.open("upload/file_select.html", "upload", "width=200, height=200");
+	window.open("../upload/file_select.html", "upload", "width=400, height=200");
 }

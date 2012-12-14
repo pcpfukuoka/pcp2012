@@ -37,6 +37,7 @@
 			 *********************************************************/
    			?>
    名前<input size ="15" type="text" name="group_name"><!-- グループ名入力 -->
+   
 
    <table width="100%" class="table_01">
     <tr>
@@ -57,17 +58,33 @@
     *********************************************************/
     ?>
     <?php
+    
     for($i = 0; $i < $count; $i++)
 	{
     	$row = mysql_fetch_array($result);
 	?>
 	<tr>
 	    <td align = "center"><?= $row['page_name'] ?></td>
-			<td><input type="checkbox" name = "Read_<?= $row['page_seq'] ?>" id = "Read_<?= $row['page_seq'] ?>" disabled></td>
-			<td><input type="checkbox" name = "Write_<?= $row['page_seq'] ?>" id = "Write_<?= $row['page_seq'] ?>" disabled></td>
-			<td><input type="checkbox" name = "Update_<?= $row['page_seq'] ?>" id = "Update_<?= $row['page_seq'] ?>" disabled> </td>
-			<td><input type="checkbox" name = "delivery_<?= $row['page_seq'] ?>" id = "delivery_<?= $row['page_seq'] ?>" disabled></td>
-			<td><input type="checkbox" name = "Delete_<?= $row['page_seq'] ?>" id = "Delete_<?= $row['page_seq'] ?>" disabled></td>
+			<td>
+				<input style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×" id = "Show_Read_<?= $row['page_seq'] ?>" readonly >
+				<input type="hidden" name = "Read_<?= $row['page_seq'] ?>" value="0" id = "Read_<?= $row['page_seq'] ?>">
+			</td>
+			<td>
+				<input style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×" id = "Show_Write_<?= $row['page_seq'] ?>" readonly>
+				<input type="hidden" name = "Write_<?= $row['page_seq'] ?>" value="0" id = "Write_<?= $row['page_seq'] ?>">
+			</td>
+			<td>
+				<input  style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×" id = "Show_Update_<?= $row['page_seq'] ?>" readonly>
+				<input type="hidden" name = "Update_<?= $row['page_seq'] ?>" value="0" id = "Update_<?= $row['page_seq'] ?>"> 
+			</td>
+			<td>
+				<input  style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×" id = "Show_delivery_<?= $row['page_seq'] ?>" readonly>
+				<input type="hidden" name = "delivery_<?= $row['page_seq'] ?>" value="0" id = "delivery_<?= $row['page_seq'] ?>">
+			</td>
+			<td>
+				<input  style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×"id = "Show_Delete_<?= $row['page_seq'] ?>" readonly>
+				<input type="hidden" name = "Delete_<?= $row['page_seq'] ?>" value="0" id = "Delete_<?= $row['page_seq'] ?>">
+			</td>
 			<input type="hidden" id = "Value_<?= $row['page_seq'] ?>" value="0">
 		 <td><input type="button" class="add_btn" value="追加"  data-id="<?= $row['page_seq'] ?>" id = "id"></td>
 	    <td><input type="button" class="delete_btn" data-id="<?= $row['page_seq'] ?>"value="削除" id = "id"></td>
@@ -77,6 +94,11 @@
 
     ?>
     </table>
+    <?php 
+    
+    
+    
+    ?>
     <br>
     <table>
     	<tr>
@@ -95,14 +117,17 @@
 		//検索結果から権限を追加するための処理
 		$(document).on('click', '.add_btn', function() 
 		{
+			var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_delivery_","Show_Delete_");
 			var id_list  = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
 		  	var id = $(this).data('id');
 		  	var name = "Value_" + id;
 			var value = document.getElementById(name).value;
 			if(value <5)
 			{
+				var show_name = show_id_list[value] + id;
 				var check_name = id_list[value] + id;
-				document.getElementById(check_name).checked = true;
+				document.getElementById(show_name).value = "○";
+				document.getElementById(check_name).value = "1";
 				value++;
 				document.getElementById(name).value= value;
 			}
@@ -110,15 +135,18 @@
 	    });
 		$(document).on('click', '.delete_btn', function() 
 		{
+			var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_delivery_","Show_Delete_");
 			var id_list  = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
 		  	var id = $(this).data('id');
 		  	var name = "Value_" + id;
 			var value = document.getElementById(name).value;
 			value--;
-			if(value  >= 0)
+			if(value >= 0)
 			{
+				var show_name = show_id_list[value] + id;
 				var check_name = id_list[value] + id;
-				document.getElementById(check_name).checked = false;
+				document.getElementById(show_name).value = "×";
+				document.getElementById(check_name).value = "0";
 				document.getElementById(name).value= value;
 			}
 			

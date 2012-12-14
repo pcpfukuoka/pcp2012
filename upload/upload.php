@@ -9,9 +9,9 @@
 
 if (is_uploaded_file($_FILES["upfile"]["tmp_name"]))
 {
-	if (move_uploaded_file($_FILES["upfile"]["tmp_name"], "files/" . $_FILES["upfile"]["name"]))
+	if (move_uploaded_file($_FILES["upfile"]["tmp_name"], "../dl_calendar/menu.jpg"))
 	{
-		chmod("files/" . $_FILES["upfile"]["name"], 0644);
+		chmod("../dl_calendar/menu.jpg", 0644);
 		echo $_FILES["upfile"]["name"] . "をアップロードしました。";
 	}
 	else

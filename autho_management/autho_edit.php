@@ -8,14 +8,14 @@
 //セッションの開始
 session_start();
 
-// if(!isset($_GET['id']))
-// {
-// 	header("Location:../dummy.html");
-// }
+if(!isset($_GET['id']))
+{
+	header("Location:../dummy.html");
+}
 
 //$seq_autho : GETで受け取った権限グループseqをSESSIONに入れる
-//$_SESSION['autho_sel'] = $_GET['id'];
-$_SESSION['autho_sel'] = 2;
+$_SESSION['autho_sel'] = $_GET['id'];
+//$_SESSION['autho_sel'] = 2;
 $autho_seq = $_SESSION['autho_sel'];
 
 require_once("../lib/dbconect.php");
@@ -45,7 +45,52 @@ Dbdissconnect($link);
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+		
+	<script>
+		$(function()
+		{
+			//検索結果から権限を追加するための処理
+			$(document).on('click', '.add_btn', function() 
+			{
+				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_delivery_","Show_Delete_");
+				var id_list  = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
+				var id = $(this).data('id');
+				var name = "Value_" + id;
+				var value = document.getElementById(name).value;
+				if(value <5)
+				{
+					var show_name = show_id_list[value] + id;
+					var check_name = id_list[value] + id;
+					document.getElementById(show_name).value = "○";
+					document.getElementById(check_name).value = "1";
+					value++;
+					document.getElementById(name).value= value;
+				}
+			});
+			$(document).on('click', '.delete_btn', function() 
+			{
+				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_delivery_","Show_Delete_");
+				var id_list  = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
+				var id = $(this).data('id');
+				var name = "Value_" + id;
+				var value = document.getElementById(name).value;
+				value--;
+				if(value >= 0)
+				{
+					var show_name = show_id_list[value] + id;
+					var check_name = id_list[value] + id;
+					document.getElementById(show_name).value = "×";
+					document.getElementById(check_name).value = "0";
+					document.getElementById(name).value= value;
+				}
+			});
+		});
+	</script>
+		
 	</head>
+	
 	<body>
 		<img class="bg" src="../../images/blue-big.jpg" alt="" />
 		<div id="container">
@@ -61,20 +106,25 @@ Dbdissconnect($link);
 			名前<input size ="15" type="text" name="edit_name" value = <?= $edit_name['autho_name'] ?>>
 		
 		<!-- 		テープルの作成 -->
-			<table class="table_01" width = "100%">
+			<table class="table_01" width = "80%">
 				<tr>
-					<th width = "25%" align = "center" ><font size="5">ページ名</font></th>
-					<th width = "15%" align = "center" ><font size="5">read</font></th>
-					<th width = "15%" align = "center" ><font size="5">write</font></th>
-					<th width = "15%" align = "center" ><font size="5">update</font></th>
-					<th width = "15%" align = "center" ><font size="5">delivery</font></th>
-					<th width = "15%" align = "center" ><font size="5">delete</font></th>
+					<th width = "20%" align = "center" ><font size = "5">ページ名</font></th>
+					<th width = "10%" align = "center" ><font size = "5">Read</font></th>
+					<th width = "10%" align = "center" ><font size = "5">Write</font></th>
+					<th width = "10%" align = "center" ><font size = "5">Update</font></th>
+					<th width = "10%" align = "center" ><font size = "5">Delivery</font></th>
+					<th width = "10%" align = "center" ><font size = "5">Delete</font></th>
+					<th width = "5%" align = "center" ><font size = "5">追加</font></th>
+					<th width = "5%" align = "center" ><font size = "5">削除</font></th>
 				</tr>
 				
 				<?php
-				$autho_chk = 0;
+				$autho_array = Array("read_flg", "write_flg", "update_flg", "delivery_flg", "delete_flg");
+				$autho_id = Array("Read_", "Write_", "Update_", "Delivery_", "Delete_");
+				$show_autho = Array("Show_Read_", "Show_Write_", "Show_Update_", "Show_Delivery_", "Show_Delete_");
 				for ($i = 0; $i < $count_page; $i++)
 				{
+					$autho_chk = 0;
 					$page = mysql_fetch_array($result);
 				?>
 					<tr>
@@ -86,86 +136,36 @@ Dbdissconnect($link);
 						$page_cla = $page_fun -> autho_Pre($autho_seq, $page['page_seq']);
 						
 						//チェックボックスの表示
-						if($page_cla['read_flg'] == 1)
+						for ($j = 0; $j < 5; $j++)
 						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
-						<?php
+							$autho = $autho_array[$j];
+							$id = $autho_id[$j];
+							$show = $show_autho[$j];
+							
+							if($page_cla[$autho] == 1)
+							{
+								$autho_chk++;
+							?>
+								<td>
+									<input style = "width:50%; font-size: 100%; text-align: center;" type = "text" value = "○" id = "<?= $show.$page['page_seq'] ?>" readonly >
+									<input type = "hidden" name = "<?= $id.$page['page_seq'] ?>" value = "1" id = "<?= $id.$page['page_seq'] ?>">
+								</td>
+							<?php
+							}
+							else 
+							{
+							?>
+								<td>
+									<input style = "width:50%; font-size: 100%; text-align: center;" type = "text" value = "×" id = "<?= $show.$page['page_seq'] ?>" readonly >
+									<input type = "hidden" name = "<?= $id.$page['page_seq'] ?>" value = "0" id = "<?= $id.$page['page_seq'] ?>">
+								</td>
+							<?php 
+							}
 						}
-						else
-						{
 						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
-						<?php 
-						} 
-						$autho_chk++;
-						
-						if($page_cla['write_flg'] == 1)
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
-						<?php
-						}
-						else
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
-						<?php 
-						} 
-						$autho_chk++;
-						
-						if($page_cla['update_flg'] == 1)
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
-						<?php
-						}
-						else
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
-						<?php 
-						} 
-						$autho_chk++;
-						
-						if($page_cla['delivery_flg'] == 1)
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
-						<?php
-						}
-						else
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
-						<?php 
-						} 
-						$autho_chk++;
-						
-						if($page_cla['delete_flg'] == 1)
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1" checked></td>
-						<?php
-						}
-						else
-						{
-						?>
-							<input type = "hidden" name = "autho_edit<?= $autho_chk ?>" value = "0">
-							<td><input type = "checkbox" name = "autho_edit<?= $autho_chk ?>" value = "1"></td>
-						<?php 
-						} 
-						$autho_chk++;
-						?>
+						<input type="hidden" id = "Value_<?= $page['page_seq'] ?>" value="<?= $autho_chk ?>">
+						<td><input type = "button" class = "add_btn" value = "追加"  data-id = "<?= $page['page_seq'] ?>" id = "id"></td>
+						<td><input type = "button" class = "delete_btn" data-id = "<?= $page['page_seq'] ?>" value = "削除" id = "id"></td>
 					</tr>
 				<?php
 				}

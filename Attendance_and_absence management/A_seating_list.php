@@ -4,6 +4,7 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
+	$A_date = $_SESSION['$A_date'];
 	$group_seq = $_POST['group_seq'];
 
 	//$sql = "SELECT * FROM m_user";
@@ -50,7 +51,7 @@
 			<hr color="blue">
 			<br><br>
 
-			<table border="4" align="center">
+			<table border="4" align="center" bgcolor="#FFE7CE" bordercolor="#DC143C">
 
 				<?php
 
@@ -79,6 +80,7 @@
 								$row = mysql_fetch_array($res);
 								$user_name = $row['user_name'];
 								$user_seq = $row['user_seq']
+
 				?>
 								<td class="sample" width="200" align="center">
 									<font size = "5"><?=$user_name?></font><br>
