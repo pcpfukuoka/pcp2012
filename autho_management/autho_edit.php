@@ -56,8 +56,8 @@ Dbdissconnect($link);
 			//検索結果から権限を追加するための処理
 			$(document).on('click', '.add_btn', function() 
 			{
-				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_delivery_","Show_Delete_");
-				var id_list  = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
+				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_Delivery_","Show_Delete_");
+				var id_list  = new Array("Read_", "Write_", "Update_","Delivery_","Delete_");
 				var id = $(this).data('id');
 				var name = "Value_" + id;
 				var value = document.getElementById(name).value;
@@ -73,8 +73,8 @@ Dbdissconnect($link);
 			});
 			$(document).on('click', '.delete_btn', function() 
 			{
-				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_delivery_","Show_Delete_");
-				var id_list  = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
+				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_Delivery_","Show_Delete_");
+				var id_list  = new Array("Read_", "Write_", "Update_","Delivery_","Delete_");
 				var id = $(this).data('id');
 				var name = "Value_" + id;
 				var value = document.getElementById(name).value;
@@ -192,8 +192,7 @@ $(function() {
 
 			if (ret == false)
 			{
-				var name = <?php echo $edit_name['autho_name']; ?>;
-				$(".edit_text").val() = name;
+
 			}
 
 		});
