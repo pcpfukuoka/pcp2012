@@ -2,17 +2,23 @@
 	<head>
 		<title>ユーザー検索画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	<body>
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<div align = "center">
-			<font size = "6">ユーザー検索</font><hr><br><br><br>
+			<font class="Cubicfont2">ユーザー検索</font><hr color="blue"><br><br><br>
 		</div>
-	
+
 		<form action="user_sea.php" method="POST"><!-- 検索処理 -->
 			<input type="radio" name="q1" value="name" checked>名前
 			<input type="radio" name="q1" value="id">ID
 			<input type="text" name="query">
-			<input type="submit" value="検索">
+			<input class="button4" type="submit" value="検索">
 		</form>
 		<?php 
 		if(isset($_POST['query']))//検索結果表示
@@ -61,14 +67,21 @@
 						?>
 						</tr></table><br>
 						<!-- チェックしたデータを持たせtea_subj_addに戻る -->
-					<input type = "submit" value = "送信">&nbsp;&nbsp;
-					<input class="button4" type="button" value="戻る" onClick="history.back()">
-					
+					<table>
+						<tr>
+							<td><input class="button4" type = "submit" value = "送信"></td>
+							<td><input class="button4" type="button" value="戻る" onClick="history.back()"></td>
+						</tr>
+					</table>
+
+
+
 					<?php 
 					
 				Dbdissconnect($link);
 			}
 			?>
 		</form>
+			</div>
 	</body>
 </html>

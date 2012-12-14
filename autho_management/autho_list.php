@@ -69,11 +69,11 @@ Dbdissconnect($link);
 		<table width = "100%" class="table_01">
 			<tr>
 				<th width = "25%" align = "center" ><font size="5">ページ名</font></th>
-				<th width = "15%" align = "center" ><font size="5">read</font></th>
-				<th width = "15%" align = "center" ><font size="5">write</font></th>
-				<th width = "15%" align = "center" ><font size="5">update</font></th>
-				<th width = "15%" align = "center" ><font size="5">delivery</font></th>
-				<th width = "15%" align = "center" ><font size="5">delete</font></th>
+				<th width = "15%" align = "center" ><font size="5">Read</font></th>
+				<th width = "15%" align = "center" ><font size="5">Write</font></th>
+				<th width = "15%" align = "center" ><font size="5">Update</font></th>
+				<th width = "15%" align = "center" ><font size="5">Delivery</font></th>
+				<th width = "15%" align = "center" ><font size="5">Delete</font></th>
 			</tr>
 
 			<?php

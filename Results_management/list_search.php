@@ -43,17 +43,23 @@ Dbdissconnect($link);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<title>テスト絞り込み画面</title>
 	</head>
 	
 	<body>
-		<div align = "center">
-			<font size = "6">テスト絞り込み</font><hr><br><br><br>
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+			<div id="container">
+			<div align = "center">
+			<font class="Cubicfont2">テスト絞り込み</font><hr color="blue"><br><br><br>
 		</div>
 		
 		<form action = "res_list.php" method = "POST">
 			<!-- テーブルの作成 -->
-			<table border = "1" >
+			<table border = "1"  class="table_01">
 				<tr>
 					<th>学年・クラス</th>
 					<th>教科</th>
@@ -96,7 +102,7 @@ Dbdissconnect($link);
 					小テスト<input type = "radio" name = "stand_flg" value = "0"></td>
 				</tr>
 			</table>
-			<input type = "submit" value = "一覧へ">
+			<input  class="button4" type = "submit" value = "一覧へ">
 		</form>
 	</body>
 </html>
