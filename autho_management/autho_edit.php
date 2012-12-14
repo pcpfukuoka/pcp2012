@@ -172,7 +172,14 @@ Dbdissconnect($link);
 				?>
 			</table>
 			<br>
-			<input class="button4" type = "submit" value = "確認"><br>
+			require_once("../javascript/form_reference.js");
+			
+			<script>
+				var name = document.edit.edit_name;
+
+				<input class="button4" type = "submit" value = "確認" onClick = "input_Check(name);">
+			</script>
+			<br>
 		</form>
 		</div>
 	</body>
