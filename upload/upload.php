@@ -12,16 +12,28 @@ if (is_uploaded_file($_FILES["upfile"]["tmp_name"]))
 	if (move_uploaded_file($_FILES["upfile"]["tmp_name"], "../dl_calendar/menu.jpg"))
 	{
 		chmod("../dl_calendar/menu.jpg", 0644);
-		echo $_FILES["upfile"]["name"] . "をアップロードしました。";
+		echo $_FILES["upfile"]["name"] . "をアップロードしました。<br><br><br>";
+
+		echo "<div align = 'center'>";
+		echo "<input type = 'button' value = '閉じる' onclick='window.close()' style='font-size:30px; width:100px; height:50px'>";
+		echo "</div>";
 	}
 	else
 	{
-		echo "ファイルをアップロードできません。";
+		echo "ファイルをアップロードできません。<br><br><br>";
+		echo "<div align = 'center'>";
+		echo "<input type = 'button' value = '閉じる' onclick='window.close()' style='font-size:30px; width:100px; height:50px'>";
+		echo "</div>";
+
+
 	}
 }
-else
-{
-	echo "ファイルが選択されていません。";
+	else
+	{
+		echo "ファイルが選択されていません。<br><br><br>";
+		echo "<div align = 'center'>";
+		echo "<input type = 'button' value = '閉じる' onclick='window.close()' style='font-size:30px; width:100px; height:50px'>";
+		echo "</div>";
 }
 
 ?>

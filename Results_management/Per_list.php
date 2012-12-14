@@ -77,16 +77,22 @@ $count_point = mysql_num_rows($result_point);*/
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
-		<title>テスト選択画面</title>
+			<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+	<title>テスト選択画面</title>
 	</head>
 	
 	<body>
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<div align = "center">
-			<font size = "6">テスト選択</font><hr><br><br><br>
+			<font class="Cubicfont2">テスト選択</font><hr color="blue"><br><br><br>
 		</div>
 		
 		<!-- SQLで取り出したテストデータの表示 -->
-		<table border = "1">
+		<table border = "1" class="table_01">
 		
 			<tr>
 				<th>日付</th>
@@ -165,7 +171,7 @@ $count_point = mysql_num_rows($result_point);*/
 		<?php
 			Dbdissconnect($link);
 			?>
-		<input type="button" value="戻る" onClick="history.back()">
+		<input class="button4"  type="button" value="戻る" onClick="history.back()">
 	</body>
 </html>
 

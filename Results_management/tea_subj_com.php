@@ -2,9 +2,15 @@
 	<head>
 		<title>ページ新規追加画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	
 	<body>
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<form action="tea_subj_dec.php" method="POST">
 		
 		<?php
@@ -19,7 +25,7 @@
 			$subj_radio = $_POST['subj_radio'];
 		?>
 			<div align = "center">
-				<font size = "6">先生教科</font>
+				<font class="Cubicfont1">先生教科</font>
 			</div><br><br>
 			
 			<?php
@@ -55,7 +61,7 @@
 			?>
 			
 			<!-- テーブルの作成 -->
-			<table border="1" width="80%">
+			<table border="1" width="80%" class="table_01">
 				<tr>
 					<th width="50%">教師名</th>
 					<th width="30%">担当教科</th>
@@ -111,7 +117,7 @@
 				<font size = "6">教科追加</font>
 			</div><br>
 			
-			<table border="1" width="70%"><!-- 教科のテーブル  -->
+			<table border="1" width="70%" class="table_01"><!-- 教科のテーブル  -->
 				<tr>
 					<th width="70%">教科一覧</th>
 				</tr>
@@ -142,8 +148,16 @@
 			<input type="hidden" name="subj_radio" value="<?= $subj_radio ?>">
 			<input type="hidden" name="subj_name" value="<?= $subj_name ?>">
 			<input type="hidden" name="q1" value="<?= $q1 ?>">
-			<input type = "submit" value = "確定">&nbsp;&nbsp;
-			<input class="button4" type="button" value="戻る" onClick="history.back()">
+
+			<table>
+				<tr>
+					<Td><input class="button4" type = "submit" value = "確定"></Td>
+					<td><input class="button4" type="button" value="戻る" onClick="history.back()"></td>
+				</tr>
+			</table>
+
+
 		</form>
+		</div>
 	</body>
 </html>	

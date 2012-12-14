@@ -36,6 +36,7 @@ $edit_name = mysql_fetch_array($result2);
 Dbdissconnect($link);
 
 ?>
+
 <html>
 	<head>
 		<title>権限管理編集画面</title>
@@ -47,6 +48,7 @@ Dbdissconnect($link);
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+		<script src="../javascript/form_reference.js"></script>
 		
 	<script>
 		$(function()
@@ -54,8 +56,8 @@ Dbdissconnect($link);
 			//検索結果から権限を追加するための処理
 			$(document).on('click', '.add_btn', function() 
 			{
-				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_delivery_","Show_Delete_");
-				var id_list  = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
+				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_Delivery_","Show_Delete_");
+				var id_list  = new Array("Read_", "Write_", "Update_","Delivery_","Delete_");
 				var id = $(this).data('id');
 				var name = "Value_" + id;
 				var value = document.getElementById(name).value;
@@ -71,8 +73,8 @@ Dbdissconnect($link);
 			});
 			$(document).on('click', '.delete_btn', function() 
 			{
-				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_delivery_","Show_Delete_");
-				var id_list  = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
+				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_Delivery_","Show_Delete_");
+				var id_list  = new Array("Read_", "Write_", "Update_","Delivery_","Delete_");
 				var id = $(this).data('id');
 				var name = "Value_" + id;
 				var value = document.getElementById(name).value;
@@ -84,6 +86,22 @@ Dbdissconnect($link);
 					document.getElementById(show_name).value = "×";
 					document.getElementById(check_name).value = "0";
 					document.getElementById(name).value= value;
+				}
+			});
+		});
+
+		$(function() 
+		{
+			//質問内容追加
+			$(document).on('change', '.edit_text', function() 
+			{
+				var str = $(".edit_text").val();
+				//チェックしたい関数(Function)を書く
+				var ret = inputCheck(str)
+
+				if (ret == false)
+				{
+					
 				}
 			});
 		});
@@ -103,7 +121,7 @@ Dbdissconnect($link);
 		<form name = "edit" action = "autho_edit_con.php" method = "POST">
 		
 		<!-- 元の権限グループ名を表示させ、変更できるようにする -->
-			名前<input size ="15" type="text" name="edit_name" value = <?= $edit_name['autho_name'] ?>>
+			名前<input size ="15" type="text" name="edit_name" class = "edit_text" value = <?= $edit_name['autho_name'] ?>>
 		
 		<!-- 		テープルの作成 -->
 			<table class="table_01" width = "80%">
@@ -172,14 +190,8 @@ Dbdissconnect($link);
 				?>
 			</table>
 			<br>
-			require_once("../javascript/form_reference.js");
 			
-			<script>
-				var name = document.edit.edit_name;
-
-				<input class="button4" type = "submit" value = "確認" onClick = "input_Check(name);">
-			</script>
-			<br>
+			<input class="button4" type = "submit" value = "確認">
 		</form>
 		</div>
 	</body>

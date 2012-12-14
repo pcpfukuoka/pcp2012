@@ -2,11 +2,17 @@
 	<head>
 		<title>削除確認画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
-	<body>
-	
+	<body>	
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+
 	<div align = "center">
-			<font size = "6">削除確認</font><hr><br><br><br>
+			<font class="Cubicfont2">削除確認</font><hr color="blue"><br><br><br>
 		</div>
 		
 	<form action="ts_del_dec.php" method="POST">
@@ -24,7 +30,7 @@
 		?>
 		
 		<!-- テーブルの作成 -->
-		<table border="1" width="100%"><!-- テーブル作成 -->
+		<table border="1" width="100%" class="table_01"><!-- テーブル作成 -->
 			<tr>
 				<th width="50%">教師名</th>
 				<th width="50%">担当教科</th>
@@ -45,7 +51,7 @@
 			?>
 			</table><br>
 				
-			<table border="1" width="50%"><!-- テーブル作成 -->
+			<table border="1" width="50%" class="table_01"><!-- テーブル作成 -->
 			<tr>
 				<th width="50%">教科名</th>
 			</tr>
@@ -76,7 +82,8 @@
 		<?php 
 		Dbdissconnect($link);
 		?>
-					<input type = "submit" value = "確認">&nbsp;&nbsp;
+					<input class="button4" type = "submit" value = "確認">&nbsp;&nbsp;
 		</form>
+		</div>
 	</body>
 </html>

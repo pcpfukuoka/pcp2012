@@ -76,9 +76,9 @@
 
 				<table>
 					<tr>
-						<th align="center" width="80" bgcolor="#DC143C"><font size="5">年月</font></th>
-						<th align="center" width="100" bgcolor="#DC143C"><font size="5">クラス</font></th>
-						<th align="center" width="40"></th>
+						<td align="center" width="80" bgcolor="yellow"><font size="5">年月</font></td>
+						<td align="center" width="100" bgcolor="yellow"><font size="5">クラス</font></td>
+						<td align="center" width="40"></td>
 					</tr>
 
 					<tr>

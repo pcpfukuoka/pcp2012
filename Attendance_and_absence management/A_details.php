@@ -48,10 +48,20 @@
 			<div align="center">
 				<font class="Cubicfont">詳細</font>
 			</div>
+		
+	<hr color="blue"><br><br>
 
-			<font size = "4"><a href="A_list.php">←戻る</a></font>
-
-			<hr color="blue"><br><br>
+			<div align = "center">
+				<table border = "1">
+					<tr bgcolor = "pink">
+						<td align="center" width="150" height="35"><font size="5">氏名</font></td>
+					</tr>
+					<tr>
+						<td align="center"bgcolor="white"width="150" height="35"><font size = "5"><?= $row['user_name']?></font></td>
+					</tr>
+				</table>
+			</div>
+			<br><br>
 
 			<div align = "center">
 				<table class="table_01">

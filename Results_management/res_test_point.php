@@ -50,21 +50,28 @@ $result_point = mysql_query($sql);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<title>点数入力画面</title>
 	</head>
 	
 	<body>
-	
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+
 	<div align = "center">
-			<font size = "6">点数入力</font><hr><br><br><br>
+			<font class="Cubicfont2">点数入力</font><hr color="blue"><br><br><br>
 		</div>
 		
 	<!-- 点数確認画面に飛ぶ -->
 		<form action = "test_point_con.php" method = "POST">
 
 			<!-- テーブルの作成 -->
-			<table border = "1">
-				<tr>
+			<table border = "1" class="table_01">
+	
+			<tr>
 					<th>名前</th>
 					<th>点数</th>
 				</tr>
@@ -105,9 +112,19 @@ $result_point = mysql_query($sql);
 			$_SESSION['group_seq'] = $group_seq;
 			$_SESSION['test_seq'] = $test_seq;
 			?>
-			
-			<input type = "submit" value = "確認">
-			<input type="button" value="戻る" onClick="history.back()">
+					<br>
+		<table>
+			<tr>
+				<td>
+					<input class="button4" type = "submit" value = "確認">
+				</td>
+				<td>
+					<input class="button4" type="button" value="戻る" onClick="history.back()">
+				</td>
+			</tr>
+		</table>
 		</form>
+		</div>
+
 	</body>
 </html>

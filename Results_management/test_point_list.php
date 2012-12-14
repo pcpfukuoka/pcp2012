@@ -50,16 +50,22 @@ $count_point = mysql_num_rows($result_point);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<title>点数一覧画面</title>
 	</head>
 	
 	<body>
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<div align = "center">
-			<font size = "6">点数一覧</font><hr><br><br><br>
+			<font class="Cubicfont2">点数一覧</font><hr color="blue"><br><br><br>
 		</div>
 		
 		<!-- テーブルの作成 -->
-		<table border = "1">
+		<table border = "1" class="table_01">
 			<tr>
 				<th>日付</th>
 				<th>教科</th>
@@ -148,8 +154,18 @@ $count_point = mysql_num_rows($result_point);
 		</table><br>
 		<form action = "res_test_point.php" method = "POST">
 			<input type = "hidden" name = "test_seq" value = "<?= $test_seq ?>">
-			<input type = "submit" value = "点数修正へ">
-			<input type="button" value="戻る" onClick="history.back()">
+			<table>
+				<tr>
+					<td>
+						<input class="button4" type = "submit" value = "点数修正へ">
+					</td>
+
+					<td>
+						<input class="button4" type="button" value="戻る" onClick="history.back()">
+					</td>
+				</tr>
+			</table>
 		</form>
+			</div>
 	</body>
 </html>

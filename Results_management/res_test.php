@@ -72,16 +72,22 @@ Dbdissconnect($link);
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<title>テスト登録画面</title>
 	</head>
 	
 	<body>
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<div align = "center">
-			<font size = "6">テスト登録</font><hr><br><br><br>
+			<font class="Cubicfont2">テスト登録</font><hr color="blue"><br><br><br>
 		</div>
 		
 		<!-- テーブルの作成 -->
-		<table border = "1" width = "100%">
+		<table border = "1" width = "100%" class="table_01">
 			<tr>
 				<th width = "13%">教科</th>
 				<th width = "8%">日付</th>
@@ -202,7 +208,7 @@ Dbdissconnect($link);
 					<!-- test_seqを持っていく -->
 					<td align = "center">
 						<input type = "hidden" name = "subname['<?= $i ?>']" value = "<?= $test['test_seq'] ?>">
-						<input type = "submit" name = "submit['<?= $i ?>']" value = "点数修正">
+						<input class="button4" type = "submit" name = "submit['<?= $i ?>']" value = "点数修正">
 					</td>
 				</tr>
 				<?php
