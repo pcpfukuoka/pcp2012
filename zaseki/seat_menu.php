@@ -102,6 +102,10 @@
 			<input type = "submit" value = "テスト席替え">
 		</form>
 
+		<form action="seat_register_step1.php">
+			<input type="submit"value="座席登録">
+		</form>
+
 		<!-- テスト用 -->
 	</body>
 </html>
