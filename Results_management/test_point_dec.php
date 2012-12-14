@@ -46,11 +46,18 @@ Dbdissconnect($link);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../dummy.html">
 		<title>点数確定画面</title>
 	</head>
 	
 	<body>
-		点数を登録しました。
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+		<font class="Cubicfont1">点数を登録しました。</font>
+		</div>
 	</body>
 </html>

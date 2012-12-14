@@ -31,19 +31,23 @@ Dbdissconnect($link);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<title>点数確認画面</title>
 	</head>
 	
 	<body>
-	
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+
 		<div align = "center">
-			<font size = "6">点数確認</font><hr><br><br><br>
+			<font class="Cubicfont2">点数確認</font><hr color="blue"><br><br><br>
 		</div>
 		
-		<form action = "test_point_dec.php" method = "POST">
-		
 			<!-- テーブルの作成 -->
-			<table border = "1">
+		<form action = "test_point_dec.php" method = "POST">
 				<tr>
 					<th>名前</th>
 					<th>点数</th>
@@ -66,9 +70,10 @@ Dbdissconnect($link);
 				?>
 			</table>
 			
-			<input type = "submit" value = "確定">
+			<input class="button4" type = "submit" value = "確定">
 			
 		</form>
 		<a href = "list_search.php">絞り込みに戻る</a>
+	</div>
 	</body>
 </html>
