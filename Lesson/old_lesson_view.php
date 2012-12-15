@@ -8,8 +8,8 @@ $subject_seq = $_POST['subject_seq'];
 require_once("../lib/dbconect.php");
 $dbcon = DbConnect();
 
-$sql = "SELECT div_url, canvas_url FROM board WHERE date=". $date ."subject_seq=".$subject_seq .";";
-
+//$sql = "SELECT div_url, canvas_url FROM board WHERE date=". $date ."subject_seq=".$subject_seq .";";
+$sql = "SELECT div_url, canvas_url FROM board WHERE date=". $date ."subject_seq=15;";
 $result = mysql_query($sql);
 
 $count = mysql_num_rows($result);
