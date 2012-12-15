@@ -15,12 +15,7 @@
 
 	$count = mysql_num_rows($result);
 
-	for($i = 0;i<$count;$i++){
 
-		$row = mysql_fetch_array($result);
-		$div_arrangement[$i]= $row['div_url'];
-		$canvas_arrangement[$i]= $row['canvas_url'];
-	}
 ?>
 <html>
 <head>
