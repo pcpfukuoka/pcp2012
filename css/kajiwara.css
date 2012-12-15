@@ -1,0 +1,96 @@
+@CHARSET "UTF-8";
+
+/* --------------------------------------------------
+   kajiwara Table
+-------------------------------------------------- */
+.kajiwara {
+    border-spacing: 5px;
+
+    border: 1px solid #FFF;
+    -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+         -o-border-radius: 6px;
+            border-radius: 6px;
+
+}
+
+.kajiwara p{
+	text-align:justify;
+	text-justify:distribute-all-lines;
+}
+
+.kajiwara th,
+.kajiwara td {
+    padding:10px;
+    background:burlywood;
+    border-bottom:solid 1px #CCC;
+    border-right:solid 1px #CCC;
+
+     -webkit-border-radius: 6px 6px 6px 6px;
+   		-moz-border-radius: 6px 6px 6px 6px;
+   		  -o-border-radius: 6px 6px 6px 6px;
+ 			 border-radius: 6px 6px 6px 6px;
+ 			 width: 120px;
+ 			 heigth: 100px;
+
+}
+.kajiwara th {
+    background:#e3dcd5;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+    color:#69655c;
+}
+
+
+/* -----------------------
+  左上角丸 thead内　最初の行の最初のセル
+----------------------- */
+.kajiwara thead tr:first-child th:first-child,
+.kajiwara thead tr:first-child td:first-child {
+    -webkit-border-radius: 6px 0 0 0;
+       -moz-border-radius: 6px 0 0 0;
+         -o-border-radius: 6px 0 0 0;
+            border-radius: 6px 0 0 0;
+}
+/* -----------------------
+  右上角丸 thead内　最初の行の最後のセル
+----------------------- */
+.kajiwara thead tr:first-child th:last-child,
+.kajiwara thead tr:first-child td:last-child {
+    -webkit-border-radius: 0 6px 0 0;
+       -moz-border-radius: 0 6px 0 0;
+         -o-border-radius: 0 6px 0 0;
+            border-radius: 0 6px 0 0;
+}
+/* -----------------------
+  角丸なし　thaedの後のtbody 最初の行の最初のセル
+  角丸なし　thaedの後のtbody 最初の行の最後のセル
+----------------------- */
+.kajiwara thead+tbody tr:first-child th:first-child,
+.kajiwara thead+tbody tr:first-child td:first-child,
+.kajiwara thead+tbody tr:first-child th:last-child,
+.kajiwara thead+tbody tr:first-child td:last-child {
+    -webkit-border-radius:0px;
+       -moz-border-radius:0px;
+         -o-border-radius:0px;
+            border-radius:0px;
+}
+/* -----------------------
+  左下角丸　thaedの後のtbody 最後の行の最初のセル
+----------------------- */
+.kajiwara thead+tbody tr:last-child th:first-child,
+.kajiwara thead+tbody tr:last-child td:first-child {
+    -webkit-border-radius: 0 0 0 6px;
+       -moz-border-radius: 0 0 0 6px;
+         -o-border-radius: 0 0 0 6px;
+            border-radius: 0 0 0 6px;
+}
+/* -----------------------
+  右下角丸　thaedの後のtbody 最後の行の最後のセル
+----------------------- */
+.kajiwara thead+tbody tr:last-child th:last-child,
+.kajiwara thead+tbody tr:last-child td:last-child {
+    -webkit-border-radius: 0 0 6px 0;
+       -moz-border-radius: 0 0 6px 0;
+         -o-border-radius: 0 0 6px 0;
+            border-radius: 0 0 6px 0;
+}

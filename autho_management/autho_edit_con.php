@@ -46,15 +46,15 @@ Dbdissconnect($link);
 			<table  class="table_01">
 				<tr>
 					<th width = "25%" align = "center"><font size="5">ページ名</font></th>
-					<th width = "15%" align = "center"><font size="5">read</font></th>
-					<th width = "15%" align = "center"><font size="5">write</font></th>
-					<th width = "15%" align = "center"><font size="5">update</font></th>
-					<th width = "15%" align = "center"><font size="5">delivery</font></th>
-					<th width = "15%" align = "center"><font size="5">delete</font></th>
+					<th width = "15%" align = "center"><font size="5">Read</font></th>
+					<th width = "15%" align = "center"><font size="5">Write</font></th>
+					<th width = "15%" align = "center"><font size="5">Update</font></th>
+					<th width = "15%" align = "center"><font size="5">Delivery</font></th>
+					<th width = "15%" align = "center"><font size="5">Delete</font></th>
 				</tr>
 				
 				<?php
-				$autho_chk = 0;
+				$autho_id = Array("Read_", "Write_", "Update_", "Delivery_", "Delete_");
 				for($i = 0; $i < $count_page; $i++)
 				{
 					//ページseqとページ名を連想配列に入れる
@@ -65,14 +65,16 @@ Dbdissconnect($link);
 					<?php
 					for($j = 0; $j < 5; $j++)
 						{
-							$autho_edit = "autho_edit".$autho_chk;
+							$id = $autho_id[$j];
+							$autho_edit = $id.$page['page_seq'];
 					?>
 						<td>
-						<?php if($_POST[$autho_edit])
+							<?php 
+							if($_POST[$autho_edit])
 							{
-						?>
+							?>
 								<input type = "hidden" name = "edit_data[]" value = "1">
-								<?php		
+								<?php
 								echo "○" ;
 							}
 							else
@@ -80,9 +82,8 @@ Dbdissconnect($link);
 								?>
 								<input type = "hidden" name = "edit_data[]" value = "0">
 								<?php
-								echo "×" ;	
+								echo "×";
 							}
-							$autho_chk++;
 						?>
 						</td>
 						<?php 
@@ -99,7 +100,6 @@ Dbdissconnect($link);
 					<td><input class="button4" type="button" value="戻る" onClick="history.back()"></td>
 				</tr>
 			</table>
-			
 		</form>
 		</div>
 	</body>

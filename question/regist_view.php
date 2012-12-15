@@ -1,14 +1,17 @@
 <?php
 session_start();
 
+
+
+
+
 ?>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<META http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
-		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+		 <script src="../jquery-1.8.2.min.js"></script>
 	</head>
 	<body>		
 		<?php 
@@ -47,7 +50,7 @@ session_start();
 	</body>
 		<script>
 		$(function() {
-			kbn = new Array("","単一", "複数");
+			kbn = new Array("","複数", "単一");
 			//質問内容追加
 			$(document).on('click', '.questionAdd', function() {
 				//今までの要素を無効化
@@ -73,7 +76,6 @@ session_start();
 		                },
 		        function(rs) {
 		    		        //次に入力するために必要な要素を追加
-			                $('#input_section').append('<input type="hidden" name="seq" value = "'+ rs +'"><br>');
 		    		        $('#input_section').append('質問内容：<input type="text" name="input_question_details_description"><br>');
 			                $('#input_section').append('回答区分：<select name = "answer_kbn" size = "1"><option value = "-1">選択</option><option value = "1">複数</option><option value = "2">単一</option><br>');
 			                $('#input_section').append('<br>回答内容：<input type="text" name="input_question_lsit_name"><input type="button" value="追加" class="questionListAdd"><br>');
@@ -89,8 +91,6 @@ session_start();
 		        var question_name = $("*[name=input_question_lsit_name]").val();
 		        $.post('question_answer_list_add.php', {
 		            id: question_name
-		                },
-		        function(rs) {
 		                	$("*[name=input_question_lsit_name]").val("");
 		        	var e = $(
 		                    '<li>' +
@@ -98,7 +98,6 @@ session_start();
 		                    '</li>'
 		                );
 	                $('#question_awnser_lsit').append(e);
-		        });
 		    });
 
 			//回答一覧追加
@@ -148,5 +147,4 @@ session_start();
 		    });
 		});
 		</script>
-	
 </html>

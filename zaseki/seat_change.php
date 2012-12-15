@@ -2,6 +2,8 @@
 	<head>
 		<title>座席表</title>
     <script src="../jquery-1.8.2.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/kajiwara.css" />
+	<link rel="stylesheet" type="text/css" href="../css/button.css" />
 	</head>
 	<body>
 	<script>
@@ -75,6 +77,7 @@
 
 
 
+
 <?php
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
@@ -86,7 +89,8 @@
 
 ?>
 	<form action="seat_change_update.php" method="POST">
-	<table border = 1  cellspacing="10">
+
+	<table class="kajiwara" style="table-layout:fixed;">
 <?php
 	$class = $_POST['group'];
 	$sql = "select max(row) as mx from seat where group_seq ='$class'";
@@ -116,7 +120,7 @@
 
 						if($user_seq == "0")
 						{
-							echo "<td id='$id'class='change'width='100'></td>";
+							echo "<td id='$id'class='change'></td>";
 						}
 						else
 						{
@@ -124,7 +128,7 @@
 							$res = mysql_query($sql);
 							$ret = mysql_fetch_array($res);
 							$name = $ret['user_name'];
-							echo "<td id='$id'class='change'width='100'>";?>
+							echo "<td id='$id'class='change'>";?>
 							<input name = user_seq<?= $row?>[<?= $col?>] type="hidden" value = <?= $user_seq ?>>
 							<?php echo " <p>$name</p></td>";
 						}
@@ -141,9 +145,9 @@
 		echo "<input name=col_max type=hidden value=$col_max>";
 ?>
 	</table>
-	<input type="submit" value="更新">
+	<input type="submit" value="更新" class="button4">
 	</form>
-	<input type="submit" value="ランダム" class = "rand">
+	<input type="submit" value="ランダム" class = "rand button4">
 
 	</body>
 </html>

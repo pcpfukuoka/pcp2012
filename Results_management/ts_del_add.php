@@ -3,8 +3,14 @@
 		<title>先生削除画面</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 		<meta http-equiv="Content-Style-Type" content="text/css"></meta>
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	<body>
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
 		<?php
 		
 		require_once("../lib/dbconect.php");
@@ -15,7 +21,7 @@
 		?>
 			<div align = "center">
 			
-				<font size = "6">先生削除</font>
+				<font class="Cubicfont1">先生削除</font>
 			</div><br><br>
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
@@ -147,7 +153,7 @@
 			?>
 			
 			<div align = "center">
-			<font size = "6">教科削除</font></div><br>
+			<font class="Cubicfont2">教科削除</font></div><br>
 			<?php 
 			
 			
@@ -201,9 +207,10 @@
 			<?php 
 			Dbdissconnect($link);
 			?>
-			<input type = "submit" value = "確認">&nbsp;&nbsp;
+			<input  class="button4" type = "submit" value = "確認">&nbsp;&nbsp;
 			<input type = "reset" value="クリア"><br><br>
 			</form>
+			</div>
 	</body>
 </html>
 <?php

@@ -48,6 +48,9 @@
 				<input class="button2" type="button" onclick="jump('A_list.php')" value="一覧">
 				<br><br>
 
+				<!-- 座席表　仮設置 -->
+				<input class="button2" type="button" onclick="jump('../zaseki/seat_menu.php')" value="座席表（仮設置）">
+
 			</p>
 		</div>
 	</body>

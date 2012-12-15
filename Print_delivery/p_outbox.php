@@ -21,17 +21,17 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-		 <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
-		<title>送信ボックス</title>
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		<title>送信箱</title>
 	</head>
 
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		 <div id="container">
 		<div align="center">
-			<font class="Cubicfont">プリント送信ボックス</font>
+			<font class="Cubicfont">送信箱</font>
 		</div>
 
 		<hr color="blue">

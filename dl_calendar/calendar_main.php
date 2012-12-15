@@ -13,9 +13,7 @@
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
-
-		<br>
-			<font class="Cubicfont1">メイン画面</font>
+			<font class="Cubicfont">メイン画面</font>
 		</div>
 		<hr color="blue">
 
