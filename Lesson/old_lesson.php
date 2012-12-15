@@ -18,11 +18,11 @@
 	</head>
 
 	<body>
-		<form action="old_lesson_view.php" method="POST">
+		<form action="old_lesson_view.php" method="post">
 
-			<input type="date" id="name" />
+			<input type="date" name="date" />
 
-			<select id="subject">
+			<select name="subject_seq">
 					<?php
 		   				for ($i = 0; $i < $count; $i++)
 		   				{
