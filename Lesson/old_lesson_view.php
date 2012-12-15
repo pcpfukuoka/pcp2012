@@ -23,6 +23,7 @@ $count = mysql_num_rows($result);
 <body>old_lesson_view,php
 <?php
 	echo $date;
+	echo $sql;
 	for($i = 0;i<$count;$i++){
 
 		$row = mysql_fetch_array($result);
