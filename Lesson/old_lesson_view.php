@@ -32,7 +32,7 @@
 		$div_arrangement[$i]= $row['div_url'];
 		$canvas_arrangement[$i]= $row['canvas_url'];
 		$aaa = substr($row['div_url'],30);
-		$bbb = "../../balckboard/public/".$aaa;
+		$bbb = "url(../../balckboard/public/".$aaa;
 		echo $bbb;
 ?>
 	<div id="div_background" style="background: <?= $bbb ?>">
