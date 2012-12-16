@@ -38,7 +38,7 @@
 		echo $bbb;
 ?>
 	<div class="div_background" style="background: <?= $bbb ?>">
-		<img border="0" src="<?= $row['canvas_url'] ?>" width="128" height="128" alt="イラスト1">
+		<img border="0" src="<?= $row['canvas_url'] ?>" width="780" height="540" alt="イラスト1">
 	</div>
 <?php
 	}
