@@ -19,7 +19,9 @@
 ?>
 <html>
 <head>
+	<link rel="stylesheet" href="../css/old_lesson_view_css.css">
 </head>
+
 
 <body>old_lesson_view,php
 
@@ -35,7 +37,7 @@
 		$bbb = "url(../../balckboard/public/".$aaa;
 		echo $bbb;
 ?>
-	<div id="div_background" style="background: <?= $bbb ?>">
+	<div class="div_background" style="background: <?= $bbb ?>">
 
 	</div>
 <?php
