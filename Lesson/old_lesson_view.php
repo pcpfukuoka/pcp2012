@@ -24,8 +24,8 @@
 <body>old_lesson_view,php
 
 <?php
-echo $count;
-/*
+
+
 	for($i = 0;i<$count;$i++){
 
 		$row = mysql_fetch_array($result);
@@ -39,9 +39,8 @@ echo $count;
 
 	</div>
 <?php
-
 	}
-*/
+
 ?>
 
 </body>
