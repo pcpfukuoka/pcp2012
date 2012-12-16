@@ -1,7 +1,9 @@
 @CHARSET "UTF-8";
 .div_background {
-	width: 128px;
-	height: 128px;
+	position: relative;
+	width: 780px;
+	height: 540px;
+	padding-top: 20px;
 	background-repeat:no-repeat;
 
 }
