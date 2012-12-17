@@ -35,10 +35,10 @@
 		$canvas_arrangement[$i]= $row['canvas_url'];
 		$aaa = substr($row['div_url'],30);
 		$bbb = "url(../../balckboard/public/".$aaa;
-		echo $bbb;
+		echo $row['canvas_url'];
 ?>
 	<div class="div_background" style="background: <?= $bbb ?>">
-		<img border="0" src="<?= $canvas_arrangement[$i] ?>" width="780" height="540" alt="イラスト1">
+		<img border="0" src="<?= $canvas_arrangement[$i] ?>" width="128" height="128">
 	</div>
 <?php
 	}
