@@ -34,7 +34,7 @@
 				$bbb = "url(../../balckboard/public/".$aaa;
 		?>
 					<td>
-						<div class="div_background" style="background-image: <?= $bbb ?>">
+						<div class="div_background" style="background-image: <?= $bbb ?>"id="<?= $i ?>">
 							<img border="0" src="<?= $row['canvas_url']?>"width="128" height="128">
 						</div>
 					</td>
