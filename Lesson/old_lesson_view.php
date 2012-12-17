@@ -18,33 +18,32 @@
 
 ?>
 <html>
-<head>
-	<link rel="stylesheet" href="../css/old_lesson_view_css.css">
-</head>
+	<head>
+		<link rel="stylesheet" href="../css/old_lesson_view_css.css">
+	</head>
 
 
-<body>old_lesson_view,php
+	<body>
 
-<?php
+		<table border="0">
+		<?php
+			for($i = 1;$i <= $count;$i++){
+
+				$row = mysql_fetch_array($result);
+				$aaa = substr($row['div_url'],30);
+				$bbb = "url(../../balckboard/public/".$aaa;
+		?>
+					<td>
+						<div class="div_background" style="background-image: <?= $bbb ?>">
+							<img border="0" src="<?= $row['canvas_url']?>"width="128" height="128">
+						</div>
+					</td>
+		<?php
+			}
+
+		?>
+		</table>
 
 
-	for($i = 0;$i < $count;$i++){
-
-		$row = mysql_fetch_array($result);
-		$div_arrangement[$i]= $row['div_url'];
-		$canvas_arrangement[$i]= $row['canvas_url'];
-		$aaa = substr($row['div_url'],30);
-		$bbb = "url(../../balckboard/public/".$aaa;
-?>
-		<div class="div_background" style="background-image: <?= $bbb ?>">
-			<img border="0" src="<?= $row['canvas_url']?>"width="128" height="128">
-		</div>
-
-<?php
-	}
-
-?>
-
-
-</body>
+	</body>
 </html>
