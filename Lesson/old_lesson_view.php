@@ -10,7 +10,7 @@
 	$dbcon = DbConnect();
 
 	$sql = "SELECT div_url, canvas_url FROM board WHERE date='". $date ."' AND subject_seq=15;";
-	$sql = "SELECT div_url FROM board WHERE date='". $date ."' AND subject_seq=15;";
+	//$sql = "SELECT div_url FROM board WHERE date='". $date ."' AND subject_seq=15;";
 	$result = mysql_query($sql);
 
 	$count = mysql_num_rows($result);
@@ -36,15 +36,17 @@
 		$aaa = substr($row['div_url'],30);
 		$bbb = "url(../../balckboard/public/".$aaa;
 		echo $row['canvas_url'];
-		//<img border="0" src="<?= $canvas_arrangement[$i] " width="128" height="128">
-?>
-	<div class="div_background" style="background: <?= $bbb ?>">
 
-	</div>
+?>
+		<div class="div_background" style="background-image: <?= $bbb ?>">
+			<img border="0" src="<?= $row['canvas_url']?>"width="128" height="128">
+		</div>
+
 <?php
 	}
 
 ?>
+
 
 </body>
 </html>
