@@ -35,8 +35,6 @@
 		$canvas_arrangement[$i]= $row['canvas_url'];
 		$aaa = substr($row['div_url'],30);
 		$bbb = "url(../../balckboard/public/".$aaa;
-		echo $row['canvas_url'];
-
 ?>
 		<div class="div_background" style="background-image: <?= $bbb ?>">
 			<img border="0" src="<?= $row['canvas_url']?>"width="128" height="128">
