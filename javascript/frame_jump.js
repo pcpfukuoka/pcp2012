@@ -36,13 +36,19 @@ function jump_class(){
 
 }
 
-
-
 function leftreload()
 {
 	parent.left.location.reload();
 }
 
+
+//TOPメニューから書くリンクに移動する処理
+//左に左用右に右用のURLを引数として渡す。
+function menu_jump(left_url,right_url)
+{	
+	parent.left.location=left_url;
+	parent.right.location=right_url;
+}
 
 
 
