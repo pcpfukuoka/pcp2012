@@ -49,7 +49,7 @@
 		<meta name="viewport" content="width=1024, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<meta name="description" content="This is an example using HTML5 WebSocket. Multiple users can write this chalkboard at the same time.">
 		<link rel="stylesheet" href="../css/old_lesson_canvas_css.css">
-		<script src="../javascript/old_lesson_canvas_js.js" type = "text/javascript">
+		<script src="../javascript/old_lesson_canvas_js.js" type = "text/javascript"></script>
 
 
 	</head>
