@@ -55,11 +55,11 @@
 	</head>
 	<body>
 			<div id="chalkboard" style="background:<?= $div[0]?>;background-repeat:no-repeat">
-				<img src="<?=$canvas[0] ?>"id="canvas">
+				<img src="<?=$canvas[0] ?>"id="canvas" />
 			</div>
 				<input id="turn" value="戻る" type="button" onclick="turn('<?=$div_str ?>','<?=$canvas_str ?>')">
 	 			<input id="next" value="次へ"type="button"onclick="next('<?=$div_str ?>','<?=$canvas_str ?>')">
-	 			<input type="hidden" value="0" id="page_num">
+	 			<input type="hidden" value=0 id="page_num">
 
 	 		<br>
 	</body>
