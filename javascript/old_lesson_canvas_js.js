@@ -2,7 +2,7 @@ function turn(div,canvas){
 	var page_ele =document.getElementById('page_num');
 	var div_ele =document.getElementById('chalkboard');
 	var canvas_ele =document.getElementById('canvas');
-	var page= page_ele.value;
+	var page= Number(page_ele.value);
 
 
 	var div_list=div.split(",");
@@ -28,14 +28,14 @@ function next(div,canvas){
 	var page_ele =document.getElementById('page_num');
 	var div_ele =document.getElementById('chalkboard');
 	var canvas_ele =document.getElementById('canvas');
-	var page= page_ele.value;
+	var page= Number(page_ele.value);
 
 	var div_list=div.split(",");
 	var canvas_list=canvas.split(",");
 	var list_num=div_list.length;
 
 	//進んだためひとつ後にカーソルをそろえる
-	page=page+1;
+	page=page++;
 
 	if(page > list_num-1){
 		page=list_num-1;
