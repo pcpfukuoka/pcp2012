@@ -1,7 +1,8 @@
 <?php
 
-	$date = $_POST['date'];
-	$subject_seq = $_POST['subject_seq'];
+	//$date = $_POST['date'];
+	$date = '2012-12-14';
+	//$subject_seq = $_POST['subject_seq'];
 
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
@@ -39,6 +40,7 @@
 ?>
 
 	<!DOCTYPE html>
+<html>
 
 	<head>
 		<meta charset="utf-8">
