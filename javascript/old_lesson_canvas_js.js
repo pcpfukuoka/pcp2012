@@ -1,7 +1,7 @@
 function turn(div,canvas){
-	var page =document.getElementById('page_num');
-	var div =document.getElementById('chalkboard');
-	var canvas =document.getElementById('canvas');
+	var page_ele =document.getElementById('page_num');
+	var div_ele =document.getElementById('chalkboard');
+	var canvas_ele =document.getElementById('canvas');
 
 
 	var div_list=div.split(",");
@@ -14,19 +14,19 @@ function turn(div,canvas){
 		page=0;
 	}
 
-	div.style.background=div_list[page];
+	div_ele.style.background=div_list[page];
 
 
-	canvas.src=canvas_list[page];
+	canvas_ele.src=canvas_list[page];
 
-	page.value=page;
+	page_ele.value=page;
 }
 
 function next(div,canvas){
 
-	var page =document.getElementById('page_num');
-	var div =document.getElementById('chalkboard');
-	var canvas =document.getElementById('canvas');
+	var page_ele =document.getElementById('page_num');
+	var div_ele =document.getElementById('chalkboard');
+	var canvas_ele =document.getElementById('canvas');
 
 
 	var div_list=div.split(",");
@@ -40,8 +40,8 @@ function next(div,canvas){
 		page=list_num-1;
 	}
 
-	div.style.background=div_list[page];
-	canvas.src=canvas_list[page];
+	div_ele.style.background=div_list[page];
+	canvas_ele.src=canvas_list[page];
 
-	page.value=page;
+	page_ele.value=page;
 }
