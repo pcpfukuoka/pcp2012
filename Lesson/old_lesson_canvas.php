@@ -54,7 +54,7 @@
 
 	</head>
 	<body>
-			<div id="chalkboard" style="background:url(../images/kokuban.jpg);background-repeat:no-repeat">
+			<div id="chalkboard" style="background:<? $div[0]?>;background-repeat:no-repeat">
 				<img src="<?=$canvas[0] ?>"id="canvas">
 			</div>
 				<input id="turn" value="戻る" type="button" onclick="turn(<?=$div_str ?>,<?=$canvas_str ?>)">
