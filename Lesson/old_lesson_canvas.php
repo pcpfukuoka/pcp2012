@@ -48,14 +48,13 @@
 
 		<meta name="viewport" content="width=1024, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<meta name="description" content="This is an example using HTML5 WebSocket. Multiple users can write this chalkboard at the same time.">
+		<link rel="stylesheet" href="../css/old_lesson_canvas_css.css">
 
-		<link rel="stylesheet" href="../css/old_lesson_style.css">
-		<link rel="stylesheet" href="../css/old_lesson_index.css">
 		<script src="../js/modernizr-2.0.6.min.js"></script>
 
 	</head>
 	<body>
-			<div id="chalkboard" style="background:<?= $div[0] ?>;background-repeat:no-repeat">
+			<div id="chalkboard" style="background:url(../images/kokuban.jpg);background-repeat:no-repeat">
 				<img src="<?=$canvas[0] ?>"id="canvas">
 			</div>
 				<input id="turn" value="戻る" type="button" onclick="turn(<?=$div_str ?>,<?=$canvas_str ?>)">
