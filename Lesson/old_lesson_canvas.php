@@ -8,7 +8,7 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
-	$sql = "SELECT div_url, canvas_url FROM board WHERE date=". $date ."subject_seq=15;";
+	$sql = "SELECT div_url, canvas_url FROM board WHERE date='". $date ."' AND subject_seq=15;";
 
 	$result = mysql_query($sql);
 
