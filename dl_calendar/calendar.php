@@ -1,5 +1,3 @@
-
-
 <?php
 //============初期設定============
 //save
@@ -79,6 +77,11 @@ $data_max = 100; //データ最大記録数
 $data_file = './log.dat';
 $horiday_file = './horiday.dat'; //休日用ファイル
 $passwd = '777'; //管理者用パスワード
+
+require_once("../lib/dbconect.php");
+$dbcon = DbConnect();
+
+
 //書き込み処理
 if($action == 'regist')
 {
@@ -105,10 +108,6 @@ if($action == 'regist')
 
         $chk_flag = 0;
 
-        mysql_connect("105-pc", "root", "");
-        mysql_select_db("pcp2012");
-        mysql_query("SET NAMES UTF8");
-
         $message1 = "select * from schedule where schedule_date = '$date'";
         $message = mysql_query($message1);
         $chk_flag = mysql_num_rows($message);
@@ -128,9 +127,6 @@ if($action == 'regist')
 elseif($action == 'update'){
 	    if($comment)
 		{
-			mysql_connect("105-pc", "root", "");
-	        mysql_select_db("pcp2012");
-	        mysql_query("SET NAMES UTF8");
 
 			$message = "UPDATE schedule SET shedule_title='$schedule',schedule_details='$comment',color='$c_color' WHERE schedule_date='$date'";
 	        mysql_query($message);
@@ -138,10 +134,6 @@ elseif($action == 'update'){
 
 //記事削除処理
 }elseif($action == 'delete'){
-
-		mysql_connect("105-pc", "root", "");
-        mysql_select_db("pcp2012");
-        mysql_query("SET NAMES UTF8");
 
 		$message = "delete  from schedule where schedule_date='$select_date'";
         mysql_query($message);
@@ -457,12 +449,6 @@ for($i = 1; $i <= $week_of_month * 7; $i++){
 
 
         //祭日データを抽出
-
-        mysql_connect("105-pc", "root", "");
-        mysql_select_db("pcp2012");
-
-        mysql_query("SET NAMES utf8");
-
         $message1 = "select * from calendar";
         $message = mysql_query($message1);
 
@@ -486,11 +472,6 @@ for($i = 1; $i <= $week_of_month * 7; $i++){
         unset($message);
 
         //コメントデータを抽出
-        mysql_connect("105-pc", "root", "");
-        mysql_select_db("pcp2012");
-
-        mysql_query("SET NAMES UTF8");
-
         $message1 = "select * from schedule";
         $message = mysql_query($message1);
 		$count = mysql_num_rows($message);
@@ -591,11 +572,6 @@ if($action == 'add'){
     echo "</table></form>\n";
     echo "お好きな日にちにコメントを<BR>登録できます。<BR><FONT SIZE=2 COLOR='red'>※コメントがなければ記事は登録<BR>されません。</FONT>\n";
 }elseif($action == 'edit'){
-
-	mysql_connect("105-pc", "root", "");
-	mysql_select_db("pcp2012");
-
-	mysql_query("SET NAMES UTF8");
 
 	$message1 = "select * from schedule";
 	$message = mysql_query($message1);
