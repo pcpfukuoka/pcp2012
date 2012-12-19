@@ -50,15 +50,14 @@
 		<meta name="description" content="This is an example using HTML5 WebSocket. Multiple users can write this chalkboard at the same time.">
 		<link rel="stylesheet" href="../css/old_lesson_canvas_css.css">
 
-		<script src="../js/modernizr-2.0.6.min.js"></script>
 
 	</head>
 	<body>
-			<div id="chalkboard" style="background:<? $div[0]?>;background-repeat:no-repeat">
+			<div id="chalkboard" style="background:<?= $div[0]?>;background-repeat:no-repeat">
 				<img src="<?=$canvas[0] ?>"id="canvas">
 			</div>
-				<input id="turn" value="戻る" type="button" onclick="turn(<?=$div_str ?>,<?=$canvas_str ?>)">
-	 			<input id="next" value="次へ"type="button"onclick="next(<?=$div_str ?>,<?=$canvas_str ?>)">
+				<input id="turn" value="戻る" type="button" onclick="turn('<?=$div_str ?>','<?=$canvas_str ?>')">
+	 			<input id="next" value="次へ"type="button"onclick="next('<?=$div_str ?>','<?=$canvas_str ?>')">
 	 			<input type="hidden" value="0" id="page_num">
 
 	 		<br>
