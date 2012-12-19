@@ -11,7 +11,7 @@ function turn(div,canvas){
 	//戻ったためひとつ前にカーソルをそろえる
 	page=page-1;
 
-	if(page==0){
+	if(page==-1){
 		page=0;
 	}
 
@@ -34,7 +34,7 @@ function next(div,canvas){
 	var canvas_list=canvas.split(",");
 	var list_num=div_list.length;
 
-	//戻ったためひとつ前にカーソルをそろえる
+	//進んだためひとつ後にカーソルをそろえる
 	page=page+1;
 
 	if(page > list_num-1){
