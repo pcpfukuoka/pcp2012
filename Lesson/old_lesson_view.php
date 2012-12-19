@@ -19,7 +19,9 @@
 ?>
 <html>
 	<head>
+	<script src="../javascript/old_lesson_view_js.js"></script>
 		<link rel="stylesheet" href="../css/old_lesson_view_css.css">
+
 	</head>
 
 
@@ -33,15 +35,20 @@
 				$aaa = substr($row['div_url'],30);
 				$bbb = "url(../../balckboard/public/".$aaa;
 		?>
-					<td>
-						<div class="div_background" style="background-image: <?= $bbb ?>"id="<?= $i ?>">
-							<img border="0" src="<?= $row['canvas_url']?>"width="128" height="128">
-						</div>
-					</td>
+
 		<?php
 			}
 
 		?>
+
+					<td>
+						<div class="div_background" style="background-image:url(../images/kokuban.jpg)"id="1" onclick="aaa('../images/kokuban.jpg')">
+
+						</div>
+						<div class="div_background" style="background-image:url(../images/1529147.jpg)"id="2" onclick="aaa('../images/1529147.jpg')">
+
+						</div>
+					</td>
 		</table>
 
 
