@@ -1,7 +1,7 @@
 function turn(div,canvas){
-	var page=getElementById('page_num');
-	var div=getElementById('chalkboard');
-	var canvas=getElementById('canvas');
+	var page =document.getElementById('page_num');
+	var div =document.getElementById('chalkboard');
+	var canvas =document.getElementById('canvas');
 
 
 	var div_list=div.split(",");
@@ -24,9 +24,9 @@ function turn(div,canvas){
 
 function next(div,canvas){
 
-	var page=getElementById('page_num');
-	var div=getElementById('chalkboard');
-	var canvas=getElementById('canvas');
+	var page =document.getElementById('page_num');
+	var div =document.getElementById('chalkboard');
+	var canvas =document.getElementById('canvas');
 
 
 	var div_list=div.split(",");
