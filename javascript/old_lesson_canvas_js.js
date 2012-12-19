@@ -28,7 +28,7 @@ function next(div,canvas){
 	var page_ele =document.getElementById('page_num');
 	var div_ele =document.getElementById('chalkboard');
 	var canvas_ele =document.getElementById('canvas');
-
+	var page= page_ele.value;
 
 	var div_list=div.split(",");
 	var canvas_list=canvas.split(",");
