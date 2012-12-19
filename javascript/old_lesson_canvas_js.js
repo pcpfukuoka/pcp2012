@@ -35,7 +35,7 @@ function next(div,canvas){
 	var list_num=div_list.length;
 
 	//進んだためひとつ後にカーソルをそろえる
-	page=page++;
+	page=page+1;
 
 	if(page > list_num-1){
 		page=list_num-1;
