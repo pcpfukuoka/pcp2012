@@ -31,8 +31,8 @@ function next(div,canvas){
 	var canvas_ele =document.getElementById('canvas');
 	var page= Number(page_ele.value);
 
-	var div_list=div.split(",");
-	var canvas_list=canvas.split(",");
+	var div_list=div.split("あ");
+	var canvas_list=canvas.split("あ");
 	var list_num=div_list.length;
 
 	//進んだためひとつ後にカーソルをそろえる
