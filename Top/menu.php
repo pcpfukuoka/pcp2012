@@ -10,13 +10,13 @@
 	<META http-equiv="Content-Style-Type" content="text/css">
 	<link rel="STYLESHEET"  href="../css/frame.css" type="text/css">
 	<script src="../javascript/frame_jump.js"></script>
-	<script src="../jquery-1.8.2.min.js"></script>
+	<script src="../javascript/jquery-1.8.2.min.js"></script>
 	<script src="../javascript/index_menu.js"></script>
 	<meta http-equiv="Content-Type" content="text/php; charset=UTF-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<script src="../jquery.li-scroller.1.0.js"></script>
+	<script src="../javascript/jquery.li-scroller.1.0.js"></script>
 	<!-- <link rel="STYLESHEET"  href="../li-scroller.css" type="text/css">-->
-	<link rel="STYLESHEET"  href="../frame_top_css.css" type="text/css">
+	<link rel="STYLESHEET"  href="../css/frame_top_css.css" type="text/css">
 	<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	<link rel="stylesheet" type="text/css" href="../css/button.css" />
 
@@ -42,7 +42,6 @@
 	</ul>
 	<script>
 	$(function(){
-		console.log("テロップ");
 		$("ul#ticker01").liScroll();
 	});
 	</script>
@@ -54,23 +53,22 @@
 		<table>
 			<tr>
 				<td><input class="button1" type="button" onclick="jump_top()"value="ＴＯＰ"></td>
-				<td><input class="button1" type="button" onclick="jump('../dl_calendar/calendar_main.php' , 'left')" value="スケジュール"></td>
-				<td><input class="button1" type="button" onclick="jump('../contactbook/main.php' , 'left')" value="連絡帳"></td>
+				<td><input class="button1" type="button" onclick="jump('../Calendar/calendar_main.php' , 'left')" value="スケジュール"></td>
+				<td><input class="button1" type="button" onclick="jump('../ContactBook/main.php' , 'left')" value="連絡帳"></td>
 				<td><input class="button1" type="button" onclick="jump('../Lesson/index.php','left')" value="授業"></td>
-				<td><input class="button1" type="button" onclick="jump('../autho_management/jump.php' , 'left')" value="成績確認"></td>
-				<td><input class="button1" type="button" onclick="jump('../Attendance_and_absence management/A_main.php' , 'left')" value="出席管理"></td>
-
+				<td><input class="button1" type="button" onclick="jump('../AuthoManager/jump.php' , 'left')" value="成績確認"></td>
+				<td><input class="button1" type="button" onclick="jump('../QuestionManager/index.php','left')" value="アンケート"></td>			
 			</tr>
 
 		<!--  下記より先生のみ -->
 			<tr>
-				<td><input class="button1" type="button" onclick="jump('../autho_management/autho_main.php','left')" value="権限管理"></td>
-				<td><input class="button1" type="button" onclick="jump('../group/group_top.php', 'left')" value="グループ管理"></td>
-				<td><input class="button1" type="button" onclick="jump('../user_manager/index.php', 'left')" value="ユーザー管理"></td>
-				<td><input class="button1" type="button" onclick="jump('../Results_management/res_main.php','left')" value="成績管理"></td>
-				<td><input class="button1" type="button" onclick="jump('../Print_delivery/p_main.php','left')" value="プリント配信"></td>
-				<td><input class="button1" type="button" onclick="jump('../question/index.php','left')" value="アンケート"></td>
-			</tr>
+				<td><input class="button1" type="button" onclick="jump('../AuthoManager/autho_main.php','left')" value="権限管理"></td>
+				<td><input class="button1" type="button" onclick="jump('../GroupManager/group_top.php', 'left')" value="グループ管理"></td>
+				<td><input class="button1" type="button" onclick="jump('../UserManager/index.php', 'left')" value="ユーザー管理"></td>
+				<td><input class="button1" type="button" onclick="jump('../ResultsManager/res_main.php','left')" value="成績管理"></td>
+				<td><input class="button1" type="button" onclick="jump('../PrintDeliveryManager/p_main.php','left')" value="プリント配信"></td>
+				<td><input class="button1" type="button" onclick="jump('../AAAManager/A_main.php' , 'left')" value="出席管理"></td>
+				</tr>
 		</table>
 	</div>
 	</div>

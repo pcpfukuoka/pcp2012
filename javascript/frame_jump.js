@@ -4,7 +4,7 @@ function jump(url, move){
 			if(move == "left")
 			{
 				//name=leftのＵＲＬを変更
-				parent.right.location="../dummy.html";
+				parent.right.location="../Top/dummy.html";
 				parent.left.location=url;
 
 			}
@@ -19,22 +19,10 @@ function jump(url, move){
 function jump_top(){
 
 	//左右のフレームのＵＲＬを変更
-	parent.left.location="../top_left.php";
-	parent.right.location="../top_right.php";
+	parent.left.location="../Top/top_left.php";
+	parent.right.location="../Top/top_right.php";
 }
 
-//ログイン画面に飛ぶ際の処理
-function sign_in(url1, url2){
-
-	//左右のフレームのＵＲＬをログイン画面に変更
-	parent.right.location=url1;
-	parent.left.location=url2;
-
-}
-//黒板画面に飛ぶ際の処理
-function jump_class(){
-
-}
 
 function leftreload()
 {

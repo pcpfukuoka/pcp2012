@@ -49,8 +49,8 @@
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<script src="../javascript/frame_jump.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+		<script src="../javascript/jquery-1.8.2.min.js"></script>
+		<script src="../javascript/jquery-ui-1.8.24.custom.min.js"></script>
 	</head>
 
 	<body>

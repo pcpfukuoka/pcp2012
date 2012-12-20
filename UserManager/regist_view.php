@@ -57,22 +57,21 @@
 
 			<tr>
 				<td align="center">権限：</td>
-				<td align="center"><select name = "autho_seq" size = "1">
-			<option value = "-1">選択</option></td>
-			</tr>
-
-
-
-			<?php
-			for($i = 0; $i < $cnt; $i++)
-			{
-				$row = mysql_fetch_array($result);
-				?>
-				<option value = "<?=  $row['autho_seq'] ?>"><?= $row['autho_name'] ?></option>
-		<?php
-			}
-			?>
-		</select><br>
+				<td align="center">
+					<select name = "autho_seq" size = "1">
+						<option value = "-1">選択</option>
+							<?php
+							for($i = 0; $i < $cnt; $i++)
+							{
+								$row = mysql_fetch_array($result);
+								?>
+								<option value = "<?=  $row['autho_seq'] ?>"><?= $row['autho_name'] ?></option>
+						<?php
+							}
+							?>
+					</select>
+				</td>
+		</tr>
 		<tr>
 			<td>学籍番号※学生のみ</td>
 			<td><input type="text" name="stuent_id"></td>

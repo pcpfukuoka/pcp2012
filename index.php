@@ -20,10 +20,10 @@
 
 		<!-- 本番は17%、83%ぐらい -->
 		<frameset rows=25%,75% >
-			<frame src="main/menu.php" name=top scrolling="no">
+			<frame src="Top/menu.php" name=top scrolling="no">
 			<frameset cols=30%,70% frameborder=no border=no id=direction>
-				<frame src="top_left.php" name="left">	<!-- フレーム左部分 -->
-				<frame src="top_right.php" name="right">	<!-- フレーム右部分 -->
+				<frame src="Top/top_left.php" name="left">	<!-- フレーム左部分 -->
+				<frame src="Top/top_right.php" name="right">	<!-- フレーム右部分 -->
 			</frameset>
 		</frameset>
 </html>

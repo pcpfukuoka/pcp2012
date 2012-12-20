@@ -2,7 +2,7 @@
 session_start();
 $user_seq = $_SESSION['login_info[user]'];
 $day = date("Y-m-d");
-require_once("lib/dbconect.php");
+require_once("../lib/dbconect.php");
 $dbcon = DbConnect();
 
 //各件数を取得
@@ -33,13 +33,13 @@ DBdissconnect($dbcon);
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<meta http-equiv="Content-Style-Type" content="text/css">
-		<link rel="stylesheet" type="text/css" href="css/button.css" />
-		<link rel="stylesheet" type="text/css" href="css/back_ground.css" />
-		<link rel="stylesheet" type="text/css" href="css/text_display.css" />
-		<script src="javascript/frame_jump.js"></script>  
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<script src="../javascript/frame_jump.js"></script>  
 	</head>
 	<body>
-		<img class="bg" src="images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 
 			<div align="center">
@@ -81,11 +81,11 @@ DBdissconnect($dbcon);
 			
 			function Message()
 			{
-				menu_jump('contactbook/main.php','contactbook/MailBox.php');
+				menu_jump('../contactbook/main.php','../contactbook/MailBox.php');
 			}
 			function Question()
 			{
-				menu_jump('question/index.php','question/answer_list.php');
+				menu_jump('../question/index.php','../question/answer_list.php');
 			}
 			</script>
 	</body>

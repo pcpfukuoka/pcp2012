@@ -16,7 +16,7 @@
 
 	if($page_cla[0]['read_flg'] == 0)
 	{
-		header("Location:../top_left.php");
+		header("Location:../Top/top_left.php");
 	}
 ?>
 
@@ -49,7 +49,7 @@
 				<br><br>
 
 				<!-- 座席表　仮設置 -->
-				<input class="button2" type="button" onclick="jump('../zaseki/seat_menu.php')" value="座席表（仮設置）">
+				<input class="button2" type="button" onclick="jump('../SeatManager/seat_menu.php')" value="座席表（仮設置）">
 
 			</p>
 		</div>

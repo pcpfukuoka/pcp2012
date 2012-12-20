@@ -73,29 +73,30 @@
 
 			<tr>
 				<td align="center">権限：</td>
-				<td align="center"><select name = "autho_seq" size = "1" disabled="true">
-			<option value = "-1">選択</option></td>
-			</tr>
-			<?php
-			for($i = 0; $i < $cnt; $i++)
-			{
-				$row = mysql_fetch_array($result_autho);
-				if($row['autho_seq'] == $user_row['autho_seq'])
-				{?>
-					<option value = "<?=  $row['autho_seq'] ?>" selected><?= $row['autho_name'] ?></option>
-			<?php
-				}
-				else
-				{?>
-					<option value = "<?=  $row['autho_seq'] ?>"><?= $row['autho_name'] ?></option>
-			<?php
-				}
-				?>
-		<?php
-			}
-			?>
-		</select><br>
-
+				<td align="center">
+					<select name = "autho_seq" size = "1" disabled="true">
+					<option value = "-1">選択</option>
+						<?php
+						for($i = 0; $i < $cnt; $i++)
+						{
+							$row = mysql_fetch_array($result_autho);
+							if($row['autho_seq'] == $user_row['autho_seq'])
+							{?>
+								<option value = "<?=  $row['autho_seq'] ?>" selected><?= $row['autho_name'] ?></option>
+						<?php
+							}
+							else
+							{?>
+								<option value = "<?=  $row['autho_seq'] ?>"><?= $row['autho_name'] ?></option>
+						<?php
+							}
+							?>
+					<?php
+						}
+						?>
+					</select>
+					</td>
+		</tr>
 		<tr>
 			<td>学籍番号※学生のみ</td>
 			<td><input type="text" name="stuent_id" value="<?= $user_row['student_id'] ?>" disabled="true"></td>

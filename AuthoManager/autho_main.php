@@ -15,7 +15,7 @@ $page_cla = $page_fun -> autho_Pre($_SESSION['login_info[autho]'], 7);
 
 if($page_cla[0]['read_flg'] == 0)
 {
-	header("Location:../top_left.php");
+		header("Location:../Top/top_left.php");
 }
 
 /***********************************
