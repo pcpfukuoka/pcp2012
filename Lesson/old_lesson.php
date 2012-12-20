@@ -13,16 +13,14 @@
 
 <html>
 	<head>
-		<meta charset="utf-8">
-
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<script src="../javascript/old_lesson_js.js" type = "text/javascript"></script>
 	</head>
 
 	<body>
-		<form action="old_lesson_view.php" method="post">
+			<input type="date" id="date" />
 
-			<input type="date" name="date" />
-
-			<select name="subject_seq">
+			<select id="subject_seq">
 					<?php
 		   				for ($i = 0; $i < $count; $i++)
 		   				{
@@ -33,7 +31,7 @@
 	    				}
 	  				?>
 			</select>
-			<input type="submit" value="決定" />
+			<input type="submit" value="決定" onclick="decision_click()"/>
 
 		</form>
 
