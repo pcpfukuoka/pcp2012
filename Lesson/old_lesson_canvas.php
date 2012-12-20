@@ -26,8 +26,8 @@
 
 
 		if($i < $count-1){
-			$div_str = $div_str.$div[$i].",";
-			$canvas_str=$canvas_str.$canvas[$i].",";
+			$div_str = $div_str.$div[$i]."あ";
+			$canvas_str=$canvas_str.$canvas[$i]."あ";
 		}
 		else{
 			$div_str = $div_str.$div[$i];

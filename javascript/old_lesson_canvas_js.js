@@ -6,8 +6,8 @@ function turn(div,canvas){
 	var page= Number(page_ele.value);
 
 
-	var div_list=div.split(",");
-	var canvas_list=canvas.split(",");
+	var div_list=div.split("あ");
+	var canvas_list=canvas.split("あ");
 
 	//戻ったためひとつ前にカーソルをそろえる
 	page=page-1;
