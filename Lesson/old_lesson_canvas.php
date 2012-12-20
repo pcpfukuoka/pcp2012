@@ -1,8 +1,8 @@
 <?php
 
-	$date = $_POST['date'];
+	$date = $_GET['date'];
 
-	$subject_seq = $_POST['id'];
+	$subject_seq = $_GET['id'];
 
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
