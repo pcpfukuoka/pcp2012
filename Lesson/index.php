@@ -30,7 +30,7 @@
 			<hr color="blue"></hr>
 			<br><br><br>
 			<p align="center">
-				<input type="button" onclick="jump('past_lesson.php','right')" value="過去の授業">
+				<input type="button" onclick="jump('old_lesson.php','right')" value="過去の授業">
 				<br><br>
 
 				<!-- 生徒用の画面 -->
