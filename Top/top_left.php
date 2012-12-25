@@ -81,11 +81,11 @@ DBdissconnect($dbcon);
 			
 			function Message()
 			{
-				menu_jump('../contactbook/main.php','../contactbook/MailBox.php');
+				menu_jump('../ContactBook/main.php','../ContactBook/MailBox.php');
 			}
 			function Question()
 			{
-				menu_jump('../question/index.php','../question/answer_list.php');
+				menu_jump('../QuestionManager/index.php','../QuestionManager/answer_list.php');
 			}
 			</script>
 	</body>

@@ -18,14 +18,15 @@ else if(isset($_POST['g_seq']))
 <html>
 	<head>
 		<title>グループ追加</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
-		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-		 <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
-		 <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
-	</head>
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		<script src="../javascript/jquery-1.8.2.min.js"></script>
+		<script src="../javascript/jquery-ui-1.8.24.custom.min.js"></script>
+			</head>
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
