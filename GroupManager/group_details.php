@@ -58,18 +58,20 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 		<meta http-equiv="Content-Style-Type" content="text/css">
-		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		<script src="../javascript/jquery-1.8.2.min.js"></script>
+		<script src="../javascript/jquery-ui-1.8.24.custom.min.js"></script>
 	</head>
 
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align = "center">
-			<font class="Cubicfont1" size="7"><?= $group_name ?></font>
+			<font class="Cubicfont"><?= $group_name ?></font>
 			<hr color = "blue">
 				<table class="table_01">
 					<tr bgcolor = "yellow">
