@@ -10,7 +10,11 @@
 
 }
 #canvas {
-	display: block;
+
+	position: relative;
+	width: 780px;
+	height: 540px;
+	padding-top: 20px;
 	margin-right: auto;
 	margin-left: auto;
 }
