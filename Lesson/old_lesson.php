@@ -47,7 +47,7 @@
 			var date=date_ele.value;
 			var subject_seq=subject_ele.value;
 
-			$('frame').empty();
+			$('#frame').empty();
 			$.post('ajax_canvas_select.php', {
 		        date: date,
 		        id : subject_seq
@@ -71,6 +71,8 @@
 
 	    	var date_ele=document.getElementById('date');
 			var subject_ele=document.getElementById('subject_seq');
+			var date=date_ele.value;
+			var subject_seq=subject_ele.value;
 	    	var page_ele =document.getElementById('page_num');
 	    	var page= Number(page_ele.value);
 
