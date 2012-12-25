@@ -22,7 +22,7 @@ for($i = 0;$i < $count;$i++){
 	$canvas = $row['canvas_url'];
 
 	//送信するデータを配列に追加
-	$result_1[] = array('div'=>$div,'canbvas'=>$canvas);
+	$result_1[] = array('div'=>$div,'canvas'=>$canvas);
 }
 Dbdissconnect($dbcon);
 
