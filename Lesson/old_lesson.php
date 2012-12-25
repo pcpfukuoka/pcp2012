@@ -86,8 +86,8 @@
 		    	var canvas_ele =document.getElementById('canvas');
 	        	var parsers = JSON.parse(rs);
 				page++;
-				canvas_ele.src=parsers[page][canvas];
-				div_ele.style.background=parsers[page][div];
+				canvas_ele.src=parsers[page]['canvas'];
+				div_ele.style.background=parsers[page]['div'];
 				page_ele.value=page;
 	        });
 		});
@@ -110,8 +110,8 @@
 		    	var canvas_ele =document.getElementById('canvas');
 	        	var parsers = JSON.parse(rs);
 				page--;
-				canvas_ele.src=parsers[page][canvas];
-				div_ele.style.background=parsers[page][div];
+				canvas_ele.src=parsers[page]['canvas'];
+				div_ele.style.background=parsers[page]['div'];
 				page_ele.value=page;
 	        });
 		});
