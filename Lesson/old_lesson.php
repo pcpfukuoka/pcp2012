@@ -38,7 +38,7 @@
 	$(function() {
 
 		//決定ボタンをクリックした後の過去授業の画像を出力する処理
-		$(document).on('click', '.decision', function() {
+		$(document).on('click', '#decision', function() {
 
 			var date_ele=document.getElementById('date');
 			var subject_ele=document.getElementById('subject_seq');
@@ -67,7 +67,7 @@
 		    });
 	    });
 
-	    $(document).on('click','next',function(){
+	    $(document).on('click','#next',function(){
 
 	    	var date_ele=document.getElementById('date');
 			var subject_ele=document.getElementById('subject_seq');
@@ -91,7 +91,7 @@
 	        });
 		});
 
-	    $(document).on('click','turn',function(){
+	    $(document).on('click','#turn',function(){
 
 	    	var date_ele=document.getElementById('date');
 			var subject_ele=document.getElementById('subject_seq');
