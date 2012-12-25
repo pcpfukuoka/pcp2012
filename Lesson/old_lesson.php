@@ -86,6 +86,9 @@
 		    	var canvas_ele =document.getElementById('canvas');
 	        	var parsers = JSON.parse(rs);
 				page++;
+				if(page>parsers.length-1){
+					page--;
+				}
 				canvas_ele.src=parsers[page]['canvas'];
 				div_ele.style.background=parsers[page]['div'];
 				page_ele.value=page;
@@ -103,13 +106,15 @@
 	            date: date,
 	            id : subject_seq
 	        },
-	        //戻り値として、user_seq受け取る
 	        function(rs){
 
 	        	var div_ele =document.getElementById('chalkboard');
 		    	var canvas_ele =document.getElementById('canvas');
 	        	var parsers = JSON.parse(rs);
 				page--;
+				if(page<0){
+					page=0;
+				}
 				canvas_ele.src=parsers[page]['canvas'];
 				div_ele.style.background=parsers[page]['div'];
 				page_ele.value=page;
