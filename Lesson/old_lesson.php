@@ -14,6 +14,7 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<script src="../javascript/old_lesson_js.js" type = "text/javascript"></script>
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
+		<link rel="stylesheet" href="../css/old_lesson_canvas_css.css">
 	</head>
 
 	<body>
