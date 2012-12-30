@@ -113,9 +113,9 @@
 		var date=date_ele.value;
 		var subject_seq=subject_ele.value;
 		$.post('lesson_page_delete.php',{
-	        date: date,
-	        id: subject_seq,
-	        num: page
+	        date:date,
+	        id:subject_seq,
+	        num:page
 	    },
 	    function(rs) {
 		    //ＦＯＲＭを削除
