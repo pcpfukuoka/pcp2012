@@ -76,4 +76,14 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 
 	change_fo.action="change_img.php";
 	change_sub.value= "変更";
+
+	var de_id= page_num + "_delete";
+	var de_eve="delete_img("+page_num+")";
+	var delete_button = document.createElement("INPUT");
+	delete_button.setAttribute("type","button");
+	delete_button.setAttribute("value","削除");
+	delete_button.setAttribute("id",de_id);
+	delete_button.setAttribute("onclick",de_eve);
+
+	change_fo.appendChild(delete_button);
 }
