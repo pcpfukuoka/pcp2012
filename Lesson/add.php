@@ -85,9 +85,9 @@
 
 
 			<form action="lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $page_max ?>_form">
-				<input type="hidden" id="date" value="<?= $date;?>" />
-				<input type="hidden" id="subject_seq" value=" <?= $subject_seq ?>" />
-				<input type= "hidden" name="page_num" value= "<?= $page_max ?>" />
+				<input type="hidden" id="date" value="<?= $date ?>" />
+				<input type="hidden" id="subject_seq" value="<?= $subject_seq ?>" />
+				<input type= "hidden" name="page_num" value="<?= $page_max ?>" />
 				ファイル：<br/>
 				<input type="file" name="upfile" size="30" />
 				<img border="1" src="../../balckboard/public/images/kokuban.jpg" width="128" height="128" id="<?=$page_max ?>_image">
