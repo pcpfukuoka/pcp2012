@@ -119,11 +119,11 @@
 	    },
 	    function(rs) {
 		    //ＦＯＲＭを削除
-
+			console.log(rs);
 	    	var delete_page = page_num+"_form";
 	    	var form_ele=document.getElementById(delete_page);
 	    	Element.remove(form_ele)
-c
+
 	    	page_num++;
 	    });
 	}
