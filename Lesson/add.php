@@ -116,7 +116,8 @@
 	    function(rs) {
 		    //ＦＯＲＭを削除
 	    	var delete_page = page_num+"_form";
-	    	delete_page.remove();
+	    	var form_ele=document.getElementById(delete_page);
+	    	form_ele.remove();
 	    	page_num++;
 	    });
 	}
