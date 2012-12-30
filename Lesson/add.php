@@ -85,8 +85,8 @@
 
 
 			<form action="lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $page_max ?>_form">
-				<input type="hidden" id="date" value="<?= $date ?>" />
-				<input type="hidden" id="subject_seq" value="<?= $subject_seq ?>" />
+				<input type="hidden" name="date" value="<?= $date ?>" />
+				<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
 				<input type= "hidden" name="page_num" value="<?= $page_max ?>" />
 				ファイル：<br/>
 				<input type="file" name="upfile" size="30" />
