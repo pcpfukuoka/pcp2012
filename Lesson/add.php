@@ -55,8 +55,8 @@
 
 	?>
 				<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $now_page ?>_form">
-					<input type="hidden" name="date" value=" <?= $date ?>" />
-					<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+					<input type="hidden" id="date" value=" <?= $date ?>" />
+					<input type="hidden" id="subject_seq" value=" <?= $subject_seq ?>" />
 					<input type= "hidden" name="page_num" value= "<?= $row['page_num'] ?>" />
 					<input type="file" name="upfile" size="30" />
 					<img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$now_page ?>_image">
@@ -81,12 +81,12 @@
 
 
 			<form action="lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $page_max ?>_form">
-				<input type="hidden" name="date" value=" <?php
+				<input type="hidden" id="date" value=" <?php
 
 				 echo $date;
 
 				 ?>" />
-				<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+				<input type="hidden" id="subject_seq" value=" <?= $subject_seq ?>" />
 				<input type= "hidden" name="page_num" value= "<?= $page_max ?>" />
 				ファイル：<br/>
 				<input type="file" name="upfile" size="30" />
