@@ -20,7 +20,7 @@
 		$new_page_num=intval($row['page_num']) -1;
 		$max_page= $new_page_num;
 		$sql = "INSERT INTO board VALUE(0,'".$date ."', '15','".$subject_seq ."','".$new_page_num ."','".$row['div_url']."','0','0');";
-		$result = mysql_query($sql);
+		$result2 = mysql_query($sql);
 	}
 
 	Dbdissconnect($dbcon);
