@@ -26,6 +26,10 @@
 
 	<font size="5"><?= $date ?>:<?=$result ?></font>
 	<div id="form">
+		<input type="hidden" id="date_hidden" value=" <?= $date ?>" />
+		<input type="hidden" id="subject_seq_hidden" value=" <?= $subject_seq ?>" />
+
+
 
 	<?php
 		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'";';
@@ -102,8 +106,8 @@
 	<script>
 	function delete_img(page_num){
 
-		var date_ele=document.getElementById('date');
-		var subject_ele=document.getElementById('subject_seq');
+		var date_ele=document.getElementById('date_hidden');
+		var subject_ele=document.getElementById('subject_seq_hidden');
 		var page = page_num;
 		//日付と科目を変数に格納
 		var date=date_ele.value;
@@ -115,7 +119,7 @@
 	    },
 	    function(rs) {
 		    //ＦＯＲＭを削除
-		    console.log(rs);
+
 	    	var delete_page = page_num+"_form";
 	    	var form_ele=document.getElementById(delete_page);
 	    	Element.remove(form_ele)
