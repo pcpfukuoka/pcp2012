@@ -25,7 +25,7 @@
 	}
 
 	Dbdissconnect($dbcon);
-	$test = json_encode($result);
+	$test = json_encode($row);
 	echo $test;
 
 
