@@ -8,6 +8,7 @@ session_start();
 
 	//add.phpから送られてくるデータ
 	$date = $_POST['date'];
+	echo $date;
 	$subject_seq = $_POST['subject_seq'];
 	$data = $_FILES['upfile'];
 	$page_num = $_POST['page_num'];

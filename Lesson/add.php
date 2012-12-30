@@ -26,8 +26,8 @@
 
 	<font size="5"><?= $date ?>:<?=$result ?></font>
 	<div id="form">
-		<input type="hidden" id="date_hidden" value=" <?= $date ?>" />
-		<input type="hidden" id="subject_seq_hidden" value=" <?= $subject_seq ?>" />
+		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
+		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
 
 
 
