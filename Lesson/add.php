@@ -18,7 +18,7 @@
 <html>
 	<head>
 			<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-
+			<script src="../javascript/lesson_add_javascript.js"></script>
 	</head>
 
 	<body>
@@ -61,7 +61,8 @@
 					<input type="file" name="upfile" size="30" />
 					<img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$now_page ?>_image">
 
-				<input type="submit"  id="<?= $now_page?>_submit" value="変更" />
+					<input type="submit"  id="<?= $now_page?>_submit" value="変更" />
+					<input type="button" "id="<?= $now_page?>_delete" value="削除" onclick="delete_img(<?= $now_page?>)"/>
 				</form>
 
 	<?php
@@ -91,11 +92,34 @@
 				<input type="file" name="upfile" size="30" />
 
 				<img border="1" src="../../balckboard/public/images/kokuban.jpg" width="128" height="128" id="<?=$page_max ?>_image">
-				<input type="submit"  id="<?= $page_max ?>_submit" value="追加" />
+				<input type="submit" id="<?= $page_max ?>_submit" value="追加" />
 			</form>
 		</div>
 		<iframe name="targetFrame" id="targetFrame" ></iframe>
 		<!--  style="display:none;"-->
 
 	</body>
+	<script>
+
+		function delete_img(page_num){
+
+			var date_ele=document.getElementById('date');
+			var subject_ele=document.getElementById('subject_seq');
+
+			//日付と科目を変数に格納
+			var date=date_ele.value;
+			var subject_seq=subject_ele.value;
+			$.post('lesson_page_delete.php',{
+		        date: date,
+		        id : subject_seq
+		        num : page_num
+		    },
+		    function(rs) {
+			    //ＦＯＲＭを削除
+		    	var delete_page = page_num+"_form";
+		    	delete_page.remove();
+		    	page_num++;
+		    });
+		}
+	</script>
 </html>
