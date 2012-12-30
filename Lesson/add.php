@@ -117,7 +117,8 @@
 		    //ＦＯＲＭを削除
 	    	var delete_page = page_num+"_form";
 	    	var form_ele=document.getElementById(delete_page);
-	    	form_ele.remove();
+	    	Element.remove(form_ele)
+
 	    	page_num++;
 	    });
 	}
