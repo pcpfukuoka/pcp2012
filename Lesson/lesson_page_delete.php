@@ -7,7 +7,7 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 	//消す前に必要なＵＲＬを退避させる
-	$select_sql = "SELECT div_url page_num FROM board WHERE date='".$date."' AND subject_seq='".$subject_seq."'AND page_num >".$page_num.";";
+	$select_sql = "SELECT div_url, page_num FROM board WHERE date='".$date."' AND subject_seq='".$subject_seq."'AND page_num >".$page_num.";";
 	$result = mysql_query($select_sql);
 	$count = mysql_num_rows($result);
 	//削除ボタンをおしたpage_num以降のデータをいったん削除
