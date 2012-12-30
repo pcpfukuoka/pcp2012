@@ -18,7 +18,7 @@
 <html>
 	<head>
 			<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-			<script src="../javascript/lesson_add_javascript.js"></script>
+
 	</head>
 
 	<body>
