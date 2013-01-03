@@ -136,7 +136,7 @@
 			var del;
 			var del_button_ele;
 			//要素のＩＤの更新
-			for(i=parsers[0]['delete_page'];i<=parsers[0]['max_page'];i++){
+			for(i=Number(parsers[0]['delete_page']);i<=Number(parsers[0]['max_page']);i++){
 				if(i<parsers[0]['max_page']){
 					select_num=i+1;
 					//取得するidを生成
@@ -165,7 +165,7 @@
 					submit_ele.id=sub;
 					del_button_ele.id=del;
 				}
-				else if(i==parsers[0]['max_page']){
+				else if(i==Number(parsers[0]['max_page'])){
 					select_num=i+1;
 					//取得するidを生成
 					fo=select_num+"_form";
