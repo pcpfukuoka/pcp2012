@@ -116,7 +116,7 @@
 		    var parsers=JSON.parse(rs);
 
 			//要素の削除
-			var fo=parsers['delete_page']+"_form";
+			var fo=parsers[0]['delete_page']+"_form";
 			var delete_form=document.getElementById(fo);
 			delete_form.remove();
 
@@ -136,8 +136,8 @@
 			var del;
 			var del_button_ele;
 			//要素のＩＤの更新
-			for(i=parsers['delete_page'];i<=parsers['max_page'];i++){
-				if(i<parsers['max_page']){
+			for(i=parsers[0]['delete_page'];i<=parsers[0]['max_page'];i++){
+				if(i<parsers[0]['max_page']){
 					select_num=i+1;
 					//取得するidを生成
 					fo=select_num+"_form";
@@ -165,7 +165,7 @@
 					submit_ele.id=sub;
 					del_button_ele.id=del;
 				}
-				else if(i==parsers['max_page']){
+				else if(i==parsers[0]['max_page']){
 					select_num=i+1;
 					//取得するidを生成
 					fo=select_num+"_form";
