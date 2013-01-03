@@ -118,7 +118,7 @@
 			//要素の削除
 			var fo=parsers[0]['delete_page']+"_form";
 			var delete_form=document.getElementById(fo);
-			delete_form.remove();
+			//delete_form.remove();
 
 
 
