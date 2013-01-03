@@ -61,7 +61,7 @@
 				<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $now_page ?>_form">
 					<input type="hidden" id="date" value=" <?= $date ?>" />
 					<input type="hidden" id="subject_seq" value=" <?= $subject_seq ?>" />
-					<input type= "hidden" name="page_num" value= "<?= $row['page_num'] ?>" />
+					<input type= "hidden" name="page_num" value= "<?= $row['page_num'] ?>" id="<?= $row['page_num'] ?>_page"/>
 					<input type="file" name="upfile" size="30" />
 					<img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$now_page ?>_image">
 
@@ -87,7 +87,7 @@
 			<form action="lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $page_max ?>_form">
 				<input type="hidden" name="date" value="<?= $date ?>" />
 				<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
-				<input type= "hidden" name="page_num" value="<?= $page_max ?>" />
+				<input type= "hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
 				ファイル：<br/>
 				<input type="file" name="upfile" size="30" />
 				<img border="1" src="../../balckboard/public/images/kokuban.jpg" width="128" height="128" id="<?=$page_max ?>_image">
@@ -113,14 +113,83 @@
 	        num:page
 	    },
 	    function(rs) {
-		    //ＦＯＲＭを削除
 		    var parsers = JSON.parse(rs);
-			console.log(parsers);
-	    	var delete_page = page_num+"_form";
-	    	var form_ele=document.getElementById(delete_page);
-	    	Element.remove(form_ele)
 
-	    	page_num++;
+			//要素の削除
+			var fo=parsers['delete_page']+"form";
+			var delete_form=document.getElementById(fo);
+			delete_form.remove();
+
+
+
+
+		    //for文内で使う変数を宣言
+		    var select_num;
+			var fo;
+			var pa;
+			var img;
+			var sub;
+			var form_ele;
+			var page_ele;
+			var img_ele;
+			var submit_ele;
+			var del;
+			var del_button_ele;
+			//要素のＩＤの更新
+			for(i=parsers['delete_page'];i<=parsers['max_page'];i++){
+				if(i<parsers['max_page']){
+					select_num=i+1;
+					//取得するidを生成
+					fo=select_num+"_form";
+					pa=select_num+"_page";
+					img=select_num+"_image";
+					sub=select_num+"_submit";
+					del=select_num+"_delete";
+
+					form_ele=document.getElementById('fo');
+					page_ele=document.getElementById('pa');
+					img_ele=document.getElementById('img');
+					submit_ele=document.getElementById('sub');
+					del_button_ele=document.getElementById('del');
+
+
+					//idを１マイナスして、新しいidとする
+					fo=i+"_form";
+					pa=i+"_page";
+					img=i+"_image";
+					sub=i+"_submit";
+					del=i+"_delete";
+					form_ele.id=fo;
+					page_ele.id=pa;
+					img_ele.id=img;
+					submit_ele.id=sub;
+					del_button_ele.id=del;
+				}
+				else if(i==parsers['max_page']){
+					select_num=i+1;
+					//取得するidを生成
+					fo=select_num+"_form";
+					pa=select_num+"_page";
+					img=select_num+"_image";
+					sub=select_num+"_submit";
+
+					form_ele=document.getElementById('fo');
+					page_ele=document.getElementById('pa');
+					img_ele=document.getElementById('img');
+					submit_ele=document.getElementById('sub');
+
+					//idを１マイナスして、新しいidとする
+					fo=i+"_form";
+					pa=i+"_page";
+					img=i+"_image";
+					sub=i+"_submit";
+					form_ele.id=fo;
+					page_ele.id=pa;
+					img_ele.id=img;
+					submit_ele.id=sub;
+				}
+			}
+
 	    });
 	}
 	</script>

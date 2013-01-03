@@ -14,6 +14,7 @@
 	$delete_sql = "DELETE FROM board WHERE date='".$date."' AND subject_seq='".$subject_seq."'AND page_num >=".$page_num.";";
 
 	$delete_ = mysql_query($delete_sql);
+	$result_1 = array();
 	for($i= 0;$i<$count;$i++){
 		$row = mysql_fetch_array($result);
 
@@ -23,8 +24,10 @@
 		$result2 = mysql_query($sql);
 	}
 
+	//送信するデータを配列に追加
+	$result_1[] = array('delete_page'=>$page_num,'max_page'=>$max_page+1);
 	Dbdissconnect($dbcon);
-	$test = json_encode($select_sql);
+	$test = json_encode($result_1);
 	echo $test;
 
 
