@@ -11,6 +11,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	var sub = page_num + "_submit";
 	var fo = page_num + "_form";
 	var im = page_num + "_image";
+	var pa=page_num+"_page";
 
 	var par = parent.document.getElementById('form');
 
@@ -42,6 +43,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	input3.setAttribute("type","hidden");
 	input3.setAttribute("name","page_num");
 	input3.setAttribute("value",page_num);
+	input3.setAttribute("id",pa);
 
 
 	var input4 = document.createElement("INPUT");
