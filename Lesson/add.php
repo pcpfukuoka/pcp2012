@@ -113,10 +113,10 @@
 	        num:page
 	    },
 	    function(rs) {
-		    var parsers = JSON.parse(rs);
+		    var parsers=JSON.parse(rs);
 
 			//要素の削除
-			var fo=parsers['delete_page']+"form";
+			var fo=parsers['delete_page']+"_form";
 			var delete_form=document.getElementById(fo);
 			delete_form.remove();
 
