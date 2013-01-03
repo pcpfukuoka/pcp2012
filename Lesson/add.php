@@ -146,11 +146,11 @@
 					sub=select_num+"_submit";
 					del=select_num+"_delete";
 
-					form_ele=document.getElementById('fo');
-					page_ele=document.getElementById('pa');
-					img_ele=document.getElementById('img');
-					submit_ele=document.getElementById('sub');
-					del_button_ele=document.getElementById('del');
+					form_ele=document.getElementById(fo);
+					page_ele=document.getElementById(pa);
+					img_ele=document.getElementById(img);
+					submit_ele=document.getElementById(sub);
+					del_button_ele=document.getElementById(del);
 
 
 					//idを１マイナスして、新しいidとする
@@ -173,10 +173,10 @@
 					img=select_num+"_image";
 					sub=select_num+"_submit";
 
-					form_ele=document.getElementById('fo');
-					page_ele=document.getElementById('pa');
-					img_ele=document.getElementById('img');
-					submit_ele=document.getElementById('sub');
+					form_ele=document.getElementById(fo);
+					page_ele=document.getElementById(pa);
+					img_ele=document.getElementById(img);
+					submit_ele=document.getElementById(sub);
 
 					//idを１マイナスして、新しいidとする
 					fo=i+"_form";
