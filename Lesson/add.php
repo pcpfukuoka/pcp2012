@@ -99,6 +99,15 @@
 
 	</body>
 	<script>
+	$(function() {
+
+		$(document).on('click', '.img_', function() {
+
+	        $.post('', {
+	            id : group_seq
+	        });
+	    });
+	});
 	function delete_img(page_num){
 
 		var date_ele=document.getElementById('date_hidden');
@@ -146,6 +155,7 @@
 					sub=select_num+"_submit";
 					del=select_num+"_delete";
 
+					//更新するidの取得
 					form_ele=document.getElementById(fo);
 					page_ele=document.getElementById(pa);
 					img_ele=document.getElementById(img);
@@ -173,6 +183,7 @@
 					img=select_num+"_image";
 					sub=select_num+"_submit";
 
+					//更新するidの取得
 					form_ele=document.getElementById(fo);
 					page_ele=document.getElementById(pa);
 					img_ele=document.getElementById(img);
