@@ -170,6 +170,7 @@
 					del=i+"_delete";
 					form_ele.id=fo;
 					page_ele.id=pa;
+					page_ele.value=i;
 					img_ele.id=img;
 					submit_ele.id=sub;
 					del_button_ele.id=del;
