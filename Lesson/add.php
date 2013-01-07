@@ -174,6 +174,7 @@
 					img_ele.id=img;
 					submit_ele.id=sub;
 					del_button_ele.id=del;
+					del_button_ele.onclick="delete_img("+i+")";
 				}
 				else if(i==Number(parsers[0]['max_page'])){
 					select_num=i+1;
