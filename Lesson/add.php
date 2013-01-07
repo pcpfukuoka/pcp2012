@@ -168,13 +168,15 @@
 					img=i+"_image";
 					sub=i+"_submit";
 					del=i+"_delete";
+					var del_eve="delete_img("+i+")";
 					form_ele.id=fo;
 					page_ele.id=pa;
 					page_ele.value=i;
 					img_ele.id=img;
 					submit_ele.id=sub;
+					del_button_ele.onclick=del_eve;
 					del_button_ele.id=del;
-					del_button_ele.onclick="delete_img("+i+")";
+
 				}
 				else if(i==Number(parsers[0]['max_page'])){
 					select_num=i+1;
