@@ -143,6 +143,7 @@
 			var submit_ele;
 			var del;
 			var del_button_ele;
+			var del_eve;
 			//要素のＩＤの更新
 			for(i=Number(parsers[0]['delete_page']);i<=Number(parsers[0]['max_page']);i++){
 				if(i<parsers[0]['max_page']){
@@ -168,13 +169,13 @@
 					img=i+"_image";
 					sub=i+"_submit";
 					del=i+"_delete";
-					var del_eve="delete_img("+i+")";
+					del_eve="delete_img("+i+")";
 					form_ele.id=fo;
 					page_ele.id=pa;
 					page_ele.value=i;
 					img_ele.id=img;
 					submit_ele.id=sub;
-					del_button_ele.onclick=del_eve;
+					del_button_ele.onclick=new Function(del_eve);
 					del_button_ele.id=del;
 
 				}
