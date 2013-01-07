@@ -127,8 +127,7 @@
 			//要素の削除
 			var fo=parsers[0]['delete_page']+"_form";
 			var delete_form=document.getElementById(fo);
-			var aaa="#"+delete_form;
-			$(aaa).remove();
+			$(delete_form).remove();
 
 
 
