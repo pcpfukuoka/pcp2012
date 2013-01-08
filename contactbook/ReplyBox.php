@@ -29,7 +29,7 @@
 		  <br><br>
 
 		  <form action="relay.php" method="POST" id="input">
-			  <font size="5">宛先　： </font>
+			  <font size="5">To　： </font>
 			  <?= "$send_name"?><br>
 			  <font size="5">件名　： </font>
 			  <input size="40" type="text" name="title" value="Re: <?= "$title"?>"><br><br>

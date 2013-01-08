@@ -6,8 +6,8 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
-	//連らう帳のテータベースからデータの取り出し
-	$sql = "SELECT contact_book_seq, send_date, m_user.user_name AS send_user_name, title, new_flg
+	//連絡帳のテータベースからデータの取り出し
+	$sql = "SELECT contact_book_seq, send_date, m_user.user_name AS send_user_name, title, new_flg, link_contact_book_seq
 			FROM contact_book
 			Left JOIN m_user ON contact_book.send_user_seq = m_user.user_seq
 			WHERE contact_book.reception_user_seq = $user_seq
@@ -74,7 +74,7 @@
 							<td><?= $row['send_user_name'] ?></td>
 							<td>
 								<!-- GETでcontact_book_seqを送る -->
-								<a href="view.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
+								<a href="view.php?id=<?= $row['contact_book_seq'] ?>&link_contact_book_seq=<?= $row['link_contact_book_seq'] ?>"><?= $row['title'] ?></a>
 							</td>
 					</tr>
 				<?php

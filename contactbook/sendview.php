@@ -41,7 +41,7 @@
 			<br><br>
 
 			<form action="ReplyBox.php" method="POST">
-				<font size="5">宛先：</font>
+				<font size="5">To：</font>
 				<?= $row['reception_user_name'] ?><br>
 				<font size="5">件名：</font>
 				<?= $row['title'] ?><br><br>

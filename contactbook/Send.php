@@ -40,7 +40,7 @@
 		  <br><br>
 
 		  <form action="relay.php" method="POST" id="input">
-			  <font size="5">宛先： </font>
+			  <font size="5">To： </font>
 			  <?= $contact_book_row['reception_user_name']?><br>
 			  <font size="5">件名： </font>
 			  <input size="40" type="text" name="title" value="<?= $contact_book_row['title']?>"><br><br>
