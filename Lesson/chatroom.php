@@ -8,7 +8,7 @@ setcookie("subject_seq","15",$time,"/");
 
 
 
-setcookie("flg",false,$time,"/");
+setcookie("flg",true,$time,"/");
 
 header("Location:http://49.212.201.99:3000");
 
