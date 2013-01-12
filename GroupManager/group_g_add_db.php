@@ -9,10 +9,10 @@
 <?php
 require_once("../lib/dbconect.php");
 $dbcon = DbConnect();
-if((isset($_POST['new_group_name'])) && (isset($_POST['autho_select'])))
+if(isset($_POST['new_group_name']))
 {
 	$group_name = $_POST['new_group_name'];
-	$autho_seq = $_POST['autho_select'];
+	$class_flg = $_POST['class_flg'];
 	$find_flg = 0;
 
 	$sql = "SELECT * FROM m_group WHERE delete_flg = 0;";
@@ -31,7 +31,7 @@ if((isset($_POST['new_group_name'])) && (isset($_POST['autho_select'])))
 	
 	if($find_flg == 0)
 	{
-		$sql = "insert into m_group values(0, '$group_name', '$autho_seq',0, 0)";
+		$sql = "insert into m_group values(0, '$group_name','$class_flg', 0)";
 		mysql_query($sql);
 			
 		$sql = "SELECT * FROM m_group WHERE delete_flg = 0 ORDER BY group_seq DESC;";
@@ -44,11 +44,11 @@ if((isset($_POST['new_group_name'])) && (isset($_POST['autho_select'])))
 	else
 	{
 
-		header("Location:group_g_add.php?name_error=$group_name");
+		print "<script language=javascript>jump('group_g_add.php?name_error=$group_name','right');</script>";
 	}
 }
 else
 {
-	header("Location:../dummy.html");
+		print "<script language=javascript>jump('../dummy.html','right');</script>";
 }
 ?>

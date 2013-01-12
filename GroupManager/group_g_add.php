@@ -48,13 +48,13 @@
 				?>
 				
 				<table class="table_01">
-					<tr  align = "center">
-						<td><font size="5">グループ名</font></td>
-						<td><font size="5">権限</font></td>
+					<tr>
+						<th>グループ名</th>
+						<th>クラスフラグ</th>
 					</tr>
 
 					<tr>
-						<th>
+						<td>
 							<?php
 								if(isset($_GET['name_error']))
 								{
@@ -69,21 +69,11 @@
 							<?php
 								}
 							?>
-						</th>
+						</td>
 
-						<th>
-							<select name = "autho_select">
-								<?php
-									for($i = 0; $i < $cnt; $i++)
-									{
-										$autho_row = mysql_fetch_array($result);
-								?>
-								<option value = "<?= $autho_row['autho_seq'] ?>"><?= $autho_row['autho_name'] ?></option>
-								<?php
-									}
-								?>
-							</select>
-						</th>
+						<td>
+							<input type="checkbox" name = "class_flg" value = "1">
+						</td>
 					</tr>
 				</table>
 				<br>

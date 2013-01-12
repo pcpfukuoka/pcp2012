@@ -4,7 +4,9 @@
 		<META http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
-	</head>
+		<script src="../javascript/jquery-1.8.2.min.js"></script>
+		<script src="../javascript/jquery-ui-1.8.24.custom.min.js"></script>
+				</head>
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
@@ -74,7 +76,9 @@
 		</tr>
 		<tr>
 			<td>学籍番号※学生のみ</td>
-			<td><input type="text" name="stuent_id"></td>
+
+					<td><input type="checkbox" id="student">学生
+			<input type="text" name="stuent_id" disabled="true"></td>
 		</tr>
 	</table>
 		<br>
@@ -82,4 +86,22 @@
 		</form>
 		</div>
 	</body>
+	<script>
+		$(function() {
+			//検索結果から権限を追加するための処理
+			$(document).on('click', '#student', function() {
+
+				//対象のinputタグのNameを配列にかくのう
+				
+				if(document.getElementById("student").checked)
+				{
+						$("*[name=stuent_id]").attr('disabled', false);
+				}
+				else
+				{
+						$("*[name=stuent_id]").attr('disabled', true);
+				}
+			});
+		});
+	</script>
 </html>
