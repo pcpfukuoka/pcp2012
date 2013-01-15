@@ -30,10 +30,9 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	var page_ele=parent.document.getElementById(page_name);
 
 	//selectboxにページ数の追加
+	var change_sel=parent.document.getElementById("page_num_change");
 	var option='<option value="'+pa+'" id="'+pa+'_op">'+pa+'</option>'
-	$("#page_num_change").append(option);
-	$("#page_num_del").append(option);
-
+	change_sel.append(e);
 	pa++;
 	page_ele.value=pa;
 	page_ele.id=pa+"_page";
