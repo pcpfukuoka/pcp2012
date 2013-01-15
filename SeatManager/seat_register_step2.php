@@ -17,9 +17,8 @@
 
 <html>
 	<head>
-		<script src="../jquery-1.8.2.min.js"></script>
-		<script src="./jquery.detail.click.js"></script>
-		<script src="jquery.detail.click.min.js"></script>
+		<script src="../sp/js/jquery-1.8.2.min.js"></script>
+
 	<style>
 		.seat_table {
  			border-collapse: separate;
@@ -212,13 +211,14 @@
 
 
 						//セルの色を戻す
-						$('#' + id_evc).attr({"bgcolor": ""});
+						$('#' + seat_id_evc).attr({"bgcolor": ""});
 
+						evc_flg = 0;
 						seat_id_evc = 0;
 						list_id_evc = 0;
 						name_evc = "";
 						user_seq_evc = "";
-						evc_flg = 0;
+
 				}
 			}
 	    });

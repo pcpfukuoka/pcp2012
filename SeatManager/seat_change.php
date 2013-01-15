@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>座席表</title>
-    <script src="../jquery-1.8.2.min.js"></script>
+    <script src="../sp/js/jquery-1.8.2.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/kajiwara.css" />
 	<link rel="stylesheet" type="text/css" href="../css/button.css" />
 	</head>
