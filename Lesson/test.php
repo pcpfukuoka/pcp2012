@@ -171,10 +171,17 @@
 				//最終列のbrを削除
 				$(delete_br).remove();
 			}
-			var del_op=Number(parsers[0]['max_page'])+"_del";
-			var delete_op=document.getElementById(del_op);
-			//最終列のbrを削除
-			$(delete_op).remove();
+			//更新するselectboxのＩＤを生成
+			var del_cha=Number(parsers[0]['max_page'])+"_cha";
+			var del_del=Number(parsers[0]['max_page'])+"_del";
+
+			//更新するselectboxを取得
+			var delete_cha=document.getElementById(del_cha);
+			var delete_del=document.getElementById(del_del);
+
+			//selectboxを更新
+			$(delete_cha).remove();
+			$(delete_del).remove();
 	    });
 	}
 	</script>
