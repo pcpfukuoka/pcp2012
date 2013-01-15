@@ -88,7 +88,7 @@
 	   				for ($i=1; $i<=$count2; $i++)
 	   				{
   				?>
-    				<option value="<?=$i?>" id="<?=$i?>_op"><?=$i?></option>
+    				<option value="<?=$i?>" id="<?=$i?>_cha"><?=$i?></option>
   				<?php
     				}
   				?>
@@ -105,7 +105,7 @@
 	   				for ($i=1; $i<=$count2; $i++)
 	   				{
   				?>
-    				<option value="<?=$i?>"id="<?=$i ?>_op"><?=$i?></option>
+    				<option value="<?=$i?>"id="<?=$i ?>_del"><?=$i?></option>
   				<?php
     				}
   				?>
@@ -171,7 +171,7 @@
 				//最終列のbrを削除
 				$(delete_br).remove();
 			}
-			var del_op=Number(parsers[0]['max_page'])+"_op";
+			var del_op=Number(parsers[0]['max_page'])+"_del";
 			var delete_op=document.getElementById(del_op);
 			//最終列のbrを削除
 			$(delete_op).remove();
