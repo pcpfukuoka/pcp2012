@@ -100,7 +100,7 @@
 			<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $now_page ?>_form">
 				<input type="hidden" name="date" value=" <?= $date ?>" />
 				<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
-				<select name="page_num_del">
+				<select name="page_num_del" id="page_num_del">
 				<?php
 	   				for ($i=1; $i<=$count2; $i++)
 	   				{
@@ -169,7 +169,14 @@
 				var delete_br=document.getElementById(br_del);
 				//最終列のbrを削除
 				$(delete_br).remove();
+
+				var del_op=Number(parsers[0]['max_page'])+"_op";
+				var delete_op=document.getElementById(del_op);
+				//最終列のbrを削除
+				$(delete_op).remove();
 			}
+
+
 
 
 
