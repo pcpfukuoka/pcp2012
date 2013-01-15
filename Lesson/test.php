@@ -125,14 +125,15 @@
 
 		var date_ele=document.getElementById('date_hidden');
 		var subject_ele=document.getElementById('subject_seq_hidden');
-		var page = document.getElementById('page_num_del');
+		var page=document.getElementById('page_num_del');
+		var page_val=page.value;
 		//日付と科目を変数に格納
 		var date=date_ele.value;
 		var subject_seq=subject_ele.value;
 		$.post('lesson_page_delete.php',{
 	        date:date,
 	        id:subject_seq,
-	        num:page
+	        num:page_val
 	    },
 	    function(rs) {
 		    var parsers=JSON.parse(rs);
