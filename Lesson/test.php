@@ -72,7 +72,7 @@
 		Dbdissconnect($dbcon);
 	?>
 
-
+		</div>
 			<form action="test_lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="form">
 				<input type="hidden" name="date" value="<?= $date ?>" />
 				<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
@@ -113,7 +113,7 @@
 				</select>
 				<input type="button" id="delete" value="削除" onclick="delete_img()"/>
 			</form>
-		</div>
+
 		<iframe name="targetFrame" id="targetFrame" ></iframe>
 		<!--  style="display:none;"-->
 
