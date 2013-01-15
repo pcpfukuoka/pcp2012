@@ -39,6 +39,9 @@ Dbdissconnect($dbcon);
 <html>
 <head>
 	<script src="../javascript/test_lesson_upload_js.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+
 </head>
 <body onload="form_create('<?= $date ?>',<?= $page_num?>,<?= $subject_seq ?>,'<?= $img_tag_name ?>')">
 
