@@ -21,7 +21,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	//brタグが必要な時の処理
 	if(pa%5==0){
 		var br_val=pa/5;
-		br_val=br_bal+"_br";
+		br_val=br_val+"_br";
 		var br_=document.createElement("br");
 		br_.setAttribute("id",br_val);
 		di.appendChild(br_);
