@@ -81,8 +81,8 @@
 			</form>
 
 			<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="change_form">
-				<input type="hidden" id="date" value=" <?= $date ?>" />
-				<input type="hidden" id="subject_seq" value=" <?= $subject_seq ?>" />
+				<input type="hidden" name="date" value=" <?= $date ?>" />
+				<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
 				<select id="page_num_change" name="page_num_change">
 				<?php
 	   				for ($i=1; $i<=$count2; $i++)
@@ -98,9 +98,9 @@
 			</form>
 
 			<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $now_page ?>_form">
-				<input type="hidden" id="date" value=" <?= $date ?>" />
-				<input type="hidden" id="subject_seq" value=" <?= $subject_seq ?>" />
-				<select id="page_num_del">
+				<input type="hidden" name="date" value=" <?= $date ?>" />
+				<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+				<select name="page_num_del">
 				<?php
 	   				for ($i=1; $i<=$count2; $i++)
 	   				{
