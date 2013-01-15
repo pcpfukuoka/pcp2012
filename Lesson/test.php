@@ -170,17 +170,11 @@
 				var delete_br=document.getElementById(br_del);
 				//最終列のbrを削除
 				$(delete_br).remove();
-
-				var del_op=Number(parsers[0]['max_page'])+"_op";
-				var delete_op=document.getElementById(del_op);
-				//最終列のbrを削除
-				$(delete_op).remove();
 			}
-
-
-
-
-
+			var del_op=Number(parsers[0]['max_page'])+"_op";
+			var delete_op=document.getElementById(del_op);
+			//最終列のbrを削除
+			$(delete_op).remove();
 	    });
 	}
 	</script>
