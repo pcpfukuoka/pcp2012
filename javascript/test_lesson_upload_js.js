@@ -17,8 +17,6 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 
 	var img_page_num = page_num;
 	var image_tag = img_page_num + "_image";
-
-	im.src = img_tag_name;
 	var im = page_num + "_image";
 	var image=document.createElement("img");
 	image.setAttribute("src",img_tag_name);
