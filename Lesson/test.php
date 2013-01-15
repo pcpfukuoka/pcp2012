@@ -44,16 +44,7 @@
 
 
 				$now_page = $i + 1;
-				echo "now_page:";
-				echo $now_page;
-				echo "/";
-
-				echo $row['page_num'];
-				echo "/";
-				echo $row['div_url'];
-
 				$aaa = substr($row['div_url'],18);
-
 				$bbb = substr($aaa,0,strlen($aaa)-1);
 				$img_tag_name = '../../balckboard/public/images/div/'.$bbb;
 
