@@ -49,7 +49,7 @@
 				$img_tag_name = '../../balckboard/public/images/div/'.$bbb;
 
 	?>
-				<img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$now_page ?>_image">
+				<img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$i ?>_image">
 
 	<?php
 			if($i%5==0){
