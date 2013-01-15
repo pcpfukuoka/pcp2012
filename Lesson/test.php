@@ -183,6 +183,12 @@
 			//selectboxを更新
 			$(delete_cha).remove();
 			$(delete_del).remove();
+
+			//追加ボタンのpage_numを一つ減らす
+			var sub=Number(parsers[0]['max_page'])+"_page";
+			var page_ele=document.getElementById(sub);
+			page_ele.value=Number(parsers[0]['max_page'])-1;
+			page_ele.id=Number(parsers[0]['max_page'])-1+"_page";
 	    });
 	}
 	</script>
