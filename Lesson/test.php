@@ -53,7 +53,8 @@
 
 	<?php
 			if($i%5==0){
-				$br_=sqrt($i/5)+"_br";
+				$br_=$i/5;
+				$br_=$br_+"_br";
 	?>
 				<br id="<?= $br_ ?>">
 	<?php
