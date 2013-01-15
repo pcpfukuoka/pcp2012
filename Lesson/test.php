@@ -81,15 +81,15 @@
 	?>
 
 
-			<form action="test_lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $page_max ?>_form">
+			<form action="test_lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="form">
 				<input type="hidden" name="date" value="<?= $date ?>" />
 				<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
 				<input type="file" name="upfile" size="30" />
 				<input type="hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
-				<input type="submit" id="new_page" value="追加" />
+				<input type="submit"  value="追加" />
 			</form>
 
-			<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $now_page ?>_form">
+			<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="change_form">
 				<input type="hidden" id="date" value=" <?= $date ?>" />
 				<input type="hidden" id="subject_seq" value=" <?= $subject_seq ?>" />
 				<select id="page_num">
@@ -119,7 +119,6 @@
     				}
   				?>
 				</select>
-				<input type="file" name="upfile" size="30" />
 				<input type="button" id="delete" value="削除" onclick="delete_img()"/>
 			</form>
 		</div>

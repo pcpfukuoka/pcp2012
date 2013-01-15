@@ -5,13 +5,13 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 
 	//divタグを取得
 	var di=parent.document.getElementById("form");
-	var pa=page_num-1;
+	var pa=page_num;
 	//brタグが必要な時の処理
 	if(pa%5==0){
-		pa=pa/5;
-		pa=pa+"_br";
+		var br_val=pa/5;
+		br_val=pa+"_br";
 		var br_=document.createElement("br");
-		br_.setAttribute("id",pa);
+		br_.setAttribute("id",br_val);
 		di.appendChild(br_);
 	}
 
@@ -25,4 +25,9 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	image.setAttribute("id",im);
 	//作成した属性の付与
 	di.appendChild(image);
+	var page_name=pa+"_page";
+	var page_ele=parent.document.getElementById(page_name);
+	pa++;
+	page_ele.value=pa;
+	page_ele.id=pa+"_page";
 }
