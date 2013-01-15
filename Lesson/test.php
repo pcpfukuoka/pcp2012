@@ -54,7 +54,7 @@
 	<?php
 			if($i%5==0){
 				$br_=$i/5;
-				$br_=$br_+"_br";
+				$br_=$br_."_br";
 	?>
 				<br id="<?= $br_ ?>">
 	<?php
@@ -98,7 +98,7 @@
 				<input type="submit" id="change" value="変更" />
 			</form>
 
-			<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="<?= $now_page ?>_form">
+			<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="delete_form">
 				<input type="hidden" name="date" value=" <?= $date ?>" />
 				<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
 				<select name="page_num_del" id="page_num_del">
