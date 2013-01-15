@@ -185,10 +185,11 @@
 			$(delete_del).remove();
 
 			//追加ボタンのpage_numを一つ減らす
-			var sub=Number(parsers[0]['max_page'])+"_page";
+			var sub_num=Number(parsers[0]['max_page'])+1;
+			var sub=sub_num+"_page";
 			var page_ele=document.getElementById(sub);
-			page_ele.value=Number(parsers[0]['max_page'])-1;
-			page_ele.id=Number(parsers[0]['max_page'])-1+"_page";
+			page_ele.value=sub_num-1;
+			page_ele.id=sub_num-1+"_page";
 	    });
 	}
 	</script>
