@@ -32,7 +32,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	//selectboxにページ数の追加
 	var change_sel=parent.document.getElementById("page_num_change");
 	var option='<option value="'+pa+'" id="'+pa+'_op">'+pa+'</option>'
-	change_sel.append(e);
+	change_sel.append(option);
 	pa++;
 	page_ele.value=pa;
 	page_ele.id=pa+"_page";
