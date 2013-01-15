@@ -38,7 +38,7 @@
 		$page_max = 1;
 		if($count2 > 0)
 		{
-			for ($i = 0; $i < $count2; $i++)
+			for ($i = 1; $i <= $count2; $i++)
 			{
 				$row = mysql_fetch_array($result2);
 
