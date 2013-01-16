@@ -38,7 +38,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	}
 
 	//deleteのselectboxにページ数の追加
-	var cdelete_sel=parent.document.getElementById("page_num_delete");
+	var delete_sel=parent.document.getElementById("page_num_delete");
 	if(delete_sel.options.length==0){
 		delete_sel.options[0]=new Option(pa,pa);
 	}else{
