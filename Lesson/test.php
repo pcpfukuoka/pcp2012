@@ -177,8 +177,8 @@
 			var del_del=Number(parsers[0]['max_page'])+"_del";
 
 			//更新するselectboxを取得
-			var delete_cha=document.getElementById(page_num_change);
-			var delete_del=document.getElementById(page_num_del);
+			var delete_cha=document.getElementById("page_num_change");
+			var delete_del=document.getElementById("page_num_del");
 
 			//selectboxを更新
 			delete_cha.options[delete_cha.options.length-1].remove();
