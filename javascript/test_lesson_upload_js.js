@@ -29,18 +29,21 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	var page_name=pa+"_page";
 	var page_ele=parent.document.getElementById(page_name);
 
-	//selectboxにページ数の追加
+	//changeのselectboxにページ数の追加
 	var change_sel=parent.document.getElementById("page_num_change");
-
-	//var option='<option value="'+pa+'" id="'+pa+'_op">'+pa+'</option>'
 	if(change_sel.options.length==0){
 		change_sel.options[0]=new Option(pa,pa);
 	}else{
-
 		change_sel.options[change_sel.options.length+1]=new Option(pa,pa);
 	}
 
-
+	//deleteのselectboxにページ数の追加
+	var cdelete_sel=parent.document.getElementById("page_num_delete");
+	if(delete_sel.options.length==0){
+		delete_sel.options[0]=new Option(pa,pa);
+	}else{
+		delete_sel.options[delete_sel.options.length+1]=new Option(pa,pa);
+	}
 	pa++;
 	page_ele.value=pa;
 	page_ele.id=pa+"_page";
