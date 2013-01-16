@@ -34,7 +34,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	if(change_sel.options.length==0){
 		change_sel.options[0]=new Option(pa,pa);
 	}else{
-		change_sel.options[change_sel.options.length+1]=new Option(pa,pa);
+		change_sel.options[change_sel.options.length]=new Option(pa,pa);
 	}
 
 	//deleteのselectboxにページ数の追加
@@ -42,7 +42,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	if(delete_sel.options.length==0){
 		delete_sel.options[0]=new Option(pa,pa);
 	}else{
-		delete_sel.options[delete_sel.options.length+1]=new Option(pa,pa);
+		delete_sel.options[delete_sel.options.length]=new Option(pa,pa);
 	}
 	pa++;
 	page_ele.value=pa;
