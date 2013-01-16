@@ -177,12 +177,12 @@
 			var del_del=Number(parsers[0]['max_page'])+"_del";
 
 			//更新するselectboxを取得
-			var delete_cha=document.getElementById(del_cha);
-			var delete_del=document.getElementById(del_del);
+			var delete_cha=document.getElementById(page_num_change);
+			var delete_del=document.getElementById(page_num_del);
 
 			//selectboxを更新
-			$(delete_cha).remove();
-			$(delete_del).remove();
+			delete_cha.options[delete_cha.options.length-1].remove();
+			delete_del.options[delete_del.options.length-1].remove();
 
 			//追加ボタンのpage_numを一つ減らす
 			var sub_num=Number(parsers[0]['max_page'])+1;
