@@ -21,7 +21,7 @@
 
 	</head>
 	<body>
-		<form action="add.php" method="post" enctype="multipart/form-data">
+		<form action="test.php" method="post" enctype="multipart/form-data">
 			<!-- 授業がある日付・授業するクラス・授業の科目 -->
 			<input type="date" name= "date" size= "30" /><br />
 

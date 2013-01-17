@@ -10,7 +10,7 @@ session_start();
 	$date = $_POST['date'];
 	$subject_seq = $_POST['subject_seq'];
 	$data = $_FILES['upfile'];
-	$page_num = $_POST['page_num'];
+	$page_num = $_POST['page_num_change'];
 
 	//$class_seq = $_POST['class_seq'];
 
