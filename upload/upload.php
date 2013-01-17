@@ -9,9 +9,9 @@
 
 if (is_uploaded_file($_FILES["upfile"]["tmp_name"]))
 {
-	if (move_uploaded_file($_FILES["upfile"]["tmp_name"], "../dl_calendar/menu.jpg"))
+	if (move_uploaded_file($_FILES["upfile"]["tmp_name"], "../Calendar/menu.jpg"))
 	{
-		chmod("../dl_calendar/menu.jpg", 0644);
+		chmod("../Calendar/menu.jpg", 0644);
 		echo $_FILES["upfile"]["name"] . "をアップロードしました。<br><br><br>";
 
 		echo "<div align = 'center'>";
