@@ -9,7 +9,7 @@ header("Access-Control-Allow-Origin:*");
 	$dbcon = DbConnect();
 
 	//送られてくるデータ
-	$group_seq = $_POST['group_seq'];
+	$group_seq = $_POST['id'];
 
 
 	//クラスのgroup_seqとgroup_nameを求めるＳＱＬ
