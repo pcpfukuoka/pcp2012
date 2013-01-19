@@ -35,7 +35,7 @@ $sql = "SELECT m_test.test_seq, m_test.date, m_subject.subject_name, m_test.cont
 		AND m_test.group_seq = m_group.group_seq 
 		AND m_teacher.user_seq = m_user.user_seq 
 		AND m_test.delete_flg = 0 
-		ORDER BY m_test.test_seq DESC;";
+		ORDER BY m_test.date DESC;";
 
 $result_test = mysql_query($sql);
 $count_test = mysql_num_rows($result_test);

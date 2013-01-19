@@ -226,7 +226,7 @@
     </script>
 
 <div class="left_box">
-	<form action="seat_register_add.php" method="POST">
+	<form action="seat_check.php" method="POST">
 		<table class="seat_table">
 <?php
 
@@ -258,10 +258,13 @@
 
 
 <?php
-		echo "<input name=group type=hidden value=$group>";
-		echo "<input name=row_max type=hidden value=$row_max>";
-		echo "<input name=col_max type=hidden value=$col_max>";
+
 ?>
+
+		<input name= "group" type="hidden" value= "<?= $group ?>">
+		<input name="row_max" type="hidden" value= "<?= $row_max ?>">
+		<input name="col_max" type="hidden" value= "<?= $col_max ?>">
+		<input name="check_flg" type="hidden" value="1">;
 	</form>
 </div>
 

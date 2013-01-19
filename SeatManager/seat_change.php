@@ -88,18 +88,18 @@
 
 
 ?>
-	<form action="seat_change_update.php" method="POST">
+	<form action="seat_check.php" method="POST">
 
 	<table class="kajiwara" style="table-layout:fixed;">
 <?php
-	$class = $_POST['group'];
-	$sql = "select max(row) as mx from seat where group_seq ='$class'";
+	$group = $_POST['group'];
+	$sql = "select max(row) as mx from seat where group_seq ='$group'";
 	$res = mysql_query($sql);
 	$ret = mysql_fetch_assoc($res);
 	$row_max = $ret['mx'];
 
 
-	$sql = "select max(col) as mx from seat where group_seq ='$class'";
+	$sql = "select max(col) as mx from seat where group_seq ='$group'";
 	$res = mysql_query($sql);
 	$ret = mysql_fetch_assoc($res);
 	$col_max = $ret['mx'];
@@ -111,7 +111,7 @@
 
 			for($col = 1; $col <= $col_max; $col++)
 			{
-				$sql = "select user_seq from seat where group_seq ='$class' and row='$row'and col='$col'";
+				$sql = "select user_seq from seat where group_seq ='$group' and row='$row'and col='$col'";
 
 				$res = mysql_query($sql);
 				$ret = mysql_fetch_array($res);
@@ -138,14 +138,16 @@
 			}
 			echo "</tr>";
 		}
-
-
-		echo "<input name=class type=hidden value=$class>";
-		echo "<input name=row_max type=hidden value=$row_max>";
-		echo "<input name=col_max type=hidden value=$col_max>";
 ?>
+
 	</table>
-	<input type="submit" value="更新" class="button4">
+		<input name= "group" type="hidden" value= "<?= $group ?>">
+		<input name="row_max" type="hidden" value= "<?= $row_max ?>">
+		<input name="col_max" type="hidden" value= "<?= $col_max ?>">
+		<input name="check_flg" type="hidden" value="0">;
+
+		<input type="submit" value="更新" class="button4">
+
 	</form>
 	<input type="submit" value="ランダム" class = "rand button4">
 

@@ -48,6 +48,7 @@ Dbdissconnect($link);
 		
 			<!-- テーブルの作成 -->
 		<form action = "test_point_dec.php" method = "POST">
+			<table border = "1">
 				<tr>
 					<th>名前</th>
 					<th>点数</th>
