@@ -28,7 +28,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 		var tr_val=pa/5;
 		tr_val=tr_val+1+"_tr";
 		var br_=document.createElement("tr");
-		br_.setAttribute("id",br_val);
+		br_.setAttribute("id",tr_val);
 		$("tbody").appendChild(br_);
 	}
 
