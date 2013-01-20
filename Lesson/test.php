@@ -143,30 +143,31 @@
 	    function(rs) {
 		    var parsers=JSON.parse(rs);
 
+		    //parsers[0]['delete_page'] => 削除するページ　parsers[0]['max_page'] => 削除前のページ数
 
-			//削除するimage
+			//削除するページのタグＩＤ
 			var del=parsers[0]['delete_page']+"_image";
 
-			var i_image;
-			var a_image;
-			var i_ele;
-			var a_ele;
+			var after_image;
+			var before_image;
+			var after_ele;
+			var after_ele;
 			//画像urlの繰り上げ処理
 			for(i=Number(parsers[0]['delete_page']);i<Number(parsers[0]['max_page']);i++){
 
 				//取得するidの形成
-				i_image=i+"_image";
-				a_image=i+1+"_image";
+				after_image=i+"_image";
+				before_image=i+1+"_image";
 
 				//画像を取得
-				i_ele=document.getElementById(i_image);
-				a_ele=document.getElementById(a_image);
+				after_ele=document.getElementById(after_image);
+				before_ele=document.getElementById(before_image);
 
 				//urlを繰り上げ処理
-				i_ele.src=a_ele.src;
+				after_ele.src=before_ele.src;
 			}
 			//一番最後の要素を削除
-			var del_im=i+"_image";
+			var del_im=parsers[0]['max_page']+"_image";
 			var delete_form=document.getElementById(del_im);
 			$(delete_form).remove();
 
