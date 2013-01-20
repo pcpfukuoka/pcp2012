@@ -143,13 +143,15 @@
 	    function(rs) {
 		    var parsers=JSON.parse(rs);
 
-			//画像urlの繰り上げ処理
+
+			//削除するimage
 			var del=parsers[0]['delete_page']+"_image";
 
 			var i_image;
 			var a_image;
 			var i_ele;
 			var a_ele;
+			//画像urlの繰り上げ処理
 			for(i=Number(parsers[0]['delete_page']);i<Number(parsers[0]['max_page']);i++){
 
 				//取得するidの形成
@@ -164,7 +166,7 @@
 				i_ele.src=a_ele.src;
 			}
 			//一番最後の要素を削除
-			var del_im=parsers[0]['max_page']+"_image";
+			var del_im=i+"_image";
 			var delete_form=document.getElementById(del_im);
 			$(delete_form).remove();
 
