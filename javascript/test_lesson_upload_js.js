@@ -3,10 +3,14 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	/*					親フレームの操作			*/
 	/////////////////////////////////////////////////
 
-	//divタグを取得
-	var di=parent.document.getElementById("form");
+	//tableタグを取得
+	var table_ele=parent.document.getElementById("img_table");
 	var pa=Number(page_num);
 
+	//imageを追加するtrタグを取得
+	var insert_tr=Math.floor(pa/5)+1;
+	var tr_name=insert_tr+"_tr";
+	var tr_ele=parent.document.getElementById(tr_name);
 
 	var img_page_num = page_num;
 	var image_tag = img_page_num + "_image";
@@ -18,14 +22,15 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	image.setAttribute("id",im);
 	//作成した属性の付与
 	di.appendChild(image);
-	//brタグが必要な時の処理
+	//タグが必要な時の処理
 	if(pa%5==0){
 		var br_val=pa/5;
-		br_val=br_val+"_br";
-		var br_=document.createElement("br");
+		br_val=br_val+1+"_br";
+		var br_=document.createElement("tr");
 		br_.setAttribute("id",br_val);
-		di.appendChild(br_);
+		table_ele.appendChild(br_);
 	}
+
 	var page_name=pa+"_page";
 	var page_ele=parent.document.getElementById(page_name);
 
