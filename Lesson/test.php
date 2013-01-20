@@ -50,7 +50,7 @@
 				$img_tag_name = '../../balckboard/public/images/div/'.$bbb;
 
 	?>
-				<td><img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$i ?>_image"></td>
+				<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$i ?>_image"></td>
 
 	<?php
 			if($i%5==0){
@@ -167,7 +167,7 @@
 				after_ele.src=before_ele.src;
 			}
 			//一番最後の要素を削除
-			var del_im=parsers[0]['max_page']+"_image";
+			var del_im=parsers[0]['max_page']+"td";
 			var delete_form=document.getElementById(del_im);
 			$(delete_form).remove();
 
