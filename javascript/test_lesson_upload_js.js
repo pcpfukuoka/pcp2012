@@ -27,9 +27,9 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	if(pa%5==0){
 		var tr_val=pa/5;
 		tr_val=tr_val+1+"_tr";
-		var br_=document.createElement("tr");
-		br_.setAttribute("id",tr_val);
-		$("tbody").appendChild(br_);
+		var tr_=document.createElement("tr");
+		trs_.setAttribute("id",tr_val);
+		$("tbody").append(br_);
 	}
 
 	var page_name=pa+"_page";
