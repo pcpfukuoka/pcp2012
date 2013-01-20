@@ -9,6 +9,7 @@
 	//削除前のページ数を持ってくる
 	$max_sql = "SELECT page_num FROM board WHERE date='".$date."' AND subject_seq='".$subject_seq."ORDER BY page_num DESC LIMIT 1';";
 	$max_page = mysql_query($max_sql);
+
 	//消す前に必要なＵＲＬを退避させる
 	$select_sql = "SELECT div_url, page_num FROM board WHERE date='".$date."' AND subject_seq='".$subject_seq."'AND page_num >".$page_num.";";
 	$result = mysql_query($select_sql);
@@ -23,7 +24,6 @@
 		$row = mysql_fetch_array($result);
 
 		$new_page_num=intval($row['page_num']) -1;
-		$max_page= $new_page_num;
 		$sql = "INSERT INTO board VALUE(0,'".$date ."', '15','".$subject_seq ."','".$new_page_num ."','".$row['div_url']."','0','0');";
 		$result2 = mysql_query($sql);
 	}
