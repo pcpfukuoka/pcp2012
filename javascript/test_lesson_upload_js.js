@@ -25,11 +25,12 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	tr_ele.appendChild(td).appendChild(image);
 	//タグが必要な時の処理
 	if(pa%5==0){
+		var tbody=document.getElementByTagName('tbody');
 		var tr_val=pa/5;
 		tr_val=tr_val+1+"_tr";
 		var tr_=document.createElement("tr");
 		tr_.setAttribute("id",tr_val);
-		$("tbody").append(tr_);
+		tbody.appendChild(tr_);
 	}
 
 	var page_name=pa+"_page";
