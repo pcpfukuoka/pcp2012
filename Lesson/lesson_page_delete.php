@@ -25,7 +25,7 @@
 	}
 
 	//送信するデータを配列に追加
-	$result_1[] = array('delete_page'=>$page_num,'max_page'=>$max_page+1);
+	$result_1[] = array('delete_page'=>$page_num,'max_page'=>$page_num);
 	Dbdissconnect($dbcon);
 	$test = json_encode($result_1);
 	echo $test;
