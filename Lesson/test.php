@@ -28,7 +28,7 @@
 	<div id="form">
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
-		<table boarder="1" id="img_table">
+		<table boarder="5" id="img_table">
 			<tr id="1_tr">
 
 
