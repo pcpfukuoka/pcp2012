@@ -28,7 +28,8 @@
 	<div id="form">
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
-
+		<table boarder="1" id="img_table">
+			<tr id="1_tr">
 
 
 	<?php
@@ -49,14 +50,16 @@
 				$img_tag_name = '../../balckboard/public/images/div/'.$bbb;
 
 	?>
-				<img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$i ?>_image">
+				<td><img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$i ?>_image"></td>
 
 	<?php
 			if($i%5==0){
 				$br_=$i/5;
-				$br_=$br_."_br";
+				$br_++;
+				$br_=$br_."_tr";
 	?>
-				<br id="<?= $br_ ?>">
+			</tr>
+			<tr id="<?= $br_ ?>">
 	<?php
 			}
 
@@ -71,8 +74,9 @@
 		//データベースを閉じる
 		Dbdissconnect($dbcon);
 	?>
-
-		</div>
+			</tr>
+		</table>
+	</div>
 			<form action="test_lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="form">
 				<input type="hidden" name="date" value="<?= $date ?>" />
 				<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
