@@ -9,6 +9,9 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 
 	//imageを追加するtrタグを取得
 	var insert_tr=Math.floor(pa/5);
+	if(insert_tr==0){
+		insert_tr++;
+	}
 	var tr_name=insert_tr+"_tr";
 	var tr_ele=parent.document.getElementById(tr_name);
 
