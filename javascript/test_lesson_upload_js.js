@@ -33,7 +33,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 		tr_val=tr_val+1+"_tr";
 		var tr_=document.createElement("tr");
 		tr_.setAttribute("id",tr_val);
-		tbody.append(tr_);
+		table_ele.appendChild(tr_);
 	}
 
 	var page_name=pa+"_page";
