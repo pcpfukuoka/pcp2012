@@ -168,13 +168,13 @@
 			var delete_form=document.getElementById(del_im);
 			$(delete_form).remove();
 
-			//要素が１列なくbrタグが存在する場合の処理
+			//要素が１列なtrタグが存在する場合の処理
 			if(Number(parsers[0]['max_page'])%5==0){
-				var br_del=Number(parsers[0]['max_page'])/5
-				br_del =br_del+"_br";
-				var delete_br=document.getElementById(br_del);
+				var tr_del=Number(parsers[0]['max_page'])/5+1;
+				tr_del =tr_del+"_tr";
+				var delete_tr=document.getElementById(tr_del);
 				//最終列のbrを削除
-				$(delete_br).remove();
+				$(delete_tr).remove();
 			}
 			//更新するselectboxのＩＤを生成
 			var del_cha=Number(parsers[0]['max_page'])+"_cha";
