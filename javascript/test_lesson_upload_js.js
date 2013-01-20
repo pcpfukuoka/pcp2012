@@ -34,7 +34,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	}
 
 	var page_name=pa+"_page";
-	var page_ele=parent.document.getElementById(page_name);
+	var page_ele=parent.document.getElementsById(page_name);
 
 	//changeのselectboxにページ数の追加
 	var change_sel=parent.document.getElementById("page_num_change");
