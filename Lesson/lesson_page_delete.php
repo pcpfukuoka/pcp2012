@@ -28,8 +28,9 @@
 		$result2 = mysql_query($sql);
 	}
 
+	$aaa=$$max_page;
 	//送信するデータを配列に追加
-	$result_1[] = array('delete_page'=>$page_num,'max_page'=>$max_page,'test'=>$max_sql);
+	$result_1[] = array('delete_page'=>$page_num,'max_page'=>$aaa,'test'=>$max_sql);
 	Dbdissconnect($dbcon);
 	$test = json_encode($result_1);
 	echo $test;
