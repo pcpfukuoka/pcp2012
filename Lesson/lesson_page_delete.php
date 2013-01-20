@@ -23,9 +23,10 @@
 		$sql = "INSERT INTO board VALUE(0,'".$date ."', '15','".$subject_seq ."','".$new_page_num ."','".$row['div_url']."','0','0');";
 		$result2 = mysql_query($sql);
 	}
+	$max_page+1;
 
 	//送信するデータを配列に追加
-	$result_1[] = array('delete_page'=>$page_num,'max_page'=>$page_num);
+	$result_1[] = array('delete_page'=>$page_num,'max_page'=>$max_page);
 	Dbdissconnect($dbcon);
 	$test = json_encode($result_1);
 	echo $test;
