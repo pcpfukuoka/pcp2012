@@ -21,7 +21,8 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	image.setAttribute("height","128");
 	image.setAttribute("id",im);
 	//作成した属性の付与
-	tr_ele.appendChild(image);
+	var td=document.createElement("td");
+	tr_ele.appendChild(td).appendChild(image);
 	//タグが必要な時の処理
 	if(pa%5==0){
 		var br_val=pa/5;
