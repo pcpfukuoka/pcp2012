@@ -75,7 +75,7 @@
 
 			<tr id="<?=$th_ ?>">
 	<?php
-			for($j=th_in;$j<=$max;$j++){
+			for($j=$th_in;$j<=$max;$j++){
 				echo "<th width='100'><font size='3'>".$j."<font></th>";
 			}
 
