@@ -68,7 +68,7 @@
 
 				//thの中身を整える処理
 				$th_in=$i+1;
-				$max=th_in+5;
+				$max=$th_in+5;
 	?>
 			</tr>
 
