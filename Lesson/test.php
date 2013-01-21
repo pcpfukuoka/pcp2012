@@ -4,8 +4,8 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
+	//lesson_preparation.phpから送られてくるデータ
 	$date = $_POST['date'];
-	echo $date;
 	$subject_seq = $_POST['subject'];
 
 	//subjectに対応するsubject_nameをデータベースから持ってくる
@@ -17,8 +17,8 @@
 
 <html>
 	<head>
-			<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-			<script src="../javascript/jquery-1.8.2.min.js"></script>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<script src="../javascript/jquery-1.8.2.min.js"></script>
 	</head>
 
 	<body>
@@ -42,24 +42,20 @@
 			for ($i = 1; $i <= $count2; $i++)
 			{
 				$row = mysql_fetch_array($result2);
-
-
 				$now_page = $i + 1;
 				$aaa = substr($row['div_url'],18);
 				$bbb = substr($aaa,0,strlen($aaa)-1);
 				$img_tag_name = '../../balckboard/public/images/div/'.$bbb;
-
 	?>
-				<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$i ?>_image"></td>
-
+			<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$i ?>_image"></td>
 	<?php
 			if($i%5==0){
-				$br_=$i/5;
-				$br_++;
-				$br_=$br_."_tr";
+				$tr_=$i/5;
+				$tr_++;
+				$tr_=$tr_."_tr";
 	?>
 			</tr>
-			<tr id="<?= $br_ ?>">
+			<tr id="<?= $tr_ ?>">
 	<?php
 			}
 

@@ -31,11 +31,15 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	tr_ele.appendChild(td).appendChild(image);
 	//タグが必要な時の処理
 	if(page_num%5==0){
+
+		/*　trを追加して１列を追加する処理　*/
 		var tbody=document.getElementsByTagName('tbody');
 		var tr_val=page_num/5;
 		tr_val=tr_val+1+"_tr";
 		var tr_=document.createElement("tr");
 		tr_.setAttribute("id",tr_val);
+
+		//tableに追加
 		table_ele.appendChild(tr_);
 	}
 
@@ -44,17 +48,26 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 
 	//changeのselectboxにページ数の追加
 	var change_sel=parent.document.getElementById("page_num_change");
+
 	if(change_sel.options.length==0){
+
+		//select_boxに何もない場合の追加の処理
 		change_sel.options[0]=new Option(pa,pa);
 	}else{
+		//通常の追加の処理
 		change_sel.options[change_sel.options.length]=new Option(pa,pa);
 	}
 
 	//deleteのselectboxにページ数の追加
 	var delete_sel=parent.document.getElementById("page_num_del");
+
 	if(delete_sel.options.length==0){
+
+		//select_boxに何もない場合の追加の処理
 		delete_sel.options[0]=new Option(pa,pa);
 	}else{
+
+		//通常の追加の処理
 		delete_sel.options[delete_sel.options.length]=new Option(pa,pa);
 	}
 	page_num++;
