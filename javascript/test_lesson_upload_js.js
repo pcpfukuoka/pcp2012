@@ -7,11 +7,11 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	var table_ele=parent.document.getElementById("img_table");
 	var pa=Number(page_num);
 
-	if(pa%5==0){
+	if(pa%8==0){
 		pa--;
 	}
 	//imageを追加するtrタグを取得
-	var insert_tr=Math.floor(pa/5)+1;
+	var insert_tr=Math.floor(pa/8)+1;
 
 	var tr_name=insert_tr+"_tr";
 	var tr_ele=parent.document.getElementById(tr_name);
