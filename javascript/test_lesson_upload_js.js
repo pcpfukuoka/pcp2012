@@ -45,7 +45,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 			e=e+"<th width='100'><font size='3'>"+next_th+"</font></th>";
 			next_th++;
 		}
-		table_ele.appendChild(th_).append(e);
+		table_ele.appendChild(th_).appendChild(e);
 
 
 		/*　trを追加して１列を追加する処理　*/
