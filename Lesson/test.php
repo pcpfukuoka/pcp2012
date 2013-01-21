@@ -65,13 +65,17 @@
 				$tr_++;
 				$tr_=$tr_."_tr";
 				$th_=$tr_."_th";
+
+				//thの中身を整える処理
+				$th_in=$i+1;
+				$max=th_in+5;
 	?>
 			</tr>
 
 
 			<tr id="<?=$th_ ?>">
 	<?php
-			for($j=1;$j<=5;$j++){
+			for($j=th_in;$j<=$max;$j++){
 				echo "<th width='100'><font size='3'>".$j."<font></th>";
 			}
 
