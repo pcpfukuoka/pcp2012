@@ -47,6 +47,7 @@
 				$bbb = substr($aaa,0,strlen($aaa)-1);
 				$img_tag_name = '../../balckboard/public/images/div/'.$bbb;
 	?>
+			<th><font size="5"><?=$i ?></font></th>
 			<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$i ?>_image"></td>
 	<?php
 			if($i%5==0){
