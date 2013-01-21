@@ -24,6 +24,9 @@
 	<body>
 
 
+	<a href="lesson_preparation.php">戻る</a>
+
+	<br>
 	<font size="5"><?= $date ?>:<?=$result ?></font>
 	<div id="form">
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
