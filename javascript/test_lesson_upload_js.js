@@ -32,6 +32,23 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	//タグが必要な時の処理
 	if(page_num%5==0){
 
+		/* thを作成して１列分のヘッダーを作成*/
+		var tr_=document.createElement("tr");
+		var th_val=page_num/5;
+		th_val=th_val+1+"_tr";
+		tr_.setAttribute("id",tr_val);
+		//tableにヘッダー用のtrを追加
+		table_ele.appendChild(tr_);
+
+		var e="<th width='100'><font size='3'>"+page_num+1+"</font></th>";
+		var next_th=page_num+2;
+		for(i=1;i<5){
+			e=e+"<th width='100'><font size='3'>"+next_th+"</font></th>";
+			next_th++;
+		}
+		table_ele.appendChild(tr_)append(e);
+
+
 		/*　trを追加して１列を追加する処理　*/
 		var tbody=document.getElementsByTagName('tbody');
 		var tr_val=page_num/5;
