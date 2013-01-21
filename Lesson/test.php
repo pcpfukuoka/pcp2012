@@ -31,7 +31,7 @@
 		<table border="5" id="img_table">
 			<tr id="1_th">
 	<?php
-				for($i=1;$i<=5;$i++){
+				for($i=1;$i<=8;$i++){
 					echo "<th width='100'><font size='3'>".$i."<font></th>";
 				}
 	?>
