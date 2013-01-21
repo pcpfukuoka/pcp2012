@@ -175,7 +175,7 @@
 			var after_ele;
 			var after_ele;
 			//画像urlの繰り上げ処理
-			for(i=Number(parsers[0]['delete_page']);i<Number(parsers[0]['max_page']);i++){
+			for(i=Number(parsers[0]['delete_page']);i<Number(parsers[0]['max_page'][0]);i++){
 
 				//取得するidの形成
 				after_image=i+"_image";
@@ -189,21 +189,21 @@
 				after_ele.src=before_ele.src;
 			}
 			//一番最後の要素を削除
-			var del_im=parsers[0]['max_page']+"td";
+			var del_im=parsers[0]['max_page'][0]+"td";
 			var delete_form=document.getElementById(del_im);
 			$(delete_form).remove();
 
 			//要素が１列なtrタグが存在する場合の処理
-			if(Number(parsers[0]['max_page'])%5==0){
-				var tr_del=Number(parsers[0]['max_page'])/5+1;
+			if(Number(parsers[0]['max_page'][0])%5==0){
+				var tr_del=Number(parsers[0]['max_page'][0])/5+1;
 				tr_del =tr_del+"_tr";
 				var delete_tr=document.getElementById(tr_del);
 				//最終列のbrを削除
 				$(delete_tr).remove();
 			}
 			//更新するselectboxのＩＤを生成
-			var del_cha=Number(parsers[0]['max_page'])+"_cha";
-			var del_del=Number(parsers[0]['max_page'])+"_del";
+			var del_cha=Number(parsers[0]['max_page'][0])+"_cha";
+			var del_del=Number(parsers[0]['max_page'][0])+"_del";
 
 			//更新するselectboxを取得
 			var delete_cha=document.getElementById("page_num_change");
@@ -214,7 +214,7 @@
 			delete_del.options[delete_del.options.length-1].remove();
 
 			//追加ボタンのpage_numを一つ減らす
-			var sub_num=Number(parsers[0]['max_page'])+1;
+			var sub_num=Number(parsers[0]['max_page'][0])+1;
 			var sub=sub_num+"_page";
 			var page_ele=document.getElementById(sub);
 			page_ele.value=sub_num-1;
