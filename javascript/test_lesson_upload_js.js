@@ -42,7 +42,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 
 		var next_th=page_num+1;
 		var e="<th width='100'><font size='3'>"+next_th+"</font></th>";
-		var next_th++;
+		next_th++;
 		for(i=1;i<5;i++){
 			e=e+"<th width='100'><font size='3'>"+next_th+"</font></th>";
 			next_th++;
