@@ -29,7 +29,9 @@
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
 		<table border="5" id="img_table">
-			<tr>
+			<tr id="1_tr">
+
+
 	<?php
 		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'";';
 		$result2 = mysql_query($sql2);
@@ -40,18 +42,21 @@
 			for ($i = 1; $i <= $count2; $i++)
 			{
 				$row = mysql_fetch_array($result2);
+
+
 				$now_page = $i + 1;
 				$aaa = substr($row['div_url'],18);
 				$bbb = substr($aaa,0,strlen($aaa)-1);
 				$img_tag_name = '../../balckboard/public/images/div/'.$bbb;
+
 	?>
 			<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$i ?>_image"></td>
+
 	<?php
 			if($i%5==0){
 				$tr_=$i/5;
 				$tr_++;
 				$tr_=$tr_."_tr";
-				$th_=
 	?>
 			</tr>
 			<tr id="<?= $tr_ ?>">
@@ -148,7 +153,7 @@
 			var after_ele;
 			var after_ele;
 			//画像urlの繰り上げ処理
-			for(i=Number(parsers[0]['delete_page']);i<Number(parsers[0]['max_page'][0]);i++){
+			for(i=Number(parsers[0]['delete_page']);i<Number(parsers[0]['max_page']);i++){
 
 				//取得するidの形成
 				after_image=i+"_image";
@@ -162,12 +167,12 @@
 				after_ele.src=before_ele.src;
 			}
 			//一番最後の要素を削除
-			var del_im=parsers[0]['max_page'][0]+"_td";
+			var del_im=parsers[0]['max_page']+"td";
 			var delete_form=document.getElementById(del_im);
 			$(delete_form).remove();
 
 			//要素が１列なtrタグが存在する場合の処理
-			if(Number(parsers[0]['max_page'][0])%5==0){
+			if(Number(parsers[0]['max_page'])%5==0){
 				var tr_del=Number(parsers[0]['max_page'])/5+1;
 				tr_del =tr_del+"_tr";
 				var delete_tr=document.getElementById(tr_del);
@@ -175,8 +180,8 @@
 				$(delete_tr).remove();
 			}
 			//更新するselectboxのＩＤを生成
-			var del_cha=Number(parsers[0]['max_page'][0])+"_cha";
-			var del_del=Number(parsers[0]['max_page'][0])+"_del";
+			var del_cha=Number(parsers[0]['max_page'])+"_cha";
+			var del_del=Number(parsers[0]['max_page'])+"_del";
 
 			//更新するselectboxを取得
 			var delete_cha=document.getElementById("page_num_change");
@@ -187,7 +192,7 @@
 			delete_del.options[delete_del.options.length-1].remove();
 
 			//追加ボタンのpage_numを一つ減らす
-			var sub_num=Number(parsers[0]['max_page'][0])+1;
+			var sub_num=Number(parsers[0]['max_page'])+1;
 			var sub=sub_num+"_page";
 			var page_ele=document.getElementById(sub);
 			page_ele.value=sub_num-1;
