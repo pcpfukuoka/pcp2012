@@ -29,6 +29,13 @@
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
 		<table border="5" id="img_table">
+			<tr id="1_th">
+	<?php
+				for($i=1;$i<=5;$i++){
+					echo "<th><font size='3'>".$i."<font></th>"
+				}
+	?>
+			</tr>
 			<tr id="1_tr">
 
 
