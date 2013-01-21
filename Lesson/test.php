@@ -64,8 +64,19 @@
 				$tr_=$i/5;
 				$tr_++;
 				$tr_=$tr_."_tr";
+				$th_=$tr_."_th";
 	?>
 			</tr>
+
+
+			<tr id="<?=$th_ ?>">
+	<?php
+			for($i=1;$i<=5;$i++){
+				echo "<th width='100'><font size='3'>".$i."<font></th>";
+			}
+
+	 ?>
+	 		</tr>
 			<tr id="<?= $tr_ ?>">
 	<?php
 			}
