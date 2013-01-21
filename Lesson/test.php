@@ -196,10 +196,15 @@
 			//要素が１列なtrタグが存在する場合の処理
 			if(Number(parsers[0]['max_page'][0])%5==0){
 				var tr_del=Number(parsers[0]['max_page'][0])/5+1;
+				var th_del=Number(parsers[0]['max_page'][0])/5+1;
 				tr_del =tr_del+"_tr";
+				th_del =th_del+"_th";
+
 				var delete_tr=document.getElementById(tr_del);
-				//最終列のbrを削除
+				var delete_th=document.getElementById(th_del);
+				//最終列のtrを削除
 				$(delete_tr).remove();
+				$(delete_th).remove();
 			}
 			//更新するselectboxのＩＤを生成
 			var del_cha=Number(parsers[0]['max_page'][0])+"_cha";
