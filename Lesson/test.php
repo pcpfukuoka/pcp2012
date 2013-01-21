@@ -163,7 +163,7 @@
 				after_ele.src=before_ele.src;
 			}
 			//一番最後の要素を削除
-			var del_im=parsers[0]['max_page'][0]+"td";
+			var del_im=parsers[0]['max_page'][0]+"_td";
 			var delete_form=document.getElementById(del_im);
 			$(delete_form).remove();
 
