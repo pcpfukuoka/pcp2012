@@ -35,7 +35,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 		/* thを作成して１列分のヘッダーを作成*/
 		var tr_=document.createElement("tr");
 		var th_val=page_num/5;
-		th_val=th_val+1+"_tr";
+		th_val=th_val+1+"_th";
 		tr_.setAttribute("id",th_val);
 		//tableにヘッダー用のtrを追加
 		table_ele.appendChild(tr_);
