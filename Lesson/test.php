@@ -71,8 +71,8 @@
 
 			<tr id="<?=$th_ ?>">
 	<?php
-			for($i=1;$i<=5;$i++){
-				echo "<th width='100'><font size='3'>".$i."<font></th>";
+			for($j=1;$j<=5;$j++){
+				echo "<th width='100'><font size='3'>".$j."<font></th>";
 			}
 
 	 ?>
