@@ -47,8 +47,8 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 			e=e+"<th width='100'><font size='3'>"+next_th+"</font></th>";
 			next_th++;
 		}
-		//var insert_tr = parent.document.getElementById(th_val);
-		$("#"+th_val).append(e);
+		var insert_tr = parent.document.getElementById(th_val);
+		$(insert_tr).append(e);
 
 
 		/*　trを追加して１列を追加する処理　*/
