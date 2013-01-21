@@ -29,6 +29,13 @@
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
 		<table border="5" id="img_table">
+			<tr id="1_th">
+	<?php
+				for($i=1;$i<=5;$i++){
+					echo '<th><font size="5">'.$i.'</font></th>';
+				}
+	?>
+			</tr>
 			<tr id="1_tr">
 
 
@@ -47,13 +54,13 @@
 				$bbb = substr($aaa,0,strlen($aaa)-1);
 				$img_tag_name = '../../balckboard/public/images/div/'.$bbb;
 	?>
-			<th><font size="5"><?=$i ?></font></th>
 			<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$i ?>_image"></td>
 	<?php
 			if($i%5==0){
 				$tr_=$i/5;
 				$tr_++;
 				$tr_=$tr_."_tr";
+				$th_=
 	?>
 			</tr>
 			<tr id="<?= $tr_ ?>">
