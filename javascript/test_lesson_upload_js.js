@@ -33,30 +33,22 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	if(page_num%5==0){
 
 		/* thを作成して１列分のヘッダーを作成*/
-		var th_=document.createElement("tr");
+		var tr_=document.createElement("tr");
 		var th_val=page_num/5;
 		th_val=th_val+1+"_tr";
-		th_.setAttribute("id",tr_val);
-		table_ele.appendChild(th_);
-
+		tr_.setAttribute("id",th_val);
 		//tableにヘッダー用のtrを追加
+		table_ele.appendChild(tr_);
+
 		var next_th=page_num+1;
-		var num_1=document.createElement("th");
-		num_1.setAttribute("width",'100');
-		num_1.setAttribute("value",next_th);
-
-		var th_tr = parent.document.getElementById(tr_val);
-		th_tr.appendChild(num_1);
-
-		//var e="<th width='100'><font size='3'>"+next_th+"</font></th>";
-		next_th++;
+		var e="<th width='100'><font size='3'>"+next_th+"</font></th>";
+		var next_th++;
 		for(i=1;i<5;i++){
-			var num=document.createElement("th");
-			num.setAttribute("width",'100');
-			num.setAttribute("value",next_th);
+			e=e+"<th width='100'><font size='3'>"+next_th+"</font></th>";
 			next_th++;
-			th_tr.appendChild(num);
 		}
+		var insert_tr = parent.document.getElementById(th_val);
+		insert_tr.append(e);
 
 
 		/*　trを追加して１列を追加する処理　*/
