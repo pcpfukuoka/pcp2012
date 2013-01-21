@@ -29,7 +29,7 @@
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
 		<table border="5" id="img_table">
-
+			<tr>
 	<?php
 		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'";';
 		$result2 = mysql_query($sql2);
