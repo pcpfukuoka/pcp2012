@@ -60,15 +60,15 @@
 			<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$i ?>_image"></td>
 
 	<?php
-			if($i%5==0){
-				$tr_=$i/5;
+			if($i%8==0){
+				$tr_=$i/8;
 				$tr_++;
 				$tr_=$tr_."_tr";
 				$th_=$tr_."_th";
 
 				//thの中身を整える処理
 				$th_in=$i+1;
-				$max=$th_in+5;
+				$max=$th_in+8;
 	?>
 			</tr>
 
@@ -141,7 +141,6 @@
 			</form>
 
 		<iframe name="targetFrame" id="targetFrame" style="display:none;"></iframe>
-		<!--  style="display:none;"-->
 
 	</body>
 	<script>
@@ -194,9 +193,9 @@
 			$(delete_form).remove();
 
 			//要素が１列なtrタグが存在する場合の処理
-			if(Number(parsers[0]['max_page'][0])%5==0){
-				var tr_del=Number(parsers[0]['max_page'][0])/5+1;
-				var th_del=Number(parsers[0]['max_page'][0])/5+1;
+			if(Number(parsers[0]['max_page'][0])%8==0){
+				var tr_del=Number(parsers[0]['max_page'][0])/8+1;
+				var th_del=Number(parsers[0]['max_page'][0])/8+1;
 				tr_del =tr_del+"_tr";
 				th_del =th_del+"_th";
 
