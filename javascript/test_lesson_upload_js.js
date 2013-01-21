@@ -38,7 +38,6 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 		th_val=th_val+1+"_tr";
 		tr_.setAttribute("id",tr_val);
 		//tableにヘッダー用のtrを追加
-		table_ele.appendChild(tr_);
 
 		var e="<th width='100'><font size='3'>"+page_num+1+"</font></th>";
 		var next_th=page_num+2;
