@@ -32,7 +32,7 @@
 			<tr id="1_th">
 	<?php
 				for($i=1;$i<=5;$i++){
-					echo "<th><font size='3'>".$i."<font></th>";
+					echo "<th width='100'><font size='3'>".$i."<font></th>";
 				}
 	?>
 			</tr>
