@@ -29,15 +29,6 @@
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
 		<table border="5" id="img_table">
-			<tr id="1_th">
-	<?php
-				for($i=1;$i<=5;$i++){
-					echo '<th><font size="5">'.$i.'</font></th>';
-				}
-	?>
-			</tr>
-			<tr id="1_tr">
-
 
 	<?php
 		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'";';
