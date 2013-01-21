@@ -140,7 +140,7 @@
 				<input type="button" id="delete" value="削除" onclick="delete_img()"/>
 			</form>
 
-		<iframe name="targetFrame" id="targetFrame" ></iframe>
+		<iframe name="targetFrame" id="targetFrame" style="display:none;"></iframe>
 		<!--  style="display:none;"-->
 
 	</body>
