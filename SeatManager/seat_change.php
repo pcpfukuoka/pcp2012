@@ -8,20 +8,18 @@
 	<body>
 	<script>
 
-	var id = 0;
-	var name1 = "";
-	var name2 = "";
-	var attendance_no1 = 0;
-	var attendance_no2 = 0;
+	var id_evc = 0;
+	var name_evc = "";
+	var user_seq_evc = 0;
 
     $(function() {
 	    $('.change').click(function(){
-			if(id == 0)
+			if(id_evc == 0)
 			{
 					//一回目にクリックしたセルのデータを保存
-					id = $(this).attr("id");
-					name1 = $(this).children("p").text();
-					attendance_no1 = $(this).children().val();
+					id_evc = $(this).attr("id");
+					name_evc = $(this).children("p").text();
+					user_seq_evc = $(this).children().val();
 
 					//一回目にクリックしたセルの色を変える
 					$(this).attr({"bgcolor": "yellow"});
@@ -30,25 +28,20 @@
 			else
 			{
 
-					//二回目にクリックしたセルのデータを保存
-					name2 = $(this).children("p").text();
-					attendance_no2 = $(this).children().val();
 
 					//データの交換
-					$(this).children("p").text(name1);
-					$('#' + id).children("p").text(name2);
+					$('#' + id_evc).children("p").text($(this).children("p").text());
+					$(this).children("p").text(name_evc);
 
-					$(this).children().attr({"value": attendance_no1});
-					$('#' + id).children().attr({"value": attendance_no2});
+					$('#' + id_evc).children().attr({"value": $(this).children().val()});
+					$(this).children().attr({"value": user_seq_evc});
 
 					//セルの色を戻す
-					$('#' + id).attr({"bgcolor": ""});
+					$('#' + id_evc).attr({"bgcolor": ""});
 
-					id = 0;
-					name1 = "";
-					name2 = "";
-					attendance_no1 = "";
-					attendance_no2 = "";
+					id_evc = 0;
+					name_evc = "";
+					user_seq_evc = 0;
 
 			}
 	    });
@@ -90,7 +83,7 @@
 ?>
 	<form action="seat_check.php" method="POST">
 
-	<table class="kajiwara" style="table-layout:fixed;">
+	<table class="kajiwara" style="table-layout:fixed;" border="1">
 <?php
 	$group = $_POST['group'];
 	$sql = "select max(row) as mx from seat where group_seq ='$group'";
@@ -120,7 +113,7 @@
 
 						if($user_seq == "0")
 						{
-							echo "<td id='$id'class='change'></td>";
+							echo "<td id='$id'class='change'><p></p></td>";
 						}
 						else
 						{
@@ -144,7 +137,7 @@
 		<input name= "group" type="hidden" value= "<?= $group ?>">
 		<input name="row_max" type="hidden" value= "<?= $row_max ?>">
 		<input name="col_max" type="hidden" value= "<?= $col_max ?>">
-		<input name="check_flg" type="hidden" value="0">;
+		<input name="check_flg" type="hidden" value="0">
 
 		<input type="submit" value="更新" class="button4">
 
