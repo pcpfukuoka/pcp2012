@@ -7,18 +7,18 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 	//削除前のページ数を持ってくる
-	$max_sql = "SELECT page_num FROM board WHERE date='".$date."' AND subject_seq='".$subject_seq."'ORDER BY page_num DESC LIMIT 1;";
+	$max_sql = "SELECT page_num FROM board WHERE date='".$date."' AND subject_seq='".$subject_seq." AND end_flg='0' ORDER BY page_num DESC LIMIT 1;";
 	$max_result = mysql_query($max_sql);
 	$max_page = mysql_fetch_array($max_result);
 
 
 	//消す前に必要なＵＲＬを退避させる
-	$select_sql = "SELECT div_url, page_num FROM board WHERE date='".$date."' AND subject_seq='".$subject_seq."'AND page_num >".$page_num.";";
+	$select_sql = "SELECT div_url, page_num FROM board WHERE date='".$date."' AND subject_seq='".$subject_seq."'AND end_flg='0' AND page_num >".$page_num.";";
 	$result = mysql_query($select_sql);
 	$count = mysql_num_rows($result);
 
 	//削除ボタンをおしたpage_num以降のデータをいったん削除
-	$delete_sql = "DELETE FROM board WHERE date='".$date."' AND subject_seq='".$subject_seq."'AND page_num >=".$page_num.";";
+	$delete_sql = "DELETE FROM board WHERE date='".$date."' AND subject_seq='".$subject_seq."' AND end_flg='0'AND page_num >=".$page_num.";";
 
 	$delete_ = mysql_query($delete_sql);
 	$result_1 = array();

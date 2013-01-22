@@ -9,7 +9,7 @@ require_once("../lib/dbconect.php");
 $dbcon = DbConnect();
 
 //授業の画像を抽出するＳＱＬ
-$sql = "SELECT div_url, canvas_url FROM board WHERE date='". $date ."' AND subject_seq=15;";
+$sql = "SELECT div_url, canvas_url FROM board WHERE date='". $date ."' AND subject_seq=15 AND end_flg='e';";
 $result = mysql_query($sql);
 $count = mysql_num_rows($result);
 $result_1 = array();

@@ -20,7 +20,7 @@ session_start();
 	$sql = "UPDATE board SET div_url = '" .$db_img .
 			"'WHERE date = '". $date .
 			"'AND subject_seq = '".$subject_seq.
-			"'AND page_num = '".$page_num ."';";
+			"'AND end_flg='0' AND page_num = '".$page_num ."';";
 	echo $sql;
 	$result = mysql_query($sql);
 	$file_name = 'files/ '.$img_name;

@@ -34,7 +34,7 @@
 
 
 	<?php
-		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'";';
+		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'" AND end_flg="0";';
 		$result2 = mysql_query($sql2);
 		$count2 = mysql_num_rows($result2);
 	?>
@@ -80,11 +80,6 @@
 			<input type="button" id="delete" value="削除" onclick="delete_img()"/>
 		</form>
 
-		<form action="using_change.php" method="post" enctype="multipart/form-data" >
-			<input type="hidden" name="date" value=" <?= $date ?>" />
-			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
-			<input type="submit" value="授業開始">
-		</form>
 
 		<table border="5" id="img_table">
 			<tr id="1_th">
@@ -99,7 +94,7 @@
 
 	<?php
 
-		$sql3 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'";';
+		$sql3 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'" AND end_flg="0";';
 		$result3 = mysql_query($sql3);
 		$count3 = mysql_num_rows($result3);
 
@@ -158,6 +153,12 @@
 	?>
 			</tr>
 		</table>
+
+		<form action="using_change.php" method="post" enctype="multipart/form-data" align="center">
+			<input type="hidden" name="date" value=" <?= $date ?>" />
+			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+			<input type="submit" value="授業開始">
+		</form>
 	</div>
 		<iframe name="targetFrame" id="targetFrame" style="display:none;"></iframe>
 
