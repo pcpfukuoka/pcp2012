@@ -37,6 +37,7 @@
 		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'" AND end_flg="0";';
 		$result2 = mysql_query($sql2);
 		$count2 = mysql_num_rows($result2);
+		$page_max = $count2+1;
 	?>
 
 		<form action="test_lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="form">
