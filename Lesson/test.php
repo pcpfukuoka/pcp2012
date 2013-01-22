@@ -31,6 +31,61 @@
 	<div id="form">
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
+
+
+	<?php
+		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'";';
+		$result2 = mysql_query($sql2);
+		$count2 = mysql_num_rows($result2);
+	?>
+
+		<form action="test_lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="form">
+			<input type="hidden" name="date" value="<?= $date ?>" />
+			<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
+			<input type="file" name="upfile" size="30" />
+			<input type="hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
+			<input type="submit"  value="追加" />
+		</form>
+
+		<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="change_form">
+			<input type="hidden" name="date" value=" <?= $date ?>" />
+			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+			<select id="page_num_change" name="page_num_change">
+			<?php
+	   			for ($i=1; $i<=$count2; $i++)
+	   			{
+  			?>
+    			<option value="<?=$i?>" id="<?=$i?>_cha"><?=$i?></option>
+  			<?php
+    			}
+  			?>
+			</select>
+			<input type="file" name="upfile" size="30" />
+			<input type="submit" id="change" value="変更" />
+		</form>
+
+		<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="delete_form">
+			<input type="hidden" name="date" value=" <?= $date ?>" />
+			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+			<select name="page_num_del" id="page_num_del">
+			<?php
+	   			for ($i=1; $i<=$count2; $i++)
+	   			{
+  			?>
+    			<option value="<?=$i?>"id="<?=$i ?>_del"><?=$i?></option>
+  			<?php
+   				}
+  			?>
+			</select>
+			<input type="button" id="delete" value="削除" onclick="delete_img()"/>
+		</form>
+
+		<form action="using_change.php" method="post" enctype="multipart/form-data" >
+			<input type="hidden" name="date" value=" <?= $date ?>" />
+			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+			<input type="submit" value="授業開始">
+		</form>
+
 		<table border="5" id="img_table">
 			<tr id="1_th">
 	<?php
@@ -43,15 +98,17 @@
 
 
 	<?php
-		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'";';
-		$result2 = mysql_query($sql2);
-		$count2 = mysql_num_rows($result2);
+
+		$sql3 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'";';
+		$result3 = mysql_query($sql3);
+		$count3 = mysql_num_rows($result3);
+
 		$page_max = 1;
-		if($count2 > 0)
+		if($count3 > 0)
 		{
-			for ($i = 1; $i <= $count2; $i++)
+			for ($i = 1; $i <= $count3; $i++)
 			{
-				$row = mysql_fetch_array($result2);
+				$row = mysql_fetch_array($result3);
 
 
 				$now_page = $i + 1;
@@ -102,47 +159,6 @@
 			</tr>
 		</table>
 	</div>
-			<form action="test_lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="form">
-				<input type="hidden" name="date" value="<?= $date ?>" />
-				<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
-				<input type="file" name="upfile" size="30" />
-				<input type="hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
-				<input type="submit"  value="追加" />
-			</form>
-
-			<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="change_form">
-				<input type="hidden" name="date" value=" <?= $date ?>" />
-				<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
-				<select id="page_num_change" name="page_num_change">
-				<?php
-	   				for ($i=1; $i<=$count2; $i++)
-	   				{
-  				?>
-    				<option value="<?=$i?>" id="<?=$i?>_cha"><?=$i?></option>
-  				<?php
-    				}
-  				?>
-				</select>
-				<input type="file" name="upfile" size="30" />
-				<input type="submit" id="change" value="変更" />
-			</form>
-
-			<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="delete_form">
-				<input type="hidden" name="date" value=" <?= $date ?>" />
-				<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
-				<select name="page_num_del" id="page_num_del">
-				<?php
-	   				for ($i=1; $i<=$count2; $i++)
-	   				{
-  				?>
-    				<option value="<?=$i?>"id="<?=$i ?>_del"><?=$i?></option>
-  				<?php
-    				}
-  				?>
-				</select>
-				<input type="button" id="delete" value="削除" onclick="delete_img()"/>
-			</form>
-
 		<iframe name="targetFrame" id="targetFrame" style="display:none;"></iframe>
 
 	</body>
