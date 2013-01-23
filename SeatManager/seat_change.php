@@ -2,10 +2,18 @@
 	<head>
 		<title>座席表</title>
     <script src="../sp/js/jquery-1.8.2.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="../css/kajiwara.css" />
+	<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	<link rel="stylesheet" type="text/css" href="../css/button.css" />
+	<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+	<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	<body>
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+		<div align="center">
+			<font class="Cubicfont">席替え</font>
+		</div>
+		<hr color="blue">
 	<script>
 
 	var id_evc = 0;
@@ -22,7 +30,7 @@
 					user_seq_evc = $(this).children().val();
 
 					//一回目にクリックしたセルの色を変える
-					$(this).attr({"bgcolor": "yellow"});
+					$(this).css({"background": "yellow"});
 
 		    }
 			else
@@ -37,7 +45,7 @@
 					$(this).children().attr({"value": user_seq_evc});
 
 					//セルの色を戻す
-					$('#' + id_evc).attr({"bgcolor": ""});
+					$('#' + id_evc).css({"background": "burlywood"});
 
 					id_evc = 0;
 					name_evc = "";
@@ -81,9 +89,9 @@
 
 
 ?>
-	<form action="seat_check.php" method="POST">
+	<form action="seat_change_check.php" method="POST">
 
-	<table class="kajiwara" style="table-layout:fixed;" border="1">
+	<table class="table_01">
 <?php
 	$group = $_POST['group'];
 	$sql = "select max(row) as mx from seat where group_seq ='$group'";

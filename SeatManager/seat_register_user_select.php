@@ -133,7 +133,7 @@
 	<hr color="blue">
 <div class="left_box">
 	<form action="seat_register_check.php" method="POST">
-	<FIELDSET style="width:300px">
+	<FIELDSET style="background-color:white;">
 	    <LEGEND>
 	    <b>メッセージ</b>
 	    </LEGEND>
@@ -142,7 +142,7 @@
 			<p id = "balance"></p>
 	</FIELDSET>
 
-	<FIELDSET style="width:300px">
+	<FIELDSET style="background-color:white;">
 	    <LEGEND>
 	    <b>座席数選択</b>
 	    </LEGEND>

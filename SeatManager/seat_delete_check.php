@@ -10,21 +10,21 @@
 ?>
 <html>
 	<head>
-	<link rel="stylesheet" type="text/css" href="../css/table.css" />
+
 		<title>座席表</title>
 		<meta charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	<body>
-
-	<p>削除確認画面</p>
-
-	<p>この座席表を削除します</p>
-
-	<form action="seat_delete.php" method="POST">
-		<input type="submit" value="削除">
-		<input name="group" type="hidden" value="<?= $group ?>">
-	</form>
-
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+		<div align="center">
+			<font class="Cubicfont">削除確認画面</font>
+		</div>
+		<hr color="blue">
 
 	<table class="table_01">
 
@@ -77,5 +77,11 @@
 
 ?>
 	</table>
-	</body>>
+
+	<form action="seat_delete.php" method="POST">
+		<input type="submit" value="削除">
+		<input name="group" type="hidden" value="<?= $group ?>">
+	</form>
+
+	</body>
 </html>

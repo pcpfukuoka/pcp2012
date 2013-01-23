@@ -1,14 +1,3 @@
-
-<?php
-	//session_start();
-
-	//$user = $_SESSION['login_info[user]'];
-	$user = 11;
-?>
-<html>
-	<head>
-		<title>seat_list</title>
-	</head>
 <?php
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
@@ -17,16 +6,32 @@
 
 	//文字コード設定
 	mysql_query("SET NAMES UTF8");
-
-
 ?>
+<html>
+	<head>
+		<title>seat_list</title>
+
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+
+	</head>
+
 	<body>
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+		<div align="center">
+			<font class="Cubicfont">座席表メニュー</font>
+		</div>
+		<hr color="blue">
+
 		<form action="seat_view.php" method="POST">
 <?php
 		$sql = "select m_group.group_name,m_group.group_seq
 					from m_group,group_details
-						where group_details.user_seq = '$user'
-							and	 m_group.group_seq = group_details.group_seq";
+						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
 ?>
 			<select name="group" >
@@ -45,8 +50,7 @@
 <?php
 		$sql = "select m_group.group_name,m_group.group_seq
 					from m_group,group_details
-						where group_details.user_seq = '$user'
-							and	 m_group.group_seq = group_details.group_seq";
+						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
 ?>
 			<select name="group" >
@@ -66,8 +70,7 @@
 <?php
 		$sql = "select m_group.group_name,m_group.group_seq
 					from m_group,group_details
-						where group_details.user_seq = '$user'
-							and	 m_group.group_seq = group_details.group_seq";
+						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
 ?>
 			<select name="group" >
@@ -87,8 +90,7 @@
 <?php
 		$sql = "select m_group.group_name,m_group.group_seq
 					from m_group,group_details
-						where group_details.user_seq = '$user'
-							and	 m_group.group_seq = group_details.group_seq";
+						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
 ?>
 			<select name="group" >
