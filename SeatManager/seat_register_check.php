@@ -15,8 +15,17 @@
 	<head>
 		<title>user_select</title>
 		<script src="../sp/js/jquery-1.8.2.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	<body>
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+	<div id="container">
+	<div align="center">
+		<font class="Cubicfont">登録確認画面</font>
+	</div>
+	<hr color="blue">
 <?php
 
 	$user_cnt = 0;
@@ -28,7 +37,7 @@
 ?>
 
 	<form action="seat_register_add.php" method="POST">
-	<table border="1">
+	<table class="table_01">
 <?php
 	for($row = 1; $row <= $row_max; $row++)
 	{

@@ -5,10 +5,16 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	<body>
-
-	<table cellspacing="10" border="1">
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+	<div id="container">
+	<div align="center">
+		<font class="Cubicfont">座席表</font>
+	</div>
+	<hr color="blue">
+	<table class="table_01">
 
 <?php
 

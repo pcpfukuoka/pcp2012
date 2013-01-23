@@ -15,7 +15,9 @@
 	<head>
 		<title>user_select</title>
 		<script src="../sp/js/jquery-1.8.2.min.js"></script>
-
+			<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+			<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+			<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<style>
 
 			.left_box{
@@ -25,8 +27,8 @@
 				float:left;
 			}
 			.user_list {
-				width:300px;
-				height:450px;
+				width:200px;
+				height:300px;
 				overflow:scroll;
 			}
 	</style>
@@ -123,6 +125,12 @@
     	});
     </script>
 
+<img class="bg" src="../images/blue-big.jpg" alt="" />
+<div id="container">
+	<div align="center">
+		<font class="Cubicfont">登録選択画面</font>
+	</div>
+	<hr color="blue">
 <div class="left_box">
 	<form action="seat_register_check.php" method="POST">
 	<FIELDSET style="width:300px">
@@ -207,6 +215,7 @@
 
 
 	</form>
+</div>
 </div>
 	</body>
 </html>
