@@ -19,12 +19,12 @@ setcookie("flg",true,$time,"/");
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 
-		<form action="http://49.212.201.99:3000"method="post">
+		<form action="http://49.212.201.99:3000"method="post"enctype="multipart/form-data">
 			<input type="hidden" name="room" value="1">
 			<input type="submit" value="1">
 		</form>
 
-		<form action="http://49.212.201.99:3000"method="post">
+		<form action="http://49.212.201.99:3000"method="post" enctype="multipart/form-data">
 			<input type="hidden" name="room" value="2">
 			<input type="submit" value="2">
 		</form>
