@@ -1,0 +1,17 @@
+* {margin:0; padding:0; outline:0}
+#tablewrapper {width:980px; margin:0 auto}
+#tableheader {height:55px}
+.search {float:left; padding:6px;}
+#tableheader select {float:left; font-size:12px; width:125px; padding:2px 4px 4px}
+#tableheader input {float:left; font-size:12px; width:225px; padding:2px 4px 4px; margin-left:4px}
+.details {float:right; padding-top:12px;margin-right:400px}
+.details div {float:left; margin-left:15px; font-size:12px}
+#tablefooter {height:15px; margin-top:20px}
+#tablenav {float:left}
+#tablenav img {cursor:pointer}
+#tablenav div {float:left; margin-right:15px}
+#tablelocation {float:right; font-size:12px;margin-right:400px}
+#tablelocation select {margin-right:3px}
+#tablelocation div {float:left; margin-left:15px}
+.page {margin-top:2px; font-style:italic}
+#selectedrow td {background:#c6d5e1}
