@@ -23,20 +23,20 @@ setcookie("flg",true,$time,"/");
 <body>
 		<form action="http://49.212.201.99:3000"method="post"enctype="multipart/form-data">
 			<input type="hidden" name="room" value="1" data-id="1">
-			<input type="button" value="1" class="page_select">
+			<input type="button" value="1" id="page_select">
 		</form>
 
 		<form action="http://49.212.201.99:3000"method="post" enctype="multipart/form-data">
 			<input type="hidden" name="room" value="2" data-id="2">
-			<input type="button" value="2" class="page_select">
+			<input type="button" value="2" id="page_select">
 		</form>
 
 </body>
 <script>
 $(function() {
 
-	$(document).on('click', '.page_select', function() {
-		var page=$(this).value;
+	$(document).on('click', '#page_select', function() {
+		var page=$(this).data('id');
 		// クッキーの発行（書き込み）
 		document.cookie = "room" + "=" + page;
 		//document.location = "http://49.212.201.99:3000";
