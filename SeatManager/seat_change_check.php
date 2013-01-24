@@ -1,11 +1,9 @@
-
 <?php
 
 	$group = $_POST['group'];
 	$row_max = $_POST['row_max'];
 	$col_max = $_POST['col_max'];
 
-	$check_flg = $_POST['check_flg'];	//０：席替え　１：登録
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
@@ -19,25 +17,27 @@
 <html>
 	<head>
 		<title>seat_check</title>
+		<meta charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 
 	<body>
-	<p>登録・変更確認画面</p>
-<?php
-	if($check_flg == 0)
-	{
-		echo "<form action='seat_change_update.php' method='POST'>";
-	}
-	else
-	{
-		echo "<form action='seat_register_add.php' method='POST'>";
-	}
-?>
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+	<div id="container">
+	<div align="center">
+		<font class="Cubicfont">席替え確認画面</font>
+	</div>
+	<hr color="blue">
+
+		<form action='seat_change_update.php' method='POST'>
 		<input name = "group" type = "hidden" value = "<?= $group ?>">
 		<input name = "row_max" type = "hidden" value = "<?= $row_max ?>">
 		<input name = "col_max" type = "hidden" value = "<?= $col_max ?>">
 
-		<table border = "1">
+		<table class="table_01">
 <?php
 	//クエリを送信する
 	for($row = 1; $row <= $row_max; $row++)
@@ -73,7 +73,7 @@
 	}
 ?>
 		</table>
-		<input type="submit" value = "登録">
+		<input type="submit" class="button4" value = "登録">
 	</form>
 
 

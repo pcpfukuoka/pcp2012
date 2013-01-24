@@ -8,10 +8,9 @@
 	$page_fun = new autho_class();
 	$page_cla = $page_fun -> autho_Pre($_SESSION['login_info[autho]'], 8);
 
-
 	if($page_cla[0]['read_flg'] == 0)
 	{
-		header("Location:../top_left.php");
+		header("Location:../dummy.html");
 	}
 
 	require_once("../lib/dbconect.php");
@@ -65,7 +64,24 @@
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<script src="../javascript/jquery-ui-1.8.24.custom.min.js"></script>
-	</head>
+		<link rel="stylesheet" href="../css/animate.css">
+		<link rel="stylesheet" href="../css/jPages.css">
+		<script type="text/javascript" src="../javascript/jPages.js"></script>
+		<script> 
+		$(function(){
+		$(".holder").jPages({ 
+		containerID : "list",
+		previous : "←", //前へのボタン
+		next : "→", //次へのボタン
+		perPage : 5, //1ページに表示する個数
+		midRange : 5,
+		endRange : 2,
+		delay : 20, //要素間の表示速度
+		animation: "flipInY" //アニメーションAnimate.cssを参考に
+		});
+		});
+		</script>
+		</head>
 
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
@@ -73,22 +89,26 @@
 		<div align = "center">
 			<font class="Cubicfont"><?= $group_name ?></font>
 			<hr color = "blue">
-				<table class="table_01">
-					<tr bgcolor = "yellow">
+		<div class="holder"></div>
+			<table class="table_01">	
+				<thead>
+					<tr>
 
 						<?php
 							if($page_cla['delete_flg'] == 1)
 							{
 						?>
-								<td><font size="5">削除</font></td>
+								<th><font size="5">削除</font></th>
 						<?php
 							}
 						?>
-								<td><font size="5">名前</font></td>
-								<td><font size="5">ＩＤ</font></td>
-								<td><font size="5">学籍番号</font></td>
+								<th><font size="5">名前</font></th>
+								<th><font size="5">ＩＤ</font></th>
+								<th><font size="5">学籍番号</font></th>
 					</tr>
 
+				</thead>
+				<tbody id="list">
 					<?php
 						for($i = 0; $i < $cnt; $i++)
 						{
@@ -100,17 +120,18 @@
 							if($page_cla['delete_flg'] == 1)
 							{
 						?>
-								<th><input id="check_user_<?= $g_user_row['group_details_seq'] ?>" class="checkUser" data-id="<?= $g_user_row['group_details_seq'] ?>" type = "checkbox" value = "<?= $g_user_row['user_name'] ?>"></th>
+								<td><input id="check_user_<?= $g_user_row['group_details_seq'] ?>" class="checkUser" data-id="<?= $g_user_row['group_details_seq'] ?>" type = "checkbox" value = "<?= $g_user_row['user_name'] ?>"></td>
 						<?php
 							}
 						?>
-							<th><?= $g_user_row['user_name'] ?></th>
-							<th><?= $g_user_row['user_id'] ?></th>
-							<th><?= $g_user_row['student_id'] ?></th>
+							<td><?= $g_user_row['user_name'] ?></td>
+							<td><?= $g_user_row['user_id'] ?></td>
+							<td><?= $g_user_row['student_id'] ?></td>
 						</tr>
 					<?php
 						}
 					?>
+				</tbody>
 				</table>
 			<div>
 			<table>
@@ -163,7 +184,7 @@
 	}
 	function user_add()
 	{
-		window.open('group_u_add.php?id=<?= $group_seq ?>', 'ユーザ追加', 'width=500,height=400,top=100,left=500');;
+		window.open('group_u_add.php?id=<?= $group_seq ?>', 'ユーザ追加', 'width=500,height=400,top=100,left=500,scrollbars=yes,resizable=yes,status=yes');;
 	}
 	</script>
 		<script>

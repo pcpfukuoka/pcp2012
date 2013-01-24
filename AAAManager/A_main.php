@@ -48,8 +48,8 @@
 				<input class="button2" type="button" onclick="jump('A_list.php')" value="一覧">
 				<br><br>
 
-				<!-- 座席表　仮設置 -->
-				<input class="button2" type="button" onclick="jump('../SeatManager/seat_menu.php')" value="座席表（仮設置）">
+				<!-- 座席表 -->
+				<input class="button2" type="button" onclick="jump('../SeatManager/seat_menu.php')" value="座席表">
 
 			</p>
 		</div>

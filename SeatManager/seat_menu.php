@@ -1,14 +1,3 @@
-
-<?php
-	//session_start();
-
-	//$user = $_SESSION['login_info[user]'];
-	$user = 11;
-?>
-<html>
-	<head>
-		<title>seat_list</title>
-	</head>
 <?php
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
@@ -17,18 +6,41 @@
 
 	//文字コード設定
 	mysql_query("SET NAMES UTF8");
-
-
 ?>
+<html>
+	<head>
+		<title>seat_list</title>
+
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+
+	</head>
+
 	<body>
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+		<div align="center">
+			<font class="Cubicfont">座席表メニュー</font>
+		</div>
+		<hr color="blue">
+
+
+	<br>
+	<div align="center">
+	<table>
+	<tr>
+
 		<form action="seat_view.php" method="POST">
 <?php
 		$sql = "select m_group.group_name,m_group.group_seq
 					from m_group,group_details
-						where group_details.user_seq = '$user'
-							and	 m_group.group_seq = group_details.group_seq";
+						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
 ?>
+		<td width="120px" height="20px" align="center" valign="middle">
 			<select name="group" >
 <?php
 			while($gyo = mysql_fetch_array($res))
@@ -39,16 +51,21 @@
 			}
 ?>
 			</select>
-			<input type = "submit" value = "座席表">
+		</td>
+		<td>
+			<input type = "submit" value = "座席表" class="button4" >
+		</td>
 		</form>
+	</tr>
+	<tr>
 		<form action="seat_change.php" method="POST">
 <?php
 		$sql = "select m_group.group_name,m_group.group_seq
 					from m_group,group_details
-						where group_details.user_seq = '$user'
-							and	 m_group.group_seq = group_details.group_seq";
+						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
 ?>
+		<td width="120px" height="20px" align="center" valign="middle">
 			<select name="group" >
 <?php
 			while($gyo = mysql_fetch_array($res))
@@ -59,17 +76,21 @@
 			}
 ?>
 			</select>
-			<input type = "submit" value = "席替え">
+		</td>
+		<td>
+			<input type = "submit" value = "席替え" class="button4" >
+		</td>
 		</form>
-
+	</tr>
+	<tr>
 		<form action="seat_delete_check.php" method="POST">
 <?php
 		$sql = "select m_group.group_name,m_group.group_seq
 					from m_group,group_details
-						where group_details.user_seq = '$user'
-							and	 m_group.group_seq = group_details.group_seq";
+						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
 ?>
+		<td width="120px" height="20px" align="center" valign="middle">
 			<select name="group" >
 <?php
 			while($gyo = mysql_fetch_array($res))
@@ -80,8 +101,38 @@
 			}
 ?>
 			</select>
-			<input type = "submit" value = "削除">
+		</td>
+		<td>
+			<input type = "submit" value = "削除" class="button4" >
+		</td>
 		</form>
-
+	</tr>
+	<tr>
+		<form action="seat_register_user_select.php" method="POST">
+<?php
+		$sql = "select m_group.group_name,m_group.group_seq
+					from m_group,group_details
+						where m_group.group_seq = group_details.group_seq";
+		$res = mysql_query($sql);
+?>
+		<td width="120px" height="20px" align="center" valign="middle">
+			<select name="group" >
+<?php
+			while($gyo = mysql_fetch_array($res))
+			{
+?>
+				<option value=<?= $gyo['group_seq']?>> <?=  $gyo['group_name']?></option>
+<?php
+			}
+?>
+			</select>
+		</td>
+		<td>
+			<input type = "submit" value = "登録" class="button4" >
+		</td>
+		</form>
+	</tr>
+	</table>
+	</div>
 	</body>
 </html>

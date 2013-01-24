@@ -1,13 +1,20 @@
 <html>
 	<head>
-	<link rel="stylesheet" type="text/css" href="../css/kajiwara.css" />
 		<title>座席表</title>
 		<meta charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 	</head>
 	<body>
-
-
-	<table class="kajiwara"  cellspacing="10">
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+	<div id="container">
+	<div align="center">
+		<font class="Cubicfont">座席表</font>
+	</div>
+	<hr color="blue">
+	<table class="table_01">
 
 <?php
 

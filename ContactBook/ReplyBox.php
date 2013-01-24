@@ -16,7 +16,7 @@
 	    <link rel="stylesheet" type="text/css" href="../css/button.css" />
 	    <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	    <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
-	</head>
+	    </head>
 
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
