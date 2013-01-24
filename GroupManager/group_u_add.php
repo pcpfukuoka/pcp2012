@@ -152,6 +152,15 @@ else if(isset($_POST['g_seq']))
 		        });
 		    });
 
+			$(document).on('click', '.button4', function() {
+				//選択したli要素からdata-idを取得する(data-idはm_userのuser_seq)
+		        //ポストでデータを送信、宛先でDB処理を行う
+				window.opener.parent.right.location.reload();
+				
+			});
+			
+		    
+
 		});
 			</script>
 		<form action="group_u_add_comp.php" method="GET">

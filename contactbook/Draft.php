@@ -27,6 +27,26 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+				<link rel="stylesheet" href="../css/animate.css">
+		<link rel="stylesheet" href="../css/jPages.css">
+		<script src="../javascript/jquery-1.8.2.min.js"></script>
+		<script src="../javascript/jquery-ui-1.8.24.custom.min.js"></script>
+		<script type="text/javascript" src="../javascript/jPages.js"></script>
+		<script> 
+		$(function(){
+		$(".holder").jPages({ 
+		containerID : "list",
+		previous : "←", //前へのボタン
+		next : "→", //次へのボタン
+		perPage : 5, //1ページに表示する個数
+		midRange : 5,
+		endRange : 2,
+		delay : 20, //要素間の表示速度
+		animation: "flipInY" //アニメーションAnimate.cssを参考に
+		});
+		});
+		</script>
+		
 		<title>下書き</title>
 	</head>
 
@@ -41,13 +61,17 @@
 			<br><br>
 
 			<!-- テーブルの作成 -->
+			<div class="holder"></div>
 			<div align="center">
 				<table border="1" class="table_01">
+				<thead>
 					<tr>
-					<th align="center"width="200"><font size="5">日付</font></th>
-					<th align="center"width="150"><font size="5">TO</font></th>
-					<th align="center"width="230"><font size="5">件名</font></th>
-
+						<th align="center"width="200"><font size="5">日付</font></th>
+						<th align="center"width="150"><font size="5">TO</font></th>
+						<th align="center"width="230"><font size="5">件名</font></th>
+					</tr>
+				</thead>
+				<tbody id="list">									
 					<?php
 					for ($i = 0; $i < $count; $i++){
 						$row = mysql_fetch_array($result);
@@ -63,6 +87,7 @@
 					<?php
 					}
 					?>
+				</tbody>					
 				</table>
 				<hr>
 			</div>

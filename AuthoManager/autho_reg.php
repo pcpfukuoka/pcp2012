@@ -7,12 +7,6 @@ require_once("../lib/dbconect.php");
 $link = DbConnect();
 
 
-//すでに選択されてるデータを取得
-
-
-//Dbdissconnect($link);
-
-
 //$seq_autho : セッションで受け取った権限グループseqを入れる
 if(isset($_GET['id']))
 {
@@ -21,6 +15,10 @@ $_SESSION['autho_sel'] = $_GET['id'];
 $autho_seq = $_SESSION['autho_sel'];
 
 
+$sql = "SELECT autho_name FROM m_autho WHERE autho_seq = $autho_seq";
+$result = mysql_query($sql);
+$name = mysql_fetch_array($result);
+$name = $name['autho_name'];
 
 ?>
 
@@ -40,7 +38,10 @@ $autho_seq = $_SESSION['autho_sel'];
 		<div id="container">
 		<div align = "center">
 			<font class="Cubicfont">権限登録検索</font><hr color="blue">
-		</div><br><br>
+		</div>
+		名前 :<font class="Cubicfont3"> <?= $name ?></font>
+		
+		
 		<form action="autho_reg.php" method="POST">
 			<input type="radio" name="q1" value="name" checked>名前
 			<input type="radio" name="q1" value="id">ID
