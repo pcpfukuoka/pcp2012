@@ -27,7 +27,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input class="button2" type="button" value="教師・教科追加"onclick="jump(tea_subj_add.php','right')">
+					<input class="button2" type="button" value="教師・教科追加"onclick="jump('tea_subj_add.php','right')">
 				</td>
 			</tr>
 			<tr>

@@ -53,7 +53,26 @@ $count_point = mysql_num_rows($result_point);
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
-		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />		
+		<link rel="stylesheet" href="../css/animate.css">
+		<link rel="stylesheet" href="../css/jPages.css">
+		<script type="text/javascript" src="../javascript/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript" src="../javascript/jPages.js"></script>
+		<script> 
+		$(function(){
+		$(".holder").jPages({ 
+		containerID : "list",
+		previous : "←", //前へのボタン
+		next : "→", //次へのボタン
+		perPage : 30, //1ページに表示する個数
+		midRange : 5,
+		endRange : 2,
+		delay : 20, //要素間の表示速度
+		animation: "flipInY" //アニメーションAnimate.cssを参考に
+		});
+		});
+		</script>
+		
 		<title>点数一覧画面</title>
 	</head>
 	
@@ -99,13 +118,15 @@ $count_point = mysql_num_rows($result_point);
 				<td><?= $avg ?>
 			</tr>
 		</table><br><br>
-		
+		<div class="holder"></div>
 		<table border = "1">
+		<thead>
 			<tr>
 				<th>名前</th>
 				<th>点数</th>
 			</tr>
-		
+		</thead>
+		<tbody id="list">		
 		<?php 
 		for ($i = 0; $i < $count_point; $i++)
 		{
@@ -151,7 +172,9 @@ $count_point = mysql_num_rows($result_point);
 		<?php 
 		}
 		?>
-		</table><br>
+		</tbody>
+		</table>
+		<br>
 		<form action = "res_test_point.php" method = "POST">
 			<input type = "hidden" name = "test_seq" value = "<?= $test_seq ?>">
 			<table>

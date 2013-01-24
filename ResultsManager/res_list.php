@@ -59,22 +59,39 @@ Dbdissconnect($link);
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
-	<title>テスト選択画面</title>
+		<link rel="stylesheet" href="../css/animate.css">
+		<link rel="stylesheet" href="../css/jPages.css">
+		<script type="text/javascript" src="../javascript/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript" src="../javascript/jPages.js"></script>
+		<script> 
+		$(function(){
+		$(".holder").jPages({ 
+		containerID : "list",
+		previous : "←", //前へのボタン
+		next : "→", //次へのボタン
+		perPage : 3, //1ページに表示する個数
+		midRange : 5,
+		endRange : 2,
+		delay : 20, //要素間の表示速度
+		animation: "flipInY" //アニメーションAnimate.cssを参考に
+		});
+		});
+		</script>
+		<title>テスト選択画面</title>
 	</head>
 	
 	<body>
 	<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align = "center">
-			<font class="Cubicfont2">テスト選択</font><hr color="blue"><br><br><br>
+			<font class="Cubicfont2">テスト選択</font><hr color="blue">
 		</div>
-		
 		<!-- 点数を表示させるためのphpファイルに飛ぶ -->
 		<form action = "test_point_list.php" method = "POST">
-		
 		<!-- SQLで取り出したテストデータの表示 -->
+		<div class="holder"></div>
 			<table border = "1" class="table_01">
-			
+				<thead>			
 				<tr>
 					<th>日付</th>
 					<th>教科</th>
@@ -84,6 +101,8 @@ Dbdissconnect($link);
 					<th>定期テスト</th>
 					<th>点数表示</th>
 				</tr>
+				</thead>
+				<tbody id="list">		
 			
 				<?php 
 				for ($i = 0; $i < $count_test; $i++)
@@ -120,6 +139,7 @@ Dbdissconnect($link);
 				<?php
 				} 
 				?>
+				</tbody>
 			</table>
 			<br>
 			<input class="button4" type="button" value="戻る" onClick="history.back()">

@@ -76,6 +76,24 @@ Dbdissconnect($link);
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		<link rel="stylesheet" href="../css/animate.css">
+		<link rel="stylesheet" href="../css/jPages.css">
+		<script type="text/javascript" src="../javascript/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript" src="../javascript/jPages.js"></script>
+		<script> 
+		$(function(){
+		$(".holder").jPages({ 
+		containerID : "list",
+		previous : "←", //前へのボタン
+		next : "→", //次へのボタン
+		perPage : 3, //1ページに表示する個数
+		midRange : 5,
+		endRange : 2,
+		delay : 20, //要素間の表示速度
+		animation: "flipInY" //アニメーションAnimate.cssを参考に
+		});
+		});
+		</script>
 		<title>テスト登録画面</title>
 	</head>
 	
@@ -83,11 +101,13 @@ Dbdissconnect($link);
 	<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align = "center">
-			<font class="Cubicfont2">テスト登録</font><hr color="blue"><br><br><br>
+			<font class="Cubicfont2">テスト登録</font><hr color="blue">
 		</div>
 		
 		<!-- テーブルの作成 -->
-		<table border = "1" width = "100%" class="table_01">
+		<div class="holder"></div>
+		<table class="table_01">
+			<thead>			
 			<tr>
 				<th width = "13%">教科</th>
 				<th width = "8%">日付</th>
@@ -97,7 +117,7 @@ Dbdissconnect($link);
 				<th width = "10%">定期テスト</th>
 				<th width = "10%">登録(テスト・点数)</th>
 			</tr>
-			
+			</thead>
 			<tr>
 				<!-- 教科の選択 -->
 				<form name = "req" action = "" method = "GET">
@@ -176,6 +196,7 @@ Dbdissconnect($link);
 			</tr>
 			
 			<form action = "res_test_point.php" method = "POST">
+			<tbody id="list">
 				<?php
 				//以前のテストの表示
 				for ($i = 0; $i < $count_test; $i++)
@@ -215,6 +236,7 @@ Dbdissconnect($link);
 				} 
 				?>
 			</form>
+			</tbody>
 		</table>
 	</body>
 </html>
