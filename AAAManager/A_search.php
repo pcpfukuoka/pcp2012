@@ -6,12 +6,13 @@
 
 	$sql = "SELECT group_seq, group_name
 			FROM m_group
-			WHERE class_flg = 1";
+			WHERE class_flg = 1 AND delete_flg = 0";
 	$result = mysql_query($sql);
 
-	$sql = "SELECT attendance_class_seq, attendance_class_name
+/*	$sql = "SELECT attendance_class_seq, attendance_class_name
 			FROM attendance_class";
 	$res = mysql_query($sql);
+*/
 
 	//データベースを閉じる
 	Dbdissconnect($dbcon);
