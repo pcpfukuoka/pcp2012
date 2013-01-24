@@ -226,9 +226,9 @@
 /*座席表のボタン*/
 /*オレンジ*/
 .button5{
-	line-height:24px;
+	line-height:0px;
 	text-align:center;
-	font-size:12px;
+	font-size:10px;
 	font-weight:bold;
 	padding:0px;
 	background-color:#FFA500;
@@ -239,8 +239,8 @@
 	color:#000000;
 	display:block;
 	border-radius:5px;
-	width:50px;
-	height:30px;
+	width:30px;
+	height:20px;
 
 }
 
@@ -251,7 +251,7 @@
 	border: inset 3px #ff6600;  /* 枠の色 */
 	margin: 0px;
 	padding: 0px;
-	width:50px;
+	width:30px;
 
 }
 
