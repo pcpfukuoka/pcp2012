@@ -19,15 +19,29 @@ setcookie("flg",true,$time,"/");
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 
+</head>
+<body>
 		<form action="http://49.212.201.99:3000"method="post"enctype="multipart/form-data">
-			<input type="hidden" name="room" value="1">
-			<input type="submit" value="1">
+			<input type="hidden" name="room" data-value="1">
+			<input type="button" value="1" class="page_select">
 		</form>
 
 		<form action="http://49.212.201.99:3000"method="post" enctype="multipart/form-data">
-			<input type="hidden" name="room" value="2">
-			<input type="submit" value="2">
+			<input type="hidden" name="room" data-value="2">
+			<input type="button" value="2" class="page_select">
 		</form>
 
-</head>
+</body>
+<script>
+$(function() {
+
+	$(document).on('click', '.page_select', function() {
+		var page= $(this).data('value')
+		// クッキーの発行（書き込み）
+		document.cookie = "room" + "=" + page;
+		document.location = "http://49.212.201.99:3000";
+
+    });
+});
+</script>
 </html>
