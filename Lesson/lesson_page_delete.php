@@ -8,7 +8,7 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 	//削除前のページ数を持ってくる
-	$max_sql = "SELECT page_num FROM board WHERE date='".$date."' AND subject_seq='".$subject_seq." AND class_seq ='".$group_seq."' AND end_flg='0' ORDER BY page_num DESC LIMIT 1;";
+	$max_sql = "SELECT page_num FROM board WHERE date='".$date."' AND subject_seq='".$subject_seq."' AND class_seq ='".$group_seq."' AND end_flg='0' ORDER BY page_num DESC LIMIT 1;";
 	$max_result = mysql_query($max_sql);
 	$max_page = mysql_fetch_array($max_result);
 
