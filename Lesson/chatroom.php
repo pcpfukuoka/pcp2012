@@ -38,9 +38,9 @@ $(function() {
 	$(document).on('click', '.page_select', function() {
 
 		//page=入室する場所の番号
-		var page= $(this).data('id')
+		var page= $(this).data('id');
 		// クッキーの発行（書き込み）
-		document.cookie = "room" + "=" + page;
+		document.cookie = "room=" + page;
 		document.location = "http://49.212.201.99:3000";
 
     });
