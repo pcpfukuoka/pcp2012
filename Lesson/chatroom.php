@@ -4,7 +4,7 @@ $time = time() + 60 * 60*24;
 
 
 setcookie("user_seq","9",$time,"/");
-setcookie("subject_seq","5",$time,"/");
+setcookie("subject_seq","2",$time,"/");
 setcookie("group_seq","15",$time,"/");
 
 
