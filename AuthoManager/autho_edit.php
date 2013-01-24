@@ -127,13 +127,13 @@ Dbdissconnect($link);
 			<table class="table_01" width = "80%">
 				<tr>
 					<th width = "20%" align = "center" ><font size = "5">ページ名</font></th>
+					<th width = "5%" align = "center" ><font size = "5"></font></th>
 					<th width = "10%" align = "center" ><font size = "5">Read</font></th>
 					<th width = "10%" align = "center" ><font size = "5">Write</font></th>
 					<th width = "10%" align = "center" ><font size = "5">Update</font></th>
 					<th width = "10%" align = "center" ><font size = "5">Delivery</font></th>
 					<th width = "10%" align = "center" ><font size = "5">Delete</font></th>
-					<th width = "5%" align = "center" ><font size = "5">追加</font></th>
-					<th width = "5%" align = "center" ><font size = "5">削除</font></th>
+					<th width = "5%" align = "center" ><font size = "5"></font></th>
 				</tr>
 				
 				<?php
@@ -151,8 +151,11 @@ Dbdissconnect($link);
 						<?php 
 						require_once("../lib/autho.php");
 						$page_fun = new autho_class();
-						$page_cla = $page_fun -> autho_Pre($autho_seq, $page['page_seq']);
+						$page_cla = $page_fun -> autho_Pre($autho_seq, $page['page_seq']);?>
+
+						<td><input type = "button" class = "delete_btn" data-id = "<?= $page['page_seq'] ?>" value = "ー" id = "id"></td>
 						
+			<?php 						
 						//チェックボックスの表示
 						for ($j = 0; $j < 5; $j++)
 						{
@@ -182,8 +185,7 @@ Dbdissconnect($link);
 						}
 						?>
 						<input type="hidden" id = "Value_<?= $page['page_seq'] ?>" value="<?= $autho_chk ?>">
-						<td><input type = "button" class = "add_btn" value = "追加"  data-id = "<?= $page['page_seq'] ?>" id = "id"></td>
-						<td><input type = "button" class = "delete_btn" data-id = "<?= $page['page_seq'] ?>" value = "削除" id = "id"></td>
+						<td><input type = "button" class = "add_btn" value = "＋"  data-id = "<?= $page['page_seq'] ?>" id = "id"></td>
 					</tr>
 				<?php
 				}

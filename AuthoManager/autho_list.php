@@ -62,11 +62,9 @@ Dbdissconnect($link);
 		<div align = "center">
 			<font class="Cubicfont">権限管理一覧</font><hr color="blue">
 		</div><br><br>
-
-		名前 ： <?= $autho_name['autho_name'] ?>
-		
+			名前 :<font class="Cubicfont3"> <?= $autho_name['autho_name'] ?></font>
 <!-- 		テープルの作成 -->
-		<table width = "100%" class="table_01">
+		<table class="table_01">
 			<tr>
 				<th width = "25%" align = "center" ><font size="5">ページ名</font></th>
 				<th width = "15%" align = "center" ><font size="5">Read</font></th>

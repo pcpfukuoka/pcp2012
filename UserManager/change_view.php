@@ -99,7 +99,7 @@
 		</tr>
 		<tr>
 			<td>学籍番号※学生のみ</td>
-			<td><input type="text" name="stuent_id" value="<?= $user_row['student_id'] ?>" disabled="true"></td>
+			<td><input type="text" name="stuent_id" value="<?= $user_row['student_id'] ?>" disabled></td>
 		</tr>
 	</table>
 
