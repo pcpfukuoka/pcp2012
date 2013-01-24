@@ -39,7 +39,7 @@ $(function() {
 		var page= $(this).data('value')
 		// クッキーの発行（書き込み）
 		document.cookie = "room" + "=" + page;
-		document.location = "http://49.212.201.99:3000";
+		//document.location = "http://49.212.201.99:3000";
 
     });
 });
