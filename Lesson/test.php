@@ -196,7 +196,7 @@
 	        date:date,
 	        id:subject_seq,
 	        num:page_val,
-	        group:group_seq
+	        group_seq:group_seq
 	    },
 	    function(rs) {
 		    var parsers=JSON.parse(rs);
