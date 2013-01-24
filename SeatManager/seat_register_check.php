@@ -18,6 +18,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 	</head>
 	<body>
 	<img class="bg" src="../images/blue-big.jpg" alt="" />
@@ -75,6 +76,6 @@
 	<input name="row_max" type="hidden" value= "<?= $row_max ?>">
 	<input name="col_max" type="hidden" value= "<?= $col_max ?>">
 	<input name= "group" type="hidden" value= "<?= $group ?>">
-	<input type="submit" value="登録">
+	<input class="button4" type="submit" value="登録">
 	</body>
 </html>

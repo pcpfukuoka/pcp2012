@@ -147,10 +147,18 @@
 		<input name="col_max" type="hidden" value= "<?= $col_max ?>">
 		<input name="check_flg" type="hidden" value="0">
 
-		<input type="submit" value="更新" class="button4">
-
+		<table>
+			<tr>
+				<td>
+					<input type="button" value="ランダム" class = "rand button4">
+				</td>
+				<td>
+					<input type="submit" value="確認画面へ" class="button4">
+				</td>
+			</tr>
+		</table>
 	</form>
-	<input type="submit" value="ランダム" class = "rand button4">
+
 
 	</body>
 </html>

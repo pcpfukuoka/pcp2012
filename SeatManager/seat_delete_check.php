@@ -79,7 +79,7 @@
 	</table>
 
 	<form action="seat_delete.php" method="POST">
-		<input type="submit" value="削除">
+		<input class="button4" type="submit" value="削除">
 		<input name="group" type="hidden" value="<?= $group ?>">
 	</form>
 

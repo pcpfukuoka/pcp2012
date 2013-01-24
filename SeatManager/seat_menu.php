@@ -27,6 +27,12 @@
 		</div>
 		<hr color="blue">
 
+
+	<br>
+	<div align="center">
+	<table>
+	<tr>
+
 		<form action="seat_view.php" method="POST">
 <?php
 		$sql = "select m_group.group_name,m_group.group_seq
@@ -34,6 +40,7 @@
 						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
 ?>
+		<td width="120px" height="20px" align="center" valign="middle">
 			<select name="group" >
 <?php
 			while($gyo = mysql_fetch_array($res))
@@ -44,8 +51,13 @@
 			}
 ?>
 			</select>
-			<input type = "submit" value = "座席表">
+		</td>
+		<td>
+			<input type = "submit" value = "座席表" class="button4" >
+		</td>
 		</form>
+	</tr>
+	<tr>
 		<form action="seat_change.php" method="POST">
 <?php
 		$sql = "select m_group.group_name,m_group.group_seq
@@ -53,6 +65,7 @@
 						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
 ?>
+		<td width="120px" height="20px" align="center" valign="middle">
 			<select name="group" >
 <?php
 			while($gyo = mysql_fetch_array($res))
@@ -63,9 +76,13 @@
 			}
 ?>
 			</select>
-			<input type = "submit" value = "席替え">
+		</td>
+		<td>
+			<input type = "submit" value = "席替え" class="button4" >
+		</td>
 		</form>
-
+	</tr>
+	<tr>
 		<form action="seat_delete_check.php" method="POST">
 <?php
 		$sql = "select m_group.group_name,m_group.group_seq
@@ -73,6 +90,7 @@
 						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
 ?>
+		<td width="120px" height="20px" align="center" valign="middle">
 			<select name="group" >
 <?php
 			while($gyo = mysql_fetch_array($res))
@@ -83,9 +101,13 @@
 			}
 ?>
 			</select>
-			<input type = "submit" value = "削除">
+		</td>
+		<td>
+			<input type = "submit" value = "削除" class="button4" >
+		</td>
 		</form>
-
+	</tr>
+	<tr>
 		<form action="seat_register_user_select.php" method="POST">
 <?php
 		$sql = "select m_group.group_name,m_group.group_seq
@@ -93,6 +115,7 @@
 						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
 ?>
+		<td width="120px" height="20px" align="center" valign="middle">
 			<select name="group" >
 <?php
 			while($gyo = mysql_fetch_array($res))
@@ -103,8 +126,13 @@
 			}
 ?>
 			</select>
-			<input type = "submit" value = "登録">
+		</td>
+		<td>
+			<input type = "submit" value = "登録" class="button4" >
+		</td>
 		</form>
-
+	</tr>
+	</table>
+	</div>
 	</body>
 </html>

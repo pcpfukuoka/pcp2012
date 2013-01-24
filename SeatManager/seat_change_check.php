@@ -73,7 +73,7 @@
 	}
 ?>
 		</table>
-		<input type="submit" value = "登録">
+		<input type="submit" class="button4" value = "登録">
 	</form>
 
 

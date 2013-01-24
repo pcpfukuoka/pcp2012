@@ -18,16 +18,23 @@
 			<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 			<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 			<link rel="stylesheet" type="text/css" href="../css/table.css" />
+			<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<style>
 
 			.left_box{
 				float:left;
+				width:300px;
+				margin-left:20px;
+				margin-right:20px;
 			}
 			.right_box{
 				float:left;
+				width:200px;
+				margin-left:20px;
+				margin-right:20px;
 			}
 			.user_list {
-				width:200px;
+				width:300px;
 				height:300px;
 				overflow:scroll;
 			}
@@ -122,6 +129,15 @@
 
 			});
 
+			$("#all_check").click(function(){
+				$('#check input').attr('checked','checked');
+			});
+
+			//全てのチェックボックスのチェックを解除
+			$("#all_lift").click(function(){
+				$('#check input').removeAttr('checked');
+			});
+
     	});
     </script>
 
@@ -184,11 +200,24 @@
 	</FIELDSET>
 
 	<input name= "group" type="hidden" value= "<?= $group ?>">
-	<input id="next"type="submit"value="次へ">
+
+	<br>
+	<input id="next"type="submit" class="button4" value="確認画面へ">
 </div>
 <div class="right_box">
 
-	<div class="user_list">
+	<FIELDSET style="background-color:white;">
+    <LEGEND>
+    <b>生徒リスト</b>
+    </LEGEND>
+
+
+	<div id="check" class="user_list">
+
+	<table>
+		<tr>
+			<td><input style="width: 120px" id="all_check"type="button" value="すべて選択"></td>
+			<td><input style="width: 120px" id="all_lift" type="button" value="すべて解除"></td>
 	<table>
 <?php
 	$sql = "SELECT m_user.user_seq,m_user.user_name
@@ -212,6 +241,7 @@
 ?>
 	</table>
 	</div>
+	</FIELDSET>
 
 
 	</form>
