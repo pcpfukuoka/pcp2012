@@ -9,6 +9,7 @@ session_start();
 	//add.phpから送られてくるデータ
 	$date = $_POST['date'];
 	$subject_seq = $_POST['subject_seq'];
+	$group_seq=$_POST['group_seq'];
 	$data = $_FILES['upfile'];
 	$page_num = $_POST['page_num_change'];
 
@@ -20,6 +21,7 @@ session_start();
 	$sql = "UPDATE board SET div_url = '" .$db_img .
 			"'WHERE date = '". $date .
 			"'AND subject_seq = '".$subject_seq.
+			"'AND class_seq = '".$group_seq.
 			"'AND end_flg='0' AND page_num = '".$page_num ."';";
 	echo $sql;
 	$result = mysql_query($sql);

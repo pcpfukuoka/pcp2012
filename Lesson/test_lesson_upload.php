@@ -11,6 +11,7 @@ $dbcon = DbConnect();
 $date = $_POST['date'];
 echo $date;
 $subject_seq = $_POST['subject_seq'];
+$group_seq = $_POST['group_seq'];
 $data = $_FILES['upfile'];
 $page_num = $_POST['page_num'];
 
@@ -21,7 +22,7 @@ $page_num = $_POST['page_num'];
 
 $img_name = $data['name'];
 $db_img = "url(../images/div/". $data['name']. ")";
-$sql = "INSERT INTO board VALUE(0,'".$date ."', '15','".$subject_seq ."','".$page_num ."','".$db_img ."','0','0');";
+$sql = "INSERT INTO board VALUE(0,'".$date ."', '".$group_seq."','".$subject_seq ."','".$page_num ."','".$db_img ."','0','0');";
 $result = mysql_query($sql);
 $file_name = '../../balckboard/public/images/div/'.$img_name;
 if(move_uploaded_file($data['tmp_name'], $file_name))

@@ -7,10 +7,17 @@
 	//lesson_preparation.phpから送られてくるデータ
 	$date = $_POST['date'];
 	$subject_seq = $_POST['subject'];
+	$group_seq = $_POST['group'];
 
 	//subjectに対応するsubject_nameをデータベースから持ってくる
 	$sql = 'SELECT subject_name FROM m_subject WHEREsubject_seq = '. $subject_seq.';';
 	$result = mysql_query($sql);
+	$row = mysql_fetch_array($result);
+
+	$group_sel = "SELECT group_seq,group_name FROM pcp2012.m_group WHERE group_name=".$group_seq.";";
+	$group_result = mysql_query($group_sel);
+	$row2 = mysql_fetch_array($result);
+
 
 
 ?>
@@ -27,14 +34,15 @@
 	<a href="lesson_preparation.php">戻る</a>
 
 	<br>
-	<font size="5"><?= $date ?>:<?=$result ?></font>
+	<font size="5"><?= $date ?>:<?=$row['subject_name'] ?>:<?=$row['group_seq'] ?></font>
 	<div id="form">
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
+		<input type="hidden" id="group_seq_hidden" value="<?= $group_seq ?>" />
 
 
 	<?php
-		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'" AND end_flg="0";';
+		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'" AND class_seq='.$group_seq.'AND end_flg="0";';
 		$result2 = mysql_query($sql2);
 		$count2 = mysql_num_rows($result2);
 		$page_max = $count2+1;
@@ -43,6 +51,8 @@
 		<form action="test_lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="form">
 			<input type="hidden" name="date" value="<?= $date ?>" />
 			<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
+			<input type="hidden" name="group_seq" value="<?= $group_seq ?>" />
+
 			<input type="file" name="upfile" size="30" />
 			<input type="hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
 			<input type="submit"  value="追加" />
@@ -51,6 +61,7 @@
 		<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="change_form">
 			<input type="hidden" name="date" value=" <?= $date ?>" />
 			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+			<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
 			<select id="page_num_change" name="page_num_change">
 			<?php
 	   			for ($i=1; $i<=$count2; $i++)
@@ -68,6 +79,7 @@
 		<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="delete_form">
 			<input type="hidden" name="date" value=" <?= $date ?>" />
 			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+			<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
 			<select name="page_num_del" id="page_num_del">
 			<?php
 	   			for ($i=1; $i<=$count2; $i++)
@@ -95,7 +107,7 @@
 
 	<?php
 
-		$sql3 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'" AND end_flg="0";';
+		$sql3 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'"AND class_seq='.$group_seq.' AND end_flg="0";';
 		$result3 = mysql_query($sql3);
 		$count3 = mysql_num_rows($result3);
 
@@ -158,6 +170,7 @@
 		<form action="using_change.php" method="post" enctype="multipart/form-data" align="center">
 			<input type="hidden" name="date" value=" <?= $date ?>" />
 			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+			<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
 			<input type="submit" value="授業開始">
 		</form>
 	</div>
@@ -172,15 +185,18 @@
 
 		var date_ele=document.getElementById('date_hidden');
 		var subject_ele=document.getElementById('subject_seq_hidden');
+		var group_ele=document.getElementById('group_seq_hidden');
 		var page=document.getElementById('page_num_del');
 		var page_val=page.value;
 		//日付と科目を変数に格納
 		var date=date_ele.value;
 		var subject_seq=subject_ele.value;
+		var group_seq=group_ele.value;
 		$.post('lesson_page_delete.php',{
 	        date:date,
 	        id:subject_seq,
-	        num:page_val
+	        num:page_val,
+	        group:group_seq
 	    },
 	    function(rs) {
 		    var parsers=JSON.parse(rs);

@@ -6,6 +6,10 @@
 	$sql = "SELECT subject_seq, subject_name FROM m_subject;";
 	$result = mysql_query($sql);
 	$count = mysql_num_rows($result);
+
+	$group_sel = "SELECT group_seq,group_name FROM pcp2012.m_group WHERE class_flg =1;";
+	$group_result = mysql_query($group_sel);
+	$count2 = mysql_num_rows($group_result);
 	Dbdissconnect($dbcon);
 ?>
 
@@ -30,6 +34,18 @@
 					}
 				?>
 			</select>
+
+			<select id="group_seq">
+				<?php
+					for ($i = 0; $i < $count2; $i++)
+					{
+						$row2 = mysql_fetch_array($group_result);
+				?>
+	    			<option value="<?= $row2['group_seq']?>"><?= $row2['group_name'] ?></option>
+				<?php
+					}
+				?>
+			</select>
 			<input type="button" value="決定" id="decision" />
 			<div id="frame">
 			</div>
@@ -43,15 +59,18 @@
 
 			var date_ele=document.getElementById('date');
 			var subject_ele=document.getElementById('subject_seq');
+			var group_ele=document.getElementById('group_seq');
 
 			//日付と科目を変数に格納
 			var date=date_ele.value;
 			var subject_seq=subject_ele.value;
+			var group_seq=group_ele.value;
 
 			$('#frame').empty();
 			$.post('ajax_canvas_select.php',{
 		        date: date,
-		        id : subject_seq
+		        id : subject_seq,
+		        group: group_seq
 		    },
 		    function(rs) {
 		    	var parsers = JSON.parse(rs);
@@ -71,14 +90,18 @@
 
 	    	var date_ele=document.getElementById('date');
 			var subject_ele=document.getElementById('subject_seq');
+			var group_ele=document.getElementById('group_seq');
 			var date=date_ele.value;
 			var subject_seq=subject_ele.value;
+			var group_seq=group_ele.value;
+
 	    	var page_ele =document.getElementById('page_num');
 	    	var page= Number(page_ele.value);
 
 	    	$.post('ajax_canvas_select.php', {
 	            date: date,
-	            id : subject_seq
+	            id : subject_seq,
+	            group : group_seq
 	        },
 	        //戻り値として、user_seq受け取る
 	        function(rs) {
@@ -100,14 +123,18 @@
 
 	    	var date_ele=document.getElementById('date');
 			var subject_ele=document.getElementById('subject_seq');
+			var group_ele=document.getElementById('group_seq');
+
 			var date=date_ele.value;
 			var subject_seq=subject_ele.value;
+			var group_seq=group_ele.value;
 	    	var page_ele =document.getElementById('page_num');
 	    	var page= Number(page_ele.value);
 
 	    	$.post('ajax_canvas_select.php', {
 	            date: date,
-	            id : subject_seq
+	            id : subject_seq,
+	            group : group_seq
 	        },
 	        function(rs){
 

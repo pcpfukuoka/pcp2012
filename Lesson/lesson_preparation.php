@@ -5,10 +5,12 @@
 	$dbcon = DbConnect();
 
 	$sql = "SELECT subject_seq, subject_name FROM m_subject;";
-
 	$result = mysql_query($sql);
-
 	$count = mysql_num_rows($result);
+
+	$group_sel = "SELECT group_seq,group_name FROM pcp2012.m_group WHERE class_flg =1;";
+	$group_result = mysql_query($group_sel);
+	$count2 = mysql_num_rows($group_result);
 
 
 	//データベースを閉じる
@@ -36,6 +38,19 @@
     				}
   				?>
 			</select>
+
+			<select name="group">
+				<?php
+	   				for ($i = 0; $i < $count2; $i++)
+	   				{
+	   					$row = mysql_fetch_array($group_result);
+  				?>
+    				<option value="<?= $row['group_seq']?>"><?= $row['group_name'] ?></option>
+  				<?php
+    				}
+  				?>
+			</select>
+
 			<br />
 			<input type="submit" value="決定" />
 		</form>
