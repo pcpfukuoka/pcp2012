@@ -22,7 +22,7 @@
 	$sql = "SELECT DATE_FORMAT(date,'%Y-%m') AS select_date
 			FROM attendance
 			GROUP BY DATE_FORMAT(date,'%Y-%m')
-			ORDER BY DATE_FORMAT(date,'%Y-%m');";
+			ORDER BY DATE_FORMAT(date,'%Y-%m') DESC;";
 	$result = mysql_query($sql);
 	$num = mysql_num_rows($result);
 
