@@ -18,8 +18,8 @@
 ?>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-		<script src="../javascript/jquery-1.8.2.min.js"></script>
+			<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+			<script src="../javascript/jquery-1.8.2.min.js"></script>
 
 	</head>
 	<body>
@@ -57,12 +57,16 @@
 	</body>
 	<script>
 
+	$(function() {//決定ボタンをクリックした後の過去授業の画像を出力する処理
+
 		//ボタンをすべて選択した後に決定ボタンを表示
 		$(document).on('change', '#date', function() {
 			var decision_ele =document.getElementById("decision");
 			decision_ele.disabled=false;
 
 	    });
+
+	});
 	</script>
 
 </html>
