@@ -53,9 +53,9 @@
 			<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
 			<input type="hidden" name="group_seq" value="<?= $group_seq ?>" />
 
-			<input type="file" name="upfile" size="30" />
+			<input type="file" name="upfile" size="30" id="upload_file"/>
 			<input type="hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
-			<input type="submit"  value="追加" />
+			<input type="submit"  value="追加" disabled=disabled id="upload_decision"/>
 		</form>
 
 		<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="change_form">
@@ -72,8 +72,8 @@
     			}
   			?>
 			</select>
-			<input type="file" name="upfile" size="30" />
-			<input type="submit" id="change" value="変更" />
+			<input type="file" name="upfile" size="30" id="change_file"/>
+			<input type="submit" id="change" value="変更"  disabled=disabled id="change_decision"/>
 		</form>
 
 		<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="delete_form">
@@ -90,7 +90,7 @@
    				}
   			?>
 			</select>
-			<input type="button" id="delete" value="削除" onclick="delete_img()"/>
+			<input type="button" id="delete" value="削除" onclick="delete_img()" id="delete_decision"/>
 		</form>
 
 
@@ -171,7 +171,7 @@
 			<input type="hidden" name="date" value=" <?= $date ?>" />
 			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
 			<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
-			<input type="submit" value="授業開始">
+			<input type="submit" value="授業開始" id="lesson_start" disabled=disabled>
 		</form>
 	</div>
 		<iframe name="targetFrame" id="targetFrame" style="display:none;"></iframe>
@@ -179,7 +179,22 @@
 	</body>
 	<script>
 	$(function() {
+		//アップロードする画像を決めたとき
+		$(document).on('change', '#upload_file', function() {
 
+			//画像の追加ボタンを押せるようにする
+			var upload_ele=document.getElementById("upload_decision");
+			upload_ele.disabled=false;
+
+			//授業開始ボタンを押せるようにする
+			var start_ele=document.getElementById("lesson_start");
+			start_ele.disabled=false;
+	    });
+
+		$(document).on('change', '#change_file', function() {
+			var change_ele=document.getElementById("change_decision");
+			change_ele.disabled=false;
+	    });
 	});
 	function delete_img(){
 
