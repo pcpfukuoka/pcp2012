@@ -43,6 +43,7 @@
 
 	<?php
 		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'" AND class_seq='.$group_seq.'AND end_flg="0";';
+		echo "sql2=".$sql2;
 		$result2 = mysql_query($sql2);
 		$count2 = mysql_num_rows($result2);
 		$page_max = $count2+1;
