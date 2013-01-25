@@ -185,16 +185,23 @@
 			//画像の追加ボタンを押せるようにする
 			var upload_ele=document.getElementById("upload_decision");
 			upload_ele.disabled=false;
-
-			//授業開始ボタンを押せるようにする
-			var start_ele=document.getElementById("lesson_start");
-			start_ele.disabled=false;
 	    });
 
+		//背景画像するために画像を選択したとき
 		$(document).on('change', '#change_file', function() {
 			var change_ele=document.getElementById("change_decision");
 			change_ele.disabled=false;
 	    });
+
+		//画像を追加ボタンを押したとき
+		$(document).on('click', '#upload_decision', function() {
+			//授業開始ボタンを押せるようにしたとき
+			var start_ele=document.getElementById("lesson_start");
+			start_ele.disabled=false;
+
+	    });
+
+
 	});
 	function delete_img(){
 
