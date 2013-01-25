@@ -22,7 +22,7 @@
 
 <html>
 	<head>
-		<title>出欠管理</title>
+		<title>出席管理</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
@@ -38,7 +38,7 @@
 			</div>
 
 			<hr color="blue">
-			<br><br>
+			<br><br><br>
 
 			<p align="center">
 

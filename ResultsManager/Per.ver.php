@@ -52,14 +52,14 @@ Dbdissconnect($link);
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<title>テスト絞り込み画面</title>
 	</head>
-	
+
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 	<div align = "center">
-			<font class="Cubicfont2">テスト絞り込み</font><hr color="blue"><br><br><br>
+			<font class="Cubicfont">テスト絞り込み</font><hr color="blue"><br><br><br>
 		</div>
-		
+
 		<form action = "Per_list.php" method = "POST">
 			<!-- テーブルの作成 -->
 			<table border = "1"  class="table_01">
@@ -68,10 +68,10 @@ Dbdissconnect($link);
 					<th>教科</th>
 					<th>テストチェック</th>
 				</tr>
-				
+
 				<tr>
-				
-					
+
+
 				<!-- 教科の選択 -->
 					<td><select name = "subject_seq">
 						<option value = "-1" selected>すべて</option>
@@ -82,10 +82,10 @@ Dbdissconnect($link);
 						?>
 							<option value = "<?= $subj['subject_seq'] ?>"> <?= $subj['subject_name'] ?></option>
 						<?php
-						} 
+						}
 						?>
 					</select></td>
-					
+
 					<!-- テストのチェック -->
 					<td align = "center">
 					すべて<input type = "radio" name = "stand_flg" value = -1 checked>&nbsp
