@@ -39,8 +39,6 @@
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
 		<input type="hidden" id="group_seq_hidden" value="<?= $group_seq ?>" />
-
-
 	<?php
 		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'" AND class_seq='.$group_seq.'AND end_flg="0";';
 		echo "sql2=".$sql2;
@@ -48,7 +46,7 @@
 		$count2 = mysql_num_rows($result2);
 		$page_max = $count2+1;
 	?>
-
+		<?= $sql2 ?>
 		<form action="test_lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="form">
 			<input type="hidden" name="date" value="<?= $date ?>" />
 			<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
