@@ -33,6 +33,34 @@ setcookie("flg",true,$time,"/");
 
 </body>
 <script>
+function setCookie(name, value, domain, path, expires, secure) {
+	if (!name) return;
+
+	var str = name + "=" + escape(value);
+	if (domain) {
+		if (domain == 1) domain = location.hostname.replace(/^[^\.]*/, "");
+		str += "; domain=" + domain;
+	}
+	if (path) {
+		if (path == 1) path = location.pathname;
+		str += "; path=" + path;
+	}
+	if (expires) {
+		var nowtime = new Date().getTime();
+		expires = new Date(nowtime + (60 * 60 * 24 * 1000 * expires));
+		expires = expires.toGMTString();
+		str += "; expires=" + expires;
+	}
+	if (secure && location.protocol == "https:") {
+		str += "; secure";
+	}
+
+	document.cookie = str;
+}
+
+</script>
+
+<script>
 $(function() {
 
 	$(document).on('click', '.page_select', function() {
@@ -40,7 +68,7 @@ $(function() {
 		//page=入室する場所の番号
 		var page= $(this).data('id');
 		// クッキーの発行（書き込み）
-		document.cookie = "room=" + page;
+		setCookie("room",page, "", "/", 1);
 		document.location = "http://49.212.201.99:3000";
 
     });
