@@ -56,8 +56,8 @@
 				<td><input class="button1" type="button" onclick="jump('../Calendar/calendar_main.php' , 'left')" value="スケジュール"></td>
 				<td><input class="button1" type="button" onclick="jump('../ContactBook/main.php' , 'left')" value="連絡帳"></td>
 				<td><input class="button1" type="button" onclick="jump('../Lesson/index.php','left')" value="授業"></td>
-				<td><input class="button1" type="button" onclick="jump('../AuthoManager/jump.php' , 'left')" value="成績確認"></td>
-				<td><input class="button1" type="button" onclick="jump('../QuestionManager/index.php','left')" value="アンケート"></td>			
+				<td><input class="button1" type="button" onclick="jump('../Results_check/R_index.php' , 'left')" value="成績確認"></td>
+				<td><input class="button1" type="button" onclick="jump('../QuestionManager/index.php','left')" value="アンケート"></td>
 			</tr>
 
 		<!--  下記より先生のみ -->
