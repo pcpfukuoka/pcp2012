@@ -46,14 +46,20 @@
 					}
 				?>
 			</select>
-			<input type="button" value="決定" id="decision" />
+			<input type="button" value="決定" id="decision" disabled=disabled>
 			<div id="frame">
 			</div>
 
 	</body>
 	<script>
-	$(function() {
+	$(function() {//決定ボタンをクリックした後の過去授業の画像を出力する処理
 
+		//ボタンをすべて選択した後に決定ボタンを表示
+		$(document).on('change', '#date', function() {
+			var decision_ele =document.getElementById("decision");
+			decision_ele.disabled=false;
+
+	    });
 		//決定ボタンをクリックした後の過去授業の画像を出力する処理
 		$(document).on('click', '#decision', function() {
 
