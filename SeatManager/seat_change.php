@@ -56,11 +56,12 @@
 
 		$('.rand').click(function()
 		{
-			for(var i = 0;i <= 30;i++)
+			for(var i = 0;i <= 100;i++)
 			{
-				var seat_no = (Math.floor(Math.random()*9+1))
-				var seat_no2 = (Math.floor(Math.random()*9+1))
 				var count = $('#count').val();
+				var seat_no = (Math.ceil(Math.random()*count))
+				var seat_no2 = (Math.ceil(Math.random()*count))
+
 
 				var evc_name = $('#'+seat_no).children("p").text();
 				var evc_value = $('#'+seat_no).children().val();
@@ -106,6 +107,7 @@
 	$col_max = $ret['mx'];
 
 	$id = 1;
+	$count = 0;
 		for($row = 1; $row <= $row_max; $row++)
 		{
 			echo "<tr>";
@@ -136,6 +138,7 @@
 
 						echo "</td>";
 						$id++;
+						$count++;
 			}
 			echo "</tr>";
 		}
@@ -159,6 +162,7 @@
 		</table>
 	</form>
 
+	<input id="count" type="hidden" value="<?= $count ?>">
 
 	</body>
 </html>
