@@ -18,8 +18,8 @@
 ?>
 <html>
 	<head>
-			<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<script src="../javascript/jquery-1.8.2.min.js"></script>
 
 	</head>
 	<body>
