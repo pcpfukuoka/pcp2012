@@ -19,13 +19,13 @@
 <html>
 	<head>
 			<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-
+			<script src="../javascript/jquery-1.8.2.min.js"></script>
 
 	</head>
 	<body>
 		<form action="test.php" method="post" enctype="multipart/form-data">
 			<!-- 授業がある日付・授業するクラス・授業の科目 -->
-			<input type="date" name= "date" size= "30" /><br />
+			<input type="date" name= "date" size= "30" id="date"/><br />
 
 			<select name="subject">
 				<?php
@@ -52,7 +52,21 @@
 			</select>
 
 			<br />
-			<input type="submit" value="決定" />
+			<input type="submit" value="決定" id="decision" disabled=disabled />
 		</form>
 	</body>
+	<script>
+
+	$(function() {//決定ボタンをクリックした後の過去授業の画像を出力する処理
+
+		//ボタンをすべて選択した後に決定ボタンを表示
+		$(document).on('change', '#date', function() {
+			var decision_ele =document.getElementById("decision");
+			decision_ele.disabled=false;
+
+	    });
+
+	});
+	</script>
+
 </html>
