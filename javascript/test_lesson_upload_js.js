@@ -21,8 +21,8 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	var im = page_num + "_image";
 	var image=document.createElement("img");
 	image.setAttribute("src",img_tag_name);
-	image.setAttribute("width","128");
-	image.setAttribute("height","128");
+	image.setAttribute("width","100");
+	image.setAttribute("height","100");
 	image.setAttribute("id",im);
 	//作成した属性の付与
 	var td_name = img_page_num+"_td";

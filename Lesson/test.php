@@ -125,7 +125,7 @@
 				$img_tag_name = '../../balckboard/public/images/div/'.$bbb;
 
 	?>
-			<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$i ?>_image"></td>
+			<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="100" height="100" id="<?=$i ?>_image"></td>
 
 	<?php
 			if($i%5==0){
@@ -254,8 +254,8 @@
 
 			//要素が１列なtrタグが存在する場合の処理
 			if(Number(parsers[0]['max_page'][0])%5==0){
-				var tr_del=Number(parsers[0]['max_page'][0])/8+1;
-				var th_del=Number(parsers[0]['max_page'][0])/8+1;
+				var tr_del=Number(parsers[0]['max_page'][0])/5+1;
+				var th_del=Number(parsers[0]['max_page'][0])/5+1;
 				tr_del =tr_del+"_tr";
 				th_del =th_del+"_th";
 
