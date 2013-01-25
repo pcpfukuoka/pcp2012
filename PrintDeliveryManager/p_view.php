@@ -2,6 +2,7 @@
 	session_start();
 	$user_seq = $_SESSION['login_info[user]'];
 
+	//page_seq = 11(プリント配信)
 	require_once("../lib/autho.php");
 	$page_fun = new autho_class();
 	$page_cla = $page_fun -> autho_Pre($_SESSION['login_info[autho]'], 11);
@@ -69,7 +70,7 @@
 
 			    <?php
 			    	//先生・管理者以外の人は送信できないようにする
-			    	if($page_cla['delivery_flg'] == 0)
+			    	if($page_cla[3]['delivery_flg'] == 0)
 			    	{
 			    ?>
 			    		<input class="button4" type="submit" value="保存" name="Re_preservation">
