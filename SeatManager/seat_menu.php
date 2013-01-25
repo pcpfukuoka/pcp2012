@@ -35,7 +35,7 @@
 
 		<form action="seat_view.php" method="POST">
 <?php
-		$sql = "select m_group.group_name,m_group.group_seq
+		$sql = "select distinct m_group.group_name,m_group.group_seq
 					from m_group,group_details
 						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
@@ -45,9 +45,16 @@
 <?php
 			while($gyo = mysql_fetch_array($res))
 			{
+				$group_seq = $gyo['group_seq'];
+				$sql = "select seat_seq from seat where group_seq = '$group_seq'";
+				$res1 = mysql_query($sql);
+				$num = mysql_num_rows($res1);
+				if($num > 0)
+				{
 ?>
-				<option value=<?= $gyo['group_seq']?>> <?=  $gyo['group_name']?></option>
+					<option style="width:80px;"value=<?= $gyo['group_seq']?>> <?=  $gyo['group_name']?></option>
 <?php
+				}
 			}
 ?>
 			</select>
@@ -60,7 +67,7 @@
 	<tr>
 		<form action="seat_change.php" method="POST">
 <?php
-		$sql = "select m_group.group_name,m_group.group_seq
+		$sql = "select distinct m_group.group_name,m_group.group_seq
 					from m_group,group_details
 						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
@@ -70,9 +77,16 @@
 <?php
 			while($gyo = mysql_fetch_array($res))
 			{
+				$group_seq = $gyo['group_seq'];
+				$sql = "select seat_seq from seat where group_seq = '$group_seq'";
+				$res1 = mysql_query($sql);
+				$num = mysql_num_rows($res1);
+				if($num > 0)
+				{
 ?>
-				<option value=<?= $gyo['group_seq']?>> <?=  $gyo['group_name']?></option>
+				<option style="width:80px;" value=<?= $gyo['group_seq']?>> <?=  $gyo['group_name']?></option>
 <?php
+				}
 			}
 ?>
 			</select>
@@ -85,7 +99,7 @@
 	<tr>
 		<form action="seat_delete_check.php" method="POST">
 <?php
-		$sql = "select m_group.group_name,m_group.group_seq
+		$sql = "select distinct m_group.group_name,m_group.group_seq
 					from m_group,group_details
 						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
@@ -95,9 +109,16 @@
 <?php
 			while($gyo = mysql_fetch_array($res))
 			{
+				$group_seq = $gyo['group_seq'];
+				$sql = "select seat_seq from seat where group_seq = '$group_seq'";
+				$res1 = mysql_query($sql);
+				$num = mysql_num_rows($res1);
+				if($num > 0)
+				{
 ?>
-				<option value=<?= $gyo['group_seq']?>> <?=  $gyo['group_name']?></option>
+					<option style="width:80px;" value=<?= $gyo['group_seq']?>> <?=  $gyo['group_name']?></option>
 <?php
+				}
 			}
 ?>
 			</select>
@@ -110,7 +131,7 @@
 	<tr>
 		<form action="seat_register_user_select.php" method="POST">
 <?php
-		$sql = "select m_group.group_name,m_group.group_seq
+		$sql = "select distinct m_group.group_name,m_group.group_seq
 					from m_group,group_details
 						where m_group.group_seq = group_details.group_seq";
 		$res = mysql_query($sql);
@@ -120,9 +141,16 @@
 <?php
 			while($gyo = mysql_fetch_array($res))
 			{
+				$group_seq = $gyo['group_seq'];
+				$sql = "select seat_seq from seat where group_seq = '$group_seq'";
+				$res1 = mysql_query($sql);
+				$num = mysql_num_rows($res1);
+				if($num == 0)
+				{
 ?>
-				<option value=<?= $gyo['group_seq']?>> <?=  $gyo['group_name']?></option>
+					<option style="width:80px;" value=<?= $gyo['group_seq']?>> <?=  $gyo['group_name']?></option>
 <?php
+				}
 			}
 ?>
 			</select>
