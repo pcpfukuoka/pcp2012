@@ -77,23 +77,7 @@ Dbdissconnect($link);
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<link rel="stylesheet" href="../css/animate.css">
-		<link rel="stylesheet" href="../css/jPages.css">
-		<script type="text/javascript" src="../javascript/jquery-1.8.2.min.js"></script>
-		<script type="text/javascript" src="../javascript/jPages.js"></script>
-		<script> 
-		$(function(){
-		$(".holder").jPages({ 
-		containerID : "list",
-		previous : "←", //前へのボタン
-		next : "→", //次へのボタン
-		perPage : 3, //1ページに表示する個数
-		midRange : 5,
-		endRange : 2,
-		delay : 20, //要素間の表示速度
-		animation: "flipInY" //アニメーションAnimate.cssを参考に
-		});
-		});
-		</script>
+		<link rel="stylesheet" type="text/css" href="../css/table_search.css" />
 		<title>テスト登録画面</title>
 	</head>
 	
@@ -101,23 +85,34 @@ Dbdissconnect($link);
 	<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align = "center">
-			<font class="Cubicfont2">テスト登録</font><hr color="blue">
+			<font class="Cubicfont">テスト登録</font><hr color="blue">
 		</div>
 		
 		<!-- テーブルの作成 -->
-		<div class="holder"></div>
-		<table class="table_01">
-			<thead>			
-			<tr>
-				<th width = "13%">教科</th>
-				<th width = "8%">日付</th>
-				<th width = "30%">テスト範囲</th>
-				<th width = "13%">先生</th>
-				<th width = "13%">グループ</th>
-				<th width = "10%">定期テスト</th>
-				<th width = "10%">登録(テスト・点数)</th>
+		<div id="tablewrapper">
+			<div id="tableheader">
+	        	<div class="search">
+	                <select id="columns" onchange="sorter.search('query')"></select>
+	                <input type="text" id="query" onkeyup="sorter.search('query')" />
+	            </div>
+	            <span class="details">
+					<div>Records <span id="startrecord"></span>-<span id="endrecord"></span> of <span id="totalrecords"></span></div>
+	        		<div><a href="javascript:sorter.reset()">reset</a></div>
+	        	</span>
+        </div> 
+		<table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
+			<thead>
+				<tr>
+				<th><h3>教科</h3></th>
+				<th><h3>日付</h3></th>
+				<th><h3>テスト範囲</h3></th>
+				<th><h3>先生</h3></th>
+				<th><h3>グループ</h3></th>
+				<th><h3>定期テスト</h3></th>
+				<th><h3>登録(テスト・点数)</h3></th>
 			</tr>
 			</thead>
+		<tbody>	
 			<tr>
 				<!-- 教科の選択 -->
 				<form name = "req" action = "" method = "GET">
@@ -196,7 +191,6 @@ Dbdissconnect($link);
 			</tr>
 			
 			<form action = "res_test_point.php" method = "POST">
-			<tbody id="list">
 				<?php
 				//以前のテストの表示
 				for ($i = 0; $i < $count_test; $i++)
@@ -238,5 +232,59 @@ Dbdissconnect($link);
 			</form>
 			</tbody>
 		</table>
+						</div>
+		<div id="tablefooter">
+          <div id="tablenav">
+            	<div>
+                    <img src="../images/first.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
+                    <img src="../images/previous.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1)" />
+                    <img src="../images/next.gif" width="16" height="16" alt="First Page" onclick="sorter.move(1)" />
+                    <img src="../images/last.gif" width="16" height="16" alt="Last Page" onclick="sorter.move(1,true)" />
+                </div>
+                <div>
+                	<select id="pagedropdown"></select>
+				</div>
+            </div>
+			<div id="tablelocation">
+            	<div>
+                    <select onchange="sorter.size(this.value)">
+                    <option value="5">5</option>
+                        <option value="10" selected="selected">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <span>Entries Per Page</span>
+                </div>
+                <div class="page">Page <span id="currentpage"></span> of <span id="totalpages"></span></div>
+            </div>
+        </div>
+		<script type="text/javascript" src="../javascript/script.js"></script>
+	<script type="text/javascript">
+	var sorter = new TINY.table.sorter('sorter','table',{
+		headclass:'head',
+		ascclass:'asc',
+		descclass:'desc',
+		evenclass:'evenrow',
+		oddclass:'oddrow',
+		evenselclass:'evenselected',
+		oddselclass:'oddselected',
+		paginate:true,
+		size:5,
+		colddid:'columns',
+		currentid:'currentpage',
+		totalid:'totalpages',
+		startingrecid:'startrecord',
+		endingrecid:'endrecord',
+		totalrecid:'totalrecords',
+		hoverid:'selectedrow',
+		pageddid:'pagedropdown',
+		navid:'tablenav',
+		sortcolumn:1,
+		sortdir:-1,
+		init:true
+	});
+  </script>
+			
 	</body>
 </html>

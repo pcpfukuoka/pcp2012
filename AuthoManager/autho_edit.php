@@ -110,12 +110,12 @@ Dbdissconnect($link);
 	</head>
 	
 	<body>
-		<img class="bg" src="../../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/blue-big.jpg" />
 		<div id="container">
 	
 		<div align = "center">
 			<font class="Cubicfont">権限管理編集</font>
-		</div><hr color="blue"><br><br><br>
+		</div><hr color="blue">
 		
 		<!-- 確認画面に飛ぶ -->
 		<form name = "edit" action = "autho_edit_con.php" method = "POST">

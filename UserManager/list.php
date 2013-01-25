@@ -8,7 +8,7 @@
 		</head>
 <body>
 	<img class="bg" src="../images/blue-big.jpg" alt="" />
-			<div id="container">
+	<div id="container">
 	<div id="tablewrapper">
 		<div id="tableheader">
         	<div class="search">
@@ -19,11 +19,12 @@
 				<div>Records <span id="startrecord"></span>-<span id="endrecord"></span> of <span id="totalrecords"></span></div>
         		<div><a href="javascript:sorter.reset()">reset</a></div>
         	</span>
-        </div>    <table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
+        </div> 
+        <table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
         <thead>
 		<tr>
 			<th class="nosort"><h3>ユーザ名</h3></th>
-			<th><h3>(ふりがな)</h3></th>
+			<th><h3>(フリガナ)</h3></th>
 			<th><h3>ユーザID</h3></th>
 			<th><h3>権限名</h3></th>
 		</tr>
