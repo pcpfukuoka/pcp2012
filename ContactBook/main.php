@@ -2,6 +2,23 @@
 	//SESSIONでユーザIDの取得
 	session_start();
 	$user_seq = $_SESSION['login_info[user]'];
+
+	if(!isset($_SESSION["login_flg"]) || $_SESSION['login_flg'] == "false")
+	{
+		//header("Location:login/index.php");
+	}
+
+	//page_seq = 3(連絡帳)
+	require_once("../lib/autho.php");
+	$page_fun = new autho_class();
+	$page_cla = $page_fun -> autho_Pre($_SESSION['login_info[autho]'], 3);
+
+
+	if($page_cla[0]['read_flg'] == 0)
+	{
+		header("Location:../Top/top_left.php");
+	}
+
 ?>
 
 <html>
