@@ -41,7 +41,6 @@
 		<input type="hidden" id="group_seq_hidden" value="<?= $group_seq ?>" />
 	<?php
 		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'" AND class_seq="'.$group_seq.'" AND end_flg="0";';
-		echo "sql2=".$sql2;
 		$result2 = mysql_query($sql2);
 		$count2 = mysql_num_rows($result2);
 		$page_max = $count2+1;
@@ -92,7 +91,7 @@
 		</form>
 
 
-		<table border="5" id="img_table" style="position: absolute;top: 0;left:50%;">
+		<table border="5" id="img_table" style="position: absolute;top:50px;left:45%;">
 			<tr id="1_th">
 	<?php
 				for($i=1;$i<=5;$i++){
