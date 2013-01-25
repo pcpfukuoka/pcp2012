@@ -34,12 +34,9 @@
 				<br><br>
 
 				<!-- 生徒用の画面 -->
-				<input type="button" onclick="jump('now_lesson.php','right')" value="現在の授業">
+				<input type="button" onclick="jump('chatroom.php','right')" value="現在の授業">
 				<br><br>
-
-				<!-- 先生用の画面 -->
-				<input type="button" onclick="jump('lesson.php','right')" value="授業開始">
-				<br><br>
+				<!-- 先生用のボタン -->
 				<input type="button" onclick="jump('lesson_preparation.php','right')" value="授業準備">
 
 			</p>
