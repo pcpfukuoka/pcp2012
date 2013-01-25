@@ -129,8 +129,8 @@
 			if($i%5==0){
 				$tr_=$i/5;
 				$tr_++;
-				$tr_=$tr_."_tr";
-				$th_=$tr_."_th";
+				$tr_id=$tr_."_tr";
+				$th_id=$tr_."_th";
 
 				//次の行の最初のｔｈの値
 				$th_in=$i+1;
@@ -140,7 +140,7 @@
 			</tr>
 
 
-			<tr id="<?=$th_ ?>">
+			<tr id="<?=$th_id ?>">
 	<?php
 			for($j=$th_in;$j<$max;$j++){
 				echo "<th width='100'><font size='3'>".$j."<font></th>";
@@ -148,7 +148,7 @@
 
 	 ?>
 	 		</tr>
-			<tr id="<?= $tr_ ?>">
+			<tr id="<?= $tr_id ?>">
 	<?php
 			}
 
