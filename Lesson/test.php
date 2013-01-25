@@ -92,7 +92,7 @@
 		</form>
 
 
-		<table border="5" id="img_table">
+		<table border="5" id="img_table" style="position: absolute;top: 0;left:50%;">
 			<tr id="1_th">
 	<?php
 				for($i=1;$i<=5;$i++){
@@ -178,6 +178,10 @@
 	</body>
 	<script>
 	$(function() {
+
+		//画像が１まいでもある時に授業開始ボタンを押せるようにする
+
+
 		//アップロードする画像を決めたとき
 		$(document).on('change', '#upload_file', function() {
 
