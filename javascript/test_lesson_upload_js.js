@@ -7,11 +7,11 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	var table_ele=parent.document.getElementById("img_table");
 	var pa=Number(page_num);
 
-	if(pa%8==0){
+	if(pa%5==0){
 		pa--;
 	}
 	//imageを追加するtrタグを取得
-	var insert_tr=Math.floor(pa/8)+1;
+	var insert_tr=Math.floor(pa/5)+1;
 
 	var tr_name=insert_tr+"_tr";
 	var tr_ele=parent.document.getElementById(tr_name);
@@ -30,11 +30,11 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	td.setAttribute("id",td_name);
 	tr_ele.appendChild(td).appendChild(image);
 	//タグが必要な時の処理
-	if(page_num%8==0){
+	if(page_num%5==0){
 
 		/* thを作成して１列分のヘッダーを作成*/
 		var tr_=document.createElement("tr");
-		var th_val=page_num/8;
+		var th_val=page_num/5;
 		th_val=th_val+1+"_th";
 		tr_.setAttribute("id",th_val);
 		//tableにヘッダー用のtrを追加
@@ -43,7 +43,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 		var next_th=page_num+1;
 		var e="<th width='100'><font size='3'>"+next_th+"</font></th>";
 		next_th++;
-		for(i=1;i<8;i++){
+		for(i=1;i<5;i++){
 			e=e+"<th width='100'><font size='3'>"+next_th+"</font></th>";
 			next_th++;
 		}
@@ -53,7 +53,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 
 		/*　trを追加して１列を追加する処理　*/
 		var tbody=document.getElementsByTagName('tbody');
-		var tr_val=page_num/8;
+		var tr_val=page_num/5;
 		tr_val=tr_val+1+"_tr";
 		var tr_=document.createElement("tr");
 		tr_.setAttribute("id",tr_val);

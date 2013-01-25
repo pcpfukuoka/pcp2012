@@ -97,7 +97,7 @@
 		<table border="5" id="img_table">
 			<tr id="1_th">
 	<?php
-				for($i=1;$i<=8;$i++){
+				for($i=1;$i<=5;$i++){
 					echo "<th width='100'><font size='3'>".$i."<font></th>";
 				}
 	?>
@@ -128,15 +128,16 @@
 			<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$i ?>_image"></td>
 
 	<?php
-			if($i%8==0){
-				$tr_=$i/8;
+			if($i%5==0){
+				$tr_=$i/5;
 				$tr_++;
 				$tr_=$tr_."_tr";
 				$th_=$tr_."_th";
 
-				//thの中身を整える処理
+				//次の行の最初のｔｈの値
 				$th_in=$i+1;
-				$max=$th_in+8;
+				//thの一列の最大値
+				$max=$th_in+5;
 	?>
 			</tr>
 
@@ -252,7 +253,7 @@
 			$(delete_form).remove();
 
 			//要素が１列なtrタグが存在する場合の処理
-			if(Number(parsers[0]['max_page'][0])%8==0){
+			if(Number(parsers[0]['max_page'][0])%5==0){
 				var tr_del=Number(parsers[0]['max_page'][0])/8+1;
 				var th_del=Number(parsers[0]['max_page'][0])/8+1;
 				tr_del =tr_del+"_tr";
