@@ -23,37 +23,53 @@
 
 	</head>
 	<body>
-		<form action="test.php" method="post" enctype="multipart/form-data">
-			<!-- 授業がある日付・授業するクラス・授業の科目 -->
-			<input type="date" name= "date" size= "30" id="date"/><br />
+		<table border="1">
+			<tr>
+				<th>授業の日付</th>
+				<th>教科</th>
+				<th>クラス</th>
+				<th>決定</th>
+			<tr>
 
-			<select name="subject">
-				<?php
-	   				for ($i = 0; $i < $count; $i++)
-	   				{
-	   					$row = mysql_fetch_array($result);
-  				?>
-    				<option value="<?= $row['subject_seq']?>"><?= $row['subject_name'] ?></option>
-  				<?php
-    				}
-  				?>
-			</select>
+			<tr>
+				<form action="test.php" method="post" enctype="multipart/form-data">
+					<!-- 授業がある日付・授業するクラス・授業の科目 -->
+					<input type="date" name= "date" size= "30" id="date"/><br />
 
-			<select name="group">
-				<?php
-	   				for ($i = 0; $i < $count2; $i++)
-	   				{
-	   					$row = mysql_fetch_array($group_result);
-  				?>
-    				<option value="<?= $row['group_seq']?>"><?= $row['group_name'] ?></option>
-  				<?php
-    				}
-  				?>
-			</select>
+					<td>
+						<select name="subject">
+							<?php
+				   				for ($i = 0; $i < $count; $i++)
+				   				{
+				   					$row = mysql_fetch_array($result);
+			  				?>
+			    				<option value="<?= $row['subject_seq']?>"><?= $row['subject_name'] ?></option>
+			  				<?php
+			    				}
+			  				?>
+						</select>
+					</td>
 
-			<br />
-			<input type="submit" value="決定" id="decision" disabled=disabled />
-		</form>
+					<td>
+						<select name="group">
+							<?php
+				   				for ($i = 0; $i < $count2; $i++)
+				   				{
+				   					$row = mysql_fetch_array($group_result);
+			  				?>
+			    				<option value="<?= $row['group_seq']?>"><?= $row['group_name'] ?></option>
+			  				<?php
+			    				}
+			  				?>
+						</select>
+					</td>
+
+					<td>
+						<input type="submit" value="決定" id="decision" disabled=disabled />
+					</td>
+				</form>
+			</tr>
+		</table>
 	</body>
 	<script>
 
