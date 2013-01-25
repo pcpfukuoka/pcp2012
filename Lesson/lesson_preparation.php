@@ -52,7 +52,21 @@
 			</select>
 
 			<br />
-			<input type="submit" value="決定" />
+			<input type="submit" value="決定" id="decision" disabled=disabled />
 		</form>
 	</body>
+	<script>
+
+	$(function() {//決定ボタンをクリックした後の過去授業の画像を出力する処理
+
+		//ボタンをすべて選択した後に決定ボタンを表示
+		$(document).on('change', '#date', function() {
+			var decision_ele =document.getElementById("decision");
+			decision_ele.disabled=false;
+
+	    });
+
+	});
+	</script>
+
 </html>
