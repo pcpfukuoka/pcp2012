@@ -26,6 +26,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
+		<link href='https://xxx/bootstrap.min.css' rel='stylesheet' type='text/css'/>
 	</head>
 
 	<body>
@@ -49,10 +50,13 @@
 			<input type="hidden" name="date" value="<?= $date ?>" />
 			<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
 			<input type="hidden" name="group_seq" value="<?= $group_seq ?>" />
-
-			<input type="file" name="upfile" size="30" id="upload_file"/>
+			<input type="file" name="upfile" size="30" id="upload_file" style="display: none;"/>
+			<span id="div_dummy" class="input-append">
+				<img src="../images/kamera_sum.png" id="dummy_img"onclick="$('#upload_file').click();" class="btn btn-primary">
+				<input id="cover" class="input-xlarge" type="text" placeholder="select file" autocomplete="off" style="readonly;"class="input-large">
+			</span>
 			<input type="hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
-			<input type="submit"  value="追加" disabled=disabled id="upload_decision"/>
+			<input type="submit"  value="追加" disabled=disabled id="upload_decision"style="z-index:4"/>
 		</form>
 
 		<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="change_form">
@@ -69,7 +73,11 @@
     			}
   			?>
 			</select>
-			<input type="file" name="upfile" size="30" id="change_file"/>
+			<input type="file" name="upfile" size="30" id="change_file" style="display: none;"/>
+			<span id="div_dummy" class="input-append">
+				<img src="../images/kamera_sum.png" id="dummy_img"onclick="$('#change_file').click();" class="btn btn-primary">
+				<input id="change_cover" class="input-xlarge" type="text" placeholder="select file" autocomplete="off" style="readonly;"class="input-large">
+			</span>
 			<input type="submit" id="change" value="変更"  disabled=disabled id="change_decision"/>
 		</form>
 
@@ -177,6 +185,14 @@
 	</body>
 	<script>
 	$(function() {
+		$('#upload_file').change(function(){
+			 $('#cover').val($(this).val());
+	    });
+
+		$('#change_file').change(function(){
+			 $('#change_cover').val($(this).val());
+	    });
+
 
 		//画像が１まいでもある時に授業開始ボタンを押せるようにする
 
