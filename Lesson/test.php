@@ -95,7 +95,7 @@
    				}
   			?>
 			</select>
-			<input type="button" id="delete" value="削除" onclick="delete_img()" id="delete_decision"/>
+			<input type="button" id="delete" value="削除" onclick="delete_img()" id="delete_decision" disabled=disabled/>
 		</form>
 
 
@@ -185,11 +185,14 @@
 	</body>
 	<script>
 	$(function() {
+
 		$('#upload_file').change(function(){
+			//ファイルの名前をテキストに反映
 			 $('#cover').val($(this).val());
 	    });
 
 		$('#change_file').change(function(){
+			//ファイルの名前をテキストに反映
 			 $('#change_cover').val($(this).val());
 	    });
 
@@ -200,9 +203,16 @@
 		//アップロードする画像を決めたとき
 		$(document).on('change', '#upload_file', function() {
 
-			//画像の追加ボタンを押せるようにする
+			//画像の追加ボタン・変更ボタン・削除ボタンを押せるようにする
 			var upload_ele=document.getElementById("upload_decision");
 			upload_ele.disabled=false;
+
+			var change_ele=document.getElementById("change_decision");
+			change_ele.disabled=false;
+
+			var delete_ele=document.getElementById("delete_decision");
+			delete_ele.disabled=false;
+
 	    });
 
 		//背景画像するために画像を選択したとき
