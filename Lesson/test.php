@@ -78,7 +78,7 @@
 				<img src="../images/kamera_sum.png" id="dummy_img"onclick="$('#change_file').click();" class="btn btn-primary">
 				<input id="change_cover" class="input-xlarge" type="text" placeholder="select file" autocomplete="off" style="readonly;"class="input-large">
 			</span>
-			<input type="submit" id="change" value="変更"  disabled=disabled id="change_decision"/>
+			<input type="submit"  value="変更"  disabled=disabled id="change_decision"/>
 		</form>
 
 		<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="delete_form">
@@ -95,7 +95,7 @@
    				}
   			?>
 			</select>
-			<input type="button" id="delete" value="削除" onclick="delete_img()" id="delete_decision" disabled=disabled/>
+			<input type="button"  value="削除" onclick="delete_img()" id="delete_decision" disabled=disabled/>
 		</form>
 
 
