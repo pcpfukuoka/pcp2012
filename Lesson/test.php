@@ -203,15 +203,10 @@
 		//アップロードする画像を決めたとき
 		$(document).on('change', '#upload_file', function() {
 
-			//画像の追加ボタン・変更ボタン・削除ボタンを押せるようにする
+			//画像の追加ボタンを押せるようにする
 			var upload_ele=document.getElementById("upload_decision");
 			upload_ele.disabled=false;
 
-			var change_ele=document.getElementById("change_decision");
-			change_ele.disabled=false;
-
-			var delete_ele=document.getElementById("delete_decision");
-			delete_ele.disabled=false;
 
 	    });
 
@@ -223,9 +218,18 @@
 
 		//画像を追加ボタンを押したとき
 		$(document).on('click', '#upload_decision', function() {
+
 			//授業開始ボタンを押せるようにしたとき
 			var start_ele=document.getElementById("lesson_start");
 			start_ele.disabled=false;
+
+			//画像の変更ボタンを押せるようにする
+			var change_ele=document.getElementById("change_decision");
+			change_ele.disabled=false;
+
+			//画像の削除をおせるようにする
+			var delete_ele=document.getElementById("delete_decision");
+			delete_ele.disabled=false;
 
 	    });
 
