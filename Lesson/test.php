@@ -174,7 +174,7 @@
 			</tr>
 		</table>
 
-		<form action="using_change.php" method="post" enctype="multipart/form-data" align="center">
+		<form action="using_change.php" method="post" enctype="multipart/form-data" >
 			<input type="hidden" name="date" value=" <?= $date ?>" />
 			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
 			<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
