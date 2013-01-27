@@ -55,7 +55,7 @@
 				<img src="../images/kamera_sum.png" id="dummy_img"onclick="$('#upload_file').click();" class="btn btn-primary">
 				<input id="cover" class="input-xlarge" type="text" placeholder="select file" autocomplete="off" style="readonly;"class="input-large">
 			</span>
-			<input type="hidden" name="page_num" value="<?= $page_max ?>" id="upload_page"/>
+			<input type="hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
 			<input type="submit"  value="追加" disabled=disabled id="upload_decision"/>
 		</form>
 
@@ -198,11 +198,8 @@
 	    });
 
 
-		//ページロード後に画像が１まいでもある時に授業開始ボタンを押せるようにする
-		var now_page_ele=document.getElementById("upload_page");
-		if(now_page_ele.value>1){
-			now_page_ele.disabled=false;
-		}
+		//画像が１まいでもある時に授業開始ボタンを押せるようにする
+
 
 		//アップロードする画像を決めたとき
 		$(document).on('change', '#upload_file', function() {
@@ -315,6 +312,12 @@
 			delete_cha.options[delete_cha.options.length-1].remove();
 			delete_del.options[delete_del.options.length-1].remove();
 
+			//追加ボタンのpage_numを一つ減らす
+			var sub_num=Number(parsers[0]['max_page'][0])+1;
+			var sub=sub_num+"_page";
+			var page_ele=document.getElementById(sub);
+			page_ele.value=sub_num-1;
+			page_ele.id=sub_num-1+"_page";
 	    });
 	}
 	</script>
