@@ -55,8 +55,8 @@
 				<img src="../images/kamera_sum.png" id="dummy_img"onclick="$('#upload_file').click();" class="btn btn-primary">
 				<input id="cover" class="input-xlarge" type="text" placeholder="select file" autocomplete="off" style="readonly;"class="input-large">
 			</span>
-			<input type="hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
-			<input type="submit"  value="追加" disabled=disabled id="upload_decision"style="z-index:4"/>
+			<input type="hidden" name="page_num" value="<?= $page_max ?>" id="upload_page"/>
+			<input type="submit"  value="追加" disabled=disabled id="upload_decision"/>
 		</form>
 
 		<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="change_form">
@@ -149,6 +149,7 @@
 
 			<tr id="<?=$th_id ?>">
 	<?php
+			//headerを一列分出力
 			for($j=$th_in;$j<$max;$j++){
 				echo "<th width='100'><font size='3'>".$j."<font></th>";
 			}
@@ -197,8 +198,11 @@
 	    });
 
 
-		//画像が１まいでもある時に授業開始ボタンを押せるようにする
-
+		//ページロード後に画像が１まいでもある時に授業開始ボタンを押せるようにする
+		var now_page_ele=document.getElementById("upload_page");
+		if(now_page_ele.value>1){
+			now_page_ele.disabled=false;
+		}
 
 		//アップロードする画像を決めたとき
 		$(document).on('change', '#upload_file', function() {
@@ -235,13 +239,16 @@
 
 
 	});
+	//画像を削除する関数
 	function delete_img(){
 
+		//postするデータをとってくる
 		var date_ele=document.getElementById('date_hidden');
 		var subject_ele=document.getElementById('subject_seq_hidden');
 		var group_ele=document.getElementById('group_seq_hidden');
 		var page=document.getElementById('page_num_del');
 		var page_val=page.value;
+
 		//日付と科目を変数に格納
 		var date=date_ele.value;
 		var subject_seq=subject_ele.value;
@@ -283,7 +290,7 @@
 			var delete_form=document.getElementById(del_im);
 			$(delete_form).remove();
 
-			//要素が１列なtrタグが存在する場合の処理
+			//要素が１列なくtrタグが存在する場合の処理
 			if(Number(parsers[0]['max_page'][0])%5==0){
 				var tr_del=Number(parsers[0]['max_page'][0])/5+1;
 				var th_del=Number(parsers[0]['max_page'][0])/5+1;
@@ -308,12 +315,6 @@
 			delete_cha.options[delete_cha.options.length-1].remove();
 			delete_del.options[delete_del.options.length-1].remove();
 
-			//追加ボタンのpage_numを一つ減らす
-			var sub_num=Number(parsers[0]['max_page'][0])+1;
-			var sub=sub_num+"_page";
-			var page_ele=document.getElementById(sub);
-			page_ele.value=sub_num-1;
-			page_ele.id=sub_num-1+"_page";
 	    });
 	}
 	</script>
