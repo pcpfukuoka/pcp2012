@@ -65,7 +65,7 @@
 
 			var date_ele=document.getElementById('date');
 			//var subject_ele=document.getElementById('subject_seq');
-			subject_ele =$("#subject_seq").data('id');
+			var subject_ele =$("#subject_seq").data('id');
 			var group_ele=document.getElementById('group_seq');
 
 			//日付と科目を変数に格納
