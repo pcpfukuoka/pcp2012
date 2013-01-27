@@ -27,6 +27,7 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<link href='https://xxx/bootstrap.min.css' rel='stylesheet' type='text/css'/>
+		<link rel="stylesheet" type="text/css" href="../css/table_search.css" />		
 	</head>
 
 	<body>
@@ -97,17 +98,33 @@
 			</select>
 			<input type="button"  value="削除" onclick="delete_img()" id="delete_decision" disabled=disabled/>
 		</form>
-
-
-		<table border="5" id="img_table" style="position: absolute;top:50px;left:45%;">
-			<tr id="1_th">
+	
+	<!--  ここからテーブルのページ送り機能用タグ -->
+	<!--  検索BOX用開始 -->
+		<div id="tablewrapper">
+			<div id="tableheader">
+	        	<div class="search">
+	                <select id="columns" onchange="sorter.search('query')"></select>
+	                <input type="text" id="query" onkeyup="sorter.search('query')" />
+		            </div>
+		            <span class="details">
+						<div>Records <span id="startrecord"></span>-<span id="endrecord"></span> of <span id="totalrecords"></span></div>
+		        		<div><a href="javascript:sorter.reset()">reset</a></div>
+		        	</span>
+	        </div> 
+	<!--  検索BOX用終了 -->
+	        <table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
+		<thead>
+					<tr id="1_th">
 	<?php
 				for($i=1;$i<=5;$i++){
 					echo "<th width='100'><font size='3'>".$i."<font></th>";
 				}
 	?>
 			</tr>
-			<tr id="1_tr">
+		</thead>
+		<tbody>
+		<tr id="1_tr">
 
 
 	<?php
@@ -172,8 +189,36 @@
 		Dbdissconnect($dbcon);
 	?>
 			</tr>
+			</tbody>
 		</table>
-
+		<!-- テーブル用フッダー部開始 -->
+		<div id="tablefooter">
+          <div id="tablenav">
+            	<div>
+                    <img src="../images/first.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
+                    <img src="../images/previous.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1)" />
+                    <img src="../images/next.gif" width="16" height="16" alt="First Page" onclick="sorter.move(1)" />
+                    <img src="../images/last.gif" width="16" height="16" alt="Last Page" onclick="sorter.move(1,true)" />
+                </div>
+                <div>
+                	<select id="pagedropdown"></select>
+				</div>
+            </div>
+			<div id="tablelocation">
+            	<div>
+                    <select onchange="sorter.size(this.value)">
+                    <option value="5">5</option>
+                        <option value="10" selected="selected">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <span>Entries Per Page</span>
+                </div>
+                <div class="page">Page <span id="currentpage"></span> of <span id="totalpages"></span></div>
+            </div>
+        </div>
+		<!-- テーブル用フッダー部終了 -->
 		<form action="using_change.php" method="post" enctype="multipart/form-data" >
 			<input type="hidden" name="date" value=" <?= $date ?>" />
 			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
@@ -184,6 +229,39 @@
 		<iframe name="targetFrame" id="targetFrame" style="display:none;"></iframe>
 
 	</body>
+	<!-- テーブル用スクリプト
+		sizeが一回で表示するデータの量
+	
+	 -->
+	<script type="text/javascript" src="../javascript/script.js"></script>
+	<script type="text/javascript">
+	var sorter = new TINY.table.sorter('sorter','table',{
+		headclass:'head',
+		ascclass:'asc',
+		descclass:'desc',
+		evenclass:'evenrow',
+		oddclass:'oddrow',
+		evenselclass:'evenselected',
+		oddselclass:'oddselected',
+		paginate:true,
+		size:5,
+		colddid:'columns',
+		currentid:'currentpage',
+		totalid:'totalpages',
+		startingrecid:'startrecord',
+		endingrecid:'endrecord',
+		totalrecid:'totalrecords',
+		hoverid:'selectedrow',
+		pageddid:'pagedropdown',
+		navid:'tablenav',
+		sortcolumn:1,
+		sortdir:-1,
+		init:true
+	});
+  </script>
+	
+	
+	
 	<script>
 	$(function() {
 
