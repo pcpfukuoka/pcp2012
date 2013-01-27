@@ -80,15 +80,15 @@
 		    },
 		    function(rs) {
 		    	var parsers = JSON.parse(rs);
-		    	var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat">'
-		    	+'<img src="'+parsers[0]['canvas']+'"id="canvas" />'
-		    	+'</div>'
-		    	+'<input id="turn" value="戻る" type="button">'
-		    	+'<input id="next" value="次へ"type="button">'
-		    	+'<input type="hidden" value=0 id="page_num"value="0">';
-
-
-		    	$('#frame').append(e);
+		    	if(parsers[0]['count']>0){
+		    		var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat">'
+		    		+'<img src="'+parsers[0]['canvas']+'"id="canvas" />'
+		    		+'</div>'
+		    		+'<input id="turn" value="戻る" type="button">'
+		    		+'<input id="next" value="次へ"type="button">'
+		    		+'<input type="hidden" value=0 id="page_num"value="0">';
+		    		$('#frame').append(e);
+		    	}
 		    });
 	    });
 
