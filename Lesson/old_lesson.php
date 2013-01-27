@@ -22,7 +22,7 @@
 	</head>
 
 	<body>
-		<input type="date" id="date" />
+		<input type="date" id="date"max="<?= date("Y-m-d") ?>" />
 			<select id="subject_seq">
 				<?php
 					for ($i = 0; $i < $count; $i++)
