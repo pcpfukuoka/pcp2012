@@ -10,7 +10,7 @@ require_once("../lib/dbconect.php");
 $dbcon = DbConnect();
 
 //授業の画像を抽出するＳＱＬ
-$sql = "SELECT div_url, canvas_url FROM board WHERE date='". $date ."' AND subject_seq=".$subject_seq." AND end_flg='2'AND class_seq=".$group_seq.";";
+$sql = "SELECT div_url, canvas_url FROM board WHERE date='". $date ."' AND subject_seq='".$subject_seq."' AND end_flg='2'AND class_seq='".$group_seq."';";
 $result = mysql_query($sql);
 $count = mysql_num_rows($result);
 $result_1 = array();
@@ -19,7 +19,7 @@ for($i = 0;$i < $count;$i++){
 	$row = mysql_fetch_array($result);
 
 	//先頭文字によって添削する文字数を決める
-	if(substr($row['div_url'],0,4)=="http"){
+	if(substr($row['div_url'],4,4)=="http"){
 		$aaa = substr($row['div_url'],30);
 	}else{
 		$aaa = substr($row['div_url'],18);
