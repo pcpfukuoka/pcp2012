@@ -29,7 +29,7 @@
 					{
 						$row = mysql_fetch_array($result);
 				?>
-	    			<option value="<?= $row['subject_seq']?>"><?= $row['subject_name'] ?></option>
+	    			<option value="<?= $row['subject_seq']?>" data-id="<?= $row['subject_seq']?>"><?= $row['subject_name'] ?></option>
 				<?php
 					}
 				?>
@@ -41,7 +41,7 @@
 					{
 						$row2 = mysql_fetch_array($group_result);
 				?>
-	    			<option value="<?= $row2['group_seq']?>"><?= $row2['group_name'] ?></option>
+	    			<option value="<?= $row2['group_seq']?>" data-id="<?= $row['subject_seq']?>"><?= $row2['group_name'] ?></option>
 				<?php
 					}
 				?>
@@ -64,7 +64,8 @@
 		$(document).on('click', '#decision', function() {
 
 			var date_ele=document.getElementById('date');
-			var subject_ele=document.getElementById('subject_seq');
+			//var subject_ele=document.getElementById('subject_seq');
+			subject_ele =$("#subject_seq").data('id');
 			var group_ele=document.getElementById('group_seq');
 
 			//日付と科目を変数に格納
