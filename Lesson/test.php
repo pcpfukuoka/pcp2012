@@ -199,16 +199,20 @@
 
 
 		//画像が１まいでもある時に授業開始ボタンを押せるようにする
-
-
-		//アップロードする画像を決めたとき
+		//アップロードする画像を決めたとき(追加)
 		$(document).on('change', '#upload_file', function() {
 
 			//画像の追加ボタンを押せるようにする
 			var upload_ele=document.getElementById("upload_decision");
 			upload_ele.disabled=false;
+	    });
 
+		//アップロードする画像を決めたとき（変更）
+		$(document).on('change', '#change_file', function() {
 
+			//画像の変更ボタンを押せるようにする
+			var change_ele=document.getElementById("change_decision");
+			change_ele.disabled=false;
 	    });
 
 		//背景画像するために画像を選択したとき
@@ -224,9 +228,6 @@
 			var start_ele=document.getElementById("lesson_start");
 			start_ele.disabled=false;
 
-			//画像の変更ボタンを押せるようにする
-			var change_ele=document.getElementById("change_decision");
-			change_ele.disabled=false;
 
 			//画像の削除をおせるようにする
 			var delete_ele=document.getElementById("delete_decision");
