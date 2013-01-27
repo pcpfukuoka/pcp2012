@@ -19,12 +19,12 @@ setcookie("flg",true,$time,"/");
 <body>
 		<form action="http://49.212.201.99:3000"method="post"enctype="multipart/form-data">
 			<input type="hidden" name="room" value="1" >
-			<input type="button" value="1" class="page_select"data-id="3">
+			<input type="button" value="1" class="page_select"data-id="5">
 		</form>
 
 		<form action="http://49.212.201.99:3000"method="post" enctype="multipart/form-data">
 			<input type="hidden" name="room" value="2">
-			<input type="button" value="2" class="page_select"data-id="4">
+			<input type="button" value="2" class="page_select"data-id="6">
 		</form>
 
 </body>
