@@ -6,11 +6,7 @@ $time = time() + 60 * 60*24;
 
 //どこからアクセスしてきたか
 $access=$_GET['id'];
-if($access==0){
-	setcookie("flg",false,$time,"/");
-}else{
-	setcookie("flg",true,$time,"/");
-}
+	setcookie("flg",$access,$time,"/");
 
 //自分が所属しているクラスのグループSEQを取得
 $user_seq = $_SESSION['login_info[user]'];
