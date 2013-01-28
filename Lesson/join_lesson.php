@@ -10,6 +10,7 @@ $flg = $_SESSION['position_flg'];
 //先生だったら
 if($flg = "teacher")
 {
+	$class_seq = $_GET['id2'];
 	$subject_seq = $_GET['id'];
 	$access = true;
 	$cnt = 99;
