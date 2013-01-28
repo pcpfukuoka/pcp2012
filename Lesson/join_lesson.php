@@ -48,9 +48,9 @@ $result = mysql_query($sql);
 	//自分が参加できる授業が行われている場合
 	if($cnt > 0)
 	{?>
-	<form action="http://49.212.201.99:3000"method="post"enctype="multipart/form-data">
+	<form action="http://49.212.201.99:3000" target="_blank" method="post"enctype="multipart/form-data">
 		<input type="hidden" name="room" value="<?= $class_seq ?>" >
-		<input type="button" value="" class="page_select"data-id="<?= $class_seq ?>">
+		<input type="submit" value="" class="page_select"data-id="<?= $class_seq ?>">
 	</form>			
 	<?php 
 	}
