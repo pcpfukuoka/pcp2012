@@ -49,7 +49,8 @@ $result = mysql_query($sql);
 	if($cnt > 0)
 	{?>
 	<form action="http://49.212.201.99:3000" target="_blank" method="post"enctype="multipart/form-data">
-		<input type="submit" value="" class="page_select"data-id="<?= $class_seq ?>">
+
+		<input type="button" value="" class="page_select"data-id="<?= $class_seq ?>">
 	</form>
 	<?php
 	}
@@ -105,7 +106,8 @@ $(function() {
 		var page= $(this).data('id');
 		// クッキーの発行（書き込み）
 		setCookie("room",page, "", "/", 1);
-		document.location = "http://49.212.201.99:3000";
+		window.open("http://49.212.201.99:3000");
+
     });
 });
 </script>
