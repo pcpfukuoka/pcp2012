@@ -59,10 +59,16 @@
 				$balance = $balance * -1;
 				$('#balance').text($balance + "人分の座席が不足しています");
 				$('#next').attr("disabled", "disabled");
+
+				$('#message').children("font").text("※座席数が不足しないように調整してください");
+				$('#message').children("font").css("color","red");
 			}
 			else
 			{
 				$('#balance').text($balance + "人分の座席が余っています");
+
+				$('#message').children("font").text("※よろしければ確認画面へ進んでください");
+				$('#message').children("font").css("color","blue");
 			}
 
 
@@ -80,11 +86,17 @@
 					$balance = $balance * -1;
 					$('#balance').text($balance + "人分の座席が不足しています");
 					$('#next').attr("disabled", "disabled");
+
+					$('#message').children("font").text("※座席数が不足しないように調整してください");
+					$('#message').children("font").css("color","red");
 				}
 				else
 				{
 					$('#balance').text($balance + "人分の座席が余っています");
 					$('#next').removeAttr("disabled");
+
+					$('#message').children("font").text("※よろしければ確認画面へ進んでください");
+					$('#message').children("font").css("color","blue");
 				}
 
 			});
@@ -92,7 +104,7 @@
 			$("#row_max").click(function(){
 				$row_max = $('#row_max').val();
 				$seat_cnt = $row_max * $col_max;
-				$('#seat_cnt').text($seat_cnt + "名分の座席があります");
+				$('#seat_cnt').text($seat_cnt + "人分の座席があります");
 
 				$balance = $seat_cnt - $user_cnt;
 				if($balance < 0)
@@ -100,11 +112,17 @@
 					$balance = $balance * -1;
 					$('#balance').text($balance + "人分の座席が不足しています");
 					$('#next').attr("disabled", "disabled");
+
+					$('#message').children("font").text("※座席数が不足しないように調整してください");
+					$('#message').children("font").css("color","red");
 				}
 				else
 				{
 					$('#balance').text($balance + "人分の座席が余っています");
 					$('#next').removeAttr("disabled");
+
+					$('#message').children("font").text("※よろしければ確認画面へ進んでください");
+					$('#message').children("font").css("color","blue");
 				}
 
 			});
@@ -112,7 +130,7 @@
 			$("#col_max").click(function(){
 				$col_max = $('#col_max').val();
 				$seat_cnt = $row_max * $col_max;
-				$('#seat_cnt').text($seat_cnt + "名分の座席があります");
+				$('#seat_cnt').text($seat_cnt + "人分の座席があります");
 
 				$balance = $seat_cnt - $user_cnt;
 				if($balance < 0)
@@ -120,22 +138,74 @@
 					$balance = $balance * -1;
 					$('#balance').text($balance + "人分の座席が不足しています");
 					$('#next').attr("disabled", "disabled");
+
+					$('#message').children("font").text("※座席数が不足しないように調整してください");
+					$('#message').children("font").css("color","red");
 				}
 				else
 				{
 					$('#balance').text($balance + "人分の座席が余っています");
 					$('#next').removeAttr("disabled");
+
+					$('#message').children("font").text("※よろしければ確認画面へ進んでください");
+					$('#message').children("font").css("color","blue");
 				}
 
 			});
 
 			$("#all_check").click(function(){
 				$('#check input').attr('checked','checked');
+
+				$user_cnt = $("input[type=checkbox]:checked").length;
+				$('#user_cnt').text($user_cnt + "人の生徒が選択されています");
+
+				$balance = $seat_cnt - $user_cnt;
+
+				if($balance < 0)
+				{
+					$balance = $balance * -1;
+					$('#balance').text($balance + "人分の座席が不足しています");
+					$('#next').attr("disabled", "disabled");
+
+					$('#message').children("font").text("※座席数が不足しないように調整してください");
+					$('#message').children("font").css("color","red");
+				}
+				else
+				{
+					$('#balance').text($balance + "人分の座席が余っています");
+					$('#next').removeAttr("disabled");
+
+					$('#message').children("font").text("※よろしければ確認画面へ進んでください");
+					$('#message').children("font").css("color","blue");
+				}
 			});
 
 			//全てのチェックボックスのチェックを解除
 			$("#all_lift").click(function(){
 				$('#check input').removeAttr('checked');
+
+				$user_cnt = $("input[type=checkbox]:checked").length;
+				$('#user_cnt').text($user_cnt + "人の生徒が選択されています");
+
+				$balance = $seat_cnt - $user_cnt;
+
+				if($balance < 0)
+				{
+					$balance = $balance * -1;
+					$('#balance').text($balance + "人分の座席が不足しています");
+					$('#next').attr("disabled", "disabled");
+
+					$('#message').children("font").text("※座席数が不足しないように調整してください");
+					$('#message').children("font").css("color","red");
+				}
+				else
+				{
+					$('#balance').text($balance + "人分の座席が余っています");
+					$('#next').removeAttr("disabled");
+
+					$('#message').children("font").text("※よろしければ確認画面へ進んでください");
+					$('#message').children("font").css("color","blue");
+				}
 			});
 
     	});
@@ -149,13 +219,14 @@
 	<hr color="blue">
 <div class="left_box">
 	<form action="seat_register_check.php" method="POST">
-	<FIELDSET style="background-color:white;">
+	<FIELDSET style="background-color:white;height:150px;">
 	    <LEGEND>
 	    <b>メッセージ</b>
 	    </LEGEND>
 			<p id ="user_cnt">100<p>
 			<p id ="seat_cnt">100</p>
 			<p id = "balance"></p>
+			<p id = "message"><font size="2"></font></p>
 	</FIELDSET>
 
 	<FIELDSET style="background-color:white;">
