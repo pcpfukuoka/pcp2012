@@ -11,10 +11,10 @@ setcookie("flg",true,$time,"/");
 
 //自分が所属しているクラスのグループSEQを取得
 $user_seq = $_SESSION['login_info[user]'];
-$sql = "SELECT m_group.group_seq 
-		FROM m_group 
+$sql = "SELECT m_group.group_seq
+		FROM m_group
 		INNER JOIN group_details ON m_group.group_seq = group_details.group_seq
-		WHERE m_group.class_flg = '1' 
+		WHERE m_group.class_flg = '1'
 		AND group_details.user_seq = '$user_seq' ";
 
 $result = mysql_query($sql);
@@ -44,15 +44,15 @@ $result = mysql_query($sql);
 </head>
 <body>
 
-	<?php 
+	<?php
 	//自分が参加できる授業が行われている場合
 	if($cnt > 0)
 	{?>
 	<form action="http://49.212.201.99:3000" target="_blank" method="post"enctype="multipart/form-data">
-		<input type="hidden" name="room" value="<?= $class_seq ?>" >
+
 		<input type="submit" value="" class="page_select"data-id="<?= $class_seq ?>">
-	</form>			
-	<?php 
+	</form>
+	<?php
 	}
 	//授業が何も行われていなかった場合
 	else
@@ -65,7 +65,7 @@ $result = mysql_query($sql);
 		<form action="old_lesson.php" method="post">
 		<input type="submit" value="過去授業へ">
 		</form>
-<?php 
+<?php
 	}
 	?>
 </body>
