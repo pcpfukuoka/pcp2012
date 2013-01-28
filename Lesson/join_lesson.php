@@ -4,7 +4,13 @@ require_once("../lib/dbconect.php");
 $dbcon = DbConnect();
 $time = time() + 60 * 60*24;
 
-
+//どこからアクセスしてきたか
+$access=$_GET['id'];
+if($access==0){
+	setcookie("flg",false,$time,"/");
+}else{
+	setcookie("flg",true,$time,"/");
+}
 
 //自分が所属しているクラスのグループSEQを取得
 $user_seq = $_SESSION['login_info[user]'];
@@ -34,9 +40,6 @@ $result = mysql_query($sql);
 //クッキー設定
 setcookie("user_seq",$user_seq,$time,"/");
 setcookie("subject_seq",$subject_seq,$time,"/");
-setcookie("flg",ture,$time,"/");
-
-
 
 ?>
 <html>
