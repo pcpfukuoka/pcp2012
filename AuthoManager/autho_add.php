@@ -7,13 +7,14 @@
   <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
   <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
   <link rel="stylesheet" type="text/css" href="../css/table.css" />
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="../javascript/form_reference.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
  </head>
   <body>
   		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
-  <form name = "form1" action="autho_add_con.php" method="POST">
+  <form name="form1" action="autho_add_con.php" method="POST">
    <?php
    require_once("../lib/dbconect.php");
    $link = DbConnect();
@@ -35,9 +36,12 @@
 			 * チェックボタンで権限の選択　テキストボックスでグループ名　を作成
 			 *for文でテーブルの作成
 			 *********************************************************/
-   			?>
-   名前<input size ="15" type="text" name="group_name"><!-- グループ名入力 -->
-   
+			?>
+   名前<input size ="15" type="text" id="group_name" name="group_name" Onblur="check('#group_name')">
+
+
+   <!-- グループ名入力 -->
+
 
    <table width="100%" class="table_01">
     <tr>
@@ -58,7 +62,7 @@
     *********************************************************/
     ?>
     <?php
-    
+
     for($i = 0; $i < $count; $i++)
 	{
     	$row = mysql_fetch_array($result);
@@ -67,23 +71,23 @@
 	    <td align = "center"><?= $row['page_name'] ?></td>
 			<td>
 				<input style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×" id = "Show_Read_<?= $row['page_seq'] ?>" readonly >
-				<input type="hidden" name = "Read_<?= $row['page_seq'] ?>" value="0" id = "Read_<?= $row['page_seq'] ?>">
+				<input type="hidden" name = "Read_<?= $row['page_seq'] ?>" value="0" id="Read_<?= $row['page_seq'] ?>">
 			</td>
 			<td>
 				<input style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×" id = "Show_Write_<?= $row['page_seq'] ?>" readonly>
-				<input type="hidden" name = "Write_<?= $row['page_seq'] ?>" value="0" id = "Write_<?= $row['page_seq'] ?>">
+				<input type="hidden" name = "Write_<?= $row['page_seq'] ?>" value="0" id="Write_<?= $row['page_seq'] ?>">
 			</td>
 			<td>
 				<input  style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×" id = "Show_Update_<?= $row['page_seq'] ?>" readonly>
-				<input type="hidden" name = "Update_<?= $row['page_seq'] ?>" value="0" id = "Update_<?= $row['page_seq'] ?>"> 
+				<input type="hidden" name = "Update_<?= $row['page_seq'] ?>" value="0" id="Update_<?= $row['page_seq'] ?>">
 			</td>
 			<td>
 				<input  style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×" id = "Show_delivery_<?= $row['page_seq'] ?>" readonly>
-				<input type="hidden" name = "delivery_<?= $row['page_seq'] ?>" value="0" id = "delivery_<?= $row['page_seq'] ?>">
+				<input type="hidden" name = "delivery_<?= $row['page_seq'] ?>" value="0" id="delivery_<?= $row['page_seq'] ?>">
 			</td>
 			<td>
 				<input  style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×"id = "Show_Delete_<?= $row['page_seq'] ?>" readonly>
-				<input type="hidden" name = "Delete_<?= $row['page_seq'] ?>" value="0" id = "Delete_<?= $row['page_seq'] ?>">
+				<input type="hidden" name = "Delete_<?= $row['page_seq'] ?>" value="0" id="Delete_<?= $row['page_seq'] ?>">
 			</td>
 			<input type="hidden" id = "Value_<?= $row['page_seq'] ?>" value="0">
 		 <td><input type="button" class="add_btn" value="追加"  data-id="<?= $row['page_seq'] ?>" id = "id"></td>
@@ -94,10 +98,10 @@
 
     ?>
     </table>
-    <?php 
-    
-    
-    
+    <?php
+
+
+
     ?>
     <br>
     <table>
@@ -115,7 +119,7 @@
 	$(function() {
 
 		//検索結果から権限を追加するための処理
-		$(document).on('click', '.add_btn', function() 
+		$(document).on('click', '.add_btn', function()
 		{
 			var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_delivery_","Show_Delete_");
 			var id_list  = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
@@ -131,9 +135,9 @@
 				value++;
 				document.getElementById(name).value= value;
 			}
-			
+
 	    });
-		$(document).on('click', '.delete_btn', function() 
+		$(document).on('click', '.delete_btn', function()
 		{
 			var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_delivery_","Show_Delete_");
 			var id_list  = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
@@ -149,13 +153,21 @@
 				document.getElementById(check_name).value = "0";
 				document.getElementById(name).value= value;
 			}
-			
-			
+
+
 	    });
-		
+
 	});
 
+//strはid
+function check(str)
+{
+	var a =  $(str).val();
+	inputCheck(a);
+	$(str).focus();
+}
+
   </script>
-  
-  
+
+
 </html>
