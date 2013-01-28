@@ -39,7 +39,7 @@
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
-		    <font class="Cubicfont">プリント送信済み確認</font>
+		    <font class="Cubicfont">プリント確認</font>
 		</div>
 
 		<font size = "4"><a href="p_outbox.php">←戻る</a></font>
