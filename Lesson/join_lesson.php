@@ -2,12 +2,9 @@
 session_start();
 require_once("../lib/dbconect.php");
 $dbcon = DbConnect();
-
-
 $time = time() + 60 * 60*24;
-setcookie("user_seq","9",$time,"/");
-setcookie("subject_seq","2",$time,"/");
-setcookie("flg",true,$time,"/");
+
+
 
 //自分が所属しているクラスのグループSEQを取得
 $user_seq = $_SESSION['login_info[user]'];
@@ -22,6 +19,13 @@ $result = mysql_query($sql);
 $row = mysql_fetch_array($result);
 
 $class_seq = $row['group_seq'];
+
+//クッキー設定
+setcookie("user_seq",$user_seq,$time,"/");
+setcookie("subject_seq",$subject_seq,$time,"/");
+setcookie("flg",false,$time,"/");
+
+
 
 
 //今現在授業が行われているか調べる
