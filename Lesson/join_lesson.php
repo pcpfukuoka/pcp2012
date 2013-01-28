@@ -23,7 +23,7 @@ $class_seq = $row['group_seq'];
 //クッキー設定
 setcookie("user_seq",$user_seq,$time,"/");
 setcookie("subject_seq",$subject_seq,$time,"/");
-setcookie("flg",false,$time,"/");
+setcookie("flg",ture,$time,"/");
 
 
 
