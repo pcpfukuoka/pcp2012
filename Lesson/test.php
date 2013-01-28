@@ -27,7 +27,7 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<link href='https://xxx/bootstrap.min.css' rel='stylesheet' type='text/css'/>
-		<link rel="stylesheet" type="text/css" href="../css/table_search.css" />		
+		<link rel="stylesheet" type="text/css" href="../css/table_search.css" />
 	</head>
 
 	<body>
@@ -98,7 +98,7 @@
 			</select>
 			<input type="button"  value="削除" onclick="delete_img()" id="delete_decision" disabled=disabled/>
 		</form>
-	
+
 	<!--  ここからテーブルのページ送り機能用タグ -->
 	<!--  検索BOX用開始 -->
 		<div id="tablewrapper">
@@ -111,7 +111,7 @@
 						<div>Records <span id="startrecord"></span>-<span id="endrecord"></span> of <span id="totalrecords"></span></div>
 		        		<div><a href="javascript:sorter.reset()">reset</a></div>
 		        	</span>
-	        </div> 
+	        </div>
 	<!--  検索BOX用終了 -->
 	        <table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
 		<thead>
@@ -220,9 +220,9 @@
         </div>
 		<!-- テーブル用フッダー部終了 -->
 		<form action="using_change.php" method="post" enctype="multipart/form-data" >
-			<input type="hidden" name="date" value=" <?= $date ?>" />
-			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
-			<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
+			<input type="hidden" name="date" value="<?= $date ?>" />
+			<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
+			<input type="hidden" name="group_seq" value="<?= $group_seq ?>" />
 			<input type="submit" value="授業開始" id="lesson_start" disabled=disabled>
 		</form>
 	</div>
@@ -231,7 +231,7 @@
 	</body>
 	<!-- テーブル用スクリプト
 		sizeが一回で表示するデータの量
-	
+
 	 -->
 	<script type="text/javascript" src="../javascript/script.js"></script>
 	<script type="text/javascript">
@@ -259,9 +259,9 @@
 		init:true
 	});
   </script>
-	
-	
-	
+
+
+
 	<script>
 	$(function() {
 

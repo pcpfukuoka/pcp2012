@@ -5,38 +5,51 @@ $dbcon = DbConnect();
 $time = time() + 60 * 60*24;
 
 
+$flg = $_SESSION['position_flg'];
 
-//自分が所属しているクラスのグループSEQを取得
-$user_seq = $_SESSION['login_info[user]'];
-$sql = "SELECT m_group.group_seq
-		FROM m_group
-		INNER JOIN group_details ON m_group.group_seq = group_details.group_seq
-		WHERE m_group.class_flg = '1'
-		AND group_details.user_seq = '$user_seq' ";
+//先生だったら
+if($flg = "teacher")
+{
+	$class_seq = $_GET['id2'];
+	$subject_seq = $_GET['id'];
+	$access = true;
+	$cnt = 99;
+}
+else
+{
+	$access = "0";
 
-$result = mysql_query($sql);
+	//自分が所属しているクラスのグループSEQを取得
+	$user_seq = $_SESSION['login_info[user]'];
+	$sql = "SELECT m_group.group_seq
+	FROM m_group
+	INNER JOIN group_details ON m_group.group_seq = group_details.group_seq
+	WHERE m_group.class_flg = '1'
+	AND group_details.user_seq = '$user_seq' ";
 
-$row = mysql_fetch_array($result);
+	$result = mysql_query($sql);
 
-$class_seq = $row['group_seq'];
+	$row = mysql_fetch_array($result);
 
-//今現在授業が行われているか調べる
-$sql = "SELECT subject_seq FROM board WHERE class_seq = '$class_seq' AND end_flg = '1';";
-$result = mysql_query($sql);
-$cnt = mysql_num_rows($result);
-$row = mysql_fetch_array($result);
-$subject_seq = $row['subject_seq'];
+	$class_seq = $row['group_seq'];
 
-$sql = "SELECT * FROM m_subject WHERE subject_seq = '$subject_seq'";
-$result = mysql_query($sql);
+	//今現在授業が行われているか調べる
+	$sql = "SELECT subject_seq FROM board WHERE class_seq = '$class_seq' AND end_flg = '1';";
+	$result = mysql_query($sql);
+	$cnt = mysql_num_rows($result);
+	$row = mysql_fetch_array($result);
+	$subject_seq = $row['subject_seq'];
+
+	$sql = "SELECT * FROM m_subject WHERE subject_seq = '$subject_seq'";
+	$result = mysql_query($sql);
+
+}
 
 
 //クッキー設定
+setcookie("flg",$access,$time,"/");
 setcookie("user_seq",$user_seq,$time,"/");
 setcookie("subject_seq",$subject_seq,$time,"/");
-setcookie("flg",ture,$time,"/");
-
-
 
 ?>
 <html>
@@ -54,7 +67,7 @@ setcookie("flg",ture,$time,"/");
 	{?>
 	<form action="http://49.212.201.99:3000" target="_blank" method="post"enctype="multipart/form-data">
 
-		<input type="button" value="" class="page_select"data-id="<?= $class_seq ?>">
+		<input type="button" value="参加" class="page_select"data-id="<?= $class_seq ?>">
 	</form>
 	<?php
 	}
