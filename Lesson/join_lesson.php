@@ -20,14 +20,6 @@ $row = mysql_fetch_array($result);
 
 $class_seq = $row['group_seq'];
 
-//クッキー設定
-setcookie("user_seq",$user_seq,$time,"/");
-setcookie("subject_seq",$subject_seq,$time,"/");
-setcookie("flg",ture,$time,"/");
-
-
-
-
 //今現在授業が行われているか調べる
 $sql = "SELECT subject_seq FROM board WHERE class_seq = '$class_seq' AND end_flg = '1';";
 $result = mysql_query($sql);
@@ -37,6 +29,14 @@ $subject_seq = $row['subject_seq'];
 
 $sql = "SELECT * FROM m_subject WHERE subject_seq = '$subject_seq'";
 $result = mysql_query($sql);
+
+
+//クッキー設定
+setcookie("user_seq",$user_seq,$time,"/");
+setcookie("subject_seq",$subject_seq,$time,"/");
+setcookie("flg",ture,$time,"/");
+
+
 
 ?>
 <html>
