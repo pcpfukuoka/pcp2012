@@ -15,3 +15,11 @@
 #tablelocation div {float:left; margin-left:15px}
 .page {margin-top:2px; font-style:italic}
 #selectedrow td {background:#c6d5e1}
+
+
+#table_position
+{
+position: fixed;
+top: 15%;
+left: 35%;
+}

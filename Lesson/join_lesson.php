@@ -16,7 +16,7 @@ if($flg == "teacher")
 }
 else
 {
-	$access = "0";
+	$access = true;
 
 	//自分が所属しているクラスのグループSEQを取得
 	$user_seq = $_SESSION['login_info[user]'];

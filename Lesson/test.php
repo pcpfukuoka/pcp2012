@@ -6,6 +6,7 @@
 		<link href='https://xxx/bootstrap.min.css' rel='stylesheet' type='text/css'/>
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table_search.css" />
 	</head>
 
@@ -30,16 +31,13 @@
 	$group_sel = "SELECT group_seq,group_name FROM pcp2012.m_group WHERE group_seq=".$group_seq.";";
 	$group_result = mysql_query($group_sel);
 	$row2 = mysql_fetch_array($result);
-
-
-
 ?>
-		
 
-	<a href="lesson_preparation.php">戻る</a>
+		<div align = "center">
+			<font class="Cubicfont"><?= $date ?>:<?=$row['subject_name'] ?>:<?=$row2['group_seq'] ?></font>
+			<hr color="blue"><br><br><br>
+		</div>
 
-	<br>
-	<font size="5"><?= $date ?>:<?=$row['subject_name'] ?>:<?=$row['group_seq'] ?></font>
 	<div id="form">
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
@@ -50,6 +48,11 @@
 		$count2 = mysql_num_rows($result2);
 		$page_max = $count2+1;
 	?>
+	<table>
+		<tr>
+		<td>追加</td>
+		<td></td>
+		<td>
 		<form action="test_lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="form">
 			<input type="hidden" name="date" value="<?= $date ?>" />
 			<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
@@ -59,11 +62,17 @@
 				<img src="../images/kamera_sum.png" id="dummy_img"onclick="$('#upload_file').click();" class="btn btn-primary">
 				<input id="cover" class="input-xlarge" type="text" placeholder="select file" autocomplete="off" style="readonly;"class="input-large">
 			</span>
+		</td>
+		<td>
 			<input type="hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
 			<input type="submit"  value="追加" disabled=disabled id="upload_decision"/>
 		</form>
-
+		</td>
+		</tr>
+		<tr>
+		<td>変更</td>
 		<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="change_form">
+			<td>
 			<input type="hidden" name="date" value=" <?= $date ?>" />
 			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
 			<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
@@ -77,14 +86,22 @@
     			}
   			?>
 			</select>
+			</td>
+			<td>
 			<input type="file" name="upfile" size="30" id="change_file" style="display: none;"/>
 			<span id="div_dummy" class="input-append">
 				<img src="../images/kamera_sum.png" id="dummy_img"onclick="$('#change_file').click();" class="btn btn-primary">
 				<input id="change_cover" class="input-xlarge" type="text" placeholder="select file" autocomplete="off" style="readonly;"class="input-large">
 			</span>
+			</td>
+			<td>
 			<input type="submit"  value="変更"  disabled=disabled id="change_decision"/>
+			</td>
 		</form>
-
+		</tr>
+		<tr>
+		<td>削除</td>
+		<td>
 		<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="delete_form">
 			<input type="hidden" name="date" value=" <?= $date ?>" />
 			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
@@ -99,9 +116,15 @@
    				}
   			?>
 			</select>
+			</td>
+			<td></td>
+			<td>
 			<input type="button"  value="削除" onclick="delete_img()" id="delete_decision" disabled=disabled/>
+			</td>
 		</form>
-
+		</tr>
+		</table>
+		<div id="table_position">
 	<!--  ここからテーブルのページ送り機能用タグ -->
 	<!--  検索BOX用開始 -->
 		<div id="tablewrapper">
@@ -219,12 +242,16 @@
                 <div class="page">Page <span id="currentpage"></span> of <span id="totalpages"></span></div>
             </div>
         </div>
+        </div>
+        	<a href="lesson_preparation.php">戻る</a>
+			<br>
+
 		<!-- テーブル用フッダー部終了 -->
 		<form action="using_change.php" method="post" enctype="multipart/form-data" >
 			<input type="hidden" name="date" value="<?= $date ?>" />
 			<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
 			<input type="hidden" name="group_seq" value="<?= $group_seq ?>" />
-			<input type="submit" value="授業開始" id="lesson_start" disabled=disabled>
+			<input class="button3" type="submit" value="授業開始" id="lesson_start" disabled=disabled>
 		</form>
 	</div>
 		<iframe name="targetFrame" id="targetFrame" style="display:none;"></iframe>
