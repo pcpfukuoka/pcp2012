@@ -1,26 +1,3 @@
-<?php
-
-	//データベースの呼出
-	require_once("../lib/dbconect.php");
-	$dbcon = DbConnect();
-
-	//lesson_preparation.phpから送られてくるデータ
-	$date = $_POST['date'];
-	$subject_seq = $_POST['subject'];
-	$group_seq = $_POST['group'];
-
-	//subjectに対応するsubject_nameをデータベースから持ってくる
-	$sql = 'SELECT subject_name FROM m_subject WHEREsubject_seq = '. $subject_seq.';';
-	$result = mysql_query($sql);
-	$row = mysql_fetch_array($result);
-
-	$group_sel = "SELECT group_seq,group_name FROM pcp2012.m_group WHERE group_name=".$group_seq.";";
-	$group_result = mysql_query($group_sel);
-	$row2 = mysql_fetch_array($result);
-
-
-
-?>
 
 <html>
 	<head>
@@ -34,8 +11,30 @@
 
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
-			<div id="container">
-	
+		<div id="container">
+<?php
+	//データベースの呼出
+	require_once("../lib/dbconect.php");
+	$dbcon = DbConnect();
+
+	//lesson_preparation.phpから送られてくるデータ
+ 	$date = $_POST['date'];
+ 	$subject_seq = $_POST['subject'];
+	$group_seq = $_POST['group'];
+
+	//subjectに対応するsubject_nameをデータベースから持ってくる
+	$sql = 'SELECT subject_name FROM m_subject WHERE subject_seq = '. $subject_seq.';';
+	$result = mysql_query($sql);
+	$row = mysql_fetch_array($result);
+
+	$group_sel = "SELECT group_seq,group_name FROM pcp2012.m_group WHERE group_seq=".$group_seq.";";
+	$group_result = mysql_query($group_sel);
+	$row2 = mysql_fetch_array($result);
+
+
+
+?>
+		
 
 	<a href="lesson_preparation.php">戻る</a>
 
