@@ -37,7 +37,7 @@
 				<?php
 				if($position_flg == "student")
 				{?>
-					<input type="button" class="button2" onclick="jump('join_lesson.php?id=0','right')" value="現在の授業">
+					<input type="button" class="button2" onclick="jump('join_lesson.php','right')" value="現在の授業">
 
 				<?php
 				}
