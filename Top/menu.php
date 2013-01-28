@@ -19,7 +19,8 @@
 	<link rel="STYLESHEET"  href="../css/frame_top_css.css" type="text/css">
 	<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	<link rel="stylesheet" type="text/css" href="../css/button.css" />
-
+	<link rel="stylesheet" type="text/css" href="../css/top.css" />
+	
 
 
 	<title>メニュー一覧</title>

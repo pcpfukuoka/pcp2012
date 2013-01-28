@@ -12,9 +12,11 @@ $user_seq = $_SESSION['login_info[user]'];
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<META http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
-		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 	</head>
 	<body>		
 		<?php 
@@ -26,6 +28,14 @@ $user_seq = $_SESSION['login_info[user]'];
 		
 		
 		?>
+				<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+			<div align="center">
+				<font class="Cubicfont">詳細</font>
+			</div>
+		<hr color="blue"><br><br>
+
+		<div align = "center">
 		
 		<form method ="post" action="answer_regist.php">
 		<input type="hidden" name="question_seq" value="<?= $question_seq ?>">
@@ -63,6 +73,9 @@ $user_seq = $_SESSION['login_info[user]'];
 		?>
 		<input class="button4"type="submit" value ="回答を送信">
 		</form>		
+				</div>
+		</div>
+		
 	</body>
 	
 			<script>

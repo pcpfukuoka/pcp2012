@@ -29,10 +29,14 @@ $awnser_cnt = mysql_num_rows($awnser_result);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<script language="javascript" type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
-		<script language="javascript" type="text/javascript" src="../js/jquery.jqplot.min.js"></script>
-		<script language="javascript" type="text/javascript" src="../js/jqplot.pieRenderer.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="../js/jquery.jqplot.min.css" />
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<script language="javascript" type="text/javascript" src="../javascript/jquery-1.8.2.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../javascript/jquery.jqplot.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../javascript/jqplot.pieRenderer.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.jqplot.min.css" />
 	</head>
 	<script>
 function test (id,label,data,description) {
@@ -98,10 +102,14 @@ function test (id,label,data,description) {
 	});
 };
 </script>
-	
-	
-	
 	<body>
+			<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+			<div align="center">
+				<font class="Cubicfont">詳細</font>
+			</div>
+		<hr color="blue"><br><br>
+	
 		<?php 
 		
 			$label = array();
@@ -166,6 +174,7 @@ function test (id,label,data,description) {
 		<?php 
 			}
 		?>
+		</div>
 	</body>
 	<script>
 	function jumpdetails (url)

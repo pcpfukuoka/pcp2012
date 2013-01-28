@@ -16,9 +16,10 @@
 	
 	
 	//登録処理
-	$sql = "INSERT INTO m_user VALUES (0, '$user_name', '$user_kana', '$user_address', '$user_tel', '$user_email', '$user_id', '$pass', '$autho_seq','0'); ";
-	mysql_query($sql);
-	
+	$sql = "INSERT INTO m_user VALUES (0, '$user_name', '$user_kana', '$user_address', '$user_tel', '$user_email', '$user_id', '$pass', '$autho_seq','0','0'); ";
+	//mysql_query($sql);
+
+	echo $sql;
 	if(isset($_POST['stuent_id']))
 	{
 		$sql = "SELECT user_seq FROM m_user ORDER BY user_seq DESC;";
@@ -27,7 +28,8 @@
 		$user_seq = $row['user_seq'];
 		$student_id = $_POST['stuent_id'];
 		$sql = "INSERT INTO m_student VALUES (0,'$user_seq','$student_id');";
-		mysql_query($sql);		
+		echo $sql;
+//		mysql_query($sql);		
 	}
 	header("Location: comp_dis.html");
 ?>

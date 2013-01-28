@@ -1,0 +1,30 @@
+table.calendar {
+	border-collapse:collapse;
+	border-spacing:0;
+	border:1px #666 solid;
+	text-align:center;
+	font-size:12px;
+}
+
+table.calendar td,
+table.calendar th {
+	padding:5px;
+	border:1px #666 solid;
+}
+
+table.calendar th {
+	background:#eee;
+}
+
+table.calendar td.today {
+	background:#999;
+	color:#fff;
+}
+
+table.calendar .red {
+	color:#f33;
+}
+
+table.calendar .blue {
+	color:#33f;
+}

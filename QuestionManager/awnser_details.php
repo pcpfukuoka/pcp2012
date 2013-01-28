@@ -21,10 +21,15 @@ $cnt = mysql_num_rows($result);
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
-
 	<body>
-		<table border="1">
+	<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+			<table border="1">
 			<tr>
 				<th>回答者</th>
 				<th>回答</th>
@@ -42,5 +47,6 @@ $cnt = mysql_num_rows($result);
 			}
 		?>
 		</table>
+		</div>
 		</body>
 </html>

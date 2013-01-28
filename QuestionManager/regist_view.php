@@ -1,52 +1,62 @@
 <?php
 session_start();
-
-
-
-
-
 ?>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<META http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
-		 <script src="../jquery-1.8.2.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		 <script src="../javascript/jquery-1.8.2.min.js"></script>
 	</head>
-	<body>		
-		<?php 
-		require_once("../lib/dbconect.php");
-		$dbcon = DbConnect();
-		$sql = "SELECT * FROM m_group WHERE delete_flg = 0;";
-		$result = mysql_query($sql);
-		$cnt = mysql_num_rows($result);
-		?>
-		
-		<form method ="post" action="regist.php">
-		タイトル:<input type="text" name="question_title"><br>
-		期間：<input type="date" name="start_date">〜<input type="date" name="end_date"><br>
-		対象グループ：
-		<select name = "target_group_seq" size = "1">
-			<option value = "-1">選択</option>
-				<option value = "0">全員</option>			
+	<body>
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+			<div align="center">
+				<font class="Cubicfont">新規登録</font>
+			</div>
+		<hr color="blue"><br><br>
+
+		<div align = "center">
+			
+	
 			<?php 
-			for($i = 0; $i < $cnt; $i++)
-			{
-				$row = mysql_fetch_array($result);
-				?>
-				<option value = "<?=  $row['group_seq'] ?>"><?= $row['group_name'] ?></option>			
-		<?php 
-			}
+			require_once("../lib/dbconect.php");
+			$dbcon = DbConnect();
+			$sql = "SELECT * FROM m_group WHERE delete_flg = 0;";
+			$result = mysql_query($sql);
+			$cnt = mysql_num_rows($result);
 			?>
-		</select><br>
-		内容：<input type="text" name="question_description"><br>
-		<input type="button" class="questionAdd" value="追加" id="aaaaa">
-		<div id="question_details">
+			
+			<form method ="post" action="regist.php">
+			タイトル:<input type="text" name="question_title"><br>
+			期間：<input type="date" name="start_date">〜<input type="date" name="end_date"><br>
+			対象グループ：
+			<select name = "target_group_seq" size = "1">
+				<option value = "-1">選択</option>
+					<option value = "0">全員</option>			
+				<?php 
+				for($i = 0; $i < $cnt; $i++)
+				{
+					$row = mysql_fetch_array($result);
+					?>
+					<option value = "<?=  $row['group_seq'] ?>"><?= $row['group_name'] ?></option>			
+			<?php 
+				}
+				?>
+			</select><br>
+			内容：<input type="text" name="question_description"><br>
+			<input type="button" class="questionAdd" value="追加" id="aaaaa">
+			<div id="question_details">
+			</div>
+			<div id="input_section">
+			</div>
+			<input class="button4"type="submit" value ="登録">
+			</form>		
 		</div>
-		<div id="input_section">
 		</div>
-		<input class="button4"type="submit" value ="登録">
-		</form>		
+		
 	</body>
 		<script>
 		$(function() {
@@ -89,8 +99,6 @@ session_start();
 			//回答内容個別追加
 			$(document).on('click', '.questionListAdd', function() {
 		        var question_name = $("*[name=input_question_lsit_name]").val();
-		        $.post('question_answer_list_add.php', {
-		            id: question_name
 		                	$("*[name=input_question_lsit_name]").val("");
 		        	var e = $(
 		                    '<li>' +
@@ -98,6 +106,7 @@ session_start();
 		                    '</li>'
 		                );
 	                $('#question_awnser_lsit').append(e);
+                
 		    });
 
 			//回答一覧追加

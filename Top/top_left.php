@@ -19,10 +19,18 @@ AND print_check_flg = 1;";
 $result = mysql_query($sql);
 $cnt_print_flg = mysql_num_rows($result);
 //アンケートの件数
-$sql = "SELECT * FROM question
-WHERE question_seq
-NOT IN ( SELECT question_seq FROM question_awnser WHERE awnser_user_seq = '$user_seq' )
-AND '" . $day . "' BETWEEN start_date AND end_date";
+	$sql = "SELECT * FROM question 
+   		 	WHERE question_target_group_seq 
+        		IN (SELECT m_group.group_seq 
+            		FROM m_group INNER JOIN group_details 
+            		ON m_group.group_seq = group_details.group_seq 
+            		WHERE group_details.user_seq= '$user_seq'
+            	   )
+    		AND question_seq 
+    			NOT IN (SELECT question_seq 
+    					FROM question_awnser 
+    					WHERE awnser_user_seq = '$user_seq' ) 
+    		AND '".$day."' BETWEEN start_date AND end_date;";
 $result = mysql_query($sql);
 $cnt = mysql_num_rows($result);
 //データベースを閉じる
