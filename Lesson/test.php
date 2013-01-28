@@ -27,11 +27,15 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<link href='https://xxx/bootstrap.min.css' rel='stylesheet' type='text/css'/>
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table_search.css" />
 	</head>
 
 	<body>
-
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+			<div id="container">
+	
 
 	<a href="lesson_preparation.php">戻る</a>
 
@@ -225,7 +229,7 @@
 		</form>
 	</div>
 		<iframe name="targetFrame" id="targetFrame" style="display:none;"></iframe>
-
+</div>
 	</body>
 	<!-- テーブル用スクリプト
 		sizeが一回で表示するデータの量
