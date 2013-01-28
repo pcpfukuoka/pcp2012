@@ -16,40 +16,46 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<script src="../javascript/old_lesson_js.js" type = "text/javascript"></script>
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<link rel="stylesheet" href="../css/old_lesson_canvas_css.css">
 	</head>
 
 	<body>
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+	
 		<input type="date" id="date" />
-			<select id="subject_seq">
-				<?php
-					for ($i = 0; $i < $count; $i++)
-					{
-						$row = mysql_fetch_array($result);
-				?>
-	    			<option value="<?= $row['subject_seq']?>"><?= $row['subject_name'] ?></option>
-				<?php
-					}
-				?>
-			</select>
+		<select id="subject_seq">
+			<?php
+				for ($i = 0; $i < $count; $i++)
+				{
+					$row = mysql_fetch_array($result);
+			?>
+    			<option value="<?= $row['subject_seq']?>"><?= $row['subject_name'] ?></option>
+			<?php
+				}
+			?>
+		</select>
 
-			<select id="group_seq">
-				<?php
-					for ($i = 0; $i < $count2; $i++)
-					{
-						$row2 = mysql_fetch_array($group_result);
-				?>
-	    			<option value="<?= $row2['group_seq']?>"><?= $row2['group_name'] ?></option>
-				<?php
-					}
-				?>
-			</select>
-			<input type="button" value="決定" id="decision" disabled=disabled>
-			<div id="frame">
-			</div>
-
+		<select id="group_seq">
+			<?php
+				for ($i = 0; $i < $count2; $i++)
+				{
+					$row2 = mysql_fetch_array($group_result);
+			?>
+    			<option value="<?= $row2['group_seq']?>"><?= $row2['group_name'] ?></option>
+			<?php
+				}
+			?>
+		</select>
+		<input type="button" value="決定" id="decision" disabled=disabled>
+		<div id="frame">
+		</div>
+</div>
 	</body>
 	<script>
 	$(function() {//決定ボタンをクリックした後の過去授業の画像を出力する処理
@@ -85,9 +91,13 @@
 		    		var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat height="440" width="680">'
 		    		+'<img src="'+parsers[0]['canvas']+'"id="canvas" height="440" width="680"/>'
 		    		+'</div>'
-		    		+'<input id="turn" value="戻る" type="button">'
-		    		+'<input id="next" value="次へ"type="button">'
+		    		+'<table>'
+		    		+'<tr>'
+		    		+'<td><input class="button4" id="turn" value="戻る" type="button"></td>'
+		    		+'<td><input class="button4" id="next" value="次へ"type="button"></td>'
 		    		+'<input type="hidden" value=0 id="page_num"value="0">';
+		    		+'</tr>'
+		    		+'</table>'
 		    		$('#frame').append(e);
 		    	}
 		    });

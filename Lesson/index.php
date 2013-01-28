@@ -31,13 +31,13 @@
 			<hr color="blue"></hr>
 			<br><br><br>
 			<p align="center">
-				<input type="button" onclick="jump('old_lesson.php','right')" value="過去の授業">
+				<input type="button"  class="button2" onclick="jump('old_lesson.php','right')" value="過去の授業">
 				<br><br>
 				<!-- 生徒用の画面 -->
 				<?php 
 				if($position_flg == "student")
 				{?>
-					<input type="button" onclick="jump('join_lesson.php','right')" value="現在の授業">
+					<input type="button" class="button2" onclick="jump('join_lesson.php','right')" value="現在の授業">
 					
 				<?php 
 				}
@@ -47,7 +47,7 @@
 				<?php 
 				if($position_flg == "teacher")
 				{?>
-				<input type="button" onclick="jump('lesson_preparation.php','right')" value="授業準備">
+				<input type="button" class="button2" onclick="jump('lesson_preparation.php','right')" value="授業準備">
 					
 			<?php 
 				}
