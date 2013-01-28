@@ -4,7 +4,7 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
-	$A_date = $_SESSION['$A_date'];
+//	$A_date = $_SESSION['$A_date'];
 	$group_seq = $_POST['group_seq'];
 
 	//$sql = "SELECT * FROM m_user";
@@ -17,21 +17,29 @@
 //	$sql = "SELECT group_seq, group_name FROM m_group WHERE class_flg = 1";
 //	$result = mysql_query($sql);
 
-/*	$sql = "SELECT max(row) as mx FROM seat WHERE group_seq='$group_seq'";
+	$sql = "SELECT max(row) as r_max 
+			FROM seat 
+			WHERE group_seq='$group_seq'";
 	$res = mysql_query($sql);
-	$row = mysql_fetch_array($res);
-	$row_max = $row['mx'];
-
-	$sql = "SELECT max(col) as mx FROM seat WHERE group_seq ='$group_seq'";
+	$gyo = mysql_fetch_assoc($res);
+	$row_max = $gyo['r_max'];
+	
+	
+	$sql = "SELECT max(col) as c_max 
+			FROM seat 
+			WHERE group_seq ='$group_seq'";
 	$res = mysql_query($sql);
-	$row = mysql_fetch_array($res);
-	$col_max = $row['mx'];
-*/
-
-	$sql = "SELECT user_name, user_seq
-			FROM m_user WHERE user_seq IN (SELECT user_seq FROM group_details WHERE group_seq = '$group_seq');";
-	$result = mysql_query($sql);
-
+	$gyo = mysql_fetch_assoc($res);
+	$col_max = $gyo['c_max'];
+	
+	$sql = "SELECT seat.user_seq, m_user.user_name 
+			FROM seat, m_user 
+			WHERE m_user.user_seq = seat.user_seq 
+			AND seat.group_seq = 1 
+			ORDER BY seat.row ASC, seat.col ASC;";
+	$seat = mysql_query($sql);
+	
+	
 ?>
 
 <html>
@@ -59,6 +67,49 @@
 			<table border="4" align="center" bgcolor="#FFE7CE" bordercolor="#DC143C">
 
 				<?php
+	
+					for($i = 1; $i <= $row_max; $i++)
+					{
+						echo "<tr>";
+					
+						for($j = 1; $j <= $col_max; $j++)
+						{
+							$result = mysql_fetch_array($seat);
+							$user_seq = $result['user_seq'];
+				
+							if($user_seq == "")
+							{
+								echo "<td class='sample'width='100'>";
+							}
+							else
+							{
+								$user_name = $result['user_name'];								
+				?>
+								<td class="sample" width="200" align="center">
+								<font size = "4"><?=$user_name?></font>
+								<br>
+								<table align="center">
+									<tr>
+										<td><input type="button" data-id="<?= $user_seq?>" id="Attendance_<?=$user_seq?>" class="Attendance button5" value="出席"></td>
+										<td><input type="button" data-id="<?= $user_seq?>" id="Absence_<?=$user_seq?>" class="Absence button5" value="欠席"></td>
+										<td><input type="button" data-id="<?= $user_seq?>" id="Lateness_<?=$user_seq?>" class="Lateness button5" value="遅刻"></td>
+									</tr>
+								</table>
+								</td>
+				<?php 
+							
+							}
+							
+			
+							echo "</td>";
+						}
+						echo "</tr>";
+					}
+					
+				?>
+				
+				<?php 
+/*								
 
 					for($i = 1; $i <= 6; $i++)
 					{
@@ -78,23 +129,14 @@
 								$user_name = $row['user_name'];
 
 				?>
-								<td class="sample" width="200" align="center">
-									<font size = "4"><?=$user_name?></font><br>
-									<table align="center">
-										<tr>
-											<td><input type="button" data-id="<?= $user_seq?>" id="Attendance_<?=$user_seq?>" class="Attendance button5" value="出席"></td>
-											<td><input type="button" data-id="<?= $user_seq?>" id="Absence_<?=$user_seq?>" class="Absence button5" value="欠席"></td>
-											<td><input type="button" data-id="<?= $user_seq?>" id="Lateness_<?=$user_seq?>" class="Lateness button5" value="遅刻"></td>
-										</tr>
-									</table>
-								</td>
+								
 				<?php
 							}
 							echo "</td>";
 						}
 						echo "</tr>";
 					}
-
+*/
 					//データベースを閉じる
 					Dbdissconnect($dbcon);
 				?>
