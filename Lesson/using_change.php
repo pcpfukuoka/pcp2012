@@ -14,5 +14,6 @@
 	echo $using_change;
 	$result=mysql_query($using_change);
 
-	//headerでlesson_preparationに移動させる
+	//headerでjoin_lesson.phpに移動させる
+	header("Location: http://49.212.201.99/pcp2012/Lesson/join_lesson.php?id='1'")
 ?>
