@@ -82,8 +82,8 @@
 		    	var parsers = JSON.parse(rs);
 
 		    	if(parsers.length>0){
-		    		var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat">'
-		    		+'<img src="'+parsers[0]['canvas']+'"id="canvas" />'
+		    		var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat height="440" width="680">'
+		    		+'<img src="'+parsers[0]['canvas']+'"id="canvas" height="440" width="680"/>'
 		    		+'</div>'
 		    		+'<input id="turn" value="戻る" type="button">'
 		    		+'<input id="next" value="次へ"type="button">'
