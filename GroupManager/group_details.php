@@ -31,6 +31,7 @@
 		$sql = "SELECT
 				m_group.group_name,
 				m_user.user_name,
+				m_user.user_kana,
 				m_user.user_id,
 				group_details.group_details_seq,
 				group_details.group_seq,
@@ -62,53 +63,48 @@
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table_search.css" />
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<script src="../javascript/jquery-ui-1.8.24.custom.min.js"></script>
-		<link rel="stylesheet" href="../css/animate.css">
-		<link rel="stylesheet" href="../css/jPages.css">
-		<script type="text/javascript" src="../javascript/jPages.js"></script>
-		<script> 
-		$(function(){
-		$(".holder").jPages({ 
-		containerID : "list",
-		previous : "←", //前へのボタン
-		next : "→", //次へのボタン
-		perPage : 5, //1ページに表示する個数
-		midRange : 5,
-		endRange : 2,
-		delay : 20, //要素間の表示速度
-		animation: "flipInY" //アニメーションAnimate.cssを参考に
-		});
-		});
-		</script>
 		</head>
-
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align = "center">
 			<font class="Cubicfont"><?= $group_name ?></font>
 			<hr color = "blue">
-		<div class="holder"></div>
-			<table class="table_01">	
-				<thead>
+			</div>
+		<div id="tablewrapper">
+			<div id="tableheader">
+	        	<div class="search">
+	                <select id="columns" onchange="sorter.search('query')"></select>
+	                <input type="text" id="query" onkeyup="sorter.search('query')" />
+	            </div>
+	            <span class="details">
+					<div>Records <span id="startrecord"></span>-<span id="endrecord"></span> of <span id="totalrecords"></span></div>
+	        		<div><a href="javascript:sorter.reset()">reset</a></div>
+	        	</span>
+        </div> 
+        <table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
+							<thead>
 					<tr>
 
 						<?php
 							if($page_cla['delete_flg'] == 1)
 							{
 						?>
-								<th><font size="5">削除</font></th>
+								<th class="nosort"><h3>削除</h3></th>
 						<?php
 							}
 						?>
-								<th><font size="5">名前</font></th>
-								<th><font size="5">ＩＤ</font></th>
-								<th><font size="5">学籍番号</font></th>
+								<th class="nosort"><h3>名前</h3></th>
+								<th><h3>(フリガナ)</h3></th>
+								<th><h3>ＩＤ</h3></th>
+								<th><h3>学籍番号</h3></th>
 					</tr>
 
 				</thead>
-				<tbody id="list">
+				<tbody>
 					<?php
 						for($i = 0; $i < $cnt; $i++)
 						{
@@ -125,6 +121,7 @@
 							}
 						?>
 							<td><?= $g_user_row['user_name'] ?></td>
+							<td><?= $g_user_row['user_kana'] ?></td>
 							<td><?= $g_user_row['user_id'] ?></td>
 							<td><?= $g_user_row['student_id'] ?></td>
 						</tr>
@@ -133,7 +130,6 @@
 					?>
 				</tbody>
 				</table>
-			<div>
 			<table>
 				<tr>
 					<?php
@@ -155,11 +151,64 @@
 					?>
 				</tr>
 			</table>
-				</div>
 		</div>
+		
+		
+		<div id="tablefooter">
+          <div id="tablenav">
+            	<div>
+                    <img src="../images/first.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
+                    <img src="../images/previous.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1)" />
+                    <img src="../images/next.gif" width="16" height="16" alt="First Page" onclick="sorter.move(1)" />
+                    <img src="../images/last.gif" width="16" height="16" alt="Last Page" onclick="sorter.move(1,true)" />
+                </div>
+                <div>
+                	<select id="pagedropdown"></select>
+				</div>
+            </div>
+			<div id="tablelocation">
+            	<div>
+                    <select onchange="sorter.size(this.value)">
+                    <option value="5">5</option>
+                        <option value="10" selected="selected">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <span>Entries Per Page</span>
+                </div>
+                <div class="page">Page <span id="currentpage"></span> of <span id="totalpages"></span></div>
+            </div>
+        </div>
 		</div>
 	</body>
-
+	<script type="text/javascript" src="../javascript/script.js"></script>
+	<script type="text/javascript">
+	var sorter = new TINY.table.sorter('sorter','table',{
+		headclass:'head',
+		ascclass:'asc',
+		descclass:'desc',
+		evenclass:'evenrow',
+		oddclass:'oddrow',
+		evenselclass:'evenselected',
+		oddselclass:'oddselected',
+		paginate:true,
+		size:5,
+		colddid:'columns',
+		currentid:'currentpage',
+		totalid:'totalpages',
+		startingrecid:'startrecord',
+		endingrecid:'endrecord',
+		totalrecid:'totalrecords',
+		hoverid:'selectedrow',
+		pageddid:'pagedropdown',
+		navid:'tablenav',
+		sortcolumn:1,
+		sortdir:-1,
+		init:true
+	});
+  </script>
+	
 	<script type="text/javascript">
 	function group_delete()
 	{

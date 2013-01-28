@@ -26,6 +26,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
+		<link href='https://xxx/bootstrap.min.css' rel='stylesheet' type='text/css'/>
+		<link rel="stylesheet" type="text/css" href="../css/table_search.css" />		
 	</head>
 
 	<body>
@@ -39,21 +41,21 @@
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
 		<input type="hidden" id="group_seq_hidden" value="<?= $group_seq ?>" />
-
-
 	<?php
-		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'" AND class_seq='.$group_seq.'AND end_flg="0";';
+		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'" AND class_seq="'.$group_seq.'" AND end_flg="0";';
 		$result2 = mysql_query($sql2);
 		$count2 = mysql_num_rows($result2);
 		$page_max = $count2+1;
 	?>
-
 		<form action="test_lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="form">
 			<input type="hidden" name="date" value="<?= $date ?>" />
 			<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
 			<input type="hidden" name="group_seq" value="<?= $group_seq ?>" />
-
-			<input type="file" name="upfile" size="30" id="upload_file"/>
+			<input type="file" name="upfile" size="30" id="upload_file" style="display: none;"/>
+			<span id="div_dummy" class="input-append">
+				<img src="../images/kamera_sum.png" id="dummy_img"onclick="$('#upload_file').click();" class="btn btn-primary">
+				<input id="cover" class="input-xlarge" type="text" placeholder="select file" autocomplete="off" style="readonly;"class="input-large">
+			</span>
 			<input type="hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
 			<input type="submit"  value="追加" disabled=disabled id="upload_decision"/>
 		</form>
@@ -72,8 +74,12 @@
     			}
   			?>
 			</select>
-			<input type="file" name="upfile" size="30" id="change_file"/>
-			<input type="submit" id="change" value="変更"  disabled=disabled id="change_decision"/>
+			<input type="file" name="upfile" size="30" id="change_file" style="display: none;"/>
+			<span id="div_dummy" class="input-append">
+				<img src="../images/kamera_sum.png" id="dummy_img"onclick="$('#change_file').click();" class="btn btn-primary">
+				<input id="change_cover" class="input-xlarge" type="text" placeholder="select file" autocomplete="off" style="readonly;"class="input-large">
+			</span>
+			<input type="submit"  value="変更"  disabled=disabled id="change_decision"/>
 		</form>
 
 		<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="delete_form">
@@ -90,19 +96,35 @@
    				}
   			?>
 			</select>
-			<input type="button" id="delete" value="削除" onclick="delete_img()" id="delete_decision"/>
+			<input type="button"  value="削除" onclick="delete_img()" id="delete_decision" disabled=disabled/>
 		</form>
-
-
-		<table border="5" id="img_table">
-			<tr id="1_th">
+	
+	<!--  ここからテーブルのページ送り機能用タグ -->
+	<!--  検索BOX用開始 -->
+		<div id="tablewrapper">
+			<div id="tableheader">
+	        	<div class="search">
+	                <select id="columns" onchange="sorter.search('query')"></select>
+	                <input type="text" id="query" onkeyup="sorter.search('query')" />
+		            </div>
+		            <span class="details">
+						<div>Records <span id="startrecord"></span>-<span id="endrecord"></span> of <span id="totalrecords"></span></div>
+		        		<div><a href="javascript:sorter.reset()">reset</a></div>
+		        	</span>
+	        </div> 
+	<!--  検索BOX用終了 -->
+	        <table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
+		<thead>
+					<tr id="1_th">
 	<?php
-				for($i=1;$i<=8;$i++){
+				for($i=1;$i<=5;$i++){
 					echo "<th width='100'><font size='3'>".$i."<font></th>";
 				}
 	?>
 			</tr>
-			<tr id="1_tr">
+		</thead>
+		<tbody>
+		<tr id="1_tr">
 
 
 	<?php
@@ -125,31 +147,33 @@
 				$img_tag_name = '../../balckboard/public/images/div/'.$bbb;
 
 	?>
-			<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="128" height="128" id="<?=$i ?>_image"></td>
+			<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="100" height="100" id="<?=$i ?>_image"></td>
 
 	<?php
-			if($i%8==0){
-				$tr_=$i/8;
+			if($i%5==0){
+				$tr_=$i/5;
 				$tr_++;
-				$tr_=$tr_."_tr";
-				$th_=$tr_."_th";
+				$tr_id=$tr_."_tr";
+				$th_id=$tr_."_th";
 
-				//thの中身を整える処理
+				//次の行の最初のｔｈの値
 				$th_in=$i+1;
-				$max=$th_in+8;
+				//thの一列の最大値
+				$max=$th_in+5;
 	?>
 			</tr>
 
 
-			<tr id="<?=$th_ ?>">
+			<tr id="<?=$th_id ?>">
 	<?php
+			//headerを一列分出力
 			for($j=$th_in;$j<$max;$j++){
 				echo "<th width='100'><font size='3'>".$j."<font></th>";
 			}
 
 	 ?>
 	 		</tr>
-			<tr id="<?= $tr_ ?>">
+			<tr id="<?= $tr_id ?>">
 	<?php
 			}
 
@@ -165,9 +189,37 @@
 		Dbdissconnect($dbcon);
 	?>
 			</tr>
+			</tbody>
 		</table>
-
-		<form action="using_change.php" method="post" enctype="multipart/form-data" align="center">
+		<!-- テーブル用フッダー部開始 -->
+		<div id="tablefooter">
+          <div id="tablenav">
+            	<div>
+                    <img src="../images/first.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
+                    <img src="../images/previous.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1)" />
+                    <img src="../images/next.gif" width="16" height="16" alt="First Page" onclick="sorter.move(1)" />
+                    <img src="../images/last.gif" width="16" height="16" alt="Last Page" onclick="sorter.move(1,true)" />
+                </div>
+                <div>
+                	<select id="pagedropdown"></select>
+				</div>
+            </div>
+			<div id="tablelocation">
+            	<div>
+                    <select onchange="sorter.size(this.value)">
+                    <option value="5">5</option>
+                        <option value="10" selected="selected">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <span>Entries Per Page</span>
+                </div>
+                <div class="page">Page <span id="currentpage"></span> of <span id="totalpages"></span></div>
+            </div>
+        </div>
+		<!-- テーブル用フッダー部終了 -->
+		<form action="using_change.php" method="post" enctype="multipart/form-data" >
 			<input type="hidden" name="date" value=" <?= $date ?>" />
 			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
 			<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
@@ -177,32 +229,102 @@
 		<iframe name="targetFrame" id="targetFrame" style="display:none;"></iframe>
 
 	</body>
+	<!-- テーブル用スクリプト
+		sizeが一回で表示するデータの量
+	
+	 -->
+	<script type="text/javascript" src="../javascript/script.js"></script>
+	<script type="text/javascript">
+	var sorter = new TINY.table.sorter('sorter','table',{
+		headclass:'head',
+		ascclass:'asc',
+		descclass:'desc',
+		evenclass:'evenrow',
+		oddclass:'oddrow',
+		evenselclass:'evenselected',
+		oddselclass:'oddselected',
+		paginate:true,
+		size:5,
+		colddid:'columns',
+		currentid:'currentpage',
+		totalid:'totalpages',
+		startingrecid:'startrecord',
+		endingrecid:'endrecord',
+		totalrecid:'totalrecords',
+		hoverid:'selectedrow',
+		pageddid:'pagedropdown',
+		navid:'tablenav',
+		sortcolumn:1,
+		sortdir:-1,
+		init:true
+	});
+  </script>
+	
+	
+	
 	<script>
 	$(function() {
-		//アップロードする画像を決めたとき
+
+		$('#upload_file').change(function(){
+			//ファイルの名前をテキストに反映
+			 $('#cover').val($(this).val());
+	    });
+
+		$('#change_file').change(function(){
+			//ファイルの名前をテキストに反映
+			 $('#change_cover').val($(this).val());
+	    });
+
+
+		//画像が１まいでもある時に授業開始ボタンを押せるようにする
+		//アップロードする画像を決めたとき(追加)
 		$(document).on('change', '#upload_file', function() {
 
 			//画像の追加ボタンを押せるようにする
 			var upload_ele=document.getElementById("upload_decision");
 			upload_ele.disabled=false;
-
-			//授業開始ボタンを押せるようにする
-			var start_ele=document.getElementById("lesson_start");
-			start_ele.disabled=false;
 	    });
 
+		//アップロードする画像を決めたとき（変更）
+		$(document).on('change', '#change_file', function() {
+
+			//画像の変更ボタンを押せるようにする
+			var change_ele=document.getElementById("change_decision");
+			change_ele.disabled=false;
+	    });
+
+		//背景画像するために画像を選択したとき
 		$(document).on('change', '#change_file', function() {
 			var change_ele=document.getElementById("change_decision");
 			change_ele.disabled=false;
 	    });
+
+		//画像を追加ボタンを押したとき
+		$(document).on('click', '#upload_decision', function() {
+
+			//授業開始ボタンを押せるようにしたとき
+			var start_ele=document.getElementById("lesson_start");
+			start_ele.disabled=false;
+
+
+			//画像の削除をおせるようにする
+			var delete_ele=document.getElementById("delete_decision");
+			delete_ele.disabled=false;
+
+	    });
+
+
 	});
+	//画像を削除する関数
 	function delete_img(){
 
+		//postするデータをとってくる
 		var date_ele=document.getElementById('date_hidden');
 		var subject_ele=document.getElementById('subject_seq_hidden');
 		var group_ele=document.getElementById('group_seq_hidden');
 		var page=document.getElementById('page_num_del');
 		var page_val=page.value;
+
 		//日付と科目を変数に格納
 		var date=date_ele.value;
 		var subject_seq=subject_ele.value;
@@ -244,10 +366,10 @@
 			var delete_form=document.getElementById(del_im);
 			$(delete_form).remove();
 
-			//要素が１列なtrタグが存在する場合の処理
-			if(Number(parsers[0]['max_page'][0])%8==0){
-				var tr_del=Number(parsers[0]['max_page'][0])/8+1;
-				var th_del=Number(parsers[0]['max_page'][0])/8+1;
+			//要素が１列なくtrタグが存在する場合の処理
+			if(Number(parsers[0]['max_page'][0])%5==0){
+				var tr_del=Number(parsers[0]['max_page'][0])/5+1;
+				var th_del=Number(parsers[0]['max_page'][0])/5+1;
 				tr_del =tr_del+"_tr";
 				th_del =th_del+"_th";
 
