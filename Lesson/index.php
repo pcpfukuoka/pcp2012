@@ -3,9 +3,9 @@
 	require_once("../lib/autho.php");
 	$page_fun = new autho_class();
 	$page_cla = $page_fun -> autho_Pre($_SESSION['login_info[autho]'], 9);
-	
+
 	$position_flg = $_SESSION['position_flg'];
-	
+
 	/*
 	if($page_cla[0]['read_flg'] == 0)
 	{
@@ -34,25 +34,25 @@
 				<input type="button"  class="button2" onclick="jump('old_lesson.php','right')" value="過去の授業">
 				<br><br>
 				<!-- 生徒用の画面 -->
-				<?php 
+				<?php
 				if($position_flg == "student")
 				{?>
-					<input type="button" class="button2" onclick="jump('join_lesson.php','right')" value="現在の授業">
-					
-				<?php 
+					<input type="button" class="button2" onclick="jump('join_lesson.php?id=0','right')" value="現在の授業">
+
+				<?php
 				}
 				?>
 				<br><br>
 				<!-- 先生用のボタン -->
-				<?php 
+				<?php
 				if($position_flg == "teacher")
 				{?>
 				<input type="button" class="button2" onclick="jump('lesson_preparation.php','right')" value="授業準備">
-					
-			<?php 
+
+			<?php
 				}
 				?>
-			
+
 			</p>
 		</div>
 	</body>

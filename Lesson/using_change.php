@@ -14,5 +14,5 @@
 	$result=mysql_query($using_change);
 
 	//headerでjoin_lesson.phpに移動させる
-	header("Location: http://49.212.201.99/pcp2012/Lesson/join_lesson.php?id='1'")
+	header("Location: http://49.212.201.99/pcp2012/Lesson/join_lesson.php?id=1")
 ?>
