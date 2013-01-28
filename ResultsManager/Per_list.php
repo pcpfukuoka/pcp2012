@@ -26,12 +26,14 @@ $link = DbConnect();
 
 $sql = "SELECT m_test.test_seq, m_test.date, m_subject.subject_name, m_test.contents, 
 		m_user.user_name, m_test.group_seq, m_group.group_name, m_test.standard_test_flg 
-		FROM m_test, m_subject, m_teacher, m_user, m_group 
+		FROM m_test, m_subject, m_teacher, m_user, m_group, test_result
 		WHERE m_test.subject_seq = m_subject.subject_seq 
 		AND m_test.teacher_seq = m_teacher.teacher_seq 
 		AND m_test.group_seq = m_group.group_seq 
 		AND m_teacher.user_seq = m_user.user_seq 
-		AND m_test.delete_flg = 0 ";
+		AND m_test.delete_flg = 0
+		AND test_result.test_seq = m_test.test_seq
+		AND test_result.user_seq = '$sesID'";
 		//AND m_test.group_seq = '$group_seq'";
 
 //教科が選択されて、テストチェックはされていない場合
@@ -134,18 +136,20 @@ $count_point = mysql_num_rows($result_point);*/
 				if ($point['point'] == 100)
 					{
 					?>
-						<font size = "5" color = "red">
-						<b><?= $point['point'] ?></b>
-						</font> 
+						<font size = "5" color = "blue">
+							<div align = "center">
+								<b><?= $point['point'] ?></b>
+							</div>
+						</font>
 					<?php 
 					}
 					elseif ($point['point'] >= $avg['AVG(point)'])
 					{
 					?>
-						<font color = "red" >
-						<div align = "right">
-						<?= $point['point'] ?>
-						</div>
+						<font size = "5" color = "blue">
+							<div align = "center">
+								<?= $point['point'] ?>
+							</div>
 						</font>
 						
 					<?php 
@@ -153,15 +157,19 @@ $count_point = mysql_num_rows($result_point);*/
 					else 
 					{
 					?>
-						<font color = "blue" >
-						<div align = "right">
-						<?= $point['point'] ?>
-						</div>
+						<font size = "5" color = "red" >
+							<div align = "center">
+								<?= $point['point'] ?>
+							</div>
 						</font>
 					<?php 
 					}?>
 				</td>
-				<td align = "center"><?= $avg['AVG(point)'] ?></td>
+				<td align = "center">
+					<font size = "5">
+						<?php print round($avg['AVG(point)'],1) ?>
+					</font>
+				</td>
 			</tr>
 			<?php
 			}
