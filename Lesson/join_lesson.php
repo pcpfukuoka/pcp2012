@@ -2,19 +2,16 @@
 session_start();
 require_once("../lib/dbconect.php");
 $dbcon = DbConnect();
-
-
 $time = time() + 60 * 60*24;
-setcookie("user_seq","9",$time,"/");
-setcookie("subject_seq","2",$time,"/");
-setcookie("flg",true,$time,"/");
+
+
 
 //自分が所属しているクラスのグループSEQを取得
 $user_seq = $_SESSION['login_info[user]'];
-$sql = "SELECT m_group.group_seq 
-		FROM m_group 
+$sql = "SELECT m_group.group_seq
+		FROM m_group
 		INNER JOIN group_details ON m_group.group_seq = group_details.group_seq
-		WHERE m_group.class_flg = '1' 
+		WHERE m_group.class_flg = '1'
 		AND group_details.user_seq = '$user_seq' ";
 
 $result = mysql_query($sql);
@@ -22,7 +19,6 @@ $result = mysql_query($sql);
 $row = mysql_fetch_array($result);
 
 $class_seq = $row['group_seq'];
-
 
 //今現在授業が行われているか調べる
 $sql = "SELECT subject_seq FROM board WHERE class_seq = '$class_seq' AND end_flg = '1';";
@@ -34,6 +30,14 @@ $subject_seq = $row['subject_seq'];
 $sql = "SELECT * FROM m_subject WHERE subject_seq = '$subject_seq'";
 $result = mysql_query($sql);
 
+
+//クッキー設定
+setcookie("user_seq",$user_seq,$time,"/");
+setcookie("subject_seq",$subject_seq,$time,"/");
+setcookie("flg",ture,$time,"/");
+
+
+
 ?>
 <html>
 <head>
@@ -44,15 +48,15 @@ $result = mysql_query($sql);
 </head>
 <body>
 
-	<?php 
+	<?php
 	//自分が参加できる授業が行われている場合
 	if($cnt > 0)
 	{?>
-	<form action="http://49.212.201.99:3000"method="post"enctype="multipart/form-data">
-		<input type="hidden" name="room" value="<?= $class_seq ?>" >
+	<form action="http://49.212.201.99:3000" target="_blank" method="post"enctype="multipart/form-data">
+
 		<input type="button" value="" class="page_select"data-id="<?= $class_seq ?>">
-	</form>			
-	<?php 
+	</form>
+	<?php
 	}
 	//授業が何も行われていなかった場合
 	else
@@ -65,7 +69,7 @@ $result = mysql_query($sql);
 		<form action="old_lesson.php" method="post">
 		<input type="submit" value="過去授業へ">
 		</form>
-<?php 
+<?php
 	}
 	?>
 </body>
@@ -106,7 +110,7 @@ $(function() {
 		var page= $(this).data('id');
 		// クッキーの発行（書き込み）
 		setCookie("room",page, "", "/", 1);
-		document.location = "http://49.212.201.99:3000";
+		window.open("http://49.212.201.99:3000");
 
     });
 });

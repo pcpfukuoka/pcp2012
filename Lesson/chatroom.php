@@ -3,9 +3,9 @@
 $time = time() + 60 * 60*24;
 
 
-setcookie("user_seq","9",$time,"/");
+setcookie("user_seq","19",$time,"/");
 setcookie("subject_seq","2",$time,"/");
-setcookie("flg",true,$time,"/");
+setcookie("flg",false,$time,"/");
 
 ?>
 <html>
