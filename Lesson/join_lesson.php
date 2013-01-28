@@ -25,7 +25,6 @@ else
 	INNER JOIN group_details ON m_group.group_seq = group_details.group_seq
 	WHERE m_group.class_flg = '1'
 	AND group_details.user_seq = '$user_seq'";
-	echo $sql;
 	$result = mysql_query($sql);
 
 	$row = mysql_fetch_array($result);

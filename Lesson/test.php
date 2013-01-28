@@ -132,7 +132,6 @@
 		$sql3 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'"AND class_seq='.$group_seq.' AND end_flg="0";';
 		$result3 = mysql_query($sql3);
 		$count3 = mysql_num_rows($result3);
-
 		$page_max = 1;
 		if($count3 > 0)
 		{
@@ -148,7 +147,6 @@
 
 	?>
 			<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="100" height="100" id="<?=$i ?>_image"></td>
-
 	<?php
 			if($i%5==0){
 				$tr_=$i/5;
