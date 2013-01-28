@@ -26,7 +26,7 @@
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 			<div align="center">
-				<font class="Cubicfont">授業（仮）</font>
+				<font class="Cubicfont">授業</font>
 			</div>
 			<hr color="blue"></hr>
 			<br><br><br>
