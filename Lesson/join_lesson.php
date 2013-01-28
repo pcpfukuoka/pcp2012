@@ -6,9 +6,8 @@ $time = time() + 60 * 60*24;
 
 
 $flg = $_SESSION['position_flg'];
-
 //先生だったら
-if($flg = "teacher")
+if($flg == "teacher")
 {
 	$class_seq = $_GET['id2'];
 	$subject_seq = $_GET['id'];
@@ -25,7 +24,7 @@ else
 	FROM m_group
 	INNER JOIN group_details ON m_group.group_seq = group_details.group_seq
 	WHERE m_group.class_flg = '1'
-	AND group_details.user_seq = '$user_seq' ";
+	AND group_details.user_seq = '$user_seq'";
 	echo $sql;
 	$result = mysql_query($sql);
 
