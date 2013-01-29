@@ -74,10 +74,10 @@
 				<!-------------------------------------------------------------------->
 
 
-				<table>
+				<table class="table_02">
 					<tr>
-						<td align="center" width="80" bgcolor="yellow"><font size="5">年月</font></td>
-						<td align="center" width="100" bgcolor="yellow"><font size="5">クラス</font></td>
+						<td align="center" width="80" ><font size="5">年月</font></td>
+						<td align="center" width="100"><font size="5">クラス</font></td>
 						<td align="center" width="40"></td>
 					</tr>
 
