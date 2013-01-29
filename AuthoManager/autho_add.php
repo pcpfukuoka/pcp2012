@@ -11,7 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
  </head>
-  <body>
+  <body onLoad="document.form1.group_name.focus()">
   		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
   <form name="form1" action="autho_add_con.php" method="POST">
@@ -163,8 +163,12 @@
 function check(str)
 {
 	var a =  $(str).val();
-	inputCheck(a);
-	$(str).focus();
+	var ret = inputCheck(a);
+
+	if(ret == false)
+	{
+		document.$(str).focus();
+	}
 }
 
   </script>
