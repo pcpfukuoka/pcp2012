@@ -19,8 +19,7 @@ function inputCheck( str )
 
 	if ( trim( str ).length == 0 )
 	{
-		ret = false;
-		alert( "未入力です" );
+		ret = "未入力です";
 		return ret;
 	}
 	else
@@ -40,8 +39,7 @@ function valueCheck_jp( str )
 
 	if ( str.match(  /[^0-9]+/ ))
 	{
-		ret = false;
-		alert( "入力値が間違っています" );
+		ret = "入力値が間違っています";
 		return ret;
 	}
 	else
@@ -82,8 +80,7 @@ function lengthCheck( str , len_min , len_max )
 	var ret;
 	if((len_min <= str.length) && (str.length <= len_max))
 	{
-		ret = false;
-		alert("len_min" + "文字以上" + "len_max" + "文字以下ではありません");
+		ret = "len_min" + "文字以上" + "len_max" + "文字以下ではありません";
 		return ret;
 	}
 	else
@@ -103,9 +100,7 @@ function AlphabetCheck(str)
 	var ret = true;
 	if( str.match( /[^A-Za-z¥s.-]+/ ) )
 	{
-		ret = false;
-
-		alert("英語名は、半角英文字のみで入力して下さい。");
+		ret = "英語名は、半角英文字のみで入力して下さい";
 		return ret;
 	}
 	return ret;
@@ -122,9 +117,7 @@ function NumberCheck(str)
 
 	if( str.match( /[^0-9]+/ ) )
 	{
-		ret = false;
-
-		alert("年齢は、半角数字のみで入力して下さい。");
+		ret = "年齢は、半角数字のみで入力して下さい";
 		return ret;
 	}
 	return ret;
@@ -140,9 +133,7 @@ function FuriganaCheck(str)
 
 	if( str.match( /[^ぁ-ん　¥s]+/ ) )
 	{
-		ret = false;
-
-		alert("ふりがなは、「ひらがな」 のみで入力して下さい。");
+		ret = "ふりがなは、「ひらがな」 のみで入力して下さい";
 		return ret;
 	}
 	return ret;
@@ -174,22 +165,19 @@ function chkRegEmail(str)
 	{
 		if(str.match(Seiki))
 		{
-			ret = true;
-			alert(str.match(Seiki)+"\n\nメールアドレスの形式は正しいです");
+			ret = str.match(Seiki)+"\n\nメールアドレスの形式は正しいです";
 			return ret;
 		}
 		else
 		{
-			ret = false;
-			alert("メールアドレスの形式が不正です");
+			ret = "メールアドレスの形式が不正です";
 			return ret;
 		}
 	}
 	else
 	{
-		ret = false;
+		ret = "メールアドレスを入力してください";
 		/* 何も入力されていない場合はアラート表示 */
-		alert("メールアドレスを入力してください");
 		return ret;
 	}
 }
@@ -219,13 +207,12 @@ function formCheck()
 
     if( flag ) // 入力文字数が、不足もしくは超過している場合
     {
-    	ret = true;
-    	window . alert( '入力内容に不備があります。' ); // アラートを表示
+    	ret = "入力内容に不備があります"; // アラートを表示
     	return ret; // 送信中止
     }
     else // 入力文字数が、不足もしくは超過していない場合
     {
-    	ret = false;
+    	ret = true;
     	document . getElementById( 'notice-input-text-1' ) . style . display = "none";
     	return ret; // 送信実行
     }
@@ -244,8 +231,7 @@ function tabooCheck(val)
 
 	if (val.match(regex) != null)
 	{
-		ret = false;
-		alert("禁止文字が含まれています");
+		ret = "禁止文字が含まれています";
 		return ret;
 	}
 

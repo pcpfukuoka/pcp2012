@@ -22,6 +22,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		<script src="../javascript/form_reference.js"></script>
 		<title>グループ追加</title>
 	</head>
 
@@ -46,7 +47,7 @@
 				<?php
 					}
 				?>
-				
+
 				<table class="table_01">
 					<tr>
 						<th>グループ名</th>
