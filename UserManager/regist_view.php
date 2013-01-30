@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<script src="../javascript/jquery-ui-1.8.24.custom.min.js"></script>
+		<script src="../javascript/form_reference.js"></script>
 				</head>
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
@@ -92,7 +93,7 @@
 			$(document).on('click', '#student', function() {
 
 				//対象のinputタグのNameを配列にかくのう
-				
+
 				if(document.getElementById("student").checked)
 				{
 						$("*[name=stuent_id]").attr('disabled', false);

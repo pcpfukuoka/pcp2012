@@ -20,6 +20,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		 <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		 <script src="../javascript/form_reference.js"></script>
 		<title>新規作成</title>
 	</head>
 

@@ -22,8 +22,8 @@ if (isset($_POST['submit']))
 }
 
 //test_seqに対応したgroup_seqの取得
-$sql = "SELECT group_seq 
-		FROM m_test 
+$sql = "SELECT group_seq
+		FROM m_test
 		WHERE test_seq = '$test_seq';";
 $result_group = mysql_query($sql);
 $group = mysql_fetch_array($result_group);
@@ -39,10 +39,10 @@ $sql = "SELECT m_user.user_seq, m_user.user_name
 $result_user = mysql_query($sql);
 $count_user = mysql_num_rows($result_user);
 
-//点数の取得	
+//点数の取得
 $sql = "SELECT user_seq, point
-		FROM test_result 
-		WHERE test_seq = '$test_seq' 
+		FROM test_result
+		WHERE test_seq = '$test_seq'
 		ORDER BY user_seq;";
 $result_point = mysql_query($sql);
 
@@ -54,9 +54,10 @@ $result_point = mysql_query($sql);
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		<script src="../javascript/form_reference.js"></script>
 		<title>点数入力画面</title>
 	</head>
-	
+
 	<body>
 	<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
@@ -64,28 +65,28 @@ $result_point = mysql_query($sql);
 	<div align = "center">
 			<font class="Cubicfont2">点数入力</font><hr color="blue"><br><br><br>
 		</div>
-		
+
 	<!-- 点数確認画面に飛ぶ -->
 		<form action = "test_point_con.php" method = "POST">
 
 			<!-- テーブルの作成 -->
 			<table border = "1" class="table_01">
-	
+
 			<tr>
 					<th>名前</th>
 					<th>点数</th>
 				</tr>
-				<?php 
+				<?php
 				for ($i = 0; $i < $count_user; $i++)
 				{
 					$user = mysql_fetch_array($result_user);
 					$point = mysql_fetch_array($result_point);
-					
+
 					$user_seq = $user['user_seq'];
-					
+
 					if ($user_seq != $point['user_seq'])
 					{
-						$sql = "INSERT INTO test_result 
+						$sql = "INSERT INTO test_result
 								VALUES (0, '$test_seq', '$user_seq', 0);";
 						mysql_query($sql);
 				?>
@@ -95,7 +96,7 @@ $result_point = mysql_query($sql);
 						</tr>
 					<?php
 					}
-					else 
+					else
 					{
 					?>
 						<tr>
@@ -107,7 +108,7 @@ $result_point = mysql_query($sql);
 				}
 				?>
 			</table>
-			<?php 
+			<?php
 			Dbdissconnect($link);
 			$_SESSION['group_seq'] = $group_seq;
 			$_SESSION['test_seq'] = $test_seq;

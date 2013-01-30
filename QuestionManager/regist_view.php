@@ -9,6 +9,7 @@ session_start();
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		 <script src="../javascript/jquery-1.8.2.min.js"></script>
+		 <script src="../javascript/form_reference.js"></script>
 	</head>
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
@@ -19,30 +20,30 @@ session_start();
 		<hr color="blue"><br><br>
 
 		<div align = "center">
-			
-	
-			<?php 
+
+
+			<?php
 			require_once("../lib/dbconect.php");
 			$dbcon = DbConnect();
 			$sql = "SELECT * FROM m_group WHERE delete_flg = 0;";
 			$result = mysql_query($sql);
 			$cnt = mysql_num_rows($result);
 			?>
-			
+
 			<form method ="post" action="regist.php">
 			タイトル:<input type="text" name="question_title"><br>
 			期間：<input type="date" name="start_date">〜<input type="date" name="end_date"><br>
 			対象グループ：
 			<select name = "target_group_seq" size = "1">
 				<option value = "-1">選択</option>
-					<option value = "0">全員</option>			
-				<?php 
+					<option value = "0">全員</option>
+				<?php
 				for($i = 0; $i < $cnt; $i++)
 				{
 					$row = mysql_fetch_array($result);
 					?>
-					<option value = "<?=  $row['group_seq'] ?>"><?= $row['group_name'] ?></option>			
-			<?php 
+					<option value = "<?=  $row['group_seq'] ?>"><?= $row['group_name'] ?></option>
+			<?php
 				}
 				?>
 			</select><br>
@@ -53,10 +54,10 @@ session_start();
 			<div id="input_section">
 			</div>
 			<input class="button4"type="submit" value ="登録">
-			</form>		
+			</form>
 		</div>
 		</div>
-		
+
 	</body>
 		<script>
 		$(function() {
@@ -70,7 +71,7 @@ session_start();
 				$("*[name=end_date]").attr('disabled', true);
 				$("*[name=target_group_seq]").attr('disabled', true);
 				$("*[name=question_description]").attr('disabled', true);
-				
+
 				//入力した値を取得
 		        var question_title = $("*[name=question_title]").val();
 		        var start_date = $("*[name=start_date]").val();
@@ -82,7 +83,7 @@ session_start();
 		            start_date: start_date,
 		            end_date: end_date,
 		            question_description: question_description,
-		            target_group: target_group		            
+		            target_group: target_group
 		                },
 		        function(rs) {
 		    		        //次に入力するために必要な要素を追加
@@ -92,7 +93,7 @@ session_start();
 			                $('#input_section').append('<div id="question_awnser_lsit">');
 			                $('#input_section').append('</div>');
 			                $('#input_section').append('<input type="button" value="追加" class="questionDetailsAdd">');
-			                
+
                 	  });
 		    });
 
@@ -106,7 +107,7 @@ session_start();
 		                    '</li>'
 		                );
 	                $('#question_awnser_lsit').append(e);
-                
+
 		    });
 
 			//回答一覧追加
@@ -128,7 +129,7 @@ session_start();
 		            question_details_description : question_details_description
 		                },
 		        function(rs) {
-		    		        
+
 		    		//今入力した内容をquestion_detailsに追加
     		        $('#question_details').append('質問内容：<input type="text" name="comp_question_details_description"readonly=on value="'+ question_details_description +'" ><br>');
 	                $('#question_details').append('回答区分：<input type="text" name="comp_question_kbn"readonly=on value="'+ kbn[answer_kbn] +'" ><br>');
@@ -137,11 +138,11 @@ session_start();
 	                $('#question_details').append('<ul>');
 	                $("[name='question_list_name[]']").each(function() {
 		                var name = $("[name='question_list_name[]']").eq(i).val();
-		                $('#question_details').append('<li>'+ name+'</li>');		                    
+		                $('#question_details').append('<li>'+ name+'</li>');
 		                i++;
 		            });
 	                $('#question_details').append('</ul>');
-	                
+
 	                $('#input_section').empty();
     		        //次に入力するために必要な要素を追加
 	                $('#input_section').append('<input type="hidden" name="seq" value = "'+ seq +'"><br>');
@@ -151,7 +152,7 @@ session_start();
 	                $('#input_section').append('<div id="question_awnser_lsit">');
 	                $('#input_section').append('</div>');
 	                $('#input_section').append('<input type="button" value="追加" class="questionDetailsAdd">');
-    		        				                			                	 
+
 		        });
 		    });
 		});
