@@ -70,7 +70,7 @@
 
 			$('#frame').empty();
 			//ボタンを連続で押させないようにする
-			var button_ele=document.getElementById('disabled');
+			var button_ele=document.getElementById('decision');
 			button_ele.disabled=true;
 
 			var date_ele=document.getElementById('date');
