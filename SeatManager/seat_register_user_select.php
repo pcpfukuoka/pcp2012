@@ -214,7 +214,7 @@
 <img class="bg" src="../images/blue-big.jpg" alt="" />
 <div id="container">
 	<div align="center">
-		<font class="Cubicfont">登録選択画面</font>
+		<font class="Cubicfont">登録詳細画面</font>
 	</div>
 	<hr color="blue">
 <div class="left_box">
