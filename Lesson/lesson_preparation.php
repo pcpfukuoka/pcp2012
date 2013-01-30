@@ -20,9 +20,18 @@
 	<head>
 			<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 			<script src="../javascript/jquery-1.8.2.min.js"></script>
-
+			<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+			<link rel="stylesheet" type="text/css" href="../css/button.css" />
+			<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
 	<body>
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div align="center">
+			<font class="Cubicfont">授業</font>
+		</div>
+		<hr color="blue"></hr>
+		<br><br><br>
+
 		<table border="1">
 			<tr>
 				<th>授業の日付</th>
@@ -75,16 +84,14 @@
 	</body>
 	<script>
 
-	$(function() {//決定ボタンをクリックした後の過去授業の画像を出力する処理
+	$(function() {
+		/* 決定ボタンをクリックした後の過去授業の画像を出力する処理 */
 
-		//ボタンをすべて選択した後に決定ボタンを表示
+		//日付ボタンを選択した後に決定ボタンを表示
 		$(document).on('change', '#date', function() {
 			var decision_ele =document.getElementById("decision");
 			decision_ele.disabled=false;
-
 	    });
-
 	});
 	</script>
-
 </html>
