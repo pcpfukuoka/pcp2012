@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<script src="../javascript/jquery-ui-1.8.24.custom.min.js"></script>
+		<script src="../javascript/form_reference.js"></script>
 				</head>
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
@@ -110,36 +111,36 @@
 		<input type="checkbox" id="edit" >編集する
 		</div>
 	</body>
-	
-	
+
+
 				<script>
 		$(function() {
 			//検索結果から権限を追加するための処理
 			$(document).on('click', '#edit', function() {
 
 				//対象のinputタグのNameを配列にかくのう
-				input_names = new Array("user_id", "pass", "user_name", "user_kana", "user_address	", 
+				input_names = new Array("user_id", "pass", "user_name", "user_kana", "user_address	",
 										"user_tel", "user_email", "autho_seq", "stuent_id");
-				
+
 				if(document.getElementById("edit").checked)
 				{
-					for (i = 0; i < input_names.length; i++) 
+					for (i = 0; i < input_names.length; i++)
 					{
 						$("*[name="+input_names[i]+"]").attr('disabled', false);
-						
-					}			
+
+					}
 				}
 				else
 				{
-					for (i = 0; i < input_names.length; i++) 
+					for (i = 0; i < input_names.length; i++)
 					{
 						$("*[name="+input_names[i]+"]").attr('disabled', true);
-						
-					}			
-												
+
+					}
+
 				}
 			});
 		});
 			</script>
-	
+
 </html>
