@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 <link rel="stylesheet" type="text/css" href="../css/table.css" />
+<script src="../javascript/form_reference.js"></script>
 </head>
 <body>
 <img class="bg" src="../images/blue-big.jpg" alt="" />
@@ -46,7 +47,7 @@
 	}
     ?>
     </tr></table><br>
-    ページ名<input size ="15" type="text" name="page_name"><br><!-- グループ名入力 -->
+    ページ名<input size ="15" type="text" name="page_name" id="page_name" Onblur="check('#page_name', ic)"><br><!-- グループ名入力 -->
 
     <br>
     <table>
@@ -106,4 +107,13 @@
 	    </form>
 	    </div>
 </body>
+
+<script>
+	//strはid
+	function check(str)
+	{
+		var a =  $(str).val();
+		var ret = inputCheck(a);
+	}
+</script>
 </html>

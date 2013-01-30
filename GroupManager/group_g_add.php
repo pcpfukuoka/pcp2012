@@ -22,6 +22,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		<script src="../javascript/form_reference.js"></script>
 		<title>グループ追加</title>
 	</head>
 
@@ -46,7 +47,7 @@
 				<?php
 					}
 				?>
-				
+
 				<table class="table_01">
 					<tr>
 						<th>グループ名</th>
@@ -59,13 +60,13 @@
 								if(isset($_GET['name_error']))
 								{
 							?>
-							<input type="text" size="50" name = "new_group_name" value="<?= $group_name ?>">
+							<input type="text" size="50" name = "new_group_name" id="group_name" value="<?= $group_name ?>" Onblur="check('#group_name', ic)">
 							<?php
 								}
 								else
 								{
 							?>
-							<input type="text" size="50" name = "new_group_name">
+							<input type="text" size="50" name = "new_group_name" id="new_group_name" Onblur="check('#new_group_name', ic)">
 							<?php
 								}
 							?>
@@ -82,4 +83,15 @@
 		</form>
 		</div>
 	</body>
+
+	<script>
+		//strはid
+		function check(str)
+		{
+			var a =  $(str).val();
+			var ret = inputCheck(a);
+
+
+		}
+	</script>
 </html>
