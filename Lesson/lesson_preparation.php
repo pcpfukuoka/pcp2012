@@ -25,7 +25,6 @@
 			<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
 	<body>
-		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div align="center">
 			<font class="Cubicfont">授業</font>
 		</div>
