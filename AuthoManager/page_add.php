@@ -47,7 +47,7 @@
 	}
     ?>
     </tr></table><br>
-    ページ名<input size ="15" type="text" name="page_name"><br><!-- グループ名入力 -->
+    ページ名<input size ="15" type="text" name="page_name" id="page_name" Onblur="check('#page_name', ic)"><br><!-- グループ名入力 -->
 
     <br>
     <table>
@@ -107,4 +107,13 @@
 	    </form>
 	    </div>
 </body>
+
+<script>
+	//strはid
+	function check(str)
+	{
+		var a =  $(str).val();
+		var ret = inputCheck(a);
+	}
+</script>
 </html>

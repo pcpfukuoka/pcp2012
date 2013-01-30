@@ -31,7 +31,7 @@ session_start();
 			?>
 
 			<form method ="post" action="regist.php">
-			タイトル:<input type="text" name="question_title"><br>
+			タイトル:<input type="text" name="question_title" id="question_title" Onblur="check('#question_title', ic)"><br>
 			期間：<input type="date" name="start_date">〜<input type="date" name="end_date"><br>
 			対象グループ：
 			<select name = "target_group_seq" size = "1">
@@ -156,5 +156,14 @@ session_start();
 		        });
 		    });
 		});
+
+		//strはid
+		function check(str)
+		{
+			var a =  $(str).val();
+			var ret = inputCheck(a);
+
+
+		}
 		</script>
 </html>

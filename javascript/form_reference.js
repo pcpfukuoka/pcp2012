@@ -4,6 +4,7 @@
 //・全角スペース
 //・タブ
 //・改行（CR, LF）
+//t
 function trim(str) {
 	return str.replace(/^[ 　\t\r\n]+|[ 　\t\r\n]+$/g, "");
 }
@@ -57,17 +58,16 @@ function check(str)
 {
 	//txt = document.myFORM.myTEXT.value;
 	//alert(n);
-	n = str.length;
+	var n = str.length;
+	var ret = true;;
 
 	if (n <= 4)
 	{
-		alert("５文字以上にしてください");
-	}
-	else
-	{
-		alert("使用できます");
+		ret ="５文字以上にしてください";
+		return ret;
 	}
 
+	return ret;
 }
 
 

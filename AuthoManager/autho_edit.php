@@ -1,7 +1,7 @@
 <?php
 /*************************************
  * 権限管理編集画面
- * 
+ *
  * 登録されている権限グループの権限を変更する。
  *************************************/
 
@@ -49,12 +49,12 @@ Dbdissconnect($link);
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 		<script src="../javascript/form_reference.js"></script>
-		
+
 	<script>
 		$(function()
 		{
 			//検索結果から権限を追加するための処理
-			$(document).on('click', '.add_btn', function() 
+			$(document).on('click', '.add_btn', function()
 			{
 				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_Delivery_","Show_Delete_");
 				var id_list  = new Array("Read_", "Write_", "Update_","Delivery_","Delete_");
@@ -71,7 +71,7 @@ Dbdissconnect($link);
 					document.getElementById(name).value= value;
 				}
 			});
-			$(document).on('click', '.delete_btn', function() 
+			$(document).on('click', '.delete_btn', function()
 			{
 				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_Delivery_","Show_Delete_");
 				var id_list  = new Array("Read_", "Write_", "Update_","Delivery_","Delete_");
@@ -90,10 +90,10 @@ Dbdissconnect($link);
 			});
 		});
 
-		$(function() 
+		$(function()
 		{
 			//質問内容追加
-			$(document).on('change', '.edit_text', function() 
+			$(document).on('change', '.edit_text', function()
 			{
 				var str = $(".edit_text").val();
 				//チェックしたい関数(Function)を書く
@@ -101,28 +101,35 @@ Dbdissconnect($link);
 
 				if (ret == false)
 				{
-					
+
 				}
 			});
 		});
+
+		//strはid
+		function check(str)
+		{
+			var a =  $(str).val();
+			var ret = inputCheck(a);
+		}
 	</script>
-		
+
 	</head>
-	
+
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" />
 		<div id="container">
-	
+
 		<div align = "center">
 			<font class="Cubicfont">権限管理編集</font>
 		</div><hr color="blue">
-		
+
 		<!-- 確認画面に飛ぶ -->
 		<form name = "edit" action = "autho_edit_con.php" method = "POST">
-		
+
 		<!-- 元の権限グループ名を表示させ、変更できるようにする -->
-			名前<input size ="15" type="text" name="edit_name" class = "edit_text" value = <?= $edit_name['autho_name'] ?>>
-		
+			名前<input size ="15" type="text" name="edit_name" class = "edit_text" id="edit_name" value = <?= $edit_name['autho_name'] ?> Onblur="check('#edit_name', ic)">
+
 		<!-- 		テープルの作成 -->
 			<table class="table_01" width = "80%">
 				<tr>
@@ -135,7 +142,7 @@ Dbdissconnect($link);
 					<th width = "10%" align = "center" ><font size = "5">Delete</font></th>
 					<th width = "5%" align = "center" ><font size = "5"></font></th>
 				</tr>
-				
+
 				<?php
 				$autho_array = Array("read_flg", "write_flg", "update_flg", "delivery_flg", "delete_flg");
 				$autho_id = Array("Read_", "Write_", "Update_", "Delivery_", "Delete_");
@@ -147,22 +154,22 @@ Dbdissconnect($link);
 				?>
 					<tr>
 						<td align = "center"><?= $page['page_name'] ?></td>		<!--  ページ名の表示	-->
-					
-						<?php 
+
+						<?php
 						require_once("../lib/autho.php");
 						$page_fun = new autho_class();
 						$page_cla = $page_fun -> autho_Pre($autho_seq, $page['page_seq']);?>
 
 						<td><input type = "button" class = "delete_btn" data-id = "<?= $page['page_seq'] ?>" value = "ー" id = "id"></td>
-						
-			<?php 						
+
+			<?php
 						//チェックボックスの表示
 						for ($j = 0; $j < 5; $j++)
 						{
 							$autho = $autho_array[$j];
 							$id = $autho_id[$j];
 							$show = $show_autho[$j];
-							
+
 							if($page_cla[$autho] == 1)
 							{
 								$autho_chk++;
@@ -173,14 +180,14 @@ Dbdissconnect($link);
 								</td>
 							<?php
 							}
-							else 
+							else
 							{
 							?>
 								<td>
 									<input style = "width:50%; font-size: 100%; text-align: center;" type = "text" value = "×" id = "<?= $show.$page['page_seq'] ?>" readonly >
 									<input type = "hidden" name = "<?= $id.$page['page_seq'] ?>" value = "0" id = "<?= $id.$page['page_seq'] ?>">
 								</td>
-							<?php 
+							<?php
 							}
 						}
 						?>
@@ -192,7 +199,7 @@ Dbdissconnect($link);
 				?>
 			</table>
 			<br>
-			
+
 			<input class="button4" type = "submit" value = "確認">
 		</form>
 		</div>

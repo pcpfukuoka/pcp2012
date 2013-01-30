@@ -52,11 +52,25 @@
   			</select>
 			<br>
 			<font size="5">件　 名</font>
-	 		<input size="30" type="text" name="title"><br>
+	 		<input size="30" type="text" name="title" id="title" Onblur="check('#title', ic)"><br>
 	 		<font size="5">プリント</font>
 			<input size="30" type="file" name="pdf"><br><br>
 	  		<input class="button4" type="submit" value="保存" name="Preservation">
 		</form>
 		</div>
 	</body>
+
+	<script>
+		//strはid
+		function check(str)
+		{
+			var a =  $(str).val();
+			var ret = inputCheck(a);
+
+			if(ret == false)
+			{
+				document.$(str).focus();
+			}
+		}
+	</script>
 </html>

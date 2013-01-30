@@ -60,13 +60,13 @@
 								if(isset($_GET['name_error']))
 								{
 							?>
-							<input type="text" size="50" name = "new_group_name" value="<?= $group_name ?>">
+							<input type="text" size="50" name = "new_group_name" id="group_name" value="<?= $group_name ?>" Onblur="check('#group_name', ic)">
 							<?php
 								}
 								else
 								{
 							?>
-							<input type="text" size="50" name = "new_group_name">
+							<input type="text" size="50" name = "new_group_name" id="new_group_name" Onblur="check('#new_group_name', ic)">
 							<?php
 								}
 							?>
@@ -83,4 +83,15 @@
 		</form>
 		</div>
 	</body>
+
+	<script>
+		//strはid
+		function check(str)
+		{
+			var a =  $(str).val();
+			var ret = inputCheck(a);
+
+
+		}
+	</script>
 </html>

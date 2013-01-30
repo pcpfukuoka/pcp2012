@@ -92,7 +92,7 @@ $result_point = mysql_query($sql);
 				?>
 						<tr>
 							<td><?= $user['user_name'] ?></td>
-							<td><input size = "3" type = "text" name = "point<?= $i ?>" value = "0"></td>
+							<td><input size = "3" type = "text" name = "point<?= $i ?>" id="point<?= $i ?>" value = "0" Onblur="check('#point<?= $i ?>', ic, vc, tc)"></td>
 						</tr>
 					<?php
 					}
@@ -101,7 +101,7 @@ $result_point = mysql_query($sql);
 					?>
 						<tr>
 							<td><?= $user['user_name'] ?></td>
-							<td><input size = "3" type = "text" name = "point<?= $i ?>" value = "<?= $point['point'] ?>"></td>
+							<td><input size = "3" type = "text" name = "point<?= $i ?>" id="point<?= $i ?>" value = "<?= $point['point'] ?>" Onblur="check('#point<?= $i ?>', ic, vc, tc)"></td>
 						</tr>
 				<?php
 					}
@@ -128,4 +128,13 @@ $result_point = mysql_query($sql);
 		</div>
 
 	</body>
+
+	<script>
+		//strはid
+		function check(str)
+		{
+			var a =  $(str).val();
+			var ret = inputCheck(a);
+		}
+	</script>
 </html>

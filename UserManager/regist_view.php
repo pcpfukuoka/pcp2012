@@ -25,37 +25,37 @@
 		<table>
 			<tr>
 				<td align="center">ユーザID:</td>
-				<td align="center"><input type="text" name="user_id"></td>
+				<td align="center"><input type="text" name="user_id" id="user_id" Onblur="check('#user_id', ic, ac, nc)"></td>
 			</tr>
 
 			<tr>
 				<td align="center">パスワード：</td>
-				<td align="center"><input type="text" name="pass"></td>
+				<td align="center"><input type="text" name="pass" id="pass" Onblur="check('#pass', ic, ac, nc, c)"></td>
 			</tr>
 
 			<tr>
 				<td align="center">ユーザ名：</td>
-				<td align="center"><input type="text" name="user_name"></td>
+				<td align="center"><input type="text" name="user_name" id="user_name" Onblur="check('#user_name', ic, tc, t, )"></td>
 			</tr>
 
 			<tr>
 				<td align="center">ふりがな：</td>
-				<td align="center"><input type="text" name="user_kana"></td>
+				<td align="center"><input type="text" name="user_kana" id="user_kana" Onblur="check('#user_kana', ic, tc, t, )"></td>
 			</tr>
 
 			<tr>
 				<td align="center">住所：</td>
-				<td align="center"><input type="text" name="user_address"></td>
+				<td align="center"><input type="text" name="user_address" id="user_address" Onblur="check('#user_address', ic, tc, t, )"></td>
 			</tr>
 
 			<tr>
 				<td align="center">電話番号</td>
-				<td align="center"><input type="text" name="user_tel"></td>
+				<td align="center"><input type="text" name="user_tel" id="user_tel" Onblur="check('#user_tel', ic, vc, tc, foc)"></td>
 			</tr>
 
 			<tr>
 				<td align="center">メールアドレス：</td>
-				<td align="center"><input type="text" name="user_email"></td>
+				<td align="center"><input type="text" name="user_email" id="user_email" Onblur="check('#user_email', ic, cE)"></td>
 			</tr>
 
 			<tr>
@@ -79,7 +79,7 @@
 			<td>学籍番号※学生のみ</td>
 
 					<td><input type="checkbox" id="student">学生
-			<input type="text" name="stuent_id" disabled="true"></td>
+			<input type="text" name="stuent_id" id="student_id" disabled="true" Onblur="check('#student_id', ic, tc, vc, )"></td>
 		</tr>
 	</table>
 		<br>
@@ -104,5 +104,17 @@
 				}
 			});
 		});
+
+		//strはid
+		function check(str)
+		{
+			var a =  $(str).val();
+			var ret = inputCheck(a);
+
+			if(ret == false)
+			{
+				document.$(str).focus();
+			}
+		}
 	</script>
 </html>

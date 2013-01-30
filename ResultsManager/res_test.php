@@ -149,10 +149,10 @@ Dbdissconnect($link);
 				<input type = "hidden" name = "subject" value = "<?= $subject ?>">
 
 				<!-- 日付の入力 -->
-					<td bgcolor = "blue"><input type = "text" name = "day" value = "<?= date("Y/m/d") ?>" ></td>
+					<td bgcolor = "blue"><input type = "text" name = "day" id="day" value = "<?= date("Y/m/d") ?>" Onblur="check('#day', ic, vc)"></td>
 
 				<!-- テスト範囲・内容入力 -->
-					<td bgcolor = "blue"><textarea rows="2" cols="30" name = "contents"></textarea></td>
+					<td bgcolor = "blue"><textarea rows="2" cols="30" name = "contents" id="contents" Onblur="check('#contents', ic)"></textarea></td>
 
 					<!-- 先生の選択 -->
 					<td bgcolor = "blue"><select name = "teacher">
@@ -288,4 +288,15 @@ Dbdissconnect($link);
   </script>
 
 	</body>
+
+	<script>
+		//strはid
+		function check(str)
+		{
+			var a =  $(str).val();
+			var ret = inputCheck(a);
+
+
+		}
+	</script>
 </html>

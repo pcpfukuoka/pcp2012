@@ -39,37 +39,37 @@
 		<table>
 			<tr>
 				<td align="center">ユーザID:</td>
-				<td align="center"><input type="text" name="user_id" value="<?= $user_row['user_id'] ?>" disabled="true"></td>
+				<td align="center"><input type="text" name="user_id" id="user_id" value="<?= $user_row['user_id'] ?>" disabled="true" Onblur="check('#user_id', ic, ac, nc)"></td>
 			</tr>
 
 			<tr>
 				<td align="center">パスワード：</td>
-				<td align="center"><input type="text" name="pass" value="<?= $user_row['pass'] ?>" disabled="true"></td>
+				<td align="center"><input type="text" name="pass" id="pass" value="<?= $user_row['pass'] ?>" disabled="true" Onblur="check('#pass', ic, ac, nc, c)"></td>
 			</tr>
 
 			<tr>
 				<td align="center">ユーザ名</td>
-				<td align="center"><input type="text" name="user_name" value="<?= $user_row['user_name'] ?>" disabled="true"></td>
+				<td align="center"><input type="text" name="user_name" id="user_name" value="<?= $user_row['user_name'] ?>" disabled="true" Onblur="check('#user_name', ic, tc, t, )"></td>
 			</tr>
 
 			<tr>
 				<td align="center">ふりがな：</td>
-				<td align="center"><input type="text" name="user_kana" value="<?= $user_row['user_kana'] ?>" disabled="true"></td>
+				<td align="center"><input type="text" name="user_kana" id="user_kana" value="<?= $user_row['user_kana'] ?>" disabled="true" Onblur="check('#user_kana', ic, tc, t, )"></td>
 			</tr>
 
 			<tr>
 				<td align="center">住所：</td>
-				<td align="center"><input type="text" name="user_address" value="<?= $user_row['user_address'] ?>" disabled="true"></td>
+				<td align="center"><input type="text" name="user_address" id="user_address" value="<?= $user_row['user_address'] ?>" disabled="true" Onblur="check('#user_address', ic, tc, t, )"></td>
 			</tr>
 
 			<tr>
 				<td align="center">電話番号:</td>
-				<td align="center"><input type="text" name="user_tel" value="<?= $user_row['user_tel'] ?>" disabled="true"></td>
+				<td align="center"><input type="text" name="user_tel" id="user_tel" value="<?= $user_row['user_tel'] ?>" disabled="true" Onblur="check('#user_tel', ic, vc, tc, foc)"></td>
 			</tr>
 
 			<tr>
 				<td align="center">メールアドレス：</td>
-				<td align="center"><input type="text" name="user_email" value="<?= $user_row['user_email'] ?>" disabled="true"></td>
+				<td align="center"><input type="text" name="user_email" id="user_email" value="<?= $user_row['user_email'] ?>" disabled="true" Onblur="check('#user_email', ic, cE)"></td>
 			</tr>
 
 			<tr>
@@ -100,7 +100,7 @@
 		</tr>
 		<tr>
 			<td>学籍番号※学生のみ</td>
-			<td><input type="text" name="stuent_id" value="<?= $user_row['student_id'] ?>" disabled></td>
+			<td><input type="text" name="stuent_id" id="student_id" value="<?= $user_row['student_id'] ?>" disabled Onblur="check('#student_id', ic, tc, vc, )">></td>
 		</tr>
 	</table>
 
@@ -141,6 +141,15 @@
 				}
 			});
 		});
+
+		//strはid
+		function check(str)
+		{
+			var a =  $(str).val();
+			var ret = inputCheck(a);
+
+
+		}
 			</script>
 
 </html>
