@@ -35,8 +35,6 @@
 		    }
 			else
 			{
-
-
 					//データの交換
 					$('#' + id_evc).children("p").text($(this).children("p").text());
 					$(this).children("p").text(name_evc);

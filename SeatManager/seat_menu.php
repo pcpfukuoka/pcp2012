@@ -9,30 +9,25 @@
 ?>
 <html>
 	<head>
-		<title>seat_list</title>
-
+		<title>seat_menu</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
-
 	</head>
-
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
-		<div align="center">
-			<font class="Cubicfont">座席表メニュー</font>
-		</div>
+			<div align="center">
+				<font class="Cubicfont">座席表メニュー</font>
+			</div>
 		<hr color="blue">
-
-
 	<br>
 	<div align="center">
 	<table>
+	<!-- 座席表表示ページへ -->
 	<tr>
-
 		<form action="seat_view.php" method="POST">
 <?php
 		$sql = "select distinct m_group.group_name,m_group.group_seq
@@ -49,6 +44,8 @@
 				$sql = "select seat_seq from seat where group_seq = '$group_seq'";
 				$res1 = mysql_query($sql);
 				$num = mysql_num_rows($res1);
+
+				//座席表が登録されているクラスを表示
 				if($num > 0)
 				{
 ?>
@@ -64,6 +61,7 @@
 		</td>
 		</form>
 	</tr>
+	<!-- 席替えページへ -->
 	<tr>
 		<form action="seat_change.php" method="POST">
 <?php
@@ -81,10 +79,11 @@
 				$sql = "select seat_seq from seat where group_seq = '$group_seq'";
 				$res1 = mysql_query($sql);
 				$num = mysql_num_rows($res1);
+				//座席表が登録されているクラスを表示
 				if($num > 0)
 				{
 ?>
-				<option style="width:80px;" value=<?= $gyo['group_seq']?>> <?=  $gyo['group_name']?></option>
+					<option style="width:80px;" value=<?= $gyo['group_seq']?>> <?=  $gyo['group_name']?></option>
 <?php
 				}
 			}
@@ -96,6 +95,7 @@
 		</td>
 		</form>
 	</tr>
+	<!-- 削除ページへ -->
 	<tr>
 		<form action="seat_delete_check.php" method="POST">
 <?php
@@ -113,6 +113,8 @@
 				$sql = "select seat_seq from seat where group_seq = '$group_seq'";
 				$res1 = mysql_query($sql);
 				$num = mysql_num_rows($res1);
+
+				//座席表が登録されているクラスを表示
 				if($num > 0)
 				{
 ?>
@@ -128,6 +130,7 @@
 		</td>
 		</form>
 	</tr>
+	<!-- 登録ページへ -->
 	<tr>
 		<form action="seat_register_user_select.php" method="POST">
 <?php
@@ -145,6 +148,8 @@
 				$sql = "select seat_seq from seat where group_seq = '$group_seq'";
 				$res1 = mysql_query($sql);
 				$num = mysql_num_rows($res1);
+
+				//座席表が登録されていないクラスを表示
 				if($num == 0)
 				{
 ?>

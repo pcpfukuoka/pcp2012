@@ -7,8 +7,6 @@
 	mysql_query("SET NAMES UTF8");
 
 	$group = $_POST['group'];
-
-
 ?>
 
 <html>
@@ -20,7 +18,6 @@
 			<link rel="stylesheet" type="text/css" href="../css/table.css" />
 			<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<style>
-
 			.left_box{
 				float:left;
 				width:300px;
@@ -38,174 +35,70 @@
 				height:300px;
 				overflow:scroll;
 			}
-	</style>
+		</style>
 	</head>
 	<body>
-
 	<script>
 	 	 $(function() {
 
-			var $user_cnt = $("input[type=checkbox]:checked").length;
-			$('#user_cnt').text($user_cnt + "人の生徒が選択されています");
+	 	    function Check()
+	 	    {
+	 	    	var $user_cnt = $("input[type=checkbox]:checked").length;
+	 	    	$('#user_cnt').text($user_cnt + "人の生徒が選択されています");
 
-			var $row_max = $('#row_max').val();
-			var $col_max = $('#col_max').val();
-			var $seat_cnt = $row_max * $col_max;
-			$('#seat_cnt').text($seat_cnt + "人分の座席があります");
+				var $row_max = $('#row_max').val();
+				var $col_max = $('#col_max').val();
+				var $seat_cnt = $row_max * $col_max;
 
-			var $balance = $seat_cnt - $user_cnt;
-			if($balance < 0)
-			{
-				$balance = $balance * -1;
-				$('#balance').text($balance + "人分の座席が不足しています");
-				$('#next').attr("disabled", "disabled");
+				var $balance = $seat_cnt - $user_cnt;
+				$('#seat_cnt').text($seat_cnt + "人分の座席があります");
 
-				$('#message').children("font").text("※座席数が不足しないように調整してください");
-				$('#message').children("font").css("color","red");
-			}
-			else
-			{
-				$('#balance').text($balance + "人分の座席が余っています");
+				if($balance < 0)
+				{
+					$balance = $balance * -1;
+					$('#balance').text($balance + "人分の座席が不足しています");
+					$('#next').attr("disabled", "disabled");
 
-				$('#message').children("font").text("※よろしければ確認画面へ進んでください");
-				$('#message').children("font").css("color","blue");
-			}
+					$('#message').children("font").text("※座席数が不足しないように調整してください");
+					$('#message').children("font").css("color","red");
+				}
+				else
+				{
+					$('#balance').text($balance + "人分の座席が余っています");
 
+					$('#message').children("font").text("※よろしければ確認画面へ進んでください");
+					$('#message').children("font").css("color","blue");
+				}
+	 	    }
 
+			Check();
 
-
-
+			//チェックボックスを操作したとき
 			$("input[type=checkbox]").click(function(){
-				$user_cnt = $("input[type=checkbox]:checked").length;
-				$('#user_cnt').text($user_cnt + "人の生徒が選択されています");
-
-				$balance = $seat_cnt - $user_cnt;
-
-				if($balance < 0)
-				{
-					$balance = $balance * -1;
-					$('#balance').text($balance + "人分の座席が不足しています");
-					$('#next').attr("disabled", "disabled");
-
-					$('#message').children("font").text("※座席数が不足しないように調整してください");
-					$('#message').children("font").css("color","red");
-				}
-				else
-				{
-					$('#balance').text($balance + "人分の座席が余っています");
-					$('#next').removeAttr("disabled");
-
-					$('#message').children("font").text("※よろしければ確認画面へ進んでください");
-					$('#message').children("font").css("color","blue");
-				}
-
+				Check();
 			});
 
+			//横列を操作したとき
 			$("#row_max").click(function(){
-				$row_max = $('#row_max').val();
-				$seat_cnt = $row_max * $col_max;
-				$('#seat_cnt').text($seat_cnt + "人分の座席があります");
-
-				$balance = $seat_cnt - $user_cnt;
-				if($balance < 0)
-				{
-					$balance = $balance * -1;
-					$('#balance').text($balance + "人分の座席が不足しています");
-					$('#next').attr("disabled", "disabled");
-
-					$('#message').children("font").text("※座席数が不足しないように調整してください");
-					$('#message').children("font").css("color","red");
-				}
-				else
-				{
-					$('#balance').text($balance + "人分の座席が余っています");
-					$('#next').removeAttr("disabled");
-
-					$('#message').children("font").text("※よろしければ確認画面へ進んでください");
-					$('#message').children("font").css("color","blue");
-				}
-
+				Check();
 			});
 
+			//縦列を選択したとき
 			$("#col_max").click(function(){
-				$col_max = $('#col_max').val();
-				$seat_cnt = $row_max * $col_max;
-				$('#seat_cnt').text($seat_cnt + "人分の座席があります");
-
-				$balance = $seat_cnt - $user_cnt;
-				if($balance < 0)
-				{
-					$balance = $balance * -1;
-					$('#balance').text($balance + "人分の座席が不足しています");
-					$('#next').attr("disabled", "disabled");
-
-					$('#message').children("font").text("※座席数が不足しないように調整してください");
-					$('#message').children("font").css("color","red");
-				}
-				else
-				{
-					$('#balance').text($balance + "人分の座席が余っています");
-					$('#next').removeAttr("disabled");
-
-					$('#message').children("font").text("※よろしければ確認画面へ進んでください");
-					$('#message').children("font").css("color","blue");
-				}
-
+				Check();
 			});
 
+			////全てのチェックボックスのチェックを選択
 			$("#all_check").click(function(){
 				$('#check input').attr('checked','checked');
 
-				$user_cnt = $("input[type=checkbox]:checked").length;
-				$('#user_cnt').text($user_cnt + "人の生徒が選択されています");
-
-				$balance = $seat_cnt - $user_cnt;
-
-				if($balance < 0)
-				{
-					$balance = $balance * -1;
-					$('#balance').text($balance + "人分の座席が不足しています");
-					$('#next').attr("disabled", "disabled");
-
-					$('#message').children("font").text("※座席数が不足しないように調整してください");
-					$('#message').children("font").css("color","red");
-				}
-				else
-				{
-					$('#balance').text($balance + "人分の座席が余っています");
-					$('#next').removeAttr("disabled");
-
-					$('#message').children("font").text("※よろしければ確認画面へ進んでください");
-					$('#message').children("font").css("color","blue");
-				}
+				Check();
 			});
 
 			//全てのチェックボックスのチェックを解除
 			$("#all_lift").click(function(){
 				$('#check input').removeAttr('checked');
-
-				$user_cnt = $("input[type=checkbox]:checked").length;
-				$('#user_cnt').text($user_cnt + "人の生徒が選択されています");
-
-				$balance = $seat_cnt - $user_cnt;
-
-				if($balance < 0)
-				{
-					$balance = $balance * -1;
-					$('#balance').text($balance + "人分の座席が不足しています");
-					$('#next').attr("disabled", "disabled");
-
-					$('#message').children("font").text("※座席数が不足しないように調整してください");
-					$('#message').children("font").css("color","red");
-				}
-				else
-				{
-					$('#balance').text($balance + "人分の座席が余っています");
-					$('#next').removeAttr("disabled");
-
-					$('#message').children("font").text("※よろしければ確認画面へ進んでください");
-					$('#message').children("font").css("color","blue");
-				}
+				Check();
 			});
 
     	});
@@ -219,6 +112,8 @@
 	<hr color="blue">
 <div class="left_box">
 	<form action="seat_register_check.php" method="POST">
+
+	<!-- メッセージ表示欄 -->
 	<FIELDSET style="background-color:white;height:150px;">
 	    <LEGEND>
 	    <b>メッセージ</b>
@@ -229,6 +124,7 @@
 			<p id = "message"><font size="2"></font></p>
 	</FIELDSET>
 
+	<!-- 座席数選択欄 -->
 	<FIELDSET style="background-color:white;">
 	    <LEGEND>
 	    <b>座席数選択</b>
@@ -277,6 +173,7 @@
 </div>
 <div class="right_box">
 
+	<!-- 生徒選択欄 -->
 	<FIELDSET style="background-color:white;">
     <LEGEND>
     <b>生徒リスト</b>
@@ -291,6 +188,8 @@
 			<td><input style="width: 120px" id="all_lift" type="button" value="すべて解除"></td>
 	<table>
 <?php
+
+	//前画面より選択したグループに所属する生徒名を取得
 	$sql = "SELECT m_user.user_seq,m_user.user_name
 		from group_details,m_user
 			where group_details.group_seq = '$group'
@@ -313,8 +212,6 @@
 	</table>
 	</div>
 	</FIELDSET>
-
-
 	</form>
 </div>
 </div>
