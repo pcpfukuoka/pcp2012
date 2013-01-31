@@ -76,7 +76,7 @@ setcookie("subject_seq",$subject_seq,$time,"/");
 	
 	<form action="http://49.212.201.99:3000" target="_blank" method="post"enctype="multipart/form-data">
 
-		<input class="button3" type="button" value="参加" class="page_select"data-id="<?= $class_seq ?>">
+		<input class="button3" type="button" value="参加" id="page_select"data-id="<?= $class_seq ?>">
 	</form>
 	<?php
 	}
@@ -136,7 +136,7 @@ function setCookie(name, value, domain, path, expires, secure) {
 <script>
 $(function() {
 
-	$(document).on('click', '.page_select', function() {
+	$(document).on('click', '#page_select', function() {
 
 		//page=入室する場所の番号
 		var page= $(this).data('id');
