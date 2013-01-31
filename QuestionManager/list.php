@@ -5,16 +5,16 @@
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table_search.css" />
 				<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
-		
+
 	</head>
-	<body>		
+	<body>
 			<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 			<div align="center">
-				<font class="Cubicfont">新規登録</font>
+				<font class="Cubicfont">アンケート一覧</font>
 			</div>
 		<hr color="blue"><br><br>
-	
+
 	<div id="tablewrapper">
 		<div id="tableheader">
         	<div class="search">
@@ -25,7 +25,7 @@
 				<div>Records <span id="startrecord"></span>-<span id="endrecord"></span> of <span id="totalrecords"></span></div>
         		<div><a href="javascript:sorter.reset()">reset</a></div>
         	</span>
-        </div> 
+        </div>
         <table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
         <thead>
 				<tr>
@@ -36,14 +36,14 @@
 			</tr>
 			</thead>
 			<tbody>
-		<?php 
+		<?php
 		require_once("../lib/dbconect.php");
 		$dbcon = DbConnect();
 		//表示用ユーザ情報取得
 		$sql = "SELECT question_seq, question_title, m_group.group_name, start_date, end_date FROM question LEFT JOIN m_group ON question_target_group_seq = m_group.group_seq;";
 		$result = mysql_query($sql);
 		$cnt = mysql_num_rows($result);
-		
+
 		for($i = 0; $i < $cnt; $i++)
 		{
 			$row = mysql_fetch_array($result);
@@ -53,10 +53,10 @@
 				<td><?= $row['group_name'] ?></td>
 				<td><?= $row['start_date'] ?> ~ <?= $row['end_date'] ?></td>
 				<td></td>
-			</tr>				
-	<?php 
+			</tr>
+	<?php
 		}
-			
+
 		?>
 		</tbody>
 		</table>
@@ -88,7 +88,7 @@
         </div>
 		</div>
 		</div>
-	
+
 	<script type="text/javascript" src="../javascript/script.js"></script>
 	<script type="text/javascript">
 	var sorter = new TINY.table.sorter('sorter','table',{
@@ -115,6 +115,6 @@
 		init:true
 	});
   </script>
-		
+
 	</body>
 </html>
