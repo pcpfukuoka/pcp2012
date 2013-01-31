@@ -46,70 +46,92 @@
 		$count2 = mysql_num_rows($result2);
 		$page_max = $count2+1;
 	?>
-		<form action="test_lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="form">
-			<input type="hidden" name="date" value="<?= $date ?>" />
-			<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
-			<input type="hidden" name="group_seq" value="<?= $group_seq ?>" />
-			<input type="file" name="upfile" size="30" id="upload_file" style="display: none;"/>
-			<span id="div_dummy" class="input-append">
-				<img src="../images/kamera_sum.png" id="dummy_img"onclick="$('#upload_file').click();" class="btn btn-primary">
-				<input id="cover" class="input-xlarge" type="text" placeholder="select file" autocomplete="off" style="readonly;"class="input-large">
-			</span>
-			<input type="hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
-			<input type="submit"  value="追加" disabled=disabled id="upload_decision"/>
-		</form>
+	<table border="0">
+		<tr>
+			<td>追加</td>
+			<td></td>
+			<td>
+				<form action="test_lesson_upload.php" method="post" enctype="multipart/form-data" target="targetFrame" id="form">
+					<input type="hidden" name="date" value="<?= $date ?>" />
+					<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
+					<input type="hidden" name="group_seq" value="<?= $group_seq ?>" />
+					<input type="file" name="upfile" size="30" id="upload_file" style="display: none;"/>
+					<span id="div_dummy" class="input-append">
+						<img src="../images/kamera_sum.png" id="dummy_img"onclick="$('#upload_file').click();" class="btn btn-primary">
+						<input id="cover" class="input-xlarge" type="text" placeholder="select file" autocomplete="off" style="readonly;"class="input-large">
+					</span>
+			</td>
+			<td>
+					<input type="hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
+					<input type="submit"  value="追加" disabled=disabled id="upload_decision"/>
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td>変更</td>
+			<td>
+				<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="change_form">
+					<input type="hidden" name="date" value=" <?= $date ?>" />
+					<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+					<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
+					<select id="page_num_change" name="page_num_change">
+					<?php
+			   			for ($i=1; $i<=$count2; $i++)
+			   			{
+		  			?>
+		    			<option value="<?=$i?>" id="<?=$i?>_cha"><?=$i?></option>
+		  			<?php
+		    			}
+		  			?>
+					</select>
+			</td>
+			<td>
+					<input type="file" name="upfile" size="30" id="change_file" style="display: none;"/>
+					<span id="div_dummy" class="input-append">
+						<img src="../images/kamera_sum.png" id="dummy_img"onclick="$('#change_file').click();" class="btn btn-primary">
+						<input id="change_cover" class="input-xlarge" type="text" placeholder="select file" autocomplete="off" style="readonly;"class="input-large">
+					</span>
+			</td>
+			<td>
+					<input type="submit"  value="変更"  disabled=disabled id="change_decision"/>
+				</form>
+			<td>
+		</tr>
+		<tr>
+			<td>削除</td>
+			<td>
+				<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="delete_form">
+					<input type="hidden" name="date" value=" <?= $date ?>" />
+					<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
+					<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
+					<select name="page_num_del" id="page_num_del">
+					<?php
+			   			for ($i=1; $i<=$count2; $i++)
+			   			{
+		  			?>
+		    			<option value="<?=$i?>"id="<?=$i ?>_del"><?=$i?></option>
+		  			<?php
+		   				}
+		  			?>
+					</select>
+			</td>
+			<td></td>
+			<td>
+					<input type="button"  value="削除" onclick="delete_img()" id="delete_decision" disabled=disabled/>
+				</form>
+			</td>
+		</tr>
+	</table>
 
-		<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="change_form">
-			<input type="hidden" name="date" value=" <?= $date ?>" />
-			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
-			<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
-			<select id="page_num_change" name="page_num_change">
-			<?php
-	   			for ($i=1; $i<=$count2; $i++)
-	   			{
-  			?>
-    			<option value="<?=$i?>" id="<?=$i?>_cha"><?=$i?></option>
-  			<?php
-    			}
-  			?>
-			</select>
-			<input type="file" name="upfile" size="30" id="change_file" style="display: none;"/>
-			<span id="div_dummy" class="input-append">
-				<img src="../images/kamera_sum.png" id="dummy_img"onclick="$('#change_file').click();" class="btn btn-primary">
-				<input id="change_cover" class="input-xlarge" type="text" placeholder="select file" autocomplete="off" style="readonly;"class="input-large">
-			</span>
-			<input type="submit"  value="変更"  disabled=disabled id="change_decision"/>
-		</form>
-
-		<form action="change_img.php" method="post" enctype="multipart/form-data" target="targetFrame" id="delete_form">
-			<input type="hidden" name="date" value=" <?= $date ?>" />
-			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
-			<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
-			<select name="page_num_del" id="page_num_del">
-			<?php
-	   			for ($i=1; $i<=$count2; $i++)
-	   			{
-  			?>
-    			<option value="<?=$i?>"id="<?=$i ?>_del"><?=$i?></option>
-  			<?php
-   				}
-  			?>
-			</select>
-			<input type="button"  value="削除" onclick="delete_img()" id="delete_decision" disabled=disabled/>
-		</form>
-
-
-		<table border="5" id="img_table" style="position: absolute;top:50px;left:45%;">
+		<table border="5" id="img_table" style="position: absolute;top:50px;left:42%;">
 			<tr id="1_th">
 	<?php
 				for($i=1;$i<=5;$i++){
-					echo "<th width='100'><font size='3'>".$i."<font></th>";
+					echo "<th width='90'><font size='3'>".$i."<font></th>";
 				}
 	?>
 			</tr>
 			<tr id="1_tr">
-
-
 	<?php
 
 		$sql3 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'"AND class_seq='.$group_seq.' AND end_flg="0";';
@@ -130,7 +152,7 @@
 				$img_tag_name = '../../balckboard/public/images/div/'.$bbb;
 
 	?>
-			<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="100" height="100" id="<?=$i ?>_image"></td>
+			<td id="<?=$i ?>_td"><img border="1" src="<?= $img_tag_name ?>" width="90" height="90" id="<?=$i ?>_image"></td>
 
 	<?php
 			if($i%5==0){
@@ -151,7 +173,7 @@
 	<?php
 			//headerを一列分出力
 			for($j=$th_in;$j<$max;$j++){
-				echo "<th width='100'><font size='3'>".$j."<font></th>";
+				echo "<th width='90'><font size='3'>".$j."<font></th>";
 			}
 
 	 ?>
@@ -196,8 +218,6 @@
 			//ファイルの名前をテキストに反映
 			 $('#change_cover').val($(this).val());
 	    });
-
-
 		//画像が１まいでもある時に授業開始ボタンを押せるようにする
 		//アップロードする画像を決めたとき(追加)
 		$(document).on('change', '#upload_file', function() {
@@ -232,9 +252,7 @@
 			//画像の削除をおせるようにする
 			var delete_ele=document.getElementById("delete_decision");
 			delete_ele.disabled=false;
-
 	    });
-
 
 	});
 	//画像を削除する関数

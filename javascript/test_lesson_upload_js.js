@@ -23,8 +23,8 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	var im = page_num + "_image";
 	var image=document.createElement("img");
 	image.setAttribute("src",img_tag_name);
-	image.setAttribute("width","100");
-	image.setAttribute("height","100");
+	image.setAttribute("width","90");
+	image.setAttribute("height","90");
 	image.setAttribute("id",im);
 	//作成した属性の付与
 	var td_name = img_page_num+"_td";
@@ -43,10 +43,10 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 		table_ele.appendChild(tr_);
 
 		var next_th=page_num+1;
-		var e="<th width='100'><font size='3'>"+next_th+"</font></th>";
+		var e="<th width='90'><font size='3'>"+next_th+"</font></th>";
 		next_th++;
 		for(i=1;i<5;i++){
-			e=e+"<th width='100'><font size='3'>"+next_th+"</font></th>";
+			e=e+"<th width='90'><font size='3'>"+next_th+"</font></th>";
 			next_th++;
 		}
 		var insert_tr = parent.document.getElementById(th_val);

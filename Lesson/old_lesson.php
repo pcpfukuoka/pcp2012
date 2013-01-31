@@ -103,7 +103,7 @@
 		    		+'</table>'
 		    		$('#frame').append(e);
 		    		//押せなくしたボタンを元に戻す
-					var button_ele=document.getElementById('disabled');
+					var button_ele=document.getElementById('decision');
 					button_ele.disabled=false;
 		    	}
 		    });
