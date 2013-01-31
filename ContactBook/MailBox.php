@@ -157,15 +157,15 @@
 		<div id="tablewrapper">
 			<div id="tableheader">
 	        	<div class="search">
-	                <select id="columns" onchange="sorter.search('query')"></select>
-	                <input type="text" id="query" onkeyup="sorter.search('query')" />
+	                <select id="columns" onchange="sorter2.search('query')"></select>
+	                <input type="text" id="query" onkeyup="sorter2.search('query')" />
 	            </div>
 	            <span class="details">
 					<div>Records <span id="startrecord"></span>-<span id="endrecord"></span> of <span id="totalrecords"></span></div>
-	        		<div><a href="javascript:sorter.reset()">reset</a></div>
+	        		<div><a href="javascript:sorter2.reset()">reset</a></div>
 	        	</span>
         </div> 
-		<table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
+		<table cellpadding="0" cellspacing="0" border="0" id="table_2" class="table_01">
 			<thead>
 						<tr bgcolor="yellow">
 					<th align="center" width="30"></th>
@@ -225,10 +225,10 @@
 		<div id="tablefooter">
           <div id="tablenav">
             	<div>
-                    <img src="../images/first.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
-                    <img src="../images/previous.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1)" />
-                    <img src="../images/next.gif" width="16" height="16" alt="First Page" onclick="sorter.move(1)" />
-                    <img src="../images/last.gif" width="16" height="16" alt="Last Page" onclick="sorter.move(1,true)" />
+                    <img src="../images/first.gif" width="16" height="16" alt="First Page" onclick="sorter2.move(-1,true)" />
+                    <img src="../images/previous.gif" width="16" height="16" alt="First Page" onclick="sorter2.move(-1)" />
+                    <img src="../images/next.gif" width="16" height="16" alt="First Page" onclick="sorter2.move(1)" />
+                    <img src="../images/last.gif" width="16" height="16" alt="Last Page" onclick="sorter2.move(1,true)" />
                 </div>
                 <div>
                 	<select id="pagedropdown"></select>
@@ -236,7 +236,7 @@
             </div>
 			<div id="tablelocation">
             	<div>
-                    <select onchange="sorter.size(this.value)">
+                    <select onchange="sorter2.size(this.value)">
                     <option value="5">5</option>
                         <option value="10" selected="selected">10</option>
                         <option value="20">20</option>
@@ -278,7 +278,30 @@
 		sortdir:-1,
 		init:true
 	});
-  </script>
+	var sorter2 = new TINY.table.sorter('sorter','table_2',{
+		headclass:'head',
+		ascclass:'asc',
+		descclass:'desc',
+		evenclass:'evenrow',
+		oddclass:'oddrow',
+		evenselclass:'evenselected',
+		oddselclass:'oddselected',
+		paginate:true,
+		size:5,
+		colddid:'columns',
+		currentid:'currentpage',
+		totalid:'totalpages',
+		startingrecid:'startrecord',
+		endingrecid:'endrecord',
+		totalrecid:'totalrecords',
+		hoverid:'selectedrow',
+		pageddid:'pagedropdown',
+		navid:'tablenav',
+		sortcolumn:1,
+		sortdir:-1,
+		init:true
+	});
+	</script>
 		
 		
 	</body>

@@ -23,18 +23,7 @@
 			<frame src="Top/menu.php" name=top scrolling="no">
 			<frameset cols=30%,70% frameborder=no border=no id=direction>
 				<frame src="Top/top_left.php" name="left">	<!-- フレーム左部分 -->
-				<?php 
-				$flg = $_SESSION['position_flg'];
-				if($flg == "teacher")
-				{?>
-					<frame src="Top/teacher_top.php" name="right">	<!-- フレーム右部分 -->					
-				<?php 
-				}else
-				{?>
-					<frame src="Top/student_top.php" name="right">	<!-- フレーム右部分 -->				
-				<?php 
-				}
-				?>
+				<frame src="Top/top_right.php" name="right">	<!-- フレーム右部分 -->				
 			</frameset>
 		</frameset>
 </html>

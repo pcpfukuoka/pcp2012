@@ -56,33 +56,54 @@ setcookie("subject_seq",$subject_seq,$time,"/");
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+	<link rel="stylesheet" type="text/css" href="../css/button.css" />
+	<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 </head>
 <body>
-
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+		<div align="center">
+			<font class="Cubicfont">授業参加</font>
+		</div>
+			<hr color="blue"></hr>
+			<br><br><br>
+		
 	<?php
 	//自分が参加できる授業が行われている場合
 	if($cnt > 0)
 	{?>
+	
 	<form action="http://49.212.201.99:3000" target="_blank" method="post"enctype="multipart/form-data">
 
-		<input type="button" value="参加" class="page_select"data-id="<?= $class_seq ?>">
+		<input class="button3" type="button" value="参加" class="page_select"data-id="<?= $class_seq ?>">
 	</form>
 	<?php
 	}
 	//授業が何も行われていなかった場合
 	else
 	{?>
-		現在行われている授業はありません。<br>
-		もう一度授業を確認するか、過去の授業をご確認下さい。<br>
-		<form action="join_lesson.php" method="post">
-		<input type="submit" value="再度確認">
-		</form>
-		<form action="old_lesson.php" method="post">
-		<input type="submit" value="過去授業へ">
-		</form>
+		<span class="Cubicfont1">現在行われている授業はありません。<br>
+		もう一度授業を確認するか、過去の授業をご確認下さい。<br></span>
+		<table>
+			<tr>
+			<td>
+				<form action="join_lesson.php" method="post">
+				<input class="button3"  type="submit" value="再度確認">
+			</form>
+			</td>
+			<td>
+				<form action="old_lesson.php" method="post">
+				<input class="button3" type="submit" value="過去授業へ">
+			</form>
+			</td>
+			</tr>
+		</table>
+		
 <?php
 	}
 	?>
+	</div>
 </body>
 <script>
 function setCookie(name, value, domain, path, expires, secure) {

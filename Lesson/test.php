@@ -10,7 +10,7 @@
 	$group_seq = $_POST['group'];
 
 	//subjectに対応するsubject_nameをデータベースから持ってくる
-	$sql = 'SELECT subject_name FROM m_subject WHEREsubject_seq = '. $subject_seq.';';
+	$sql = 'SELECT subject_name FROM m_subject WHERE subject_seq = '. $subject_seq.';';
 	$result = mysql_query($sql);
 	$row = mysql_fetch_array($result);
 
@@ -27,10 +27,20 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<link href='https://xxx/bootstrap.min.css' rel='stylesheet' type='text/css'/>
+				<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		
 	</head>
 
 	<body>
-
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+			<div align="center">
+				<font class="Cubicfont">授業準備</font>
+			</div>
+			<hr color="blue"></hr>
+	
 
 	<a href="lesson_preparation.php">戻る</a>
 
@@ -63,7 +73,7 @@
 			</td>
 			<td>
 					<input type="hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
-					<input type="submit"  value="追加" disabled=disabled id="upload_decision"/>
+					<input class="button4" type="submit"  value="追加" disabled=disabled id="upload_decision"/>
 				</form>
 			</td>
 		</tr>
@@ -93,7 +103,7 @@
 					</span>
 			</td>
 			<td>
-					<input type="submit"  value="変更"  disabled=disabled id="change_decision"/>
+					<input class="button4" type="submit"  value="変更"  disabled=disabled id="change_decision"/>
 				</form>
 			<td>
 		</tr>
@@ -117,13 +127,13 @@
 			</td>
 			<td></td>
 			<td>
-					<input type="button"  value="削除" onclick="delete_img()" id="delete_decision" disabled=disabled/>
+					<input  class="button4" type="button"  value="削除" onclick="delete_img()" id="delete_decision" disabled=disabled/>
 				</form>
 			</td>
 		</tr>
 	</table>
 
-		<table border="5" id="img_table" style="position: absolute;top:50px;left:42%;">
+		<table border="5" id="img_table" style="position: absolute;top:30%;left:42%;">
 			<tr id="1_th">
 	<?php
 				for($i=1;$i<=5;$i++){
@@ -200,11 +210,11 @@
 			<input type="hidden" name="date" value=" <?= $date ?>" />
 			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
 			<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
-			<input type="submit" value="授業開始" id="lesson_start" disabled=disabled>
+			<input class="button3" type="submit" value="授業開始" id="lesson_start" disabled=disabled>
 		</form>
 	</div>
 		<iframe name="targetFrame" id="targetFrame" style="display:none;"></iframe>
-
+</div>
 	</body>
 	<script>
 	$(function() {

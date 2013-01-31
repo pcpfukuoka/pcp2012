@@ -27,7 +27,11 @@
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
-
+			<div align="center">
+				<font class="Cubicfont">過去授業</font>
+			</div>
+			<hr color="blue"></hr>
+		
 		<input type="date" id="date" max="<?= date("Y-m-d") ?>"/>
 		<select id="subject_seq">
 			<?php

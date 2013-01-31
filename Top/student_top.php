@@ -257,10 +257,6 @@ $tnk = 40;
 	$group_seq = 1;
 
 	//時間割の取得
-	mysql_connect("105-pc", "root", "");
-	mysql_select_db("pcp2012");
-	mysql_query("SET NAMES UTF8");
-
 	$time_table_get = "SELECT * FROM time_table WHERE time_table.day = '$today' and time_table.group_seq = '$group_seq'";
 	$time_table = mysql_query($time_table_get);
 	$i = 1;

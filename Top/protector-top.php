@@ -1,36 +1,37 @@
 <?php
-//ä»Šæ—¥ã®æ›œæ—¥å–å¾—
+
+//¡“ú‚Ì—j“úæ“¾
 $weekday = date("w");
 if($weekday == "0")
 {
-	$today = "æ—¥";
+	$today = "“ú";
 }
 else if($weekday == "1")
 {
-	$today = "æœˆ";
+	$today = "Œ";
 }
 else if($weekday == "2")
 {
-	$today = "ç«";
+	$today = "‰Î";
 }
 else if($weekday == "3")
 {
-	$today = "æ°´";
+	$today = "…";
 }
 else if($weekday == "4")
 {
-	$today = "æœ¨";
+	$today = "–Ø";
 }
 else if($weekday == "5")
 {
-	$today = "é‡‘";
+	$today = "‹à";
 }
 else if($weekday == "6")
 {
-	$today = "åœŸ";
+	$today = "“y";
 }
 
-//ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°å¯¾ç­–
+//ƒX[ƒp[ƒOƒ[ƒoƒ‹•Ï”‘Îô
 if(!isset($PHP_SELF)){ $PHP_SELF = $_SERVER["PHP_SELF"]; }
 if(!isset($action)){
     if($_GET['action']){
@@ -42,39 +43,40 @@ if(!isset($action)){
 ?>
 
 <?php
-//ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ã®ç”Ÿæˆ
+//ƒJƒŒƒ“ƒ_[‚Ì¶¬
 function calendar($year = "", $month = "") {
 	if(empty($year) && empty($month)) {
 		$year = date("Y");
 		$month = date("n");
 	}
-	//æœˆæœ«ã®å–å¾—
+	//Œ––‚Ìæ“¾
 	$l_day = date("j", mktime(0, 0, 0, $month + 1, 0, $year));
-	//åˆæœŸå‡ºåŠ›
+	//‰Šúo—Í
 	$tmp = <<<EOM
-<table cellspacing="0" cellpadding="0" border="0" class="calendar">
-	<caption>{$year}å¹´{$month}æœˆ</caption>
+	<table cellspacing="0" cellpadding="0" border="0" class="calendar">
+	<caption>{$year}”N{$month}Œ</caption>
+
 	<tr>
-		<th class="red">æ—¥</th>
-		<th>æœˆ</th>
-		<th>ç«</th>
-		<th>æ°´</th>
-		<th>æœ¨</th>
-		<th>é‡‘</th>
-		<th class="blue">åœŸ</th>
+		<th class="red">“ú</th>
+		<th>Œ</th>
+		<th>‰Î</th>
+		<th>…</th>
+		<th>–Ø</th>
+		<th>‹à</th>
+		<th class="blue">“y</th>
 	</tr>\n
 EOM;
 	$lc = 0;
-	//æœˆæœ«åˆ†ç¹°ã‚Šè¿”ã™
+	//Œ––•ªŒJ‚è•Ô‚·
 	for ($i = 1; $i < $l_day + 1;$i++) {
-		//æ›œæ—¥ã®å–å¾—
+		//—j“ú‚Ìæ“¾
 		$week = date("w", mktime(0, 0, 0, $month, $i, $year));
-		//æ›œæ—¥ãŒæ—¥æ›œæ—¥ã®å ´åˆ
+		//—j“ú‚ª“ú—j“ú‚Ìê‡
 		if ($week == 0) {
 			$tmp .= "\t<tr>\n";
 			$lc++;
 		}
-		//1æ—¥ã®å ´åˆ
+		//1“ú‚Ìê‡
 		if ($i == 1) {
 			if($week != 0) {
 				$tmp .= "\t<tr>\n";
@@ -83,16 +85,16 @@ EOM;
 			$tmp .= repeat($week);
 		}
 		if ($i == date("j") && $year == date("Y") && $month == date("n")) {
-			//ç¾åœ¨ã®æ—¥ä»˜ã®å ´åˆ
+			//Œ»İ‚Ì“ú•t‚Ìê‡
 			$tmp .= "\t\t<td class=\"today\">{$i}</td>\n";
 		} else {
-			//ç¾åœ¨ã®æ—¥ä»˜ã§ã¯ãªã„å ´åˆ
-			//åœŸæ›œæ—¥ã®å ´åˆ
+			//Œ»İ‚Ì“ú•t‚Å‚Í‚È‚¢ê‡
+			//“y—j“ú‚Ìê‡
 			if($week == 6)
 			{
 				$tmp .= "\t\t<td><font color = 'blue'>{$i}</font></td>\n";
 			}
-			//æ—¥æ›œæ—¥ã®å ´åˆ
+			//“ú—j“ú‚Ìê‡
 			else if($week == 0)
 			{
 				$tmp .= "\t\t<td><font color = 'red'>{$i}</font></td>\n";
@@ -102,11 +104,11 @@ EOM;
 				$tmp .= "\t\t<td>{$i}</td>\n";
 			}
 		}
-		//æœˆæœ«ã®å ´åˆ
+		//Œ––‚Ìê‡
 		if ($i == $l_day) {
 			$tmp .= repeat(6 - $week);
 		}
-		//åœŸæ›œæ—¥ã®å ´åˆ
+		//“y—j“ú‚Ìê‡
 		if($week == 6) {
 			 $tmp . "\t</tr>\n";
 		}
@@ -131,63 +133,61 @@ function repeat($n) {
 ?>
 
 <?php
-//å¤©æ°—äºˆå ±è¡¨ç¤ºåŒºåŸŸã®è¨­å®š
+//“V‹C—\•ñ•\¦‹æˆæ‚Ìİ’è
 $tnk = 40;
 ?>
 <!--
-é“åŒ—ã€€1a
-é“å¤®ã€€1b
-é“æ±ã€€1c
-é“å—ã€€1d
-é’æ£®ã€€2
-å²©æ‰‹  3
-å®®åŸ  4
-ç§‹ç”°  5
-å±±å½¢  6
-ç¦å³¶  7
-èŒ¨åŸ  8
-æ ƒæœ¨  9
-ç¾¤é¦¬  10
-åŸ¼ç‰  11
-åƒè‘‰  12
-æ±äº¬  13
-ç¥å¥ˆå·  14
-æ–°æ½Ÿ  15
-å¯Œå±±  16
-çŸ³å·  17
-ç¦äº•  18
-å±±æ¢¨  19
-é•·é‡  20
-å²é˜œ  21
-é™å²¡  22
-æ„›çŸ¥  23
-ä¸‰é‡  24
-æ»‹è³€  25
-äº¬éƒ½  26
-å¤§é˜ª  27
-å…µåº«  28
-å¥ˆè‰¯  29
-å’Œæ­Œå±±  30
-é³¥å–  31
-å³¶æ ¹  32
-å²¡å±±  33
-åºƒå³¶  34
-å±±å£  35
-å¾³å³¶  36
-é¦™å·  37
-æ„›åª›  38
-é«˜çŸ¥  39
-ç¦å²¡  40
-ä½è³€  41
-é•·å´  42
-ç†Šæœ¬  43
-å¤§åˆ†  44
-å®®å´  45
-é¹¿å…å³¶  46
-æ²–ç¸„  47
+“¹–k@1a
+“¹‰›@1b
+“¹“Œ@1c
+“¹“ì@1d
+ÂX@2
+Šâè  3
+‹{é  4
+H“c  5
+RŒ`  6
+•Ÿ“‡  7
+ˆïé  8
+“È–Ø  9
+ŒQ”n  10
+é‹Ê  11
+ç—t  12
+“Œ‹  13
+_“Şì  14
+VŠƒ  15
+•xR  16
+Îì  17
+•Ÿˆä  18
+R—œ  19
+’·–ì  20
+Šò•Œ  21
+Ã‰ª  22
+ˆ¤’m  23
+Od  24
+ ‰ê  25
+‹“s  26
+‘åã  27
+•ºŒÉ  28
+“Ş—Ç  29
+˜a‰ÌR  30
+’¹æ  31
+“‡ª  32
+‰ªR  33
+L“‡  34
+RŒû  35
+“¿“‡  36
+ì  37
+ˆ¤•Q  38
+‚’m  39
+•Ÿ‰ª  40
+²‰ê  41
+’·è  42
+ŒF–{  43
+‘å•ª  44
+‹{è  45
+­™“‡  46
+‰«“ê  47
 -->
-
-
 
 
 <html>
@@ -204,65 +204,29 @@ $tnk = 40;
 	<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 
-
-
+		<br>
 		<br>
 		<br>
 		<div align="center">
 		<table width = "60%">
 			<tr>
-				<!-- ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ã®è¡¨ç¤º -->
-				<td width = "20%">
+		<!-- ƒJƒŒƒ“ƒ_[‚Ì•\¦ -->
+				<td width = "40%">
 					<?= calendar() ?>
 				</td>
 
 
-				<td width = "20%">
-
-		<!-- ä¸€æ—¥ã®æ™‚é–“å‰² -->
-		ä»Šæ—¥ã®æ™‚é–“å‰²
-		<?php
-		$group_seq = 1;
-
-		//æ™‚é–“å‰²ã®å–å¾—
-		$time_table_get = "SELECT * FROM time_table WHERE time_table.day = '$today' and time_table.group_seq = '$group_seq'";
-		$time_table = mysql_query($time_table_get);
-		$i = 1;
-		$count = 3;
-		$gyo = mysql_fetch_array($time_table);
-
-		while($count <= "8")
-		{
-
-		?>
-
-				<table cellspacing="1" cellpadding="1" border="1" width="80%">
-					<tr>
-						<td width="45%"><?= $i ?>æ™‚é–“ç›®</td><td width="35%"><?= $gyo[$count] ?></td>
-					</tr>
-
-		<?php
-			$i++;
-			$count++;
-		}
-		?>
-
-
-				</table>
-
+				<!-- “V‹C—\•ñ‚Ì•\¦ -->
+				<td width = "40%">
+				<script language="javascript" charset="euc-jp" type="text/javascript" src="http://weather.livedoor.com/plugin/common/forecast/<?= $tnk ?>.js"></script>
 				</td>
 
-				<!-- å¤©æ°—äºˆå ±ã®è¡¨ç¤º -->
-				<td width = "20%">
-					<script language="javascript" charset="euc-jp" type="text/javascript" src="http://weather.livedoor.com/plugin/common/forecast/<?= $tnk ?>.js"></script>
-				</td>
-
-
-		</tr>
+			</tr>
 		</table>
 		</div>
 
+		<br><br>
 
-
+		</div>
 	</body>
 </html>

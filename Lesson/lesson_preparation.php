@@ -22,16 +22,19 @@
 			<script src="../javascript/jquery-1.8.2.min.js"></script>
 			<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 			<link rel="stylesheet" type="text/css" href="../css/button.css" />
+			<link rel="stylesheet" type="text/css" href="../css/table.css" />
 			<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 	</head>
 	<body>
-		<div align="center">
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<div id="container">
+	<div align="center">
 			<font class="Cubicfont">授業</font>
 		</div>
 		<hr color="blue"></hr>
 		<br><br><br>
 
-		<table border="1">
+		<table class="table_01">
 			<tr>
 				<th>授業の日付</th>
 				<th>教科</th>
@@ -42,11 +45,11 @@
 			<tr>
 				<form action="test.php" method="post" enctype="multipart/form-data">
 					<!-- 授業がある日付・授業するクラス・授業の科目 -->
-					<td>
+					<td align="center">
 						<input type="date" name= "date" size= "30" id="date" min="<?= date("Y-m-d") ?>"/><br />
 					</td>
 
-					<td>
+					<td align="center">
 						<select name="subject">
 							<?php
 				   				for ($i = 0; $i < $count; $i++)
@@ -60,7 +63,7 @@
 						</select>
 					</td>
 
-					<td>
+					<td align="center">
 						<select name="group">
 							<?php
 				   				for ($i = 0; $i < $count2; $i++)
@@ -74,12 +77,13 @@
 						</select>
 					</td>
 
-					<td>
-						<input type="submit" value="決定" id="decision" disabled=disabled />
+					<td align="center">
+						<input class="button3" type="submit" value="決定" id="decision" disabled=disabled />
 					</td>
 				</form>
 			</tr>
 		</table>
+		</div>
 	</body>
 	<script>
 
