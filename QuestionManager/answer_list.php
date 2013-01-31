@@ -14,16 +14,16 @@ $user_seq = $_SESSION['login_info[user]'];
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table_search.css" />
 				<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
-		
+
 	</head>
-	<body>		
+	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 			<div align="center">
-				<font class="Cubicfont">新規登録</font>
+				<font class="Cubicfont">未回答アンケート一覧</font>
 			</div>
 		<hr color="blue"><br><br>
-		
+
 	<div id="tablewrapper">
 		<div id="tableheader">
         	<div class="search">
@@ -34,36 +34,36 @@ $user_seq = $_SESSION['login_info[user]'];
 				<div>Records <span id="startrecord"></span>-<span id="endrecord"></span> of <span id="totalrecords"></span></div>
         		<div><a href="javascript:sorter.reset()">reset</a></div>
         	</span>
-        </div> 
+        </div>
         <table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
         <thead>
 				<tr>
 				<th><h3>タイトル</h3></th>
 				<th><h3>期間</h3></th>
-				<th><h3></h3></th>				
+				<th><h3></h3></th>
 			</tr>
 		</thead>
 		<tbody>
-		<?php 
+		<?php
 		require_once("../lib/dbconect.php");
 		$dbcon = DbConnect();
 		$day = date("Y-m-d");
 		//表示用ユーザ情報取得
-	$sql = "SELECT * FROM question 
-   		 	WHERE question_target_group_seq 
-        		IN (SELECT m_group.group_seq 
-            		FROM m_group INNER JOIN group_details 
-            		ON m_group.group_seq = group_details.group_seq 
+	$sql = "SELECT * FROM question
+   		 	WHERE question_target_group_seq
+        		IN (SELECT m_group.group_seq
+            		FROM m_group INNER JOIN group_details
+            		ON m_group.group_seq = group_details.group_seq
             		WHERE group_details.user_seq= '$user_seq'
             	   )
-    		AND question_seq 
-    			NOT IN (SELECT question_seq 
-    					FROM question_awnser 
-    					WHERE awnser_user_seq = '$user_seq' ) 
+    		AND question_seq
+    			NOT IN (SELECT question_seq
+    					FROM question_awnser
+    					WHERE awnser_user_seq = '$user_seq' )
     		AND '".$day."' BETWEEN start_date AND end_date;";
 				$result = mysql_query($sql);
 		$cnt = mysql_num_rows($result);
-		
+
 		for($i = 0; $i < $cnt; $i++)
 		{
 			$row = mysql_fetch_array($result);
@@ -72,10 +72,10 @@ $user_seq = $_SESSION['login_info[user]'];
 				<td><?= $row['question_title'] ?></td>
 				<td><?= $row['start_date'] ?> ~ <?= $row['end_date'] ?></td>
 				<td><a href="answer_regist_view.php?id=<?= $row['question_seq'] ?>">回答する</a></td>
-				</tr>				
-	<?php 
+				</tr>
+	<?php
 		}
-			
+
 		?>
 		</tbody>
 		</table>
@@ -133,6 +133,6 @@ $user_seq = $_SESSION['login_info[user]'];
 		init:true
 	});
   </script>
-		
+
 	</body>
 </html>

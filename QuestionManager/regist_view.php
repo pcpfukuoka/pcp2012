@@ -19,7 +19,6 @@ session_start();
 			</div>
 		<hr color="blue"><br><br>
 
-		<div align = "center">
 
 
 			<?php
@@ -55,7 +54,6 @@ session_start();
 			</div>
 			<input class="button4"type="submit" value ="登録">
 			</form>
-		</div>
 		</div>
 
 	</body>
