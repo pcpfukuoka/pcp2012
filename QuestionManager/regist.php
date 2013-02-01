@@ -14,6 +14,7 @@ $target_group = $_SESSION['question_info[target_group]'];
 $description = $_SESSION['question_info[question_description]'];
 $sql = "INSERT INTO question VALUES (0,'$title','$target_group','$start_date','$end_date','$description')";
 mysql_query($sql);
+echo $sql;
 $question_seq = mysql_insert_id($dbcon);
 
 
@@ -34,10 +35,12 @@ foreach($_SESSION['details'] as $details_row)
 	$question_name_list = $test[2];
 	$sql = "INSERT INTO question_details VALUES (0,'$details_description','$answer_kbn','$question_seq')";
 	mysql_query($sql);
+	echo $sql;
 	$details_seq = mysql_insert_id($dbcon);
 	foreach($question_name_list as $value)
 	{
 		$sql = "INSERT INTO question_awnser_list VALUES (0,'$value','$details_seq') ";
+		echo $sql;
 		mysql_query($sql);
 		
 	}
