@@ -16,7 +16,7 @@ if($flg == "teacher")
 }
 else
 {
-	$access = true;
+	$access = 0;
 
 	//自分が所属しているクラスのグループSEQを取得
 	$user_seq = $_SESSION['login_info[user]'];
@@ -68,12 +68,12 @@ setcookie("subject_seq",$subject_seq,$time,"/");
 		</div>
 			<hr color="blue"></hr>
 			<br><br><br>
-		
+
 	<?php
 	//自分が参加できる授業が行われている場合
 	if($cnt > 0)
 	{?>
-	
+
 	<form action="http://49.212.201.99:3000" target="_blank" method="post"enctype="multipart/form-data">
 
 		<input class="button3" type="button" value="参加" id="page_select"data-id="<?= $class_seq ?>">
@@ -99,7 +99,7 @@ setcookie("subject_seq",$subject_seq,$time,"/");
 			</td>
 			</tr>
 		</table>
-		
+
 <?php
 	}
 	?>

@@ -31,7 +31,7 @@
 				<font class="Cubicfont">過去授業</font>
 			</div>
 			<hr color="blue"></hr>
-		
+
 		<input type="date" id="date" max="<?= date("Y-m-d") ?>"/>
 		<select id="subject_seq">
 			<?php
