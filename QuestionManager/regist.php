@@ -29,13 +29,11 @@ foreach($_SESSION['details'] as $details_row)
 	{		
 		$test[] = $value;
 	}
-	print_r($test);
 	$details_description = $test[0];
 	$answer_kbn = $test[1];
 	$question_name_list = $test[2];
 	$sql = "INSERT INTO question_details VALUES (0,'$details_description','$answer_kbn','$question_seq')";
 	mysql_query($sql);
-	
 	$details_seq = mysql_insert_id($dbcon);
 	foreach($question_name_list as $value)
 	{
