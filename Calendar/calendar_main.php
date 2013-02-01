@@ -43,6 +43,8 @@ if($page_cla[0]['read_flg'] == 0)
 			<input class="button2" type="button" onclick="jump('calendar.php')" value="カレンダー確認">
 			<br><br>
 			<input class="button2" type="button" onclick="jump('menu.php')" value="献立表確認">
+			<br><br>
+			<input class="button2" type="button" onclick="jump('../TimeTableManager/TimeTable_menu.php')" value="時間割">
 		</p>
 
 
