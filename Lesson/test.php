@@ -30,7 +30,7 @@
 				<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
-		
+
 	</head>
 
 	<body>
@@ -40,12 +40,12 @@
 				<font class="Cubicfont">授業準備</font>
 			</div>
 			<hr color="blue"></hr>
-	
+
 
 	<a href="lesson_preparation.php">戻る</a>
 
 	<br>
-	<font size="5"><?= $date ?>:<?=$row['subject_name'] ?>:<?=$row['group_seq'] ?></font>
+	<font size="5"><?= $date ?>:<?=$row['subject_name'] ?>:<?=$row2['group_seq'] ?></font>
 	<div id="form">
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
@@ -206,10 +206,10 @@
 			</tr>
 		</table>
 
-		<form action="using_change.php" method="post" enctype="multipart/form-data" >
+			<form action="using_change.php" method="post" enctype="multipart/form-data" >
 			<input type="hidden" name="date" value=" <?= $date ?>" />
-			<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
-			<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
+			<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
+			<input type="hidden" name="group_seq" value="<?= $group_seq ?>" />
 			<input class="button3" type="submit" value="授業開始" id="lesson_start" disabled=disabled>
 		</form>
 	</div>
