@@ -97,7 +97,7 @@
 	</tr>
 	<!-- 時間割削除ページへ -->
 	<tr>
-		<form action="TimeTable_delete_perform.php" method="POST">
+		<form action="TimeTable_delete_check.php" method="POST">
 <?php
 		$sql = "select distinct m_group.group_name,m_group.group_seq
 					from m_group,group_details

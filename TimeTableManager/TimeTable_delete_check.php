@@ -10,20 +10,18 @@
 
 <html>
 	<head>
-		<title>時間割表</title>
+		<title>時間割表削除確認画面</title>
 		<meta charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
-		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<link rel="stylesheet" type="text/css" href="../css/time_table.css" />
-
 	</head>
 	<body>
 	<img class="bg" src="../images/blue-big.jpg" alt="" />
 	<div id="container">
 	<div align="center">
-		<font class="Cubicfont">時間割表</font>
+		<font class="Cubicfont">時間割表削除確認画面</font>
 	</div>
 	<hr color="blue">
 <?php
@@ -75,26 +73,21 @@
 		}
 }
 ?>
-	<table class="time_table"border="1">
+	<table class="time_table">
 		<tr id="week">
-			<td></td>
-			<th>月</th>
-			<th>火</th>
-			<th>水</th>
-			<th>木</th>
-			<th>金</th>
+			<td></td><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th>
 		</tr>
 <?php
 	for($time_cnt = 1;$time_cnt <= 6; $time_cnt++)
 	{
 ?>
 		<tr id="time">
-			<th><p><?= $time_cnt?></p></th>
+			<th><?= $time_cnt?></th>
 <?php
 		for($day_cnt = 1; $day_cnt <= 5; $day_cnt++)
 		{
 ?>
-			<td><p><?= $time_table[$time_cnt -1][$day_cnt -1] ?></p></td>
+			<td><?= $time_table[$time_cnt -1][$day_cnt -1] ?></td>
 <?php
 		}
 
@@ -105,5 +98,10 @@
 ?>
 
 	</table>
+
+	<form action="TimeTable_delete_perform.php" method="POST">
+		<input type = "hidden" name ="group" value = "<?=$group ?>">
+		<input type ="submit" class ="button4" value="削除">
+	</form>
 
 </html>

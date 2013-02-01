@@ -10,36 +10,36 @@
 
 <html>
 	<head>
-		<title>時間割表作成画面</title>
+		<title>時間割表登録画面</title>
 		<meta charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
-		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../css/time_table.css" />
 	</head>
 	<body>
 	<img class="bg" src="../images/blue-big.jpg" alt="" />
 	<div id="container">
 	<div align="center">
-		<font class="Cubicfont">時間割表作成画面</font>
+		<font class="Cubicfont">時間割表登録画面</font>
 	</div>
 	<hr color="blue">
-	<form action="TimeTable_register_perform.php" method="POST">
-	<table border="1">
-		<tr>
+	<form action="TimeTable_register_check.php" method="POST">
+	<table class="time_table">
+		<tr id = "week">
 			<td></td>
-			<td><input name = "time_table0[0]" type = "hidden" value="月">月</td>
-			<td><input name = "time_table0[1]" type = "hidden" value="火">火</td>
-			<td><input name = "time_table0[2]" type = "hidden" value="水">水</td>
-			<td><input name = "time_table0[3]" type = "hidden" value="木">木</td>
-			<td><input name = "time_table0[4]" type = "hidden" value="金">金</td>
+			<th><input name = "time_table0[0]" type = "hidden" value="月">月</th>
+			<th><input name = "time_table0[1]" type = "hidden" value="火">火</th>
+			<th><input name = "time_table0[2]" type = "hidden" value="水">水</th>
+			<th><input name = "time_table0[3]" type = "hidden" value="木">木</th>
+			<th><input name = "time_table0[4]" type = "hidden" value="金">金</th>
 		</tr>
 <?php
 	for($time_cnt = 1;$time_cnt <= 6; $time_cnt++)
 	{
 ?>
-		<tr>
-			<td><?= $time_cnt?></td>
+		<tr id = "time">
+			<th><?= $time_cnt?></th>
 <?php
 		for($day_cnt = 1; $day_cnt <= 5; $day_cnt++)
 		{
@@ -55,6 +55,6 @@
 ?>
 	</table>
 	<input name= "group" type="hidden" value= "<?= $group ?>">
-	<input type="submit" value="作成">
+	<input class="button4"type="submit" value="確認画面へ">
 	</form>
 </html>

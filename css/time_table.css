@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+
+table.time_table{
+    border-top:1px solid #663300;
+    border-left:1px solid #663300;
+    border-collapse:collapse;
+    border-spacing:0;
+    background-color:#ffffff;
+    empty-cells:show;
+}
+.time_table th{
+    border-right:1px solid #663300;
+    border-bottom:1px solid #663300;
+    color:#330000;
+    background-color:#FFE4B5;
+    background-position:left top;
+    padding:0.3em 1em;
+    text-align:center;
+
+
+}
+
+.time_table td  {
+    border-right:1px solid #663300;
+    border-bottom:1px solid #663300;
+    padding:0.3em 1em;
+
+}
+
+#time th{
+	width: 25px;
+	height: 35px;
+}
+
+
+#week th {
+	width: 70px;
+	height: 30px;
+}
+
+#week td {
+	width: 25px;
+	height: 35px;
+
+	border-right:1px solid #663300;
+    border-bottom:1px solid #663300;
+    color:#330000;
+    background-color:#FFE4B5;
+    background-position:left top;
+    padding:0.3em 1em;
+    text-align:center;
+}
+
+.time_table td input {
+    width: 70px;
+
+}

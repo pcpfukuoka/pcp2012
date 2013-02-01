@@ -15,7 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
-		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../css/time_table.css" />
 	</head>
 	<body>
 	<img class="bg" src="../images/blue-big.jpg" alt="" />
@@ -40,6 +40,7 @@
       			 $time_table[4][0] = $gyo['four'];
       			 $time_table[5][0] = $gyo['five'];
       			 $time_table[6][0] = $gyo['six'];
+      			 $time_table[7][0] = $gyo['day'];
       			 break;
 			case "火":
 			     $time_table[0][1] = $gyo['time_table_seq'];
@@ -49,6 +50,7 @@
       			 $time_table[4][1] = $gyo['four'];
       			 $time_table[5][1] = $gyo['five'];
       			 $time_table[6][1] = $gyo['six'];
+      			 $time_table[7][1] = $gyo['day'];
       			 break;
 			case "水":
 				 $time_table[0][2] = $gyo['time_table_seq'];
@@ -58,6 +60,7 @@
       			 $time_table[4][2] = $gyo['four'];
       			 $time_table[5][2] = $gyo['five'];
       			 $time_table[6][2] = $gyo['six'];
+      			 $time_table[7][2] = $gyo['day'];
       			 break;
 			case "木":
 				 $time_table[0][3] = $gyo['time_table_seq'];
@@ -67,6 +70,7 @@
       			 $time_table[4][3] = $gyo['four'];
       			 $time_table[5][3] = $gyo['five'];
       			 $time_table[6][3] = $gyo['six'];
+      			 $time_table[7][3] = $gyo['day'];
       			 break;
 			case "金":
 				 $time_table[0][4] = $gyo['time_table_seq'];
@@ -76,26 +80,27 @@
       			 $time_table[4][4] = $gyo['four'];
       			 $time_table[5][4] = $gyo['five'];
       			 $time_table[6][4] = $gyo['six'];
+      			 $time_table[7][4] = $gyo['day'];
       			 break;
 		}
 }
 ?>
-	<form action="TimeTable_change_perform.php" method="POST">
-	<table border="1">
-		<tr>
+	<form action="TimeTable_change_check.php" method="POST">
+	<table class="time_table"border="1">
+		<tr id="week">
 			<td></td>
-			<td><input name = "time_table0[0]" type = "hidden" value="<?=$time_table[0][0] ?>">月</td>
-			<td><input name = "time_table0[1]" type = "hidden" value="<?=$time_table[0][1] ?>">火</td>
-			<td><input name = "time_table0[2]" type = "hidden" value="<?=$time_table[0][2] ?>">水</td>
-			<td><input name = "time_table0[3]" type = "hidden" value="<?=$time_table[0][3] ?>">木</td>
-			<td><input name = "time_table0[4]" type = "hidden" value="<?=$time_table[0][4] ?>">金</td>
+			<th><input name = "time_table0[0]" type = "hidden" value="<?=$time_table[0][0] ?>">月</th>
+			<th><input name = "time_table0[1]" type = "hidden" value="<?=$time_table[0][1] ?>">火</th>
+			<th><input name = "time_table0[2]" type = "hidden" value="<?=$time_table[0][2] ?>">水</th>
+			<th><input name = "time_table0[3]" type = "hidden" value="<?=$time_table[0][3] ?>">木</th>
+			<th><input name = "time_table0[4]" type = "hidden" value="<?=$time_table[0][4] ?>">金</th>
 		</tr>
 <?php
 	for($time_cnt = 1;$time_cnt <= 6; $time_cnt++)
 	{
 ?>
-		<tr>
-			<td><?= $time_cnt?></td>
+		<tr id="time">
+			<th><?= $time_cnt?></th>
 <?php
 		for($day_cnt = 1; $day_cnt <= 5; $day_cnt++)
 		{
@@ -111,6 +116,6 @@
 ?>
 	</table>
 
-	<input type="submit" value="変更">
+	<input class="button4"type="submit" value="変更確認画面へ">
 	</form>
 </html>

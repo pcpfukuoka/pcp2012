@@ -27,9 +27,9 @@
 
 		for($time_cnt = 0; $time_cnt <= 6; $time_cnt++)
 		{
-			echo $time_table[$day_cnt][$time_cnt];
+			//echo $time_table[$day_cnt][$time_cnt];
 		}
-		echo"<br>";
+		//echo"<br>";
 	}
 
 	//クエリを送信
@@ -43,7 +43,7 @@
 							five = '{$time_table[$day_cnt][5]}',
 							six = '{$time_table[$day_cnt][6]}'
 						WHERE time_table_seq = '{$time_table[$day_cnt][0]}'";
-			echo $sql;
+			//echo $sql;
 
 			mysql_query($sql)or die("クエリの送信に失敗しました。");
 	}
@@ -54,21 +54,22 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=TimeTable_menu.php">
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
-		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
-		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+
 
 		<title>完了画面</title>
 	</head>
 
 	<body>
-
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
 			<font class="Cubicfont">完了画面</font>
 		</div>
 		<hr color="blue">
+		<font size = '5'>座席表の変更が完了しました！！</font>
 		</div>
 
 
