@@ -34,7 +34,7 @@ if($page_cla[0]['read_flg'] == 0)
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
-			<font class="Cubicfont">メイン画面</font>
+			<font class="Cubicfont">スケジュール</font>
 		</div>
 		<hr color="blue">
 

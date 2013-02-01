@@ -9,7 +9,7 @@
 ?>
 <html>
 	<head>
-		<title>時間割メニュー</title>
+		<title>時間割表メニュー</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
