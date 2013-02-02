@@ -60,7 +60,8 @@ $user_seq = $_SESSION['login_info[user]'];
     			NOT IN (SELECT question_seq
     					FROM question_awnser
     					WHERE awnser_user_seq = '$user_seq' )
-    		AND '".$day."' BETWEEN start_date AND end_date;";
+    		AND '".$day."' BETWEEN start_date AND end_date
+			AND question.delete_flg = 0;";
 				$result = mysql_query($sql);
 		$cnt = mysql_num_rows($result);
 

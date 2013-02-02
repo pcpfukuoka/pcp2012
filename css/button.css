@@ -362,3 +362,50 @@
 .button9:visited {
 	color: #000000;
 }
+
+
+
+.button10{
+	line-height:24px;
+	text-align:center;
+	font-size:20px;
+	font-weight:bold;
+	padding:4px;
+	background-color:#87CEFA;
+	text-decoration:none;
+	border-color:#6495ED;
+	border-width:3px;
+	border-style:outset;
+	color:#000000;
+	display:block;
+	border-radius:5px;
+	width:150px;
+	height: 90px;
+}
+
+/*オンマウスのとき*/
+.button10:hover {
+	color: #000000;
+	background-color: #4169E1;  /* 背景色 */
+	border: inset 3px #6495ED;  /* 枠の色 */
+	margin: 0px;
+	padding: 4px;
+	width:150px;
+
+
+}
+.button10:active {
+	color: #000000;
+}
+.button10:visited {
+	color:#000000;
+}
+
+
+
+
+
+
+
+
+

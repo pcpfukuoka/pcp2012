@@ -23,12 +23,10 @@
 		$_SESSION['login_info[autho]'] = $rows['autho_seq'];
 		$user_seq = $rows['user_seq'];
 		$sql = "SELECT * FROM m_student WHERE user_seq = '$user_seq'";
-		echo $sql;
 		$result = mysql_query($sql);
 		$cnt = mysql_num_rows($result);
 		if($cnt > 0 )
 		{
-			echo "aaa";
 			$_SESSION['position_flg'] = "student";				
 			header("Location: ../index.php");
 			exit;

@@ -36,6 +36,15 @@ $cnt = mysql_num_rows($result);
 //データベースを閉じる
 DBdissconnect($dbcon);
 
+$new_show_flg = true;
+if(($cnt_new == 0) 
+		&& ($cnt_print_flg == 0)
+		&& ($cnt == 0)
+		)
+{
+	$new_show_flg = false;
+}
+
 ?>
 <html>
 	<head>
@@ -50,6 +59,11 @@ DBdissconnect($dbcon);
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 
+		<?php 
+		
+		if($new_show_flg)
+		{
+		?>
 			<div align="center">
 			   <font class="Cubicfont">新着情報</font>
 			</div>
@@ -85,6 +99,13 @@ DBdissconnect($dbcon);
 					
 			</ul>			 
 		</div>
+		<?php 
+			}
+			else
+			{
+				//なにもないときはなにを表示させるか月曜確認！１	
+			}
+			?>
 		<script>
 			
 			function Message()

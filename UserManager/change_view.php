@@ -100,15 +100,29 @@
 		</tr>
 		<tr>
 			<td>学籍番号※学生のみ</td>
-			<td><input type="text" name="stuent_id" id="student_id" value="<?= $user_row['student_id'] ?>" disabled Onblur="check('#student_id', ic, tc, vc, )">></td>
+			<td><input type="text" name="stuent_id" id="student_id" value="<?= $user_row['student_id'] ?>" disabled Onblur="check('#student_id', ic, tc, vc, )"></td>
 		</tr>
 	</table>
 
 		<br>
+		<table>
+		<tr>
+		<td>
 		<input type="hidden" value="<?= $user_row['user_seq'] ?>" name="user_seq">
-		<input class="button4" type="submit" value ="登録">
+		<input class="button4" type="submit" value ="更新">
 		</form>
-		<input type="checkbox" id="edit" >編集する
+		</td>
+		<td>
+		<input class="button4" type="button" id="edit" data-id="0" value ="編集">
+		</td>
+			<form method="POST" action="delete.php">
+		<td>
+				<input type="hidden" value="<?= $user_row['user_seq'] ?>" name="user_seq">
+				<input class="button4" type="submit" value ="削除">
+		</td>
+			</form>
+		</tr>
+		</table>
 		</div>
 	</body>
 
@@ -119,10 +133,11 @@
 			$(document).on('click', '#edit', function() {
 
 				//対象のinputタグのNameを配列にかくのう
-				input_names = new Array("user_id", "pass", "user_name", "user_kana", "user_address	",
+				var input_names = new Array("user_id", "pass", "user_name", "user_kana", "user_address	",
 										"user_tel", "user_email", "autho_seq", "stuent_id");
+				var flg = $(this).data('id');
 
-				if(document.getElementById("edit").checked)
+				if(flg == 0)
 				{
 					for (i = 0; i < input_names.length; i++)
 					{
@@ -139,6 +154,9 @@
 					}
 
 				}
+
+				$(this).data('id'). = 1;
+				
 			});
 		});
 

@@ -12,7 +12,7 @@ $start_date= $_SESSION['question_info[start_date]'];
 $end_date= $_SESSION['question_info[end_date]'];
 $target_group = $_SESSION['question_info[target_group]'];
 $description = $_SESSION['question_info[question_description]'];
-$sql = "INSERT INTO question VALUES (0,'$title','$target_group','$start_date','$end_date','$description')";
+$sql = "INSERT INTO question VALUES (0,'$title','$target_group','$start_date','$end_date','$description','0')";
 mysql_query($sql);
 echo $sql;
 $question_seq = mysql_insert_id($dbcon);

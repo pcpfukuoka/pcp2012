@@ -33,14 +33,15 @@
 				<th><h3>対象グループ</h3></th>
 				<th><h3>期間</h3></th>
 				<th><h3>回答数</h3></th>
-			</tr>
+				<th><h3></h3></th>
+				</tr>
 			</thead>
 			<tbody>
 		<?php
 		require_once("../lib/dbconect.php");
 		$dbcon = DbConnect();
 		//表示用ユーザ情報取得
-		$sql = "SELECT question_seq, question_title, m_group.group_name, start_date, end_date FROM question LEFT JOIN m_group ON question_target_group_seq = m_group.group_seq;";
+		$sql = "SELECT question_seq, question_title, m_group.group_name, start_date, end_date FROM question LEFT JOIN m_group ON question_target_group_seq = m_group.group_seq WHERE question.delete_flg = '0' ;";
 		$result = mysql_query($sql);
 		$cnt = mysql_num_rows($result);
 
@@ -53,6 +54,7 @@
 				<td><?= $row['group_name'] ?></td>
 				<td><?= $row['start_date'] ?> ~ <?= $row['end_date'] ?></td>
 				<td></td>
+				<td><a href="question_delete.php?id=<?= $row['question_seq'] ?>" >削除</a></td>
 			</tr>
 	<?php
 		}

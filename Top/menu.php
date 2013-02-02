@@ -1,6 +1,6 @@
 <?php
 	session_start();
-
+	$position = $_SESSION['position_flg'];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- フレーム上部分のメニュー -->
@@ -52,6 +52,11 @@
 	<div align="center" class="button">
 		<!-- クリックしてＵＲＬ変更の関数呼び出し（引数：ＵＲＬ、表示位置） -->
 		<table>
+
+		<!--  下記より先生のみ -->
+		<?php if($position == "teacher")
+		{
+		?>
 			<tr>
 				<td><input class="button1" type="button" onclick="jump_top()"value="ＴＯＰ"></td>
 				<td><input class="button1" type="button" onclick="jump('../Calendar/calendar_main.php' , 'left')" value="スケジュール"></td>
@@ -60,16 +65,34 @@
 				<td><input class="button1" type="button" onclick="jump('../Results_check/R_index.php' , 'left')" value="成績確認"></td>
 				<td><input class="button1" type="button" onclick="jump('../QuestionManager/index.php','left')" value="アンケート"></td>
 			</tr>
-
-		<!--  下記より先生のみ -->
-			<tr>
+		<tr>
 				<td><input class="button1" type="button" onclick="jump('../AuthoManager/autho_main.php','left')" value="権限管理"></td>
 				<td><input class="button1" type="button" onclick="jump('../GroupManager/group_top.php', 'left')" value="グループ管理"></td>
 				<td><input class="button1" type="button" onclick="jump('../UserManager/index.php', 'left')" value="ユーザー管理"></td>
 				<td><input class="button1" type="button" onclick="jump('../ResultsManager/res_main.php','left')" value="成績管理"></td>
 				<td><input class="button1" type="button" onclick="jump('../PrintDeliveryManager/p_main.php','left')" value="プリント配信"></td>
 				<td><input class="button1" type="button" onclick="jump('../AAAManager/A_main.php' , 'left')" value="出席管理"></td>
-				</tr>
+				</tr>	
+	<?php 
+
+		}
+		else
+		{
+			//生徒と保護者用のメニュー(ボタンを大きくする。)
+			?>
+						<tr>
+				<td><input class="button10" type="button" onclick="jump_top()"value="ＴＯＰ"></td>
+				<td><input class="button10" type="button" onclick="jump('../Calendar/calendar_main.php' , 'left')" value="スケジュール"></td>
+				<td><input class="button10" type="button" onclick="jump('../ContactBook/main.php' , 'left')" value="連絡帳"></td>
+				<td><input class="button10" type="button" onclick="jump('../Lesson/index.php','left')" value="授業"></td>
+				<td><input class="button10" type="button" onclick="jump('../Results_check/R_index.php' , 'left')" value="成績確認"></td>
+				<td><input class="button10" type="button" onclick="jump('../QuestionManager/index.php','left')" value="アンケート"></td>
+			</tr>
+			
+			
+		<?php 
+		}?>
+		
 		</table>
 	</div>
 	</div>
