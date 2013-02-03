@@ -1,5 +1,33 @@
+/* 指定したcookieを取得する関数 */
+	function GetCookie(name)
+	{
+	    var result = null;
+
+	    var cookieName = name + '=';
+	    var allcookies = document.cookie;
+
+	    var position = allcookies.indexOf( cookieName );
+	    if( position != -1 )
+	    {
+	        var startIndex = position + cookieName.length;
+
+	        var endIndex = allcookies.indexOf( ';', startIndex );
+	        if( endIndex == -1 )
+	        {
+	            endIndex = allcookies.length;
+	        }
+
+	        result = decodeURIComponent(
+	            allcookies.substring( startIndex, endIndex ) );
+	    }
+
+	    return result;
+	}
+
+
 function table() {
 
+		var room=GetCookie('room');
 		//クラステーブルを生成する処理
 		$.post('http://49.212.201.99/pcp2012/lib/student_list.php', {
 	        id : room
