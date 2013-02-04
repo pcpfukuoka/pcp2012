@@ -64,7 +64,7 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 		table_ele.appendChild(tr_);
 	}
 
-	var page_name=page_num+"_page";
+	var page_name="page_num";
 	var page_ele=parent.document.getElementById(page_name);
 
 	//changeのselectboxにページ数の追加
@@ -93,5 +93,4 @@ function form_create(date,page_num,subject_seq,img_tag_name){
 	}
 	page_num++;
 	page_ele.value=page_num;
-	page_ele.id=page_num+"_page";
 }

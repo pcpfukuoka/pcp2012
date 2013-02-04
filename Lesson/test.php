@@ -14,9 +14,10 @@
 	$result = mysql_query($sql);
 	$row = mysql_fetch_array($result);
 
-	$group_sel = "SELECT group_seq,group_name FROM pcp2012.m_group WHERE group_name=".$group_seq.";";
+	//group_seqに対応するgroup_nameをデータベースから持ってくる
+	$group_sel = "SELECT group_name FROM pcp2012.m_group WHERE group_name=".$group_seq.";";
 	$group_result = mysql_query($group_sel);
-	$row2 = mysql_fetch_array($result);
+	$row2 = mysql_fetch_array($group_result);
 
 
 
@@ -37,11 +38,10 @@
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 			<div align="center">
-				<font class="Cubicfont">授業準備</font>
+				<font class="Cubicfont"><?= $date ?>:<?=$row['subject_name'] ?>:<?=$row2['group_name'] ?></font>
 			</div>
 			<hr color="blue"></hr>
 	<br>
-	<font size="5"><?= $date ?>:<?=$row['subject_name'] ?>:<?=$row2['group_name'] ?></font>
 	<div id="form">
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
@@ -68,7 +68,7 @@
 					</span>
 			</td>
 			<td>
-					<input type="hidden" name="page_num" value="<?= $page_max ?>" id="<?= $page_max ?>_page"/>
+					<input type="hidden" name="page_num" value="<?= $page_max ?>" id="page_num"/>
 					<input class="button4" type="submit"  value="追加" disabled=disabled id="upload_decision"/>
 				</form>
 			</td>
@@ -206,7 +206,7 @@
 			<input type="hidden" name="date" value=" <?= $date ?>" />
 			<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
 			<input type="hidden" name="group_seq" value="<?= $group_seq ?>" />
-			<input class="button3" type="submit" value="授業開始" id="lesson_start" disabled=disabled>
+			<input class="button3" type="submit" value="授業開始" id="lesson_start" onsubmit="return check()">
 		</form>
 	</div>
 		<iframe name="targetFrame" id="targetFrame" style="display:none;"></iframe>
@@ -214,6 +214,10 @@
 	</body>
 	<script>
 	$(function() {
+
+		function check(){
+			var page_num=document.getElementById("");
+		}
 
 		$('#upload_file').change(function(){
 			//ファイルの名前をテキストに反映
@@ -249,11 +253,6 @@
 
 		//画像を追加ボタンを押したとき
 		$(document).on('click', '#upload_decision', function() {
-
-			//授業開始ボタンを押せるようにしたとき
-			var start_ele=document.getElementById("lesson_start");
-			start_ele.disabled=false;
-
 
 			//画像の削除をおせるようにする
 			var delete_ele=document.getElementById("delete_decision");
@@ -339,10 +338,8 @@
 
 			//追加ボタンのpage_numを一つ減らす
 			var sub_num=Number(parsers[0]['max_page'][0])+1;
-			var sub=sub_num+"_page";
-			var page_ele=document.getElementById(sub);
+			var page_ele=document.getElementById("page_num");
 			page_ele.value=sub_num-1;
-			page_ele.id=sub_num-1+"_page";
 	    });
 	}
 	</script>
