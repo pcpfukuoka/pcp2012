@@ -110,6 +110,13 @@
 					var button_ele=document.getElementById('decision');
 					button_ele.disabled=false;
 		    	}
+		    	else{
+			    	var nothing_alart = '<font size="5">その授業はありません。</font>';
+			    	$('#frame').append(nothing_alart);
+			    	var button_ele=document.getElementById('decision');
+					button_ele.disabled=false;
+
+			    }
 		    });
 	    });
 

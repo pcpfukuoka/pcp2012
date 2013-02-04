@@ -40,12 +40,8 @@
 				<font class="Cubicfont">授業準備</font>
 			</div>
 			<hr color="blue"></hr>
-
-
-	<a href="lesson_preparation.php">戻る</a>
-
 	<br>
-	<font size="5"><?= $date ?>:<?=$row['subject_name'] ?>:<?=$row2['group_seq'] ?></font>
+	<font size="5"><?= $date ?>:<?=$row['subject_name'] ?>:<?=$row2['group_name'] ?></font>
 	<div id="form">
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
