@@ -216,7 +216,11 @@
 	$(function() {
 
 		function check(){
-			var page_num=document.getElementById("");
+			var page_num=document.getElementById("page_num");
+			if(Number(page_num.value)<1){
+				 alert("画像を１枚以上準備してください");
+                 return false;
+			}
 		}
 
 		$('#upload_file').change(function(){
