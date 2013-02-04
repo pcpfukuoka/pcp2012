@@ -12,6 +12,7 @@ $user_seq = $_SESSION['login_info[user]'];
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, intital-scale=1">
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		<link rel="stylesheet" href="../css/table.css" />
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	</head>
@@ -30,11 +31,11 @@ $user_seq = $_SESSION['login_info[user]'];
 			</div>
 			
 			<div data-role="content">		
-		<table border="1">
-			<tr bgcolor="yellow">
-				<th align="center"width="35%"><font size="5">タイトル</font></th>
-				<th align="center"width="35%"><font size="5">期間</font></th>
-				<th align="center"width="35%"><font size="5"></font></th>				
+		<table class="table_01">
+			<tr>
+				<th>タイトル</th>
+				<th>期間</th>
+				<th></th>				
 			</tr>
 		<?php 
 		require_once("../lib/dbconect.php");

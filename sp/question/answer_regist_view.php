@@ -34,6 +34,7 @@ $user_seq = $_SESSION['login_info[user]'];
 					</ul>
 				</div>
 			</div>
+	</div>		
 			
 			<div data-role="content">			
 		<?php 
@@ -73,7 +74,7 @@ $user_seq = $_SESSION['login_info[user]'];
 				<input type="<?= $details_row['division_type']?>" name="question_<?= $i + 1 ?>[]" value="<?= $awnser_row['question_awnser_list_seq'] ?>"><?= $awnser_row['awnser_name'] ?>				
 				<?php 
 			}?>
-			その他：<input type="checkbox" class="etc_input" id="etc_input_<?= $i + 1 ?>" data-id="<?= $i + 1 ?>">
+			<br>その他：<input type="checkbox" class="etc_input" id="etc_input_<?= $i + 1 ?>" data-id="<?= $i + 1 ?>">
 				  <input type="text" name="etc_<?= $i + 1 ?>" disabled="true">
 			<input type="hidden" name="details_seq[]" value="<?= $details_row['question_details_seq']?>">
 			<br>
@@ -89,7 +90,6 @@ $user_seq = $_SESSION['login_info[user]'];
 				<a href="#" data-rel="back" data-role="button" data-icon="back"  class="ui-btn-left">戻る</a>
 				<a href="../index.php" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">トップへ</a>
 			</div>
-	</div>		
 	</body>
 	
 			<script>
