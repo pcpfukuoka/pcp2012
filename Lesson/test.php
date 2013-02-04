@@ -216,7 +216,7 @@
 	//画像が一枚もない場合にsubmitをさせない処理
 	function check(){
 		var page_num=document.getElementById("page_num");
-		if(Number(page_num.value)<1){
+		if(Number(page_num.value)<2){
 			 alert("画像を１枚以上準備してください");
              return false;
 		}
