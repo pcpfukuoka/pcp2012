@@ -202,27 +202,26 @@
 			</tr>
 		</table>
 
-			<form action="using_change.php" method="post" enctype="multipart/form-data" >
+			<form action="using_change.php" method="post" enctype="multipart/form-data"   onsubmit="return check();">
 			<input type="hidden" name="date" value=" <?= $date ?>" />
 			<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
 			<input type="hidden" name="group_seq" value="<?= $group_seq ?>" />
-			<input class="button3" type="submit" value="授業開始" id="lesson_start" onsubmit="return check()">
+			<input class="button3" type="submit" value="授業開始" id="lesson_start">
 		</form>
 	</div>
 		<iframe name="targetFrame" id="targetFrame" style="display:none;"></iframe>
 </div>
 	</body>
-	<script>
-	$(function() {
-
-		function check(){
-			var page_num=document.getElementById("page_num");
-			if(Number(page_num.value)<1){
-				 alert("画像を１枚以上準備してください");
-                 return false;
-			}
+	<script type="text/javascript">
+	//画像が一枚もない場合にsubmitをさせない処理
+	function check(){
+		var page_num=document.getElementById("page_num");
+		if(Number(page_num.value)<1){
+			 alert("画像を１枚以上準備してください");
+             return false;
 		}
-
+	}
+	$(function() {
 		$('#upload_file').change(function(){
 			//ファイルの名前をテキストに反映
 			 $('#cover').val($(this).val());
