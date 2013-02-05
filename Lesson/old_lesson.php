@@ -94,7 +94,7 @@
 			var date=date_ele.value;
 			var subject_seq=subject_ele.value;
 			var group_seq=group_ele.value;
-			var time_table=time_table.value;
+			var time_table=time_table_ele.value;
 
 			$.post('ajax_canvas_select.php',{
 		        date: date,
