@@ -45,7 +45,7 @@
 
 			<!-- 連絡帳の受信一覧テーブル作成 -->
 
-			<div align="center">
+			<div align="left">
 			<br>
 		<div id="tablewrapper">
 			<div id="tableheader">
@@ -57,7 +57,7 @@
 					<div>Records <span id="startrecord"></span>-<span id="endrecord"></span> of <span id="totalrecords"></span></div>
 	        		<div><a href="javascript:sorter.reset()">reset</a></div>
 	        	</span>
-        </div> 
+        </div>
 		<table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
 			<thead>
 					<tr>
@@ -66,16 +66,16 @@
 						<th align="center"width="230"><font size="5">件名</font></th>
 					</tr>
 				</thead>
-				<tbody id="list">					
+				<tbody id="list">
 					<?php
 					for ($i = 0; $i < $count; $i++){
 						$row = mysql_fetch_array($result);
 					?>
 
 					<tr>
-						<td><?= $row['send_date'] ?></td>
-						<td><?= $row['reception_user_name'] ?></td>
-						<td>
+						<td align="center"><?= $row['send_date'] ?></td>
+						<td align="center"><?= $row['reception_user_name'] ?></td>
+						<td align="center">
 							<!-- GETでシークを渡す -->
 							<a href="sendview.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
 						</td>
@@ -112,7 +112,7 @@
                 <div class="page">Page <span id="currentpage"></span> of <span id="totalpages"></span></div>
             </div>
         </div>
-				
+
 			</div>
 		</div>
 	<script type="text/javascript" src="../javascript/script.js"></script>
@@ -141,6 +141,6 @@
 		init:true
 	});
   </script>
-		
+
 	</body>
 </html>

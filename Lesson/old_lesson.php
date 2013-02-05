@@ -56,6 +56,14 @@
 				}
 			?>
 		</select>
+		<select id="time_table">
+    			<option value="1">１時間目</option>
+    			<option value="2">２時間目</option>
+    			<option value="3">３時間目</option>
+    			<option value="4">４時間目</option>
+    			<option value="5">５時間目</option>
+    			<option value="6">６時間目</option>
+		</select>
 		<input type="button" value="決定" id="decision" disabled=disabled>
 		<div id="frame">
 		</div>
@@ -80,16 +88,19 @@
 			var date_ele=document.getElementById('date');
 			var subject_ele=document.getElementById('subject_seq');
 			var group_ele=document.getElementById('group_seq');
+			var time_table_ele=document.getElementById('time_table');
 
 			//日付と科目を変数に格納
 			var date=date_ele.value;
 			var subject_seq=subject_ele.value;
 			var group_seq=group_ele.value;
+			var time_table=time_table.value;
 
 			$.post('ajax_canvas_select.php',{
 		        date: date,
 		        id : subject_seq,
-		        group: group_seq
+		        group: group_seq,
+		        time_table:time_table
 		    },
 		    function(rs) {
 		    	var parsers = JSON.parse(rs);
@@ -125,9 +136,11 @@
 	    	var date_ele=document.getElementById('date');
 			var subject_ele=document.getElementById('subject_seq');
 			var group_ele=document.getElementById('group_seq');
+			var time_table_ele=document.getElementById('time_table');
 			var date=date_ele.value;
 			var subject_seq=subject_ele.value;
 			var group_seq=group_ele.value;
+			var time_table=time_table_ele.value;
 
 	    	var page_ele =document.getElementById('page_num');
 	    	var page= Number(page_ele.value);
@@ -135,7 +148,8 @@
 	    	$.post('ajax_canvas_select.php', {
 	            date: date,
 	            id : subject_seq,
-	            group : group_seq
+	            group : group_seq,
+	            time_table:time_table
 	        },
 	        //戻り値として、user_seq受け取る
 	        function(rs) {
@@ -158,17 +172,20 @@
 	    	var date_ele=document.getElementById('date');
 			var subject_ele=document.getElementById('subject_seq');
 			var group_ele=document.getElementById('group_seq');
+			var time_table_ele=document.getElementById('time_table');
 
 			var date=date_ele.value;
 			var subject_seq=subject_ele.value;
 			var group_seq=group_ele.value;
+			var time_table=time_table_ele.value;
 	    	var page_ele =document.getElementById('page_num');
 	    	var page= Number(page_ele.value);
 
 	    	$.post('ajax_canvas_select.php', {
 	            date: date,
 	            id : subject_seq,
-	            group : group_seq
+	            group : group_seq,
+	            time_table : time_table
 	        },
 	        function(rs){
 

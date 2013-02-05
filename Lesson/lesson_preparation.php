@@ -37,6 +37,7 @@
 		<table class="table_01">
 			<tr>
 				<th>授業の日付</th>
+				<th>時間割</th>
 				<th>教科</th>
 				<th>クラス</th>
 				<th>決定</th>
@@ -60,6 +61,17 @@
 			  				<?php
 			    				}
 			  				?>
+						</select>
+					</td>
+
+					<td align="center">
+						<select name="time_table">
+							<option value="1">１時間目</option>
+							<option value="2">２時間目</option>
+							<option value="3">３時間目</option>
+							<option value="4">４時間目</option>
+							<option value="5">５時間目</option>
+							<option value="6">６時間目</option>
 						</select>
 					</td>
 
