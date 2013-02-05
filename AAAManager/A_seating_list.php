@@ -17,29 +17,29 @@
 //	$sql = "SELECT group_seq, group_name FROM m_group WHERE class_flg = 1";
 //	$result = mysql_query($sql);
 
-	$sql = "SELECT max(row) as r_max 
-			FROM seat 
+	$sql = "SELECT max(row) as r_max
+			FROM seat
 			WHERE group_seq='$group_seq'";
 	$res = mysql_query($sql);
 	$gyo = mysql_fetch_assoc($res);
 	$row_max = $gyo['r_max'];
-	
-	
-	$sql = "SELECT max(col) as c_max 
-			FROM seat 
+
+
+	$sql = "SELECT max(col) as c_max
+			FROM seat
 			WHERE group_seq ='$group_seq'";
 	$res = mysql_query($sql);
 	$gyo = mysql_fetch_assoc($res);
 	$col_max = $gyo['c_max'];
-	
-	$sql = "SELECT seat.user_seq, m_user.user_name 
-			FROM seat, m_user 
-			WHERE m_user.user_seq = seat.user_seq 
-			AND seat.group_seq = 1 
+
+	$sql = "SELECT seat.user_seq, m_user.user_name
+			FROM seat, m_user
+			WHERE m_user.user_seq = seat.user_seq
+			AND seat.group_seq = '$group_seq'
 			ORDER BY seat.row ASC, seat.col ASC;";
 	$seat = mysql_query($sql);
-	
-	
+
+
 ?>
 
 <html>
@@ -67,23 +67,23 @@
 			<table border="4" align="center" bgcolor="#FFE7CE" bordercolor="#DC143C">
 
 				<?php
-	
+
 					for($i = 1; $i <= $row_max; $i++)
 					{
 						echo "<tr>";
-					
+
 						for($j = 1; $j <= $col_max; $j++)
 						{
 							$result = mysql_fetch_array($seat);
 							$user_seq = $result['user_seq'];
-				
+
 							if($user_seq == "")
 							{
 								echo "<td class='sample'width='100'>";
 							}
 							else
 							{
-								$user_name = $result['user_name'];								
+								$user_name = $result['user_name'];
 				?>
 								<td class="sample" width="200" align="center">
 								<font size = "4"><?=$user_name?></font>
@@ -96,20 +96,20 @@
 									</tr>
 								</table>
 								</td>
-				<?php 
-							
+				<?php
+
 							}
-							
-			
+
+
 							echo "</td>";
 						}
 						echo "</tr>";
 					}
-					
+
 				?>
-				
-				<?php 
-/*								
+
+				<?php
+/*
 
 					for($i = 1; $i <= 6; $i++)
 					{
@@ -129,7 +129,7 @@
 								$user_name = $row['user_name'];
 
 				?>
-								
+
 				<?php
 							}
 							echo "</td>";
