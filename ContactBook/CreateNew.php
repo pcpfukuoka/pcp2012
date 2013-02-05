@@ -31,7 +31,7 @@
 			</div>
 
 			<hr color="blue">
-			<br><br>
+			<br>
 
 			<form action="relay.php" method="POST" id="input">
 				  <font size="5">宛先</font>
@@ -51,7 +51,7 @@
 				  <font size="5">件名</font>
 				  <input size="40" type="text" name="title"><br><br>
 			      <font size="5">本文</font><br>
-			      <textarea rows="40" cols="50" name="contents"></textarea><br>
+			      <textarea rows="2" cols="50" name="contents" id="message" onkeydown="textareaResize(event)"></textarea><br>
 
 			      <!-- 隠し文字 -->
 			      <input type="hidden" value="0" name="link_id">
@@ -63,5 +63,29 @@
 				  </table>
 		    </form>
 	    </div>
+
+
+	    <script type="text/javascript">
+			function textareaResize(event)
+			{
+			    try {
+			        elem_id = event.srcElement.id;
+			    } catch ( e ) {
+			        elem_id = event.target.id;
+			    }
+			    var keycode = event.keyCode;
+			    if (keycode == 13) {
+			        var m = document.getElementById(elem_id);
+			        var r = m.getAttribute("rows");
+			        m.setAttribute("rows", parseInt(r)+1);
+			    }
+			    else if(keycode == 8)
+			    {
+			    	var m = document.getElementById(elem_id);
+			        var r = m.getAttribute("rows");
+			        m.setAttribute("rows", parseInt(r)-1);
+			    }
+			}
+</script>
     </body>
 </html>

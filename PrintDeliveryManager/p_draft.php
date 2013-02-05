@@ -52,10 +52,9 @@
 						$row = mysql_fetch_array($result);
 					?>
 						<tr>
-							<td><?= $row['delivery_date'] ?></td>
-							<td><?= $row['group_name'] ?></td>
-							<td>
-
+							<td align="center"><?= $row['delivery_date'] ?></td>
+							<td align="center"><?= $row['group_name'] ?></td>
+							<td align="center">
 								<a href="p_view.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
 							</td>
 

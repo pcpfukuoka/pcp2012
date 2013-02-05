@@ -34,7 +34,7 @@
 			  <font size="5">件名　： </font>
 			  <input size="40" type="text" name="title" value="Re: <?= "$title"?>"><br><br>
 		      <font size="5">本文</font><br>
-		      <textarea rows="40" cols="50" name="contents">＞<?= "$contents" ?></textarea><br>
+		      <textarea rows="13" cols="50" name="contents">＞<?= "$contents" ?></textarea><br>
 
 		      <input type="hidden" value="<?= $send_seq ?>" name="send_seq">
 		      <input type="hidden" value="<?= $link_id ?>" name="link_id">

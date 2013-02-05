@@ -59,17 +59,17 @@ Dbdissconnect($link);
 		
 		<form action = "res_list.php" method = "POST">
 			<!-- テーブルの作成 -->
-			<table border = "1"  class="table_01">
+			<table border = "1"  class="table_03">
 				<tr>
-					<th>学年・クラス</th>
-					<th>教科</th>
+					<th class="class">学年・クラス</th>
+					<th class="subject">教科</th>
 					<th>テストチェック</th>
 				</tr>
 				
 				<tr>
 				
 					<!-- グループの選択 -->
-					<td><select name = "group_seq">
+					<td class="class"><select name = "group_seq">
 						<?php
 						for ($i = 0; $i < $count_group; $i++)
 						{
@@ -82,7 +82,7 @@ Dbdissconnect($link);
 					</select></td>
 					
 				<!-- 教科の選択 -->
-					<td><select name = "subject_seq">
+					<td class="subject"><select name = "subject_seq">
 						<option value = "-1" selected>すべて</option>
 						<?php
 						for ($i = 0; $i < $count_subj; $i++)

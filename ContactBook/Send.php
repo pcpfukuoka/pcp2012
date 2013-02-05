@@ -37,7 +37,7 @@
 		  </div>
 
 		  <hr color="blue">
-		  <br><br>
+		  <br>
 
 		  <form action="relay.php" method="POST" id="input">
 			  <font size="5">To： </font>
@@ -45,7 +45,7 @@
 			  <font size="5">件名： </font>
 			  <input size="40" type="text" name="title" value="<?= $contact_book_row['title']?>"><br><br>
 		      <font size="5">本文</font><br>
-		      <textarea rows="40" cols="50" name="contents"><?= $contact_book_row['contents'] ?></textarea><br>
+		      <textarea rows="13" cols="50" name="contents"><?= $contact_book_row['contents'] ?></textarea><br>
 
 		      <input type="hidden" value="<?= $contact_book_row['contact_book_seq'] ?>" name="contact_book_seq">
 		      <input type="hidden" value="<?= $contact_book_row['reception_user_seq'] ?>" name="reception_user_seq">

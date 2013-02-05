@@ -35,10 +35,8 @@
 			    <font class="Cubicfont">確認画面</font>
 			</div>
 
-			<font size = "4"><a href="OutBox.php">←戻る</a></font>
-
 			<hr color="blue">
-			<br><br>
+			<br>
 
 			<form action="ReplyBox.php" method="POST">
 				<font size="5">To：</font>
@@ -47,7 +45,7 @@
 				<?= $row['title'] ?><br><br>
 
 			    <font size="5">本文</font><br>
-			    <textarea readonly="readonly" rows="40" cols="50" name="contents"><?= $row['contents']?></textarea>
+			    <textarea readonly="readonly" rows="13" cols="50" name="contents"><?= $row['contents']?></textarea>
 			    <br><br>
 
 			    <input type="hidden" value="<?= $row['reception_user_name'] ?>" name="sendto">

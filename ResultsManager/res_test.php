@@ -191,7 +191,8 @@ Dbdissconnect($link);
 				</form>
 			</tr>
 
-			<form action = "res_test_point.php" method = "POST">
+			<form action="res_test_point.php" method="POST">
+			
 				<?php
 				//以前のテストの表示
 				for ($i = 0; $i < $count_test; $i++)
@@ -224,12 +225,13 @@ Dbdissconnect($link);
 					<!-- test_seqを持っていく -->
 					<td align = "center">
 						<input type = "hidden" name = "subname['<?= $i ?>']" value = "<?= $test['test_seq'] ?>">
-						<input class="button4" type = "submit" name = "submit['<?= $i ?>']" value = "点数修正">
+						<input type = "submit" class="button4" name = "submit['<?= $i ?>']" value = "点数修正">
 					</td>
 				</tr>
 				<?php
 				}
 				?>
+			
 			</form>
 			</tbody>
 		</table>

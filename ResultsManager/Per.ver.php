@@ -62,35 +62,37 @@ Dbdissconnect($link);
 
 		<form action = "Per_list.php" method = "POST">
 			<!-- テーブルの作成 -->
-			<table border = "1"  class="table_01">
+			
+			<table class="table_03" >
 				<tr>
 				<!-- 	<th>学年・クラス</th>  -->
-					<th>教科</th>
-					<th>テストチェック</th>
+					<th class="subject">教科</th>
+					<th >テストチェック</th>
 				</tr>
-
+				
 				<tr>
-
-
-				<!-- 教科の選択 -->
-					<td><select name = "subject_seq">
-						<option value = "-1" selected>すべて</option>
-						<?php
-						for ($i = 0; $i < $count_subj; $i++)
-						{
-							$subj = mysql_fetch_array($result_subj);
-						?>
-							<option value = "<?= $subj['subject_seq'] ?>"> <?= $subj['subject_name'] ?></option>
-						<?php
-						}
-						?>
-					</select></td>
+				<!-- 教科の選択 --> 
+					<td class="subject">
+						<select name = "subject_seq">
+							<option value = "-1" selected>すべて</option>
+							<?php
+							for ($i = 0; $i < $count_subj; $i++)
+							{
+								$subj = mysql_fetch_array($result_subj);
+							?>
+								<option value = "<?= $subj['subject_seq'] ?>"> <?= $subj['subject_name'] ?></option>
+							<?php
+							}
+							?>
+						</select>
+					</td>
 
 					<!-- テストのチェック -->
-					<td align = "center">
-					すべて<input type = "radio" name = "stand_flg" value = -1 checked>&nbsp
-					定期テスト<input type= "radio" name = "stand_flg" value = "1">&nbsp
-					小テスト<input type = "radio" name = "stand_flg" value = "0"></td>
+					<td align = "center" width = "300">					
+					すべて<input type = "radio" name = "stand_flg" value = -1 checked>&nbsp;&nbsp;
+					定期テスト<input type= "radio" name = "stand_flg" value = "1">&nbsp;&nbsp;
+					小テスト<input type = "radio" name = "stand_flg" value = "0">
+					</td>
 				</tr>
 			</table><br>
 				<input class="button4" type = "submit" value = "一覧へ">
