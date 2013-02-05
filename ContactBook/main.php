@@ -29,7 +29,6 @@
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<script src="../javascript/frame_jump.js"></script>
 		<title>連絡帳</title>
-
 	</head>
 
 	<!-- ↓↓１秒ごとにページを自動更新する処理↓↓↓ -->

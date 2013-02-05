@@ -51,12 +51,9 @@
 			<div align="center">
 			    <font class="Cubicfont">確認画面</font>
 			</div>
-			<div>
-				<font size = "4"><a href="MailBox.php">←戻る</a></font>
-			</div>
 
 			<hr color="blue">
-			<br><br>
+			<br>
 
 			<form action="ReplyBox.php" method="POST">
 
@@ -71,7 +68,7 @@
 						<font size="5">件名：</font>
 						<?= $aaaa['title'] ?><br><br>
 					    <font size="5">本文</font><br>
-					    <textarea readonly="readonly" rows="40" cols="50" name="contents"><?= $aaaa['contents']?></textarea>
+					    <textarea readonly="readonly"  name="contents" rows="13" cols="50"><?= $aaaa['contents']?></textarea>
 					    <br><br><br>
 				<?php
 					}
@@ -85,7 +82,7 @@
 				<?= $row['title'] ?><br><br>
 
 			    <font size="5">本文</font><br>
-			    <textarea readonly="readonly" rows="40" cols="50" name="contents"><?= $row['contents']?></textarea>
+			    <textarea readonly="readonly" rows="13" cols="50" name="contents"><?= $row['contents']?></textarea>
 			    <br><br>
 
 			    <input type="hidden" value="<?= $row['send_user_name'] ?>" name="sendto">

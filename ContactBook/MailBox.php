@@ -24,11 +24,11 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table_search.css" />
-				
 		<title>受信箱</title>
 	</head>
 
@@ -37,17 +37,18 @@
 		<div id="container">
 		<div align="center">
 			<font class="Cubicfont">受信箱</font>
-			<br>
 		</div>
+
 		<hr color="blue">
 		<div class="holder"></div>
-		
+
 		<!-- 連絡帳の受信一覧テーブル作成 -->
+		<br>
 		<p align="left">
 			<font size="5">連絡帳</font>
 		</p>
 
-		<div align="center">
+		<div align="left">
 		<div id="tablewrapper">
 			<div id="tableheader">
 	        	<div class="search">
@@ -58,7 +59,7 @@
 					<div>Records <span id="startrecord"></span>-<span id="endrecord"></span> of <span id="totalrecords"></span></div>
 	        		<div><a href="javascript:sorter.reset()">reset</a></div>
 	        	</span>
-        </div> 
+        </div>
 		<table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
 			<thead>
 					<tr>
@@ -78,7 +79,7 @@
 							if($row['new_flg'] == 1)
 							{
 						?>
-								<td><img src="../images/mail_icon.jpg"></td>
+								<td align="center"><img src="../images/mail_icon.jpg"></td>
 						<?php
 							}
 							else
@@ -86,9 +87,9 @@
 								echo "<td></td>";
 							}
 						?>
-							<td><?= $row['send_date'] ?></td>
-							<td><?= $row['send_user_name'] ?></td>
-							<td>
+							<td align="center"><?= $row['send_date'] ?></td>
+							<td align="center"><?= $row['send_user_name'] ?></td>
+							<td align="center">
 								<!-- GETでcontact_book_seqを送る -->
 								<a href="view.php?id=<?= $row['contact_book_seq'] ?>&link_contact_book_seq=<?= $row['link_contact_book_seq'] ?>"><?= $row['title'] ?></a>
 							</td>
@@ -125,7 +126,7 @@
                 <div class="page">Page <span id="currentpage"></span> of <span id="totalpages"></span></div>
             </div>
         </div>
-			<br>	
+			<br>
 			<hr>
 		</div>
 
@@ -152,8 +153,8 @@
 			<font size="5">配信</font>
 		</p>
 		<div class="holder"></div>
-		
-		<div align="center">
+
+		<div align="left">
 		<div id="tablewrapper">
 			<div id="tableheader">
 	        	<div class="search">
@@ -164,7 +165,7 @@
 					<div>Records <span id="startrecord"></span>-<span id="endrecord"></span> of <span id="totalrecords"></span></div>
 	        		<div><a href="javascript:sorter2.reset()">reset</a></div>
 	        	</span>
-        </div> 
+        </div>
 		<table cellpadding="0" cellspacing="0" border="0" id="table_2" class="table_01">
 			<thead>
 						<tr bgcolor="yellow">
@@ -196,7 +197,7 @@
 						if ($chk['print_check_flg'] == 1)
 						{
 					?>
-							<td><img src="../images/mail_icon.jpg"></td>
+							<td align="center"><img src="../images/mail_icon.jpg"></td>
 					<?php
 						}
 						else
@@ -205,9 +206,9 @@
 						}
 					?>
 
-						<td><?= $row['delivery_date'] ?></td>
-						<td><?= $row['send_user_name'] ?></td>
-						<td>
+						<td align="center"><?= $row['delivery_date'] ?></td>
+						<td align="center"><?= $row['send_user_name'] ?></td>
+						<td align="center">
 							<!-- GETでprint_delivery_seqを送る -->
 							<!-- <a href="<?= printurl ?>"><?= $row['title'] ?></a> -->
 							<a href="../Print_delivery/pdf_view.php?id=<?= $row['print_delivery_seq'] ?>&printurl=<?= $row['printurl'] ?>"><?= $row['title'] ?></a>
@@ -248,11 +249,11 @@
                 <div class="page">Page <span id="currentpage"></span> of <span id="totalpages"></span></div>
             </div>
         </div>
-				
-			
+
+
 		</div>
 		</div>
-		
+
 	<script type="text/javascript" src="../javascript/script.js"></script>
 	<script type="text/javascript">
 	var sorter = new TINY.table.sorter('sorter','table',{
@@ -302,7 +303,7 @@
 		init:true
 	});
 	</script>
-		
-		
+
+
 	</body>
 </html>
