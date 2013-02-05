@@ -12,6 +12,7 @@ session_start();
 	$group_seq=$_POST['group_seq'];
 	$data = $_FILES['upfile'];
 	$page_num = $_POST['page_num_change'];
+	$time_table = $_POST['time_table'];
 
 	//$class_seq = $_POST['class_seq'];
 
@@ -22,6 +23,7 @@ session_start();
 			"'WHERE date = '". $date .
 			"'AND subject_seq = '".$subject_seq.
 			"'AND class_seq = '".$group_seq.
+			"'AND time_table = '".$time_table.
 			"'AND end_flg='0' AND page_num = '".$page_num ."';";
 	echo $sql;
 	$result = mysql_query($sql);

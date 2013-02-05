@@ -8,6 +8,7 @@
 	$date = $_POST['date'];
 	$subject_seq = $_POST['subject'];
 	$group_seq = $_POST['group'];
+	$time_table=$_POST['time_table'];
 
 	//subjectに対応するsubject_nameをデータベースから持ってくる
 	$sql = 'SELECT subject_name FROM m_subject WHERE subject_seq = '. $subject_seq.';';
@@ -15,7 +16,7 @@
 	$row = mysql_fetch_array($result);
 
 	//group_seqに対応するgroup_nameをデータベースから持ってくる
-	$group_sel = "SELECT group_name FROM pcp2012.m_group WHERE group_name=".$group_seq.";";
+	$group_sel = "SELECT group_name FROM pcp2012.m_group WHERE group_seq=".$group_seq.";";
 	$group_result = mysql_query($group_sel);
 	$row2 = mysql_fetch_array($group_result);
 
@@ -38,7 +39,8 @@
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 			<div align="center">
-				<font class="Cubicfont"><?= $date ?>:<?=$row['subject_name'] ?>:<?=$row2['group_name'] ?></font>
+				<font class="Cubicfont"><?= $date ?>:<?=$row['subject_name'] ?>:<?=$row2['group_name'] ?>:<?=$time_table ?>時間目</font>
+				<?=$group_sel ?>
 			</div>
 			<hr color="blue"></hr>
 	<br>
@@ -46,8 +48,10 @@
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
 		<input type="hidden" id="subject_seq_hidden" value="<?= $subject_seq ?>" />
 		<input type="hidden" id="group_seq_hidden" value="<?= $group_seq ?>" />
+		<input type="hidden" id="time_table_hidden" value="<?= $time_table ?>" />
+
 	<?php
-		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'" AND class_seq="'.$group_seq.'" AND end_flg="0";';
+		$sql2 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'" AND class_seq="'.$group_seq.'" AND time_table="'.$time_table.'"AND end_flg="0";';
 		$result2 = mysql_query($sql2);
 		$count2 = mysql_num_rows($result2);
 		$page_max = $count2+1;
@@ -61,6 +65,7 @@
 					<input type="hidden" name="date" value="<?= $date ?>" />
 					<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
 					<input type="hidden" name="group_seq" value="<?= $group_seq ?>" />
+					<input type="hidden" name="time_table" value="<?= $time_table ?>" />
 					<input type="file" name="upfile" size="30" id="upload_file" style="display: none;"/>
 					<span id="div_dummy" class="input-append">
 						<img src="../images/kamera_sum.png" id="dummy_img"onclick="$('#upload_file').click();" class="btn btn-primary">
@@ -80,6 +85,7 @@
 					<input type="hidden" name="date" value=" <?= $date ?>" />
 					<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
 					<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
+					<input type="hidden" name="time_table" value="<?= $time_table ?>" />
 					<select id="page_num_change" name="page_num_change">
 					<?php
 			   			for ($i=1; $i<=$count2; $i++)
@@ -110,6 +116,7 @@
 					<input type="hidden" name="date" value=" <?= $date ?>" />
 					<input type="hidden" name="subject_seq" value=" <?= $subject_seq ?>" />
 					<input type="hidden" name="group_seq" value=" <?= $group_seq ?>" />
+					<input type="hidden" name="time_table" value="<?= $time_table ?>" />
 					<select name="page_num_del" id="page_num_del">
 					<?php
 			   			for ($i=1; $i<=$count2; $i++)
@@ -140,7 +147,7 @@
 			<tr id="1_tr">
 	<?php
 
-		$sql3 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'"AND class_seq='.$group_seq.' AND end_flg="0";';
+		$sql3 = 'SELECT page_num, div_url FROM board WHERE date ="'.$date .'"AND subject_seq ="'.$subject_seq.'"AND class_seq='.$group_seq.' AND time_table="'.$time_table.'"AND end_flg="0";';
 		$result3 = mysql_query($sql3);
 		$count3 = mysql_num_rows($result3);
 
@@ -206,6 +213,7 @@
 			<input type="hidden" name="date" value=" <?= $date ?>" />
 			<input type="hidden" name="subject_seq" value="<?= $subject_seq ?>" />
 			<input type="hidden" name="group_seq" value="<?= $group_seq ?>" />
+			<input type="hidden" name="time_table" value="<?= $time_table ?>" />
 			<input class="button3" type="submit" value="授業開始" id="lesson_start">
 		</form>
 	</div>
@@ -271,17 +279,20 @@
 		var subject_ele=document.getElementById('subject_seq_hidden');
 		var group_ele=document.getElementById('group_seq_hidden');
 		var page=document.getElementById('page_num_del');
+		var time_table_ele=document.getElementById('time_table_hidden');
 		var page_val=page.value;
 
 		//日付と科目を変数に格納
 		var date=date_ele.value;
 		var subject_seq=subject_ele.value;
 		var group_seq=group_ele.value;
+		var time_table=time_table_ele.value;
 		$.post('lesson_page_delete.php',{
 	        date:date,
 	        id:subject_seq,
 	        num:page_val,
-	        group_seq:group_seq
+	        group_seq:group_seq,
+	        time_table:time_table
 	    },
 	    function(rs) {
 		    var parsers=JSON.parse(rs);
