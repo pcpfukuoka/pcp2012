@@ -16,7 +16,7 @@
 	$row = mysql_fetch_array($result);
 
 	//group_seqに対応するgroup_nameをデータベースから持ってくる
-	$group_sel = "SELECT group_name FROM pcp2012.m_group WHERE group_name=".$group_seq.";";
+	$group_sel = "SELECT group_name FROM pcp2012.m_group WHERE group_seq=".$group_seq.";";
 	$group_result = mysql_query($group_sel);
 	$row2 = mysql_fetch_array($group_result);
 
@@ -40,6 +40,7 @@
 		<div id="container">
 			<div align="center">
 				<font class="Cubicfont"><?= $date ?>:<?=$row['subject_name'] ?>:<?=$row2['group_name'] ?>:<?=$time_table ?>時間目</font>
+				<?=$group_sel ?>
 			</div>
 			<hr color="blue"></hr>
 	<br>
