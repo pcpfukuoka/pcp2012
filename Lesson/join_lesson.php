@@ -9,6 +9,7 @@ $flg = $_SESSION['position_flg'];
 //先生だったら
 if($flg == "teacher")
 {
+	$time_table =$_GET['id3'];
 	$class_seq = $_GET['id2'];
 	$subject_seq = $_GET['id'];
 	$access = true;
@@ -32,11 +33,12 @@ else
 	$class_seq = $row['group_seq'];
 
 	//今現在授業が行われているか調べる
-	$sql = "SELECT subject_seq FROM board WHERE class_seq = '$class_seq' AND end_flg = '1';";
+	$sql = "SELECT subject_seq,time_table FROM board WHERE class_seq = '$class_seq' AND end_flg = '1';";
 	$result = mysql_query($sql);
 	$cnt = mysql_num_rows($result);
 	$row = mysql_fetch_array($result);
 	$subject_seq = $row['subject_seq'];
+	$time_table = $row['time_table'];
 
 	$sql = "SELECT * FROM m_subject WHERE subject_seq = '$subject_seq'";
 	$result = mysql_query($sql);
@@ -48,6 +50,7 @@ else
 setcookie("flg",$access,$time,"/");
 setcookie("user_seq",$user_seq,$time,"/");
 setcookie("subject_seq",$subject_seq,$time,"/");
+setcookie("time_table",$time_table,$time,"/");
 
 ?>
 <html>
