@@ -19,6 +19,9 @@
 	$group_sel = "SELECT group_name FROM pcp2012.m_group WHERE group_seq=".$group_seq.";";
 	$group_result = mysql_query($group_sel);
 	$row2 = mysql_fetch_array($group_result);
+
+
+
 ?>
 
 <html>
@@ -36,10 +39,9 @@
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 			<div align="center">
-				<font class="Cubicfont"><?= $date ?>:<?=$row2['group_name'] ?>:<?=$time_table ?>時間目</font>
+				<font class="Cubicfont"><?= $date ?>:<?=$row2['group_name'] ?>:<?=$time_table ?>時間目（<?=$row['subject_name'] ?>）</font>
 			</div>
 			<hr color="blue"></hr>
-		</div>
 	<br>
 	<div id="form">
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
