@@ -25,12 +25,12 @@
 		<table>
 			<tr>
 				<td align="center">ユーザID:</td>
-				<td align="center"><input type="text" name="user_id" id="user_id" Onblur="check('#user_id', 'ic,ac,tc', 0, 0)"></td>
+				<td align="center"><input type="text" name="user_id" id="user_id" Onblur="check('#user_id', 'ic,pc,tc', 0, 0)"></td>
 			</tr>
 
 			<tr>
 				<td align="center">パスワード：</td>
-				<td align="center"><input type="text" name="pass" id="pass" Onblur="check('#pass', 'ic,ac,tc', 0, 0)"></td>
+				<td align="center"><input type="text" name="pass" id="pass" Onblur="check('#pass', 'ic,pc,tc', 0, 0)"></td>
 			</tr>
 
 			<tr>
@@ -50,12 +50,12 @@
 
 			<tr>
 				<td align="center">電話番号</td>
-				<td align="center"><input type="text" name="user_tel" id="user_tel" Onblur="check('#user_tel', 'ic,nc,lc')"></td>
+				<td align="center"><input type="text" name="user_tel" id="user_tel" Onblur="check('#user_tel', 'ic,nc,lc', 10, 10)"></td>
 			</tr>
 
 			<tr>
 				<td align="center">メールアドレス：</td>
-				<td align="center"><input type="text" name="user_email" id="user_email" Onblur="check('#user_email', ic, cE)"></td>
+				<td align="center"><input type="text" name="user_email" id="user_email" Onblur="check('#user_email', 'ic,mc', 0, 0)"></td>
 			</tr>
 
 			<tr>
@@ -79,7 +79,7 @@
 			<td>学籍番号※学生のみ</td>
 
 					<td><input type="checkbox" id="student">学生
-			<input type="text" name="stuent_id" id="student_id" disabled="true" Onblur="check('#student_id', ic, tc, vc, )"></td>
+			<input type="text" name="stuent_id" id="student_id" disabled="true" Onblur="check('#student_id', 'ic,nc,tc,lc', 6, 6)"></td>
 		</tr>
 	</table>
 		<br>

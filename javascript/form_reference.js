@@ -92,7 +92,7 @@ function check( id, commando, len_min, len_max)
 		alert( message );
 	}
 
-	$(id).focus();
+
 }
 
 
