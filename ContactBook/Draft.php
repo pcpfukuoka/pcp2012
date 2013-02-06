@@ -36,7 +36,7 @@
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 			<div align="center">
-				<font class="Cubicfont">下書き</font>
+				<font class="Cubicfont">下書き</font><br><br>
 			</div>
 
 			<hr color="blue">
