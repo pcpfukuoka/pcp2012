@@ -19,9 +19,6 @@
 	$group_sel = "SELECT group_name FROM pcp2012.m_group WHERE group_seq=".$group_seq.";";
 	$group_result = mysql_query($group_sel);
 	$row2 = mysql_fetch_array($group_result);
-
-
-
 ?>
 
 <html>
@@ -29,7 +26,7 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<link href='https://xxx/bootstrap.min.css' rel='stylesheet' type='text/css'/>
-				<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 
@@ -39,10 +36,10 @@
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 			<div align="center">
-				<font class="Cubicfont"><?= $date ?>:<?=$row['subject_name'] ?>:<?=$row2['group_name'] ?>:<?=$time_table ?>時間目</font>
-				<?=$group_sel ?>
+				<font class="Cubicfont"><?= $date ?>:<?=$row2['group_name'] ?>:<?=$time_table ?>時間目</font>
 			</div>
 			<hr color="blue"></hr>
+		</div>
 	<br>
 	<div id="form">
 		<input type="hidden" id="date_hidden" value="<?= $date ?>" />
