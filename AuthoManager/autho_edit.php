@@ -46,9 +46,9 @@ Dbdissconnect($link);
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 		<script src="../javascript/form_reference.js"></script>
+		<script src="../javascript/jquery-1.8.2.min.js"></script>
 
 	<script>
 		$(function()
@@ -106,12 +106,6 @@ Dbdissconnect($link);
 			});
 		});
 
-		//strはid
-		function check(str)
-		{
-			var a =  $(str).val();
-			var ret = inputCheck(a);
-		}
 	</script>
 
 	</head>
@@ -128,7 +122,7 @@ Dbdissconnect($link);
 		<form name = "edit" action = "autho_edit_con.php" method = "POST">
 
 		<!-- 元の権限グループ名を表示させ、変更できるようにする -->
-			名前<input size ="15" type="text" name="edit_name" class = "edit_text" id="edit_name" value = <?= $edit_name['autho_name'] ?> Onblur="check('#edit_name', ic)">
+			名前<input size ="15" type="text" name="edit_name" class = "edit_text" id="edit_name" value = <?= $edit_name['autho_name'] ?> Onblur="check('#edit_name', 'ic', 0, 0)">
 
 		<!-- 		テープルの作成 -->
 			<table class="table_01" width = "80%">

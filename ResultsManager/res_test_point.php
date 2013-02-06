@@ -55,6 +55,7 @@ $result_point = mysql_query($sql);
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<script src="../javascript/form_reference.js"></script>
+		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<title>点数入力画面</title>
 	</head>
 
@@ -101,7 +102,7 @@ $result_point = mysql_query($sql);
 					?>
 						<tr>
 							<td><?= $user['user_name'] ?></td>
-							<td><input size = "3" type = "text" name = "point<?= $i ?>" id="point<?= $i ?>" value = "<?= $point['point'] ?>" Onblur="check('#point<?= $i ?>', ic, vc, tc)"></td>
+							<td><input size = "3" type = "text" name = "point<?= $i ?>" id="point<?= $i ?>" value = "<?= $point['point'] ?>" Onblur="check('#point<?= $i ?>', 'ic,nc,tc,lc', 1, 3)"></td>
 						</tr>
 				<?php
 					}
@@ -128,13 +129,4 @@ $result_point = mysql_query($sql);
 		</div>
 
 	</body>
-
-	<script>
-		//strはid
-		function check(str)
-		{
-			var a =  $(str).val();
-			var ret = inputCheck(a);
-		}
-	</script>
 </html>

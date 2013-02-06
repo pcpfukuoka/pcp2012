@@ -1,6 +1,6 @@
 //これを使うページでは
 //<script src="../javascript/form_reference.js"></script>
-//<script src="javascript/jquery-1.8.2.min.js"></script>
+//<script src="../javascript/jquery-1.8.2.min.js"></script>
 //をHEADに記載すること
 
 //	idは頭に#を加えて引数にすること	commandoは命令を,で区切って引数にすること
@@ -92,7 +92,7 @@ function check( id, commando, len_min, len_max)
 		alert( message );
 	}
 
-	$(id).focus();
+
 }
 
 
