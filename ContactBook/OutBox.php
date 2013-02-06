@@ -37,7 +37,7 @@
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 			<div align="center">
-				<font class="Cubicfont">送信箱</font>
+				<font class="Cubicfont">送信箱</font><br><br>
 			</div>
 
 			<hr color="blue">

@@ -23,6 +23,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<script src="../javascript/form_reference.js"></script>
+		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<title>グループ追加</title>
 	</head>
 
@@ -66,7 +67,7 @@
 								else
 								{
 							?>
-							<input type="text" size="50" name = "new_group_name" id="new_group_name" Onblur="check('#new_group_name', ic)">
+							<input type="text" size="50" name = "new_group_name" id="new_group_name" Onblur="check('#new_group_name', 'ic', 0, 0)">
 							<?php
 								}
 							?>
@@ -83,15 +84,4 @@
 		</form>
 		</div>
 	</body>
-
-	<script>
-		//strはid
-		function check(str)
-		{
-			var a =  $(str).val();
-			var ret = inputCheck(a);
-
-
-		}
-	</script>
 </html>

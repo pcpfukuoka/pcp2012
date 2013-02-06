@@ -107,6 +107,11 @@
 			var decision_ele =document.getElementById("decision");
 			decision_ele.disabled=false;
 	    });
+
+		//全て選択されている時に時間割を調べ、すでに終わっている時間割を表示させない
+		$(document).on('', '', function() {
+
+	    });
 	});
 	</script>
 </html>

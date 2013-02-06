@@ -8,8 +8,8 @@
   <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
   <link rel="stylesheet" type="text/css" href="../css/table.css" />
   <script src="../javascript/form_reference.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+ <script src="../javascript/jquery-1.8.2.min.js"></script>
  </head>
   <body onLoad="document.form1.group_name.focus()">
   		<img class="bg" src="../images/blue-big.jpg" alt="" />
@@ -37,7 +37,7 @@
 			 *for文でテーブルの作成
 			 *********************************************************/
 			?>
-   名前<input size ="15" type="text" id="group_name" name="group_name" Onblur="check('#group_name')">
+   名前<input size ="15" type="text" id="group_name" name="group_name" Onblur="check('#group_name', 'ic', 0, 0)">
 
 
    <!-- グループ名入力 -->
@@ -158,20 +158,6 @@
 	    });
 
 	});
-
-//strはid
-function check(str)
-{
-	var a =  $(str).val();
-	var ret = inputCheck(a);
-
-	if(ret == false)
-	{
-		document.$(str).focus();
-	}
-}
-
-  </script>
 
 
 </html>
