@@ -20,6 +20,32 @@
 	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
 	  <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+
+	  <style>
+			textarea {
+				border:1px solid #ccc;
+			}
+
+			#animated {
+				vertical-align: top;
+				-webkit-transition: height 0.2s;
+				-moz-transition: height 0.2s;
+				transition: height 0.2s;
+			}
+
+		</style>
+
+		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js'></script>
+		<script src='autosize.js'></script>
+
+
+		<script>
+			$(function(){
+				$('#normal').autosize();
+				$('#animated').autosize({append: "\n"});
+			});
+		</script>
+
 	</head>
 
 	<body>
@@ -51,7 +77,13 @@
 				  <font size="5">件名</font>
 				  <input size="40" type="text" name="title"><br><br>
 			      <font size="5">本文</font><br>
-			      <textarea rows="2" cols="50" name="contents" id="message" onkeydown="textareaResize(event)"></textarea><br>
+
+				  <?php
+					//<textarea rows="2" cols="50" name="contents" id="message" onkeydown="textareaResize(event)"></textarea><br>
+					//<textarea id='normal' name="contents" rows="2" cols="50"></textarea>
+				  ?>
+
+			      <textarea id='animated' name="contents" rows="2" cols="50"></textarea><br>
 
 			      <!-- 隠し文字 -->
 			      <input type="hidden" value="0" name="link_id">
@@ -63,29 +95,5 @@
 				  </table>
 		    </form>
 	    </div>
-
-
-	    <script type="text/javascript">
-			function textareaResize(event)
-			{
-			    try {
-			        elem_id = event.srcElement.id;
-			    } catch ( e ) {
-			        elem_id = event.target.id;
-			    }
-			    var keycode = event.keyCode;
-			    if (keycode == 13) {
-			        var m = document.getElementById(elem_id);
-			        var r = m.getAttribute("rows");
-			        m.setAttribute("rows", parseInt(r)+1);
-			    }
-			    else if(keycode == 8)
-			    {
-			    	var m = document.getElementById(elem_id);
-			        var r = m.getAttribute("rows");
-			        m.setAttribute("rows", parseInt(r)-1);
-			    }
-			}
-</script>
     </body>
 </html>

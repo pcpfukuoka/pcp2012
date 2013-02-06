@@ -21,12 +21,35 @@
 
 <html>
 	<head>
-	  <title> 送信</title>
-	  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	  <meta http-equiv="Content-Style-Type" content="text/css">
-	  <link rel="stylesheet" type="text/css" href="../css/button.css" />
-	  <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
-	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<title> 送信</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+
+		<style>
+			textarea {
+				border:1px solid #ccc;
+			}
+
+			#animated {
+				vertical-align: top;
+				-webkit-transition: height 0.2s;
+				-moz-transition: height 0.2s;
+				transition: height 0.2s;
+			}
+		</style>
+
+		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js'></script>
+		<script src='autosize.js'></script>
+
+		<script>
+			$(function(){
+				$('#normal').autosize();
+				$('#animated').autosize({append: "\n"});
+			});
+		</script>
 	</head>
 
 	<body>
@@ -45,11 +68,12 @@
 			  <font size="5">件名： </font>
 			  <input size="40" type="text" name="title" value="<?= $contact_book_row['title']?>"><br><br>
 		      <font size="5">本文</font><br>
-		      <textarea rows="13" cols="50" name="contents"><?= $contact_book_row['contents'] ?></textarea><br>
+		      <textarea id='animated' rows="2" cols="50" name="contents"><?= $contact_book_row['contents'] ?></textarea><br>
 
 		      <input type="hidden" value="<?= $contact_book_row['contact_book_seq'] ?>" name="contact_book_seq">
 		      <input type="hidden" value="<?= $contact_book_row['reception_user_seq'] ?>" name="reception_user_seq">
 		      <input type="hidden" value="<?= $contact_book_row['link_contact_book_seq'] ?>" name="link_id">
+
 			  <table>
 			      <tr>
 			      	 <td><input class="button4" type="submit" value="送信" name = "send_update"></td>
