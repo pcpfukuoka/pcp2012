@@ -20,24 +20,29 @@
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
-	//新規
+	//新規送信（CreateNew.php と ReplyBox.php）
     if (isset($_POST['send']))
     {
         //送信完了ボタンの時の処理
         $title = $_POST['title'];
         $contents = $_POST['contents'];
+
+
+		//新規作成の受信者のuser_seq
         if(isset($_POST['to']))
         {
         	$send_seq = $_POST['to'];
         }
+        //返信時の受信者のuser_seq
         else if(isset($_POST['send_seq']))
         {
         	$send_seq = $_POST['send_seq'];
         }
-        else if(isset($_POST['reception_user_seq']))
-        {
-        	$send_seq = $_POST['reception_user_seq'];
-        }
+//        else if(isset($_POST['reception_user_seq']))
+//        {
+//        	$send_seq = $_POST['reception_user_seq'];
+//        }
+
         $link_id = $_POST['link_id'];
 
         if($title == "")
@@ -60,20 +65,25 @@
     	print "<script language=javascript>leftreload();</script>";
     	print "<script language=javascript>jump('comp_dis.html','right');</script>";
     }
-    //一時保存
+    //一時保存（CreateNew.php と ReplyBox.php）
     elseif ( isset($_POST['Preservation']) )
     {
         //保存ボタンの時の処理
     	$title = $_POST['title'];
     	$contents = $_POST['contents'];
+
+
+    	//新規作成の受信者のuser_seq
     	if(isset($_POST['to']))
     	{
     		$send_seq = $_POST['to'];
     	}
+    	//返信時の受信者のuser_seq
     	else if(isset($_POST['send_seq']))
     	{
     		$send_seq = $_POST['send_seq'];
     	}
+
     	$link_id = $_POST['link_id'];
 
     	if($title == "")
@@ -96,13 +106,15 @@
     	print "<script language=javascript>leftreload();</script>";
     	print "<script language=javascript>jump('Preservation.html','right');</script>";
     }
-    //アップデート
+    //アップデート（Send.php）
     else if(isset($_POST['send_update']))
     {
     	//送信完了ボタンの時の処理
     	$contact_book_seq = $_POST['contact_book_seq'];
     	$contents = $_POST['contents'];
     	$title = $_POST['title'];
+
+/*
     	if(isset($_POST['to']))
     	{
     		$send_seq = $_POST['to'];
@@ -115,6 +127,8 @@
     	{
     		$send_seq = $_POST['reception_user_seq'];
     	}
+*/
+
     	$link_id = $_POST['link_id'];
 
     	$sql = "UPDATE contact_book
@@ -128,7 +142,7 @@
     	print "<script language=javascript>leftreload();</script>";
     	print "<script language=javascript>jump('comp_dis.html','right');</script>";
     }
-    //保存からの保存
+    //保存からの保存（Send.php）
     else if(isset($_POST['Re_preservation']))
     {
 		//保存ボタンの時の処理
