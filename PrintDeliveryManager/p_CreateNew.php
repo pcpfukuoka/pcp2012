@@ -21,6 +21,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		 <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		 <script src="../javascript/form_reference.js"></script>
+		 <script src="../javascript/jquery-1.8.2.min.js"></script>
 		<title>新規作成</title>
 	</head>
 
@@ -52,25 +53,11 @@
   			</select>
 			<br>
 			<font size="5">件　 名</font>
-	 		<input size="30" type="text" name="title" id="title" Onblur="check('#title', ic)"><br>
+	 		<input size="30" type="text" name="title" id="title" Onblur="check('#title', 'ic', 0, 0)"><br>
 	 		<font size="5">プリント</font>
 			<input size="30" type="file" name="pdf"><br><br>
 	  		<input class="button4" type="submit" value="保存" name="Preservation">
 		</form>
 		</div>
 	</body>
-
-	<script>
-		//strはid
-		function check(str)
-		{
-			var a =  $(str).val();
-			var ret = inputCheck(a);
-
-			if(ret == false)
-			{
-				document.$(str).focus();
-			}
-		}
-	</script>
 </html>
