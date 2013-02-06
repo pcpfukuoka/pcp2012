@@ -7,9 +7,27 @@
 	$result = mysql_query($sql);
 	$count = mysql_num_rows($result);
 
-	$group_sel = "SELECT group_seq,group_name FROM pcp2012.m_group WHERE class_flg =1;";
-	$group_result = mysql_query($group_sel);
-	$count2 = mysql_num_rows($group_result);
+	/* セッションをもとに自分のクラスしか参加できないようにする */
+	//SESSIONでユーザIDの取得
+	session_start();
+	$user_seq = $_SESSION['login_info[user]'];
+	$flg = $_SESSION['position_flg'];
+
+	if($flg == "teacher")/* 先生だったら */
+	{
+		//全てのクラスの過去授業をみれるようにする
+		$class_select = "SELECT group_seq,group_name FROM pcp2012.m_group WHERE class_flg =1;";
+	}
+	else if($flg == 0)/* 生徒だったら */
+	{
+		//自分が所属してるgroup_seqを持ってくるSQL
+		$class_select ="SELECT m_group.group_seq,m_group.group_name FROM group_details LEFT JOIN pcp2012.m_group
+					ON group_details.group_seq=m_group.group_seq
+					WHERE group_details.user_seq =".$user_seq." AND m_group.class_flg = '1';";
+	}
+	$class_select_result = mysql_query($class_select);
+	$count3 = mysql_num_rows($class_select_result);
+
 	Dbdissconnect($dbcon);
 ?>
 
@@ -25,7 +43,7 @@
 	</head>
 
 	<body>
-		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<!-- <img class="bg" src="../images/blue-big.jpg" alt="" /> -->
 		<div id="container">
 			<div align="center">
 				<font class="Cubicfont">過去授業</font>
@@ -47,9 +65,9 @@
 
 		<select id="group_seq">
 			<?php
-				for ($i = 0; $i < $count2; $i++)
+				for ($i = 0; $i < $count3; $i++)
 				{
-					$row2 = mysql_fetch_array($group_result);
+					$row2 = mysql_fetch_array($class_select_result);
 			?>
     			<option value="<?= $row2['group_seq']?>"><?= $row2['group_name'] ?></option>
 			<?php
@@ -70,10 +88,6 @@
 </div>
 	</body>
 	<script>
-
-
-
-	c
 	$(function() {//決定ボタンをクリックした後の過去授業の画像を出力する処理
 
 		//ボタンをすべて選択した後に決定ボタンを表示
