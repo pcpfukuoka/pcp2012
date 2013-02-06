@@ -22,10 +22,33 @@
 
 <html>
 	<head>
-	  <title> 確認画面</title>
-	  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	  <link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
-	  <link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+		<title> 確認画面</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
+
+		<style>
+			textarea {
+				border:1px solid #ccc;
+			}
+
+			#animated {
+				vertical-align: top;
+				-webkit-transition: height 0.2s;
+				-moz-transition: height 0.2s;
+				transition: height 0.2s;
+			}
+		</style>
+
+		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js'></script>
+		<script src='autosize.js'></script>
+
+		<script>
+			$(function(){
+				$('#normal').autosize();
+				$('#animated').autosize({append: "\n"});
+			});
+		</script>
 	</head>
 
 	<body>
@@ -45,7 +68,7 @@
 				<?= $row['title'] ?><br><br>
 
 			    <font size="5">本文</font><br>
-			    <textarea readonly="readonly" rows="13" cols="50" name="contents"><?= $row['contents']?></textarea>
+			    <textarea readonly="readonly" id='animated' rows="2" cols="50" name="contents"><?= $row['contents']?></textarea>
 			    <br><br>
 
 			    <input type="hidden" value="<?= $row['reception_user_name'] ?>" name="sendto">

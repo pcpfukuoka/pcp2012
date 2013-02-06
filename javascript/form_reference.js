@@ -1,11 +1,11 @@
 //これを使うページでは
+//<script src="../javascript/form_reference.js"></script>
 //<script src="javascript/jquery-1.8.2.min.js"></script>
 //をHEADに記載すること
 
 //	idは頭に#を加えて引数にすること	commandoは命令を,で区切って引数にすること
 //	len_min, len_maxはそ文字数の上下限値を指定、なければ0を引数にすること
-//	kanaはひらがな・カタカナを'hira'または'kata'で指定、なければ'0'を引数にすること
-function check(　id, commando, len_min, len_max, kana　)
+function check( id, commando, len_min, len_max)
 {
 	//	com_array	命令(チェック)用配列
 	//	i			ループカウンタ
@@ -14,83 +14,84 @@ function check(　id, commando, len_min, len_max, kana　)
 	//	str			テキストボックスのvlue（文字列）
 	//	error		エラー内容用配列
 	//	error_flg	エラーフラグ(エラーがあればtrue)
-	var com_array = commando.split(　","　);
+	var com_array = commando.split( "," );
 	var i = 0;
 	var j = 0;
 	var k = 0;
 	var str = $(id).val();
-	var error = new Array();	
+	var error = new Array();
 	var error_flg = false;
 
 	//	命令用配列の中身がある限りループ
-	while　(　com_array[i]　)
+	while ( com_array[i] )
 	{
 		//	命令実行
 		//	命令一覧		ic	未入力チェック
-		//				nc	入力値チェック(半角数字)
-		//				lc	文字数チェック(len_min, len_max)
-		//				ac	入力値チェック(半角英字)
-		//				fc	ふりがなチェック(kana)
-		//				mc	メールチェック
-		//				tc	禁止文字チェック
-		if　(　com_array[i] == "ic"　)
+		//					nc	入力値チェック(半角数字)
+		//					lc	文字数チェック(len_min, len_max)
+		//					ac	入力値チェック(半角英字)
+		//					fc	フリガナチェック
+		//					mc	メールチェック
+		//					tc	禁止文字チェック
+
+		if ( com_array[i] == "ic" )
 		{
 			error[i] = inputCheck( str );
 		}
-		else if　(　com_array[i] == "nc"　)
+		else if ( com_array[i] == "nc" )
 		{
 			error[i] = numberCheck( str );
 		}
-		else if　(　com_array[i] == "lc"　)
+		else if ( com_array[i] == "lc" )
 		{
 			error[i] = lengthCheck( str, len_min, len_max );
 		}
-		else if　(　com_array[i] == "ac"　)
+		else if ( com_array[i] == "ac" )
 		{
 			error[i] = alphabetCheck( str );
 		}
-		else if　(　com_array[i] == "fc"　)
+		else if ( com_array[i] == "fc" )
 		{
-			error[i] = furiganaheck( str, kana );
+			error[i] = furiganaheck( str );
 		}
-		else if　(　com_array[i] == "mc"　)
+		else if ( com_array[i] == "mc" )
 		{
 			error[i] = mailCheck( str );
 		}
-		else if　(　com_array[i] == "tc"　)
+		else if ( com_array[i] == "tc" )
 		{
 			error[i] = tabooCheck( str );
 		}
-		
+
 		//	カウンタアップ
 		i++;
 	}
-	
+
 	//	エラー確認
-	for　(　j; j < error.length; j++　)
-	{		
-		if　(　error[j]　)
+	for ( j; j < error.length; j++ )
+	{
+		if ( error[j] )
 		{
 			error_flg = true;
 			break;
 		}
 	}
 	//	エラー表示
-	if　(　error_flg == true　)
+	if ( error_flg == true )
 	{
-		
+
 		var message = "";
 		for ( k; k < error.length;k++ )
 		{
 			if ( error[k] )
 			{
-				message += error[k] + "\n";	
+				message += error[k] + "\n";
 			}
 		}
-						
-		alert(　message　);
+
+		alert( message );
 	}
-		
+
 	$(id).focus();
 }
 
@@ -99,9 +100,9 @@ function check(　id, commando, len_min, len_max, kana　)
 //	空白除去(全半角スペース・タブ・改行にも対応)
 //	文字列のトリミングを行うので、基本的にどの関数でも使用する。
 //	トリミングした文字列を返す。
-function trim( str ) 
+function trim( str )
 {
-	return str.replace( /^[ 　\t\r\n]+|[ 　\t\r\n]+$/g, "" );
+	return str.replace( /^[  \t\r\n]+|[  \t\r\n]+$/g, "" );
 }
 
 
@@ -173,10 +174,10 @@ function lengthCheck( str, len_min, len_max )
 
 //	入力値チェック(半角英字 大小文字対応)
 //	ac
-function alphabetCheck(　str　)
+function alphabetCheck( str )
 {
 	var ret;
-	
+
 	if( trim( str ).match( /[^A-Za-z\s.-]+/ ) )
 	{
 		ret = "半角英字のみで入力して下さい。";
@@ -184,29 +185,16 @@ function alphabetCheck(　str　)
 	}
 }
 
-//	kanaは	hira　で　ひらがな
-//			kata　で　カタカナ	指定
-//	ふりがなチェック(ひらがな カタカナ対応)
+//	フリガナチェック(半角カタカナのみ)
 //	fc
-function furiganaCheck( str, kana )
+function furiganaCheck( str )
 {
 	var ret;
-	
-	if ( kana == 'hira' )
+
+	if ( trim( str ).match( /[^ｧ-ﾝ \s]+/ ) )
 	{
-		if　( trim( str ).match( /[^ぁ-ん　\s]+/ ) )
-		{
-			ret = "ふりがなは「ひらがな」 のみで入力して下さい。";
-			return ret;
-		}
-	}
-	else if ( kana == 'kata' )
-	{
-		if　( str.match( /[^ァ-ン　\s]+/ ) )
-		{
-			ret = "フリガナは「カタカナ」 のみで入力して下さい。";
-			return ret;
-		}
+		ret = "フリガナは「カタカナ」 のみで入力して下さい。";
+		return ret;
 	}
 }
 
@@ -216,7 +204,7 @@ function furiganaCheck( str, kana )
 //mc
 //<script type="text/javascript">
 /**
-* [機　能] 正規表現によるメールアドレス（E-mail）チェック*/
+* [機 能] 正規表現によるメールアドレス（E-mail）チェック*/
 function mailCheck( str )
 {
 	/* E-mail形式の正規表現パターン */
@@ -225,9 +213,9 @@ function mailCheck( str )
     var ret;
 
 	/* 入力された値がパターンにマッチするか調べる */
-	if(str.match(format))
+	if( trim( str ).match( format ) )
 	{
-	
+
 	}
 	else
 	{
@@ -240,14 +228,14 @@ function mailCheck( str )
 //動作チェック済み//
 //禁止文字チェック
 //tc
-function tabooCheck(val)
+function tabooCheck( str )
 {
 	var ret;
-	
+
 	var taboo = ["@","-"]; //禁止文字の配列
 	var regex = new RegExp(taboo.join("|")); //正規表現オブジェクト
 
-	if (val.match(regex) != null)
+	if ( trim( str ).match(regex) != null )
 	{
 		ret = "禁止文字が含まれています。";
 		return ret;
