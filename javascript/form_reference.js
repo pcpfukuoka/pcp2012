@@ -91,9 +91,97 @@ function check( id, commando, len_min, len_max)
 
 		alert( message );
 	}
-
-
 }
+
+
+//ユーザー登録用チェック
+function checkU( id, commando, len_min, len_max)
+{
+	//	com_array	命令(チェック)用配列
+	//	i			ループカウンタ
+	//	j			ループカウンタ
+	//	k			ループカウンタ
+	//	str			テキストボックスのvlue（文字列）
+	//	error		エラー内容用配列
+	//	error_flg	エラーフラグ(エラーがあればtrue)
+	var com_array = commando.split( "," );
+	var i = 0;
+	var j = 0;
+	var k = 0;
+	var str = id;
+	var error = new Array();
+	var error_flg = false;
+
+	//	命令用配列の中身がある限りループ
+	while ( com_array[i] )
+	{
+		//	命令実行
+		//	命令一覧		ic	未入力チェック
+		//					nc	入力値チェック(半角数字)
+		//					lc	文字数チェック(len_min, len_max)
+		//					ac	入力値チェック(半角英字)
+		//					fc	フリガナチェック
+		//					mc	メールチェック
+		//					tc	禁止文字チェック
+
+		if ( com_array[i] == "ic" )
+		{
+			error[i] = inputCheck( str );
+		}
+		else if ( com_array[i] == "nc" )
+		{
+			error[i] = numberCheck( str );
+		}
+		else if ( com_array[i] == "lc" )
+		{
+			error[i] = lengthCheck( str, len_min, len_max );
+		}
+		else if ( com_array[i] == "ac" )
+		{
+			error[i] = alphabetCheck( str );
+		}
+		else if ( com_array[i] == "fc" )
+		{
+			error[i] = furiganaheck( str );
+		}
+		else if ( com_array[i] == "mc" )
+		{
+			error[i] = mailCheck( str );
+		}
+		else if ( com_array[i] == "tc" )
+		{
+			error[i] = tabooCheck( str );
+		}
+
+		//	カウンタアップ
+		i++;
+	}
+
+	//	エラー確認
+	for ( j; j < error.length; j++ )
+	{
+		if ( error[j] )
+		{
+			error_flg = true;
+			break;
+		}
+	}
+	//	エラー表示
+	if ( error_flg == true )
+	{
+		var message = "";
+		for ( k; k < error.length;k++ )
+		{
+			if ( error[k] )
+			{
+				message += error[k] + "\n";
+			}
+		}
+
+		return massage;
+	}
+}
+
 
 
 
@@ -241,3 +329,4 @@ function tabooCheck( str )
 		return ret;
 	}
 }
+
