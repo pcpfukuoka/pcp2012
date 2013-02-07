@@ -5,6 +5,7 @@
 
 //	idは頭に#を加えて引数にすること	commandoは命令を,で区切って引数にすること
 //	len_min, len_maxはそ文字数の上下限値を指定、なければ0を引数にすること
+//	チェック
 function check( id, commando, len_min, len_max)
 {
 	//	com_array	命令(チェック)用配列
@@ -33,6 +34,7 @@ function check( id, commando, len_min, len_max)
 		//					fc	フリガナチェック
 		//					mc	メールチェック
 		//					tc	禁止文字チェック
+		//					pc	パスワードチェック
 
 		if ( com_array[i] == "ic" )
 		{
@@ -52,7 +54,7 @@ function check( id, commando, len_min, len_max)
 		}
 		else if ( com_array[i] == "fc" )
 		{
-			error[i] = furiganaheck( str );
+			error[i] = furiganaCheck( str );
 		}
 		else if ( com_array[i] == "mc" )
 		{
@@ -62,6 +64,11 @@ function check( id, commando, len_min, len_max)
 		{
 			error[i] = tabooCheck( str );
 		}
+		else if ( com_array[i] == "pc" )
+		{
+			error[i] = passwordCheck( str );
+		}
+
 
 		//	カウンタアップ
 		i++;
@@ -187,7 +194,8 @@ function checkU( id, commando, len_min, len_max)
 
 //	空白除去(全半角スペース・タブ・改行にも対応)
 //	文字列のトリミングを行うので、基本的にどの関数でも使用する。
-//	トリミングした文字列を返す。
+//	返値はトリミングした文字列
+//	トリミング
 function trim( str )
 {
 	return str.replace( /^[  \t\r\n]+|[  \t\r\n]+$/g, "" );
@@ -196,8 +204,7 @@ function trim( str )
 
 //	ret = 返値(テキスト)
 
-//	未入力チェック
-//	ic
+//	未入力チェック	ic
 function inputCheck( str )
 {
 	var ret;
@@ -210,8 +217,7 @@ function inputCheck( str )
 }
 
 
-//	入力値チェック(半角数字)
-//	nc
+//	入力値チェック(半角数字)	nc
 function numberCheck( str )
 {
 	var ret;
@@ -226,8 +232,8 @@ function numberCheck( str )
 
 //	len_min		引数(指定文字数の下限値)	値が0で下限無し
 //	len_max		引数(指定文字数の上限値)	値が0で上限無し
-//	文字数チェック
-//	lc
+//	文字数指定の場合、len_minとlen_maxが同値にする
+//	文字数チェック	lc
 function lengthCheck( str, len_min, len_max )
 {
 	var ret;
@@ -249,6 +255,15 @@ function lengthCheck( str, len_min, len_max )
 			return ret;
 		}
 	}
+	//	文字数が指定された場合
+	else if ( len_min == len_max  )
+	{
+		if ( len_min != trim( str ).length )
+		{
+			ret = len_min + "文字で入力して下さい。";
+			return ret;
+		}
+	}
 	//	上限下限有りの場合
 	else
 	{
@@ -260,8 +275,7 @@ function lengthCheck( str, len_min, len_max )
 	}
 }
 
-//	入力値チェック(半角英字 大小文字対応)
-//	ac
+//	入力値チェック(半角英字 大小文字対応)	ac
 function alphabetCheck( str )
 {
 	var ret;
@@ -273,23 +287,22 @@ function alphabetCheck( str )
 	}
 }
 
-//	フリガナチェック(半角カタカナのみ)
-//	fc
+//	フリガナチェック(半角カタカナのみ)		fc
 function furiganaCheck( str )
 {
 	var ret;
 
-	if ( trim( str ).match( /[^ｧ-ﾝ \s]+/ ) )
+	if ( trim( str ).match( /[^ｧ-ﾝ\s.-]+/ ) )
 	{
-		ret = "フリガナは「カタカナ」 のみで入力して下さい。";
+		ret = "フリガナは半角「カタカナ」 のみで入力して下さい。";
 		return ret;
 	}
 }
 
 
 //動作チェック済み//
-//メールアドレスチェックPart.2//
-//mc
+//	メールアドレスチェックPart.2//
+//	mc
 //<script type="text/javascript">
 /**
 * [機 能] 正規表現によるメールアドレス（E-mail）チェック*/
@@ -313,9 +326,7 @@ function mailCheck( str )
 }
 
 
-//動作チェック済み//
-//禁止文字チェック
-//tc
+//	禁止文字チェック	tc
 function tabooCheck( str )
 {
 	var ret;
@@ -330,3 +341,15 @@ function tabooCheck( str )
 	}
 }
 
+//	パスワードチェック(半角英数字のみ)	pk
+function passwordCheck( str )
+{
+	var tet;
+	
+	if( trim( str ).match( /[^A-Z a-z 0-9 @ . _ -\s.-]+/ ) )
+	{
+		ret = "半角英数字と[@],[.],[-],[_]のみで入力して下さい。";
+		return ret;
+	}
+
+}
