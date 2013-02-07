@@ -66,6 +66,14 @@
 			<hr color="blue">
 			<br>
 
+			<?php
+				//	relayで判定するもの
+				//	switch		(user_seq or group_seq)
+				//	to_user		($_user_seq)
+				//	to_group	($_group_seq)
+				//	(send or reception)
+			?>
+
 			<form action="relay.php" method="POST" id="input">
 				  <font size="5">宛先</font>
 				  <input type="radio" name="switch" value="user_seq">
@@ -84,7 +92,6 @@
 
 				  <input type="radio" name="switch" value="group_seq">
 				  <select name="to_group">
-				  	<option value="0">全ユーザー</option>
 	  				<?php
 		   				for ($i = 0; $i < $count; $i++)
 		   				{
