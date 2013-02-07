@@ -18,4 +18,4 @@ $set[] = $details;
 
 $_SESSION['details'] = $set;
  
-print_r($details);
+print_r($set);
