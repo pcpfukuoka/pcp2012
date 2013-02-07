@@ -8,17 +8,15 @@ $details_description = $_POST['question_details_description'];
 $details['details_description'] = $details_description;
 $details['answer_kbn'] = $answer_kbn;
 $details['awnser_list'] = $question_name_list;
-print_r($_SESSION['details']);
 
 if(isset($_SESSION['details']))
 {
-	$set = $_SESSION['details'];
-	
+	$set = $_SESSION['details'];	
 }
 
 $set[] = $details;
 
 $_SESSION['details'] = $set;
  
- 
+echo $_SESSION;
  

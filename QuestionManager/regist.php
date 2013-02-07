@@ -22,6 +22,8 @@ $question_seq = mysql_insert_id($dbcon);
 //セッションにはdetailsの連想配列を保持させる。
 //detailsが増える再にはその都度連想配列をすべて設定し直す。
 
+print_r($_SESSION['details']);
+
 //question_details登録用SQL生成
 foreach($_SESSION['details'] as $details_row)
 {

@@ -83,19 +83,32 @@ $count_point = mysql_num_rows($result_point);*/
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
-	<title>テスト選択画面</title>
+		<link rel="stylesheet" type="text/css" href="../css/table_search.css" />
+		<title>テスト選択画面</title>
 	</head>
 	
 	<body>
 	<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align = "center">
-			<font class="Cubicfont2">テスト選択</font><hr color="blue"><br><br><br>
+			<font class="Cubicfont2">テスト結果一覧</font><hr color="blue"><br><br><br>
 		</div>
 		
 		<!-- SQLで取り出したテストデータの表示 -->
-		<table border = "1" class="table_01">
-		
+	<div id="tablewrapper">
+		<div id="tableheader">
+        	<div class="search">
+                <select id="columns" onchange="sorter.search('query')"></select>
+                <input type="text" id="query" onkeyup="sorter.search('query')" />
+            </div>
+            <span class="details">
+				<div>Records <span id="startrecord"></span>-<span id="endrecord"></span> of <span id="totalrecords"></span></div>
+        		<div><a href="javascript:sorter.reset()">reset</a></div>
+        	</span>
+        </div> 
+        <table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
+        <thead>
+				
 			<tr>
 				<th>日付</th>
 				<th>教科</th>
@@ -104,7 +117,8 @@ $count_point = mysql_num_rows($result_point);*/
 				<th>点数</th>
 				<th>平均点</th>
 			</tr>
-		
+			</thead>
+		<tbody>
 			<?php 
 			for ($i = 0; $i < $count_test; $i++)
 			{
@@ -174,12 +188,67 @@ $count_point = mysql_num_rows($result_point);*/
 			<?php
 			}
 			?>
+			</tbody>
 		</table>
-		
+		        <div id="tablefooter">
+          <div id="tablenav">
+            	<div>
+                    <img src="../images/first.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
+                    <img src="../images/previous.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1)" />
+                    <img src="../images/next.gif" width="16" height="16" alt="First Page" onclick="sorter.move(1)" />
+                    <img src="../images/last.gif" width="16" height="16" alt="Last Page" onclick="sorter.move(1,true)" />
+                </div>
+                <div>
+                	<select id="pagedropdown"></select>
+				</div>
+            </div>
+			<div id="tablelocation">
+            	<div>
+                    <select onchange="sorter.size(this.value)">
+                    <option value="5">5</option>
+                        <option value="10" selected="selected">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <span>Entries Per Page</span>
+                </div>
+                <div class="page">Page <span id="currentpage"></span> of <span id="totalpages"></span></div>
+            </div>
+        </div>
 		<?php
 			Dbdissconnect($link);
 			?>
+			</div>
 		<input class="button4"  type="button" value="戻る" onClick="history.back()">
+		</div>
 	</body>
+		<script type="text/javascript" src="../javascript/script.js"></script>
+	<script type="text/javascript">
+	var sorter = new TINY.table.sorter('sorter','table',{
+		headclass:'head',
+		ascclass:'asc',
+		descclass:'desc',
+		evenclass:'evenrow',
+		oddclass:'oddrow',
+		evenselclass:'evenselected',
+		oddselclass:'oddselected',
+		paginate:true,
+		size:5,
+		colddid:'columns',
+		currentid:'currentpage',
+		totalid:'totalpages',
+		startingrecid:'startrecord',
+		endingrecid:'endrecord',
+		totalrecid:'totalrecords',
+		hoverid:'selectedrow',
+		pageddid:'pagedropdown',
+		navid:'tablenav',
+		sortcolumn:1,
+		sortdir:-1,
+		init:true
+	});
+  </script>
+	
 </html>
 

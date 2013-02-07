@@ -56,17 +56,22 @@
 			<br><br><br>
 			<p align="center">
 			<input class="button2" type="button" onclick="jump('list.php')" value="一覧">
+						<br><br>
 		
 			<?php
 				if($page_cla[3]['delivery_flg'] == 1)
 				{
 					?>
 					<input class="button2" type="button" onclick="jump('regist_view.php')" value="新規登録">
+									<br><br>
+					
 					<?php
 				}
 		
 			?>
 			<input class="button2" type="button" onclick="jump('answer_list.php')" value="未回答(<?= $cnt ?>)">
+							<br><br>
+			
 			</p>
 		</div>
 	</body>
