@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $question_name_list = $_POST['name_list'];
 $answer_kbn = $_POST['answer_kbn'];
 $question_seq = $_POST['seq'];
@@ -18,4 +20,3 @@ $set[] = $details;
 
 $_SESSION['details'] = $set;
  
-print_r($set);
