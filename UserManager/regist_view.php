@@ -4,8 +4,8 @@ session_start();
 $error_check = 0;
 
 //記入ミスがあった場合
-if($_SESSION['id_check'] || $_SESSION['pass_check'] || $_SESSION['name_check'] || $_SESSION['kana_check'] ||
-$_SESSION['address_check'] || $_SESSION['tel_check'] || $_SESSION['mail_check'] || $_SESSION['student_check'])
+if((isset($_SESSION['id_check'])) || (isset($_SESSION['pass_check'])) || (isset($_SESSION['name_check'])) || (isset($_SESSION['kana_check'])) ||
+(isset($_SESSION['address_check'])) || (isset($_SESSION['tel_check'])) || (isset($_SESSION['mail_check'])) || (isset($_SESSION['student_check'])))
 {
 	$id_check = $_SESSION['id_check'];
 	$pass_check = $_SESSION['pass_check'];
@@ -21,37 +21,16 @@ $_SESSION['address_check'] || $_SESSION['tel_check'] || $_SESSION['mail_check'] 
 
 function error_message($i)
 {
-	if($i == 1)
+	switch ($i)
 	{
-		echo $id_check;
-	}
-	elseif ($i == 2)
-	{
-		echo $pass_check;
-	}
-	elseif ($i == 3)
-	{
-		echo $name_check;
-	}
-	elseif ($i == 4)
-	{
-		echo $kana_check[$j];
-	}
-	elseif ($i == 5)
-	{
-		echo $address_check[$j];
-	}
-	elseif ($i == 6)
-	{
-		echo $tel_check[$j];
-	}
-	elseif ($i == 7)
-	{
-		echo $mail_check[$j];
-	}
-	elseif ($i == 8)
-	{
-		echo $student_check[$j];
+		case 1: echo $id_check; break;
+		case 2: echo $pass_check; break;
+		case 3: echo $name_check; break;
+		case 4: echo $kana_check; break;
+		case 5: echo $address_check; break;
+		case 6: echo $tel_check; break;
+		case 7: echo $mail_check; break;
+		case 8: echo $student_check; break;
 	}
 }
 ?>
@@ -78,7 +57,7 @@ function error_message($i)
 		$cnt = mysql_num_rows($result);
 		?>
 
-		<form method ="post" action="userCheck.php">
+		<form method ="post" action="userCheck.php" onSubmit="return check()">
 		<table>
 			<?php
 			if ($error_check == 1)
@@ -88,7 +67,7 @@ function error_message($i)
 			?>
 			<tr>
 				<td align="center">ユーザID:</td>
-				<td align="center"><input type="text" name="user_id" id="user_id"></td>
+				<td align="center"><span class="check_result" id="user_id_check" ></span><input type="text" name="user_id" id="user_id"></td>
 			</tr>
 
 			<?php
@@ -190,7 +169,7 @@ function error_message($i)
 	</table>
 		<br>
 		<input type = "hidden" name = "regist_flg" value = "0">
-		<input class="button4"type="submit" value ="登録">
+		<input class="button4" id="sub" type="submit" value ="登録">
 		</form>
 		</div>
 	</body>
@@ -211,5 +190,54 @@ function error_message($i)
 				}
 			});
 		});
+
+		function check(){
+
+		var check_flg = false;
+
+		//対象のinputタグのNameを配列にかくのう
+		var input_names = new Array("user_id", "pass", "user_name", "user_kana", "user_address	",
+								"user_tel", "user_email");
+		//var check_cmd = new Array("ic,pc,tc", "pass", "user_name", "user_kana", "user_address	",
+		//		"user_tel", "user_email");
+		//var check_val_min = new Array(0, "pass", "user_name", "user_kana", "user_address	",
+			//	"user_tel", "user_email");
+		//var check_val_max = new Array(0, "pass", "user_name", "user_kana", "user_address	",
+			//	"user_tel", "user_email");
+		//var check_result = new Array("0","0","0","0","0","0","0");
+
+		//チェックだけ
+		//for (i = 0; i < input_names.length; i++)
+		//{
+			//userCheck($("#"+input_names[i]+"").val(),);
+
+			//チェックの結果を受けて配列に値を格納
+				//check_flg = false
+
+		//}
+
+
+		//チェックの結果を反映
+		for (i = 0; i < input_names.length; i++)
+		{
+			$("#"+input_names[i]+"_check").text("※");
+		}
+
+
+//		$pass_check = userCheck($_POST['pass'], 'ic,pc,tc', 0, 0);
+	//	$name_check = userCheck($_POST['user_name'], 'ic,tc', 0, 0);
+	//	$kana_check = userCheck($_POST['user_kana'], 'ic,fc,tc', 0, 0);
+	//	$address_check = userCheck($_POST['user_address'], 'ic,tc', 0, 0);
+	//	$tel_check = userCheck($_POST['user_tel'], 'ic,nc,lc', 10, 10);
+	//	$mail_check = userCheck($_POST['user_email'], 'ic,nc,lc', 0, 0);
+
+		if(check_flg){
+			return true; // 「OK」時は送信を実行
+		}
+		else{
+			return false; // 送信を中止
+		}
+		};
+
 	</script>
 </html>

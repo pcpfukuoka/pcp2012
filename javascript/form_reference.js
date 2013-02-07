@@ -101,14 +101,19 @@ function check( id, commando, len_min, len_max)
 }
 
 
+function alert( a )
+{
+	alert( a );
+}
+
 //ユーザー登録用チェック
-function checkU( id, commando, len_min, len_max)
+function userCheck( id, commando, len_min, len_max)
 {
 	//	com_array	命令(チェック)用配列
 	//	i			ループカウンタ
 	//	j			ループカウンタ
 	//	k			ループカウンタ
-	//	str			テキストボックスのvlue（文字列）
+	//	str			テキストボックスのvalue（文字列）
 	//	error		エラー内容用配列
 	//	error_flg	エラーフラグ(エラーがあればtrue)
 	var com_array = commando.split( "," );
@@ -345,7 +350,7 @@ function tabooCheck( str )
 function passwordCheck( str )
 {
 	var tet;
-	
+
 	if( trim( str ).match( /[^A-Z a-z 0-9 @ . _ -\s.-]+/ ) )
 	{
 		ret = "半角英数字と[@],[.],[-],[_]のみで入力して下さい。";

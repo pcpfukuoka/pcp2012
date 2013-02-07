@@ -1,3 +1,9 @@
+<html>
+	<head>
+		<script src="../javascript/form_reference.js"></script>
+		<script src="../javascript/jquery-1.8.2.min.js"></script>
+	</head>
+</html>
 <?php
 session_start();
 
@@ -12,33 +18,30 @@ $_SESSION['user_email'] = $_POST['user_email'];
 $_SESSION['autho_seq'] = $_POST['autho_seq'];
 
 ?>
-<html>
-	<head>
-	<script src="../javascript/form_reference.js"></script>
-	<script src="../javascript/jquery-1.8.2.min.js"></script>
-	</head>
+
+
 
 
 <?php
 //受け取ったデータのチェック
-$id_check = checkU($_POST['user_id'], 'ic,pc,tc', 0, 0);
-$pass_check = checkU($_POST['pass'], 'ic,pc,tc', 0, 0);
-$name_check = checkU($_POST['user_name'], 'ic,tc', 0, 0);
-$kana_check = checkU($_POST['user_kana'], 'ic,fc,tc', 0, 0);
-$address_check = checkU($_POST['user_address'], 'ic,tc', 0, 0);
-$tel_check = checkU($_POST['user_email'], 'ic,nc,lc', 10, 10);
-$mail_check = checkU($_POST['autho_seq'], 'ic,mc', 0, 0);
+$id_check = userCheck($_POST['user_id'], 'ic,pc,tc', 0, 0);
+$pass_check = userCheck($_POST['pass'], 'ic,pc,tc', 0, 0);
+$name_check = userCheck($_POST['user_name'], 'ic,tc', 0, 0);
+$kana_check = userCheck($_POST['user_kana'], 'ic,fc,tc', 0, 0);
+$address_check = userCheck($_POST['user_address'], 'ic,tc', 0, 0);
+$tel_check = userCheck($_POST['user_email'], 'ic,nc,lc', 10, 10);
+$mail_check = userCheck($_POST['autho_seq'], 'ic,mc', 0, 0);
 
 //学生番号が入っていた場合のチェック
 if(isset($_POST['stuent_id']))
 {
 	$_SESSION['student_id'] = $_POST['student_id'];
-	$student_check = $checkU($_POST['student_id'], 'ic,nc,tc,lc', 6, 6);
+	$student_check = userCheck($_POST['student_id'], 'ic,nc,tc,lc', 6, 6);
 }
 
 //エラーメッセージがある場合、メッセージをSESSIONに入れ、前ページに戻る
-if($id_check || $pass_check || $name_check || $kana_check ||
-	$address_check || $tel_check || $mail_check || $student_check)
+if(($id_check) || ($pass_check) || ($name_check) || ($kana_check) ||
+	($address_check) || ($tel_check) || ($mail_check) || ($student_check))
 {
 	$_SESSION['id_check'] = $id_check;
 	$_SESSION['pass_check'] = $pass_check;
@@ -70,4 +73,3 @@ else
 	}
 }
 ?>
-</html>
