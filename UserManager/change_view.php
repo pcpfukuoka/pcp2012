@@ -35,7 +35,7 @@
 		$user_row = mysql_fetch_array($result_user);
 		?>
 
-		<form method ="post" action="change.php">
+		<form method ="post" action="change.php" onSubmit="return check()">
 		<table>
 			<tr>
 				<td align="center">ユーザID:</td>
@@ -115,7 +115,7 @@
 		<td>
 		<input class="button4" type="button" id="edit" data-id="0" value ="編集">
 		</td>
-			<form method="POST" action="delete.php">
+			<form method="POST" action="delete.php" onSubmit="return check()">
 		<td>
 				<input type="hidden" value="<?= $user_row['user_seq'] ?>" name="user_seq">
 				<input class="button4" type="submit" value ="削除">
@@ -127,7 +127,7 @@
 	</body>
 
 
-				<script>
+		<script>
 		$(function() {
 			//検索結果から権限を追加するための処理
 			$(document).on('click', '#edit', function() {
@@ -144,6 +144,8 @@
 						$("*[name="+input_names[i]+"]").attr('disabled', false);
 
 					}
+					$(this).data('id','1');
+					
 				}
 				else
 				{
@@ -152,13 +154,27 @@
 						$("*[name="+input_names[i]+"]").attr('disabled', true);
 
 					}
-
+					$(this).data('id','0');
+					
 				}
-
-				$(this).data('id'). = 1;
-
 			});
 		});
+		function check(){
+
+			if(window.confirm('送信してよろしいですか？')){ // 確認ダイアログを表示
+
+				return true; // 「OK」時は送信を実行
+
+			}
+			else{ // 「キャンセル」時の処理
+
+				window.alert('キャンセルされました'); // 警告ダイアログを表示
+				return false; // 送信を中止
+
+			}
+
+		}
+				
 			</script>
 
 </html>

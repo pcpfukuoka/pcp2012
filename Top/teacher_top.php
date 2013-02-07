@@ -220,35 +220,37 @@ $tnk = 40;
 				<td width = "20%">
 
 		<!-- 一日の時間割 -->
-		今日の時間割
-		<?php
-		$group_seq = 1;
-
-		//時間割の取得
-		$time_table_get = "SELECT * FROM time_table WHERE time_table.day = '$today' and time_table.group_seq = '$group_seq'";
-		$time_table = mysql_query($time_table_get);
-		$i = 1;
-		$count = 3;
-		$gyo = mysql_fetch_array($time_table);
-
-		while($count <= "8")
-		{
-
-		?>
-
-				<table cellspacing="1" cellpadding="1" border="1" width="80%">
-					<tr>
-						<td width="45%"><?= $i ?>時間目</td><td width="35%"><?= $gyo[$count] ?></td>
-					</tr>
-
-		<?php
-			$i++;
-			$count++;
-		}
-		?>
-
-
-				</table>
+				今日の時間割
+				<?php
+				$id = $_SESSION['login_info[user]'];
+				
+					//所属クラス取得SQL
+					$sql = "SELECT m_group.group_seq FROM m_group INNER JOIN group_details ON m_group.group_seq = group_details.group_seq WHERE m_group.class_flg = 1 AND group_details.user_seq = '$id' ";
+					//$group_result = mysql_query($sql);
+					//$grow = mysql_fetch_array($group_result);
+					$group_seq = $grow['group_seq'];
+					//時間割の取得
+					$time_table_get = "SELECT * FROM time_table WHERE time_table.day = '$today' and time_table.group_seq = '$group_seq'";
+					//$time_table = mysql_query($time_table_get);
+					//$cnt = mysql_num_rows($time_table);
+					//$row = mysql_fetch_array($time_table);
+					?>
+					<table cellspacing="1" cellpadding="1" border="1" width="80%">
+					<?php
+					 $j = 2;
+					for($i = 1; $i <= 6; $i++)
+					{
+						$j += 1;
+						?>
+						<tr>
+							<td width="45%"><?= $i ?>時間目</td>
+							<td width="35%"><?= $row[$j] ?></td>
+						</tr>
+							
+				<?php 
+					}
+					?>
+					</table>
 
 				</td>
 
