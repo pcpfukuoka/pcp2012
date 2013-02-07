@@ -35,41 +35,41 @@
 		$user_row = mysql_fetch_array($result_user);
 		?>
 
-		<form method ="post" action="userCheck.php">
+		<form method ="post" action="change.php" onSubmit="return check()">
 		<table>
 			<tr>
 				<td align="center">ユーザID:</td>
-				<td align="center"><input type="text" name="user_id" id="user_id" value="<?= $user_row['user_id'] ?>" disabled="true"></td>
+				<td align="center"><input type="text" name="user_id" id="user_id" value="<?= $user_row['user_id'] ?>" disabled="true" Onblur="check('#user_id', 'ic,ac,tc', 0, 0)"></td>
 			</tr>
 
 			<tr>
 				<td align="center">パスワード：</td>
-				<td align="center"><input type="text" name="pass" id="pass" value="<?= $user_row['pass'] ?>" disabled="true"></td>
+				<td align="center"><input type="text" name="pass" id="pass" value="<?= $user_row['pass'] ?>" disabled="true" Onblur="check('#pass', 'ic,ac,tc', 0, 0)"></td>
 			</tr>
 
 			<tr>
 				<td align="center">ユーザ名</td>
-				<td align="center"><input type="text" name="user_name" id="user_name" value="<?= $user_row['user_name'] ?>" disabled="true"></td>
+				<td align="center"><input type="text" name="user_name" id="user_name" value="<?= $user_row['user_name'] ?>" disabled="true" Onblur="check('#user_name', 'ic,tc', 0, 0)"></td>
 			</tr>
 
 			<tr>
 				<td align="center">ふりがな：</td>
-				<td align="center"><input type="text" name="user_kana" id="user_kana" value="<?= $user_row['user_kana'] ?>" disabled="true"></td>
+				<td align="center"><input type="text" name="user_kana" id="user_kana" value="<?= $user_row['user_kana'] ?>" disabled="true" Onblur="check('#user_kana', 'ic,fc,tc', 0, 0)"></td>
 			</tr>
 
 			<tr>
 				<td align="center">住所：</td>
-				<td align="center"><input type="text" name="user_address" id="user_address" value="<?= $user_row['user_address'] ?>" disabled="true"></td>
+				<td align="center"><input type="text" name="user_address" id="user_address" value="<?= $user_row['user_address'] ?>" disabled="true" Onblur="check('#user_address', 'ic,tc', 0, 0)"></td>
 			</tr>
 
 			<tr>
 				<td align="center">電話番号:</td>
-				<td align="center"><input type="text" name="user_tel" id="user_tel" value="<?= $user_row['user_tel'] ?>" disabled="true"></td>
+				<td align="center"><input type="text" name="user_tel" id="user_tel" value="<?= $user_row['user_tel'] ?>" disabled="true" Onblur="check('#user_tel', 'ic,nc,lc', 10, 10)"></td>
 			</tr>
 
 			<tr>
 				<td align="center">メールアドレス：</td>
-				<td align="center"><input type="text" name="user_email" id="user_email" value="<?= $user_row['user_email'] ?>" disabled="true"></td>
+				<td align="center"><input type="text" name="user_email" id="user_email" value="<?= $user_row['user_email'] ?>" disabled="true" Onblur="check('#user_email', 'ic,mc', 0, 0)"></td>
 			</tr>
 
 			<tr>
@@ -100,7 +100,7 @@
 		</tr>
 		<tr>
 			<td>学籍番号※学生のみ</td>
-			<td><input type="text" name="student_id" id="student_id" value="<?= $user_row['student_id'] ?>" disabled></td>
+			<td><input type="text" name="stuent_id" id="student_id" value="<?= $user_row['student_id'] ?>" disabled Onblur="check('#student_id', 'ic,nc,tc,lc', 6, 6)"></td>
 		</tr>
 	</table>
 
@@ -109,14 +109,13 @@
 		<tr>
 		<td>
 		<input type="hidden" value="<?= $user_row['user_seq'] ?>" name="user_seq">
-		<input type = "hidden" name = "regist_flg" value = "1">
 		<input class="button4" type="submit" value ="更新">
 		</form>
 		</td>
 		<td>
 		<input class="button4" type="button" id="edit" data-id="0" value ="編集">
 		</td>
-			<form method="POST" action="delete.php">
+			<form method="POST" action="delete.php" onSubmit="return check()">
 		<td>
 				<input type="hidden" value="<?= $user_row['user_seq'] ?>" name="user_seq">
 				<input class="button4" type="submit" value ="削除">
@@ -128,7 +127,7 @@
 	</body>
 
 
-				<script>
+		<script>
 		$(function() {
 			//検索結果から権限を追加するための処理
 			$(document).on('click', '#edit', function() {
@@ -145,6 +144,8 @@
 						$("*[name="+input_names[i]+"]").attr('disabled', false);
 
 					}
+					$(this).data('id','1');
+					
 				}
 				else
 				{
@@ -153,13 +154,27 @@
 						$("*[name="+input_names[i]+"]").attr('disabled', true);
 
 					}
-
+					$(this).data('id','0');
+					
 				}
-
-				$(this).data('id'). = 1;
-
 			});
 		});
+		function check(){
+
+			if(window.confirm('送信してよろしいですか？')){ // 確認ダイアログを表示
+
+				return true; // 「OK」時は送信を実行
+
+			}
+			else{ // 「キャンセル」時の処理
+
+				window.alert('キャンセルされました'); // 警告ダイアログを表示
+				return false; // 送信を中止
+
+			}
+
+		}
+				
 			</script>
 
 </html>
