@@ -1,11 +1,12 @@
 <?php
 session_start();
-unset($_SESSION("details"));
-unset($_SESSION("question_info[question_title]"));
-unset($_SESSION("question_info[start_date]"));
-unset($_SESSION("question_info[end_date]"));
-unset($_SESSION("question_info[target_group]"));
-unset($_SESSION("question_info[question_description]"));
+
+unset($_SESSION["details"]);
+unset($_SESSION["question_info[question_title]"]);
+unset($_SESSION["question_info[start_date]"]);
+unset($_SESSION["question_info[end_date]"]);
+unset($_SESSION["question_info[target_group]"]);
+unset($_SESSION["question_info[question_description]"]);
 
 ?>
 <html>
