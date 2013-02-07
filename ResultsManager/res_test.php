@@ -245,7 +245,6 @@ Dbdissconnect($link);
 						<!-- test_seqを持っていく -->
 						<td align = "center">
 						<input class="button4" type="button" onClick="jump('res_test_point.php?id=<?= $test['test_seq'] ?>','right')" value = "点数修正">
-						<a href="res_test_point.php">res_test_point.php</a>
 					</td>
 					</tr>
 					<?php
