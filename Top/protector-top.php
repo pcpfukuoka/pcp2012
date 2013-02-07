@@ -140,29 +140,6 @@ function repeat($n) {
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
 
-	$A_date = $_SESSION['$A_date'];
-
-	// 選ばれた人のIDを取得
-	$id = $_GET['id'];
-
-	//ユーザのデータベースから名前を取得
-	$sql = "SELECT attendance_seq, attendance.group_seq, attendance.user_seq, m_user.user_name AS user_name, date,
-			       Attendance_flg, Absence_flg, Leaving_early_flg, Lateness_flg, Absence_due_to_mourning_flg
-			FROM attendance
-			LEFT JOIN m_user ON attendance.user_seq = m_user.user_seq
-			LEFT JOIN m_group ON attendance.group_seq = m_group.group_seq
-			WHERE attendance.user_seq = '$id'
-			AND DATE_FORMAT(attendance.date,'%Y-%m') = '$A_date'
-			ORDER BY date";
-
-	//echo $date;
-
-	$result = mysql_query($sql);
-	$row = mysql_fetch_array($result);
-	$count = mysql_num_rows($result);
-
-
-
 ?>
 
 <?php

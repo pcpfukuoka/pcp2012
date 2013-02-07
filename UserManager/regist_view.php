@@ -1,3 +1,60 @@
+<?php
+session_start();
+
+$error_check = 0;
+
+//記入ミスがあった場合
+if($_SESSION['id_check'] || $_SESSION['pass_check'] || $_SESSION['name_check'] || $_SESSION['kana_check'] ||
+$_SESSION['address_check'] || $_SESSION['tel_check'] || $_SESSION['mail_check'] || $_SESSION['student_check'])
+{
+	$id_check = $_SESSION['id_check'];
+	$pass_check = $_SESSION['pass_check'];
+	$name_check = $_SESSION['name_check'];
+	$kana_check = $_SESSION['kana_check'];
+	$address_check = $_SESSION['address_check'];
+	$tel_check = $_SESSION['tel_check'];
+	$mail_check = $_SESSION['mail_check'];
+	$student_check = $_SESSION['student_check'];
+
+	$error_check = 1;
+}
+
+function error_message($i)
+{
+	if($i == 1)
+	{
+		echo $id_check;
+	}
+	elseif ($i == 2)
+	{
+		echo $pass_check;
+	}
+	elseif ($i == 3)
+	{
+		echo $name_check;
+	}
+	elseif ($i == 4)
+	{
+		echo $kana_check[$j];
+	}
+	elseif ($i == 5)
+	{
+		echo $address_check[$j];
+	}
+	elseif ($i == 6)
+	{
+		echo $tel_check[$j];
+	}
+	elseif ($i == 7)
+	{
+		echo $mail_check[$j];
+	}
+	elseif ($i == 8)
+	{
+		echo $student_check[$j];
+	}
+}
+?>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -7,7 +64,7 @@
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<script src="../javascript/jquery-ui-1.8.24.custom.min.js"></script>
 		<script src="../javascript/form_reference.js"></script>
-				</head>
+	</head>
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
@@ -21,41 +78,83 @@
 		$cnt = mysql_num_rows($result);
 		?>
 
-		<form method ="post" action="regist.php">
+		<form method ="post" action="userCheck.php">
 		<table>
+			<?php
+			if ($error_check == 1)
+			{
+				error_message(1);
+			}
+			?>
 			<tr>
 				<td align="center">ユーザID:</td>
-				<td align="center"><input type="text" name="user_id" id="user_id" Onblur="check('#user_id', 'ic,pc,tc', 0, 0)"></td>
+				<td align="center"><input type="text" name="user_id" id="user_id"></td>
 			</tr>
 
+			<?php
+			if ($error_check == 1)
+			{
+				error_message(2);
+			}
+			?>
 			<tr>
 				<td align="center">パスワード：</td>
-				<td align="center"><input type="text" name="pass" id="pass" Onblur="check('#pass', 'ic,pc,tc', 0, 0)"></td>
+				<td align="center"><input type="text" name="pass" id="pass"></td>
 			</tr>
 
+			<?php
+			if ($error_check == 1)
+			{
+				error_message(3);
+			}
+			?>
 			<tr>
 				<td align="center">ユーザ名：</td>
-				<td align="center"><input type="text" name="user_name" id="user_name" Onblur="check('#user_name', 'ic,tc', 0, 0)"></td>
+				<td align="center"><input type="text" name="user_name" id="user_name"></td>
 			</tr>
 
+			<?php
+			if ($error_check == 1)
+			{
+				error_message(4);
+			}
+			?>
 			<tr>
 				<td align="center">ﾌﾘｶﾞﾅ：</td>
-				<td align="center"><input type="text" name="user_kana" id="user_kana" Onblur="check('#user_kana', 'ic,fc,tc', 0, 0)"></td>
+				<td align="center"><input type="text" name="user_kana" id="user_kana"></td>
 			</tr>
 
+			<?php
+			if ($error_check == 1)
+			{
+				error_message(5);
+			}
+			?>
 			<tr>
 				<td align="center">住所：</td>
-				<td align="center"><input type="text" name="user_address" id="user_address" Onblur="check('#user_address', 'ic,tc', 0, 0)"></td>
+				<td align="center"><input type="text" name="user_address" id="user_address"></td>
 			</tr>
 
+			<?php
+			if ($error_check == 1)
+			{
+				error_message(6);
+			}
+			?>
 			<tr>
 				<td align="center">電話番号</td>
-				<td align="center"><input type="text" name="user_tel" id="user_tel" Onblur="check('#user_tel', 'ic,nc,lc', 10, 10)"></td>
+				<td align="center"><input type="text" name="user_tel" id="user_tel"></td>
 			</tr>
 
+			<?php
+			if ($error_check == 1)
+			{
+				error_message(7);
+			}
+			?>
 			<tr>
 				<td align="center">メールアドレス：</td>
-				<td align="center"><input type="text" name="user_email" id="user_email" Onblur="check('#user_email', 'ic,mc', 0, 0)"></td>
+				<td align="center"><input type="text" name="user_email" id="user_email"></td>
 			</tr>
 
 			<tr>
@@ -75,14 +174,22 @@
 					</select>
 				</td>
 		</tr>
+
+		<?php
+			if ($error_check == 1)
+			{
+				error_message(8);
+			}
+			?>
 		<tr>
 			<td>学籍番号※学生のみ</td>
 
 					<td><input type="checkbox" id="student">学生
-			<input type="text" name="stuent_id" id="student_id" disabled="true" Onblur="check('#student_id', 'ic,nc,tc,lc', 6, 6)"></td>
+			<input type="text" name="student_id" id="student_id" disabled="true"></td>
 		</tr>
 	</table>
 		<br>
+		<input type = "hidden" name = "regist_flg" value = "0">
 		<input class="button4"type="submit" value ="登録">
 		</form>
 		</div>
@@ -96,11 +203,11 @@
 
 				if(document.getElementById("student").checked)
 				{
-						$("*[name=stuent_id]").attr('disabled', false);
+						$("*[name=student_id]").attr('disabled', false);
 				}
 				else
 				{
-						$("*[name=stuent_id]").attr('disabled', true);
+						$("*[name=student_id]").attr('disabled', true);
 				}
 			});
 		});
