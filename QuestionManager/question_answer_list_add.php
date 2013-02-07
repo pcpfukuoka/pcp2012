@@ -18,5 +18,3 @@ $set[] = $details;
 
 $_SESSION['details'] = $set;
  
-echo $_SESSION;
- 
