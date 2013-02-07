@@ -50,8 +50,7 @@
 
 
 
-		<font size = "4"><a href="../contactbook/MailBox.php">←戻る</a></font>
-		<hr color="blue">
+
 		<br><br>
 
 			<font size="3">To ：</font>
