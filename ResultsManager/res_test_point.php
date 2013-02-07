@@ -15,10 +15,9 @@ $link = DbConnect();
 
 $test_seq = $_POST['test_seq'];
 
-if (isset($_POST['submit']))
+if (isset($_GET['id']))
 {
-	$button = key($_POST['submit']);
-	$test_seq = $_POST['subname'][$button];
+	$test_seq = $_GET['id'];
 }
 
 //test_seqに対応したgroup_seqの取得

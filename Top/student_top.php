@@ -139,30 +139,6 @@ function repeat($n) {
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
-
-	$A_date = $_SESSION['$A_date'];
-
-	// 選ばれた人のIDを取得
-	$id = $_GET['id'];
-
-	//ユーザのデータベースから名前を取得
-	$sql = "SELECT attendance_seq, attendance.group_seq, attendance.user_seq, m_user.user_name AS user_name, date,
-			       Attendance_flg, Absence_flg, Leaving_early_flg, Lateness_flg, Absence_due_to_mourning_flg
-			FROM attendance
-			LEFT JOIN m_user ON attendance.user_seq = m_user.user_seq
-			LEFT JOIN m_group ON attendance.group_seq = m_group.group_seq
-			WHERE attendance.user_seq = '$id'
-			AND DATE_FORMAT(attendance.date,'%Y-%m') = '$A_date'
-			ORDER BY date";
-
-	//echo $date;
-
-	$result = mysql_query($sql);
-	$row = mysql_fetch_array($result);
-	$count = mysql_num_rows($result);
-
-
-
 ?>
 
 <?php
@@ -247,40 +223,40 @@ $tnk = 40;
 				<td width = "20%">
 					<?= calendar() ?>
 				</td>
-
-
 				<td width = "20%">
 
 				<!-- 一日の時間割 -->
 				今日の時間割
-<?php
-	$group_seq = 1;
-
-	//時間割の取得
-	$time_table_get = "SELECT * FROM time_table WHERE time_table.day = '$today' and time_table.group_seq = '$group_seq'";
-	$time_table = mysql_query($time_table_get);
-	$i = 1;
-	$count = 3;
-	$gyo = mysql_fetch_array($time_table);
-
-	while($count <= "8")
-	{
-
-?>
-
-				<table cellspacing="1" cellpadding="1" border="1" width="80%">
-					<tr>
-						<td width="45%"><?= $i ?>時間目</td><td width="35%"><?= $gyo[$count] ?></td>
-					</tr>
-
-		<?php
-			$i++;
-			$count++;
-		}
-		?>
-
-				</table>
-
+				<?php
+				$id = $_SESSION['login_info[user]'];
+				
+					//所属クラス取得SQL
+					$sql = "SELECT m_group.group_seq FROM m_group INNER JOIN group_details ON m_group.group_seq = group_details.group_seq WHERE m_group.class_flg = 1 AND group_details.user_seq = '$id' ";
+					$group_result = mysql_query($sql);
+					$grow = mysql_fetch_array($group_result);
+					$group_seq = $grow['group_seq'];
+					//時間割の取得
+					$time_table_get = "SELECT * FROM time_table WHERE time_table.day = '$today' and time_table.group_seq = '$group_seq'";
+					$time_table = mysql_query($time_table_get);
+					$cnt = mysql_num_rows($time_table);
+						$row = mysql_fetch_array($time_table);
+					?>
+					<table cellspacing="1" cellpadding="1" border="1" width="80%">
+					<?php
+					 $j = 2;
+					for($i = 1; $i <= 6; $i++)
+					{
+						$j += 1;
+						?>
+						<tr>
+							<td width="45%"><?= $i ?>時間目</td>
+							<td width="35%"><?= $row[$j] ?></td>
+						</tr>
+							
+				<?php 
+					}
+					?>
+					</table>
 				</td>
 				<!-- 天気予報の表示 -->
 				<td width = "20%">
@@ -294,70 +270,68 @@ $tnk = 40;
 		<br><br>
 
 		<!-- 生徒の出欠席 -->
-		<?php
-		$user = $rows['user_seq'];
-		$sql = "SELECT Attendance_flg,Absence_flg,Leaving_early_flg,Lateness_flg,Absence_due_to_mourning_flg
-				From attendance Where user_seq = '$user'";
-
-		$res = mysql_query($sql);
-
-
-		$attendance_cnt = 0;
-		$absence_cnt = 0;
-		$leaving_early_cnt = 0;
-		$lateness_cnt = 0;
-		$absence_due_to_mourning_cnt = 0;
-
-		while($gyo = mysql_fetch_array($res))
+		
+		
+		<?php 
+		
+		$A_date = date("Y-m");
+		
+		// 選ばれた人のIDを取得
+		$id = $_SESSION['login_info[user]'];
+		
+		//ユーザのデータベースから名前を取得
+		$sql = "SELECT attendance_seq, attendance.group_seq, attendance.user_seq, m_user.user_name AS user_name, date,
+		SUM(Attendance_flg) AS Attendance_flg, SUM(Absence_flg) AS Absence_flg, SUM(Leaving_early_flg) AS Leaving_early_flg,
+		SUM(Lateness_flg) AS Lateness_flg, SUM(Absence_due_to_mourning_flg) AS Absence_due_to_mourning_flg
+		FROM attendance
+		LEFT JOIN m_user ON attendance.user_seq = m_user.user_seq
+		LEFT JOIN m_group ON attendance.group_seq = m_group.group_seq
+		WHERE attendance.user_seq = '$id'
+		AND DATE_FORMAT(attendance.date,'%Y-%m') = '$A_date'
+		GROUP BY date";
+		$attendance_result = mysql_query($sql);
+		$attendance_count = mysql_num_rows($attendance_result);
+		
+		
+		if($attendance_count == 0)
 		{
-			if($gyo['Attendance_flg'] == 1)
-			{
-				$attendance_cnt++;
-			}
-			else if($gyo['Absence_flg'] == 1)
-			{
-				$absence_cnt++;
-			}
-			else if($gyo['Leaving_early_flg'] == 1)
-			{
-				$leaving_early_cnt++;
-			}
-			else if($gyo['Lateness_flg'] == 1)
-			{
-				$lateness_cnt++;
-			}
-			else if($gyo['Absence_due_to_mourning_flg'] == 1)
-			{
-				$absence_due_to_mourning_cnt++;
-			}
+			$attendance_cnt = 0;
+			$absence_cnt  = 0;
+			$leaving_early_cnt = 0;
+			$lateness_cnt  = 0;
+			$absence_due_to_mourning_cnt = 0;						
 		}
-
-
-?>
-			<div align="center">
-				<form action="A_update.php" method="POST">
+		else
+		{
+			$row = mysql_fetch_array($attendance_result);
+			
+			$attendance_cnt = $row['Attendance_flg'];
+			$absence_cnt  = $row['Absence_flg'];;
+			$leaving_early_cnt = $row['Leaving_early_flg'];;
+			$lateness_cnt  = $row['Lateness_flg'];;
+			$absence_due_to_mourning_cnt = $row['Absence_due_to_mourning_flg'];;		
+		}
+		
+		
+		?>
+				<div align="center">
 					<table class="table_01" border="1">
 						<tr>
-						<td align="center"width="60"><font size="4">出席</font></td>
-						<td align="center"width="60"><font size="4">欠席</font></td>
-						<td align="center"width="60"><font size="4">早退</font></td>
-						<td align="center"width="60"><font size="4">遅刻</font></td>
-						<td align="center"width="60"><font size="4">忌引き</font></td>
+						<th align="center"width="60"><font size="4">出席</font></th>
+						<th align="center"width="60"><font size="4">欠席</font></th>
+						<th align="center"width="60"><font size="4">早退</font></th>
+						<th align="center"width="60"><font size="4">遅刻</font></th>
+						<th align="center"width="60"><font size="4">忌引き</font></th>
 						</tr>
-
 						<tr>
-						<th align="center"width="60"><font size="4"><?= $attendance_cnt ?></font></th>
-						<th align="center"width="60"><font size="4"><?= $absence_cnt ?></font></th>
-						<th align="center"width="60"><font size="4"><?= $leaving_early_cnt ?></font></th>
-						<th align="center"width="60"><font size="4"><?= $lateness_cnt ?></font></th>
-						<th align="center"width="60"><font size="4"><?= $absence_due_to_mourning_cnt ?></font></th>
+						<td align="center"width="60"><font size="4"><?= $attendance_cnt ?></font></td>
+						<td align="center"width="60"><font size="4"><?= $absence_cnt ?></font></td>
+						<td align="center"width="60"><font size="4"><?= $leaving_early_cnt ?></font></td>
+						<td align="center"width="60"><font size="4"><?= $lateness_cnt ?></font></td>
+						<td align="center"width="60"><font size="4"><?= $absence_due_to_mourning_cnt ?></font></td>
 						</tr>
 					</table>
-
-
-				</form>
 			</div>
-
 		</div>
 	</body>
 </html>
