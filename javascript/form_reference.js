@@ -112,6 +112,7 @@ function ubCheck( id, commando, len_min, len_max, span)
 	//	error_flg	エラーフラグ(エラーがあればtrue)
 	//	message		エラー内容をまとめた警告文
 	var com_array = commando.split( "," );
+	var name_array = span.split( "." );
 	var i = 0;
 	var j = 0;
 	var k = 0;
@@ -119,6 +120,7 @@ function ubCheck( id, commando, len_min, len_max, span)
 	var error = new Array();
 	var error_flg = false;
 	var message = "";
+	var al = "#" + name_array[1] + "";
 
 	//	命令用配列の中身がある限りループ
 	while ( com_array[i] )
@@ -182,15 +184,22 @@ function ubCheck( id, commando, len_min, len_max, span)
 	//	エラー文作成
 	if ( error_flg == true )
 	{
+		message += "※";
 		for ( k; k < error.length;k++ )
 		{
 			if ( error[k] )
 			{
-				message += error[k] + "\n";
+				message += error[k] + " ";
 			}
 		}
 		//	スパンにエラー文表示
-		document.span.text = message;
+		$(al).text(message);
+		//alert( al );
+	}
+	else
+	{
+		//	スパンクリア
+		$(al).text(message);
 	}
 }
 
