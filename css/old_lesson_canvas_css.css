@@ -2,8 +2,6 @@
 
 #chalkboard {
 	position: relative;
-	width: 780px;
-	height: 540px;
 
 	background-repeat:no-repeat;
 	background-size:contain;
@@ -12,8 +10,8 @@
 #canvas {
 
 	position: relative;
-	width: 780px;
-	height: 540px;
+	background-repeat:no-repeat;
+	background-size:contain;
 
 	margin-right: auto;
 	margin-left: auto;
