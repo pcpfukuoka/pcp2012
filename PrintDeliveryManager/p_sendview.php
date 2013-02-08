@@ -42,7 +42,6 @@
 		    <font class="Cubicfont">プリント確認</font>
 		</div>
 
-
 		<br><br>
 
 		<div align="center">

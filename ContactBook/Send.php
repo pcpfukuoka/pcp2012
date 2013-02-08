@@ -10,10 +10,11 @@
 		$contact_book_seq = $_GET['id'];
 	}
 
-	$sql = "SELECT contact_book_seq, link_contact_book_seq, reception_user_seq, m_user.user_name AS reception_user_name, title,
-			contents
+	$sql = "SELECT contact_book.group_seq AS group_seq, contact_book_seq, link_contact_book_seq, reception_user_seq, m_user.user_name AS reception_user_name, title,
+			contents, m_group.group_name AS group_name
 			FROM contact_book
-			Left JOIN m_user ON contact_book.reception_user_seq = m_user.user_seq
+			LEFT JOIN m_user ON contact_book.reception_user_seq = m_user.user_seq
+			LEFT JOIN m_group ON contact_book.group_seq = m_group.group_seq
 			WHERE contact_book_seq = '$contact_book_seq';";
 	$result = mysql_query($sql);
 	$contact_book_row = mysql_fetch_array($result);
@@ -64,12 +65,30 @@
 
 		  <form action="relay.php" method="POST" id="input">
 			  <font size="5">To： </font>
-			  <?= $contact_book_row['reception_user_name']?><br>
+
+			  <?php
+			  	//グループ宛て
+				if($contact_book_row['group_seq'] >= 0)
+				{
+			  ?>
+			  		<?= $contact_book_row['group_name']?><br>
+			  <?php
+				}
+				//個人宛て
+				else
+				{
+			  ?>
+					<?= $contact_book_row['reception_user_name']?><br>
+			  <?php
+				}
+			  ?>
+
 			  <font size="5">件名： </font>
 			  <input size="40" type="text" name="title" value="<?= $contact_book_row['title']?>"><br><br>
 		      <font size="5">本文</font><br>
 		      <textarea id='animated' rows="2" cols="50" name="contents"><?= $contact_book_row['contents'] ?></textarea><br>
 
+		      <input type="hidden" value="<?= $contact_book_row['group_seq'] ?>" name="group_seq">
 		      <input type="hidden" value="<?= $contact_book_row['contact_book_seq'] ?>" name="contact_book_seq">
 		      <input type="hidden" value="<?= $contact_book_row['reception_user_seq'] ?>" name="reception_user_seq">
 		      <input type="hidden" value="<?= $contact_book_row['link_contact_book_seq'] ?>" name="link_id">

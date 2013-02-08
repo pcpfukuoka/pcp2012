@@ -6,16 +6,26 @@ session_start();
 require_once("../lib/dbconect.php");
 $link = DbConnect();
 
+//グループ名とseqを持ってきて、数を数える
+$sql = "SELECT group_seq, group_name
+		FROM m_group
+		WHERE delete_flg = 0";
+
+$result_group = mysql_query($sql);
+$count_group = mysql_num_rows($result_group);
+
+
 
 //$seq_autho : セッションで受け取った権限グループseqを入れる
-if(isset($_GET['id']))
+if(isset($_POST['id']))
 {
-$_SESSION['autho_sel'] = $_GET['id'];
+$_SESSION['autho_sel'] = $_POST['id'];
 }
 $autho_seq = $_SESSION['autho_sel'];
 
 
-$sql = "SELECT autho_name FROM m_autho WHERE autho_seq = $autho_seq";
+$sql = "SELECT autho_name FROM m_autho WHERE autho_seq = $autho_seq
+AND delete_flg = 0;";
 $result = mysql_query($sql);
 $name = mysql_fetch_array($result);
 $name = $name['autho_name'];
@@ -45,37 +55,81 @@ $name = $name['autho_name'];
 		<form action="autho_reg.php" method="POST">
 			<input type="radio" name="q1" value="name" checked>名前
 			<input type="radio" name="q1" value="id">ID
+			
+					<select name = "group">
+						<option value = "-1" selected>選択なし</option>
+						<?php
+						for ($i = 0; $i < $count_group; $i++)
+						{
+						$group = mysql_fetch_array($result_group);
+						?>
+							<option value = "<?= $group['group_seq'] ?>"><?= $group['group_name'] ?></option>
+						<?php
+						}
+						?>
+						</select>グループ選択
 			<input type="text" name="query">
+			
 			<input class="button4" type="submit" value="検索">
 		</form>
 		<div id="list_user">
 		<h1>検索リスト</h1>
 		<?php
-		$sql = "";
-		if(isset($_POST['query']))
+		$group_sql = "SELECT
+				m_user.user_name,
+				m_user.user_id,
+				group_details.group_seq
+				FROM group_details
+				LEFT JOIN m_user ON group_details.user_seq = m_user.user_seq
+				AND m_user.delete_flg = 0";
+		
+		if(isset($_POST['group']) && $_POST['group'] >= 0 ) 
 		{
-
-			if(isset($_POST['q1']) && $_POST['q1'] == "name")
+			$group_seq = $_POST['group'];
+			//グループ検索がある場合
+			if(isset($_POST['query'] ) && $_POST['q1'] == "name")
 			{
-				//チェックボックスを確認
-				$user = $_POST['query'];
-				$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND user_name LIKE '%$user%';";
+				$user_name = $_POST['query'];
+				//名前検索
+				$sql = $group_sql . 
+				" WHERE group_details.group_seq = $group_seq
+				 AND m_user.user_name LIKE '%$user_name%';";
 			}
-			elseif(isset($_POST['q1']) && $_POST['q1'] == "id")
+			else
 			{
 				$user_id = $_POST['query'];
-				$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND user_seq LIKE '$user_id%';";
+				//ID検索
+				$sql = $group_sql . 
+				" WHERE group_details.group_seq = $group_seq
+				 AND m_user.user_id LIKE '%$user_id%';";
 			}
 		}
-		else
+		elseif(isset($_POST['query']))
 		{
+			//グループ選択なし、テキスト検索のみ
+			if($_POST['q1'] == "name")
+			{
+				//名前検索の場合
+				$user = $_POST['query'];
+				$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND user_name LIKE '%$user%';";
+				
+			}
+			else 
+			{
+				//ID検索の場合
+				$user_id = $_POST['query'];
+				$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND user_id LIKE '%$user_id%';";
+			}
+		}
+		else 
+		{
+			//初期の表示の場合
 			//検索用データ取得
 			$sql = "SELECT * FROM m_user WHERE delete_flg = 0;";
 		}
-
 		$result = mysql_query($sql);
 		$cnt = mysql_num_rows($result);
-
+		
 		Dbdissconnect($link);
 
 		for($i = 0; $i < $cnt; $i++)

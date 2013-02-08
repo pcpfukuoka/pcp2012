@@ -4,9 +4,11 @@
 	$dbcon = DbConnect();
 	$id = $_GET['id'];
 
-	$sql = "SELECT contact_book_seq, m_user.user_name AS reception_user_name, title, contents
+	$sql = "SELECT contact_book.group_seq, contact_book_seq, m_user.user_name AS reception_user_name,
+				   title, contents, m_group.group_name AS group_name
 			FROM contact_book
-			Left JOIN m_user ON contact_book.reception_user_seq = m_user.user_seq
+			LEFT JOIN m_user ON contact_book.reception_user_seq = m_user.user_seq
+			LEFT JOIN m_group ON contact_book.group_seq = m_group.group_seq
 			WHERE contact_book_seq = '$id';";
 	$result = mysql_query($sql);
 	$row = mysql_fetch_array($result);
@@ -63,7 +65,23 @@
 
 			<form action="ReplyBox.php" method="POST">
 				<font size="5">To：</font>
-				<?= $row['reception_user_name'] ?><br>
+
+				<?php
+					//グループのとき
+					if($row['group_seq'] >= 0)
+					{
+				?>
+						<?= $row['group_name'] ?><br>
+				<?php
+					}
+					//個人のとき
+					else
+					{
+				?>
+						<?= $row['reception_user_name'] ?><br>
+				<?php
+					}
+				?>
 				<font size="5">件名：</font>
 				<?= $row['title'] ?><br><br>
 
