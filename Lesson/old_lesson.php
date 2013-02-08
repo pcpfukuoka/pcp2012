@@ -183,6 +183,7 @@
 				}
 				canvas_ele.src=parsers[page]['canvas'];
 				div_ele.style.background=parsers[page]['div'];
+				div_ele.style.background-Repeat='no-repeat';
 				page_ele.value=page;
 	        });
 		});
@@ -218,6 +219,7 @@
 				}
 				canvas_ele.src=parsers[page]['canvas'];
 				div_ele.style.background=parsers[page]['div'];
+				div_ele.style.backgroundAttachment='fixed';
 				page_ele.value=page;
 	        });
 		});
