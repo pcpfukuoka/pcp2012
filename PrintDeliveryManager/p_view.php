@@ -45,8 +45,7 @@
 				<font class="Cubicfont">確認画面</font>
 			</div>
 
-			<font size = "4"><a href="p_draft.php">←戻る</a></font>
-			<hr color="blue">
+
 			<br><br>
 
 			<form action="p_relay.php" method="POST">

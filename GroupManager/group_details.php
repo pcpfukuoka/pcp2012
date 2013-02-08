@@ -142,8 +142,9 @@
 						else
 						{
 					?>
-							<td><input class="button4" type = "submit" value = "ユーザを追加" name = "u_add" onclick="user_add()"></td>
+							<td><input class="button4" type = "submit" value = "グループ情報" name = "g_edit" onclick="group_edit()"></td>
 							<td><input class="button4" type = "submit" value = "グループを削除" name = "g_delete" onclick="group_delete()"></td>
+							<td><input class="button4" type = "submit" value = "ユーザを追加" name = "u_add" onclick="user_add()"></td>
 							<td><input class="button4" type = "submit" value = "ユーザ削除完了" name = "u_delete" onclick="user_delete()"></td>
 							<td><input class="button4" type = "submit" value = "ユーザ削除中止" name = "u_reset" onclick="user_reset()"></td>
 					<?php
@@ -234,6 +235,10 @@
 	function user_add()
 	{
 		window.open('group_u_add.php?id=<?= $group_seq ?>', 'ユーザ追加', 'width=500,height=400,top=100,left=500,scrollbars=yes,resizable=yes,status=yes');;
+	}
+	function group_edit()
+	{
+		location.href = "group_g_edit.php?id=<?= $group_seq ?>";		
 	}
 	</script>
 		<script>

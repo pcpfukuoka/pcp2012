@@ -79,6 +79,7 @@ Dbdissconnect($link);
 		<link rel="stylesheet" href="../css/animate.css">
 		<link rel="stylesheet" type="text/css" href="../css/table_search.css" />
 		<script src="../javascript/form_reference.js"></script>
+		<script src="../javascript/frame_jump.js"></script>
 		<title>テスト登録画面</title>
 	</head>
 
@@ -101,7 +102,8 @@ Dbdissconnect($link);
 	        		<div><a href="javascript:sorter.reset()">reset</a></div>
 	        	</span>
         </div>
-		<table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
+        
+        		<table class="table_01">
 			<thead>
 				<tr>
 				<th><h3>教科</h3></th>
@@ -113,7 +115,8 @@ Dbdissconnect($link);
 				<th><h3>登録(テスト・点数)</h3></th>
 			</tr>
 			</thead>
-		<tbody>
+        
+        		<tbody>
 			<tr>
 				<!-- 教科の選択 -->
 				<form name = "req" action = "" method = "GET">
@@ -184,58 +187,74 @@ Dbdissconnect($link);
 
 						<!-- 定期テストのチェック -->
 					<input type = "hidden" name = "stand_flg" value = "0">
-					<td align = "center" bgcolor = "blue"><input type = "checkbox" name = "stand_flg" value = "1"></td>
+					<td align = "center"><input type = "checkbox" name = "stand_flg" value = "1"></td>
 
 					<!-- 登録ボタン -->
-					<td align = "center" bgcolor = "blue"><input type = "submit" value = "登録"></td>
+					<td align = "center" ><input type = "submit" value = "登録"></td>
 				</form>
 			</tr>
-
-			<form action="res_test_point.php" method="POST">
-			
-				<?php
-				//以前のテストの表示
-				for ($i = 0; $i < $count_test; $i++)
-				{
-					$test = mysql_fetch_array($result_test);
-
-					$contents = nl2br($test['contents']);
-				?>
-
-				<tr>
-					<td><?= $test['subject_name'] ?></td>
-					<td><?= $test['date'] ?></td>
-					<td><?= $contents ?></td>
-					<td><?= $test['user_name'] ?></td>
-					<td><?= $test['group_name'] ?></td>
-					<td align = "center">
+			</tbody>
+			</table>
+        
+        
+        
+        <form>
+			<table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
+				<thead>
+					<tr>
+					<th><h3>教科</h3></th>
+					<th><h3>日付</h3></th>
+					<th><h3>テスト範囲</h3></th>
+					<th><h3>先生</h3></th>
+					<th><h3>グループ</h3></th>
+					<th><h3>定期テスト</h3></th>
+					<th><h3>登録(テスト・点数)</h3></th>
+				</tr>
+				</thead>
+				<tbody>
+				
 					<?php
-					//定期テストチェック
-					if ($test['standard_test_flg'] == 1)
+					//以前のテストの表示
+					for ($i = 0; $i < $count_test; $i++)
 					{
-						echo "○";
-					}
-					else
-					{
-						echo "×";
+						$test = mysql_fetch_array($result_test);
+	
+						$contents = nl2br($test['contents']);
+					?>
+	
+					<tr>
+						<td><?= $test['subject_name'] ?></td>
+						<td><?= $test['date'] ?></td>
+						<td><?= $contents ?></td>
+						<td><?= $test['user_name'] ?></td>
+						<td><?= $test['group_name'] ?></td>
+						<td align = "center">
+						<?php
+						//定期テストチェック
+						if ($test['standard_test_flg'] == 1)
+						{
+							echo "○";
+						}
+						else
+						{
+							echo "×";
+						}
+						?>
+						</td>
+	
+						<!-- test_seqを持っていく -->
+						<td align = "center">
+						<input class="button4" type="button" onClick="jump('res_test_point.php?id=<?= $test['test_seq'] ?>','right')" value = "点数修正">
+					</td>
+					</tr>
+					<?php
 					}
 					?>
-					</td>
-
-					<!-- test_seqを持っていく -->
-					<td align = "center">
-						<input type = "hidden" name = "subname['<?= $i ?>']" value = "<?= $test['test_seq'] ?>">
-						<input type = "submit" class="button4" name = "submit['<?= $i ?>']" value = "点数修正">
-					</td>
-				</tr>
-				<?php
-				}
-				?>
-			
-			</form>
-			</tbody>
-		</table>
-						</div>
+					
+				</tbody>
+			</table>
+		</form>
+						
 		<div id="tablefooter">
           <div id="tablenav">
             	<div>

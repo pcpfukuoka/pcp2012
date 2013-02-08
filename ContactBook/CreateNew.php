@@ -8,6 +8,13 @@
 	     $result = mysql_query($sql);
 	     $kensu = mysql_num_rows($result);
 
+	     //グループの件数の取り出し
+	     $sql = "SELECT *
+				 FROM m_group
+				 WHERE delete_flg = 0";
+	     $group = mysql_query($sql);
+	     $count = mysql_num_rows($group);
+
 	     //データベースを閉じる
 	     DBdissconnect($dbcon);
 ?>
@@ -59,9 +66,18 @@
 			<hr color="blue">
 			<br>
 
+			<?php
+				//	relayで判定するもの
+				//	switch		(user_seq or group_seq)
+				//	to_user		($_user_seq)
+				//	to_group	($_group_seq)
+				//	(send or reception)
+			?>
+
 			<form action="relay.php" method="POST" id="input">
 				  <font size="5">宛先</font>
-				  <select name="to">
+				  <input type="radio" name="switch" value="user_seq">
+				  <select name="to_user">
 				  <?php
 					   for ($i = 0; $i < $kensu; $i++)
 					   {
@@ -73,6 +89,19 @@
 				  ?>
 
 				  </select>
+
+				  <input type="radio" name="switch" value="group_seq">
+				  <select name="to_group">
+	  				<?php
+		   				for ($i = 0; $i < $count; $i++)
+		   				{
+		   					$row = mysql_fetch_array($group);
+	  				?>
+	    					<option value="<?=$row['group_seq']?>"><?= $row['group_name'] ?></option>
+	  				<?php
+	    				}
+	  				?>
+	  			  </select>
 				  <br>
 				  <font size="5">件名</font>
 				  <input size="40" type="text" name="title"><br><br>

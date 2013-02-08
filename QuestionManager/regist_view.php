@@ -1,5 +1,13 @@
 <?php
 session_start();
+
+unset($_SESSION["details"]);
+unset($_SESSION["question_info[question_title]"]);
+unset($_SESSION["question_info[start_date]"]);
+unset($_SESSION["question_info[end_date]"]);
+unset($_SESSION["question_info[target_group]"]);
+unset($_SESSION["question_info[question_description]"]);
+
 ?>
 <html>
 	<head>
@@ -30,7 +38,7 @@ session_start();
 			?>
 
 			<form method ="post" action="regist.php">
-			タイトル:<input type="text" name="question_title" id="question_title" Onblur="check('#question_title', ic)"><br>
+			タイトル:<input type="text" name="question_title" id="question_title" Onblur="check('#question_title', 'ic', 0, 0)"><br>
 			期間：<input type="date" name="start_date">〜<input type="date" name="end_date"><br>
 			対象グループ：
 			<select name = "target_group_seq" size = "1">
@@ -154,14 +162,5 @@ session_start();
 		        });
 		    });
 		});
-
-		//strはid
-		function check(str)
-		{
-			var a =  $(str).val();
-			var ret = inputCheck(a);
-
-
-		}
 		</script>
 </html>
