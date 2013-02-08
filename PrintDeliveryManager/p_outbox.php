@@ -41,9 +41,9 @@
 		<div align="center">
 			<table class="table_01">
 				<tr bgcolor="yellow">
-					<th align="center"width="200"><font size="5">日付</font></th>
-					<th align="center"width="150"><font size="5">TO</font></th>
-					<th align="center"width="230"><font size="5">件名</font></th>
+					<th align="center" width="200"><font size="5">日付</font></th>
+					<th align="center" width="150"><font size="5">TO</font></th>
+					<th align="center" width="230"><font size="5">件名</font></th>
 
 				<?php
 				for ($i = 0; $i < $count; $i++){
@@ -51,9 +51,9 @@
 				?>
 
 				<tr>
-					<td><?= $row['delivery_date'] ?></td>
-					<td><?= $row['group_name'] ?></td>
-					<td>
+					<td align="center"><?= $row['delivery_date'] ?></td>
+					<td align="center"><?= $row['group_name'] ?></td>
+					<td align="center">
 						<a href="p_sendview.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
 					</td>
 				</tr>
