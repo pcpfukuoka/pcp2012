@@ -103,7 +103,9 @@ function check( id, commando, len_min, len_max)
 //	ユーザー登録用チェック(onBlur)
 function ubCheck( id, commando, len_min, len_max, span)
 {
-	//	com_array	命令(チェック)用配列
+	//	com_array	命令(チェック)
+	//	name_array	[0]	form_id	[1]	text_id
+	//	spanID		text_id
 	//	i			ループカウンタ
 	//	j			ループカウンタ
 	//	k			ループカウンタ
@@ -113,6 +115,7 @@ function ubCheck( id, commando, len_min, len_max, span)
 	//	message		エラー内容をまとめた警告文
 	var com_array = commando.split( "," );
 	var name_array = span.split( "." );
+	var spanID = "#" + name_array[1] + "";
 	var i = 0;
 	var j = 0;
 	var k = 0;
@@ -120,7 +123,6 @@ function ubCheck( id, commando, len_min, len_max, span)
 	var error = new Array();
 	var error_flg = false;
 	var message = "";
-	var al = "#" + name_array[1] + "";
 
 	//	命令用配列の中身がある限りループ
 	while ( com_array[i] )
@@ -181,104 +183,10 @@ function ubCheck( id, commando, len_min, len_max, span)
 			break;
 		}
 	}
-	//	エラー文作成
+	//	エラーがあればエラー文を作成し、スパンに表示
 	if ( error_flg == true )
 	{
 		message += "※";
-		for ( k; k < error.length;k++ )
-		{
-			if ( error[k] )
-			{
-				message += error[k] + " ";
-			}
-		}
-		//	スパンにエラー文表示
-		$(al).text(message);
-		//alert( al );
-	}
-	else
-	{
-		//	スパンクリア
-		$(al).text(message);
-	}
-}
-
-//	ユーザー登録用チェック(onClick)
-function ucCheck( id, commando, len_min, len_max, span)
-{
-	//	com_array	命令(チェック)用配列
-	//	i			ループカウンタ
-	//	j			ループカウンタ
-	//	k			ループカウンタ
-	//	str			テキストボックスのvalue（文字列）
-	//	error		エラー内容用配列
-	//	error_flg	エラーフラグ(エラーがあればtrue)
-	var com_array = commando.split( "," );
-	var i = 0;
-	var j = 0;
-	var k = 0;
-	var str = id;
-	var error = new Array();
-	var error_flg = false;
-
-	//	命令用配列の中身がある限りループ
-	while ( com_array[i] )
-	{
-		//	命令実行
-		//	命令一覧		ic	未入力チェック
-		//					nc	入力値チェック(半角数字)
-		//					lc	文字数チェック(len_min, len_max)
-		//					ac	入力値チェック(半角英字)
-		//					fc	フリガナチェック
-		//					mc	メールチェック
-		//					tc	禁止文字チェック
-
-		if ( com_array[i] == "ic" )
-		{
-			error[i] = inputCheck( str );
-		}
-		else if ( com_array[i] == "nc" )
-		{
-			error[i] = numberCheck( str );
-		}
-		else if ( com_array[i] == "lc" )
-		{
-			error[i] = lengthCheck( str, len_min, len_max );
-		}
-		else if ( com_array[i] == "ac" )
-		{
-			error[i] = alphabetCheck( str );
-		}
-		else if ( com_array[i] == "fc" )
-		{
-			error[i] = furiganaheck( str );
-		}
-		else if ( com_array[i] == "mc" )
-		{
-			error[i] = mailCheck( str );
-		}
-		else if ( com_array[i] == "tc" )
-		{
-			error[i] = tabooCheck( str );
-		}
-
-		//	カウンタアップ
-		i++;
-	}
-
-	//	エラー確認
-	for ( j; j < error.length; j++ )
-	{
-		if ( error[j] )
-		{
-			error_flg = true;
-			break;
-		}
-	}
-	//	エラー表示
-	if ( error_flg == true )
-	{
-		var message = "";
 		for ( k; k < error.length;k++ )
 		{
 			if ( error[k] )
@@ -287,7 +195,112 @@ function ucCheck( id, commando, len_min, len_max, span)
 			}
 		}
 
-		return massage;
+		$(spanID).text(message);
+	}
+	//	スパンをクリア
+	else
+	{
+		$(spanID).text(message);
+	}
+}
+
+//	ユーザー登録用チェック(onClick)
+function ucCheck( id[], commando[], len_min[], len_max[], span[])
+{
+	//	com_array	命令(チェック)用配列
+	//	i			ループカウンタ
+	//	j			ループカウンタ
+	//	k			ループカウンタ
+	//	l			ループカウンタ
+	//	str			テキストボックスのvalue（文字列）
+	//	error		エラー内容用配列
+	//	error_flg	エラーフラグ(エラーがあればtrue)
+	var	com_array = new Array();
+	var i = 0;
+	var j = 0;
+	var k = 0;
+	var l = 0;
+	var str;
+	var error = new Array( , );
+	var error_flg = false;
+
+	//	命令実行
+	//	命令一覧		ic	未入力チェック
+	//					nc	入力値チェック(半角数字)
+	//					lc	文字数チェック(len_min, len_max)
+	//					ac	入力値チェック(半角英字)
+	//					fc	フリガナチェック
+	//					mc	メールチェック
+	//					tc	禁止文字チェック
+	//	対象のテキストBOXを上から見ていく
+	for ( i; i < id.length; i++)
+	{
+		str = $(id[i]).val();
+		com_array[i] = commando[i].split( "," )
+
+		//	命令用配列の中身がある限りループ
+		while ( com_array[i, j] )
+		{
+			
+			if ( com_array[j] == "ic" )
+			{
+				error[i, j] = inputCheck( str );
+			}
+			else if ( com_array[j] == "nc" )
+			{
+				error[i, j] = numberCheck( str );
+			}
+			else if ( com_array[j] == "lc" )
+			{
+				error[i, j] = lengthCheck( str, len_min, len_max );
+			}
+			else if ( com_array[j] == "ac" )
+			{
+				error[i, j] = alphabetCheck( str );
+			}
+			else if ( com_array[j] == "fc" )
+			{
+				error[i, j] = furiganaheck( str );
+			}
+			else if ( com_array[j] == "mc" )
+			{
+				error[i, j] = mailCheck( str );
+			}
+			else if ( com_array[j] == "tc" )
+			{
+				error[i, j] = tabooCheck( str );
+			}
+
+			//	カウンタアップ
+			j++;
+		}
+	}
+
+	//	エラー確認
+	for ( i = 0; i < id.length; i++ )
+	{
+		for ( j = 0; j < error[i].length; j++ )
+		{
+			if ( error[i, j] )
+			{
+				error_flg = true;
+				break;
+			}
+		}
+		if( error_flg == true)
+		{
+			break;
+		}
+
+	}
+	//	エラー表示
+	if ( error_flg == true )
+	{
+		return false;
+	}
+	else
+	{
+		return true;
 	}
 }
 
