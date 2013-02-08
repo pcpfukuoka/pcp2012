@@ -42,7 +42,9 @@
 		<hr color="blue">
 		<div class="holder"></div>
 
+		<!---------------------------------->
 		<!-- 連絡帳の受信一覧テーブル作成 -->
+		<!---------------------------------->
 		<br>
 		<p align="left">
 			<font size="5">連絡帳</font>
@@ -147,8 +149,9 @@
 			$cnt = mysql_num_rows($result);
 
 		?>
-
+		<!------------------------------------>
 		<!-- プリントの受信一覧テーブル作成 -->
+		<!------------------------------------>
 		<p align="left">
 			<font size="5">配信</font>
 		</p>
@@ -211,7 +214,8 @@
 						<td align="center">
 							<!-- GETでprint_delivery_seqを送る -->
 							<!-- <a href="<?= printurl ?>"><?= $row['title'] ?></a> -->
-							<a href="../PrintDeliveryManager/pdf_view.php?id=<?= $row['print_delivery_seq'] ?>&printurl=<?= $row['printurl'] ?>"><?= $row['title'] ?></a>
+							<a href="../PrintDeliveryManager/pdf_view.php?id=<?= $row['print_delivery_seq'] ?>&printurl=<?= $row['printurl'] ?>&title=<?= $row['title'] ?>"><?= $row['title'] ?></a>
+
 						</td>
 					</tr>
 				<?php
