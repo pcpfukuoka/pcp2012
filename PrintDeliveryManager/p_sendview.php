@@ -42,8 +42,7 @@
 		    <font class="Cubicfont">プリント確認</font>
 		</div>
 
-		<font size = "4"><a href="p_outbox.php">←戻る</a></font>
-		<hr color="blue">
+
 		<br><br>
 
 		<div align="center">
