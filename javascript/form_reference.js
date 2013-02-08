@@ -100,7 +100,7 @@ function check( id, commando, len_min, len_max)
 	}
 }
 
-//	ユーザー登録用チェック(onBlur)
+//ユーザー登録用チェック(onBlur)
 function ubCheck( id, commando, len_min, len_max, span)
 {
 	//	com_array	命令(チェック)
@@ -177,7 +177,7 @@ function ubCheck( id, commando, len_min, len_max, span)
 	//	エラー確認
 	for ( j; j < error.length; j++ )
 	{
-		if ( error[j] )
+		if ( error[j] != "true")
 		{
 			error_flg = true;
 			break;
@@ -189,7 +189,7 @@ function ubCheck( id, commando, len_min, len_max, span)
 		message += "※";
 		for ( k; k < error.length;k++ )
 		{
-			if ( error[k] )
+			if ( error[k] != "true")
 			{
 				message += error[k] + "\n";
 			}
@@ -204,25 +204,16 @@ function ubCheck( id, commando, len_min, len_max, span)
 	}
 }
 
-//	ユーザー登録用チェック(onClick)
-function ucCheck( id[], commando[], len_min[], len_max[], span[])
+
+//ユーザー登録用チェック(onClick)
+function ucCheck( id, commando, len_min, len_max  )
 {
 	//	com_array	命令(チェック)用配列
-	//	i			ループカウンタ
-	//	j			ループカウンタ
-	//	k			ループカウンタ
-	//	l			ループカウンタ
-	//	str			テキストボックスのvalue（文字列）
-	//	error		エラー内容用配列
-	//	error_flg	エラーフラグ(エラーがあればtrue)
-	var	com_array = new Array();
-	var i = 0;
+	var id_array =	id.split( "," );
+	var com_array = commando.split( "/" );
+	var l_min_array = len_min.split( "," );
+	var l_max_array = len_max.split( "," );
 	var j = 0;
-	var k = 0;
-	var l = 0;
-	var str;
-	var error = new Array( , );
-	var error_flg = false;
 
 	//	命令実行
 	//	命令一覧		ic	未入力チェック
@@ -232,119 +223,106 @@ function ucCheck( id[], commando[], len_min[], len_max[], span[])
 	//					fc	フリガナチェック
 	//					mc	メールチェック
 	//					tc	禁止文字チェック
+	//					pc	パスワードチェック
 	//	対象のテキストBOXを上から見ていく
-	for ( i; i < id.length; i++)
+	for ( i = 0; i < id_array.length; i++ )
 	{
-		str = $(id[i]).val();
-		com_array[i] = commando[i].split( "," )
+		var check_flg = "";
+		str = $("#" + id_array[i] + "").val();
+
+		com_query = com_array[i].split( "," );
 
 		//	命令用配列の中身がある限りループ
-		while ( com_array[i, j] )
+		while ( com_query[j] )
 		{
-			
-			if ( com_array[j] == "ic" )
+
+			if ( com_query[j] == "ic" )
 			{
-				error[i, j] = inputCheck( str );
+			 	check_flg = inputCheck( str );
 			}
-			else if ( com_array[j] == "nc" )
+			else if ( com_query[j] == "nc" )
 			{
-				error[i, j] = numberCheck( str );
+				check_flg = numberCheck( str );
 			}
-			else if ( com_array[j] == "lc" )
+			else if ( com_query[j] == "lc" )
 			{
-				error[i, j] = lengthCheck( str, len_min, len_max );
+				check_flg = lengthCheck( str, len_min[i], len_max[i] );
 			}
-			else if ( com_array[j] == "ac" )
+			else if ( com_query[j] == "ac" )
 			{
-				error[i, j] = alphabetCheck( str );
+				check_flg = alphabetCheck( str );
 			}
-			else if ( com_array[j] == "fc" )
+			else if ( com_query[j] == "fc" )
 			{
-				error[i, j] = furiganaheck( str );
+				check_flg = furiganaheck( str );
 			}
-			else if ( com_array[j] == "mc" )
+			else if ( com_query[j] == "mc" )
 			{
-				error[i, j] = mailCheck( str );
+				//check_flg = mailCheck( str );
 			}
-			else if ( com_array[j] == "tc" )
+			else if ( com_query[j] == "tc" )
 			{
-				error[i, j] = tabooCheck( str );
+				//check_flg = tabooCheck( str );
 			}
 
+			if(check_flg != "true")
+			{
+				return false;
+			}
 			//	カウンタアップ
 			j++;
 		}
 	}
 
-	//	エラー確認
-	for ( i = 0; i < id.length; i++ )
-	{
-		for ( j = 0; j < error[i].length; j++ )
-		{
-			if ( error[i, j] )
-			{
-				error_flg = true;
-				break;
-			}
-		}
-		if( error_flg == true)
-		{
-			break;
-		}
+	return true;
 
-	}
-	//	エラー表示
-	if ( error_flg == true )
-	{
-		return false;
-	}
-	else
-	{
-		return true;
-	}
 }
 
-//	空白除去(全半角スペース・タブ・改行にも対応)
-//	文字列のトリミングを行うので、基本的にどの関数でも使用する。
-//	返値はトリミングした文字列
-//	トリミング
+
+
+//空白除去(全半角スペース・タブ・改行にも対応)
+//文字列のトリミングを行うので、基本的にどの関数でも使用する。
+//返値はトリミングした文字列
+//トリミング
 function trim( str )
 {
 	return str.replace( /^[  \t\r\n]+|[  \t\r\n]+$/g, "" );
 }
 
-//	ret = 返値(テキスト)
-//	未入力チェック	ic
+//ret = 返値(テキスト)
+//未入力チェック	ic
 function inputCheck( str )
 {
-	var ret;
+	var ret = "true";
 	//	トリミングした文字列の長さが0（未入力）ならばエラーを返す。
 	if ( trim( str ).length == 0 )
 	{
 		ret = "文字を入力して下さい。";
 		return ret;
 	}
+	return ret;
 }
 
-//	入力値チェック(半角数字)	nc
+//入力値チェック(半角数字)	nc
 function numberCheck( str )
 {
-	var ret;
+	var ret = "true";
 
 	if ( trim( str ).match( /[^0-9]+/ ) )
 	{
 		ret = "半角数字のみで入力して下さい。";
 		return ret;
 	}
+	return ret;
 }
 
-//	len_min		引数(指定文字数の下限値)	値が0で下限無し
-//	len_max		引数(指定文字数の上限値)	値が0で上限無し
-//	文字数指定の場合、len_minとlen_maxが同値にする
-//	文字数チェック	lc
+//len_min		引数(指定文字数の下限値)	値が0で下限無し
+//len_max		引数(指定文字数の上限値)	値が0で上限無し
+//文字数指定の場合、len_minとlen_maxが同値にする
+//文字数チェック	lc
 function lengthCheck( str, len_min, len_max )
 {
-	var ret;
+	var ret = "true";
 	//	下限無しの場合
 	if( len_min == 0 )
 	{
@@ -381,39 +359,43 @@ function lengthCheck( str, len_min, len_max )
 			return ret;
 		}
 	}
+
+	return ret;
 }
 
-//	入力値チェック(半角英字 大小文字対応)	ac
+//入力値チェック(半角英字 大小文字対応)	ac
 function alphabetCheck( str )
 {
-	var ret;
+	var ret = "true";
 
 	if( trim( str ).match( /[^A-Za-z\s.-]+/ ) )
 	{
 		ret = "半角英字のみで入力して下さい。";
 		return ret;
 	}
+	return ret;
 }
 
-//	フリガナチェック(半角カタカナのみ)		fc
+//フリガナチェック(半角カタカナのみ)		fc
 function furiganaCheck( str )
 {
-	var ret;
+	var ret = "true";
 
 	if ( trim( str ).match( /[^ｧ-ﾝ\s.-]+/ ) )
 	{
 		ret = "フリガナは半角「カタカナ」 のみで入力して下さい。";
 		return ret;
 	}
+	return ret;
 }
 
-//	メールアドレスチェック	mc
+//メールアドレスチェック	mc
 function mailCheck( str )
 {
 	/* E-mail形式の正規表現パターン */
 	/* @が含まれていて、最後が .(ドット)でないなら正しいとする */
 	var fromat=/[!#-9A-~]+@+[a-z0-9]+.+[^.]$/i;
-    var ret;
+	var ret;
 
 	/* 入力された値がパターンにマッチするか調べる */
 	if( trim( str ).match( format ) )
@@ -427,10 +409,10 @@ function mailCheck( str )
 	}
 }
 
-//	禁止文字チェック	tc
+//禁止文字チェック	tc
 function tabooCheck( str )
 {
-	var ret;
+	var ret = "ture";
 
 	var taboo = [ "!", "?" ]; //禁止文字の配列
 	var regex = new RegExp(taboo.join("|")); //正規表現オブジェクト
@@ -440,17 +422,19 @@ function tabooCheck( str )
 		ret = "禁止文字が含まれています。";
 		return ret;
 	}
+	return ret;
 }
 
-//	パスワードチェック(半角英数字のみ)	pc
+//パスワードチェック(半角英数字のみ)	pc
 function passwordCheck( str )
 {
-	var tet;
+	var ret = "true";
 
 	if( trim( str ).match( /[^A-Z a-z 0-9 @ . _ -\s.-]+/ ) )
 	{
 		ret = "半角英数字と[@],[.],[-],[_]のみで入力して下さい。";
 		return ret;
 	}
+	return ret;
 
 }

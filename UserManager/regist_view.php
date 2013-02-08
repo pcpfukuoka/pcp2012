@@ -1,11 +1,3 @@
-<?php
-$input_names = array("user_id", "pass", "user_name", "user_kana", "user_address",
-					"user_tel", "user_email", "student_id");
-$check_cmd = array("ic,pc,tc", "ic,pc,tc", "ic,tc", "ic,fc,tc", "ic,tc", "ic,nc,lc",
-					"ic,mc", "ic,nc,lc");
-$check_val_min = array(0, 0, 0, 0, 0, 10, 0, 6);
-$check_val_max = array(0, 0, 0, 0, 0, 10, 0, 6);
-?>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,7 +8,7 @@ $check_val_max = array(0, 0, 0, 0, 0, 10, 0, 6);
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<script src="../javascript/jquery-ui-1.8.24.custom.min.js"></script>
 		<script src="../javascript/form_reference.js"></script>
-	</head>
+		</head>
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 
@@ -31,7 +23,7 @@ $check_val_max = array(0, 0, 0, 0, 0, 10, 0, 6);
 		$cnt = mysql_num_rows($result);
 		?>
 
-		<form method ="post" name="frm1" action="regist.php" onsubmit="return check()">
+		<form method ="post" name="frm1" action="regist.php" onsubmit="return user_check()">
 		<table>
 
 			<tr>
@@ -124,22 +116,17 @@ $check_val_max = array(0, 0, 0, 0, 0, 10, 0, 6);
 		});
 
 
-		function check()
+		function user_check()
 		{
-			var check_flg;
-			var i = 0;
+			var check_flg = false;
 
 			//対象のinputタグのNameを配列に格納
-			var input_names = new Array("user_id", "pass", "user_name", "user_kana", "user_address",
-										"user_tel", "user_email", "student_id");
-			var check_cmd = new Array("ic,pc,tc", "ic,pc,tc", "ic,tc", "ic,fc,tc", "ic,tc",	"ic,nc,lc",
-										"ic,mc", "ic,nc,lc");
-			var check_val_min = new Array(0, 0, 0, 0, 0, 10, 0, 6);
-			var check_val_max = new Array(0, 0, 0, 0, 0, 10, 0, 6);
-			var check_result = new Array("0","0","0","0","0","0","0", "0");
+			var input_names = "user_id,pass,user_name,user_kana,user_address,user_tel,user_email,student_id";
+			var check_cmd = "ic,pc,tc/ic,pc,tc/ic,tc/ic,fc,tc/ic,tc/ic,nc,lc/ic,mc/ic,nc,lc";
+			var check_val_min = "0,0,0,0,0,10,0,6";
+			var check_val_max = "0,0,0,0,0,10,0,6";
 
 			check_flg = ucCheck(input_names, check_cmd, check_val_min, check_val_max);
-
 			if(check_flg)
 			{
 				return true; // 「OK」時は送信を実行
