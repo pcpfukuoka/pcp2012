@@ -336,7 +336,7 @@ function tabooCheck( str )
 {
 	var ret;
 
-	var taboo = ["@","-"]; //禁止文字の配列
+	var taboo = [ "!", "?" ]; //禁止文字の配列
 	var regex = new RegExp(taboo.join("|")); //正規表現オブジェクト
 
 	if ( trim( str ).match(regex) != null )
@@ -346,7 +346,7 @@ function tabooCheck( str )
 	}
 }
 
-//	パスワードチェック(半角英数字のみ)	pk
+//	パスワードチェック(半角英数字のみ)	pc
 function passwordCheck( str )
 {
 	var tet;
