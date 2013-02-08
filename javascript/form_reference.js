@@ -159,7 +159,7 @@ function ubCheck( id, commando, len_min, len_max, span)
 		}
 		else if ( com_array[i] == "tc" )
 		{
-			error[i] = tabooCheck( str );
+			//error[i] = tabooCheck( str );
 		}
 		else if ( com_array[i] == "pc" )
 		{
@@ -190,12 +190,12 @@ function ubCheck( id, commando, len_min, len_max, span)
 			}
 		}
 		//	スパンにエラー文表示
-		document.span.text = massage;
+		document.span.text = message;
 	}
 }
 
 //	ユーザー登録用チェック(onClick)
-cumfunction ucCheck( id, commando, len_min, len_max, span)
+function ucCheck( id, commando, len_min, len_max, span)
 {
 	//	com_array	命令(チェック)用配列
 	//	i			ループカウンタ
