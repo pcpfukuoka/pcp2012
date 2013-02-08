@@ -50,7 +50,7 @@
     font-size: 30px;
     font-weight: bold;
 	vertical-align: text-top;
-	
+
 }
 
 /* グループメイン画面用　　立体文字 */
@@ -65,4 +65,9 @@
     text-shadow: 1px 1px 0 white, 2px 2px 0 black;
     font-size: 20px;
     font-weight: bold;
+}
+
+/* エラーメッセージ用 */
+.check_result{
+	color: red;
 }
