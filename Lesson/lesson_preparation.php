@@ -37,42 +37,17 @@
 		<table class="table_01">
 			<tr>
 				<th>授業の日付</th>
+				<th>クラス</th>
 				<th>時間割</th>
 				<th>教科</th>
-				<th>クラス</th>
 				<th>決定</th>
 			<tr>
 
 			<tr>
-				<form action="test.php" method="post" enctype="multipart/form-data">
+				<form action="test.php" method="post" enctype="multipart/form-data"  onsubmit="return check();">
 					<!-- 授業がある日付・授業するクラス・授業の科目 -->
 					<td align="center">
 						<input type="date" name= "date" size= "30" id="date" min="<?= date("Y-m-d") ?>"/><br />
-					</td>
-
-					<td align="center">
-						<select name="subject">
-							<?php
-				   				for ($i = 0; $i < $count; $i++)
-				   				{
-				   					$row = mysql_fetch_array($result);
-			  				?>
-			    				<option value="<?= $row['subject_seq']?>"><?= $row['subject_name'] ?></option>
-			  				<?php
-			    				}
-			  				?>
-						</select>
-					</td>
-
-					<td align="center">
-						<select name="time_table">
-							<option value="1">１時間目</option>
-							<option value="2">２時間目</option>
-							<option value="3">３時間目</option>
-							<option value="4">４時間目</option>
-							<option value="5">５時間目</option>
-							<option value="6">６時間目</option>
-						</select>
 					</td>
 
 					<td align="center">
@@ -90,7 +65,35 @@
 					</td>
 
 					<td align="center">
-						<input class="button3" type="submit" value="決定" id="decision" disabled=disabled />
+						<select name="time_table">
+							<option value="1">１時間目</option>
+							<option value="2">２時間目</option>
+							<option value="3">３時間目</option>
+							<option value="4">４時間目</option>
+							<option value="5">５時間目</option>
+							<option value="6">６時間目</option>
+						</select>
+					</td>
+
+
+					<td align="center">
+						<select name="subject">
+							<?php
+				   				for ($i = 0; $i < $count; $i++)
+				   				{
+				   					$row = mysql_fetch_array($result);
+			  				?>
+			    				<option value="<?= $row['subject_seq']?>"><?= $row['subject_name'] ?></option>
+			  				<?php
+			    				}
+			  				?>
+						</select>
+					</td>
+
+
+
+					<td align="center">
+						<input class="button3" type="submit" value="決定" id="decision"/>
 					</td>
 				</form>
 			</tr>
@@ -98,20 +101,15 @@
 		</div>
 	</body>
 	<script>
-
-	$(function() {
-		/* 決定ボタンをクリックした後の過去授業の画像を出力する処理 */
-
-		//日付ボタンを選択した後に決定ボタンを表示
-		$(document).on('change', '#date', function() {
-			var decision_ele =document.getElementById("decision");
-			decision_ele.disabled=false;
-	    });
-
-		//全て選択されている時に時間割を調べ、すでに終わっている時間割を表示させない
-		$(document).on('', '', function() {
-
-	    });
-	});
+	//全ての項目を選択していない時にsubmitさせず、alartを出す。
+	function check(){
+		var date_ele=document.getElementById("date");
+		if(date_ele.value){
+             return true;
+		}else{
+			 alert('すべての項目を入力してください');
+             return false;
+		}
+	}
 	</script>
 </html>

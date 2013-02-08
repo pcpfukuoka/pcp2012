@@ -67,7 +67,7 @@
 				WHERE print_delivery_seq = '$print_delivery_seq'; ";
     	mysql_query($sql);
 
-    	$sql = "SELECT group_details.user_seq
+    	$sql = "SELECT group_details.user_seq AS user_seq
     			FROM group_details
     			LEFT JOIN print_delivery ON group_details.group_seq = print_delivery.target_group_seq
     			WHERE print_delivery_seq = $print_delivery_seq";

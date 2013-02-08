@@ -25,6 +25,7 @@
 					ON group_details.group_seq=m_group.group_seq
 					WHERE group_details.user_seq =".$user_seq." AND m_group.class_flg = '1';";
 	}
+
 	$class_select_result = mysql_query($class_select);
 	$count3 = mysql_num_rows($class_select_result);
 
@@ -34,21 +35,16 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<script src="../javascript/old_lesson_js.js" type = "text/javascript"></script>
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
-		<link rel="stylesheet" href="../css/old_lesson_canvas_css.css">
+		<link rel="stylesheet" type="text/css" href="../css/old_lesson_canvas_css.css" />
 	</head>
 
 	<body>
 		<!-- <img class="bg" src="../images/blue-big.jpg" alt="" /> -->
 		<div id="container">
-			<div align="center">
-				<font class="Cubicfont">過去授業</font>
-			</div>
-			<hr color="blue"></hr>
 
 		<input type="date" id="date" max="<?= date("Y-m-d") ?>"/>
 		<select id="subject_seq">
@@ -83,6 +79,7 @@
     			<option value="6">６時間目</option>
 		</select>
 		<input type="button" value="決定" id="decision" disabled=disabled>
+		<input type="button" value="閲覧終了" id="end">
 		<div id="frame">
 		</div>
 </div>
@@ -94,6 +91,11 @@
 		$(document).on('change', '#date', function() {
 			var decision_ele =document.getElementById("decision");
 			decision_ele.disabled=false;
+	    });
+
+		//閲覧終了ボタンを押した際に、windowを閉じる
+		$(document).on('click', '#end', function() {
+			window.close();
 	    });
 		//決定ボタンをクリックした後の過去授業の画像を出力する処理
 		$(document).on('click', '#decision', function() {
@@ -124,8 +126,8 @@
 		    	var parsers = JSON.parse(rs);
 
 		    	if(parsers.length>0){
-		    		var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat height="440" width="680">'
-		    		+'<img src="'+parsers[0]['canvas']+'"id="canvas" height="440" width="680"/>'
+		    		var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat; height="600" width="900">'
+		    		+'<img src="'+parsers[0]['canvas']+'"id="canvas" height="600" width="900"/>'
 		    		+'</div>'
 		    		+'<table>'
 		    		+'<tr>'

@@ -5,7 +5,7 @@
 
 //	idは頭に#を加えて引数にすること	commandoは命令を,で区切って引数にすること
 //	len_min, len_maxはそ文字数の上下限値を指定、なければ0を引数にすること
-//	チェック
+//	通常チェック
 function check( id, commando, len_min, len_max)
 {
 	//	com_array	命令(チェック)用配列
@@ -100,29 +100,29 @@ function check( id, commando, len_min, len_max)
 	}
 }
 
-
-function alert( a )
+//	ユーザー登録用チェック(onBlur)
+function ubCheck( id, commando, len_min, len_max, span)
 {
-	alert( a );
-}
-
-//ユーザー登録用チェック
-function userCheck( id, commando, len_min, len_max)
-{
-	//	com_array	命令(チェック)用配列
+	//	com_array	命令(チェック)
+	//	name_array	[0]	form_id	[1]	text_id
+	//	spanID		text_id
 	//	i			ループカウンタ
 	//	j			ループカウンタ
 	//	k			ループカウンタ
 	//	str			テキストボックスのvalue（文字列）
 	//	error		エラー内容用配列
 	//	error_flg	エラーフラグ(エラーがあればtrue)
+	//	message		エラー内容をまとめた警告文
 	var com_array = commando.split( "," );
+	var name_array = span.split( "." );
+	var spanID = "#" + name_array[1] + "";
 	var i = 0;
 	var j = 0;
 	var k = 0;
-	var str = id;
+	var str = $(id).val();
 	var error = new Array();
 	var error_flg = false;
+	var message = "";
 
 	//	命令用配列の中身がある限りループ
 	while ( com_array[i] )
@@ -135,6 +135,7 @@ function userCheck( id, commando, len_min, len_max)
 		//					fc	フリガナチェック
 		//					mc	メールチェック
 		//					tc	禁止文字チェック
+		//					pc	パスワードチェック
 
 		if ( com_array[i] == "ic" )
 		{
@@ -154,7 +155,7 @@ function userCheck( id, commando, len_min, len_max)
 		}
 		else if ( com_array[i] == "fc" )
 		{
-			error[i] = furiganaheck( str );
+			error[i] = furiganaCheck( str );
 		}
 		else if ( com_array[i] == "mc" )
 		{
@@ -162,7 +163,11 @@ function userCheck( id, commando, len_min, len_max)
 		}
 		else if ( com_array[i] == "tc" )
 		{
-			error[i] = tabooCheck( str );
+			//error[i] = tabooCheck( str );
+		}
+		else if ( com_array[i] == "pc" )
+		{
+			error[i] = passwordCheck( str );
 		}
 
 		//	カウンタアップ
@@ -178,10 +183,10 @@ function userCheck( id, commando, len_min, len_max)
 			break;
 		}
 	}
-	//	エラー表示
+	//	エラーがあればエラー文を作成し、スパンに表示
 	if ( error_flg == true )
 	{
-		var message = "";
+		message += "※";
 		for ( k; k < error.length;k++ )
 		{
 			if ( error[k] )
@@ -190,12 +195,114 @@ function userCheck( id, commando, len_min, len_max)
 			}
 		}
 
-		return massage;
+		$(spanID).text(message);
+	}
+	//	スパンをクリア
+	else
+	{
+		$(spanID).text(message);
 	}
 }
 
+//	ユーザー登録用チェック(onClick)
+function ucCheck( id[], commando[], len_min[], len_max[], span[])
+{
+	//	com_array	命令(チェック)用配列
+	//	i			ループカウンタ
+	//	j			ループカウンタ
+	//	k			ループカウンタ
+	//	l			ループカウンタ
+	//	str			テキストボックスのvalue（文字列）
+	//	error		エラー内容用配列
+	//	error_flg	エラーフラグ(エラーがあればtrue)
+	var	com_array = new Array();
+	var i = 0;
+	var j = 0;
+	var k = 0;
+	var l = 0;
+	var str;
+	var error = new Array( , );
+	var error_flg = false;
 
+	//	命令実行
+	//	命令一覧		ic	未入力チェック
+	//					nc	入力値チェック(半角数字)
+	//					lc	文字数チェック(len_min, len_max)
+	//					ac	入力値チェック(半角英字)
+	//					fc	フリガナチェック
+	//					mc	メールチェック
+	//					tc	禁止文字チェック
+	//	対象のテキストBOXを上から見ていく
+	for ( i; i < id.length; i++)
+	{
+		str = $(id[i]).val();
+		com_array[i] = commando[i].split( "," )
 
+		//	命令用配列の中身がある限りループ
+		while ( com_array[i, j] )
+		{
+			
+			if ( com_array[j] == "ic" )
+			{
+				error[i, j] = inputCheck( str );
+			}
+			else if ( com_array[j] == "nc" )
+			{
+				error[i, j] = numberCheck( str );
+			}
+			else if ( com_array[j] == "lc" )
+			{
+				error[i, j] = lengthCheck( str, len_min, len_max );
+			}
+			else if ( com_array[j] == "ac" )
+			{
+				error[i, j] = alphabetCheck( str );
+			}
+			else if ( com_array[j] == "fc" )
+			{
+				error[i, j] = furiganaheck( str );
+			}
+			else if ( com_array[j] == "mc" )
+			{
+				error[i, j] = mailCheck( str );
+			}
+			else if ( com_array[j] == "tc" )
+			{
+				error[i, j] = tabooCheck( str );
+			}
+
+			//	カウンタアップ
+			j++;
+		}
+	}
+
+	//	エラー確認
+	for ( i = 0; i < id.length; i++ )
+	{
+		for ( j = 0; j < error[i].length; j++ )
+		{
+			if ( error[i, j] )
+			{
+				error_flg = true;
+				break;
+			}
+		}
+		if( error_flg == true)
+		{
+			break;
+		}
+
+	}
+	//	エラー表示
+	if ( error_flg == true )
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
 
 //	空白除去(全半角スペース・タブ・改行にも対応)
 //	文字列のトリミングを行うので、基本的にどの関数でも使用する。
@@ -206,9 +313,7 @@ function trim( str )
 	return str.replace( /^[  \t\r\n]+|[  \t\r\n]+$/g, "" );
 }
 
-
 //	ret = 返値(テキスト)
-
 //	未入力チェック	ic
 function inputCheck( str )
 {
@@ -221,7 +326,6 @@ function inputCheck( str )
 	}
 }
 
-
 //	入力値チェック(半角数字)	nc
 function numberCheck( str )
 {
@@ -233,7 +337,6 @@ function numberCheck( str )
 		return ret;
 	}
 }
-
 
 //	len_min		引数(指定文字数の下限値)	値が0で下限無し
 //	len_max		引数(指定文字数の上限値)	値が0で上限無し
@@ -304,13 +407,7 @@ function furiganaCheck( str )
 	}
 }
 
-
-//動作チェック済み//
-//	メールアドレスチェックPart.2//
-//	mc
-//<script type="text/javascript">
-/**
-* [機 能] 正規表現によるメールアドレス（E-mail）チェック*/
+//	メールアドレスチェック	mc
 function mailCheck( str )
 {
 	/* E-mail形式の正規表現パターン */
@@ -330,13 +427,12 @@ function mailCheck( str )
 	}
 }
 
-
 //	禁止文字チェック	tc
 function tabooCheck( str )
 {
 	var ret;
 
-	var taboo = ["@","-"]; //禁止文字の配列
+	var taboo = [ "!", "?" ]; //禁止文字の配列
 	var regex = new RegExp(taboo.join("|")); //正規表現オブジェクト
 
 	if ( trim( str ).match(regex) != null )
@@ -346,7 +442,7 @@ function tabooCheck( str )
 	}
 }
 
-//	パスワードチェック(半角英数字のみ)	pk
+//	パスワードチェック(半角英数字のみ)	pc
 function passwordCheck( str )
 {
 	var tet;

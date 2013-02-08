@@ -1,38 +1,10 @@
 <?php
-session_start();
-
-$error_check = 0;
-
-//記入ミスがあった場合
-if((isset($_SESSION['id_check'])) || (isset($_SESSION['pass_check'])) || (isset($_SESSION['name_check'])) || (isset($_SESSION['kana_check'])) ||
-(isset($_SESSION['address_check'])) || (isset($_SESSION['tel_check'])) || (isset($_SESSION['mail_check'])) || (isset($_SESSION['student_check'])))
-{
-	$id_check = $_SESSION['id_check'];
-	$pass_check = $_SESSION['pass_check'];
-	$name_check = $_SESSION['name_check'];
-	$kana_check = $_SESSION['kana_check'];
-	$address_check = $_SESSION['address_check'];
-	$tel_check = $_SESSION['tel_check'];
-	$mail_check = $_SESSION['mail_check'];
-	$student_check = $_SESSION['student_check'];
-
-	$error_check = 1;
-}
-
-function error_message($i)
-{
-	switch ($i)
-	{
-		case 1: echo $id_check; break;
-		case 2: echo $pass_check; break;
-		case 3: echo $name_check; break;
-		case 4: echo $kana_check; break;
-		case 5: echo $address_check; break;
-		case 6: echo $tel_check; break;
-		case 7: echo $mail_check; break;
-		case 8: echo $student_check; break;
-	}
-}
+$input_names = array("user_id", "pass", "user_name", "user_kana", "user_address",
+					"user_tel", "user_email", "student_id");
+$check_cmd = array("ic,pc,tc", "ic,pc,tc", "ic,tc", "ic,fc,tc", "ic,tc", "ic,nc,lc",
+					"ic,mc", "ic,nc,lc");
+$check_val_min = array(0, 0, 0, 0, 0, 10, 0, 6);
+$check_val_max = array(0, 0, 0, 0, 0, 10, 0, 6);
 ?>
 <html>
 	<head>
@@ -40,12 +12,14 @@ function error_message($i)
 		<META http-equiv="Content-Style-Type" content="text/css">
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
+		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<script src="../javascript/jquery-ui-1.8.24.custom.min.js"></script>
 		<script src="../javascript/form_reference.js"></script>
 	</head>
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
+
 		<div id="container">
 		<?php
 		require_once("../lib/dbconect.php");
@@ -57,83 +31,43 @@ function error_message($i)
 		$cnt = mysql_num_rows($result);
 		?>
 
-		<form method ="post" action="userCheck.php" onSubmit="return check()">
+		<form method ="post" name="frm1" action="regist.php" onsubmit="return check()">
 		<table>
-			<?php
-			if ($error_check == 1)
-			{
-				error_message(1);
-			}
-			?>
+
 			<tr>
 				<td align="center">ユーザID:</td>
-				<td align="center"><span class="check_result" id="user_id_check" ></span><input type="text" name="user_id" id="user_id"></td>
+				<td align="center"><span class="check_result" name="user_id_check" id="user_id_check" ></span><input type="text" name="user_id" id="user_id" Onblur="ubCheck('#user_id', 'ic,ac,tc', 0, 0, 'frm1.user_id_check')"></td>
+				<td></td>
 			</tr>
 
-			<?php
-			if ($error_check == 1)
-			{
-				error_message(2);
-			}
-			?>
 			<tr>
 				<td align="center">パスワード：</td>
-				<td align="center"><input type="text" name="pass" id="pass"></td>
+				<td align="center"><span class="check_result" name="pass_check" id="pass_check" ></span><input type="text" name="pass" id="pass" Onblur="ubCheck('#pass', 'ic,ac,tc', 0, 0, 'frm1.pass_check')"></td>
 			</tr>
 
-			<?php
-			if ($error_check == 1)
-			{
-				error_message(3);
-			}
-			?>
 			<tr>
 				<td align="center">ユーザ名：</td>
-				<td align="center"><input type="text" name="user_name" id="user_name"></td>
+				<td align="center"><span class="check_result" name="user_name_check" id="user_name_check" ></span><input type="text" name="user_name" id="user_name" Onblur="ubCheck('#user_name', 'ic,tc', 0, 0, 'frm1.user_name_check')"></td>
 			</tr>
 
-			<?php
-			if ($error_check == 1)
-			{
-				error_message(4);
-			}
-			?>
 			<tr>
 				<td align="center">ﾌﾘｶﾞﾅ：</td>
-				<td align="center"><input type="text" name="user_kana" id="user_kana"></td>
+				<td align="center"><span class="check_result" name="user_kana_check" id="user_kana_check" ></span><input type="text" name="user_kana" id="user_kana" Onblur="ubCheck('#user_kana', 'ic,fc,tc', 0, 0, 'frm1.user_kana_check')"></td>
 			</tr>
 
-			<?php
-			if ($error_check == 1)
-			{
-				error_message(5);
-			}
-			?>
 			<tr>
 				<td align="center">住所：</td>
-				<td align="center"><input type="text" name="user_address" id="user_address"></td>
+				<td align="center"><span class="check_result" name="user_address_check" id="user_address_check" ></span><input type="text" name="user_address" id="user_address" Onblur="ubCheck('#user_address', 'ic,tc', 0, 0, 'frm1.user_address_check')"></td>
 			</tr>
 
-			<?php
-			if ($error_check == 1)
-			{
-				error_message(6);
-			}
-			?>
 			<tr>
 				<td align="center">電話番号</td>
-				<td align="center"><input type="text" name="user_tel" id="user_tel"></td>
+				<td align="center"><span class="check_result" name="user_tel_check" id="user_tel_check" ></span><input type="text" name="user_tel" id="user_tel" Onblur="ubCheck('#user_tel', 'ic,nc,lc', 10, 10, 'frm1.user_tel_check')"></td>
 			</tr>
 
-			<?php
-			if ($error_check == 1)
-			{
-				error_message(7);
-			}
-			?>
 			<tr>
 				<td align="center">メールアドレス：</td>
-				<td align="center"><input type="text" name="user_email" id="user_email"></td>
+				<td align="center"><span class="check_result" name="user_email_check" id="user_email_check" ></span><input type="text" name="user_email" id="user_email" Onblur="ubCheck('#user_email', 'ic,mc', 0, 0, 'frm1.user_email_check')"></td>
 			</tr>
 
 			<tr>
@@ -154,25 +88,23 @@ function error_message($i)
 				</td>
 		</tr>
 
-		<?php
-			if ($error_check == 1)
-			{
-				error_message(8);
-			}
-			?>
 		<tr>
 			<td>学籍番号※学生のみ</td>
 
-					<td><input type="checkbox" id="student">学生
-			<input type="text" name="student_id" id="student_id" disabled="true"></td>
+			<td>
+				<input type="checkbox"  name="student" id="student" value="0">学生
+				<span class="check_result" name="student_id_check" id="student_id_check" ></span>
+				<input type="text" name="student_id" id="student_id" disabled="true" Onblur="ubCheck('#student_id', 'ic,nc,tc,lc', 6, 6, 'frm1.student_id_check')">
+			</td>
 		</tr>
 	</table>
 		<br>
-		<input type = "hidden" name = "regist_flg" value = "0">
+
 		<input class="button4" id="sub" type="submit" value ="登録">
 		</form>
 		</div>
 	</body>
+
 	<script>
 		$(function() {
 			//検索結果から権限を追加するための処理
@@ -191,53 +123,32 @@ function error_message($i)
 			});
 		});
 
-		function check(){
 
-		var check_flg = false;
-
-		//対象のinputタグのNameを配列にかくのう
-		var input_names = new Array("user_id", "pass", "user_name", "user_kana", "user_address	",
-								"user_tel", "user_email");
-		//var check_cmd = new Array("ic,pc,tc", "pass", "user_name", "user_kana", "user_address	",
-		//		"user_tel", "user_email");
-		//var check_val_min = new Array(0, "pass", "user_name", "user_kana", "user_address	",
-			//	"user_tel", "user_email");
-		//var check_val_max = new Array(0, "pass", "user_name", "user_kana", "user_address	",
-			//	"user_tel", "user_email");
-		//var check_result = new Array("0","0","0","0","0","0","0");
-
-		//チェックだけ
-		//for (i = 0; i < input_names.length; i++)
-		//{
-			//userCheck($("#"+input_names[i]+"").val(),);
-
-			//チェックの結果を受けて配列に値を格納
-				//check_flg = false
-
-		//}
-
-
-		//チェックの結果を反映
-		for (i = 0; i < input_names.length; i++)
+		function check()
 		{
-			$("#"+input_names[i]+"_check").text("※");
+			var check_flg;
+			var i = 0;
+
+			//対象のinputタグのNameを配列に格納
+			var input_names = new Array("user_id", "pass", "user_name", "user_kana", "user_address",
+										"user_tel", "user_email", "student_id");
+			var check_cmd = new Array("ic,pc,tc", "ic,pc,tc", "ic,tc", "ic,fc,tc", "ic,tc",	"ic,nc,lc",
+										"ic,mc", "ic,nc,lc");
+			var check_val_min = new Array(0, 0, 0, 0, 0, 10, 0, 6);
+			var check_val_max = new Array(0, 0, 0, 0, 0, 10, 0, 6);
+			var check_result = new Array("0","0","0","0","0","0","0", "0");
+
+			check_flg = ucCheck(input_names, check_cmd, check_val_min, check_val_max);
+
+			if(check_flg)
+			{
+				return true; // 「OK」時は送信を実行
+			}
+			else
+			{
+				return false; // 送信を中止
+			}
 		}
-
-
-//		$pass_check = userCheck($_POST['pass'], 'ic,pc,tc', 0, 0);
-	//	$name_check = userCheck($_POST['user_name'], 'ic,tc', 0, 0);
-	//	$kana_check = userCheck($_POST['user_kana'], 'ic,fc,tc', 0, 0);
-	//	$address_check = userCheck($_POST['user_address'], 'ic,tc', 0, 0);
-	//	$tel_check = userCheck($_POST['user_tel'], 'ic,nc,lc', 10, 10);
-	//	$mail_check = userCheck($_POST['user_email'], 'ic,nc,lc', 0, 0);
-
-		if(check_flg){
-			return true; // 「OK」時は送信を実行
-		}
-		else{
-			return false; // 送信を中止
-		}
-		};
-
 	</script>
+
 </html>
