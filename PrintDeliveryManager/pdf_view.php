@@ -42,6 +42,7 @@
 		<script src="../javascript/frame_jump.js"></script>
 	</head>
 
+
 	<body>
 		<div id="container">
 			<div align="center">
@@ -54,7 +55,7 @@
 			<?= $row['group_name'] ?><br>
 			<font size="3">件名 ：</font>
 			<?= $row['title'] ?><br><br>
-			<object data="<?php echo $row['printurl']; ?>" width="800" height="400">
+			<object data="<?= $row['printurl'] ?>" width="800" height="400">
 
 			<p>ご覧の環境では、object要素がサポートされていないようです。<a href="images/kaeru.pdf">PDFファイルをダウンロードしてください</a>。</p>
 			</object>
