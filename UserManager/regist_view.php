@@ -21,42 +21,42 @@
 		$cnt = mysql_num_rows($result);
 		?>
 
-		<form method ="post" action="regist.php" >
+		<form method ="post" name="frm1" action="regist.php" >
 		<table>
 
 			<tr>
 				<td align="center">ユーザID:</td>
-				<td align="center"><span class="check_result" id="user_id_check" ></span><input type="text" name="user_id" id="user_id"></td>
+				<td align="center"><span class="check_result" name="user_id_check" id="user_id_check" ></span><input type="text" name="user_id" id="user_id" Onblur="ubCheck('#user_id', 'ic,ac,tc', 0, 0, 'frm1.user_id_check')"></td>
 			</tr>
 
 			<tr>
 				<td align="center">パスワード：</td>
-				<td align="center"><span class="check_result" id="pass_check" ></span><input type="text" name="pass" id="pass"></td>
+				<td align="center"><span class="check_result" name="pass_check" id="pass_check" ></span><input type="text" name="pass" id="pass" Onblur="ubCheck('#pass', 'ic,ac,tc', 0, 0, 'frm1.pass_check')"></td>
 			</tr>
 
 			<tr>
 				<td align="center">ユーザ名：</td>
-				<td align="center"><span class="check_result" id="user_name_check" ></span><input type="text" name="user_name" id="user_name"></td>
+				<td align="center"><span class="check_result" name="user_name_check" id="user_name_check" ></span><input type="text" name="user_name" id="user_name" Onblur="ubCheck('#user_name', 'ic,tc', 0, 0, 'frm1.user_name_check')"></td>
 			</tr>
 
 			<tr>
 				<td align="center">ﾌﾘｶﾞﾅ：</td>
-				<td align="center"><span class="check_result" id="user_kana_check" ></span><input type="text" name="user_kana" id="user_kana"></td>
+				<td align="center"><span class="check_result" name="user_kana_check" id="user_kana_check" ></span><input type="text" name="user_kana" id="user_kana" Onblur="ubCheck('#user_kana', 'ic,fc,tc', 0, 0, 'frm1.user_kana_check')"></td>
 			</tr>
 
 			<tr>
 				<td align="center">住所：</td>
-				<td align="center"><span class="check_result" id="user_address_check" ></span><input type="text" name="user_address" id="user_address"></td>
+				<td align="center"><span class="check_result" name="user_address_check" id="user_address_check" ></span><input type="text" name="user_address" id="user_address" Onblur="ubCheck('#user_address', 'ic,tc', 0, 0, 'frm1.user_address_check')"></td>
 			</tr>
 
 			<tr>
 				<td align="center">電話番号</td>
-				<td align="center"><span class="check_result" id="user_tel_check" ></span><input type="text" name="user_tel" id="user_tel"></td>
+				<td align="center"><span class="check_result" name="user_tel_check" id="user_tel_check" ></span><input type="text" name="user_tel" id="user_tel" Onblur="ubCheck('#user_tel', 'ic,nc,lc', 10, 10, 'frm1.user_tel_check')"></td>
 			</tr>
 
 			<tr>
 				<td align="center">メールアドレス：</td>
-				<td align="center"><span class="check_result" id="user_email_check" ></span><input type="text" name="user_email" id="user_email"></td>
+				<td align="center"><span class="check_result" name="user_email_check" id="user_email_check" ></span><input type="text" name="user_email" id="user_email" Onblur="ubCheck('#user_email', 'ic,mc', 0, 0, 'frm1.user_email_check')"></td>
 			</tr>
 
 			<tr>
@@ -82,13 +82,23 @@
 
 			<td>
 				<input type="checkbox"  name="student" id="student" value="0">学生
-				<span class="check_result" id="student_id_check" ></span>
-				<input type="text" name="student_id" id="student_id" disabled="true">
+				<span class="check_result" name="student_id_check" id="student_id_check" ></span>
+				<input type="text" name="student_id" id="student_id" disabled="true" Onblur="ubCheck('#student_id', 'ic,nc,tc,lc', 6, 6, 'frm1.student_id_check')">
 			</td>
 		</tr>
 	</table>
 		<br>
-		<input class="button4" id="sub" type="submit" value ="登録" onClick="userCheck(<?=  ?>)">
+
+		<?php
+		$input_names = array("user_id", "pass", "user_name", "user_kana", "user_address",
+							"user_tel", "user_email", "student_id");
+		$check_cmd = array("ic,pc,tc", "ic,pc,tc", "ic,tc", "ic,fc,tc", "ic,tc", "ic,nc,lc",
+							"ic,mc", "ic,nc,lc");
+		$check_val_min = array(0, 0, 0, 0, 0, 10, 0, 6);
+		$check_val_max = array(0, 0, 0, 0, 0, 10, 0, 6);
+		?>
+		<input class="button4" id="sub" type="submit" value ="登録"
+		onClick="ucCheck(<?= $input_names?>, <?= $check_cmd?>, <?= $check_val_min?>, <?= $check_val_max ?>);">
 		</form>
 		</div>
 	</body>
