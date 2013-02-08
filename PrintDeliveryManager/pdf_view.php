@@ -9,20 +9,20 @@
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
-	$id = $_GET['id'];
+	$print_delivery_seq = $_GET['id'];
 	$printurl = $_GET['printurl'];
+	$title = $_GET['title'];
 
 	$sql = "SELECT print_delivery_seq, delivery_user_seq, target_group_seq, delivery_date, m_group.group_name AS group_name, title, printurl
 			FROM print_delivery
-			Left JOIN m_group ON print_delivery.target_group_seq = m_group.group_seq
-			WHERE delivery_user_seq = '$user_seq'
-			AND print_delivery_seq = '$id';";
+			LEFT JOIN m_group ON print_delivery.target_group_seq = m_group.group_seq
+			WHERE print_delivery_seq = '$print_delivery_seq';";
 	$result = mysql_query($sql);
 	$row = mysql_fetch_array($result);
 
 	$sql = "UPDATE print_check
 			SET print_check_flg = 0
-			WHERE print_delivery_seq = '$id'
+			WHERE print_delivery_seq = '$print_delivery_seq'
 			AND user_seq = '$user_seq';";
 	$result = mysql_query($sql);
 
@@ -44,24 +44,22 @@
 
 	<body>
 		<div id="container">
-		<div align="center">
-			<font class="Cubicfont">プリント確認画面</font>
-		</div>
+			<div align="center">
+				<font class="Cubicfont">プリント確認画面</font>
+			</div>
 
-
-
-
-		<br><br>
+			<br><br>
 
 			<font size="3">To ：</font>
 			<?= $row['group_name'] ?><br>
 			<font size="3">件名 ：</font>
 			<?= $row['title'] ?><br><br>
-			<object data="test.pdf" width="800" height="400">
+			<object data="<?php echo $row['printurl']; ?>" width="800" height="400">
+
 			<p>ご覧の環境では、object要素がサポートされていないようです。<a href="images/kaeru.pdf">PDFファイルをダウンロードしてください</a>。</p>
 			</object>
 
-		</div>
+			</div>
 
 		<?php
 			print "<script language=javascript>leftreload();</script>";
