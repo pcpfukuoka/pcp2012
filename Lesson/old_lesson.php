@@ -82,6 +82,8 @@
 		<input type="button" value="閲覧終了" id="end">
 		<div id="frame">
 		</div>
+		<div id="button">
+		</div>
 </div>
 	</body>
 	<script>
@@ -101,6 +103,7 @@
 		$(document).on('click', '#decision', function() {
 
 			$('#frame').empty();
+			$('#button').empty();
 			//ボタンを連続で押させないようにする
 			var button_ele=document.getElementById('decision');
 			button_ele.disabled=true;
@@ -129,14 +132,19 @@
 		    		var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat; height="600" width="900">'
 		    		+'<img src="'+parsers[0]['canvas']+'"id="canvas" height="600" width="900"/>'
 		    		+'</div>'
-		    		+'<table>'
-		    		+'<tr>'
-		    		+'<td><input class="button4" id="turn" value="戻る" type="button"></td>'
-		    		+'<td><input class="button4" id="next" value="次へ"type="button"></td>'
-		    		+'<input type="hidden" value=0 id="page_num"value="0">';
-		    		+'</tr>'
-		    		+'</table>'
 		    		$('#frame').append(e);
+
+		    		var a='<div>'
+			    		+'<table>'
+			    		+'<tr>'
+			    		+'<td><input class="button4" id="turn" value="戻る" type="button"></td>'
+			    		+'<td><input class="button4" id="next" value="次へ"type="button"></td>'
+			    		+'<input type="hidden" value=0 id="page_num"value="0">';
+			    		+'</tr>'
+			    		+'</table>'
+			    		+'</div>';
+			    		$('#button').append(a);
+
 		    		//押せなくしたボタンを元に戻す
 					var button_ele=document.getElementById('decision');
 					button_ele.disabled=false;
@@ -164,7 +172,6 @@
 
 	    	var page_ele =document.getElementById('page_num');
 	    	var page= Number(page_ele.value);
-
 	    	$.post('ajax_canvas_select.php', {
 	            date: date,
 	            id : subject_seq,
@@ -181,10 +188,26 @@
 				if(page>parsers.length-1){
 					page--;
 				}
-				canvas_ele.src=parsers[page]['canvas'];
-				div_ele.style.background=parsers[page]['div'];
-				div_ele.style.background-Repeat='no-repeat';
-				page_ele.value=page;
+
+				//画像を閲覧するためのタグを作成7
+				var e='<div id="chalkboard" style="background:'+parsers[page]['div']+';background-repeat:no-repeat; height="600" width="900">'
+	    		+'<img src="'+parsers[page]['canvas']+'"id="canvas" height="600" width="900"/>'
+	    		+'</div>';
+	    		var a='<div>'
+		    		+'<table>'
+		    		+'<tr>'
+		    		+'<td><input class="button4" id="turn" value="戻る" type="button"></td>'
+		    		+'<td><input class="button4" id="next" value="次へ"type="button"></td>'
+		    		+'<input type="hidden" id="page_num"value="'+page+'">';
+		    		+'</tr>'
+		    		+'</table>'
+		    		+'</div>';
+
+		    	//以前のタグを削除し、新しいのを追加
+		    	$('#button').empty();
+	    		$('#frame').empty();
+	    		$('#frame').append(e);
+	    		$('#button').append(a);
 	        });
 		});
 
@@ -201,7 +224,6 @@
 			var time_table=time_table_ele.value;
 	    	var page_ele =document.getElementById('page_num');
 	    	var page= Number(page_ele.value);
-
 	    	$.post('ajax_canvas_select.php', {
 	            date: date,
 	            id : subject_seq,
@@ -217,9 +239,28 @@
 				if(page<0){
 					page=0;
 				}
-				canvas_ele.src=parsers[page]['canvas'];
-				div_ele.style.background=parsers[page]['div'];
-				div_ele.style.backgroundAttachment='fixed';
+
+				//過去授業を閲覧するための画像を作成し、追加
+				var e='<div id="chalkboard" style="background:'+parsers[page]['div']+';background-repeat:no-repeat; height="600" width="900">'
+	    		+'<img src="'+parsers[page]['canvas']+'"id="canvas" height="600" width="900"/>'
+	    		+'</div>';
+	    		var a='<div>'
+		    		+'<table>'
+		    		+'<tr>'
+		    		+'<td><input class="button4" id="turn" value="戻る" type="button"></td>'
+		    		+'<td><input class="button4" id="next" value="次へ"type="button"></td>'
+		    		+'<input type="hidden" value='+page+' id="page_num">';
+		    		+'</tr>'
+		    		+'</table>'
+		    		+'</div>';
+		    	//以前のタグを削除し、新しいのを追加
+		    	$('#button').empty();
+		    	$('#frame').empty();
+	    		$('#frame').append(e);
+	    		$('#button').append(a);
+				//canvas_ele.src=parsers[page]['canvas'];
+				//div_ele.style.background=parsers[page]['div'];
+				//div_ele.style.backgroundAttachment='fixed';
 				page_ele.value=page;
 	        });
 		});
