@@ -16,19 +16,9 @@ $sql = "INSERT INTO question VALUES (0,'$title','$target_group','$start_date','$
 mysql_query($sql);
 $question_seq = mysql_insert_id($dbcon);
 
-
 //セッションにdetailsの個数のカウントを持たせる
 //セッションにはdetailsの連想配列を保持させる。
 //detailsが増える再にはその都度連想配列をすべて設定し直す。
-
-if(isset($_SESSION['details']))
-{
-	echo "a";
-}else
- {
-echo "aaaaa";	
-}
-
 
 //question_details登録用SQL生成
 foreach($_SESSION['details'] as $details_row)
@@ -50,4 +40,8 @@ foreach($_SESSION['details'] as $details_row)
 		mysql_query($sql);
 	}
 }
+
+header("Location: list.php");
+
+
 ?>

@@ -31,8 +31,8 @@
 				<tr>
 				<th><h3>タイトル</h3></th>
 				<th><h3>対象グループ</h3></th>
-				<th><h3>期間</h3></th>
-				<th><h3>回答数</h3></th>
+				<th><h3>開始日</h3></th>
+				<th><h3>終了日</h3></th>
 				<th><h3></h3></th>
 				</tr>
 			</thead>
@@ -52,8 +52,8 @@
 			<tr>
 				<td><a href="question_details.php?id=<?= $row['question_seq'] ?>" ><?= $row['question_title'] ?></a></td>
 				<td><?= $row['group_name'] ?></td>
-				<td><?= $row['start_date'] ?> ~ <?= $row['end_date'] ?></td>
-				<td></td>
+				<td><?= $row['start_date'] ?></td>
+				<td><?= $row['end_date'] ?></td>
 				<td><a href="question_delete.php?id=<?= $row['question_seq'] ?>" >削除</a></td>
 			</tr>
 	<?php
@@ -62,7 +62,7 @@
 		?>
 		</tbody>
 		</table>
-		        <div id="tablefooter">
+        <div id="tablefooter">
           <div id="tablenav">
             	<div>
                     <img src="../images/first.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
