@@ -11,6 +11,12 @@
 
 	//データベースを閉じる
 	DBdissconnect($dbcon);
+
+	$id = "title";
+	$cmd = "ic";
+	$min = "0";
+	$max = "0";
+	$span = "print_check";
 ?>
 
 <html>
@@ -35,7 +41,7 @@
 		<hr color="blue">
 		<br><br>
 		<br>
-		<form action="p_relay.php" method="post" enctype="multipart/form-data">
+		<form action="p_relay.php" method="post" enctype="multipart/form-data" onsubmit="return check('<?= $id ?>', '<?= $cmd ?>', '<?= $min ?>', '<?= $max ?>', '<?= $span ?>')">
 			<font size="5">宛　 先</font>
 			<select name="to">
 
@@ -52,8 +58,9 @@
 
   			</select>
 			<br>
+			<span class="check_result" name="print_check" id="print_check" ></span>
 			<font size="5">件　 名</font>
-	 		<input size="30" type="text" name="title" id="title" Onblur="check('#title', 'ic', 0, 0)"><br>
+	 		<input size="30" type="text" name="title" id="title"><br>
 	 		<font size="5">プリント</font>
 			<input size="30" type="file" name="pdf"><br><br>
 	  		<input class="button4" type="submit" value="保存" name="Preservation">

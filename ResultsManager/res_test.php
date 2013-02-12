@@ -66,11 +66,16 @@ if($_GET['sub'] != -1)
 }
 
 Dbdissconnect($link);
+
+$id = "day,contents";
+$cmd = "ic/ic,nc";
+$min = "0,0";
+$max = "0,0";
+$span = "day_check,contents_check";
 ?>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
@@ -78,6 +83,7 @@ Dbdissconnect($link);
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<link rel="stylesheet" href="../css/animate.css">
 		<link rel="stylesheet" type="text/css" href="../css/table_search.css" />
+		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<script src="../javascript/form_reference.js"></script>
 		<script src="../javascript/frame_jump.js"></script>
 		<title>テスト登録画面</title>
@@ -148,39 +154,41 @@ Dbdissconnect($link);
 					<input type = "hidden" name = "sub_check" value = "1">
 				</form>
 
-				<form action = "res_test_con.php" method = "POST">
+				<form action = "res_test_con.php" method = "POST" onsubmit="return check('<?= $id ?>', '<?= $cmd ?>', '<?= $min ?>', '<?= $max ?>', '<?= $span ?>')">
 
 				<!-- 教科を入力 -->
 				<input type = "hidden" name = "subject" value = "<?= $subject ?>">
 
 				<!-- 日付の入力 -->
+				<span class="check_result" name="day_check" id="day_check" ></span>
 					<?php
 					if (isset($_GET['sub_check']))
 					{
 					?>
-					<td bgcolor = "blue"><input type = "text" name = "day" id="day" value = "<?= date("Y/m/d") ?>" Onblur="check('#day', ic, vc)"></td>
+					<td bgcolor = "blue"><input type = "text" name = "day" id="day" value = "<?= date("Ymd") ?>"></td>
 					<?php
 					}
 					else
 					{
 					?>
-						<td bgcolor = "blue"><input type = "text" name = "day" id="day" value = "<?= date("Y/m/d") ?>" Onblur="check('#day', ic, vc)" disabled></td>
+						<td bgcolor = "blue"><input type = "text" name = "day" id="day" value = "<?= date("Ymd") ?>" disabled></td>
 					<?php
 					}
 					?>
 
 				<!-- テスト範囲・内容入力 -->
+				<span class="check_result" name="contents_check" id="contents_check" ></span>
 					<?php
 					if (isset($_GET['sub_check']))
 					{
 					?>
-					<td bgcolor = "blue"><textarea rows="2" cols="30" name = "contents" id="contents" Onblur="check('#contents', ic)"></textarea></td>
+					<td bgcolor = "blue"><textarea rows="2" cols="30" name = "contents" id="contents"></textarea></td>
 					<?php
 					}
 					else
 					{
 					?>
-						<td bgcolor = "blue"><textarea disabled rows="2" cols="30" name = "contents" id="contents" Onblur="check('#contents', ic)"></textarea></td>
+						<td bgcolor = "blue"><textarea disabled rows="2" cols="30" name = "contents" id="contents"></textarea></td>
 					<?php
 					}
 					?>
@@ -190,9 +198,10 @@ Dbdissconnect($link);
 					<?php
 					if (isset($_GET['sub_check']))
 					{
+						$teach = mysql_fetch_array($result_teach);
 					?>
 						<td bgcolor = "blue"><select name = "teacher">
-							<option value = "-1" selected>選択</option>
+							<option value = "<?= $teach['teacher_seq'] ?>" selected><?= $teach['user_name'] ?></option>
 							<?php
 							for ($i = 0; $i < $count_teach; $i++)
 							{
@@ -228,9 +237,10 @@ Dbdissconnect($link);
 					<?php
 					if (isset($_GET['sub_check']))
 					{
+						$group = mysql_fetch_array($result_group);
 					?>
 						<td bgcolor = "blue"><select name = "group">
-						<option value = "-1" selected>選択</option>
+						<option value = "<?= $group['group_seq'] ?>" selected><?= $group['group_name'] ?></option>
 						<?php
 						for ($i = 0; $i < $count_group; $i++)
 						{

@@ -42,8 +42,8 @@ unset($_SESSION["question_info[question_description]"]);
 				$('.animated').autosize({append: "\n"});
 			});
 		</script>
-	
-	
+
+
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
@@ -105,16 +105,16 @@ unset($_SESSION["question_info[question_description]"]);
 				</td>
 			</tr>
 			<tr>
-			
+
 				<td style="background-color:transparent" ></td>
 				<td align="right" >
 					<input type="button"class="button5"id="questionAdd" value="確定">
 				</td>
 			</tr>
 			</table>
-			
+
 			<div id="question_details">
-			</div>					
+			</div>
 			<div id="input_section">
 			</div>
 			<table>
@@ -125,7 +125,7 @@ unset($_SESSION["question_info[question_description]"]);
 			</tr>
 			</table>
 			</form>
-			
+
 		</div>
 
 	</body>
@@ -134,8 +134,8 @@ unset($_SESSION["question_info[question_description]"]);
 		function trim(str) {
 			return str.replace(/^[ 　\t\r\n]+|[ 　\t\r\n]+$/g, "");
 		}
-						
-		
+
+
 		function chengefocus()
 		{
 			//ボタン有効化
@@ -152,7 +152,7 @@ unset($_SESSION["question_info[question_description]"]);
 			}
 		};
 
-		
+
 		$(function() {
 			kbn = new Array("","複数", "単一");
 			//質問内容追加
@@ -208,10 +208,10 @@ unset($_SESSION["question_info[question_description]"]);
 					//ボタン有効化
 					$('#questionDetailsAdd').css("display","");
 					$('#questionListAdd').css("display","none");
-	                
-	                
-		    });			
-			
+
+
+		    });
+
 			//回答一覧追加
 			$(document).on('click', '#questionDetailsAdd', function() {
 
@@ -252,8 +252,8 @@ unset($_SESSION["question_info[question_description]"]);
 					{
 						tow = "selected";
 					}
-						
-	                
+
+
 		    		//今入力した内容をquestion_detailsに追加
 		    		var e = $('<table class="table_01" >'+
 		    		        '<tr><td>質問内容：</td><td><input type="text" name="comp_question_details_description" disabled value="'+ question_details_description +'" ></td></tr>'+
@@ -273,7 +273,7 @@ unset($_SESSION["question_info[question_description]"]);
 		    		        '<tr><td><input type="button" class="button5" value="確定" id="questionDetailsAdd"  style="display: none;" ></td></tr>'+
 		    		        '</table>');
 			                $('#input_section').append(e);
-	                
+
 							//ボタン有効化
 							$('#sub').css("display","");
 		        });
@@ -287,6 +287,6 @@ unset($_SESSION["question_info[question_description]"]);
 				return false; // 送信を中止
 			}
 		}
-		
+
 		</script>
 </html>

@@ -22,10 +22,11 @@ for($i = 0;$i < $count;$i++){
 	//先頭文字によって添削する文字数を決める
 	if(substr($row['div_url'],4,4)=="http"){
 		$aaa = substr($row['div_url'],30);
+		$aaa = substr($aaa,0,strlen($aaa)-1);
 	}else{
 		$aaa = substr($row['div_url'],18);
 	}
-	$div = $aaa;
+	$div = "../../balckboard/public/".$aaa;
 	$canvas = $row['canvas_url'];
 
 	//送信するデータを配列に追加

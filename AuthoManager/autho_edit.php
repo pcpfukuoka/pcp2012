@@ -35,6 +35,11 @@ $edit_name = mysql_fetch_array($result2);
 
 Dbdissconnect($link);
 
+$id = "edit_name";
+$cmd = "ic";
+$min = "0";
+$max = "0";
+$span = "autho_check";
 ?>
 
 <html>
@@ -119,10 +124,11 @@ Dbdissconnect($link);
 		</div><hr color="blue">
 
 		<!-- 確認画面に飛ぶ -->
-		<form name = "edit" action = "autho_edit_con.php" method = "POST">
+		<form name = "edit" action = "autho_edit_con.php" method = "POST" onsubmit="return check('<?= $id ?>', '<?= $cmd ?>', '<?= $min ?>', '<?= $max ?>', '<?= $span ?>')">
 
 		<!-- 元の権限グループ名を表示させ、変更できるようにする -->
-			名前<input size ="15" type="text" name="edit_name" class = "edit_text" id="edit_name" value = <?= $edit_name['autho_name'] ?> Onblur="check('#edit_name', 'ic', 0, 0)">
+		<span class="check_result" name="autho_check" id="autho_check" ></span>
+			名前<input size ="15" type="text" name="edit_name" class = "edit_text" id="edit_name" value = <?= $edit_name['autho_name'] ?>>
 
 		<!-- 		テープルの作成 -->
 			<table class="table_01" width = "80%">
