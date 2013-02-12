@@ -12,6 +12,12 @@
 	{
 		$group_name = $_GET['name_error'];
 	}
+
+	$id = "group_name";
+	$cmd = "ic";
+	$min = "0";
+	$max = "0";
+	$span = "group_check";
 ?>
 <html>
 
@@ -30,7 +36,7 @@
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
-		<form action = "group_g_add_db.php" method = "POST">
+		<form action = "group_g_add_db.php" method = "POST" onsubmit="return check('<?= $id ?>', '<?= $cmd ?>', '<?= $min ?>', '<?= $max ?>', '<?= $span ?>')">
 
 			<div align = "center">
 
@@ -57,17 +63,18 @@
 
 					<tr>
 						<td>
+							<span class="check_result" name="group_check" id="group_check" ></span>
 							<?php
 								if(isset($_GET['name_error']))
 								{
 							?>
-							<input type="text" size="50" name = "new_group_name" id="group_name" value="<?= $group_name ?>" Onblur="check('#group_name', 'ic', 0, 0)">
+							<input type="text" size="50" name = "new_group_name" id="group_name" value="<?= $group_name ?>">
 							<?php
 								}
 								else
 								{
 							?>
-							<input type="text" size="50" name = "new_group_name" id="new_group_name" Onblur="check('#new_group_name', 'ic', 0, 0)">
+							<input type="text" size="50" name = "new_group_name" id="new_group_name">
 							<?php
 								}
 							?>
@@ -84,4 +91,6 @@
 		</form>
 		</div>
 	</body>
+
+
 </html>
