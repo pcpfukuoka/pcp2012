@@ -47,7 +47,7 @@
 				<br>
 
 				<?php
-					if(isset($_GET['name_error']))
+					if(isset($_GET['name_error']) && ($_GET['name_error'] != ""))
 					{
 				?>
 				<p><font color="red">※その名前のグループは既に存在しています。</font></p>
@@ -68,13 +68,13 @@
 								if(isset($_GET['name_error']))
 								{
 							?>
-							<input type="text" size="50" name = "new_group_name" id="group_name" value="<?= $group_name ?>">
+							<input type="text" size="50" name = "group_name" id="group_name" value="<?= $group_name ?>">
 							<?php
 								}
 								else
 								{
 							?>
-							<input type="text" size="50" name = "new_group_name" id="new_group_name">
+							<input type="text" size="50" name = "group_name" id="group_name" >
 							<?php
 								}
 							?>
