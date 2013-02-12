@@ -22,7 +22,7 @@ for($i = 0;$i < $count;$i++){
 	//先頭文字によって添削する文字数を決める
 	if(substr($row['div_url'],4,4)=="http"){
 		$aaa = substr($row['div_url'],30);
-		$aaa = substr(strlen($aaa)-1);
+		$aaa = substr($aaa,0,strlen($aaa)-1);
 	}else{
 		$aaa = substr($row['div_url'],18);
 	}
