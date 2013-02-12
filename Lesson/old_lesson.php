@@ -104,7 +104,7 @@
 		//決定ボタンをクリックした後の過去授業の画像を出力する処理
 		$(document).on('click', '#decision', function() {
 
-			//canvasをボタンをリセットする
+			//以前表示した過去授業の画像を削除して、リセット
 			$('#frame').empty();
 			$('#button').empty();
 
@@ -139,27 +139,11 @@
 			    	var parsers = JSON.parse(rs);
 
 			    	if(parsers.length>0){
-
-				    	//canvasタグを生成し、divに追加
-			    		var e='<canvas id="canvas" width="900" height="700">'
-							+'Your browser is not supported. Use modern browser (e.g. IE9 or later).'
-							+'</canvas>'
+			    		var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat; height="600" width="900">'
+			    		+'<img src="'+parsers[0]['canvas']+'"id="canvas" height="600" width="900"/>'
+			    		+'</div>'
 			    		$('#frame').append(e);
 
-			    		//canvasに画像を描画する処理
-			    		var canvas = document.getElementById('canvas');
-			    		var ctx = canvas.getContext('2d');
-
-			    		/* Imageオブジェクトを生成 */
-			    		var img = new Image();
-			    		img.src =parsers[0]['div'];
-			    		/* 背景画像を描画 */
-			    		ctx.drawImage(img, 0, 0);
-
-			    		img.src =parsers[0]['canvas'];
-			    		ctx.drawImage(img, 0, 0);
-
-			    		//ボタンを作成し,divに追加
 			    		var a='<div>'
 				    		+'<table>'
 				    		+'<tr>'
@@ -278,8 +262,8 @@
 
 				//過去授業を閲覧するための画像を作成し、追加
 				var e='<div id="chalkboard" style="background:'+parsers[page]['div']+';background-repeat:no-repeat; height="600" width="900">'
-					+'<img src="'+parsers[page]['canvas']+'"id="canvas" height="600" width="900"/>'
-					+'</div>';
+	    		+'<img src="'+parsers[page]['canvas']+'"id="canvas" height="600" width="900"/>'
+	    		+'</div>';
 	    		var a='<div>'
 		    		+'<table>'
 		    		+'<tr>'
@@ -292,8 +276,8 @@
 		    	//以前のタグを削除し、新しいのを追加
 		    	$('#button').empty();
 		    	$('#frame').empty();
-				$('#frame').append(e);
-				$('#button').append(a);
+	    		$('#frame').append(e);
+	    		$('#button').append(a);
 				//canvas_ele.src=parsers[page]['canvas'];
 				//div_ele.style.background=parsers[page]['div'];
 				//div_ele.style.backgroundAttachment='fixed';

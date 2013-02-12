@@ -9,6 +9,7 @@
 }
 #canvas {
 
+	padding-top: 20px;
 	position: relative;
 	background-repeat:no-repeat;
 	background-size:contain;
