@@ -1,3 +1,10 @@
+<?php
+$id = "page_name";
+$cmd = "ic";
+$min = "0";
+$max = "0";
+$span = "page_check";
+?>
 <html>
 <head>
 <title>ページ新規追加画面</title>
@@ -13,7 +20,7 @@
 <body>
 <img class="bg" src="../images/blue-big.jpg" alt="" />
 <div id="container">
-<form action="page_con.php" method="POST">
+<form action="page_con.php" method="POST" onsubmit="return check('<?= $id ?>', '<?= $cmd ?>', '<?= $min ?>', '<?= $max ?>', '<?= $span ?>')">
  <?php
    require_once("../lib/dbconect.php");
    $link = DbConnect();
@@ -48,7 +55,8 @@
 	}
     ?>
     </tr></table><br>
-    ページ名<input size ="15" type="text" name="page_name" id="page_name" Onblur="check('#page_name', 'ic', 0, 0)"><br><!-- グループ名入力 -->
+    <span class="check_result" name="page_check" id="page_check" ></span>
+    ページ名<input size ="15" type="text" name="page_name" id="page_name"><br><!-- グループ名入力 -->
 
     <br>
     <table>
