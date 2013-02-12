@@ -24,6 +24,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<meta name="viewport" content="width=device-width, intital-scale=1">
+		<link rel="stylesheet" href="../css/table.css" />
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
@@ -57,11 +58,11 @@
 		</p>
 		
 		<div align="center">
-			<table border="1">
-				<tr bgcolor="yellow">
-				<td align="center"width="150"><font size="5">日付</font></td>
-				<td align="center"width="200"><font size="5">FROM</font></td>
-				<td align="center"width="400"><font size="5">件名</font></td>
+			<table class="table_01">
+				<tr >
+				<td>日付</td>
+				<td>FROM</td>
+				<td>件名</td>
 				
 				<?php
 				for ($i = 0; $i < $count; $i++){
@@ -110,11 +111,11 @@
 		</p>
 					
 		<div align="center">
-			<table border="1">
-				<tr bgcolor="yellow">
-					<td align="center"width="150"><font size="5">日付</font></td>
-					<td align="center"width="200"><font size="5">FROM</font></td>
-					<td align="center"width="400"><font size="5">件名</font></td>	
+			<table class="table_01">
+				<tr>
+					<td>日付</td>
+					<td>FROM</td>
+					<td>件名</td>	
 				</tr>
 			
 				<?php

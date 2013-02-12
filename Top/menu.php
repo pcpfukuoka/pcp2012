@@ -72,6 +72,7 @@
 				<td><input class="button1" type="button" onclick="jump('../ResultsManager/res_main.php','left')" value="成績管理"></td>
 				<td><input class="button1" type="button" onclick="jump('../PrintDeliveryManager/p_main.php','left')" value="プリント配信"></td>
 				<td><input class="button1" type="button" onclick="jump('../AAAManager/A_main.php' , 'left')" value="出席管理"></td>
+				<td><input class="button1" type="button" onclick="jump('../DataManager/index.php' , 'left')" value="データ管理"></td>
 				</tr>	
 	<?php 
 

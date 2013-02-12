@@ -51,10 +51,10 @@
 				<div data-role="navbar">
 					<ul>
 						<li><a href="">スケジュール</a></li>
-						<li><a href="#/sp/contactbook/main.php">連絡帳</a></li>
+						<li><a href="contactbook/main.php">連絡帳</a></li>
 						<li><a href="">授業</a></li>
-						<li><a href="#/sp/Results_management/Per_ver.php">成績確認</a></li>
-						<li><a href="#/sp/question/answer_list.php">アンケート</a></li>
+						<li><a href="Results_management/Per_ver.php">成績確認</a></li>
+						<li><a href="question/answer_list.php">アンケート</a></li>
 					</ul>
 				</div>
 			</div>
