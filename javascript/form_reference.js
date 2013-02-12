@@ -6,16 +6,17 @@
 //	idは頭に#を加えて引数にすること	commandoは命令を,で区切って引数にすること
 //	len_min, len_maxはそ文字数の上下限値を指定、なければ0を引数にすること
 //	通常チェック
+/*
 function check( id, commando, len_min, len_max)
 {
-	//	com_array	命令(チェック)用配列
+	//	cmd_array	命令(チェック)用配列
 	//	i			ループカウンタ
 	//	j			ループカウンタ
 	//	k			ループカウンタ
 	//	str			テキストボックスのvalue（文字列）
 	//	error		エラー内容用配列
 	//	error_flg	エラーフラグ(エラーがあればtrue)
-	var com_array = commando.split( "," );
+	var cmd_array = commando.split( "," );
 	var i = 0;
 	var j = 0;
 	var k = 0;
@@ -24,7 +25,7 @@ function check( id, commando, len_min, len_max)
 	var error_flg = false;
 
 	//	命令用配列の中身がある限りループ
-	while ( com_array[i] )
+	while ( cmd_array[i] )
 	{
 		//	命令実行
 		//	命令一覧		ic	未入力チェック
@@ -36,35 +37,35 @@ function check( id, commando, len_min, len_max)
 		//					tc	禁止文字チェック
 		//					pc	パスワードチェック
 
-		if ( com_array[i] == "ic" )
+		if ( cmd_array[i] == "ic" )
 		{
 			error[i] = inputCheck( str );
 		}
-		else if ( com_array[i] == "nc" )
+		else if ( cmd_array[i] == "nc" )
 		{
 			error[i] = numberCheck( str );
 		}
-		else if ( com_array[i] == "lc" )
+		else if ( cmd_array[i] == "lc" )
 		{
 			error[i] = lengthCheck( str, len_min, len_max );
 		}
-		else if ( com_array[i] == "ac" )
+		else if ( cmd_array[i] == "ac" )
 		{
 			error[i] = alphabetCheck( str );
 		}
-		else if ( com_array[i] == "fc" )
+		else if ( cmd_array[i] == "fc" )
 		{
 			error[i] = furiganaCheck( str );
 		}
-		else if ( com_array[i] == "mc" )
+		else if ( cmd_array[i] == "mc" )
 		{
 			error[i] = mailCheck( str );
 		}
-		else if ( com_array[i] == "tc" )
+		else if ( cmd_array[i] == "tc" )
 		{
 			error[i] = tabooCheck( str );
 		}
-		else if ( com_array[i] == "pc" )
+		else if ( cmd_array[i] == "pc" )
 		{
 			error[i] = passwordCheck( str );
 		}
@@ -97,14 +98,94 @@ function check( id, commando, len_min, len_max)
 		}
 
 		alert( message );
+		return false;
 	}
+	return true;
+}
+*/
+
+
+function check( id, commando, len_min, len_max, span)
+{
+	var id_array =	id.split( "," );
+	var cmd_array = commando.split( "/" );
+	var min_array = len_min.split( "," );
+	var max_array = len_max.split( "," );
+	var spn_array = span.sprit( "," );
+	var i = 0;
+	var j = 0;
+	var check_flg = "";
+	var error = false;
+	
+	for ( i; i < id_array.length; i++ )
+	{
+		var str = $("#" + id_array[i] + "").val();
+		var cmd_query = cmd_array[i].split( "," );
+		var message = "";
+		
+		//	命令用配列の中身がある限りループ
+		while ( cmd_query[j] )
+		{
+
+			if ( cmd_query[j] == "ic" )
+			{
+			 	check_flg = inputCheck( str );
+			}
+			else if ( cmd_query[j] == "nc" )
+			{
+				check_flg = numberCheck( str );
+			}
+			else if ( cmd_query[j] == "lc" )
+			{	
+				check_flg = lengthCheck( str, len_min[i], len_max[i] );
+			}
+			else if ( cmd_query[j] == "ac" )
+			{
+				check_flg = alphabetCheck( str );
+			}
+			else if ( cmd_query[j] == "fc" )
+			{
+				check_flg = furiganaheck( str );
+			}
+			else if ( cmd_query[j] == "mc" )
+			{
+				//check_flg = mailCheck( str );
+			}
+			else if ( cmd_query[j] == "tc" )
+			{
+				//check_flg = tabooCheck( str );
+			}
+			
+			//	スパンメッセージ格納
+			if ( check_flg != "true" )
+			{
+				message += "※"　+ check_flg + "\n";
+				error = true;
+			}
+
+			//	カウンタアップ
+			j++;
+		}
+		//	スパン表示
+		$("#" + spn_array[i] + "").text(message);
+	}
+	
+	if ( error == true )
+	{
+		retrun false;
+	}
+	else
+	{
+		return true;
+	}
+		
+
 }
 
 //ユーザー登録用チェック(onBlur)
 function ubCheck( id, commando, len_min, len_max, span)
 {
-	//	com_array	命令(チェック)
-	//	name_array	[0]	form_id	[1]	text_id
+	//	cmd_array	命令(チェック)
 	//	spanID		text_id
 	//	i			ループカウンタ
 	//	j			ループカウンタ
@@ -113,7 +194,7 @@ function ubCheck( id, commando, len_min, len_max, span)
 	//	error		エラー内容用配列
 	//	error_flg	エラーフラグ(エラーがあればtrue)
 	//	message		エラー内容をまとめた警告文
-	var com_array = commando.split( "," );
+	var cmd_array = commando.split( "," );
 	var name_array = span.split( "." );
 	var spanID = "#" + name_array[1] + "";
 	var i = 0;
@@ -125,7 +206,7 @@ function ubCheck( id, commando, len_min, len_max, span)
 	var message = "";
 
 	//	命令用配列の中身がある限りループ
-	while ( com_array[i] )
+	while ( cmd_array[i] )
 	{
 		//	命令実行
 		//	命令一覧		ic	未入力チェック
@@ -137,35 +218,35 @@ function ubCheck( id, commando, len_min, len_max, span)
 		//					tc	禁止文字チェック
 		//					pc	パスワードチェック
 
-		if ( com_array[i] == "ic" )
+		if ( cmd_array[i] == "ic" )
 		{
 			error[i] = inputCheck( str );
 		}
-		else if ( com_array[i] == "nc" )
+		else if ( cmd_array[i] == "nc" )
 		{
 			error[i] = numberCheck( str );
 		}
-		else if ( com_array[i] == "lc" )
+		else if ( cmd_array[i] == "lc" )
 		{
 			error[i] = lengthCheck( str, len_min, len_max );
 		}
-		else if ( com_array[i] == "ac" )
+		else if ( cmd_array[i] == "ac" )
 		{
 			error[i] = alphabetCheck( str );
 		}
-		else if ( com_array[i] == "fc" )
+		else if ( cmd_array[i] == "fc" )
 		{
 			error[i] = furiganaCheck( str );
 		}
-		else if ( com_array[i] == "mc" )
+		else if ( cmd_array[i] == "mc" )
 		{
 			error[i] = mailCheck( str );
 		}
-		else if ( com_array[i] == "tc" )
+		else if ( cmd_array[i] == "tc" )
 		{
 			//error[i] = tabooCheck( str );
 		}
-		else if ( com_array[i] == "pc" )
+		else if ( cmd_array[i] == "pc" )
 		{
 			error[i] = passwordCheck( str );
 		}
@@ -208,14 +289,14 @@ function ubCheck( id, commando, len_min, len_max, span)
 //ユーザー登録用チェック(onClick)
 function ucCheck( id, commando, len_min, len_max  )
 {
-	//	com_array	命令(チェック)用配列
+	//	cmd_array	命令(チェック)用配列
 	var id_array =	id.split( "," );
-	var i = 0;
-	var j = 0;
-	var com_array = commando.split( "/" );
+	var cmd_array = commando.split( "/" );
 	var l_min_array = len_min.split( "," );
 	var l_max_array = len_max.split( "," );
+	var i = 0;
 	var j = 0;
+
 
 	//	命令実行
 	//	命令一覧		ic	未入力チェック
@@ -232,37 +313,37 @@ function ucCheck( id, commando, len_min, len_max  )
 		var check_flg = "";
 		str = $("#" + id_array[i] + "").val();
 
-		com_query = com_array[i].split( "," );
+		cmd_query = cmd_array[i].split( "," );
 
 		//	命令用配列の中身がある限りループ
-		while ( com_query[j] )
+		while ( cmd_query[j] )
 		{
 
-			if ( com_query[j] == "ic" )
+			if ( cmd_query[j] == "ic" )
 			{
 			 	check_flg = inputCheck( str );
 			}
-			else if ( com_query[j] == "nc" )
+			else if ( cmd_query[j] == "nc" )
 			{
 				check_flg = numberCheck( str );
 			}
-			else if ( com_query[j] == "lc" )
-			{
+			else if ( cmd_query[j] == "lc" )
+			{	
 				check_flg = lengthCheck( str, len_min[i], len_max[i] );
 			}
-			else if ( com_query[j] == "ac" )
+			else if ( cmd_query[j] == "ac" )
 			{
 				check_flg = alphabetCheck( str );
 			}
-			else if ( com_query[j] == "fc" )
+			else if ( cmd_query[j] == "fc" )
 			{
 				check_flg = furiganaheck( str );
 			}
-			else if ( com_query[j] == "mc" )
+			else if ( cmd_query[j] == "mc" )
 			{
 				//check_flg = mailCheck( str );
 			}
-			else if ( com_query[j] == "tc" )
+			else if ( cmd_query[j] == "tc" )
 			{
 				//check_flg = tabooCheck( str );
 			}
