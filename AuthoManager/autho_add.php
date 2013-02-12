@@ -54,14 +54,14 @@ $span = "autho_check";
 
    <table width="100%" class="table_01">
     <tr>
-     <th width="50%" ><font size="5">ページ名</font></th>
-     <th width="10%" bgcolor="Yellow"><font size="5">Read</font></th>
-     <th width="10%" bgcolor="Yellow"><font size="5">Write</font></th>
-     <th width="10%" bgcolor="Yellow"><font size="5">Update</font></th>
-     <th width="10%" bgcolor="Yellow"><font size="5">delivery</font></th>
-     <th width="10%" bgcolor="Yellow"><font size="5">Delete</font></th>
-     <th width="10%" bgcolor="Yellow"><font size="5">追加</font></th>
-     <th width="10%" bgcolor="Yellow"><font size="5">削除</font></th>
+     <th width = "20%" align = "center" ><font size = "5">ページ名</font></th>
+					<th width = "5%" align = "center" ><font size = "5"></font></th>
+					<th width = "10%" align = "center" ><font size = "5">Read</font></th>
+					<th width = "10%" align = "center" ><font size = "5">Write</font></th>
+					<th width = "10%" align = "center" ><font size = "5">Update</font></th>
+					<th width = "10%" align = "center" ><font size = "5">Delivery</font></th>
+					<th width = "10%" align = "center" ><font size = "5">Delete</font></th>
+					<th width = "5%" align = "center" ><font size = "5"></font></th>
     </tr>
     <?php
     /********************************************************
@@ -71,49 +71,42 @@ $span = "autho_check";
     *********************************************************/
     ?>
     <?php
+				$autho_array = Array("read_flg", "write_flg", "update_flg", "delivery_flg", "delete_flg");
+				$autho_id = Array("Read_", "Write_", "Update_", "Delivery_", "Delete_");
+				$show_autho = Array("Show_Read_", "Show_Write_", "Show_Update_", "Show_Delivery_", "Show_Delete_");
+				for ($i = 0; $i < $count; $i++)
+				{
+					$autho_chk = 0;
+					$page = mysql_fetch_array($result);
+				?>
+					<tr>
+						<td align = "center"><?= $page['page_name'] ?></td>		<!--  ページ名の表示	-->
 
-    for($i = 0; $i < $count; $i++)
-	{
-    	$row = mysql_fetch_array($result);
-	?>
-	<tr>
-	    <td align = "center"><?= $row['page_name'] ?></td>
-			<td>
-				<input style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×" id = "Show_Read_<?= $row['page_seq'] ?>" readonly >
-				<input type="hidden" name = "Read_<?= $row['page_seq'] ?>" value="0" id="Read_<?= $row['page_seq'] ?>">
-			</td>
-			<td>
-				<input style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×" id = "Show_Write_<?= $row['page_seq'] ?>" readonly>
-				<input type="hidden" name = "Write_<?= $row['page_seq'] ?>" value="0" id="Write_<?= $row['page_seq'] ?>">
-			</td>
-			<td>
-				<input  style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×" id = "Show_Update_<?= $row['page_seq'] ?>" readonly>
-				<input type="hidden" name = "Update_<?= $row['page_seq'] ?>" value="0" id="Update_<?= $row['page_seq'] ?>">
-			</td>
-			<td>
-				<input  style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×" id = "Show_delivery_<?= $row['page_seq'] ?>" readonly>
-				<input type="hidden" name = "delivery_<?= $row['page_seq'] ?>" value="0" id="delivery_<?= $row['page_seq'] ?>">
-			</td>
-			<td>
-				<input  style="width:50%;font-size: 100%;text-align: center;"  type="text" value="×"id = "Show_Delete_<?= $row['page_seq'] ?>" readonly>
-				<input type="hidden" name = "Delete_<?= $row['page_seq'] ?>" value="0" id="Delete_<?= $row['page_seq'] ?>">
-			</td>
-			<input type="hidden" id = "Value_<?= $row['page_seq'] ?>" value="0">
-		 <td><input type="button" class="add_btn" value="追加"  data-id="<?= $row['page_seq'] ?>" id = "id"></td>
-	    <td><input type="button" class="delete_btn" data-id="<?= $row['page_seq'] ?>"value="削除" id = "id"></td>
-    </tr>
-  <?php
-    }
+						<td><input type = "button" class = "delete_btn" data-id = "<?= $page['page_seq'] ?>" value = "ー" id = "id"></td>
 
-    ?>
-    </table>
-    <?php
+			<?php
+						//チェックボックスの表示
+						for ($j = 0; $j < 5; $j++)
+						{
+							$autho = $autho_array[$j];
+							$id = $autho_id[$j];
+							$show = $show_autho[$j];
 
-
-
-    ?>
-    <br>
-    <table>
+							?>
+								<td>
+									<input style = "width:50%; font-size: 100%; text-align: center;" type = "text" value = "×" id = "<?= $show.$page['page_seq'] ?>" readonly >
+									<input type = "hidden" name = "<?= $id.$page['page_seq'] ?>" value = "0" id = "<?= $id.$page['page_seq'] ?>">
+								</td>
+							<?php
+						}
+						?>
+						<input type="hidden" id = "Value_<?= $page['page_seq'] ?>" value="<?= $autho_chk ?>">
+						<td><input type = "button" class = "add_btn" value = "＋"  data-id = "<?= $page['page_seq'] ?>" id = "id"></td>
+					</tr>
+				<?php
+				}
+				?>
+			</table>
     	<tr>
     		<td><input class="button4" type="submit" value="確認"></td>
     		<td><input class="button4" type="reset" value="クリア"> </td>
@@ -124,49 +117,62 @@ $span = "autho_check";
     </div>
   </body>
   <script>
-
-	$(function() {
-
-		//検索結果から権限を追加するための処理
-		$(document).on('click', '.add_btn', function()
+		$(function()
 		{
-			var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_delivery_","Show_Delete_");
-			var id_list  = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
-		  	var id = $(this).data('id');
-		  	var name = "Value_" + id;
-			var value = document.getElementById(name).value;
-			if(value <5)
+			//検索結果から権限を追加するための処理
+			$(document).on('click', '.add_btn', function()
 			{
-				var show_name = show_id_list[value] + id;
-				var check_name = id_list[value] + id;
-				document.getElementById(show_name).value = "○";
-				document.getElementById(check_name).value = "1";
-				value++;
-				document.getElementById(name).value= value;
-			}
+				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_Delivery_","Show_Delete_");
+				var id_list  = new Array("Read_", "Write_", "Update_","Delivery_","Delete_");
+				var id = $(this).data('id');
+				var name = "Value_" + id;
+				var value = document.getElementById(name).value;
+				if(value <5)
+				{
+					var show_name = show_id_list[value] + id;
+					var check_name = id_list[value] + id;
+					document.getElementById(show_name).value = "○";
+					document.getElementById(check_name).value = "1";
+					value++;
+					document.getElementById(name).value= value;
+				}
+			});
+			$(document).on('click', '.delete_btn', function()
+			{
+				var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_Delivery_","Show_Delete_");
+				var id_list  = new Array("Read_", "Write_", "Update_","Delivery_","Delete_");
+				var id = $(this).data('id');
+				var name = "Value_" + id;
+				var value = document.getElementById(name).value;
+				value--;
+				if(value >= 0)
+				{
+					var show_name = show_id_list[value] + id;
+					var check_name = id_list[value] + id;
+					document.getElementById(show_name).value = "×";
+					document.getElementById(check_name).value = "0";
+					document.getElementById(name).value= value;
+				}
+			});
+		});
 
-	    });
-		$(document).on('click', '.delete_btn', function()
+		$(function()
 		{
-			var show_id_list  = new Array("Show_Read_", "Show_Write_", "Show_Update_","Show_delivery_","Show_Delete_");
-			var id_list  = new Array("Read_", "Write_", "Update_","delivery_","Delete_");
-		  	var id = $(this).data('id');
-		  	var name = "Value_" + id;
-			var value = document.getElementById(name).value;
-			value--;
-			if(value >= 0)
+			//質問内容追加
+			$(document).on('change', '.edit_text', function()
 			{
-				var show_name = show_id_list[value] + id;
-				var check_name = id_list[value] + id;
-				document.getElementById(show_name).value = "×";
-				document.getElementById(check_name).value = "0";
-				document.getElementById(name).value= value;
-			}
+				var str = $(".edit_text").val();
+				//チェックしたい関数(Function)を書く
+				var ret = inputCheck(str)
 
+				if (ret == false)
+				{
 
-	    });
+				}
+			});
+		});
 
-	});
+	</script>
 
 
 </html>
