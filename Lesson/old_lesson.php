@@ -43,48 +43,50 @@
 	</head>
 
 	<body>
+
 		<!-- <img class="bg" src="../images/blue-big.jpg" alt="" /> -->
 		<div id="container">
+			<input type="date" id="date" max="<?= date("Y-m-d") ?>"/>
+			<select id="subject_seq">
+				<?php
+					for ($i = 0; $i < $count; $i++)
+					{
+						$row = mysql_fetch_array($result);
+				?>
+	    			<option value="<?= $row['subject_seq']?>"><?= $row['subject_name'] ?></option>
+				<?php
+					}
+				?>
+			</select>
 
-		<input type="date" id="date" max="<?= date("Y-m-d") ?>"/>
-		<select id="subject_seq">
-			<?php
-				for ($i = 0; $i < $count; $i++)
-				{
-					$row = mysql_fetch_array($result);
-			?>
-    			<option value="<?= $row['subject_seq']?>"><?= $row['subject_name'] ?></option>
-			<?php
-				}
-			?>
-		</select>
+			<select id="group_seq">
+				<?php
+					for ($i = 0; $i < $count3; $i++)
+					{
+						$row2 = mysql_fetch_array($class_select_result);
+				?>
+	    			<option value="<?= $row2['group_seq']?>"><?= $row2['group_name'] ?></option>
+				<?php
+					}
+				?>
+			</select>
 
-		<select id="group_seq">
-			<?php
-				for ($i = 0; $i < $count3; $i++)
-				{
-					$row2 = mysql_fetch_array($class_select_result);
-			?>
-    			<option value="<?= $row2['group_seq']?>"><?= $row2['group_name'] ?></option>
-			<?php
-				}
-			?>
-		</select>
-		<select id="time_table">
-    			<option value="1">１時間目</option>
-    			<option value="2">２時間目</option>
-    			<option value="3">３時間目</option>
-    			<option value="4">４時間目</option>
-    			<option value="5">５時間目</option>
-    			<option value="6">６時間目</option>
-		</select>
-		<input type="button" value="決定" id="decision" disabled=disabled>
-		<input type="button" value="閲覧終了" id="end">
-		<div id="frame">
+			<select id="time_table">
+	    			<option value="1">１時間目</option>
+	    			<option value="2">２時間目</option>
+	    			<option value="3">３時間目</option>
+	    			<option value="4">４時間目</option>
+	    			<option value="5">５時間目</option>
+	    			<option value="6">６時間目</option>
+			</select>
+			<input type="button" value="決定" id="decision">
+			<input type="button" value="閲覧終了" id="end" class="">
+			<div id="frame">
+			</div>
+
+			<div id="button">
+			</div>
 		</div>
-		<div id="button">
-		</div>
-</div>
 	</body>
 	<script>
 	$(function() {//決定ボタンをクリックした後の過去授業の画像を出力する処理
@@ -102,8 +104,10 @@
 		//決定ボタンをクリックした後の過去授業の画像を出力する処理
 		$(document).on('click', '#decision', function() {
 
+			//canvasをボタンをリセットする
 			$('#frame').empty();
 			$('#button').empty();
+
 			//ボタンを連続で押させないようにする
 			var button_ele=document.getElementById('decision');
 			button_ele.disabled=true;
@@ -119,45 +123,77 @@
 			var group_seq=group_ele.value;
 			var time_table=time_table_ele.value;
 
-			$.post('ajax_canvas_select.php',{
-		        date: date,
-		        id : subject_seq,
-		        group: group_seq,
-		        time_table:time_table
-		    },
-		    function(rs) {
-		    	var parsers = JSON.parse(rs);
+			//全ての項目が入力されている場合に処理を実行させる
+			if(date != "" && subject_seq != "" && group_seq != "" && time_table != ""){
+				//ボタンを連続で押させないようにする
+				var button_ele=document.getElementById('decision');
+				button_ele.disabled=true;
 
-		    	if(parsers.length>0){
-		    		var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat; height="600" width="900">'
-		    		+'<img src="'+parsers[0]['canvas']+'"id="canvas" height="600" width="900"/>'
-		    		+'</div>'
-		    		$('#frame').append(e);
+				$.post('ajax_canvas_select.php',{
+			        date: date,
+			        id : subject_seq,
+			        group: group_seq,
+			        time_table:time_table
+			    },
+			    function(rs) {
+			    	var parsers = JSON.parse(rs);
 
-		    		var a='<div>'
-			    		+'<table>'
-			    		+'<tr>'
-			    		+'<td><input class="button4" id="turn" value="戻る" type="button"></td>'
-			    		+'<td><input class="button4" id="next" value="次へ"type="button"></td>'
-			    		+'<input type="hidden" value=0 id="page_num"value="0">';
-			    		+'</tr>'
-			    		+'</table>'
-			    		+'</div>';
-			    		$('#button').append(a);
+			    	if(parsers.length>0){
 
-		    		//押せなくしたボタンを元に戻す
-					var button_ele=document.getElementById('decision');
-					button_ele.disabled=false;
-		    	}
-		    	else{
-			    	var nothing_alart = '<font class="Cubicfont">その授業はありません。</font>';
-			    	$('#frame').append(nothing_alart);
-			    	var button_ele=document.getElementById('decision');
-					button_ele.disabled=false;
+				    	//canvasタグを生成し、divに追加
+			    		var e='<canvas id="canvas" width="900" height="700">'
+							+'Your browser is not supported. Use modern browser (e.g. IE9 or later).'
+							+'</canvas>'
+			    		$('#frame').append(e);
 
-			    }
-		    });
-	    });
+			    		//canvasに画像を描画する処理
+			    		var canvas = document.getElementById('canvas');
+			    		var ctx = canvas.getContext('2d');
+
+			    		/* Imageオブジェクトを生成 */
+			    		var img = new Image();
+			    		img.src =parsers[0]['div'];
+			    		/* 背景画像を描画 */
+			    		ctx.drawImage(img, 0, 0);
+
+			    		img.src =parsers[0]['canvas'];
+			    		ctx.drawImage(img, 0, 0);
+
+			    		//ボタンを作成し,divに追加
+			    		var a='<div>'
+				    		+'<table>'
+				    		+'<tr>'
+				    		+'<td><input class="button4" id="turn" value="戻る" type="button"></td>'
+				    		+'<td><input class="button4" id="next" value="次へ"type="button"></td>'
+				    		+'<input type="hidden" value=0 id="page_num"value="0">';
+				    		+'</tr>'
+				    		+'</table>'
+				    		+'</div>';
+				    		$('#button').append(a);
+
+			    		//押せなくしたボタンを元に戻す
+						var button_ele=document.getElementById('decision');
+						button_ele.disabled=false;
+			    	}
+			    	else{
+				    	var nothing_alart = '<font class="Cubicfont">その授業はありません。</font>';
+				    	$('#frame').append(nothing_alart);
+
+				    	//ボタンを押せるようにする
+				    	var button_ele=document.getElementById('decision');
+						button_ele.disabled=false;
+				    }
+			    });
+			}else{
+				alert("全ての項目を選択してください");
+
+				//ボタンを押せるようにする
+		    	var button_ele=document.getElementById('decision');
+				button_ele.disabled=false;
+
+			}
+
+		});
 
 	    $(document).on('click','#next',function(){
 
@@ -242,8 +278,8 @@
 
 				//過去授業を閲覧するための画像を作成し、追加
 				var e='<div id="chalkboard" style="background:'+parsers[page]['div']+';background-repeat:no-repeat; height="600" width="900">'
-	    		+'<img src="'+parsers[page]['canvas']+'"id="canvas" height="600" width="900"/>'
-	    		+'</div>';
+					+'<img src="'+parsers[page]['canvas']+'"id="canvas" height="600" width="900"/>'
+					+'</div>';
 	    		var a='<div>'
 		    		+'<table>'
 		    		+'<tr>'
@@ -256,8 +292,8 @@
 		    	//以前のタグを削除し、新しいのを追加
 		    	$('#button').empty();
 		    	$('#frame').empty();
-	    		$('#frame').append(e);
-	    		$('#button').append(a);
+				$('#frame').append(e);
+				$('#button').append(a);
 				//canvas_ele.src=parsers[page]['canvas'];
 				//div_ele.style.background=parsers[page]['div'];
 				//div_ele.style.backgroundAttachment='fixed';

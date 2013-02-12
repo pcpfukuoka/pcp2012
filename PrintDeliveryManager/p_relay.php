@@ -46,6 +46,9 @@
     	mysql_query($sql);
     	move_uploaded_file($data['tmp_name'], 'print_delivery_seq_$pdseq.pdf');
 
+    	$file_name = "Print/print_delivery_seq_" . $pdseq . ".pdf";
+    	move_uploaded_file($data['tmp_name'], $file_name);
+    	
     	//データベースを閉じる
     	Dbdissconnect($dbcon);
 
@@ -110,9 +113,9 @@
     	$sql = "UPDATE print_delivery SET printurl = 'print_delivery_seq_$pdseq.pdf'
     			WHERE print_delivery_seq = $pdseq;";
     	mysql_query($sql);
-    	$file_name = "print_delivery_seq_" . $pdseq . ".pdf";
+    	$file_name = "Print/print_delivery_seq_" . $pdseq . ".pdf";
     	move_uploaded_file($data['tmp_name'], $file_name);
-
+    	
     	//データベースを閉じる
     	Dbdissconnect($dbcon);
 

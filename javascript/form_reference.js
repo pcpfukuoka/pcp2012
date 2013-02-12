@@ -111,18 +111,18 @@ function check( id, commando, len_min, len_max, span)
 	var cmd_array = commando.split( "/" );
 	var min_array = len_min.split( "," );
 	var max_array = len_max.split( "," );
-	var spn_array = span.sprit( "," );
+	var spn_array = span.split( "," );
 	var i = 0;
 	var j = 0;
 	var check_flg = "";
 	var error = false;
-	
+
 	for ( i; i < id_array.length; i++ )
 	{
 		var str = $("#" + id_array[i] + "").val();
 		var cmd_query = cmd_array[i].split( "," );
 		var message = "";
-		
+
 		//	命令用配列の中身がある限りループ
 		while ( cmd_query[j] )
 		{
@@ -136,7 +136,7 @@ function check( id, commando, len_min, len_max, span)
 				check_flg = numberCheck( str );
 			}
 			else if ( cmd_query[j] == "lc" )
-			{	
+			{
 				check_flg = lengthCheck( str, len_min[i], len_max[i] );
 			}
 			else if ( cmd_query[j] == "ac" )
@@ -155,7 +155,7 @@ function check( id, commando, len_min, len_max, span)
 			{
 				//check_flg = tabooCheck( str );
 			}
-			
+
 			//	スパンメッセージ格納
 			if ( check_flg != "true" )
 			{
@@ -169,16 +169,16 @@ function check( id, commando, len_min, len_max, span)
 		//	スパン表示
 		$("#" + spn_array[i] + "").text(message);
 	}
-	
+
 	if ( error == true )
 	{
-		retrun false;
+		return false;
 	}
 	else
 	{
 		return true;
 	}
-		
+
 
 }
 
@@ -328,7 +328,7 @@ function ucCheck( id, commando, len_min, len_max  )
 				check_flg = numberCheck( str );
 			}
 			else if ( cmd_query[j] == "lc" )
-			{	
+			{
 				check_flg = lengthCheck( str, len_min[i], len_max[i] );
 			}
 			else if ( cmd_query[j] == "ac" )

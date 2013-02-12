@@ -207,8 +207,6 @@ $name = $name['autho_name'];
 		<input class="button4" type="submit" value="登録確認">
 		</form>
 
-<font color = "Red">中止する場合は選択リストの中身を必ず空にしてから変更完了をクリックしてください</font>
-<a href="autho_main.php">変更完了</a>
 	</div>
 	</body>
 </html>
