@@ -102,7 +102,7 @@ Dbdissconnect($link);
 	        		<div><a href="javascript:sorter.reset()">reset</a></div>
 	        	</span>
         </div>
-        
+
         		<table class="table_01">
 			<thead>
 				<tr>
@@ -115,7 +115,7 @@ Dbdissconnect($link);
 				<th><h3>登録(テスト・点数)</h3></th>
 			</tr>
 			</thead>
-        
+
         		<tbody>
 			<tr>
 				<!-- 教科の選択 -->
@@ -144,6 +144,8 @@ Dbdissconnect($link);
 						}
 						?>
 					</select></td>
+
+					<input type = "hidden" name = "sub_check" value = "1">
 				</form>
 
 				<form action = "res_test_con.php" method = "POST">
@@ -152,27 +154,82 @@ Dbdissconnect($link);
 				<input type = "hidden" name = "subject" value = "<?= $subject ?>">
 
 				<!-- 日付の入力 -->
+					<?php
+					if (isset($_GET['sub_check']))
+					{
+					?>
 					<td bgcolor = "blue"><input type = "text" name = "day" id="day" value = "<?= date("Y/m/d") ?>" Onblur="check('#day', ic, vc)"></td>
+					<?php
+					}
+					else
+					{
+					?>
+						<td bgcolor = "blue"><input type = "text" name = "day" id="day" value = "<?= date("Y/m/d") ?>" Onblur="check('#day', ic, vc)" disabled></td>
+					<?php
+					}
+					?>
 
 				<!-- テスト範囲・内容入力 -->
+					<?php
+					if (isset($_GET['sub_check']))
+					{
+					?>
 					<td bgcolor = "blue"><textarea rows="2" cols="30" name = "contents" id="contents" Onblur="check('#contents', ic)"></textarea></td>
+					<?php
+					}
+					else
+					{
+					?>
+						<td bgcolor = "blue"><textarea disabled rows="2" cols="30" name = "contents" id="contents" Onblur="check('#contents', ic)"></textarea></td>
+					<?php
+					}
+					?>
+
 
 					<!-- 先生の選択 -->
-					<td bgcolor = "blue"><select name = "teacher">
-						<option value = "-1" selected>選択</option>
-						<?php
-						for ($i = 0; $i < $count_teach; $i++)
-						{
-						$teach = mysql_fetch_array($result_teach);
-						?>
-							<option value = "<?= $teach['teacher_seq'] ?>"><?= $teach['user_name'] ?></option>
-						<?php
-						}
-						?>
+					<?php
+					if (isset($_GET['sub_check']))
+					{
+					?>
+						<td bgcolor = "blue"><select name = "teacher">
+							<option value = "-1" selected>選択</option>
+							<?php
+							for ($i = 0; $i < $count_teach; $i++)
+							{
+							$teach = mysql_fetch_array($result_teach);
+							?>
+								<option value = "<?= $teach['teacher_seq'] ?>"><?= $teach['user_name'] ?></option>
+							<?php
+							}
+							?>
 						</select></td>
+					<?php
+					}
+					else
+					{
+					?>
+						<td bgcolor = "blue"><select disabled name = "teacher">
+							<option value = "-1" selected>選択</option>
+							<?php
+							for ($i = 0; $i < $count_teach; $i++)
+							{
+							$teach = mysql_fetch_array($result_teach);
+							?>
+								<option value = "<?= $teach['teacher_seq'] ?>"><?= $teach['user_name'] ?></option>
+							<?php
+							}
+							?>
+						</select></td>
+					<?php
+					}
+					?>
 
 						<!-- グループの選択 -->
-					<td bgcolor = "blue"><select name = "group">
+					<?php
+					if (isset($_GET['sub_check']))
+					{
+					?>
+						<td bgcolor = "blue"><select name = "group">
 						<option value = "-1" selected>選択</option>
 						<?php
 						for ($i = 0; $i < $count_group; $i++)
@@ -184,20 +241,68 @@ Dbdissconnect($link);
 						}
 						?>
 						</select></td>
+					<?php
+					}
+					else
+					{
+					?>
+						<td bgcolor = "blue"><select disabled name = "group">
+						<option value = "-1" selected>選択</option>
+						<?php
+						for ($i = 0; $i < $count_group; $i++)
+						{
+						$group = mysql_fetch_array($result_group);
+						?>
+							<option value = "<?= $group['group_seq'] ?>"><?= $group['group_name'] ?></option>
+						<?php
+						}
+						?>
+						</select></td>
+					<?php
+					}
+					?>
+
 
 						<!-- 定期テストのチェック -->
 					<input type = "hidden" name = "stand_flg" value = "0">
-					<td align = "center"><input type = "checkbox" name = "stand_flg" value = "1"></td>
+
+					<?php
+					if (isset($_GET['sub_check']))
+					{
+					?>
+						<td align = "center"><input type = "checkbox" name = "stand_flg" value = "1"></td>
+					<?php
+					}
+					else
+					{
+					?>
+						<td align = "center"><input type = "checkbox" name = "stand_flg" value = "1" disabled></td>
+					<?php
+					}
+					?>
 
 					<!-- 登録ボタン -->
-					<td align = "center" ><input type = "submit" value = "登録"></td>
+					<?php
+					if (isset($_GET['sub_check']))
+					{
+					?>
+						<td align = "center" ><input type = "submit" value = "登録"></td>
+					<?php
+					}
+					else
+					{
+					?>
+						<td align = "center" ><input type = "submit" value = "登録" disabled></td>
+					<?php
+					}
+					?>
 				</form>
 			</tr>
 			</tbody>
 			</table>
-        
-        
-        
+
+
+
         <form>
 			<table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
 				<thead>
@@ -212,16 +317,16 @@ Dbdissconnect($link);
 				</tr>
 				</thead>
 				<tbody>
-				
+
 					<?php
 					//以前のテストの表示
 					for ($i = 0; $i < $count_test; $i++)
 					{
 						$test = mysql_fetch_array($result_test);
-	
+
 						$contents = nl2br($test['contents']);
 					?>
-	
+
 					<tr>
 						<td><?= $test['subject_name'] ?></td>
 						<td><?= $test['date'] ?></td>
@@ -241,7 +346,7 @@ Dbdissconnect($link);
 						}
 						?>
 						</td>
-	
+
 						<!-- test_seqを持っていく -->
 						<td align = "center">
 						<input class="button4" type="button" onClick="jump('res_test_point.php?id=<?= $test['test_seq'] ?>','right')" value = "点数修正">
@@ -250,11 +355,11 @@ Dbdissconnect($link);
 					<?php
 					}
 					?>
-					
+
 				</tbody>
 			</table>
 		</form>
-						
+
 		<div id="tablefooter">
           <div id="tablenav">
             	<div>
