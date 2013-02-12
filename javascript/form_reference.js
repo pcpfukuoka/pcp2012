@@ -12,7 +12,7 @@ function check( id, commando, len_min, len_max)
 	//	i			ループカウンタ
 	//	j			ループカウンタ
 	//	k			ループカウンタ
-	//	str			テキストボックスのvlue（文字列）
+	//	str			テキストボックスのvalue（文字列）
 	//	error		エラー内容用配列
 	//	error_flg	エラーフラグ(エラーがあればtrue)
 	var com_array = commando.split( "," );
@@ -210,6 +210,8 @@ function ucCheck( id, commando, len_min, len_max  )
 {
 	//	com_array	命令(チェック)用配列
 	var id_array =	id.split( "," );
+	var i = 0;
+	var j = 0;
 	var com_array = commando.split( "/" );
 	var l_min_array = len_min.split( "," );
 	var l_max_array = len_max.split( "," );
@@ -225,7 +227,7 @@ function ucCheck( id, commando, len_min, len_max  )
 	//					tc	禁止文字チェック
 	//					pc	パスワードチェック
 	//	対象のテキストBOXを上から見ていく
-	for ( i = 0; i < id_array.length; i++ )
+	for ( i; i < id_array.length; i++ )
 	{
 		var check_flg = "";
 		str = $("#" + id_array[i] + "").val();
