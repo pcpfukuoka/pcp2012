@@ -19,6 +19,31 @@ unset($_SESSION["question_info[question_description]"]);
 		 <script src="../javascript/jquery-1.8.2.min.js"></script>
 		 <script src="../javascript/form_reference.js"></script>
 	</head>
+		  <style>
+			textarea {
+				border:1px solid #ccc;
+			}
+
+			.animated {
+				vertical-align: top;
+				-webkit-transition: height 0.2s;
+				-moz-transition: height 0.2s;
+				transition: height 0.2s;
+			}
+
+		</style>
+
+		<script src='../javascript/autosize.js'></script>
+
+
+		<script>
+			$(function(){
+				$('#normal').autosize();
+				$('.animated').autosize({append: "\n"});
+			});
+		</script>
+	
+	
 	<body>
 		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
@@ -37,39 +62,101 @@ unset($_SESSION["question_info[question_description]"]);
 			$cnt = mysql_num_rows($result);
 			?>
 
-			<form method ="post" action="regist.php">
-			タイトル:<input type="text" name="question_title" id="question_title" Onblur="check('#question_title', 'ic', 0, 0)"><br>
-			期間：<input type="date" name="start_date">〜<input type="date" name="end_date"><br>
-			対象グループ：
-			<select name = "target_group_seq" size = "1">
-				<option value = "-1">選択</option>
-					<option value = "0">全員</option>
-				<?php
-				for($i = 0; $i < $cnt; $i++)
-				{
-					$row = mysql_fetch_array($result);
-					?>
-					<option value = "<?=  $row['group_seq'] ?>"><?= $row['group_name'] ?></option>
-			<?php
-				}
-				?>
-			</select><br>
-			内容：<input type="text" name="question_description"><br>
-			<input type="button" class="questionAdd" value="追加" id="aaaaa">
+			<form method ="post" action="regist.php"  onSubmit="return check()" >
+			<table class="table_01" >
+			<tr>
+				<td>
+					タイトル:
+				</td>
+				<td>
+					<textarea class="animated" id="question_title"  name="question_title" rows="2" cols="50"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>期間：</td>
+				<td><input type="date" name="start_date">〜<input type="date" name="end_date"></td>
+			</tr>
+			<tr>
+				<td>
+					対象グループ：
+				</td>
+				<td>
+					<select name = "target_group_seq" size = "1">
+						<option value = "-1">選択</option>
+							<option value = "0">全員</option>
+						<?php
+						for($i = 0; $i < $cnt; $i++)
+						{
+							$row = mysql_fetch_array($result);
+							?>
+							<option value = "<?=  $row['group_seq'] ?>"><?= $row['group_name'] ?></option>
+					<?php
+						}
+						?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					内容：
+				</td>
+					<td>
+					<textarea class="animated" name="question_description" rows="2" cols="50"></textarea>
+				</td>
+			</tr>
+			<tr>
+			
+				<td style="background-color:transparent" ></td>
+				<td align="right" >
+					<input type="button"class="button5"id="questionAdd" value="確定">
+				</td>
+			</tr>
+			</table>
+			
 			<div id="question_details">
-			</div>
+			</div>					
 			<div id="input_section">
 			</div>
-			<input class="button4"type="submit" value ="登録">
+			<table>
+			<tr>
+				<td>
+					<input style="display: none;" id="sub" class="button4" type="submit" value ="登録">
+				</td>
+			</tr>
+			</table>
 			</form>
+			
 		</div>
 
 	</body>
 		<script>
+
+		function trim(str) {
+			return str.replace(/^[ 　\t\r\n]+|[ 　\t\r\n]+$/g, "");
+		}
+						
+		
+		function chengefocus()
+		{
+			//ボタン有効化
+			var str = $('#input_question_lsit_name_text').val();
+			str = trim(str);
+			if(str == "")
+			{
+				$('#questionListAdd').css("display","none");
+			}
+			else
+			{
+				$('#questionListAdd').css("display","");
+				$("#questionListAdd").focus();
+			}
+		};
+
+		
 		$(function() {
 			kbn = new Array("","複数", "単一");
 			//質問内容追加
-			$(document).on('click', '.questionAdd', function() {
+			$(document).on('click', '#questionAdd', function() {
 				//今までの要素を無効化
 				$('.questionAdd').attr('disabled', true);
 				$("*[name=question_title]").attr('disabled', true);
@@ -93,18 +180,22 @@ unset($_SESSION["question_info[question_description]"]);
 		                },
 		        function(rs) {
 		    		        //次に入力するために必要な要素を追加
-		    		        $('#input_section').append('質問内容：<input type="text" name="input_question_details_description"><br>');
-			                $('#input_section').append('回答区分：<select name = "answer_kbn" size = "1"><option value = "-1">選択</option><option value = "1">複数</option><option value = "2">単一</option><br>');
-			                $('#input_section').append('<br>回答内容：<input type="text" name="input_question_lsit_name"><input type="button" value="追加" class="questionListAdd"><br>');
-			                $('#input_section').append('<div id="question_awnser_lsit">');
-			                $('#input_section').append('</div>');
-			                $('#input_section').append('<input type="button" value="追加" class="questionDetailsAdd">');
+		    		        var e = $('<table class="table_01" >'+
+		    		        '<tr><td>質問内容：</td><td><input type="text" name="input_question_details_description"></td></tr>'+
+		    		        '<tr><td>回答区分：</td><td><select name = "answer_kbn" size = "1"><option value = "-1">選択</option><option value = "1">複数</option><option value = "2">単一</option></select></td></tr>'+
+		    		        '<tr><td>回答内容：</td><td><input  onblur="chengefocus();" type="text" id="input_question_lsit_name_text" name="input_question_lsit_name"></td><td><input type="button" class="button5" value="追加" id="questionListAdd"  style="display: none;"></td></tr>'+
+		    		        '<tr><td style="background-color:transparent" ></td><td style="display: none;" id="show_div" ><div id="question_awnser_lsit">'+
+		    		        '</div></td></tr>'+
+		    		        '<tr><td><input type="button"class="button5" value="確定" id="questionDetailsAdd" style="display: none;"></td></tr>'+
+		    		        '</table>');
+			                $('#input_section').append(e);
 
                 	  });
 		    });
 
 			//回答内容個別追加
-			$(document).on('click', '.questionListAdd', function() {
+			$(document).on('click', '#questionListAdd', function() {
+				$('#show_div').css("display","");
 		        var question_name = $("*[name=input_question_lsit_name]").val();
 		                	$("*[name=input_question_lsit_name]").val("");
 		        	var e = $(
@@ -114,10 +205,15 @@ unset($_SESSION["question_info[question_description]"]);
 		                );
 	                $('#question_awnser_lsit').append(e);
 
-		    });
-
+					//ボタン有効化
+					$('#questionDetailsAdd').css("display","");
+					$('#questionListAdd').css("display","none");
+	                
+	                
+		    });			
+			
 			//回答一覧追加
-			$(document).on('click', '.questionDetailsAdd', function() {
+			$(document).on('click', '#questionDetailsAdd', function() {
 
 				var seq = $("*[name=seq]").val();
 		        var question_details_description = $("*[name=input_question_details_description]").val();
@@ -135,32 +231,62 @@ unset($_SESSION["question_info[question_description]"]);
 		            question_details_description : question_details_description
 		                },
 		        function(rs) {
-
-		    		//今入力した内容をquestion_detailsに追加
-    		        $('#question_details').append('質問内容：<input type="text" name="comp_question_details_description"readonly=on value="'+ question_details_description +'" ><br>');
-	                $('#question_details').append('回答区分：<input type="text" name="comp_question_kbn"readonly=on value="'+ kbn[answer_kbn] +'" ><br>');
-	                $('#question_details').append('回答内容：');
+				    var list_str_html = "";
 	                i = 0;
-	                $('#question_details').append('<ul>');
 	                $("[name='question_list_name[]']").each(function() {
 		                var name = $("[name='question_list_name[]']").eq(i).val();
-		                $('#question_details').append('<li>'+ name+'</li>');
+		                name = '<li>'+ name+'</li>';
+		                list_str_html += name;
 		                i++;
 		            });
-	                $('#question_details').append('</ul>');
 
+
+					var one = "";
+					var tow = "";
+
+					if(answer_kbn == "1")
+					{
+						one = "selected";
+					}
+					if(answer_kbn == "2")
+					{
+						tow = "selected";
+					}
+						
+	                
+		    		//今入力した内容をquestion_detailsに追加
+		    		var e = $('<table class="table_01" >'+
+		    		        '<tr><td>質問内容：</td><td><input type="text" name="comp_question_details_description" disabled value="'+ question_details_description +'" ></td></tr>'+
+		    		        '<tr><td>回答区分：</td><td><select disabled name = "answer_kbn_selected" size = "1"><option value = "-1">選択</option><option value = "1" '+one+' >複数</option><option value = "2" '+tow+'>単一</option></select></td></tr>'+
+		    		        '<tr><td>回答内容：</td><td>'+ list_str_html +'</td></tr>'+
+		    		        '</table>');
+			                $('#question_details').append(e);
 	                $('#input_section').empty();
     		        //次に入力するために必要な要素を追加
-	                $('#input_section').append('<input type="hidden" name="seq" value = "'+ seq +'"><br>');
-    		        $('#input_section').append('質問内容：<input type="text" name="input_question_details_description"><br>');
-	                $('#input_section').append('回答区分：<select name = "answer_kbn" size = "1"><option value = "-1">選択</option><option value = "1">複数</option><option value = "2">単一</option><br>');
-	                $('#input_section').append('<br>回答内容：<input type="text" name="input_question_lsit_name"><input type="button" value="追加" class="questionListAdd"><br>');
-	                $('#input_section').append('<div id="question_awnser_lsit">');
-	                $('#input_section').append('</div>');
-	                $('#input_section').append('<input type="button" value="追加" class="questionDetailsAdd">');
-
+    		        e = $('<table class="table_01" >'+
+    	    		        '<input type="hidden" name="seq" value = "'+ seq +'"><br>'+
+		    		        '<tr><td>質問内容：</td><td><input type="text" name="input_question_details_description"></td></tr>'+
+		    		        '<tr><td>回答区分：</td><td><select name = "answer_kbn" size = "1"><option value = "-1">選択</option><option value = "1">複数</option><option value = "2">単一</option></select></td></tr>'+
+		    		        '<tr><td>回答内容：</td><td><input onblur="chengefocus();" type="text" id="input_question_lsit_name_text" name="input_question_lsit_name"></td><td><input type="button"  class="button5"  value="追加" id="questionListAdd"  style="display: none;"></td></tr>'+
+		    		        '<tr><td style="background-color:transparent" ></td><td><div id="question_awnser_lsit">'+
+		    		        '</div></td></tr>'+
+		    		        '<tr><td><input type="button" class="button5" value="確定" id="questionDetailsAdd"  style="display: none;" ></td></tr>'+
+		    		        '</table>');
+			                $('#input_section').append(e);
+	                
+							//ボタン有効化
+							$('#sub').css("display","");
 		        });
 		    });
 		});
+		function check(){
+			if(window.confirm('登録してよろしいですか？')){ // 確認ダイアログを表示
+				return true; // 「OK」時は送信を実行
+			}
+			else{ // 「キャンセル」時の処理
+				return false; // 送信を中止
+			}
+		}
+		
 		</script>
 </html>

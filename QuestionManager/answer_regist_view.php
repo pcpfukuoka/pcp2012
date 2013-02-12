@@ -31,15 +31,17 @@ $user_seq = $_SESSION['login_info[user]'];
 				<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 			<div align="center">
-				<font class="Cubicfont">詳細</font>
+				<font class="Cubicfont"><?= $question_row['question_title'] ?></font>
 			</div>
-		<hr color="blue"><br><br>
-
-
+		<hr color="blue">
 		<form method ="post" action="answer_regist.php">
 		<input type="hidden" name="question_seq" value="<?= $question_seq ?>">
-		タイトル:<?= $question_row['question_title'] ?><br>
-		内容：<?= $question_row['question_description'] ?><br>
+		<table>
+		<tr>
+		<td>
+		<?= $question_row['question_description'] ?>
+		</td>
+		</tr>
 		<?php
 		//質問数を取得してその数ループで回答欄を作成
 		$sql = "SELECT question_details_seq, quesion_details_description,question_division.division_type  FROM question_details  LEFT JOIN question_division ON question_details.quesion_division = question_division.division_seq WHERE question_seq = $question_seq";
@@ -54,29 +56,37 @@ $user_seq = $_SESSION['login_info[user]'];
 			$sql = "SELECT * FROM question_awnser_list WHERE question_details_seq = $details_seq";
 			$awnser_resutl = mysql_query($sql);
 			$awnser_cnt = mysql_num_rows($awnser_resutl);?>
-			回答内容:<?= $details_row['quesion_details_description'] ?>
-<?php
+			<tr>
+			<td>			<?= $details_row['quesion_details_description'] ?>
+			</td>
+			</tr>
+			<tr>
+			<?php
 			for($j=0; $j < $awnser_cnt;$j++)
 			{
 				$awnser_row = mysql_fetch_array($awnser_resutl);
 				?>
+				<td>
 				<input type="<?= $details_row['division_type']?>" name="question_<?= $i + 1 ?>[]" value="<?= $awnser_row['question_awnser_list_seq'] ?>"><?= $awnser_row['awnser_name'] ?>
+				</td>
 				<?php
 			}?>
-			その他：<input type="checkbox" class="etc_input" id="etc_input_<?= $i + 1 ?>" data-id="<?= $i + 1 ?>">
-				  <input type="text" name="etc_<?= $i + 1 ?>" disabled="true">
-			<input type="hidden" name="details_seq[]" value="<?= $details_row['question_details_seq']?>">
-			<br>
+			</tr>
 	<?php
 		}
 		?>
+		<tr>
+		<td>
 		<input class="button4"type="submit" value ="回答を送信">
+		</td>
+		</tr>
+		</table>
 		</form>
 		</div>
 
 	</body>
 
-			<script>
+		<script>
 		$(function() {
 			//検索結果から権限を追加するための処理
 			$(document).on('click', '.etc_input', function() {
@@ -97,7 +107,7 @@ $user_seq = $_SESSION['login_info[user]'];
 				}
 			});
 		});
-			</script>
+		</script>
 
 
 

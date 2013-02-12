@@ -12,7 +12,7 @@ $sql = "UPDATE question SET delete_flg = '1' WHERE question_seq = '$question_seq
 
 mysql_query($sql);
 
-header("Location: comp_dis.html");
+header("Location: comp_dis_del.html");
 
 
 

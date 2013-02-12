@@ -35,6 +35,7 @@ $awnser_cnt = mysql_num_rows($awnser_result);
 		<script language="javascript" type="text/javascript" src="../javascript/jqplot.pieRenderer.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/jquery.jqplot.min.css" />
 	</head>
@@ -123,7 +124,7 @@ function test (id,label,data,description) {
 			<table>
 				<tr>
 					<td>
-						<table border="1">
+						<table class="table_01" border="1">
 						<tr>
 							<th>質問</th>
 							<th>回答数</th>
@@ -166,7 +167,7 @@ function test (id,label,data,description) {
 					<div id="question_pie<?= $awnser_row['question_details_seq'] ?>" style="height: 300px; width: 300px;"></div>
 					</td>
 					<td>
-						<a href="" onClick="jumpdetails('awnser_details.php?id=<?= $awnser_row['question_details_seq'] ?>')">詳細２</a>
+						<a href="" onClick="jumpdetails('awnser_details.php?id=<?= $awnser_row['question_details_seq'] ?>')">回答ユーザ一覧</a>
 					</td>
 					
 				</tr>

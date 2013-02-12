@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+textarea {
+	border:1px solid #ccc;
+}
+
+#animated {
+	vertical-align: top;
+	-webkit-transition: height 0.2s;
+	-moz-transition: height 0.2s;
+	transition: height 0.2s;
+}

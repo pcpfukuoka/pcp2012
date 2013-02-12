@@ -51,7 +51,6 @@ setcookie("flg",$access,$time,"/");
 setcookie("user_seq",$user_seq,$time,"/");
 setcookie("subject_seq",$subject_seq,$time,"/");
 setcookie("time_table",$time_table,$time,"/");
-
 ?>
 <html>
 <head>
@@ -63,51 +62,6 @@ setcookie("time_table",$time_table,$time,"/");
 	<link rel="stylesheet" type="text/css" href="../css/button.css" />
 	<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 </head>
-<body>
-		<img class="bg" src="../images/blue-big.jpg" alt="" />
-		<div id="container">
-		<div align="center">
-			<font class="Cubicfont">授業参加</font>
-		</div>
-			<hr color="blue"></hr>
-			<br><br><br>
-
-	<?php
-	//自分が参加できる授業が行われている場合
-	if($cnt > 0)
-	{?>
-
-	<form action="http://49.212.201.99:3000" target="_blank" method="post"enctype="multipart/form-data">
-
-		<input class="button3" type="button" value="参加" id="page_select"data-id="<?= $class_seq ?>">
-	</form>
-	<?php
-	}
-	//授業が何も行われていなかった場合
-	else
-	{?>
-		<span class="Cubicfont1">現在行われている授業はありません。<br>
-		もう一度授業を確認するか、過去の授業をご確認下さい。<br></span>
-		<table>
-			<tr>
-			<td>
-				<form action="join_lesson.php" method="post">
-				<input class="button3"  type="submit" value="再度確認">
-			</form>
-			</td>
-			<td>
-				<form action="old_lesson.php" method="post">
-				<input class="button3" type="submit" value="過去授業へ">
-			</form>
-			</td>
-			</tr>
-		</table>
-
-<?php
-	}
-	?>
-	</div>
-</body>
 <script>
 function setCookie(name, value, domain, path, expires, secure) {
 	if (!name) return;
@@ -137,17 +91,48 @@ function setCookie(name, value, domain, path, expires, secure) {
 </script>
 
 <script>
-$(function() {
+function test(page) {
 
-	$(document).on('click', '#page_select', function() {
 
 		//page=入室する場所の番号
-		var page= $(this).data('id');
 		// クッキーの発行（書き込み）
 		setCookie("room",page, "", "/", 1);
 		window.open("http://49.212.201.99:3000");
 
-    });
-});
+    }
 </script>
+<?php 
+	//授業があれば黒板ページヘ
+	if($cnt > 0)
+	{
+		print "<script language=javascript>test($class_seq);</script>";
+	}
+	?>
+
+<body>
+		<div id="container">
+		<div align="center">
+			<font class="Cubicfont">授業参加</font>
+		</div>
+			<hr color="blue"></hr>
+			<br><br><br>
+		<span class="Cubicfont1">現在行われている授業はありません。<br>
+		もう一度授業を確認するか、過去の授業をご確認下さい。<br></span>
+		<table>
+			<tr>
+			<td>
+				<form action="join_lesson.php" method="post">
+				<input class="button3"  type="submit" value="再度確認">
+			</form>
+			</td>
+			<td>
+				<form action="old_lesson.php" method="post">
+				<input class="button3" type="submit" value="過去授業へ">
+			</form>
+			</td>
+			</tr>
+		</table>
+	</div>
+</body>
+
 </html>
