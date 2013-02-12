@@ -25,7 +25,7 @@ for($i = 0;$i < $count;$i++){
 	}else{
 		$aaa = substr($row['div_url'],18);
 	}
-	$div = "url(../../balckboard/public/".$aaa;
+	$div = $aaa;
 	$canvas = $row['canvas_url'];
 
 	//送信するデータを配列に追加
