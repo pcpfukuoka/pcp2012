@@ -27,7 +27,7 @@
 	{
 		//ログイン失敗
 		$_SESSION['login_flg'] = "false";
-		header("Location:index.php");
+		header("Location:../index.php");
 	}
 ?>
 	
