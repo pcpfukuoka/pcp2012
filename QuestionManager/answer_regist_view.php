@@ -42,6 +42,8 @@ $user_seq = $_SESSION['login_info[user]'];
 		<?= $question_row['question_description'] ?>
 		</td>
 		</tr>
+		</table>
+		<table>
 		<?php
 		//質問数を取得してその数ループで回答欄を作成
 		$sql = "SELECT question_details_seq, quesion_details_description,question_division.division_type  FROM question_details  LEFT JOIN question_division ON question_details.quesion_division = question_division.division_seq WHERE question_seq = $question_seq";
@@ -57,7 +59,9 @@ $user_seq = $_SESSION['login_info[user]'];
 			$awnser_resutl = mysql_query($sql);
 			$awnser_cnt = mysql_num_rows($awnser_resutl);?>
 			<tr>
-			<td>			<?= $details_row['quesion_details_description'] ?>
+			<td>
+				<?= $details_row['quesion_details_description'] ?>
+			<input type="hidden" name="details_seq[]" value="<?= $details_row['question_details_seq']?>">
 			</td>
 			</tr>
 			<tr>
@@ -67,10 +71,11 @@ $user_seq = $_SESSION['login_info[user]'];
 				$awnser_row = mysql_fetch_array($awnser_resutl);
 				?>
 				<td>
-				<input type="<?= $details_row['division_type']?>" name="question_<?= $i + 1 ?>[]" value="<?= $awnser_row['question_awnser_list_seq'] ?>"><?= $awnser_row['awnser_name'] ?>
+					<input type="<?= $details_row['division_type']?>" name="question_<?= $i + 1 ?>[]" value="<?= $awnser_row['question_awnser_list_seq'] ?>"><?= $awnser_row['awnser_name'] ?>
 				</td>
 				<?php
 			}?>
+			
 			</tr>
 	<?php
 		}

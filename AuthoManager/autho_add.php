@@ -14,7 +14,7 @@
   <body onLoad="document.form1.group_name.focus()">
   		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
-  <form name="form1" action="autho_add_con.php" method="POST">
+  <form name="form1" action="autho_add_con.php" method="POST" onsubmit="return check('<?= $id ?>', '<?= $cmd ?>', '<?= $min ?>', '<?= $max ?>', '<?= $span ?>')">
    <?php
    require_once("../lib/dbconect.php");
    $link = DbConnect();
@@ -24,6 +24,12 @@
     $count = mysql_num_rows($result);
 
     Dbdissconnect($link);
+
+    $id = "group_name";
+    $cmd = "ic";
+    $min = "0";
+    $max = "0";
+    $span = "autho_check";
 
    ?>
 <script>
@@ -37,7 +43,9 @@
 			 *for文でテーブルの作成
 			 *********************************************************/
 			?>
-   名前<input size ="15" type="text" id="group_name" name="group_name" Onblur="check('#group_name', 'ic', 0, 0)">
+
+			<span class="check_result" name="autho_check" id="autho_check" ></span>
+   名前<input size ="15" type="text" id="group_name" name="group_name">
 
 
    <!-- グループ名入力 -->
