@@ -30,7 +30,6 @@
 		<title> 送信</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<meta http-equiv="Content-Style-Type" content="text/css">
-		<link rel="stylesheet" type="text/css" href="../../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/table.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/table_search.css" />
