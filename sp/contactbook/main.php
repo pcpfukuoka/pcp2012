@@ -65,7 +65,7 @@
 						//フラグの情報をデータベースから取得し、その件数を数える　（連絡帳の未送信）
 						$sql = "SELECT send_flg FROM contact_book
 								WHERE send_flg = 1
-								AND contact_book.reception_user_seq = $user_seq;";
+								AND contact_book.send_user_seq = $user_seq;";
 						$result = mysql_query($sql);
 						$cnt_send = mysql_num_rows($result);
 
