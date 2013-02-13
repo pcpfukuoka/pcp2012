@@ -59,13 +59,12 @@
 					<hr color="blue">
 
 					<!-- テーブルの作成 -->
-					<div align="center">
+					<div align="left">
 						<table class="table_01">
-
 							<tr>
-								<td align="center" width="150"><font size="5">日付</font></td>
-								<td align="center" width="200"><font size="5">TO</font></td>
-								<td align="center" width="400"><font size="5">件名</font></td>
+								<th align="center" width="150"><font size="5">日付</font></th>
+								<th align="center" width="200"><font size="5">TO</font></th>
+								<th align="center" width="400"><font size="5">件名</font></th>
 							</tr>
 
 							<?php
