@@ -96,7 +96,7 @@
 						<font size="5">件名：</font>
 						<?= $row['title'] ?><br><br>
 					    <font size="5">本文</font><br>
-					    <textarea readonly="readonly" id='animated' rows="2" cols="50" name="contents"><?= $row['contents']?></textarea><br><br><br>
+					    <textarea readonly="readonly" id='animated' rows="2" cols="50" name="contents"><?= $row['contents']?></textarea><br><br>
 
 					    <input type="hidden" value="<?= $row['send_user_name'] ?>" name="sendto">
 					    <input type="hidden" value="<?= $row['send_user_seq'] ?>" name="send_seq">
