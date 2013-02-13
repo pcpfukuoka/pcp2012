@@ -23,7 +23,7 @@ for($i = 0;$i < $count;$i++){
 	if(substr($row['div_url'],4,4)=="http"){
 		$aaa = substr($row['div_url'],30);
 	}else{
-		$aaa = substr($row['div_url'],18);
+		$aaa = substr($row['div_url'],7);
 	}
 	$div = "url(../../balckboard/public/".$aaa;
 	$canvas = $row['canvas_url'];
