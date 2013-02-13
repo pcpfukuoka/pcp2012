@@ -98,6 +98,7 @@
 					<a href="../index.php" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">トップへ</a>
 				</div>
 			</div>
+		</div>
 	</body>
 
 </html>
