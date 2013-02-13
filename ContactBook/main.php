@@ -59,21 +59,21 @@
 				/*   print_send_flg（プリント未送信時 １：未送信 ０：送信済み）   */
 				/******************************************************************/
 
-				//フラグの情報をデータベースから取得し、その件数を数える　（連絡帳の新着受信）
+				//フラグの情報をデータベースから取得し、その件数を数える （連絡帳の新着受信）
 				$sql = "SELECT new_flg FROM contact_book
 						WHERE new_flg = 1
 						AND contact_book.reception_user_seq = $user_seq;";
 				$result = mysql_query($sql);
 				$cnt_new = mysql_num_rows($result);
 
-				//フラグの情報をデータベースから取得し、その件数を数える　（連絡帳の未送信）
+				//フラグの情報をデータベースから取得し、その件数を数える （連絡帳の未送信）
 				$sql = "SELECT send_flg FROM contact_book
 						WHERE send_flg = 1
 						AND contact_book.send_user_seq = $user_seq;";
 				$result = mysql_query($sql);
 				$cnt_send = mysql_num_rows($result);
 
-				//フラグの情報をデータベースから取得し、その件数を数える　（プリント配信の新着受信）
+				//フラグの情報をデータベースから取得し、その件数を数える （プリント配信の新着受信）
 				$sql = "SELECT * FROM  print_check
 						WHERE user_seq = '$user_seq'
 						AND print_check_flg = 1;";
