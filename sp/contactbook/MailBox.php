@@ -60,6 +60,7 @@
 		<div align="center">
 			<table class="table_01">
 				<tr >
+				<td></td>
 				<td>日付</td>
 				<td>FROM</td>
 				<td>件名</td>
