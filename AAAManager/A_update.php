@@ -1,5 +1,5 @@
 <?php
-
+	session_start();
 	$i = 0;
 
 	//データベースの呼出
