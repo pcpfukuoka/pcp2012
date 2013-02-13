@@ -87,8 +87,7 @@
     	//データベースを閉じる
     	Dbdissconnect($dbcon);
 
-        print "<script language=javascript>leftreload();</script>";
-    	print "<script language=javascript>jump('comp_dis.php','right');</script>";
+    	Header("Location: comp_dis.php");
     }
     ////////////////////////////////////////////
     //一時保存（CreateNew.php と ReplyBox.php）/
@@ -146,8 +145,6 @@
     	//データベースを閉じる
     	Dbdissconnect($dbcon);
 
-		//print "<script language=javascript>leftreload();</script>";
-    	//print "<script language=javascript>jump('Preservation.html','right');</script>";
     	Header("Location: Preservation.html");
     }
     ///////////////////////////
@@ -196,8 +193,7 @@
     	//データベースを閉じる
     	Dbdissconnect($dbcon);
 
-    	print "<script language=javascript>leftreload();</script>";
-    	print "<script language=javascript>jump('comp_dis.php','right');</script>";
+    	Header("Location: comp_dis.php");
     }
     /////////////////////////////
     //保存からの保存（Send.php）/
@@ -220,7 +216,6 @@
     	//データベースを閉じる
     	Dbdissconnect($dbcon);
 
-    	print "<script language=javascript>leftreload();</script>";
-    	print "<script language=javascript>jump('Preservation.html','right');</script>";
+    	Header("Location: Preservation.html");
     }
 ?>
