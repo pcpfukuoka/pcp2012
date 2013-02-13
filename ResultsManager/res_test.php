@@ -68,7 +68,7 @@ if($_GET['sub'] != -1)
 Dbdissconnect($link);
 
 $id = "day,contents";
-$cmd = "ic/ic,nc";
+$cmd = "ic,nc/ic";
 $min = "0,0";
 $max = "0,0";
 $span = "day_check,contents_check";
@@ -419,14 +419,5 @@ $span = "day_check,contents_check";
 
 	</body>
 
-	<script>
-		//strはid
-		function check(str)
-		{
-			var a =  $(str).val();
-			var ret = inputCheck(a);
 
-
-		}
-	</script>
 </html>
