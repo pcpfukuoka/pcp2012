@@ -50,11 +50,11 @@
 			<div data-role="content">
 				<form action="relay.php" method="POST" id="input">
 					<div align="center">
-					<font class="Cubicfont">新規作成</font><br>
+					<font class="Cubicfont">新規作成</font><br><br>
 					</div>
 
 					<hr color="blue">
-					<br><br>
+					<br><br><br>
 
 					<font size="5">宛先</font>
 					<div data-role="controlgroup">

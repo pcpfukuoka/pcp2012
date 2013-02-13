@@ -67,11 +67,11 @@
 
 				<div data-role="content" align="left">
 					<div align="center">
-					    <font class="Cubicfont">確認画面</font><br>
+					    <font class="Cubicfont">確認画面</font><br><br>
 					</div>
 
 					<hr color="blue">
-					<br><br>
+					<br><br><br>
 
 					<form action="ReplyBox.php" method="POST">
 						<?php

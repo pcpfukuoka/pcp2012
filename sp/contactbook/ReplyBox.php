@@ -41,11 +41,11 @@
 				<div data-role="content" align="left">
 					<form action="relay.php" method="POST" id="input">
 					  <div align="center">
-					    <font class="Cubicfont">返信</font><br>
+					    <font class="Cubicfont">返信</font><br><br>
 					  </div>
 
 					  <hr color="blue">
-					  <br><br>
+					  <br><br><br>
 
 					  <font size="5">T o ： </font>
 					  <?= "$send_name"?><br>

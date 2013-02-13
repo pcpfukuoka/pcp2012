@@ -58,7 +58,7 @@
 					</div>
 
 					<hr color="blue">
-					<br><br>
+					<br><br><br>
 
 					<form action="ReplyBox.php" method="POST">
 						<font size="5">T o ：</font>

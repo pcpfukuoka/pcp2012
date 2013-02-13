@@ -51,11 +51,11 @@
 				</div>
 				<div data-role="content">
 					<div align="center">
-						<font class="Cubicfont">受信ボックス</font>
-						<br>
+						<font class="Cubicfont">受信ボックス</font><br><br>
 					</div>
-					<br>
+
 					<hr color="blue">
+					<br><br><br>
 
 					<!-- 連絡帳の受信一覧テーブル作成 -->
 					<p align="left">

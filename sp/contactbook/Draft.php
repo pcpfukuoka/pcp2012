@@ -53,11 +53,11 @@
 			<div data-role="content">
 				<div id="container">
 					<div align="center">
-						<font class="Cubicfont">下書き</font>
-						<br>
+						<font class="Cubicfont">下書き</font><br><br>
 					</div>
-					<br>
+
 					<hr color="blue">
+					<br><br><br>
 
 					<!-- テーブルの作成 -->
 					<div align="center">
