@@ -82,18 +82,15 @@
 					?>
 			
 					<!-- それぞれのリンク先に移動 -->
-					<form action="relay.php" method="POST">
-						<input type="submit" name="CreateNew" value="新規作成">
+						<a href="CreateNew.php" data-role="button">新規作成</a>
 						<br><br>
-						<input type="submit" name="MAilBox" value="受信箱（<?= $cnt_new + $cnt_print_flg ?>）">
+						<a href="MailBox.php" data-role="button">受信箱（<?= $cnt_new + $cnt_print_flg ?>）</a>
 						<br><br>
-						<input type="submit" name="OutBox" value="送信箱 ">
+						<a href="OutBox.php" data-role="button">送信箱</a>
 						<br><br>
-						<input type="submit" name="Draft" value="下書き （<?= $cnt_send?>）">
-					</form>
-				</div>
+						<a href="Draft.php" data-role="button">下書き （<?= $cnt_send?>）</a>
+						</div>
 			</div>
-
 			<div data-role="footer" data-position="fixed">
 	    		<a href="../index.php" data-role="button" data-icon="back"  class="ui-btn-left">戻る</a>
 				<p>PCP2012</p>
@@ -101,4 +98,5 @@
 			</div>
 		</div>
 	</body>
+	
 </html>

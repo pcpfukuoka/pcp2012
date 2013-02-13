@@ -68,7 +68,7 @@ if($_GET['sub'] != -1)
 Dbdissconnect($link);
 
 $id = "day,contents";
-$cmd = "ic/ic,nc";
+$cmd = "ic,nc/ic";
 $min = "0,0";
 $max = "0,0";
 $span = "day_check,contents_check";
@@ -171,7 +171,7 @@ $span = "day_check,contents_check";
 					else
 					{
 					?>
-						<td bgcolor = "blue"><input type = "text" name = "day" id="day" value = "<?= date("Ymd") ?>" disabled></td>
+						<td bgcolor = "blue"><input type = "text" value = "<?= date("Ymd") ?>" disabled></td>
 					<?php
 					}
 					?>
@@ -188,7 +188,7 @@ $span = "day_check,contents_check";
 					else
 					{
 					?>
-						<td bgcolor = "blue"><textarea disabled rows="2" cols="30" name = "contents" id="contents"></textarea></td>
+						<td bgcolor = "blue"><textarea disabled rows="2" cols="30"></textarea></td>
 					<?php
 					}
 					?>
@@ -217,7 +217,7 @@ $span = "day_check,contents_check";
 					else
 					{
 					?>
-						<td bgcolor = "blue"><select disabled name = "teacher">
+						<td bgcolor = "blue"><select disabled>
 							<option value = "-1" selected>選択</option>
 							<?php
 							for ($i = 0; $i < $count_teach; $i++)
@@ -256,7 +256,7 @@ $span = "day_check,contents_check";
 					else
 					{
 					?>
-						<td bgcolor = "blue"><select disabled name = "group">
+						<td bgcolor = "blue"><select disabled>
 						<option value = "-1" selected>選択</option>
 						<?php
 						for ($i = 0; $i < $count_group; $i++)
@@ -286,7 +286,7 @@ $span = "day_check,contents_check";
 					else
 					{
 					?>
-						<td align = "center"><input type = "checkbox" name = "stand_flg" value = "1" disabled></td>
+						<td align = "center"><input type = "checkbox" value = "1" disabled></td>
 					<?php
 					}
 					?>
@@ -296,13 +296,7 @@ $span = "day_check,contents_check";
 					if (isset($_GET['sub_check']))
 					{
 					?>
-						<td align = "center" ><input type = "submit" value = "登録"></td>
-					<?php
-					}
-					else
-					{
-					?>
-						<td align = "center" ><input type = "submit" value = "登録" disabled></td>
+						<td align = "center" ><input class="button4" type = "submit" value = "登録"></td>
 					<?php
 					}
 					?>
@@ -425,14 +419,5 @@ $span = "day_check,contents_check";
 
 	</body>
 
-	<script>
-		//strはid
-		function check(str)
-		{
-			var a =  $(str).val();
-			var ret = inputCheck(a);
 
-
-		}
-	</script>
 </html>
