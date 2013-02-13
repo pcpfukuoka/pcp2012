@@ -69,8 +69,8 @@ Dbdissconnect($link);
 
 $id = "day,contents";
 $cmd = "ic,nc/ic";
-$min = "0,0";
-$max = "0,0";
+$min = "8,0";
+$max = "8,0";
 $span = "day_check,contents_check";
 ?>
 <html>
