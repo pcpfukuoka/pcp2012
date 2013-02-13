@@ -103,7 +103,7 @@
 			<input type="hidden" name="Update_<?= $row['page_seq']?>" value="<?= $Update_data ?>">
 			<?php
 		}
-		$delivery_key = "delivery_".$row['page_seq'];
+		$delivery_key = "Delivery_".$row['page_seq'];
 		if($_POST[$delivery_key] == 1)
 		{
 			$delivery = "○";
