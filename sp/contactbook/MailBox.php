@@ -85,9 +85,9 @@
 							}
 						?>
 
-						<td><?= $row['send_date'] ?></td>
-						<td><?= $row['send_user_name'] ?></td>
-						<td>
+						<td align="center"><?= $row['send_date'] ?></td>
+							<td align="center"><?= $row['send_user_name'] ?></td>
+							<td align="center">
 							<!-- GETでcontact_book_seqを送る -->
 							<a href="view.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
 						</td>
