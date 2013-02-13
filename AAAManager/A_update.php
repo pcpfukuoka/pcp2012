@@ -15,7 +15,7 @@
 
 		//echo "連番＝" . $seq . "　チェック＝" . $date;
 
-		$sql = "UPDATE Attendance SET ";
+		$sql = "UPDATE attendance SET ";
 		 switch ($date)
 		 {
 		 	case 1:
@@ -39,7 +39,7 @@
 			    break;
 		}
 
-		$sql = $sql . " WHERE Attendance_seq='$seq'";
+		$sql = $sql . " WHERE attendance_seq='$seq'";
 		//echo "<br>" . $sql;
 		mysql_query($sql);
 
