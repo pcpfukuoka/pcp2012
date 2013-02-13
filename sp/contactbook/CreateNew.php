@@ -62,7 +62,7 @@
 							<tr>
 								<td><label for="test01">個人</label></td>
 								<td>
-									<select name="to_user"  data-native-menu="false">
+									<select name="to_user" data-native-menu="false">
 									<?php
 									for ($i = 0; $i < $kensu; $i++)
 									{
@@ -78,19 +78,26 @@
 						</table>
 					</div>
 
-					<div data-role="fieldcontain">
+					<div data-role="controlgroup">
 						<input type="radio" name="switch" value="group_seq" id=test02>
-						<select name="to_group"  data-native-menu="false">
-						<?php
-							for ($i = 0; $i < $count; $i++)
-							{
-								$row = mysql_fetch_array($group);
-						?>
-								<option value="<?=$row['group_seq']?>"><?= $row['group_name'] ?></option>
-						<?php
-							}
-						?>
-						</select>
+						<table>
+							<tr>
+								<td><label for="test01">グループ</label></td>
+								<td>
+									<select name="to_group"  data-native-menu="false">
+									<?php
+										for ($i = 0; $i < $count; $i++)
+										{
+											$row = mysql_fetch_array($group);
+									?>
+											<option value="<?=$row['group_seq']?>"><?= $row['group_name'] ?></option>
+									<?php
+										}
+									?>
+									</select>
+								</td>
+							</tr>
+						</table>
 					</div>
 
 					<br>
