@@ -148,7 +148,7 @@
 
 		//print "<script language=javascript>leftreload();</script>";
     	//print "<script language=javascript>jump('Preservation.html','right');</script>";
-    	print "<script language=javascript>jump('Preservation.html');</script>";
+    	Header("Location: Preservation.html");
     }
     ///////////////////////////
     //アップデート（Send.php）/
