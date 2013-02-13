@@ -21,17 +21,15 @@
 
 <html lang="ja">
 	<head>
-
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, intital-scale=1">
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-
-	　　<title> 新規作成</title>
-	  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	  <meta http-equiv="Content-Style-Type" content="text/css">
-	  <link rel="stylesheet" type="text/css" href="../../css/button.css" />
+		<title> 新規作成</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<link rel="stylesheet" type="text/css" href="../../css/button.css" />
 	</head>
 
 	<body>
@@ -59,7 +57,7 @@
 
 					<font size="3">宛先</font>
 					<div data-role="controlgroup" data-type=“horizontal”>
-						<input type="radio" name="switch" value="user_seq">
+						<input type="radio" name="switch" value="user_seq" id=test01>
 						<select name="to_user"  data-native-menu="false">
 						<?php
 							for ($i = 0; $i < $kensu; $i++)
@@ -72,8 +70,9 @@
 						?>
 						</select>
 					</div>
+
 					<div data-role="fieldcontain">
-						<input type="radio" name="switch" value="group_seq">
+						<input type="radio" name="switch" value="group_seq" id=test02>
 						<select name="to_group"  data-native-menu="false">
 						<?php
 							for ($i = 0; $i < $count; $i++)
