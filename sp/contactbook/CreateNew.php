@@ -56,7 +56,9 @@
 					<hr color="blue">
 					<br><br><br>
 
-					<font size="5">宛先</font>
+					<div align="center">
+						<font size="5">宛先</font>
+					</div>
 					<div data-role="controlgroup" align="left">
 						<input type="radio" name="switch" value="user_seq" id=test01>
 						<table>
