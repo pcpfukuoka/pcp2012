@@ -47,7 +47,7 @@
 				</div>
 			</div>
 
-			<div data-role="content">
+			<div data-role="content" align="center">
 				<form action="relay.php" method="POST" id="input">
 					<div align="center">
 					<font class="Cubicfont">新規作成</font><br><br>
