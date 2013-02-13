@@ -30,12 +30,13 @@
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../../css/text_display.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/table.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/table_search.css" />
 		<title>下書き</title>
 	</head>
 
 	<body>
-	<div align="center">
+		<div align="center">
 			<div data-role="header" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
@@ -51,7 +52,7 @@
 			<div data-role="content">
 				<div id="container">
 					<div align="center">
-						<font size="7">下書き</font>
+						<font class="Cubicfont">下書き</font>
 						<br>
 					</div>
 					<br>
@@ -59,26 +60,44 @@
 
 					<!-- テーブルの作成 -->
 					<div align="center">
-						<table border="1">
-							<tr bgcolor="yellow">
-							<td align="center" width="150"><font size="5">日付</font></td>
-							<td align="center" width="200"><font size="5">TO</font></td>
-							<td align="center" width="400"><font size="5">件名</font></td>
+						<table class="table_01">
+
+							<tr>
+								<td align="center" width="150"><font size="5">日付</font></td>
+								<td align="center" width="200"><font size="5">TO</font></td>
+								<td align="center" width="400"><font size="5">件名</font></td>
+							</tr>
 
 							<?php
-							for ($i = 0; $i < $count; $i++){
-								$row = mysql_fetch_array($result);
+								for ($i = 0; $i < $count; $i++)
+								{
+									$row = mysql_fetch_array($result);
 							?>
-								<tr align="center">
-									<td><?= $row['send_date'] ?></td>
-									<td><?= $row['reception_user_name'] ?></td>
-									<td>
-										<!-- GETでcontact_book_seqを送る -->
-										<a href="Send.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
-									</td>
-								</tr>
+									<tr align="center">
+										<td align="center"><?= $row['send_date'] ?></td>
+										<?php
+											//グループ宛て
+											if($row['group_seq'] >= 0)
+											{
+										?>
+												<td align="center"><?= $row['group_name'] ?></td>
+										<?php
+											}
+											//個人宛て
+											else
+											{
+										?>
+												<td align="center"><?= $row['reception_user_name'] ?></td>
+										<?php
+											}
+										?>
+										<td align="center">
+											<!-- GETでcontact_book_seqを送る -->
+											<a href="Send.php?id=<?= $row['contact_book_seq'] ?>"><?= $row['title'] ?></a>
+										</td>
+									</tr>
 							<?php
-							}
+								}
 							?>
 						</table>
 						<hr>
@@ -91,5 +110,6 @@
 					</div>
 				</div>
 			</div>
+		</div>
 	</body>
 </html>

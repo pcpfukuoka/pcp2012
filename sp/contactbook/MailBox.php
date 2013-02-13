@@ -63,7 +63,7 @@
 					</p>
 
 					<div align="center">
-						<table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
+						<table class="table_01">
 							<tr>
 								<th align="center" width="30"></th>
 								<th align="center" width="200"><font size="5">日付</font></th>
@@ -129,7 +129,7 @@
 					</p>
 
 					<div align="center">
-						<table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
+						<table class="table_01">
 							<tr>
 								<th align="center" width="30"></th>
 								<th align="center" width="200"><font size="5">日付</font></th>
