@@ -47,7 +47,7 @@ function check( id, commando, len_min, len_max, span)
 			}
 			else if ( cmd_query[j] == "fc" )
 			{
-				check_flg = furiganaheck( str );
+				check_flg = furiganaCheck( str );
 			}
 			else if ( cmd_query[j] == "mc" )
 			{
@@ -403,7 +403,7 @@ function furiganaCheck( str )
 {
 	var ret = "true";
 
-	if ( trim( str ).match( /[^ｧ-ﾝ\s.-]+/ ) )
+	if ( trim( str ).match( /[^ｧ-ﾝﾞﾟ\s.-]+/ ) )
 	{
 		ret = "フリガナは半角「カタカナ」 のみで入力して下さい。";
 		return ret;
