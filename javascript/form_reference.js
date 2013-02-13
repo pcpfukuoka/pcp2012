@@ -39,7 +39,7 @@ function check( id, commando, len_min, len_max, span)
 			}
 			else if ( cmd_query[j] == "lc" )
 			{
-				check_flg = lengthCheck( str, len_min[i], len_max[i] );
+				check_flg = lengthCheck( str, min_array[i], max_array[i] );
 			}
 			else if ( cmd_query[j] == "ac" )
 			{
@@ -53,11 +53,10 @@ function check( id, commando, len_min, len_max, span)
 			{
 				//check_flg = mailCheck( str );
 			}
-			else if ( cmd_query[j] == "tc" )
+			else if ( cmd_query[j] == "pc" )
 			{
-				//check_flg = tabooCheck( str );
+				check_flg = passwordCheck( str );				
 			}
-
 			//	スパンメッセージ格納
 			if ( check_flg != "true" )
 			{
@@ -84,186 +83,6 @@ function check( id, commando, len_min, len_max, span)
 
 }
 
-//	ユーザー登録用チェック(onBlur)
-function ubCheck( id, commando, len_min, len_max, span)
-{
-	//	cmd_array	命令(チェック)
-	//	spanID		text_id
-	//	i			ループカウンタ
-	//	j			ループカウンタ
-	//	k			ループカウンタ
-	//	str			テキストボックスのvalue（文字列）
-	//	error		エラー内容用配列
-	//	error_flg	エラーフラグ(エラーがあればtrue)
-	//	message		エラー内容をまとめた警告文
-	var cmd_array = commando.split( "," );
-	var name_array = span.split( "." );
-	var spanID = "#" + name_array[1] + "";
-	var i = 0;
-	var j = 0;
-	var k = 0;
-	var str = $(id).val();
-	var error = new Array();
-	var error_flg = false;
-	var message = "";
-
-	//	命令用配列の中身がある限りループ
-	while ( cmd_array[i] )
-	{
-		//	命令実行
-		//	命令一覧			ic	未入力チェック
-		//					nc	入力値チェック(半角数字)
-		//					lc	文字数チェック(len_min, len_max)
-		//					ac	入力値チェック(半角英字)
-		//					fc	フリガナチェック
-		//					mc	メールチェック
-		//					tc	禁止文字チェック
-		//					pc	パスワードチェック
-
-		if ( cmd_array[i] == "ic" )
-		{
-			error[i] = inputCheck( str );
-		}
-		else if ( cmd_array[i] == "nc" )
-		{
-			error[i] = numberCheck( str );
-		}
-		else if ( cmd_array[i] == "lc" )
-		{
-			error[i] = lengthCheck( str, len_min, len_max );
-		}
-		else if ( cmd_array[i] == "ac" )
-		{
-			error[i] = alphabetCheck( str );
-		}
-		else if ( cmd_array[i] == "fc" )
-		{
-			error[i] = furiganaCheck( str );
-		}
-		else if ( cmd_array[i] == "mc" )
-		{
-			error[i] = mailCheck( str );
-		}
-		else if ( cmd_array[i] == "tc" )
-		{
-			//error[i] = tabooCheck( str );
-		}
-		else if ( cmd_array[i] == "pc" )
-		{
-			error[i] = passwordCheck( str );
-		}
-
-		//	カウンタアップ
-		i++;
-	}
-
-	//	エラー確認
-	for ( j; j < error.length; j++ )
-	{
-		if ( error[j] != "true")
-		{
-			error_flg = true;
-			break;
-		}
-	}
-	//	エラーがあればエラー文を作成し、スパンに表示
-	if ( error_flg == true )
-	{
-		message += "※";
-		for ( k; k < error.length;k++ )
-		{
-			if ( error[k] != "true")
-			{
-				message += error[k] + "\n";
-			}
-		}
-
-		$(spanID).text(message);
-	}
-	//	スパンをクリア
-	else
-	{
-		$(spanID).text(message);
-	}
-}
-
-
-//ユーザー登録用チェック(onClick)
-function ucCheck( id, commando, len_min, len_max  )
-{
-	//	cmd_array	命令(チェック)用配列
-	var id_array =	id.split( "," );
-	var cmd_array = commando.split( "/" );
-	var l_min_array = len_min.split( "," );
-	var l_max_array = len_max.split( "," );
-	var i = 0;
-	var j = 0;
-
-
-	//	命令実行
-	//	命令一覧		ic	未入力チェック
-	//					nc	入力値チェック(半角数字)
-	//					lc	文字数チェック(len_min, len_max)
-	//					ac	入力値チェック(半角英字)
-	//					fc	フリガナチェック
-	//					mc	メールチェック
-	//					tc	禁止文字チェック
-	//					pc	パスワードチェック
-	//	対象のテキストBOXを上から見ていく
-	for ( i; i < id_array.length; i++ )
-	{
-		var check_flg = "";
-		str = $("#" + id_array[i] + "").val();
-
-		cmd_query = cmd_array[i].split( "," );
-
-		//	命令用配列の中身がある限りループ
-		while ( cmd_query[j] )
-		{
-
-			if ( cmd_query[j] == "ic" )
-			{
-			 	check_flg = inputCheck( str );
-			}
-			else if ( cmd_query[j] == "nc" )
-			{
-				check_flg = numberCheck( str );
-			}
-			else if ( cmd_query[j] == "lc" )
-			{
-				check_flg = lengthCheck( str, len_min[i], len_max[i] );
-			}
-			else if ( cmd_query[j] == "ac" )
-			{
-				check_flg = alphabetCheck( str );
-			}
-			else if ( cmd_query[j] == "fc" )
-			{
-				check_flg = furiganaheck( str );
-			}
-			else if ( cmd_query[j] == "mc" )
-			{
-				//check_flg = mailCheck( str );
-			}
-			else if ( cmd_query[j] == "tc" )
-			{
-				//check_flg = tabooCheck( str );
-			}
-
-			if(check_flg != "true")
-			{
-				return false;
-			}
-			//	カウンタアップ
-			j++;
-		}
-	}
-
-	return true;
-
-}
-
-
 function scoreCheck( id, span )
 {
 	var id_array = id.split( "," );
@@ -276,11 +95,11 @@ function scoreCheck( id, span )
 
 	for ( i; i < id_array.length; i++ )
 	{
-		str = $("#" + id_array[i] + "").val;
-		check_1 = inputCheck( str );
+		str = $("#" + id_array[i] + "").val();
+		check_1 = inputcheck( str );
 		check_2 = pointCheck( str );
 
-		if ( ( check_1 != "true") || ( check_2 != "true" ) )
+		if ( (check_1 != "true") || (check_2 != "true") )
 		{
 			$("#" + spn_array[i] + "").text("※");
 			error_flg = true;
@@ -325,6 +144,19 @@ function inputCheck( str )
 	return ret;
 }
 
+//ダミー
+function inputcheck( str )
+{
+	var ret = "true";
+	//	トリミングした文字列の長さが0（未入力）ならばエラーを返す。
+	if ( str.length == 0 )
+	{
+		ret = "文字を入力して下さい。";
+		return ret;
+	}
+	return ret;
+}
+
 //入力値チェック(半角数字)	nc
 function numberCheck( str )
 {
@@ -345,26 +177,9 @@ function numberCheck( str )
 function lengthCheck( str, len_min, len_max )
 {
 	var ret = "true";
-	//	下限無しの場合
-	if( len_min == 0 )
-	{
-		if( trim( str ).length >= len_max )
-		{
-			ret = len_max + "文字以下で入力して下さい。";
-			return ret;
-		}
-	}
-	//	上限無しの場合
-	else if ( len_max == 0 )
-	{
-		if( len_min >= trim( str ).length )
-		{
-			ret = len_min + "文字以上で入力して下さい。";
-			return ret;
-		}
-	}
+	
 	//	文字数が指定された場合
-	else if ( len_min == len_max  )
+	if ( ( len_min == len_max ) && ( len_min != "0" ) )
 	{
 		if ( len_min != trim( str ).length )
 		{
@@ -372,10 +187,28 @@ function lengthCheck( str, len_min, len_max )
 			return ret;
 		}
 	}
+	//	下限無しの場合
+	else if ( ( len_min == "0" ) && ( len_max != "0" ) )
+	{
+		if( trim( str ).length > len_max )
+		{
+			ret = len_max + "文字以下で入力して下さい。";
+			return ret;
+		}
+	}
+	//	上限無しの場合
+	else if ( ( len_max == "0" ) && ( len_min != "0" ) )
+	{
+		if( len_min > trim( str ).length )
+		{
+			ret = len_min + "文字以上で入力して下さい。";
+			return ret;
+		}
+	}	
 	//	上限下限有りの場合
 	else
 	{
-		if( ( len_min >= trim( str ).length ) || ( trim( str ).length >= len_max ) )
+		if( ( len_min > trim( str ).length ) || ( trim( str ).length > len_max ) )
 		{
 			ret = len_min + "文字以上" + len_max + "文字以下で入力して下さい。";
 			return ret;
@@ -466,7 +299,7 @@ function pointCheck( str )
 {
 	var ret = "true";
 
-	if ( ( trim( str ) >= "0" ) && ( trim( str ) <= "100" ) )
+	if ( ( str < 0 ) || ( str > 100 ) )
 	{
 		ret = "0~100で入力して下さい。";
 		return ret;

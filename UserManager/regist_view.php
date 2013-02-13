@@ -1,3 +1,10 @@
+<?php 
+$id = "user_id,pass,user_name,user_kana,user_address,user_tel,user_email";
+$cmd = "ic,pc/ic,pc/ic/ic,fc/ic/ic,nc,lc/ic,mc";
+$min = "0,0,0,0,0,10,0";
+$max = "0,0,0,0,0,11,0";
+$span = "user_id_check,pass_check,user_name_check,user_kana_check,user_address_check,user_tel_check,user_email_check";
+?>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,43 +30,43 @@
 		$cnt = mysql_num_rows($result);
 		?>
 
-		<form method ="post" name="frm1" action="regist.php" onsubmit="return user_check()">
+		<form method ="post" action="regist.php" onsubmit="return check('<?= $id ?>', '<?= $cmd ?>', '<?= $min ?>', '<?= $max ?>', '<?= $span ?>')">
 		<table>
 
 			<tr>
 				<td align="center">ユーザID:</td>
-				<td align="center"><span class="check_result" name="user_id_check" id="user_id_check" ></span><input type="text" name="user_id" id="user_id" Onblur="ubCheck('#user_id', 'ic,ac,tc', 0, 0, 'frm1.user_id_check')"></td>
+				<td align="center"><span class="check_result" name="user_id_check" id="user_id_check" ></span><input type="text" name="user_id" id="user_id"></td>
 				<td></td>
 			</tr>
 
 			<tr>
 				<td align="center">パスワード：</td>
-				<td align="center"><span class="check_result" name="pass_check" id="pass_check" ></span><input type="text" name="pass" id="pass" Onblur="ubCheck('#pass', 'ic,ac,tc', 0, 0, 'frm1.pass_check')"></td>
+				<td align="center"><span class="check_result" name="pass_check" id="pass_check" ></span><input type="text" name="pass" id="pass"></td>
 			</tr>
 
 			<tr>
 				<td align="center">ユーザ名：</td>
-				<td align="center"><span class="check_result" name="user_name_check" id="user_name_check" ></span><input type="text" name="user_name" id="user_name" Onblur="ubCheck('#user_name', 'ic,tc', 0, 0, 'frm1.user_name_check')"></td>
+				<td align="center"><span class="check_result" name="user_name_check" id="user_name_check" ></span><input type="text" name="user_name" id="user_name"></td>
 			</tr>
 
 			<tr>
 				<td align="center">ﾌﾘｶﾞﾅ：</td>
-				<td align="center"><span class="check_result" name="user_kana_check" id="user_kana_check" ></span><input type="text" name="user_kana" id="user_kana" Onblur="ubCheck('#user_kana', 'ic,fc,tc', 0, 0, 'frm1.user_kana_check')"></td>
+				<td align="center"><span class="check_result" name="user_kana_check" id="user_kana_check" ></span><input type="text" name="user_kana" id="user_kana"></td>
 			</tr>
 
 			<tr>
 				<td align="center">住所：</td>
-				<td align="center"><span class="check_result" name="user_address_check" id="user_address_check" ></span><input type="text" name="user_address" id="user_address" Onblur="ubCheck('#user_address', 'ic,tc', 0, 0, 'frm1.user_address_check')"></td>
+				<td align="center"><span class="check_result" name="user_address_check" id="user_address_check" ></span><input type="text" name="user_address" id="user_address"></td>
 			</tr>
 
 			<tr>
 				<td align="center">電話番号</td>
-				<td align="center"><span class="check_result" name="user_tel_check" id="user_tel_check" ></span><input type="text" name="user_tel" id="user_tel" Onblur="ubCheck('#user_tel', 'ic,nc,lc', 10, 10, 'frm1.user_tel_check')"></td>
+				<td align="center"><span class="check_result" name="user_tel_check" id="user_tel_check" ></span><input type="text" name="user_tel" id="user_tel"></td>
 			</tr>
 
 			<tr>
 				<td align="center">メールアドレス：</td>
-				<td align="center"><span class="check_result" name="user_email_check" id="user_email_check" ></span><input type="text" name="user_email" id="user_email" Onblur="ubCheck('#user_email', 'ic,mc', 0, 0, 'frm1.user_email_check')"></td>
+				<td align="center"><span class="check_result" name="user_email_check" id="user_email_check" ></span><input type="text" name="user_email" id="user_email"></td>
 			</tr>
 
 			<tr>
@@ -86,7 +93,7 @@
 			<td>
 				<input type="checkbox"  name="student" id="student" value="0">学生
 				<span class="check_result" name="student_id_check" id="student_id_check" ></span>
-				<input type="text" name="student_id" id="student_id" disabled="true" Onblur="ubCheck('#student_id', 'ic,nc,tc,lc', 6, 6, 'frm1.student_id_check')">
+				<input type="text" name="student_id" id="student_id" disabled="true">
 			</td>
 		</tr>
 	</table>
@@ -107,6 +114,7 @@
 				if(document.getElementById("student").checked)
 				{
 						$("*[name=student_id]").attr('disabled', false);
+						
 				}
 				else
 				{
@@ -115,27 +123,6 @@
 			});
 		});
 
-
-		function user_check()
-		{
-			var check_flg = false;
-
-			//対象のinputタグのNameを配列に格納
-			var input_names = "user_id,pass,user_name,user_kana,user_address,user_tel,user_email,student_id";
-			var check_cmd = "ic,pc,tc/ic,pc,tc/ic,tc/ic,fc,tc/ic,tc/ic,nc,lc/ic,mc/ic,nc,lc";
-			var check_val_min = "0,0,0,0,0,10,0,6";
-			var check_val_max = "0,0,0,0,0,10,0,6";
-
-			check_flg = ucCheck(input_names, check_cmd, check_val_min, check_val_max);
-			if(check_flg)
-			{
-				return true; // 「OK」時は送信を実行
-			}
-			else
-			{
-				return false; // 送信を中止
-			}
-		}
 	</script>
 
 </html>
