@@ -139,9 +139,9 @@
 			    	var parsers = JSON.parse(rs);
 
 			    	if(parsers.length>0){
-			    		var e='<div id="chalkboard" style="background:'+parsers[page]['div']+';background-repeat:no-repeat; height="700" width="900">';
-						if(parsers[page]['canvas']!='0'){
-							e=e+'<img src="'+parsers[page]['canvas']+'"id="canvas" height="700" width="900"/>';
+			    		var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat; height="700" width="900">';
+						if(parsers[0]['canvas']!='0'){
+							e=e+'<img src="'+parsers[0]['canvas']+'"id="canvas" height="700" width="900"/>';
 						}
 			    		e=e+'</div>';
 			    		$('#frame').append(e);
