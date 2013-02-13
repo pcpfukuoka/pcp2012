@@ -60,10 +60,11 @@
 		<div align="center">
 			<table class="table_01">
 				<tr >
-				<td></td>
-				<td>日付</td>
-				<td>FROM</td>
-				<td>件名</td>
+
+			<th align="center" width="30"></th>
+				<th align="center" width="200"><font size="5">日付</font></th>
+				<th align="center" width="150"><font size="5">FROM</font></th>
+				<th align="center" width="230"><font size="5">件名</font></th>
 
 				<?php
 				for ($i = 0; $i < $count; $i++){
