@@ -32,6 +32,7 @@
 		<link rel="stylesheet" type="text/css" href="../../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/table.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/table_search.css" />
+		<link rel="stylesheet" href="../css/table.css" />
 		<title>下書き</title>
 	</head>
 
