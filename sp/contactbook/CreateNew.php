@@ -82,7 +82,7 @@
 						<input type="radio" name="switch" value="group_seq" id=test02>
 						<table>
 							<tr>
-								<td><label for="test01">グループ</label></td>
+								<td><label for="test02">グループ</label></td>
 								<td>
 									<select name="to_group"  data-native-menu="false">
 									<?php
