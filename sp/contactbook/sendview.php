@@ -52,9 +52,9 @@
 					</div>
 				</div>
 
-				<div data-role="left">
+				<div data-role="content" align="left">
 					<div align="center">
-					    <font class="Cubicfont">確認画面</font><br>
+					    <font class="Cubicfont">確認画面</font><br><br>
 					</div>
 
 					<hr color="blue">
@@ -62,14 +62,29 @@
 
 					<form action="ReplyBox.php" method="POST">
 						<font size="5">T o ：</font>
-						<?= $row['reception_user_name'] ?><br>
+						<?php
+							//グループのとき
+							if($row['group_seq'] >= 0)
+							{
+						?>
+								<?= $row['group_name'] ?><br>
+						<?php
+							}
+							//個人のとき
+							else
+							{
+						?>
+								<?= $row['reception_user_name'] ?><br>
+						<?php
+							}
+						?>
 						<font size="5">件名：</font>
 						<?= $row['title'] ?><br><br>
 					    <font size="5">本文</font><br>
 					    <textarea readonly="readonly" rows="40" cols="50" name="contents"><?= $row['contents']?></textarea><br>
 
 					    <input type="hidden" value="<?= $row['reception_user_name'] ?>" name="sendto">
-			    		<input type="hidden" value="<?= $row['title'] ?>" name="title">
+					    <input type="hidden" value="<?= $row['title'] ?>" name="title">
 				    </form>
 			    </div>
 
