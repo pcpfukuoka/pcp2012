@@ -47,11 +47,11 @@
 					  <hr color="blue">
 					  <br><br>
 
-					  <font size="3">T o ： </font>
+					  <font size="5">T o ： </font>
 					  <?= "$send_name"?><br>
-					  <font size="3">件名： </font>
+					  <font size="5">件名： </font>
 					  <input size="40" type="text" name="title" value="Re: <?= "$title"?>"><br><br>
-				      <font size="3">本文</font><br>
+				      <font size="5">本文</font><br>
 				      <textarea rows="40" cols="50" name="contents">＞<?= "$contents" ?></textarea><br>
 
 				      <input type="hidden" value="<?= $send_seq ?>" name="send_seq">
