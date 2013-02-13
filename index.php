@@ -19,10 +19,11 @@ if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('i
 </script>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<LINK REL="SHORTCUT ICON" HREF="images/denkokun.ico"> 
 		<link rel="STYLESHEET"  href="css/frame.css" type="text/css">
 		<script type="text/javascript "src="javascript/frame_jump.js"></script>
 		<script src="jquery-1.8.2.min.js"></script>
-		<title>メイン画面</title>
+		<title>でんこくん</title>
 	</head>
 
 		<!-- 本番は17%、83%ぐらい -->
