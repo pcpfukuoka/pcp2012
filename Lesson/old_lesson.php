@@ -141,7 +141,11 @@
 			    	if(parsers.length>0){
 			    		//画像を使用せずに授業を終了した場合
 						if(parsers[0]['canvas']=='0'){
-							var e='<img src="'+parsers[0]['div']+'"id="canvas" height="700" width="900"/>';
+							//送られてきたデータのいらない部分を削除
+							var substr_=new String(parsers[0]['div']);
+
+							var image_url=substr_.substr(4,substr_.length -5);
+							var e='<img src="'+image_url+'"id="canvas" height="700" width="900"/>';
 						}else{
 							var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat; height="700" width="900">'
 								 +'<img src="'+parsers[0]['canvas']+'"id="canvas" height="700" width="900"/>'
@@ -217,7 +221,11 @@
 
 				//画像を使用せずに授業を終了した場合
 				if(parsers[page]['canvas']=='0'){
-					var e='<img src="'+parsers[page]['div']+'"id="canvas" height="700" width="900"/>';
+					//送られてきたデータのいらない部分を削除
+					var substr_=new String(parsers[page]['div']);
+
+					var image_url=substr_.substr(4,substr_.length -5);
+					var e='<img src="'+image_url+'"id="canvas" height="700" width="900"/>';
 				}else{
 					var e='<div id="chalkboard" style="background:'+parsers[page]['div']+';background-repeat:no-repeat; height="700" width="900">'
 						 +'<img src="'+parsers[page]['canvas']+'"id="canvas" height="700" width="900"/>'
@@ -272,7 +280,11 @@
 
 				//画像を使用せずに授業を終了した場合
 				if(parsers[page]['canvas']=='0'){
-					var e='<img src="'+parsers[page]['div']+'"id="canvas" height="700" width="900"/>';
+					//送られてきたデータのいらない部分を削除
+					var substr_=new String(parsers[page]['div']);
+
+					var image_url=substr_.substr(4,substr_.length -5);
+					var e='<img src="'+image_url+'"id="canvas" height="700" width="900"/>';
 				}else{
 					var e='<div id="chalkboard" style="background:'+parsers[page]['div']+';background-repeat:no-repeat; height="700" width="900">'
 						 +'<img src="'+parsers[page]['canvas']+'"id="canvas" height="700" width="900"/>'
