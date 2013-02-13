@@ -139,8 +139,8 @@
 			    	var parsers = JSON.parse(rs);
 
 			    	if(parsers.length>0){
-			    		var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat; height="600" width="900">'
-			    		+'<img src="'+parsers[0]['canvas']+'"id="canvas" height="600" width="900"/>'
+			    		var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat; height="700" width="900">'
+			    		+'<img src="'+parsers[0]['canvas']+'"id="canvas" height="700" width="900"/>'
 			    		+'</div>'
 			    		$('#frame').append(e);
 
@@ -210,8 +210,8 @@
 				}
 
 				//画像を閲覧するためのタグを作成7
-				var e='<div id="chalkboard" style="background:'+parsers[page]['div']+';background-repeat:no-repeat; height="600" width="900">'
-	    		+'<img src="'+parsers[page]['canvas']+'"id="canvas" height="600" width="900"/>'
+				var e='<div id="chalkboard" style="background:'+parsers[page]['div']+';background-repeat:no-repeat; height="700" width="900">'
+	    		+'<img src="'+parsers[page]['canvas']+'"id="canvas" height="700" width="900"/>'
 	    		+'</div>';
 	    		var a='<div>'
 		    		+'<table>'
