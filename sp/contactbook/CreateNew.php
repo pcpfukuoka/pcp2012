@@ -56,20 +56,26 @@
 					<br><br>
 
 					<font size="3">宛先</font>
-					<div data-role="controlgroup" data-type=“horizontal”>
+					<div data-role="controlgroup">
 						<input type="radio" name="switch" value="user_seq" id=test01>
-						<label for="test01">個人</label>
-							<select name="to_user"  data-native-menu="false">
-							<?php
-								for ($i = 0; $i < $kensu; $i++)
-								{
-									$row = mysql_fetch_array($result);
-							?>
-									<option value="<?=$row['user_seq']?>"><?= $row['user_name'] ?></option>
-							<?php
-								}
-							?>
-							</select>
+						<table>
+							<tr>
+								<td><label for="test01">個人</label></td>
+								<td>
+									<select name="to_user"  data-native-menu="false">
+									<?php
+									for ($i = 0; $i < $kensu; $i++)
+									{
+										$row = mysql_fetch_array($result);
+									?>
+										<option value="<?=$row['user_seq']?>"><?= $row['user_name'] ?></option>
+									<?php
+									}
+									?>
+								</select>
+								</td>
+							</tr>
+						</table>
 					</div>
 
 					<div data-role="fieldcontain">
