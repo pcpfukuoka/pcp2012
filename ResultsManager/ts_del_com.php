@@ -53,6 +53,7 @@
 							<td align = "center"><?= $row['subject_name'] ?></td>
 							
 					</tr>
+					<input type="hidden" name="<?= $teacher_seq ?>" value="<?= $row['teacher_seq'] ?>">
 				<?php
 				}
 			}
@@ -90,7 +91,8 @@
 		<?php 
 		Dbdissconnect($link);
 		?>
-					<input class="button4" type = "submit" value = "確認">&nbsp;&nbsp;
+					<input class="button4" type = "submit" value = "削除">&nbsp;&nbsp;
+					<input class="button4" type="button" value="戻る" onClick="history.back()">
 		</form>
 		</div>
 	</body>
