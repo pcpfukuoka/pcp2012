@@ -11,6 +11,7 @@
 			FROM contact_book
 			Left JOIN m_user ON contact_book.send_user_seq = m_user.user_seq
 			WHERE contact_book.reception_user_seq = $user_seq
+			AND contact_book.send_flg = 0
 			ORDER BY send_date DESC;";
 
 	$result = mysql_query($sql);
@@ -44,7 +45,7 @@
 				</ul>
 			</div>
 		</div>
-	<div data-role="content">
+		<div data-role="content">
 		<div align="center">
 			<font size="7">受信ボックス</font>
 			<br>
@@ -157,7 +158,7 @@
 						if ($chk['print_check_flg'] == 1)
 						{
 					?>
-							<td align="center"><img src="../images/mail_icon.jpg"></td>
+							<td align="center"><img src="../../images/mail_icon.jpg"></td>
 					<?php
 						}
 						else
