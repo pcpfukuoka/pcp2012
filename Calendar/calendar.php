@@ -113,7 +113,6 @@ if($action == 'regist')
         $chk_flag = mysql_num_rows($message);
         if($chk_flag < 1)
         {
-
         	unset($message1);
         	$message1 = "insert into schedule values(0,'$date','$schedule','$comment','$c_color')";
         	mysql_query($message1);
@@ -127,14 +126,12 @@ if($action == 'regist')
 elseif($action == 'update'){
 	    if($comment)
 		{
-
-			$message = "UPDATE schedule SET shedule_title='$schedule',schedule_details='$comment',color='$c_color' WHERE schedule_date='$date'";
+			$message = "UPDATE schedule SET schedule_title='$schedule',schedule_details='$comment',color='$c_color' WHERE schedule_date='$date'";
 	        mysql_query($message);
 		}
 
 //記事削除処理
 }elseif($action == 'delete'){
-
 		$message = "delete  from schedule where schedule_date='$select_date'";
         mysql_query($message);
 }
@@ -483,7 +480,8 @@ for($i = 1; $i <= $week_of_month * 7; $i++){
         for($j=0; $j<$count; $j++){
         	$gyo = mysql_fetch_array($message);
         	$idate = $gyo['schedule_date'];
-        	$str =$gyo['shedule_title'];
+        	$str =$gyo['schedule_title'];
+        					
             $icomment = $gyo['schedule_details'];
             $ic_color = $gyo['color'];
             if($date_str2 == $idate){
@@ -581,7 +579,7 @@ if($action == 'add'){
  	for($j=0; $j<$count; $j++){
 	 	$gyo = mysql_fetch_array($message);
 	 	$idate = $gyo['schedule_date'];
-	 	$ischedule = $gyo['shedule_title'];
+	 	$ischedule = $gyo['schedule_title'];
 	  	$icomment = $gyo['schedule_details'];
 	  	$ic_color = $gyo['color'];
 		if($select_date == $idate){
