@@ -103,7 +103,7 @@
 					    <input type="hidden" value="<?= $row['title'] ?>" name="title">
 					    <input type="hidden" value="<?= $row['contents'] ?>" name="contents">
 					    <input type="hidden" value="<?= $id ?>" name="link_id">
-					    <div>
+					    <div align="center">
 					    	<input class="button4" type="submit" data-role="button" data-inline="true"  value="返信">
 					    </div>
 				    </form>
