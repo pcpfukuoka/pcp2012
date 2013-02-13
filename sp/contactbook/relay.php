@@ -88,7 +88,7 @@
     	Dbdissconnect($dbcon);
 
         print "<script language=javascript>leftreload();</script>";
-    	print "<script language=javascript>jump('comp_dis.html','right');</script>";
+    	print "<script language=javascript>jump('comp_dis.php','right');</script>";
     }
     ////////////////////////////////////////////
     //一時保存（CreateNew.php と ReplyBox.php）/
@@ -196,7 +196,7 @@
     	Dbdissconnect($dbcon);
 
     	print "<script language=javascript>leftreload();</script>";
-    	print "<script language=javascript>jump('comp_dis.html','right');</script>";
+    	print "<script language=javascript>jump('comp_dis.php','right');</script>";
     }
     /////////////////////////////
     //保存からの保存（Send.php）/
