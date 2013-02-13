@@ -146,8 +146,9 @@
     	//データベースを閉じる
     	Dbdissconnect($dbcon);
 
-		print "<script language=javascript>leftreload();</script>";
-    	print "<script language=javascript>jump('Preservation.html','right');</script>";
+		//print "<script language=javascript>leftreload();</script>";
+    	//print "<script language=javascript>jump('Preservation.html','right');</script>";
+    	print "<script language=javascript>jump('Preservation.html');</script>";
     }
     ///////////////////////////
     //アップデート（Send.php）/
