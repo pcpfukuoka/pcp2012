@@ -52,7 +52,7 @@
 					</div>
 				</div>
 
-				<div data-role="content">
+				<div data-role="content" align="left">
 					<form action="relay.php" method="POST" id="input">
 						<div align="center">
 							<font class="Cubicfont">送信</font><br>
