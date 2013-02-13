@@ -29,7 +29,8 @@
 		<title> 新規作成</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<meta http-equiv="Content-Style-Type" content="text/css">
-		<link rel="stylesheet" type="text/css" href="../../css/button.css" />
+
+		<link rel="stylesheet" type="text/css" href="../../css/text_display.css" />
 	</head>
 
 	<body>
@@ -49,20 +50,20 @@
 			<div data-role="content">
 				<form action="relay.php" method="POST" id="input">
 					<div align="center">
-					<font size = "7">新規作成</font><br>
+					<font class="Cubicfont">新規作成</font><br>
 					</div>
 
 					<hr color="blue">
 					<br><br>
 
-					<font size="3">宛先</font>
+					<font size="5">宛先</font>
 					<div data-role="controlgroup">
 						<input type="radio" name="switch" value="user_seq" id=test01>
 						<table>
 							<tr>
-								<td><label for="test01">個人</label></td>
 								<td>
-									<select name="to_user"  data-native-menu="false">
+									<label for="test01">個人</label>
+									<select name="to_user" data-native-menu="false">
 									<?php
 									for ($i = 0; $i < $kensu; $i++)
 									{
@@ -72,31 +73,38 @@
 									<?php
 									}
 									?>
-								</select>
+									</select>
 								</td>
 							</tr>
 						</table>
 					</div>
 
-					<div data-role="fieldcontain">
+					<div data-role="controlgroup">
 						<input type="radio" name="switch" value="group_seq" id=test02>
-						<select name="to_group"  data-native-menu="false">
-						<?php
-							for ($i = 0; $i < $count; $i++)
-							{
-								$row = mysql_fetch_array($group);
-						?>
-								<option value="<?=$row['group_seq']?>"><?= $row['group_name'] ?></option>
-						<?php
-							}
-						?>
-						</select>
+						<table>
+							<tr>
+								<td>
+									<label for="test02">グループ</label>
+									<select name="to_group"  data-native-menu="false">
+									<?php
+										for ($i = 0; $i < $count; $i++)
+										{
+											$row = mysql_fetch_array($group);
+									?>
+											<option value="<?=$row['group_seq']?>"><?= $row['group_name'] ?></option>
+									<?php
+										}
+									?>
+									</select>
+								</td>
+							</tr>
+						</table>
 					</div>
 
 					<br>
-					<font size="3">件名</font>
+					<font size="5">件名</font>
 					<input size="40" type="text" name="title"><br><br>
-					<font size="3">本文</font><br>
+					<font size="5">本文</font><br>
 					<textarea rows="40" cols="50" name="contents"></textarea><br>
 
 					<!--隠し文字-->
