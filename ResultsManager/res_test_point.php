@@ -78,7 +78,7 @@ for ($i = 1; $i < $count_user; $i++)
 
 
 	<!-- 点数確認画面に飛ぶ -->
-		<form action = "test_point_con.php" method = "POST" onsubmit="return scorecheck('<?= $id ?>', '<?= $span ?>')">
+		<form action = "test_point_con.php" method = "POST" onsubmit="return scoreCheck('<?= $id ?>', '<?= $span ?>')">
 
 			<!-- テーブルの作成 -->
 			<table border = "1" class="table_01">
