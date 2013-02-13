@@ -5,9 +5,10 @@
 	//データベースの呼出
 	require_once("../lib/dbconect.php");
 	$dbcon = DbConnect();
-
+	echo "aaaa";
 	while (isset($_POST['seq'][$i]))
 	{
+		echo "bbbb";
 		$seq = $_POST['seq'][$i];
 
 		$str = "date" . $i;
@@ -40,7 +41,7 @@
 		}
 
 		$sql = $sql . " WHERE Attendance_seq='$seq'";
-		//echo "<br>" . $sql;
+		echo "<br>" . $sql;
 		mysql_query($sql);
 
 		$i++;
