@@ -14,7 +14,7 @@
 	}
 
 	$id = "group_name";
-	$cmd = "ic";
+	$cmd = "ic,fc";
 	$min = "0";
 	$max = "0";
 	$span = "group_check";
