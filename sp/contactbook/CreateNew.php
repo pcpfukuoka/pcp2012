@@ -58,7 +58,7 @@
 					<br><br>
 
 					<font size="3">宛先</font>
-					<div data-role="fieldcontain">
+					<div data-role="controlgroup" data-type=“horizontal”>
 						<input type="radio" name="switch" value="user_seq">
 						<select name="to_user"  data-native-menu="false">
 						<?php
