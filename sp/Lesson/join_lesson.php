@@ -51,7 +51,7 @@ setcookie("flg",$access,$time,"/");
 setcookie("user_seq",$user_seq,$time,"/");
 setcookie("subject_seq",$subject_seq,$time,"/");
 setcookie("time_table",$time_table,$time,"/");
-setcookie("room",$class_seq, "/");
+setcookie("room",$class_seq,$time, "/");
 
 ?>
 <html>
