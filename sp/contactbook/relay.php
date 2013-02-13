@@ -95,22 +95,4 @@
     	Header('Location: comp_dis.html');
     	exit;
     }
-    else if($_POST['CreateNew'])
-    {
-    	Header('Location:CreateNew.php');
-    }
-    else if($_POST['MAilBox'])
-    {
-    	Header('Location:MailBox.php');
-    }
-    else if($_POST['OutBox'])
-    {
-    	Header('Location:OutBox.php');
-    }
-    else if($_POST['Draft'])
-    {
-    	Header('Location:Draft.php');
-    }
-    
-    
 ?>
