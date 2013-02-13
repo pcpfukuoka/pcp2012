@@ -58,8 +58,8 @@
 					<br><br>
 
 					<font size="3">宛先</font>
-					<input type="radio" name="switch" value="user_seq">
 					<div data-role="fieldcontain">
+						<input type="radio" name="switch" value="user_seq">
 						<select name="to_user"  data-native-menu="false">
 						<?php
 							for ($i = 0; $i < $kensu; $i++)
@@ -73,6 +73,7 @@
 						</select>
 					</div>
 					<div data-role="fieldcontain">
+						<input type="radio" name="switch" value="group_seq">
 						<select name="to_group"  data-native-menu="false">
 						<?php
 							for ($i = 0; $i < $count; $i++)
