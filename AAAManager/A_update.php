@@ -52,6 +52,6 @@
 
 	//echo "更新完了しました";
 	//Sleep(1);
-	Header('Location: A_update_comp.html');
+//	Header('Location: A_update_comp.html');
 
 ?>
