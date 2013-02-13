@@ -56,9 +56,8 @@
 				<div data-role="header" data-position="fixed">
 					<div data-role="navbar">
 						<ul>
-							<li><a href="">スケジュール</a></li>
 							<li><a href="main.php" class="ui-btn-active">連絡帳</a></li>
-							<li><a href="">授業</a></li>
+							<li><a href="../Lesson/join_lesson.php">授業</a></li>
 							<li><a href="../Results_management/Per_ver.php">成績確認</a></li>
 							<li><a href="../question/answer_list.php">アンケート</a></li>
 						</ul>

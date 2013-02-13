@@ -30,7 +30,7 @@
 						echo "<h1>ログインに失敗しました。再度ログインしてください。</h1>";
 					}
 				?>		
-				<form action="login.php" method="POST">
+				<form action="login.php" method="POST" data-ajax="false">
 					<div data-role="fieldcontain">
 						<label for="id" id="id">ID:</label>
 						<input type="text" name="id">
