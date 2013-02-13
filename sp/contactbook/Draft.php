@@ -60,7 +60,7 @@
 					<hr color="blue">
 
 					<!-- テーブルの作成 -->
-					<div align="left">
+					<div align="center">
 						<table class="table_01">
 							<tr>
 								<th align="center" width="150"><font size="5">日付</font></th>
