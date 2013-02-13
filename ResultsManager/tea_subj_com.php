@@ -23,7 +23,7 @@
 		if($q1 == 1)//先生追加の場合
 		{
 			$subj_radio = $_POST['subj_radio'];
-		?>
+			?>
 			<div align = "center">
 				<font class="Cubicfont1">先生教科</font>
 			</div><br><br>
@@ -140,24 +140,24 @@
 			</table><br>
 			
 			<?php 
-			}
-			Dbdissconnect($link);
-			
-			//必要なデータ送信
-			?>
-			<input type="hidden" name="subj_radio" value="<?= $subj_radio ?>">
-			<input type="hidden" name="subj_name" value="<?= $subj_name ?>">
-			<input type="hidden" name="q1" value="<?= $q1 ?>">
-
-			<table>
-				<tr>
-					<Td><input class="button4" type = "submit" value = "確定"></Td>
-					<td><input class="button4" type="button" value="戻る" onClick="history.back()"></td>
-				</tr>
-			</table>
-
-
-		</form>
-		</div>
+		}
+		Dbdissconnect($link);
+		
+		//必要なデータ送信
+		?>
+		<input type="hidden" name="subj_radio" value="<?= $subj_radio ?>">
+		<input type="hidden" name="subj_name" value="<?= $subj_name ?>">
+		<input type="hidden" name="q1" value="<?= $q1 ?>">
+		
+		<table>
+			<tr>
+				<Td><input class="button4" type = "submit" value = "確定"></Td>
+				<td><input class="button4" type="button" value="戻る" onClick="history.back()"></td>
+			</tr>
+		</table>
+		
+		
+	</form>
+	</div>
 	</body>
 </html>	

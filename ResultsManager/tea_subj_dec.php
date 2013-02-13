@@ -67,8 +67,8 @@
 		elseif($q1 == 2)//教科追加のみの場合
 			{
 			$subj_name = $_POST['subj_name'];
-			$sql = "insert into m_subject values(0, '$subj_name', 0. 0)";
-			mysql_query($sql);
+				$sql = "insert into m_subject values(0, '$subj_name', 0, 0)";//教科データ書き込み
+				mysql_query($sql);
 			
 			}
 		Dbdissconnect($link);

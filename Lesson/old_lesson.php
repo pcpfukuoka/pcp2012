@@ -139,9 +139,11 @@
 			    	var parsers = JSON.parse(rs);
 
 			    	if(parsers.length>0){
-			    		var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat; height="700" width="900">'
-			    		+'<img src="'+parsers[0]['canvas']+'"id="canvas" height="700" width="900"/>'
-			    		+'</div>'
+			    		var e='<div id="chalkboard" style="background:'+parsers[0]['div']+';background-repeat:no-repeat; height="700" width="900">';
+						if(parsers[0]['canvas']!='0'){
+							e=e+'<img src="'+parsers[0]['canvas']+'"id="canvas" height="700" width="900"/>';
+						}
+			    		e=e+'</div>';
 			    		$('#frame').append(e);
 
 			    		var a='<div>'
@@ -210,9 +212,11 @@
 				}
 
 				//画像を閲覧するためのタグを作成7
-				var e='<div id="chalkboard" style="background:'+parsers[page]['div']+';background-repeat:no-repeat; height="700" width="900">'
-	    		+'<img src="'+parsers[page]['canvas']+'"id="canvas" height="700" width="900"/>'
-	    		+'</div>';
+				var e='<div id="chalkboard" style="background:'+parsers[page]['div']+';background-repeat:no-repeat; height="700" width="900">';
+				if(parsers[page]['canvas']!='0'){
+					e=e+'<img src="'+parsers[page]['canvas']+'"id="canvas" height="700" width="900"/>';
+				}
+	    		e=e+'</div>';
 	    		var a='<div>'
 		    		+'<table>'
 		    		+'<tr>'
@@ -261,9 +265,11 @@
 				}
 
 				//過去授業を閲覧するための画像を作成し、追加
-				var e='<div id="chalkboard" style="background:'+parsers[page]['div']+';background-repeat:no-repeat; height="600" width="900">'
-	    		+'<img src="'+parsers[page]['canvas']+'"id="canvas" height="600" width="900"/>'
-	    		+'</div>';
+				var e='<div id="chalkboard" style="background:'+parsers[page]['div']+';background-repeat:no-repeat; height="700" width="900">';
+				if(parsers[page]['canvas']!='0'){
+					e=e+'<img src="'+parsers[page]['canvas']+'"id="canvas" height="700" width="900"/>';
+				}
+	    		e=e+'</div>';
 	    		var a='<div>'
 		    		+'<table>'
 		    		+'<tr>'

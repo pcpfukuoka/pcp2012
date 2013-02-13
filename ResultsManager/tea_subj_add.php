@@ -112,7 +112,7 @@
 				<font size = "6">教科追加</font>
 			</div><br>
 			
-			<table border="1" width="70%"><!-- 教科のテーブル  -->
+			<table border="1" width="70%" class="table_01"><!-- 教科のテーブル  -->
 				<tr>
 					<th width="50%">教科一覧</th>
 					<th width="20%">チェック</th>
