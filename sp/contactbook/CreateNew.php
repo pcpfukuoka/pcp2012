@@ -61,8 +61,8 @@
 						<input type="radio" name="switch" value="user_seq" id=test01>
 						<table>
 							<tr>
-								<td><label for="test01">個人</label></td>
 								<td>
+									<label for="test01">個人</label>
 									<select name="to_user" data-native-menu="false">
 									<?php
 									for ($i = 0; $i < $kensu; $i++)
@@ -73,7 +73,7 @@
 									<?php
 									}
 									?>
-								</select>
+									</select>
 								</td>
 							</tr>
 						</table>
@@ -83,8 +83,8 @@
 						<input type="radio" name="switch" value="group_seq" id=test02>
 						<table>
 							<tr>
-								<td><label for="test02">グループ</label></td>
 								<td>
+									<label for="test02">グループ</label>
 									<select name="to_group"  data-native-menu="false">
 									<?php
 										for ($i = 0; $i < $count; $i++)
