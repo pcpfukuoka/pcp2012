@@ -129,19 +129,48 @@
 		<div align="center">
 			<table class="table_01">
 				<tr>
-					<td>日付</td>
-					<td>FROM</td>
-					<td>件名</td>
-				</tr>
 
-				<?php
+				<th align="center" width="30"></th>
+					<th align="center" width="200"><font size="5">日付</font></th>
+					<th align="center" width="150"><font size="5">FROM</font></th>
+					<th align="center" width="230"><font size="5">件名</font></th>
+
+				</tr>
+					<?php
 				for ($i = 0; $i < $cnt; $i++){
 					$row = mysql_fetch_array($result);
+
+					$delivery = $row['print_delivery_seq'];
+
+					$sql = "SELECT print_check_flg
+							FROM print_check
+							WHERE print_delivery_seq = $delivery
+							AND user_seq = $user_seq;";
+
+					$result_chk = mysql_query($sql);
+					$chk = mysql_fetch_array($result_chk);
 				?>
 					<tr>
-						<td><?= $row['delivery_date'] ?></td>
-						<td><?= $row['send_user_name'] ?></td>
-						<td>
+
+					<?php
+
+						if ($chk['print_check_flg'] == 1)
+						{
+					?>
+							<td align="center"><img src="../images/mail_icon.jpg"></td>
+					<?php
+						}
+						else
+						{
+							echo "<td></td>";
+						}
+					?>
+
+
+					<tr>
+						<td align="center"><?= $row['delivery_date'] ?></td>
+						<td align="center"><?= $row['send_user_name'] ?></td>
+						<td align="center">
 							<a href="pdf_relay.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
 						</td>
 					</tr>
