@@ -86,7 +86,7 @@
 								<?= $aaaa['title'] ?><br><br>
 							    <font size="5">本文</font><br>
 							    <textarea readonly="readonly" rows="40" cols="50" name="contents"><?= $aaaa['contents'] ?></textarea>
-							    <br><br><br>
+							    <br>
 						<?php
 							}
 						?>
