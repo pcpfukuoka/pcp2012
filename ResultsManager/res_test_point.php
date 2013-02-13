@@ -45,6 +45,16 @@ $sql = "SELECT user_seq, point
 		ORDER BY user_seq;";
 $result_point = mysql_query($sql);
 
+
+
+$id = "point0";
+$span = "point_check0";
+for ($i = 1; $i < $count_user; $i++)
+{
+	$id = $id.",point$i";
+	$span = $span.",point_check$i";
+}
+
 ?>
 <html>
 	<head>
@@ -66,8 +76,9 @@ $result_point = mysql_query($sql);
 			<font class="Cubicfont2">点数入力</font><hr color="blue"><br><br><br>
 		</div>
 
+
 	<!-- 点数確認画面に飛ぶ -->
-		<form action = "test_point_con.php" method = "POST">
+		<form action = "test_point_con.php" method = "POST" onsubmit="return scorecheck('<?= $id ?>', '<?= $span ?>')">
 
 			<!-- テーブルの作成 -->
 			<table border = "1" class="table_01">
@@ -92,7 +103,8 @@ $result_point = mysql_query($sql);
 				?>
 						<tr>
 							<td><?= $user['user_name'] ?></td>
-							<td><input size = "3" type = "text" name = "point<?= $i ?>" id="point<?= $i ?>" value = "0" Onblur="check('#point<?= $i ?>', ic, vc, tc)"></td>
+							<td><input size = "3" type = "text" name = "point<?= $i ?>" id="point<?= $i ?>" value = "0"></td>
+							<span class="check_result" name="point_check<?= $i ?>" id="point_check<?= $i ?>" ></span>
 						</tr>
 					<?php
 					}
@@ -101,7 +113,8 @@ $result_point = mysql_query($sql);
 					?>
 						<tr>
 							<td><?= $user['user_name'] ?></td>
-							<td><input size = "3" type = "text" name = "point<?= $i ?>" id="point<?= $i ?>" value = "<?= $point['point'] ?>" Onblur="check('#point<?= $i ?>', 'ic,nc,tc,lc', 1, 3)"></td>
+							<td><input size = "3" type = "text" name = "point<?= $i ?>" id="point<?= $i ?>" value = "<?= $point['point'] ?>"></td>
+							<span class="check_result" name="point_check<?= $i ?>" id="point_check<?= $i ?>" ></span>
 						</tr>
 				<?php
 					}
