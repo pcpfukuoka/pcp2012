@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
-	<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../dummy.html">
+	<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../Top/dummy.html">
 	</head>
 	<body>
 	<img class="bg" src="../images/blue-big.jpg" alt="" />

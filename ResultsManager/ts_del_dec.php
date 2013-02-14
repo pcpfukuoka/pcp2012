@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>削除確定画面</title>
-		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../dummy.html">
+		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../Top/dummy.html">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" ></meta><?php //文字化け防止?>
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
