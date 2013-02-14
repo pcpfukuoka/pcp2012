@@ -1,6 +1,6 @@
 <?php 
 $id = "user_id,pass,user_name,user_kana,user_address,user_tel,user_email";
-$cmd = "ic,pc/ic,pc/ic/ic,fc/ic/ic,nc,lc/ic,mc";
+$cmd = "ic,pc/ic,pc/ic/ic,fc/ic/ic,nc,lc/ic";
 $min = "0,0,0,0,0,10,0";
 $max = "0,0,0,0,0,11,0";
 $span = "user_id_check,pass_check,user_name_check,user_kana_check,user_address_check,user_tel_check,user_email_check";
