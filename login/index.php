@@ -23,11 +23,10 @@ if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('i
 <title></title>
 </head>
 <body>
-		<img class="bg" src="../images/blue-big.jpg" alt="" />
+		<img class="bg" src="../images/login.jpg" alt="" />
 		<div id="container">
 		<div align="center">
 			<font class="Cubicfont">ログイン</font>
-		</div>
 
 
 	<div>
@@ -43,7 +42,8 @@ if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('i
 			パスワード：<input type="password" name="pass"><br>
 			<input type="submit" value="ログイン"><br>
 		</form>	
-	</div>
+		</div>
+		</div>
 	</div>
 </body>
 </html>
