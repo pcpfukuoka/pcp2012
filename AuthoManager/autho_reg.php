@@ -17,9 +17,9 @@ $count_group = mysql_num_rows($result_group);
 
 
 //$seq_autho : セッションで受け取った権限グループseqを入れる
-if(isset($_POST['id']))
+if(isset($_GET['id']))
 {
-$_SESSION['autho_sel'] = $_POST['id'];
+$_SESSION['autho_sel'] = $_GET['id'];
 }
 $autho_seq = $_SESSION['autho_sel'];
 
@@ -111,21 +111,21 @@ $name = $name['autho_name'];
 			{
 				//名前検索の場合
 				$user = $_POST['query'];
-				$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND user_name LIKE '%$user%';";
+				$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND autho_seq != '$autho_seq' AND user_name LIKE '%$user%';";
 				
 			}
 			else 
 			{
 				//ID検索の場合
 				$user_id = $_POST['query'];
-				$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND user_id LIKE '%$user_id%';";
+				$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND autho_seq != '$autho_seq' AND user_id LIKE '%$user_id%';";
 			}
 		}
 		else 
 		{
 			//初期の表示の場合
 			//検索用データ取得
-			$sql = "SELECT * FROM m_user WHERE delete_flg = 0;";
+			$sql = "SELECT * FROM m_user WHERE delete_flg = 0 AND autho_seq != '$autho_seq';"; 
 		}
 		$result = mysql_query($sql);
 		$cnt = mysql_num_rows($result);
@@ -203,8 +203,9 @@ $name = $name['autho_name'];
 
 		});
 		</script>
+		登録してよろしかったら登録ボタンを押してください。登録しなければ必ず選択リストを空にしてください。
 		<form action="auho_reg_com.php" method="GET">
-		<input class="button4" type="submit" value="登録確認">
+		<input class="button4" type="submit" value="登録">
 		</form>
 
 	</div>
