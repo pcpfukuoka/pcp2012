@@ -144,8 +144,11 @@ function repeat($n) {
 
 <?php
 //天気予報表示区域の設定
-$tnk = 40;
+$dbconfig = parse_ini_file("../lib/config.ini");
+
+$tnk = $dbconfig['weather'];
 ?>
+
 <!--
 道北　1a
 道央　1b

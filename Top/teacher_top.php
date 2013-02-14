@@ -1,4 +1,7 @@
 <?php
+	//出欠席取得
+	session_start();
+
 //今日の曜日取得
 $weekday = date("w");
 if($weekday == "0")
@@ -235,8 +238,6 @@ $tnk = $dbconfig['weather'];
 					//所属クラス取得SQL
 					$sql = "SELECT m_group.group_seq FROM m_group INNER JOIN group_details ON m_group.group_seq = group_details.group_seq WHERE m_group.class_flg = 1 AND group_details.user_seq = '$id' ";
 					$group_result = mysql_query($sql);
-					echo $sql;
-					echo "<br>";
 					$grow = mysql_fetch_array($group_result);
 					$group_seq = $grow['group_seq'];
 					//時間割の取得
@@ -244,8 +245,6 @@ $tnk = $dbconfig['weather'];
 					$time_table = mysql_query($time_table_get);
 					$cnt = mysql_num_rows($time_table);
 					$row = mysql_fetch_array($time_table);
-					echo $time_table_get;
-					echo "<br>";
 					?>
 					<table cellspacing="1" cellpadding="1" border="1" width="80%">
 					<?php
