@@ -32,7 +32,7 @@ if(isset($_POST['group_name']))
 	if($find_flg == 0)
 	{
 		$sql = "insert into m_group values(0, '$group_name','$class_flg', 0)";
-		//mysql_query($sql);
+		mysql_query($sql);
 
 		$sql = "SELECT * FROM m_group WHERE delete_flg = 0 ORDER BY group_seq DESC;";
 		$result = mysql_query($sql);

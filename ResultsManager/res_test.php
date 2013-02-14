@@ -126,7 +126,16 @@ $span = "day_check,contents_check";
 			<tr>
 				<!-- 教科の選択 -->
 				<form name = "req" action = "" method = "GET">
-					<td bgcolor = "blue"><select name = "sub" onChange = "this.form.submit();">
+					<td bgcolor = "blue">
+					<?php 
+					if($_GET['sub'] == -1)
+					{
+					?>
+						<span class="check_result"　name="sub_text">教科を選択して下さい。</span>
+					<?php 
+					}
+					?>
+					<select name = "sub" onChange = "this.form.submit();">
 
 					<?php
 					if ($_GET['sub'] == -1)
@@ -160,12 +169,12 @@ $span = "day_check,contents_check";
 				<input type = "hidden" name = "subject" value = "<?= $subject ?>">
 
 				<!-- 日付の入力 -->
-				<span class="check_result" name="day_check" id="day_check" ></span>
+
 					<?php
 					if (isset($_GET['sub_check']))
 					{
 					?>
-					<td bgcolor = "blue"><input type = "text" name = "day" id="day" value = "<?= date("Ymd") ?>"></td>
+					<td bgcolor = "blue"><span class="check_result" name="day_check" id="day_check" ></span><input type = "text" name = "day" id="day" value = "<?= date("Ymd") ?>"></td>
 					<?php
 					}
 					else
@@ -177,12 +186,12 @@ $span = "day_check,contents_check";
 					?>
 
 				<!-- テスト範囲・内容入力 -->
-				<span class="check_result" name="contents_check" id="contents_check" ></span>
+
 					<?php
 					if (isset($_GET['sub_check']))
 					{
 					?>
-					<td bgcolor = "blue"><textarea rows="2" cols="30" name = "contents" id="contents"></textarea></td>
+					<td bgcolor = "blue"><span class="check_result" name="contents_check" id="contents_check" ></span><textarea rows="2" cols="30" name = "contents" id="contents"></textarea></td>
 					<?php
 					}
 					else

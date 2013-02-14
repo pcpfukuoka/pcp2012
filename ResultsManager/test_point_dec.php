@@ -50,7 +50,7 @@ Dbdissconnect($link);
 		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
 		<link rel="stylesheet" type="text/css" href="../css/table.css" />
-		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../dummy.html">
+		<META HTTP-EQUIV="Refresh" CONTENT="5;URL=../Top/dummy.html">
 		<title>点数確定画面</title>
 	</head>
 	

@@ -38,26 +38,27 @@
 			<div data-role="header" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="">スケジュール</a></li>
 						<li><a href="main.php" class="ui-btn-active">連絡帳</a></li>
-						<li><a href="">授業</a></li>
+						<li><a href="../Lesson/join_lesson.php">授業</a></li>
 						<li><a href="../Results_management/Per_ver.php">成績確認</a></li>
 						<li><a href="../question/answer_list.php">アンケート</a></li>
 					</ul>
 				</div>
 			</div>
 
-			<div data-role="content">
+			<div data-role="content" align="left">
 				<form action="relay.php" method="POST" id="input">
 					<div align="center">
-					<font class="Cubicfont">新規作成</font><br>
+					<font class="Cubicfont">新規作成</font><br><br>
 					</div>
 
 					<hr color="blue">
-					<br><br>
+					<br><br><br>
 
-					<font size="5">宛先</font>
-					<div data-role="controlgroup">
+					<div align="center">
+						<font size="5">宛先</font>
+					</div>
+					<div data-role="controlgroup" align="left">
 						<input type="radio" name="switch" value="user_seq" id=test01>
 						<table>
 							<tr>
@@ -79,7 +80,7 @@
 						</table>
 					</div>
 
-					<div data-role="controlgroup">
+					<div data-role="controlgroup" align="left">
 						<input type="radio" name="switch" value="group_seq" id=test02>
 						<table>
 							<tr>
@@ -109,14 +110,17 @@
 
 					<!--隠し文字-->
 					<input type="hidden" value="0" name="link_id">
-					<input class="button4" type="submit" data-role="button" data-inline="true" value="送信" name = "send">
-					<input class="button4" type="submit" data-role="button" data-inline="true" value="保存" name="Preservation"><br>
+					<div align="center">
+						<input class="button4" type="submit" data-role="button" data-inline="true" value="送信" name = "send">
+						<input class="button4" type="submit" data-role="button" data-inline="true" value="保存" name="Preservation"><br>
+					</div>
+
 				</form>
 			</div>
 
 			<div data-role="footer" data-position="fixed" >
 				<p>PCP2012</p>
-				<a href="#" data-rel="back" data-role="button" data-icon="back"  class="ui-btn-left">戻る</a>
+				<a href="main.php" data-rel="back" data-role="button" data-icon="back"  class="ui-btn-left">戻る</a>
 				<a href="../index.php" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">トップへ</a>
 			</div>
 		</div>
