@@ -103,8 +103,7 @@ for ($i = 1; $i < $count_user; $i++)
 				?>
 						<tr>
 							<td><?= $user['user_name'] ?></td>
-							<td><input size = "3" type = "text" name = "point<?= $i ?>" id="point<?= $i ?>" value = "0"></td>
-							<span class="check_result" name="point_check<?= $i ?>" id="point_check<?= $i ?>" ></span>
+							<td><input size = "3" type = "text" name = "point<?= $i ?>" id="point<?= $i ?>" value = "0"><span class="check_result" name="point_check<?= $i ?>" id="point_check<?= $i ?>" ></span></td>
 						</tr>
 					<?php
 					}
@@ -113,8 +112,7 @@ for ($i = 1; $i < $count_user; $i++)
 					?>
 						<tr>
 							<td><?= $user['user_name'] ?></td>
-							<td><input size = "3" type = "text" name = "point<?= $i ?>" id="point<?= $i ?>" value = "<?= $point['point'] ?>"></td>
-							<span class="check_result" name="point_check<?= $i ?>" id="point_check<?= $i ?>" ></span>
+							<td><input size = "3" type = "text" name = "point<?= $i ?>" id="point<?= $i ?>" value = "<?= $point['point'] ?>"><span class="check_result" name="point_check<?= $i ?>" id="point_check<?= $i ?>" ></span></td>
 						</tr>
 				<?php
 					}
