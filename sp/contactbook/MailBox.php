@@ -57,7 +57,7 @@
 					<br><br><br>
 
 					<!-- 連絡帳の受信一覧テーブル作成 -->
-					<p align="left">
+					<p align="center">
 						<font size="5">連絡帳</font>
 					</p>
 
@@ -123,7 +123,7 @@
 					?>
 
 					<!-- プリントの受信一覧テーブル作成 -->
-					<p align="left">
+					<p align="center">
 						<font size="5">配信</font>
 					</p>
 
@@ -167,7 +167,7 @@
 									<td align="center"><?= $row['delivery_date'] ?></td>
 									<td align="center"><?= $row['send_user_name'] ?></td>
 									<td align="center">
-										<a href="pdf_relay.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
+										<a href="../../PrintDeliveryManager/pdf_view.php?id=<?= $row['print_delivery_seq'] ?>&printurl=<?= $row['printurl'] ?>&title=<?= $row['title'] ?>"><?= $row['title'] ?></a>
 									</td>
 								</tr>
 							<?php

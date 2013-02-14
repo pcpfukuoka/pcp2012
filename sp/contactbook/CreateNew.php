@@ -110,8 +110,11 @@
 
 					<!--隠し文字-->
 					<input type="hidden" value="0" name="link_id">
-					<input class="button4" type="submit" data-role="button" data-inline="true" value="送信" name = "send">
-					<input class="button4" type="submit" data-role="button" data-inline="true" value="保存" name="Preservation"><br>
+					<div align="center">
+						<input class="button4" type="submit" data-role="button" data-inline="true" value="送信" name = "send">
+						<input class="button4" type="submit" data-role="button" data-inline="true" value="保存" name="Preservation"><br>
+					</div>
+
 				</form>
 			</div>
 
