@@ -101,7 +101,7 @@ function test(page) {
 
     }
 </script>
-<?php 
+<?php
 	//授業があれば黒板ページヘ
 	if($cnt > 0)
 	{

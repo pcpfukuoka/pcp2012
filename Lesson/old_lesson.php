@@ -35,16 +35,18 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/back_ground.css" />
 		<link rel="stylesheet" type="text/css" href="../css/button.css" />
 		<link rel="stylesheet" type="text/css" href="../css/text_display.css" />
-		<script src="../javascript/old_lesson_js.js" type = "text/javascript"></script>
+		<link rel="stylesheet" type="text/css" href="../css/table.css" />
+				<script src="../javascript/old_lesson_js.js" type = "text/javascript"></script>
 		<script src="../javascript/jquery-1.8.2.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/old_lesson_canvas_css.css" />
 	</head>
 
 	<body>
 
-		<!-- <img class="bg" src="../images/blue-big.jpg" alt="" /> -->
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 			<input type="date" id="date" max="<?= date("Y-m-d") ?>"/>
 			<select id="subject_seq">
@@ -201,6 +203,7 @@
 
 	    	var page_ele =document.getElementById('page_num');
 	    	var page= Number(page_ele.value);
+
 	    	$.post('ajax_canvas_select.php', {
 	            date: date,
 	            id : subject_seq,
@@ -210,8 +213,7 @@
 	        //戻り値として、user_seq受け取る
 	        function(rs) {
 
-	        	var div_ele =document.getElementById('chalkboard');
-		    	var canvas_ele =document.getElementById('canvas');
+
 	        	var parsers = JSON.parse(rs);
 				page++;
 				if(page>parsers.length-1){
@@ -270,8 +272,6 @@
 	        },
 	        function(rs){
 
-	        	var div_ele =document.getElementById('chalkboard');
-		    	var canvas_ele =document.getElementById('canvas');
 	        	var parsers = JSON.parse(rs);
 				page--;
 				if(page<0){
@@ -304,9 +304,7 @@
 		    	$('#frame').empty();
 	    		$('#frame').append(e);
 	    		$('#button').append(a);
-				//canvas_ele.src=parsers[page]['canvas'];
-				//div_ele.style.background=parsers[page]['div'];
-				//div_ele.style.backgroundAttachment='fixed';
+
 				page_ele.value=page;
 	        });
 		});
