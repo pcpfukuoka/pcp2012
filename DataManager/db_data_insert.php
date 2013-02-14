@@ -52,8 +52,6 @@
 			$pass = $data[$sheetTitle][$i][6];
 			$autho_seq = $data[$sheetTitle][$i][7];
 			$sql = "INSERT INTO m_user VALUES ('0', '$user_name', '$user_kana', '$user_address', '$user_tel', '$user_email', '$user_id', '$pass', '$autho_seq','0','0'); ";
-			echo $sql;
-			echo "<br>";
 			mysql_query($sql);
 
 			if($data[$sheetTitle][$i][8] != "0")
@@ -62,8 +60,6 @@
 			$student_id = $data[$sheetTitle][$i][8];
 			$sql = "INSERT INTO m_student VALUES (0,'$user_seq','$student_id');";
 			mysql_query($sql);
-			echo $sql;
-			echo "<br>";
 
 			}
 		}
@@ -81,8 +77,6 @@
 		$Letaness_seq= $data[$sheetTitle][$i][6];
 		$Absence_due_to_mourning_seq = $data[$sheetTitle][$i][7];
 		$sql = "INSERT INTO attendance VALUES ('0','$group_seq', '$user_seq', '$date', '$Attendance_seq', '$Absence_seq', '$Leaving_seq', '$Letaness_seq', '$Absence_due_to_mourning_seq','0','0'); ";
-		echo $sql;
-		echo "<br>";
 		mysql_query($sql);
 
 
@@ -90,4 +84,7 @@
 
 	}
 
+	header("Location: comp_dis.html");
+	
+	
       ?>

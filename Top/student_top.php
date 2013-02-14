@@ -290,7 +290,7 @@ $tnk = $dbconfig['weather'];
 		LEFT JOIN m_group ON attendance.group_seq = m_group.group_seq
 		WHERE attendance.user_seq = '$id'
 		AND DATE_FORMAT(attendance.date,'%Y-%m') = '$A_date'
-		GROUP BY date";
+		GROUP BY DATE_FORMAT(attendance.date,'%Y-%m')";
 		$attendance_result = mysql_query($sql);
 		$attendance_count = mysql_num_rows($attendance_result);
 		
