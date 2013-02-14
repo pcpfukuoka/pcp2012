@@ -126,7 +126,16 @@ $span = "day_check,contents_check";
 			<tr>
 				<!-- 教科の選択 -->
 				<form name = "req" action = "" method = "GET">
-					<td bgcolor = "blue"><select name = "sub" onChange = "this.form.submit();">
+					<td bgcolor = "blue">
+					<?php 
+					if($_GET['sub'] == -1)
+					{
+					?>
+						<span class="check_result"　name="sub_text">教科を選択して下さい。</span>
+					<?php 
+					}
+					?>
+					<select name = "sub" onChange = "this.form.submit();">
 
 					<?php
 					if ($_GET['sub'] == -1)
