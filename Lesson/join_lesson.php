@@ -110,6 +110,7 @@ function test(page) {
 	?>
 
 <body>
+		<img class="bg" src="../images/blue-big.jpg" alt="" />
 		<div id="container">
 		<div align="center">
 			<font class="Cubicfont">授業参加</font>
