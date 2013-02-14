@@ -11,7 +11,8 @@
 	     //グループの件数の取り出し
 	     $sql = "SELECT *
 				 FROM m_group
-				 WHERE delete_flg = 0";
+				 WHERE delete_flg = 0
+	     		 ORDER BY group_name";
 	     $group = mysql_query($sql);
 	     $count = mysql_num_rows($group);
 

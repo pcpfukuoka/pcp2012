@@ -128,11 +128,19 @@ EOM;
 function repeat($n) {
 	return str_repeat("\t\t<td> </td>\n", $n);
 }
+?><?php
+
+	//データベースの呼出
+	require_once("../lib/dbconect.php");
+	$dbcon = DbConnect();
 ?>
+
 
 <?php
 //天気予報表示区域の設定
-$tnk = 40;
+$dbconfig = parse_ini_file("../lib/config.ini");
+
+$tnk = $dbconfig['weather'];
 ?>
 <!--
 道北　1a
@@ -226,14 +234,14 @@ $tnk = 40;
 				
 					//所属クラス取得SQL
 					$sql = "SELECT m_group.group_seq FROM m_group INNER JOIN group_details ON m_group.group_seq = group_details.group_seq WHERE m_group.class_flg = 1 AND group_details.user_seq = '$id' ";
-					//$group_result = mysql_query($sql);
-					//$grow = mysql_fetch_array($group_result);
+					$group_result = mysql_query($sql);
+					$grow = mysql_fetch_array($group_result);
 					$group_seq = $grow['group_seq'];
 					//時間割の取得
 					$time_table_get = "SELECT * FROM time_table WHERE time_table.day = '$today' and time_table.group_seq = '$group_seq'";
-					//$time_table = mysql_query($time_table_get);
-					//$cnt = mysql_num_rows($time_table);
-					//$row = mysql_fetch_array($time_table);
+					$time_table = mysql_query($time_table_get);
+					$cnt = mysql_num_rows($time_table);
+					$row = mysql_fetch_array($time_table);
 					?>
 					<table cellspacing="1" cellpadding="1" border="1" width="80%">
 					<?php

@@ -30,15 +30,78 @@
 	<img class="bg" src="../images/blue-top.jpg" alt="" />
 		<div id="container">
 	<div align="right">
-		<font size="5" >ようこそ<a onClick="disp()" id="login_user"><?= $_SESSION['login_info[login_name]'] ?></a>さん</font>
+	<?php 
+	if($_SESSION['position_flg'] == "teacher")
+{
+	$str = "先生";
+}else
+{
+	$str = "さん";	
+}
+
+	?>
+		<font size="5" >ようこそ<a onClick="disp()" id="login_user"><?= $_SESSION['login_info[login_name]'] ?></a><?= $str ?></font>
 	</div>
 
 
+	<?php 
+	$weekday = date("w");
+	if($weekday == "0")
+	{
+		$today = "日";
+	}
+	else if($weekday == "1")
+	{
+		$today = "月";
+	}
+	else if($weekday == "2")
+	{
+		$today = "火";
+	}
+	else if($weekday == "3")
+	{
+		$today = "水";
+	}
+	else if($weekday == "4")
+	{
+		$today = "木";
+	}
+	else if($weekday == "5")
+	{
+		$today = "金";
+	}
+	else if($weekday == "6")
+	{
+		$today = "土";
+	}
+	
+	//データベースの呼出
+	require_once("../lib/dbconect.php");
+	$dbcon = DbConnect();
+	
+	$id = $_SESSION['login_info[user]'];
+	
+	//所属クラス取得SQL
+	$sql = "SELECT m_group.group_seq FROM m_group INNER JOIN group_details ON m_group.group_seq = group_details.group_seq WHERE m_group.class_flg = 1 AND group_details.user_seq = '$id' ";
+	$group_result = mysql_query($sql);
+	$grow = mysql_fetch_array($group_result);
+	$group_seq = $grow['group_seq'];
+	//時間割の取得
+	$time_table_get = "SELECT * FROM time_table WHERE time_table.day = '$today' and time_table.group_seq = '$group_seq'";
+	$time_table = mysql_query($time_table_get);
+	$cnt = mysql_num_rows($time_table);
+	$row = mysql_fetch_array($time_table);
+	
+	?>
 	<!-- テロップ形式で表示する内容（中身：ＤＢから、個数：foreach文？） -->
 	<ul id="ticker01">
-    	<li><span>１時間目</span><a href="#">美術</a></li>
-    	<li><span>２時間目</span><a href="#">道徳</a></li>
-
+    	<li><span>1時間目</span><a href="#"><?= $row[3] ?></a></li>
+    	<li><span>2時間目</span><a href="#"><?= $row[4] ?></a></li>
+    	<li><span>3時間目</span><a href="#"><?= $row[5] ?></a></li>
+    	<li><span>4時間目</span><a href="#"><?= $row[6] ?></a></li>
+    	<li><span>5時間目</span><a href="#"><?= $row[7] ?></a></li>
+    	<li><span>6時間目</span><a href="#"><?= $row[8] ?></a></li>
+    	
     	<!-- eccetera -->
 	</ul>
 	<script>
