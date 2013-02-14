@@ -17,13 +17,26 @@
 		//$link = mysql_connect("tamokuteki41", "root", "");//練習用サーバ
 		//mysql_select_db("pcp2012");
 		
-			$sql = "UPDATE m_teacher SET delete_flg = 1 WHERE delete_sub_flg = 1;";
+		$sql = "SELECT teacher_seq FROM m_teacher WHERE delete_flg = 0";
+		$result = mysql_query($sql);
+		$count = mysql_num_rows($result);
+		for($i = 0; $i < $count; $i++)
+		{
+		$row = mysql_fetch_array($result);
+		$teacher = "teacher_".$row['teacher_seq'];
+		$teacher_seq = $row['teacher_seq'];
+		if(isset($_POST[$teacher]))
+			{
+			$sql = "UPDATE m_teacher SET delete_flg = 1 WHERE teacher_seq = '$teacher_seq';";
 			mysql_query($sql);
-			$sql = "SELECT subject_seq FROM m_subject WHERE delete_flg = 0";
-			$result = mysql_query($sql);
-			$count = mysql_num_rows($result);
+			}
+		}
 			
-			for($i = 0; $i < $count; $i++)
+		$sql = "SELECT subject_seq FROM m_subject WHERE delete_flg = 0";
+		$result = mysql_query($sql);
+		$count = mysql_num_rows($result);
+			
+		for($i = 0; $i < $count; $i++)
 			{
 			$row = mysql_fetch_array($result);
 			$subject_ID = $row['subject_seq'];
@@ -35,7 +48,7 @@
 				mysql_query($sql);
 				}
 			}
-		?>		
+		?>
 		<font class="Cubicfont1">削除しました</font>
 		</div>
 	</body>

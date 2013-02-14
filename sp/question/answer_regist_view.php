@@ -26,15 +26,13 @@ $user_seq = $_SESSION['login_info[user]'];
 			<div data-role="header" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="">スケジュール</a></li>
 						<li><a href="../contactbook/main.php">連絡帳</a></li>
-						<li><a href="">授業</a></li>
+						<li><a href="../Lesson/join_lesson.php">授業</a></li>
 						<li><a href="../Results_management/Per_ver.php">成績確認</a></li>
 						<li><a href="answer_list.php" class="ui-btn-active">アンケート</a></li>
 					</ul>
 				</div>
 			</div>
-	</div>		
 			
 			<div data-role="content">			
 		<?php 
@@ -47,7 +45,7 @@ $user_seq = $_SESSION['login_info[user]'];
 		
 		?>
 		
-		<form method ="post" action="answer_regist.php">
+		<form method ="post" action="answer_regist.php" data-ajax="false">
 		<input type="hidden" name="question_seq" value="<?= $question_seq ?>">
 		タイトル:<?= $question_row['question_title'] ?><br>
 		内容：<?= $question_row['question_description'] ?><br>
@@ -74,8 +72,6 @@ $user_seq = $_SESSION['login_info[user]'];
 				<input type="<?= $details_row['division_type']?>" name="question_<?= $i + 1 ?>[]" value="<?= $awnser_row['question_awnser_list_seq'] ?>"><?= $awnser_row['awnser_name'] ?>				
 				<?php 
 			}?>
-			<br>その他：<input type="checkbox" class="etc_input" id="etc_input_<?= $i + 1 ?>" data-id="<?= $i + 1 ?>">
-				  <input type="text" name="etc_<?= $i + 1 ?>" disabled="true">
 			<input type="hidden" name="details_seq[]" value="<?= $details_row['question_details_seq']?>">
 			<br>
 	<?php 	
@@ -90,6 +86,7 @@ $user_seq = $_SESSION['login_info[user]'];
 				<a href="#" data-rel="back" data-role="button" data-icon="back"  class="ui-btn-left">戻る</a>
 				<a href="../index.php" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">トップへ</a>
 			</div>
+	</div>		
 	</body>
 	
 			<script>

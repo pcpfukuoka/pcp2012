@@ -41,9 +41,8 @@
 				<div data-role="header" data-position="fixed">
 					<div data-role="navbar">
 						<ul>
-							<li><a href="">スケジュール</a></li>
 							<li><a href="main.php" class="ui-btn-active">連絡帳</a></li>
-							<li><a href="">授業</a></li>
+							<li><a href="../Lesson/join_lesson.php">授業</a></li>
 							<li><a href="../Results_management/Per_ver.php">成績確認</a></li>
 							<li><a href="../question/answer_list.php">アンケート</a></li>
 						</ul>
@@ -51,19 +50,19 @@
 				</div>
 				<div data-role="content">
 					<div align="center">
-						<font class="Cubicfont">受信ボックス</font>
-						<br>
+						<font class="Cubicfont">受信ボックス</font><br><br>
 					</div>
-					<br>
+
 					<hr color="blue">
+					<br><br><br>
 
 					<!-- 連絡帳の受信一覧テーブル作成 -->
-					<p align="left">
+					<p align="center">
 						<font size="5">連絡帳</font>
 					</p>
 
 					<div align="center">
-						<table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
+						<table class="table_01">
 							<tr>
 								<th align="center" width="30"></th>
 								<th align="center" width="200"><font size="5">日付</font></th>
@@ -124,12 +123,12 @@
 					?>
 
 					<!-- プリントの受信一覧テーブル作成 -->
-					<p align="left">
+					<p align="center">
 						<font size="5">配信</font>
 					</p>
 
 					<div align="center">
-						<table cellpadding="0" cellspacing="0" border="0" id="table" class="table_01">
+						<table class="table_01">
 							<tr>
 								<th align="center" width="30"></th>
 								<th align="center" width="200"><font size="5">日付</font></th>
@@ -168,7 +167,7 @@
 									<td align="center"><?= $row['delivery_date'] ?></td>
 									<td align="center"><?= $row['send_user_name'] ?></td>
 									<td align="center">
-										<a href="pdf_relay.php?id=<?= $row['print_delivery_seq'] ?>"><?= $row['title'] ?></a>
+										<a href="../../PrintDeliveryManager/pdf_view.php?id=<?= $row['print_delivery_seq'] ?>&printurl=<?= $row['printurl'] ?>&title=<?= $row['title'] ?>"><?= $row['title'] ?></a>
 									</td>
 								</tr>
 							<?php
